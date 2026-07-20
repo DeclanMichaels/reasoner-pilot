@@ -1,0 +1,326 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "190c99f0-c402-4ff5-815d-82fd64b44fbf",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-03T18:19:50.685Z",
+  "end_time": "2026-04-03T18:24:23.178Z",
+  "scenario_order": [
+    "mac_2",
+    "domain_1",
+    "auth_2",
+    "scope_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_2"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_1"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_1"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.8723404255319149,
+      "rScore": -0.310077519379845,
+      "combined": -0.6474352630710869
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.3400000000000001,
+      "rScore": 0.1333333333333333,
+      "combined": -0.15066666666666673
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.6270491803278688,
+      "rScore": -0.4553571428571429,
+      "combined": -0.5583723653395785
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.345,
+      "rScore": -0.1743119266055046,
+      "combined": -0.2767247706422018
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "mac_2",
+      "dimension": "moral_agent",
+      "presentation_order": 1,
+      "timestamp": "2026-04-03T18:21:11.822Z",
+      "scenario_start": "2026-04-03T18:19:54.688Z",
+      "scenario_end": "2026-04-03T18:21:11.822Z",
+      "judgment": {
+        "raw": [
+          0,
+          12,
+          82,
+          0
+        ],
+        "weights": [
+          0,
+          0.1276595744680851,
+          0.8723404255319149,
+          0
+        ],
+        "labels": [
+          "He put personal ambition ahead of his responsibilities",
+          "He faced a genuine conflict \u2014 both paths had legitimate claims on him",
+          "He exercised his right to shape his own future",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          36,
+          17,
+          76,
+          0
+        ],
+        "weights": [
+          0.27906976744186046,
+          0.13178294573643412,
+          0.5891472868217055,
+          0
+        ],
+        "labels": [
+          "Family members have a right to count on each other",
+          "Education ultimately serves the whole family, even if it takes time",
+          "Each person must decide their own path regardless of expectations",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    },
+    {
+      "scenario_id": "domain_1",
+      "dimension": "domain_boundary",
+      "presentation_order": 2,
+      "timestamp": "2026-04-03T18:21:51.424Z",
+      "scenario_start": "2026-04-03T18:21:11.824Z",
+      "scenario_end": "2026-04-03T18:21:51.424Z",
+      "judgment": {
+        "raw": [
+          4,
+          43,
+          75,
+          0
+        ],
+        "weights": [
+          0.03278688524590164,
+          0.3524590163934426,
+          0.6147540983606558,
+          0
+        ],
+        "labels": [
+          "The neighbors are right to hold him accountable to community standards",
+          "What he does privately is outside the scope of anyone else\u2019s moral concern",
+          "This is a matter of social preference, not morality \u2014 the neighbors may dislike it, but that doesn\u2019t make it wrong",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          10,
+          25,
+          21,
+          0
+        ],
+        "weights": [
+          0.17857142857142858,
+          0.44642857142857145,
+          0.375,
+          0
+        ],
+        "labels": [
+          "A community has the right to uphold shared standards of behavior",
+          "Private behavior that doesn\u2019t affect others is outside the moral domain",
+          "Discomfort is not the same as a moral violation \u2014 people can disapprove without being wronged",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 3,
+      "timestamp": "2026-04-03T18:23:16.271Z",
+      "scenario_start": "2026-04-03T18:21:51.426Z",
+      "scenario_end": "2026-04-03T18:23:16.271Z",
+      "judgment": {
+        "raw": [
+          63,
+          29,
+          8,
+          0
+        ],
+        "weights": [
+          0.63,
+          0.29,
+          0.08,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          50,
+          10,
+          8,
+          52,
+          0
+        ],
+        "weights": [
+          0.4166666666666667,
+          0.08333333333333333,
+          0.06666666666666667,
+          0.43333333333333335,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 4,
+      "timestamp": "2026-04-03T18:24:23.171Z",
+      "scenario_start": "2026-04-03T18:23:16.273Z",
+      "scenario_end": "2026-04-03T18:24:23.171Z",
+      "judgment": {
+        "raw": [
+          12,
+          83,
+          5,
+          0
+        ],
+        "weights": [
+          0.12,
+          0.83,
+          0.05,
+          0
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          17,
+          30,
+          21,
+          41,
+          0
+        ],
+        "weights": [
+          0.1559633027522936,
+          0.27522935779816515,
+          0.1926605504587156,
+          0.3761467889908257,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    }
+  ],
+  "_meta": {
+    "language": "en-GB",
+    "languages": [
+      "en-GB"
+    ],
+    "timezone": "Europe/Oslo",
+    "screen_width": 393,
+    "screen_height": 852,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "",
+    "slider_adjustments": 513,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

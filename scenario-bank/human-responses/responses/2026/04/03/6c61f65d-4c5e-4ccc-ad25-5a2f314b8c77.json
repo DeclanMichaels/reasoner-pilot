@@ -1,0 +1,324 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "6c61f65d-4c5e-4ccc-ad25-5a2f314b8c77",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-03T06:32:11.159Z",
+  "end_time": "2026-04-03T06:41:32.034Z",
+  "scenario_order": [
+    "scope_2",
+    "auth_2",
+    "mac_1",
+    "domain_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_1"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_2"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": 0.47241379310344833,
+      "rScore": 0.516,
+      "combined": 0.489848275862069
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.1639344262295082,
+      "rScore": 0.08544303797468354,
+      "combined": -0.06418344054783151
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.11635220125786164,
+      "rScore": -0.33640552995391704,
+      "combined": -0.20437353273628378
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.009900990099009892,
+      "rScore": 0.009900990099009917,
+      "combined": -0.001980198019801969
+    }
+  ],
+  "archetype": {
+    "name": "Critical Communitarian",
+    "tagline": "Challenge systems, honor bonds"
+  },
+  "responses": [
+    {
+      "scenario_id": "scope_2",
+      "dimension": "scope",
+      "presentation_order": 1,
+      "timestamp": "2026-04-03T06:35:45.378Z",
+      "scenario_start": "2026-04-03T06:32:15.530Z",
+      "scenario_end": "2026-04-03T06:35:45.378Z",
+      "judgment": {
+        "raw": [
+          50,
+          52,
+          100,
+          45
+        ],
+        "weights": [
+          0.20242914979757085,
+          0.21052631578947367,
+          0.4048582995951417,
+          0.18218623481781376
+        ],
+        "labels": [
+          "Loyalty to a colleague who asked for help should carry real weight",
+          "The most qualified person should get the spot, period",
+          "Both relationship and qualification matter \u2014 the manager should weigh them honestly",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          52,
+          50,
+          100,
+          76
+        ],
+        "weights": [
+          0.18705035971223022,
+          0.17985611510791366,
+          0.3597122302158273,
+          0.2733812949640288
+        ],
+        "labels": [
+          "Professional relationships involve mutual obligations that matter",
+          "Merit is the fairest and most defensible basis for decisions",
+          "Context matters \u2014 a rigid rule can\u2019t capture every situation",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 2,
+      "timestamp": "2026-04-03T06:37:33.137Z",
+      "scenario_start": "2026-04-03T06:35:45.382Z",
+      "scenario_end": "2026-04-03T06:37:33.137Z",
+      "judgment": {
+        "raw": [
+          15,
+          5,
+          41,
+          0
+        ],
+        "weights": [
+          0.2459016393442623,
+          0.08196721311475409,
+          0.6721311475409836,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          70,
+          75,
+          9,
+          4,
+          0
+        ],
+        "weights": [
+          0.4430379746835443,
+          0.47468354430379744,
+          0.056962025316455694,
+          0.02531645569620253,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 3,
+      "timestamp": "2026-04-03T06:38:42.053Z",
+      "scenario_start": "2026-04-03T06:37:33.140Z",
+      "scenario_end": "2026-04-03T06:38:42.053Z",
+      "judgment": {
+        "raw": [
+          100,
+          45,
+          0,
+          0
+        ],
+        "weights": [
+          0.6896551724137931,
+          0.3103448275862069,
+          0,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          58,
+          54,
+          13,
+          0
+        ],
+        "weights": [
+          0.464,
+          0.432,
+          0.104,
+          0
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 7
+    },
+    {
+      "scenario_id": "domain_1",
+      "dimension": "domain_boundary",
+      "presentation_order": 4,
+      "timestamp": "2026-04-03T06:41:32.030Z",
+      "scenario_start": "2026-04-03T06:38:42.056Z",
+      "scenario_end": "2026-04-03T06:41:32.030Z",
+      "judgment": {
+        "raw": [
+          50,
+          28,
+          81,
+          0
+        ],
+        "weights": [
+          0.31446540880503143,
+          0.1761006289308176,
+          0.5094339622641509,
+          0
+        ],
+        "labels": [
+          "The neighbors are right to hold him accountable to community standards",
+          "What he does privately is outside the scope of anyone else\u2019s moral concern",
+          "This is a matter of social preference, not morality \u2014 the neighbors may dislike it, but that doesn\u2019t make it wrong",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          47,
+          70,
+          100,
+          0
+        ],
+        "weights": [
+          0.21658986175115208,
+          0.3225806451612903,
+          0.4608294930875576,
+          0
+        ],
+        "labels": [
+          "A community has the right to uphold shared standards of behavior",
+          "Private behavior that doesn\u2019t affect others is outside the moral domain",
+          "Discomfort is not the same as a moral violation \u2014 people can disapprove without being wronged",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    }
+  ],
+  "_meta": {
+    "language": "en-US",
+    "languages": [
+      "en-US",
+      "en"
+    ],
+    "timezone": "America/Los_Angeles",
+    "screen_width": 412,
+    "screen_height": 869,
+    "device_pixel_ratio": 2.625,
+    "touch": true,
+    "platform": "Android",
+    "referrer": "android-app://com.reddit.frontpage/",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "dark",
+    "connection_type": "4g",
+    "slider_adjustments": 2170,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

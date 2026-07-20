@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model clustering radar: 48 scenarios</title>
+<style>
+ :root{--bg:#0d0d14;--surface:#1a1a28;--line:rgba(255,255,255,0.10);--text:#d8d8e0;--muted:#9a9aac}
+ *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
+ .wrap{max-width:900px;margin:0 auto;padding:32px 22px 60px}
+ h1{font-size:22px;font-weight:650;margin:0 0 4px;letter-spacing:-.01em}
+ p.note{color:var(--muted);font-size:13.5px;max-width:780px;margin:6px 0 0}
+ .prelim{display:inline-block;font-size:11.5px;color:#8fd0ff;background:rgba(110,168,255,.10);
+   border:1px solid rgba(110,168,255,.30);border-radius:5px;padding:1px 8px;margin-top:8px}
+ .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 10px 6px;margin-top:16px}
+ svg{display:block;width:100%;height:auto}
+ .legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin:8px 6px;font-size:12.5px;align-items:center}
+ .legend span{display:inline-flex;align-items:center;gap:7px}
+ .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+ .cap{font-size:12.5px;color:var(--muted);margin:4px 8px}
+ .cap b{color:#eaeaf2}
+</style></head><body><div class="wrap">
+ <h1>Where the models live inside each dimension's full range</h1>
+ <p class="note">Each dimension is a spoke running its full fixed span &mdash; pole A at the center, pole B at the
+   rim, &minus;1 to +1. Each thin line is one model's position averaged over all 48 scenarios (neutral frame). The
+   shaded band is the envelope the models fill; the dashed line is their mean shape. The point is the contrast
+   between the whole disc that is <i>possible</i> and the sliver the models actually occupy.</p>
+ <div class="prelim">Full pilot &mdash; 11 models. Corrected pole coding.</div>
+ <div class="card"><div id="radar"></div>
+  <div class="legend" id="legend"></div>
+  <div class="cap" id="cap"></div>
+ </div>
+</div>
+<script>
+try{
+const D = {"models": ["deepseek_v4", "gpt55", "grok45", "inkling", "kimi", "llama33", "minimax", "mistral_large", "o3", "opus", "sonnet"], "lab": {"deepseek_v4": "DeepSeek", "gpt55": "OpenAI", "grok45": "xAI", "inkling": "ThinkingMachines", "kimi": "Moonshot", "llama33": "Meta", "minimax": "MiniMax", "mistral_large": "Mistral", "o3": "OpenAI", "opus": "Anthropic", "sonnet": "Anthropic"}, "axes": [{"id": "moral_agent", "name": "Moral Agent", "poleA": "Relational", "poleB": "Autonomous", "models": {"deepseek_v4": -0.0337, "gpt55": -0.0056, "grok45": -0.0416, "inkling": -0.0437, "kimi": 0.017, "llama33": -0.0231, "minimax": -0.0059, "mistral_large": 0.0679, "o3": -0.0352, "opus": -0.0063, "sonnet": -0.0127}, "min": -0.0437, "max": 0.0679, "mean": -0.0112, "sd": 0.0307}, {"id": "authority", "name": "Authority", "poleA": "Deferential", "poleB": "Skeptical", "models": {"deepseek_v4": -0.1258, "gpt55": -0.1087, "grok45": -0.0503, "inkling": -0.0602, "kimi": -0.0707, "llama33": -0.0917, "minimax": -0.0461, "mistral_large": -0.052, "o3": -0.1124, "opus": -0.0968, "sonnet": -0.052}, "min": -0.1258, "max": -0.0461, "mean": -0.0788, "sd": 0.0277}, {"id": "domain_boundary", "name": "Moral Domain", "poleA": "Broad", "poleB": "Narrow", "models": {"deepseek_v4": -0.0475, "gpt55": -0.0231, "grok45": -0.1057, "inkling": 0.052, "kimi": -0.0232, "llama33": 0.0345, "minimax": -0.0591, "mistral_large": 0.0476, "o3": 0.0107, "opus": -0.037, "sonnet": -0.0959}, "min": -0.1057, "max": 0.052, "mean": -0.0224, "sd": 0.0516}, {"id": "scope", "name": "Obligation Scope", "poleA": "Relational", "poleB": "Universal", "models": {"deepseek_v4": -0.1566, "gpt55": -0.2031, "grok45": -0.1536, "inkling": -0.1658, "kimi": -0.1623, "llama33": -0.1657, "minimax": -0.1216, "mistral_large": -0.1445, "o3": -0.1371, "opus": -0.1169, "sonnet": -0.138}, "min": -0.2031, "max": -0.1169, "mean": -0.1514, "sd": 0.0229}], "scope": "all 48 scenarios, neutral frame"};
+const LABCOLOR={"Anthropic":"#f59e0b","OpenAI":"#34d399","Google":"#60a5fa","xAI":"#e5e7eb",
+ "Cohere":"#a78bfa","Mistral":"#f87171","DeepSeek":"#f472b6","MiniMax":"#22d3ee",
+ "ThinkingMachines":"#a3e635","Meta":"#818cf8","Moonshot":"#fbbf24"};
+const A=D.axes, W=900, H=680, cx=W/2, cy=H/2+4, R=250;
+const ang=i=>-Math.PI/2+i*2*Math.PI/A.length, rad=v=>(v+1)/2*R;
+const P=(v,i)=>{const a=ang(i);return [cx+rad(v)*Math.cos(a), cy+rad(v)*Math.sin(a)];};
+let s=`<svg viewBox="0 0 ${W} ${H}">`;
+[-1,-0.5,0,0.5,1].forEach(g=>{s+=`<polygon points="${A.map((_,i)=>P(g,i).join(",")).join(" ")}" fill="none" stroke="rgba(255,255,255,0.09)"/>`;
+  s+=`<text x="${cx+4}" y="${cy-rad(g)}" fill="#5c5c70" font-size="9.5">${g>0?'+':''}${g}</text>`;});
+A.forEach((a,i)=>{const [ex,ey]=P(1,i);
+  s+=`<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="rgba(255,255,255,0.12)"/>`;
+  const [lx,ly]=[cx+(R+42)*Math.cos(ang(i)),cy+(R+42)*Math.sin(ang(i))];
+  const anc=Math.abs(Math.cos(ang(i)))<0.3?"middle":(Math.cos(ang(i))>0?"start":"end");
+  s+=`<text x="${lx}" y="${ly-6}" fill="#d8d8e0" font-size="13" font-weight="600" text-anchor="${anc}">${a.name}</text>`;
+  const w=((a.max-a.min)/2*100).toFixed(0);
+  s+=`<text x="${lx}" y="${ly+10}" fill="#8f8fa2" font-size="10.5" text-anchor="${anc}">spans ${w}% of axis</text>`;
+  s+=`<text x="${ex}" y="${ey-(Math.sin(ang(i))>0?-14:16)}" fill="#6a6a7c" font-size="9.5" text-anchor="middle">${a.poleB}</text>`;});
+const maxPoly=A.map((a,i)=>P(a.max,i).join(",")).join(" ");
+const minPoly=A.map((a,i)=>P(a.min,i));
+s+=`<polygon points="${maxPoly}" fill="#6ea8ff" fill-opacity="0.13" stroke="none"/>`;
+s+=`<polygon points="${minPoly.map(p=>p.join(",")).join(" ")}" fill="var(--surface)" stroke="none"/>`;
+s+=`<polygon points="${A.map((a,i)=>P(a.mean,i).join(",")).join(" ")}" fill="none" stroke="#9fb6d8" stroke-width="1.4" stroke-dasharray="5 4"/>`;
+D.models.forEach(m=>{const col=LABCOLOR[D.lab[m]]||"#e05577";
+  const pts=A.map((a,i)=>P(a.models[m],i).join(",")).join(" ");
+  s+=`<polygon points="${pts}" fill="none" stroke="${col}" stroke-width="1.5" stroke-opacity="0.9"/>`;
+  A.forEach((a,i)=>{const [x,y]=P(a.models[m],i);s+=`<circle cx="${x}" cy="${y}" r="2.6" fill="${col}"/>`;});});
+s+="</svg>";document.getElementById("radar").innerHTML=s;
+let labs=[]; D.models.forEach(m=>{if(!labs.includes(D.lab[m]))labs.push(D.lab[m]);});
+let lg=`<span><i class="dot" style="background:#6ea8ff;opacity:.5"></i> Model envelope</span>`+
+  `<span><i class="dot" style="background:#9fb6d8;border-radius:2px;width:16px;height:4px"></i> Mean shape</span><span style="width:1px;height:14px;background:var(--line)"></span>`;
+labs.forEach(l=>{lg+=`<span><i class="dot" style="background:${LABCOLOR[l]||'#e05577'}"></i>${l}</span>`;});
+document.getElementById("legend").innerHTML=lg;
+const widths=A.map(a=>((a.max-a.min)/2*100));
+const wlo=Math.min(...widths).toFixed(0),whi=Math.max(...widths).toFixed(0);
+document.getElementById("cap").innerHTML=
+ `<b>All ${D.models.length} models fall inside a band ${wlo}&ndash;${whi}% as wide as each axis.</b> The polygons `+
+ `sit almost on top of one another regardless of lab &mdash; DeepSeek, MiniMax, and Kimi (Chinese) are threaded through the `+
+ `Western models, not off on their own. Averaged over all 48 scenarios, neutral frame. Rings mark &minus;1, &minus;0.5, 0, +0.5, +1.`;
+
+}catch(e){document.body.style.margin='0';document.body.innerHTML='<div style="font-family:system-ui;color:#9a9aac;background:#0d0d14;min-height:100vh;padding:48px;font-size:14px;line-height:1.7">This is a <b style=\'color:#d8d8e0\'>template</b>, not the finished figure.<br>Run <b style=\'color:#d8d8e0\'>python3 private/viz/build_figures.py</b> to generate the figure with data (written to <code>private/reanalysis/</code>).</div>';}
+</script></body></html>

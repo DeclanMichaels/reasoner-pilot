@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Reasoner: CMRB pilot data viewer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* CSS placeholder below: shared ccas-viewer.css injected at build; in-repo, link it instead. */
+__CSS__
+/* ===== viewer-specific (CMRB) ===== */
+:root{
+  /* per-model palette, DELIBERATE departure from domain colors: here color encodes
+     MODEL identity (the comparison axis). Never sole carrier: paired with a per-frame
+     marker shape and always a text label/tooltip. Documented in continuity. */
+  --m-opus:#e8a838; --m-sonnet:#c4a35a; --m-gpt55:#34d399; --m-o3:#7a9ec2;
+  --m-grok45:#c8c8d0; --m-mistral_large:#f87171; --m-deepseek_v4:#f472b6;
+  --m-minimax:#22d3ee; --m-kimi:#fbbf24; --m-inkling:#a3e635; --m-llama33:#a78bfa;
+  --human:#7f8bd6;
+}
+.controls{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
+.ctl-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ctl-lbl{font-family:var(--font-mono);font-size:var(--fs-small);text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);min-width:70px}
+.tog{font-family:var(--font-mono);font-size:var(--fs-chip);padding:4px 9px;border-radius:5px;cursor:pointer;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text-dim);display:inline-flex;align-items:center;gap:6px}
+.tog:hover{border-color:var(--border-hi);color:var(--text-mid)}
+.tog[aria-pressed="true"]{color:var(--text-bright);background:var(--surface-3);border-color:var(--border-hi)}
+.tog .sw{width:10px;height:10px;border-radius:50%;flex-shrink:0;border:1px solid rgba(255,255,255,0.25)}
+.tog[aria-pressed="false"] .sw{opacity:0.35}
+.tog .lab-tag{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+select{font-family:var(--font-mono);font-size:var(--fs-chip);background:var(--surface-2);color:var(--text);
+  border:1px solid var(--border);border-radius:5px;padding:5px 8px}
+.axisrow{margin:2px 0}
+.hint{font-family:var(--font-mono);font-size:var(--fs-small);color:var(--text-dim);margin:2px 0 0}
+/* browse */
+.prompt-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--sp-radius);padding:14px 16px;margin-bottom:12px}
+.prompt-card .qh{font-family:var(--font-mono);font-size:var(--fs-small);text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin:10px 0 4px}
+.optlist{list-style:none;display:flex;flex-direction:column;gap:3px}
+.optlist li{font-size:13px;color:var(--text-mid);padding-left:14px;position:relative}
+.optlist li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:1px;background:var(--text-dim)}
+.resp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--sp-radius);padding:12px 14px;margin-bottom:10px}
+.resp-hd{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.resp-hd .nm{font-family:var(--font-mono);font-weight:600;color:var(--text-bright);font-size:13px}
+.resp-hd .lab{font-family:var(--font-mono);font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+.alloc{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.alloc .grp{font-family:var(--font-mono);font-size:11px;color:var(--text-dim)}
+.bar{display:inline-block;height:9px;border-radius:2px;vertical-align:middle;margin:0 4px}
+.resp-txt{font-size:13px;color:var(--text-mid);line-height:1.6}
+.dilemma{font-size:14px;color:var(--text-bright);line-height:1.6;margin:6px 0 12px;padding:11px 13px;background:var(--d-moral-bg);border-left:3px solid var(--d-moral);border-radius:0 6px 6px 0}
+.hlgrp{margin:8px 0}
+.hlh{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:3px}
+.opt-h{position:relative;padding:5px 9px;border-radius:4px;margin:2px 0;font-size:12.5px;line-height:1.45;overflow:hidden;background:rgba(255,255,255,0.02)}
+.opt-h .fill{position:absolute;left:0;top:0;bottom:0;opacity:0.32;z-index:0;border-radius:4px}
+.opt-h .txt{position:relative;z-index:1;color:var(--text)}
+.opt-h .pctlab{position:relative;z-index:1;float:right;font-family:var(--font-mono);font-size:11px;color:var(--text-mid);margin-left:10px;font-weight:600}
+.empty{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);padding:20px;text-align:center}
+/* axis definitions (About) */
+.axhead{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin:14px 0 6px}
+.axdefs{display:flex;flex-direction:column;gap:9px}
+.axdef{font-size:13px;color:var(--text-mid);line-height:1.5}
+.axdef b{color:var(--text-bright);font-weight:600}
+.axdef .poles{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);margin-left:8px}
+/* human-instrument replica (About) */
+.hx-intro{font-size:13.5px;color:var(--text-mid);line-height:1.6;margin-bottom:14px;max-width:760px}
+.hx-intro em{color:var(--text-bright);font-style:italic}
+.hx-stim{background:var(--d-moral-bg);border-left:3px solid var(--d-moral);border-radius:0 6px 6px 0;padding:11px 14px;margin-bottom:16px}
+.hx-stim .lbl{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:5px}
+.hx-stim p{font-size:14px;color:var(--text-bright);line-height:1.6}
+.hx-q{margin-bottom:20px}
+.hx-qh{font-size:14px;color:var(--text-bright);font-weight:600;margin-bottom:1px}
+.hx-hint{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);margin-bottom:12px}
+.hx-item{display:grid;grid-template-columns:1fr 150px 42px;gap:12px;align-items:center;margin-bottom:9px}
+.hx-item .t{font-size:13px;color:var(--text);line-height:1.35}
+.hx-item .pv{font-family:var(--font-mono);font-size:12px;color:var(--text-mid);text-align:right}
+.hx-track input[type=range]{width:100%;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer;height:22px}
+.hx-track input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:rgba(255,255,255,0.10)}
+.hx-track input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--accent);margin-top:-5.5px;border:2px solid var(--bg)}
+.hx-track input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:rgba(255,255,255,0.10)}
+.hx-track input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer}
+.hx-track input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus-ring)}
+.hx-dist{height:15px;border-radius:3px;overflow:hidden;display:flex;margin-top:8px;border:1px solid var(--border);background:var(--surface-2)}
+.hx-dist span{height:100%;transition:width .12s}
+.hx-leg{display:flex;flex-wrap:wrap;gap:12px;margin-top:7px;font-family:var(--font-mono);font-size:11px;color:var(--text-dim)}
+.hx-leg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.hx-manip{margin-top:14px}
+.hx-mrow{display:flex;gap:6px;align-items:center;margin-top:4px}
+.hx-dot{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--text-dim)}
+.hx-dot.on{background:var(--accent-lo);border-color:var(--accent-mid);color:var(--text-bright)}
+.hx-anchor{font-family:var(--font-mono);font-size:10px;color:var(--text-dim)}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<div class="wrap">
+  <header class="hdr">
+    <h1>The Reasoner: how models and humans structure moral reasoning</h1>
+    <div class="sub" id="subline"></div>
+  </header>
+
+  <nav class="nav" role="tablist" aria-label="Views">
+    <button role="tab" id="tab-compare" aria-selected="true" aria-controls="panel-compare">Compare</button>
+    <button role="tab" id="tab-browse" aria-selected="false" aria-controls="panel-browse">Browse responses</button>
+    <button role="tab" id="tab-about" aria-selected="false" aria-controls="panel-about">About</button>
+  </nav>
+
+  <main id="main">
+  <!-- COMPARE -->
+  <section class="panel" id="panel-compare" role="tabpanel" aria-labelledby="tab-compare" aria-hidden="false">
+    <div class="pintro">
+      <h2>Where they land on each axis</h2>
+      <p>Each axis runs its full fixed range, pole A at left to pole B at right. Toggle models and framings to place them against the human spread. Color marks the model; the marker shape marks the framing; hover or focus any point for its exact value.</p>
+      <p class="q">Turn on GPT and Sonnet, add the neutral, collectivist, and geometric framings, and watch a single model travel while the humans stay put.</p>
+    </div>
+    <div class="cbox">
+      <div class="controls" role="group" aria-label="Comparison controls">
+        <div class="ctl-row"><span class="ctl-lbl" id="ml">Models</span>
+          <span id="modelTogs" role="group" aria-labelledby="ml"></span></div>
+        <div class="ctl-row"><span class="ctl-lbl" id="fl">Framings</span>
+          <span id="frameTogs" role="group" aria-labelledby="fl"></span></div>
+        <div class="ctl-row"><span class="ctl-lbl">Reference</span>
+          <button class="tog" id="humanTog" aria-pressed="true"><span class="sw" style="background:var(--human)"></span>Human spread (n=<span id="nh"></span>)</button>
+          <button class="tog" id="uncTog" aria-pressed="false"><span class="sw" style="background:var(--text-mid)"></span>Run spread (&plusmn;1 SD)</button>
+          <span class="hint" id="selhint"></span></div>
+      </div>
+      <div id="radar" role="img" aria-label="Radar: model and human positions on the four axes at a glance"></div>
+      <div id="plot" role="img" aria-label="True-scale strips: model and human positions on the four axes"></div>
+      <div class="lgd" id="shapeLgd" aria-hidden="true"></div>
+      <div class="note" id="compareNote"></div>
+    </div>
+  </section>
+
+  <!-- BROWSE -->
+  <section class="panel" id="panel-browse" role="tabpanel" aria-labelledby="tab-browse" aria-hidden="true">
+    <div class="pintro">
+      <h2>Read the prompts and the actual responses</h2>
+      <p>Pick a scenario and a framing. You get the exact prompt the models saw, the answer options, and each selected model's allocation and its own written reasoning (the fullest of five runs).</p>
+    </div>
+    <div class="cbox">
+      <div class="controls">
+        <div class="ctl-row"><span class="ctl-lbl"><label for="scenSel">Scenario</label></span>
+          <select id="scenSel"></select>
+          <span class="ctl-lbl"><label for="frameSel">Framing</label></span>
+          <select id="frameSel"></select></div>
+        <div class="ctl-row"><span class="ctl-lbl">Models</span><span id="browseModelTogs" role="group" aria-label="Models to show"></span></div>
+      </div>
+      <div id="promptArea"></div>
+      <div id="respArea"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" aria-hidden="true">
+    <div class="pintro"><h2>What this is</h2>
+      <p>The Reasoner scores four bipolar axes of moral-reasoning structure from a constant-sum allocation: for each scenario a respondent assigns proportional weight across the options for a judgment question and, separately, a reasoning question, combined into a position from -1 to +1 per axis. The same scoring runs on people and models, so both land in one space. This viewer holds the full pilot: 11 models across 8 framings on 48 scenarios, and 68 human respondents on the 12 baseline scenarios. Each model position is an estimate from five reruns per cell; the Compare view can overlay each model's run-to-run spread (&plusmn;1 SD) to show how much a position wanders on repeat.</p>
+      <div class="axhead">The four axes</div>
+      <div id="aboutAxes" class="axdefs"></div>
+      <p>Population SD. Human baseline re-scored with the same function as the models from raw allocation weights. Analysis is stdlib-reproducible from the raw runs. Methodology was AI-assisted and disclosed.</p>
+    </div>
+    <div class="cbox"><h3>How a person answers it</h3>
+      <p class="hx-intro">This is what a human respondent sees for one scenario. There are no right or wrong answers; the sliders capture <em>how much</em> each consideration matters, not just which one you pick. Drag them and the distribution updates. A model answers the same items by allocating the same fixed pool of points directly.</p>
+      <div id="humanExample"></div>
+    </div>
+  </section>
+  </main>
+</div>
+<div class="tt" id="tt" role="status" aria-live="polite"></div>
+
+<script>
+const D = __DATA__;
+const MC = {opus:'--m-opus',sonnet:'--m-sonnet',gpt55:'--m-gpt55',o3:'--m-o3',grok45:'--m-grok45',
+  mistral_large:'--m-mistral_large',deepseek_v4:'--m-deepseek_v4',minimax:'--m-minimax',
+  kimi:'--m-kimi',inkling:'--m-inkling',llama33:'--m-llama33'};
+const mcol = m => getComputedStyle(document.documentElement).getPropertyValue(MC[m]).trim() || '#ccc';
+// per-frame marker shape (so framing is not carried by color)
+const FRAMES = D.meta.frames;
+const FLABEL = {neutral:'neutral',individualist:'individualist',collectivist:'collectivist',
+  hierarchical:'hierarchical',egalitarian:'egalitarian',irrelevant:'seasonal',
+  nonsense_geometry:'nonsense: geometry',nonsense_color:'nonsense: color'};
+const SHAPES = ['circle','tri-up','square','diamond','tri-down','plus','star','hex'];
+const shapeOf = fr => SHAPES[FRAMES.indexOf(fr) % SHAPES.length];
+const AXES = D.meta.axes;
+const tt = document.getElementById('tt');
+
+// ---- state ----
+const state = {
+  models: new Set(['gpt55','sonnet']),
+  frames: new Set(['neutral']),
+  humans: true,
+  uncertainty: false,
+  scen: Object.keys(D.scenarios)[0],
+  scenFrame: 'neutral',
+};
+
+// ---- helpers ----
+function marker(cx, cy, r, shape, fill, extra){
+  const a = extra || '';
+  switch(shape){
+    case 'square': return `<rect x="${cx-r}" y="${cy-r}" width="${2*r}" height="${2*r}" fill="${fill}" ${a}/>`;
+    case 'diamond': return `<path d="M ${cx} ${cy-r*1.3} L ${cx+r*1.3} ${cy} L ${cx} ${cy+r*1.3} L ${cx-r*1.3} ${cy} Z" fill="${fill}" ${a}/>`;
+    case 'tri-up': return `<path d="M ${cx} ${cy-r*1.3} L ${cx+r*1.2} ${cy+r} L ${cx-r*1.2} ${cy+r} Z" fill="${fill}" ${a}/>`;
+    case 'tri-down': return `<path d="M ${cx} ${cy+r*1.3} L ${cx+r*1.2} ${cy-r} L ${cx-r*1.2} ${cy-r} Z" fill="${fill}" ${a}/>`;
+    case 'plus': return `<path d="M ${cx-r} ${cy-r/2.5} h ${r-r/2.5} v ${-(r-r/2.5)} h ${r/1.25} v ${r-r/2.5} h ${r-r/2.5} v ${r/1.25} h ${-(r-r/2.5)} v ${r-r/2.5} h ${-r/1.25} v ${-(r-r/2.5)} h ${-(r-r/2.5)} Z" fill="${fill}" ${a}/>`;
+    case 'star': { let p=''; for(let i=0;i<10;i++){const ang=-Math.PI/2+i*Math.PI/5;const rr=i%2?r*0.5:r*1.35;p+=(i?'L':'M')+(cx+rr*Math.cos(ang)).toFixed(1)+' '+(cy+rr*Math.sin(ang)).toFixed(1)+' ';} return `<path d="${p}Z" fill="${fill}" ${a}/>`; }
+    case 'hex': { let p=''; for(let i=0;i<6;i++){const ang=-Math.PI/2+i*Math.PI/3;p+=(i?'L':'M')+(cx+r*1.2*Math.cos(ang)).toFixed(1)+' '+(cy+r*1.2*Math.sin(ang)).toFixed(1)+' ';} return `<path d="${p}Z" fill="${fill}" ${a}/>`; }
+    default: return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" ${a}/>`;
+  }
+}
+function pct(s,q){s=[...s].sort((a,b)=>a-b);const n=s.length;if(n<2)return s[0];const i=q*(n-1),lo=Math.floor(i),f=i-lo;return s[lo]+f*(s[Math.min(lo+1,n-1)]-s[lo]);}
+function showTip(e,html){tt.innerHTML=html;tt.style.display='block';const gx=18,gy=16,pad=8;let lx=e.clientX+gx,ty=e.clientY+gy;const r=tt.getBoundingClientRect();if(lx+r.width>window.innerWidth-pad)lx=e.clientX-gx-r.width;if(ty+r.height>window.innerHeight-pad)ty=e.clientY-gy-r.height;tt.style.left=Math.max(pad,lx)+'px';tt.style.top=Math.max(pad,ty)+'px';}
+function hideTip(){tt.style.display='none';}
+
+// ---- radar (quick gestalt) ----
+function drawRadar(){
+  const A=AXES, N=A.length, W=700, H=520, cx=W/2, cy=H/2, R=172;
+  const ang=i=>-Math.PI/2+i*2*Math.PI/N, rad=v=>(v+1)/2*R;
+  const P=(v,i)=>{const a=ang(i);return [cx+rad(v)*Math.cos(a), cy+rad(v)*Math.sin(a)];};
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="xMidYMid meet" style="max-width:540px;margin:0 auto 6px;display:block">`;
+  [-1,-.5,0,.5,1].forEach(g=>{s+=`<polygon points="${A.map((_,i)=>P(g,i).join(',')).join(' ')}" fill="none" stroke="rgba(255,255,255,0.07)"/>`;});
+  A.forEach((ax,i)=>{const [ex,ey]=P(1,i);
+    s+=`<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="rgba(255,255,255,0.09)"/>`;
+    const [lx,ly]=[cx+(R+34)*Math.cos(ang(i)),cy+(R+34)*Math.sin(ang(i))];
+    const anc=Math.abs(Math.cos(ang(i)))<0.3?'middle':(Math.cos(ang(i))>0?'start':'end');
+    s+=`<text x="${lx}" y="${ly}" fill="#eaeaf0" font-size="11.5" font-weight="600" text-anchor="${anc}" dominant-baseline="middle" font-family="var(--font-sans)">${ax.name}</text>`;
+    s+=`<text x="${ex}" y="${ey-5}" fill="#8a8aa0" font-size="9" text-anchor="middle">${ax.poleB}</text>`;});
+  if(state.humans){
+    s+=`<polygon points="${A.map((ax,i)=>P(D.humans[ax.id].p50,i).join(',')).join(' ')}" fill="none" stroke="#9aa4e0" stroke-width="1.4" stroke-dasharray="5 4"/>`;
+    A.forEach((ax,i)=>{const a=ang(i);D.humans[ax.id].values.forEach((v,k)=>{const off=((Math.sin(k*57.3+i*11)*4331)%1-0.5)*15;const [x,y]=P(v,i);s+=`<circle cx="${(x+off*Math.cos(a+Math.PI/2)).toFixed(1)}" cy="${(y+off*Math.sin(a+Math.PI/2)).toFixed(1)}" r="1.5" fill="#7f8bd6" fill-opacity="0.38"/>`;});});
+  }
+  state.models.forEach(m=>state.frames.forEach(fr=>{
+    const sc=D.scores[m]&&D.scores[m][fr]; if(!sc) return;
+    const col=mcol(m), pts=A.map((ax,i)=>P(sc.b12[ax.id],i));
+    A.forEach((ax,i)=>{const [x,y]=pts[i];s+=marker(x,y,4.8,shapeOf(fr),col,`stroke="#0c0c14" stroke-width="0.9"`);});
+  }));
+  s+=`</svg>`;
+  document.getElementById('radar').innerHTML=s;
+}
+// ---- compare plot ----
+function drawPlot(){
+  drawRadar();
+  const W=910, rowH=118, padL=150, padR=95, top=10, H=top+AXES.length*rowH+30;
+  const x0=padL, x1=W-padR, X=v=>x0+(v+1)/2*(x1-x0);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" preserveAspectRatio="xMidYMid meet">`;
+  AXES.forEach((ax,idx)=>{
+    const cy=top+idx*rowH+rowH/2;
+    // track + ticks
+    s+=`<line x1="${x0}" y1="${cy}" x2="${x1}" y2="${cy}" stroke="rgba(255,255,255,0.16)" stroke-width="1.4"/>`;
+    [-1,-.5,0,.5,1].forEach(t=>{s+=`<line x1="${X(t)}" y1="${cy-36}" x2="${X(t)}" y2="${cy+36}" stroke="rgba(255,255,255,0.05)"/>`;
+      s+=`<text x="${X(t)}" y="${cy+52}" fill="#8a8aa0" font-size="9.5" text-anchor="middle">${t>0?'+':''}${t}</text>`;});
+    // labels
+    s+=`<text x="${x0-12}" y="${cy-5}" fill="#eaeaf0" font-size="12.5" font-weight="600" text-anchor="end" font-family="var(--font-sans)">${ax.name}</text>`;
+    s+=`<text x="${x0-12}" y="${cy+11}" fill="#8a8aa0" font-size="10" text-anchor="end">${ax.poleA}</text>`;
+    s+=`<text x="${x1+6}" y="${cy+4}" fill="#8a8aa0" font-size="10">${ax.poleB}</text>`;
+    // human distribution
+    if(state.humans){
+      const h=D.humans[ax.id];
+      s+=`<line x1="${X(h.p10)}" y1="${cy}" x2="${X(h.p90)}" y2="${cy}" stroke="#7f8bd6" stroke-opacity="0.5" stroke-width="1.4"/>`;
+      s+=`<rect x="${X(h.p25)}" y="${cy-9}" width="${X(h.p75)-X(h.p25)}" height="18" fill="#7f8bd6" fill-opacity="0.14" stroke="#7f8bd6" stroke-opacity="0.5" rx="2"/>`;
+      s+=`<line x1="${X(h.p50)}" y1="${cy-9}" x2="${X(h.p50)}" y2="${cy+9}" stroke="#9aa4e0" stroke-width="2"/>`;
+      h.values.forEach((v,k)=>{const jy=cy+((Math.sin(k*99.7)*43758)%1)*30-15;s+=`<circle cx="${X(v)}" cy="${jy.toFixed(1)}" r="1.7" fill="#7f8bd6" fill-opacity="0.4"/>`;});
+    }
+    // model x frame markers (beeswarm vertical)
+    const items=[];
+    state.models.forEach(m=>state.frames.forEach(fr=>{
+      const sc=D.scores[m] && D.scores[m][fr]; if(!sc) return;
+      const v=sc.b12[ax.id]; if(v==null) return;
+      items.push({m,fr,v,x:X(v),sd:(sc.b12_sd&&sc.b12_sd[ax.id]!=null)?sc.b12_sd[ax.id]:0});
+    }));
+    items.sort((a,b)=>a.x-b.x);
+    const placed=[];
+    items.forEach(o=>{let lane=0,y;while(true){y=cy+((lane%2?-1:1)*Math.ceil(lane/2)*13);if(!placed.some(p=>Math.abs(p.x-o.x)<13&&Math.abs(p.y-y)<12)){break;}lane++;if(lane>18)break;}o.y=y;placed.push(o);});
+    if(state.uncertainty){
+      items.forEach(o=>{
+        if(!o.sd) return;
+        const col=mcol(o.m), xl=X(o.v-o.sd), xr=X(o.v+o.sd);
+        s+=`<line x1="${xl}" y1="${o.y}" x2="${xr}" y2="${o.y}" stroke="${col}" stroke-width="1.4" stroke-opacity="0.5"/>`
+          +`<line x1="${xl}" y1="${o.y-3}" x2="${xl}" y2="${o.y+3}" stroke="${col}" stroke-width="1.2" stroke-opacity="0.5"/>`
+          +`<line x1="${xr}" y1="${o.y-3}" x2="${xr}" y2="${o.y+3}" stroke="${col}" stroke-width="1.2" stroke-opacity="0.5"/>`;
+      });
+    }
+    items.forEach((o,i)=>{
+      const col=mcol(o.m);
+      const sdtag=o.sd?`<br><span style='color:#8a8aa0'>&plusmn;${o.sd.toFixed(3)} across 5 reruns</span>`:'';
+      s+=marker(o.x,o.y,5.5,shapeOf(o.fr),col,`stroke="#0c0c14" stroke-width="1" tabindex="0" role="button" aria-label="${o.m}, ${FLABEL[o.fr]}, ${ax.name} ${o.v>=0?'+':''}${o.v.toFixed(3)}, run SD ${(o.sd||0).toFixed(3)}" data-t="${o.m} · ${FLABEL[o.fr]}<br>${ax.name}: ${o.v>=0?'+':''}${o.v.toFixed(3)}${sdtag}" class="pt"`);
+    });
+    // run-spread end-caps redrawn on top of markers, so a spread tighter than the
+    // dot (SD < ~0.02) stays visible instead of hiding under its own glyph
+    if(state.uncertainty){
+      items.forEach(o=>{
+        if(!o.sd) return;
+        const col=mcol(o.m), xl=X(o.v-o.sd), xr=X(o.v+o.sd);
+        [xl,xr].forEach(xx=>{
+          s+=`<line x1="${xx}" y1="${o.y-5}" x2="${xx}" y2="${o.y+5}" stroke="#0c0c14" stroke-width="3"/>`
+            +`<line x1="${xx}" y1="${o.y-5}" x2="${xx}" y2="${o.y+5}" stroke="${col}" stroke-width="1.4"/>`;
+        });
+      });
+    }
+  });
+  s+=`</svg>`;
+  const plot=document.getElementById('plot'); plot.innerHTML=s;
+  plot.querySelectorAll('.pt').forEach(el=>{
+    const t=el.getAttribute('data-t');
+    el.addEventListener('mousemove',e=>showTip(e,t));
+    el.addEventListener('mouseleave',hideTip);
+    el.addEventListener('focus',e=>{const r=el.getBoundingClientRect();showTip({clientX:r.left+r.width/2,clientY:r.top},t);});
+    el.addEventListener('blur',hideTip);
+  });
+  // shape legend for active frames
+  let lg='';
+  state.frames.forEach(fr=>{
+    lg+=`<span class="lgd-i"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">${marker(8,8,4.5,shapeOf(fr),'#c8c8d0','')}</svg>${FLABEL[fr]}</span>`;
+  });
+  document.getElementById('shapeLgd').innerHTML = lg;
+  updateNote();
+}
+function updateNote(){
+  const nm=[...state.models], fr=[...state.frames];
+  document.getElementById('selhint').textContent = `${nm.length} model${nm.length!==1?'s':''} x ${fr.length} framing${fr.length!==1?'s':''}`;
+  let note='';
+  if(nm.length && fr.includes('neutral')){
+    note = `The human box spans the middle 50 percent of 68 people; the whiskers reach the 10th and 90th percentiles. Unframed, the model markers barely cover each axis next to that spread &mdash; the compression is a property of the neutral default. Add cultural or nonsense framings and the panel fans out, two to five times wider. Model markers and the human spread both use the 12 baseline scenarios the humans answered, so they are on the same items.`;
+  } else if(!nm.length){ note='Select at least one model to place markers on the axes.'; }
+  else { note='Add the neutral framing to compare a model against its own unframed default and the human spread.'; }
+  if(state.uncertainty && nm.length){ note += ` Each marker's bar spans ±1 SD of that score across the model's five reruns; most are small, which is the point: the positions are stable on repeat, not artifacts of noise.`; }
+  document.getElementById('compareNote').innerHTML = note;
+}
+
+// ---- controls ----
+function modelTog(container, syncBrowse){
+  container.innerHTML='';
+  D.meta.models.forEach(m=>{
+    const b=document.createElement('button');
+    b.className='tog'; b.setAttribute('aria-pressed', state.models.has(m));
+    b.innerHTML=`<span class="sw" style="background:${mcol(m)}"></span>${m}<span class="lab-tag">${D.meta.lab[m]}</span>`;
+    b.addEventListener('click',()=>{
+      if(state.models.has(m)) state.models.delete(m); else state.models.add(m);
+      document.querySelectorAll('.mtog-'+m).forEach(x=>x.setAttribute('aria-pressed',state.models.has(m)));
+      drawPlot(); if(syncBrowse) renderBrowse();
+    });
+    b.classList.add('mtog-'+m);
+    container.appendChild(b);
+  });
+}
+function frameTog(){
+  const c=document.getElementById('frameTogs'); c.innerHTML='';
+  FRAMES.forEach(fr=>{
+    const b=document.createElement('button');
+    b.className='tog'; b.setAttribute('aria-pressed', state.frames.has(fr));
+    b.innerHTML=`<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">${marker(7,7,4,shapeOf(fr),'#c8c8d0','')}</svg>${FLABEL[fr]}`;
+    b.addEventListener('click',()=>{ if(state.frames.has(fr)) state.frames.delete(fr); else state.frames.add(fr); b.setAttribute('aria-pressed',state.frames.has(fr)); drawPlot(); });
+    c.appendChild(b);
+  });
+}
+
+// ---- browse ----
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function hrows(options, weights, col){
+  return options.map((o,i)=>{
+    const w=weights[i]||0, p=(w*100);
+    return `<div class="opt-h"><span class="fill" style="width:${p.toFixed(1)}%;background:${col}"></span>`
+      +`<span class="pctlab">${p.toFixed(0)}%</span><span class="txt">${esc(o)}</span></div>`;
+  }).join('');
+}
+function renderBrowse(){
+  const sid=state.scen, fr=state.scenFrame;
+  const sc=D.scenarios[sid];
+  const axName=(AXES.find(a=>a.id===sc.dimension_id)||{}).name||sc.dimension_id;
+  let ph=`<div class="prompt-card"><div class="resp-hd"><span class="nm">${sid}</span><span class="lab">${axName}${sc.origin?' · '+sc.origin:''}${sc.tradition?' · '+sc.tradition:''}${sc.has_human_baseline?' · human baseline':''}</span></div>`;
+  ph+=`<div class="dilemma">${esc(sc.stimulus)}</div>`;
+  if(D.framePrompts[fr] && fr!=='neutral') ph+=`<div class="qh">Framing preamble (${FLABEL[fr]})</div><div class="resp-txt" style="font-style:italic;color:var(--text-mid)">${esc(D.framePrompts[fr])}</div>`;
+  ph+=`<div class="qh">Judgment question</div><div class="resp-txt">${esc(sc.judgment.question)}</div>`;
+  ph+=`<div class="qh">Reasoning question</div><div class="resp-txt">${esc(sc.reasoning.question)}</div></div>`;
+  document.getElementById('promptArea').innerHTML=ph;
+  const sel=[...state.models];
+  if(!sel.length){document.getElementById('respArea').innerHTML='<div class="empty">Select at least one model above to see its allocation and reasoning.</div>';return;}
+  let rh='';
+  sel.forEach(m=>{
+    const cell=D.cells[`${m}|${fr}|${sid}`], col=mcol(m);
+    rh+=`<div class="resp-card"><div class="resp-hd"><span style="width:11px;height:11px;border-radius:50%;background:${col};display:inline-block"></span><span class="nm">${m}</span><span class="lab">${D.meta.lab[m]}</span></div>`;
+    if(!cell){rh+=`<div class="resp-txt" style="color:var(--text-dim)">No valid response for this cell.</div></div>`;return;}
+    rh+=`<div class="hlgrp"><div class="hlh">Judgment: points on each answer</div>${hrows(sc.judgment.options,cell.jw,col)}</div>`;
+    rh+=`<div class="hlgrp"><div class="hlh">Reasoning: points on each answer</div>${hrows(sc.reasoning.options,cell.rw,col)}</div>`;
+    const clean=(cell.text||'').replace(/\{\s*"?judgment_weights[\s\S]*$/,'').trim();
+    rh+=`<div class="resp-txt" style="margin-top:8px">${clean?esc(clean):'<span style="color:var(--text-dim)">(no text)</span>'}</div></div>`;
+  });
+  document.getElementById('respArea').innerHTML=rh;
+}
+
+// ---- tabs ----
+function initTabs(){
+  const tabs=[['tab-compare','panel-compare'],['tab-browse','panel-browse'],['tab-about','panel-about']];
+  function select(t){tabs.forEach(([tt2,pp])=>{const on=tt2===t;document.getElementById(tt2).setAttribute('aria-selected',on);document.getElementById(tt2).setAttribute('tabindex',on?'0':'-1');document.getElementById(pp).setAttribute('aria-hidden',!on);});}
+  tabs.forEach(([t,p],idx)=>{
+    const btn=document.getElementById(t);
+    btn.addEventListener('click',()=>select(t));
+    btn.addEventListener('keydown',e=>{
+      let ni=null;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown') ni=(idx+1)%tabs.length;
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp') ni=(idx-1+tabs.length)%tabs.length;
+      if(ni!=null){e.preventDefault();const nb=document.getElementById(tabs[ni][0]);select(tabs[ni][0]);nb.focus();}
+    });
+  });
+  select('tab-compare');
+}
+
+// ---- human-instrument replica (About) ----
+function renderHumanExample(){
+  const SID = D.scenarios['mac_1'] ? 'mac_1' : (Object.keys(D.scenarios).find(k=>D.scenarios[k].has_human_baseline)||Object.keys(D.scenarios)[0]);
+  const sc = D.scenarios[SID];
+  const SEG=['#7f8bd6','#4ECDC4','#e8a838','#b07cc8','#f472b6'];
+  const initJ = sc.judgment.options.map((_,i)=>[70,40,15,30,25][i]!=null?[70,40,15,30,25][i]:25);
+  const initR = sc.reasoning.options.map((_,i)=>[60,55,20,25,25][i]!=null?[60,55,20,25,25][i]:25);
+  function qBlock(group, opts, init, qtext){
+    let h=`<div class="hx-q"><div class="hx-qh">${esc(qtext)}</div><div class="hx-hint">Slide each to reflect the weight you give it.</div>`;
+    opts.forEach((o,i)=>{
+      h+=`<div class="hx-item"><span class="t">${esc(o)}</span>`
+       +`<span class="hx-track"><input type="range" min="0" max="100" value="${init[i]}" data-g="${group}" data-i="${i}" aria-label="Weight for: ${esc(o)}" oninput="hxUpdate('${group}')"></span>`
+       +`<span class="pv" id="${group}-pv-${i}">0%</span></div>`;
+    });
+    h+=`<div class="hx-dist" id="${group}-dist" role="img" aria-label="Distribution of weight across the ${group==='exj'?'judgment':'reasoning'} options"></div>`;
+    h+=`<div class="hx-leg" id="${group}-leg"></div></div>`;
+    return h;
+  }
+  let h=`<div class="hx-stim"><div class="lbl">Scenario</div><p>${esc(sc.stimulus)}</p></div>`;
+  h+=qBlock('exj', sc.judgment.options, initJ, sc.judgment.question);
+  h+=qBlock('exr', sc.reasoning.options, initR, sc.reasoning.question);
+  h+=`<div class="hx-manip"><div class="hx-qh" style="font-size:13px">How relatable is this situation to you?</div>`
+   +`<div class="hx-mrow"><span class="hx-anchor">Not at all</span>`;
+  for(let i=1;i<=7;i++) h+=`<span class="hx-dot${i===5?' on':''}" aria-hidden="true">${i}</span>`;
+  h+=`<span class="hx-anchor">Extremely</span></div></div>`;
+  document.getElementById('humanExample').innerHTML=h;
+  window.hxUpdate=function(group){
+    const inputs=[...document.querySelectorAll(`input[data-g="${group}"]`)];
+    const vals=inputs.map(x=>+x.value), tot=vals.reduce((a,b)=>a+b,0)||1;
+    const opts=group==='exj'?sc.judgment.options:sc.reasoning.options;
+    let dist='',leg='';
+    vals.forEach((v,i)=>{const p=v/tot*100;
+      document.getElementById(`${group}-pv-${i}`).textContent=Math.round(p)+'%';
+      dist+=`<span style="width:${p}%;background:${SEG[i%SEG.length]}"></span>`;
+      leg+=`<span><i style="background:${SEG[i%SEG.length]}"></i>${esc(opts[i]).slice(0,30)}${opts[i].length>30?'…':''}</span>`;});
+    document.getElementById(`${group}-dist`).innerHTML=dist;
+    document.getElementById(`${group}-leg`).innerHTML=leg;
+  };
+  hxUpdate('exj'); hxUpdate('exr');
+}
+// ---- init ----
+function init(){
+  document.getElementById('subline').textContent = `${D.meta.models.length} models · ${D.meta.frames.length} framings · ${Object.keys(D.scenarios).length} scenarios · ${D.meta.n_human} human respondents`;
+  document.getElementById('nh').textContent = D.meta.n_human;
+  const AXDEF={
+    moral_agent:'Whether the moral unit is the person in their relationships or the standalone individual.',
+    authority:'Whether legitimate authority and tradition deserve respect or must be earned and justified.',
+    domain_boundary:'Whether morality covers purity, loyalty, dignity, and duty, or only harm and fairness.',
+    scope:'Whether obligations scale with relationship proximity or extend equally to everyone.'};
+  document.getElementById('aboutAxes').innerHTML = AXES.map(a=>
+    `<div class="axdef"><b>${a.name}</b><span class="poles">${a.poleA} to ${a.poleB}</span><br>${AXDEF[a.id]||''}</div>`).join('');
+  modelTog(document.getElementById('modelTogs'), false);
+  frameTog();
+  document.getElementById('humanTog').addEventListener('click',function(){state.humans=!state.humans;this.setAttribute('aria-pressed',state.humans);drawPlot();});
+  document.getElementById('uncTog').addEventListener('click',function(){state.uncertainty=!state.uncertainty;this.setAttribute('aria-pressed',state.uncertainty);drawPlot();});
+  // browse controls
+  const ss=document.getElementById('scenSel');
+  Object.keys(D.scenarios).forEach(sid=>{const o=document.createElement('option');o.value=sid;const sc=D.scenarios[sid];o.textContent=`${sid}: ${(AXES.find(a=>a.id===sc.dimension_id)||{}).name||''}${sc.has_human_baseline?' *':''}`;ss.appendChild(o);});
+  ss.value=state.scen; ss.addEventListener('change',e=>{state.scen=e.target.value;renderBrowse();});
+  const fs=document.getElementById('frameSel');
+  FRAMES.forEach(fr=>{const o=document.createElement('option');o.value=fr;o.textContent=FLABEL[fr];fs.appendChild(o);});
+  fs.value=state.scenFrame; fs.addEventListener('change',e=>{state.scenFrame=e.target.value;renderBrowse();});
+  modelTog(document.getElementById('browseModelTogs'), true);
+  initTabs();
+  drawPlot();
+  renderBrowse();
+  renderHumanExample();
+}
+init();
+</script>
+</body>
+</html>

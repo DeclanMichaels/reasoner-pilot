@@ -1,0 +1,323 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "734a41fe-aa04-4ae9-b587-af50fbcf1745",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-03T18:24:53.774Z",
+  "end_time": "2026-04-03T18:28:51.598Z",
+  "scenario_order": [
+    "auth_2",
+    "domain_3",
+    "scope_3",
+    "mac_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_3"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": 0.1444444444444444,
+      "rScore": 0.38190954773869346,
+      "combined": 0.23943048576214404
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.17889908256880732,
+      "rScore": 0.5097087378640777,
+      "combined": 0.09654404560434669
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.15235849056603773,
+      "rScore": 0.2696629213483146,
+      "combined": 0.016450074199703207
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": 0.08530805687203791,
+      "rScore": 0.0034313725490195957,
+      "combined": 0.05255738314283058
+    }
+  ],
+  "archetype": {
+    "name": "Community Steward",
+    "tagline": "Relationships define the moral landscape"
+  },
+  "responses": [
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 1,
+      "timestamp": "2026-04-03T18:26:07.840Z",
+      "scenario_start": "2026-04-03T18:25:01.748Z",
+      "scenario_end": "2026-04-03T18:26:07.840Z",
+      "judgment": {
+        "raw": [
+          89,
+          50,
+          79,
+          0
+        ],
+        "weights": [
+          0.40825688073394495,
+          0.22935779816513763,
+          0.3623853211009174,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          30,
+          60,
+          82,
+          34,
+          0
+        ],
+        "weights": [
+          0.14563106796116504,
+          0.2912621359223301,
+          0.39805825242718446,
+          0.1650485436893204,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 2,
+      "timestamp": "2026-04-03T18:27:18.095Z",
+      "scenario_start": "2026-04-03T18:26:07.843Z",
+      "scenario_end": "2026-04-03T18:27:18.095Z",
+      "judgment": {
+        "raw": [
+          58,
+          63,
+          91,
+          0
+        ],
+        "weights": [
+          0.27358490566037735,
+          0.2971698113207547,
+          0.42924528301886794,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          88,
+          40,
+          50,
+          0
+        ],
+        "weights": [
+          0.4943820224719101,
+          0.2247191011235955,
+          0.2808988764044944,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "scope_3",
+      "dimension": "scope",
+      "presentation_order": 3,
+      "timestamp": "2026-04-03T18:28:11.878Z",
+      "scenario_start": "2026-04-03T18:27:18.098Z",
+      "scenario_end": "2026-04-03T18:28:11.878Z",
+      "judgment": {
+        "raw": [
+          69,
+          51,
+          91,
+          0
+        ],
+        "weights": [
+          0.32701421800947866,
+          0.24170616113744076,
+          0.4312796208530806,
+          0
+        ],
+        "labels": [
+          "Family is family \u2014 they should help even if they\u2019ve never met",
+          "They have no real obligation to a stranger who happens to share a name",
+          "They should help if they can, but the sacrifice shouldn\u2019t be expected",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          74,
+          49,
+          81,
+          0
+        ],
+        "weights": [
+          0.3627450980392157,
+          0.24019607843137256,
+          0.39705882352941174,
+          0
+        ],
+        "labels": [
+          "Kinship creates obligations that don\u2019t require personal acquaintance",
+          "Obligation follows relationship \u2014 a stranger shares DNA, not a bond",
+          "Generosity is a virtue but not an obligation in this case",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 4,
+      "timestamp": "2026-04-03T18:28:51.594Z",
+      "scenario_start": "2026-04-03T18:28:11.880Z",
+      "scenario_end": "2026-04-03T18:28:51.594Z",
+      "judgment": {
+        "raw": [
+          97,
+          40,
+          43,
+          0
+        ],
+        "weights": [
+          0.5388888888888889,
+          0.2222222222222222,
+          0.2388888888888889,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          32,
+          79,
+          88,
+          0
+        ],
+        "weights": [
+          0.16080402010050251,
+          0.3969849246231156,
+          0.44221105527638194,
+          0
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    }
+  ],
+  "_meta": {
+    "language": "en-GB",
+    "languages": [
+      "en-GB"
+    ],
+    "timezone": "Europe/Oslo",
+    "screen_width": 393,
+    "screen_height": 852,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "",
+    "slider_adjustments": 1362,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

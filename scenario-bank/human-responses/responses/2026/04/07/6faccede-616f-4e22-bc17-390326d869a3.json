@@ -1,0 +1,325 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "6faccede-616f-4e22-bc17-390326d869a3",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-07T21:10:38.077Z",
+  "end_time": "2026-04-07T21:21:47.243Z",
+  "scenario_order": [
+    "domain_1",
+    "auth_1",
+    "mac_1",
+    "scope_3"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_1"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_1"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_3"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.8973684210526316,
+      "rScore": 0.30188679245283023,
+      "combined": -0.4176663356504468
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": 0.07109004739336493,
+      "rScore": -0.2043795620437956,
+      "combined": -0.039097796381499295
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.7442528735632183,
+      "rScore": -0.39669421487603307,
+      "combined": -0.6052294100883442
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.9345794392523364,
+      "rScore": -0.5639810426540285,
+      "combined": -0.7863400806130132
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "domain_1",
+      "dimension": "domain_boundary",
+      "presentation_order": 1,
+      "timestamp": "2026-04-07T21:16:02.262Z",
+      "scenario_start": "2026-04-07T21:10:46.479Z",
+      "scenario_end": "2026-04-07T21:16:02.262Z",
+      "judgment": {
+        "raw": [
+          5,
+          100,
+          69,
+          86
+        ],
+        "weights": [
+          0.019230769230769232,
+          0.38461538461538464,
+          0.2653846153846154,
+          0.33076923076923076
+        ],
+        "labels": [
+          "The neighbors are right to hold him accountable to community standards",
+          "What he does privately is outside the scope of anyone else\u2019s moral concern",
+          "This is a matter of social preference, not morality \u2014 the neighbors may dislike it, but that doesn\u2019t make it wrong",
+          "Other"
+        ],
+        "other_text": "It is possible for there to be harms other than injury or losing money - for example, a repeated noise nuisance from playing drums in the early morning.  In this case community standards would be backed by moral harm, thus much more important; this slider reflects that case only.  You may wish to rephrase this case to clarify other forms of harm."
+      },
+      "reasoning": {
+        "raw": [
+          48,
+          94,
+          100,
+          0
+        ],
+        "weights": [
+          0.19834710743801653,
+          0.3884297520661157,
+          0.4132231404958678,
+          0
+        ],
+        "labels": [
+          "A community has the right to uphold shared standards of behavior",
+          "Private behavior that doesn\u2019t affect others is outside the moral domain",
+          "Discomfort is not the same as a moral violation \u2014 people can disapprove without being wronged",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 6
+    },
+    {
+      "scenario_id": "auth_1",
+      "dimension": "authority",
+      "presentation_order": 2,
+      "timestamp": "2026-04-07T21:18:31.352Z",
+      "scenario_start": "2026-04-07T21:16:02.278Z",
+      "scenario_end": "2026-04-07T21:18:31.352Z",
+      "judgment": {
+        "raw": [
+          23,
+          88,
+          100,
+          65
+        ],
+        "weights": [
+          0.08333333333333333,
+          0.3188405797101449,
+          0.36231884057971014,
+          0.23550724637681159
+        ],
+        "labels": [
+          "Her professional judgment should override the policy",
+          "Institutional rules must be followed even when individuals disagree",
+          "The outcome for students matters more than whether she followed the rule",
+          "Other"
+        ],
+        "other_text": "Depends on whether her belief is evidence based.  Also a policy set by educators based on experience and experiment has more moral weight to override her judgement than for example, a policy forced on the school by politicians to support a religious or ideological belief."
+      },
+      "reasoning": {
+        "raw": [
+          90,
+          84,
+          100,
+          0,
+          0
+        ],
+        "weights": [
+          0.3284671532846715,
+          0.30656934306569344,
+          0.36496350364963503,
+          0,
+          0
+        ],
+        "labels": [
+          "Professionals have a duty to use their own judgment when they see harm",
+          "Rules exist to protect everyone equally, even when imperfect",
+          "The well-being of those affected should determine what\u2019s right",
+          "Authority deserves the benefit of the doubt",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 7
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 3,
+      "timestamp": "2026-04-07T21:21:01.946Z",
+      "scenario_start": "2026-04-07T21:18:31.354Z",
+      "scenario_end": "2026-04-07T21:21:01.946Z",
+      "judgment": {
+        "raw": [
+          0,
+          52,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.34210526315789475,
+          0.6578947368421053,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          16,
+          37,
+          0,
+          100
+        ],
+        "weights": [
+          0.10457516339869281,
+          0.24183006535947713,
+          0,
+          0.6535947712418301
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": "She has a right to choose her own priorities. That is the major moral issue here; children do not in general owe obligations to their parents, only choices they make voluntarily out of love"
+      },
+      "manipCheck": 7
+    },
+    {
+      "scenario_id": "scope_3",
+      "dimension": "scope",
+      "presentation_order": 4,
+      "timestamp": "2026-04-07T21:21:47.230Z",
+      "scenario_start": "2026-04-07T21:21:01.950Z",
+      "scenario_end": "2026-04-07T21:21:47.231Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          7,
+          0
+        ],
+        "weights": [
+          0,
+          0.9345794392523364,
+          0.06542056074766354,
+          0
+        ],
+        "labels": [
+          "Family is family \u2014 they should help even if they\u2019ve never met",
+          "They have no real obligation to a stranger who happens to share a name",
+          "They should help if they can, but the sacrifice shouldn\u2019t be expected",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          11,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0.052132701421800945,
+          0.47393364928909953,
+          0.47393364928909953,
+          0
+        ],
+        "labels": [
+          "Kinship creates obligations that don\u2019t require personal acquaintance",
+          "Obligation follows relationship \u2014 a stranger shares DNA, not a bond",
+          "Generosity is a virtue but not an obligation in this case",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    }
+  ],
+  "_meta": {
+    "language": "en-GB",
+    "languages": [
+      "en-GB",
+      "en-US",
+      "en"
+    ],
+    "timezone": "Europe/London",
+    "screen_width": 800,
+    "screen_height": 1280,
+    "device_pixel_ratio": 1.5,
+    "touch": true,
+    "platform": "Linux",
+    "referrer": "android-app://com.reddit.frontpage/",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "dark",
+    "connection_type": "4g",
+    "slider_adjustments": 1759,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

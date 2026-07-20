@@ -1,0 +1,326 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "baa020d0-e1c5-4caf-b490-404a9d3667ab",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-03T12:05:14.991Z",
+  "end_time": "2026-04-03T12:11:19.478Z",
+  "scenario_order": [
+    "scope_1",
+    "domain_3",
+    "auth_2",
+    "mac_2"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_2"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_1"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -1,
+      "rScore": -0.5,
+      "combined": -0.8
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": 0.5,
+      "rScore": 1,
+      "combined": 0.7
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.65,
+      "rScore": -0.5,
+      "combined": -0.5900000000000001
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.8937007874015749,
+      "rScore": -0.5585365853658536,
+      "combined": -0.7596351065872864
+    }
+  ],
+  "archetype": {
+    "name": "Principled Institutionalist",
+    "tagline": "Rules exist for a reason"
+  },
+  "responses": [
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 1,
+      "timestamp": "2026-04-03T12:07:07.149Z",
+      "scenario_start": "2026-04-03T12:05:27.296Z",
+      "scenario_end": "2026-04-03T12:07:07.149Z",
+      "judgment": {
+        "raw": [
+          0,
+          27,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.2125984251968504,
+          0.7874015748031497,
+          0
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          29,
+          100,
+          76,
+          0
+        ],
+        "weights": [
+          0,
+          0.14146341463414633,
+          0.4878048780487805,
+          0.37073170731707317,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 2,
+      "timestamp": "2026-04-03T12:08:04.596Z",
+      "scenario_start": "2026-04-03T12:07:07.151Z",
+      "scenario_end": "2026-04-03T12:08:04.596Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 3,
+      "timestamp": "2026-04-03T12:09:12.757Z",
+      "scenario_start": "2026-04-03T12:08:04.597Z",
+      "scenario_end": "2026-04-03T12:09:12.757Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "mac_2",
+      "dimension": "moral_agent",
+      "presentation_order": 4,
+      "timestamp": "2026-04-03T12:11:19.474Z",
+      "scenario_start": "2026-04-03T12:09:12.762Z",
+      "scenario_end": "2026-04-03T12:11:19.474Z",
+      "judgment": {
+        "raw": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "He put personal ambition ahead of his responsibilities",
+          "He faced a genuine conflict \u2014 both paths had legitimate claims on him",
+          "He exercised his right to shape his own future",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "Family members have a right to count on each other",
+          "Education ultimately serves the whole family, even if it takes time",
+          "Each person must decide their own path regardless of expectations",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    }
+  ],
+  "_meta": {
+    "language": "en-US",
+    "languages": [
+      "en-US"
+    ],
+    "timezone": "America/Chicago",
+    "screen_width": 402,
+    "screen_height": 874,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "dark",
+    "connection_type": "",
+    "slider_adjustments": 504,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

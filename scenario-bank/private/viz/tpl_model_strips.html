@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model range strips: 48 scenarios</title>
+<style>
+ :root{--bg:#0d0d14;--surface:#1a1a28;--line:rgba(255,255,255,0.10);--text:#d8d8e0;--muted:#9a9aac}
+ *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55}
+ .wrap{max-width:900px;margin:0 auto;padding:32px 22px 60px}
+ h1{font-size:22px;font-weight:650;margin:0 0 4px;letter-spacing:-.01em}
+ p.note{color:var(--muted);font-size:13.5px;max-width:800px;margin:6px 0 0}
+ .prelim{display:inline-block;font-size:11.5px;color:#8fd0ff;background:rgba(110,168,255,.10);
+   border:1px solid rgba(110,168,255,.30);border-radius:5px;padding:1px 8px;margin-top:8px}
+ .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 12px 8px;margin-top:16px}
+ svg{display:block;width:100%;height:auto}
+ .legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin:8px 6px 2px;font-size:12.5px;align-items:center}
+ .legend span{display:inline-flex;align-items:center;gap:7px}
+ .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+ .cap{font-size:12.5px;color:var(--muted);margin:6px 8px}
+ .cap b{color:#eaeaf2}
+</style></head><body><div class="wrap">
+ <h1>The models fill a sliver of each dimension's fixed range</h1>
+ <p class="note">Each dimension has a fixed span from &minus;1 (pole A) to +1 (pole B). The full track is what is
+   <i>possible</i>; the shaded box is the slice the models actually occupy; each dot is one model, colored by lab,
+   averaged over all 48 scenarios (neutral frame). Companion to the radar &mdash; same data, laid out linearly so
+   the occupied band reads against the whole axis.</p>
+ <div class="prelim">Full pilot &mdash; 11 models. Corrected pole coding.</div>
+ <div class="card"><div id="strips"></div>
+  <div class="legend" id="legend"></div>
+  <div class="cap" id="cap"></div>
+ </div>
+</div>
+<script>
+try{
+const D = __PAYLOAD__;
+const LABCOLOR={"Anthropic":"#f59e0b","OpenAI":"#34d399","Google":"#60a5fa","xAI":"#e5e7eb",
+ "Cohere":"#a78bfa","Mistral":"#f87171","DeepSeek":"#f472b6","MiniMax":"#22d3ee",
+ "ThinkingMachines":"#a3e635","Meta":"#818cf8","Moonshot":"#fbbf24"};
+const A=D.axes, W=860, rowH=118, padL=150, padR=120, topPad=18, H=topPad+A.length*rowH+18;
+const x0=padL, x1=W-padR, X=v=>x0+(v+1)/2*(x1-x0);
+function beeswarm(items, cyc, rr){ const gap=rr*2+1; let placed=[];
+  items.forEach(o=>{ let lane=0, y;
+    while(true){ y=cyc + (lane%2? -1:1)*Math.ceil(lane/2)*(rr*1.9);
+      if(!placed.some(p=>Math.abs(p.x-o.x)<gap && Math.abs(p.y-y)<gap)){break;} lane++; if(lane>20){break;} }
+    o.y=y; placed.push(o); }); }
+let s=`<svg viewBox="0 0 ${W} ${H}">`;
+A.forEach((a,idx)=>{const cy=topPad+idx*rowH+rowH/2;
+  s+=`<line x1="${x0}" y1="${cy}" x2="${x1}" y2="${cy}" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>`;
+  [-1,-0.5,0,0.5,1].forEach(t=>{s+=`<line x1="${X(t)}" y1="${cy-34}" x2="${X(t)}" y2="${cy+34}" stroke="rgba(255,255,255,0.06)"/>`;
+    s+=`<text x="${X(t)}" y="${cy+50}" fill="#5c5c70" font-size="9.5" text-anchor="middle">${t>0?'+':''}${t}</text>`;});
+  s+=`<rect x="${X(a.min)}" y="${cy-30}" width="${Math.max(X(a.max)-X(a.min),2)}" height="60" rx="4" fill="#6ea8ff" fill-opacity="0.16" stroke="#6ea8ff" stroke-opacity="0.5"/>`;
+  s+=`<text x="${x0-14}" y="${cy-4}" fill="#d8d8e0" font-size="13" font-weight="600" text-anchor="end">${a.name}</text>`;
+  s+=`<text x="${x0-14}" y="${cy+13}" fill="#7a7a8c" font-size="10" text-anchor="end">${a.poleA}</text>`;
+  s+=`<text x="${x1+8}" y="${cy+4}" fill="#7a7a8c" font-size="10">${a.poleB}</text>`;
+  const w=((a.max-a.min)/2*100).toFixed(0);
+  s+=`<text x="${x1+8}" y="${cy-24}" fill="#8fbaff" font-size="10.5">fills ${w}% of axis</text>`;
+  const items=D.models.map(m=>({m,lab:D.lab[m],v:a.models[m],x:X(a.models[m])})).sort((p,q)=>p.x-q.x);
+  beeswarm(items, cy, 5.5);
+  items.forEach(o=>{ s+=`<circle cx="${o.x}" cy="${o.y}" r="5.5" fill="${LABCOLOR[o.lab]||'#e05577'}" stroke="#0d0d14" stroke-width="1.2"/>`; });
+});
+s+="</svg>"; document.getElementById("strips").innerHTML=s;
+let labs=[]; D.models.forEach(m=>{if(!labs.includes(D.lab[m]))labs.push(D.lab[m]);});
+let lg=`<span><i class="dot" style="background:#6ea8ff;opacity:.6"></i> Occupied band</span><span style="width:1px;height:14px;background:var(--line)"></span>`;
+labs.forEach(l=>{lg+=`<span><i class="dot" style="background:${LABCOLOR[l]||'#e05577'}"></i>${l}</span>`;});
+document.getElementById("legend").innerHTML=lg;
+const widths=A.map(a=>((a.max-a.min)/2*100));
+const wlo=Math.min(...widths).toFixed(0),whi=Math.max(...widths).toFixed(0);
+document.getElementById("cap").innerHTML=
+ `<b>Every model lands in the same ${wlo}&ndash;${whi}% slice of each axis.</b> Whatever the &minus;1 to +1 range `+
+ `makes possible, the ${D.models.length} models use almost none of it &mdash; and the dots inside each band are `+
+ `lab-mixed (DeepSeek, MiniMax, and Kimi among the Western models), not sorted by lab. For reference, human respondents `+
+ `spread across most of these axes (see the human-spread figure). All 48 scenarios, neutral frame; dots stacked `+
+ `vertically only to separate overlaps.`;
+
+}catch(e){document.body.style.margin='0';document.body.innerHTML='<div style="font-family:system-ui;color:#9a9aac;background:#0d0d14;min-height:100vh;padding:48px;font-size:14px;line-height:1.7">This is a <b style=\'color:#d8d8e0\'>template</b>, not the finished figure.<br>Run <b style=\'color:#d8d8e0\'>python3 private/viz/build_figures.py</b> to generate the figure with data (written to <code>private/reanalysis/</code>).</div>';}
+</script></body></html>

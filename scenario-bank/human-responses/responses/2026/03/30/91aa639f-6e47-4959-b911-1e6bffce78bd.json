@@ -1,0 +1,328 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "91aa639f-6e47-4959-b911-1e6bffce78bd",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-03-30T20:00:04.598Z",
+  "end_time": "2026-03-30T20:03:08.846Z",
+  "scenario_order": [
+    "mac_1",
+    "auth_2",
+    "scope_1",
+    "domain_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_1"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_1"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -1,
+      "rScore": 0,
+      "combined": -0.6
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": 0,
+      "rScore": 0.5,
+      "combined": 0.2
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.5,
+      "rScore": -0.5,
+      "combined": -0.5
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.5,
+      "rScore": -1,
+      "combined": -0.7
+    }
+  ],
+  "archetype": {
+    "name": "Principled Institutionalist",
+    "tagline": "Rules exist for a reason"
+  },
+  "responses": [
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 1,
+      "timestamp": "2026-03-30T20:01:18.508Z",
+      "scenario_start": "2026-03-30T20:00:21.381Z",
+      "scenario_end": "2026-03-30T20:01:18.508Z",
+      "judgment": {
+        "raw": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          100,
+          0,
+          0
+        ],
+        "weights": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 7
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 2,
+      "timestamp": "2026-03-30T20:01:52.525Z",
+      "scenario_start": "2026-03-30T20:01:18.510Z",
+      "scenario_end": "2026-03-30T20:01:52.525Z",
+      "judgment": {
+        "raw": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          100,
+          0,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 3,
+      "timestamp": "2026-03-30T20:02:27.484Z",
+      "scenario_start": "2026-03-30T20:01:52.526Z",
+      "scenario_end": "2026-03-30T20:02:27.484Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          0,
+          0
+        ],
+        "weights": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          100,
+          0,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    },
+    {
+      "scenario_id": "domain_1",
+      "dimension": "domain_boundary",
+      "presentation_order": 4,
+      "timestamp": "2026-03-30T20:03:08.844Z",
+      "scenario_start": "2026-03-30T20:02:27.485Z",
+      "scenario_end": "2026-03-30T20:03:08.844Z",
+      "judgment": {
+        "raw": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "The neighbors are right to hold him accountable to community standards",
+          "What he does privately is outside the scope of anyone else\u2019s moral concern",
+          "This is a matter of social preference, not morality \u2014 the neighbors may dislike it, but that doesn\u2019t make it wrong",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "A community has the right to uphold shared standards of behavior",
+          "Private behavior that doesn\u2019t affect others is outside the moral domain",
+          "Discomfort is not the same as a moral violation \u2014 people can disapprove without being wronged",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    }
+  ],
+  "_meta": {
+    "language": "en-NZ",
+    "languages": [
+      "en-NZ",
+      "en",
+      "en-US"
+    ],
+    "timezone": "Pacific/Auckland",
+    "screen_width": 1920,
+    "screen_height": 1080,
+    "device_pixel_ratio": 1,
+    "touch": false,
+    "platform": "Windows",
+    "referrer": "https://www.linkedin.com/",
+    "utm_source": "share",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "4g",
+    "slider_adjustments": 120,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

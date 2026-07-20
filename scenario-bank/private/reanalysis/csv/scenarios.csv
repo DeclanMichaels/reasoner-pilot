@@ -1,0 +1,292 @@
+scenario_id,axis_id,axis_name,has_human_baseline,question,option_index,option_text,loading
+mac_1,moral_agent,Moral Agent,1,judgment,0,She fulfilled a moral obligation to her family,-1
+mac_1,moral_agent,Moral Agent,1,judgment,1,Her own goals and growth matter too — staying may not have been the right choice for her,0.7
+mac_1,moral_agent,Moral Agent,1,judgment,2,"This was a personal decision about priorities, not a moral one",1
+mac_1,moral_agent,Moral Agent,1,reasoning,0,Family obligations come before personal ambition,-1
+mac_1,moral_agent,Moral Agent,1,reasoning,1,She would carry guilt or regret if she left,0
+mac_1,moral_agent,Moral Agent,1,reasoning,2,Others in her life would judge her for leaving,-0.5
+mac_2,moral_agent,Moral Agent,1,judgment,0,He put personal ambition ahead of his responsibilities,-1
+mac_2,moral_agent,Moral Agent,1,judgment,1,He faced a genuine conflict — both paths had legitimate claims on him,0
+mac_2,moral_agent,Moral Agent,1,judgment,2,He exercised his right to shape his own future,1
+mac_2,moral_agent,Moral Agent,1,reasoning,0,Family members have a right to count on each other,-1
+mac_2,moral_agent,Moral Agent,1,reasoning,1,"Education ultimately serves the whole family, even if it takes time",0
+mac_2,moral_agent,Moral Agent,1,reasoning,2,Each person must decide their own path regardless of expectations,1
+mac_3,moral_agent,Moral Agent,1,judgment,0,She is abandoning people who depended on her,-1
+mac_3,moral_agent,Moral Agent,1,judgment,1,She earned the opportunity and her team will adapt,1
+mac_3,moral_agent,Moral Agent,1,judgment,2,She should have made sure her team was taken care of before leaving,-0.5
+mac_3,moral_agent,Moral Agent,1,reasoning,0,Three years of mentorship creates a bond that doesn’t end when a better offer arrives.,-1
+mac_3,moral_agent,Moral Agent,1,reasoning,1,Staying out of guilt helps no one and sets a precedent that traps good people.,1
+mac_3,moral_agent,Moral Agent,1,reasoning,2,The measure of a leader is what happens to the team after they leave.,-0.3
+mac_4,moral_agent,Moral Agent,0,judgment,0,She should include the team. The work grew from shared soil.,-1
+mac_4,moral_agent,Moral Agent,0,judgment,1,She should publish solo. The idea was hers.,1
+mac_4,moral_agent,Moral Agent,0,judgment,2,"She should offer co-authorship to those who directly contributed, not the whole team.",0.3
+mac_4,moral_agent,Moral Agent,0,reasoning,0,Individual contributions exist within a web of relationships that made them possible.,-1
+mac_4,moral_agent,Moral Agent,0,reasoning,1,Intellectual honesty requires crediting the person who did the work.,1
+mac_4,moral_agent,Moral Agent,0,reasoning,2,Fair attribution means tracing the actual chain of contribution.,0
+mac_5,moral_agent,Moral Agent,0,judgment,0,"He should insist his son come forward. A parent owes it to the child, to himself, and to the community to raise a person of integrity.",-1
+mac_5,moral_agent,Moral Agent,0,judgment,1,Whether to confess should be his son's own decision. Moral agency cannot be imposed.,1
+mac_5,moral_agent,Moral Agent,0,judgment,2,He should guide his son but ultimately let him choose.,0
+mac_5,moral_agent,Moral Agent,0,reasoning,0,"Raising a good person is a relational obligation that connects parent, child, and community.",-1
+mac_5,moral_agent,Moral Agent,0,reasoning,1,"Each person must develop their own moral compass, even through mistakes.",1
+mac_5,moral_agent,Moral Agent,0,reasoning,2,Repairing the harm matters more than how accountability happens.,0
+mac_6,moral_agent,Moral Agent,0,judgment,0,He is rejecting something meaningful about his people by redefining himself.,-1
+mac_6,moral_agent,Moral Agent,0,judgment,1,He has every right to define who he is regardless of where he comes from.,1
+mac_6,moral_agent,Moral Agent,0,judgment,2,He can honor his roots and still choose his own path.,0.3
+mac_6,moral_agent,Moral Agent,0,reasoning,0,Who we are is shaped by the people and place we come from.,-1
+mac_6,moral_agent,Moral Agent,0,reasoning,1,Identity is something each person constructs for themselves.,1
+mac_6,moral_agent,Moral Agent,0,reasoning,2,A person can belong to a community without being defined by it.,0
+auth_1,authority,Authority,1,judgment,0,Her professional judgment should override the policy,1
+auth_1,authority,Authority,1,judgment,1,Institutional rules must be followed even when individuals disagree,-1
+auth_1,authority,Authority,1,judgment,2,The outcome for students matters more than whether she followed the rule,0.5
+auth_1,authority,Authority,1,reasoning,0,Professionals have a duty to use their own judgment when they see harm,1
+auth_1,authority,Authority,1,reasoning,1,"Rules exist to protect everyone equally, even when imperfect",-1
+auth_1,authority,Authority,1,reasoning,2,The well-being of those affected should determine what’s right,0.5
+auth_1,authority,Authority,1,reasoning,3,Authority deserves the benefit of the doubt,-1
+auth_2,authority,Authority,1,judgment,0,She did the right thing by fixing what she knew was wrong,1
+auth_2,authority,Authority,1,judgment,1,She should have followed her manager’s instruction and waited,-1
+auth_2,authority,Authority,1,judgment,2,Her intent was good but going around her manager creates other problems,0
+auth_2,authority,Authority,1,reasoning,0,Accuracy matters more than following a chain of command,1
+auth_2,authority,Authority,1,reasoning,1,Organizations depend on people respecting established processes,-1
+auth_2,authority,Authority,1,reasoning,2,She should have escalated rather than acted alone,-0.5
+auth_2,authority,Authority,1,reasoning,3,A manager’s instructions should be followed unless clearly unethical,-1
+auth_3,authority,Authority,1,judgment,0,The younger members should speak up if the decision is unjust,1
+auth_3,authority,Authority,1,judgment,1,Respecting the elder’s authority preserves something valuable in the community,-1
+auth_3,authority,Authority,1,judgment,2,Both the elder’s wisdom and the younger members’ concerns deserve consideration,0
+auth_3,authority,Authority,1,reasoning,0,No one’s authority should be beyond challenge,1
+auth_3,authority,Authority,1,reasoning,1,Traditional authority carries earned wisdom that outsiders may not see,-1
+auth_3,authority,Authority,1,reasoning,2,Fairness matters more than tradition,0.5
+auth_4,authority,Authority,0,judgment,0,The engineers' expertise should carry the decision.,-1.0
+auth_4,authority,Authority,0,judgment,1,The residents' democratic voice should be respected even if the experts disagree.,1.0
+auth_4,authority,Authority,0,judgment,2,The town should invest more time in helping residents understand the science before deciding.,0
+auth_4,authority,Authority,0,reasoning,0,Technical decisions should be made by people with technical knowledge.,-1.0
+auth_4,authority,Authority,0,reasoning,1,"Legitimacy comes from the consent of the people affected, not from credentials.",1.0
+auth_4,authority,Authority,0,reasoning,2,Good decisions require both expertise and public trust.,0
+auth_5,authority,Authority,0,judgment,0,She should follow her leader's guidance. She chose this path and its authority.,-1
+auth_5,authority,Authority,0,judgment,1,She should trust her own conscience over any leader's instruction.,1
+auth_5,authority,Authority,0,judgment,2,She should seek dialogue with the leader rather than simply obeying or refusing.,0
+auth_5,authority,Authority,0,reasoning,0,"Committing to a spiritual path means accepting its authority, even when it is hard.",-1
+auth_5,authority,Authority,0,reasoning,1,"No authority, chosen or not, should override a person's moral judgment.",1
+auth_5,authority,Authority,0,reasoning,2,Healthy authority allows questioning without demanding obedience.,0.3
+auth_6,authority,Authority,0,judgment,0,She should defer to her colleagues' consensus and follow standard protocols.,-1
+auth_6,authority,Authority,0,judgment,1,Her direct experience with patients should carry more weight than colleagues' theoretical objections.,1
+auth_6,authority,Authority,0,judgment,2,She should document her reasoning and seek a formal review rather than acting alone.,-0.3
+auth_6,authority,Authority,0,reasoning,0,Medical consensus exists to protect patients from individual doctors' biases.,-1
+auth_6,authority,Authority,0,reasoning,1,"A doctor's primary obligation is to the patient in front of her, not to protocols.",1
+auth_6,authority,Authority,0,reasoning,2,Established processes for challenging consensus exist for good reason.,-0.5
+domain_1,domain_boundary,Moral Domain,1,judgment,0,The neighbors are right to hold him accountable to community standards,-1
+domain_1,domain_boundary,Moral Domain,1,judgment,1,What he does privately is outside the scope of anyone else’s moral concern,1
+domain_1,domain_boundary,Moral Domain,1,judgment,2,"This is a matter of social preference, not morality — the neighbors may dislike it, but that doesn’t make it wrong",0.5
+domain_1,domain_boundary,Moral Domain,1,reasoning,0,A community has the right to uphold shared standards of behavior,-1
+domain_1,domain_boundary,Moral Domain,1,reasoning,1,Private behavior that doesn’t affect others is outside the moral domain,1
+domain_1,domain_boundary,Moral Domain,1,reasoning,2,Discomfort is not the same as a moral violation — people can disapprove without being wronged,0.5
+domain_2,domain_boundary,Moral Domain,1,judgment,0,Refusing to participate in family traditions is a form of disrespect that matters morally,-1
+domain_2,domain_boundary,Moral Domain,1,judgment,1,"Participation in traditions is a personal choice, not a moral obligation",1
+domain_2,domain_boundary,Moral Domain,1,judgment,2,"The family’s feelings are understandable, but no one can be compelled to observe traditions",0.3
+domain_2,domain_boundary,Moral Domain,1,reasoning,0,Shared traditions hold families together and refusing weakens the bond,-1
+domain_2,domain_boundary,Moral Domain,1,reasoning,1,Religious and cultural practice must be freely chosen to be meaningful,1
+domain_2,domain_boundary,Moral Domain,1,reasoning,2,Respect for family can be shown in ways other than participating in specific rituals,0
+domain_3,domain_boundary,Moral Domain,1,judgment,0,The restaurant should respect the neighborhood’s established customs,-1
+domain_3,domain_boundary,Moral Domain,1,judgment,1,A business can serve whatever it chooses — customers will decide with their wallets,1
+domain_3,domain_boundary,Moral Domain,1,judgment,2,"The residents’ concerns are worth hearing, but a business has no obligation to conform",0.3
+domain_3,domain_boundary,Moral Domain,1,reasoning,0,Neighborhoods have a character worth preserving and newcomers should respect it,-1
+domain_3,domain_boundary,Moral Domain,1,reasoning,1,"In a free society, businesses operate by market rules, not community approval",1
+domain_3,domain_boundary,Moral Domain,1,reasoning,2,Dialogue between the restaurant and residents is more productive than moral judgment,0
+domain_4,domain_boundary,Moral Domain,0,judgment,0,"This is morally wrong regardless of consent. There are limits to what can be bought, even voluntarily.",-1
+domain_4,domain_boundary,Moral Domain,0,judgment,1,"If the workers consent and are paid fairly, it is their choice to make.",1
+domain_4,domain_boundary,Moral Domain,0,judgment,2,It is distasteful but not a moral issue as long as no one is coerced.,0.5
+domain_4,domain_boundary,Moral Domain,0,reasoning,0,Some exchanges cross a moral line even when both parties agree to them.,-1
+domain_4,domain_boundary,Moral Domain,0,reasoning,1,Consenting adults have the right to make their own choices about what they are willing to do.,1
+domain_4,domain_boundary,Moral Domain,0,reasoning,2,The power imbalance makes genuine consent questionable.,-0.3
+domain_5,domain_boundary,Moral Domain,0,judgment,0,Knowingly supporting exploitation through purchases is a moral failure.,-1
+domain_5,domain_boundary,Moral Domain,0,judgment,1,Consumers are not responsible for supply chains they did not create.,1
+domain_5,domain_boundary,Moral Domain,0,judgment,2,It is worth considering but individual purchases don't meaningfully change corporate behavior.,0.3
+domain_5,domain_boundary,Moral Domain,0,reasoning,0,"Morality extends to the consequences of our economic choices, even indirect ones.",-1
+domain_5,domain_boundary,Moral Domain,0,reasoning,1,People have a right to make purchasing decisions based on their own family's needs.,1
+domain_5,domain_boundary,Moral Domain,0,reasoning,2,"Systemic problems require systemic solutions, not individual guilt.",0
+domain_6,domain_boundary,Moral Domain,0,judgment,0,"Even in private, mocking vulnerable people is morally wrong.",-1
+domain_6,domain_boundary,Moral Domain,0,judgment,1,What people say among friends in private is not a moral matter.,1
+domain_6,domain_boundary,Moral Domain,0,judgment,2,It reflects poor character but is not the same as causing harm.,0
+domain_6,domain_boundary,Moral Domain,0,reasoning,0,Dehumanizing people in private normalizes it and makes it easier for others to do the same.,-1
+domain_6,domain_boundary,Moral Domain,0,reasoning,1,"The moral domain covers actions that affect others, not private speech among consenting adults.",1
+domain_6,domain_boundary,Moral Domain,0,reasoning,2,Intent and context matter. The same words carry different moral weight in different settings.,0
+scope_1,scope,Obligation Scope,1,judgment,0,Those closest to the organization should receive help first,-1
+scope_1,scope,Obligation Scope,1,judgment,1,Those in greatest need should receive help first,0.5
+scope_1,scope,Obligation Scope,1,judgment,2,Everyone affected deserves equal consideration regardless of connection,1
+scope_1,scope,Obligation Scope,1,reasoning,0,You owe the most to those you know and have relationships with,-1
+scope_1,scope,Obligation Scope,1,reasoning,1,Severity of need is the only morally relevant criterion,0.5
+scope_1,scope,Obligation Scope,1,reasoning,2,Fairness requires equal treatment regardless of relationship,1
+scope_1,scope,Obligation Scope,1,reasoning,3,The community’s long-term survival depends on protecting the most vulnerable,0
+scope_2,scope,Obligation Scope,1,judgment,0,Loyalty to a colleague who asked for help should carry real weight,-1
+scope_2,scope,Obligation Scope,1,judgment,1,"The most qualified person should get the spot, period",1
+scope_2,scope,Obligation Scope,1,judgment,2,Both relationship and qualification matter — the manager should weigh them honestly,0
+scope_2,scope,Obligation Scope,1,reasoning,0,Ignoring someone who trusted you enough to ask damages the fabric of a team.,-1
+scope_2,scope,Obligation Scope,1,reasoning,1,"If word gets out that connections matter more than skill, it poisons the whole system.",1
+scope_2,scope,Obligation Scope,1,reasoning,2,The right answer depends on how large the qualification gap actually is.,0
+scope_3,scope,Obligation Scope,1,judgment,0,Family is family — they should help even if they’ve never met,-1
+scope_3,scope,Obligation Scope,1,judgment,1,They have no real obligation to a stranger who happens to share a name,1
+scope_3,scope,Obligation Scope,1,judgment,2,"They should help if they can, but the sacrifice shouldn’t be expected",0
+scope_3,scope,Obligation Scope,1,reasoning,0,"If family doesn’t help family, the whole safety net unravels.",-1
+scope_3,scope,Obligation Scope,1,reasoning,1,You can’t owe someone a meaningful sacrifice when you don’t even know their name.,1
+scope_3,scope,Obligation Scope,1,reasoning,2,"Helping is admirable, but making it expected turns generosity into guilt.",0.3
+scope_4,scope,Obligation Scope,0,judgment,0,Focus on the one student. The deepest need deserves the fullest response.,0.5
+scope_4,scope,Obligation Scope,0,judgment,1,Spread the time. Helping five students moderately does more total good.,1
+scope_4,scope,Obligation Scope,0,judgment,2,Consider which students she knows best and has the strongest relationship with.,-1.0
+scope_4,scope,Obligation Scope,0,reasoning,0,"We owe the most to those in the greatest need, even if it means others get less.",0.5
+scope_4,scope,Obligation Scope,0,reasoning,1,Five students helped moderately adds up to more total benefit than one student helped deeply.,1
+scope_4,scope,Obligation Scope,0,reasoning,2,A teacher's first obligation is to the students she knows personally.,-1
+scope_5,scope,Obligation Scope,0,judgment,0,Her daughter comes first. She should keep going.,-1
+scope_5,scope,Obligation Scope,0,judgment,1,She should stop and help. A person in pain right in front of you takes priority.,1
+scope_5,scope,Obligation Scope,0,judgment,2,She should make a quick assessment and call for help if she cannot stop.,0
+scope_5,scope,Obligation Scope,0,reasoning,0,Your first obligation is always to the people closest to you.,-1
+scope_5,scope,Obligation Scope,0,reasoning,1,"Proximity creates obligation. When you see someone suffering, you owe them a response.",0.5
+scope_5,scope,Obligation Scope,0,reasoning,2,Everyone deserves help regardless of whether you know them.,1
+scope_6,scope,Obligation Scope,0,judgment,0,Current residents' needs should take priority. They are the ones paying.,-1
+scope_6,scope,Obligation Scope,0,judgment,1,Future residents deserve protection even if current residents bear the cost.,1
+scope_6,scope,Obligation Scope,0,judgment,2,The town should balance both but give some weight to the people who are here now.,-0.3
+scope_6,scope,Obligation Scope,0,reasoning,0,We owe the most to the community we live in now.,-1
+scope_6,scope,Obligation Scope,0,reasoning,1,"Moral obligation extends to people who will be affected by our choices, even if they don't exist yet.",1
+scope_6,scope,Obligation Scope,0,reasoning,2,Good stewardship means thinking beyond the current generation.,0.5
+mac_7,moral_agent,Moral Agent,0,judgment,0,She is who she is because of her community. Leaving to become something else elsewhere diminishes that.,-1
+mac_7,moral_agent,Moral Agent,0,judgment,1,"She should pursue the training that lets her grow, even if the community does not understand.",1
+mac_7,moral_agent,Moral Agent,0,judgment,2,She can honor what her community gave her and still seek to become more.,0.3
+mac_7,moral_agent,Moral Agent,0,reasoning,0,Leaving says the community's knowledge is not enough. That judgment wounds the people who taught her.,-1
+mac_7,moral_agent,Moral Agent,0,reasoning,1,"Growth sometimes requires leaving, and a community that cannot accept that is holding her back.",1
+mac_7,moral_agent,Moral Agent,0,reasoning,2,True belonging allows a person to grow without it being seen as rejection.,0
+mac_8,moral_agent,Moral Agent,0,judgment,0,His first obligation is to his parents and the continuity of the family line.,-1
+mac_8,moral_agent,Moral Agent,0,judgment,1,His obligation to his wife and children's future is just as real and more immediate.,0.5
+mac_8,moral_agent,Moral Agent,0,judgment,2,He must find his own answer. No tradition can tell a person which family to fail.,1
+mac_8,moral_agent,Moral Agent,0,reasoning,0,Five generations of tradition carry moral weight that one person's preferences cannot override.,-1
+mac_8,moral_agent,Moral Agent,0,reasoning,1,A father's duty to his children's wellbeing is no less binding than a son's duty to his parents.,0
+mac_8,moral_agent,Moral Agent,0,reasoning,2,Each person must weigh these obligations for themselves — no formula resolves them.,1
+mac_9,moral_agent,Moral Agent,0,judgment,0,"His father is right. Duty comes from your place in the world, not from personal preference.",-1
+mac_9,moral_agent,Moral Agent,0,judgment,1,Following one's own nature is itself a duty. A life lived against one's nature serves no one well.,1
+mac_9,moral_agent,Moral Agent,0,judgment,2,Both claims are real. The question is which duty weighs more in his particular circumstances.,0
+mac_9,moral_agent,Moral Agent,0,reasoning,0,"Duty is given by one's position and relationships, not chosen by desire.",-1
+mac_9,moral_agent,Moral Agent,0,reasoning,1,A person who ignores their own nature will fulfill their assigned role poorly.,1
+mac_9,moral_agent,Moral Agent,0,reasoning,2,The people who depend on the business have a claim that personal calling does not erase.,-0.5
+mac_10,moral_agent,Moral Agent,0,judgment,0,Faith is ultimately between the individual and God. She has studied and reached her own understanding.,1
+mac_10,moral_agent,Moral Agent,0,judgment,1,The community's shared understanding carries wisdom that individual study may miss.,-1
+mac_10,moral_agent,Moral Agent,0,judgment,2,"Both individual study and communal tradition have authority. She should seek dialogue, not simply diverge.",0
+mac_10,moral_agent,Moral Agent,0,reasoning,0,Each person is accountable for their own faith. No community can stand between a person and their understanding of truth.,1
+mac_10,moral_agent,Moral Agent,0,reasoning,1,Generations of communal scholarship protect against the errors of individual reasoning.,-1
+mac_10,moral_agent,Moral Agent,0,reasoning,2,"Scholarly disagreement is normal. What matters is that she engaged seriously, not that she reached a different conclusion.",0.3
+mac_11,moral_agent,Moral Agent,0,judgment,0,The community is obligated to care for him. He is part of who they are.,-1
+mac_11,moral_agent,Moral Agent,0,judgment,1,Resources should go where they do the most good for the community now.,1
+mac_11,moral_agent,Moral Agent,0,judgment,2,Care for elders and practical needs both matter. The community should find a way to honor both.,0
+mac_11,moral_agent,Moral Agent,0,reasoning,0,A community that abandons the people who built it destroys the very thing that makes it a community.,-1
+mac_11,moral_agent,Moral Agent,0,reasoning,1,Sentiment cannot override the practical reality of limited resources.,1
+mac_11,moral_agent,Moral Agent,0,reasoning,2,How a community treats those who can no longer contribute reveals its true character.,-0.5
+mac_12,moral_agent,Moral Agent,0,judgment,0,Preserving her brother's dignity and the family's harmony matters more than her advancement.,-1
+mac_12,moral_agent,Moral Agent,0,judgment,1,Her talents are her own. Using them fully is not an insult to anyone.,1
+mac_12,moral_agent,Moral Agent,0,judgment,2,She should accept but find ways to honor her brother's position publicly.,0
+mac_12,moral_agent,Moral Agent,0,reasoning,0,Relationships are maintained through awareness of each person's position and dignity.,-1
+mac_12,moral_agent,Moral Agent,0,reasoning,1,A family that requires its members to diminish themselves is not practicing real harmony.,1
+mac_12,moral_agent,Moral Agent,0,reasoning,2,"True respect means navigating advancement without humiliation, not avoiding advancement.",0
+auth_7,authority,Authority,0,judgment,0,"He must speak, even at the cost of disrespecting his father. Protecting his father from harm is itself an act of devotion.",1
+auth_7,authority,Authority,0,judgment,1,"His father is an adult whose choices deserve respect, even when the son disagrees. To override him would be arrogant.",-1
+auth_7,authority,Authority,0,judgment,2,"He should express his concern gently and privately, then accept whatever his father decides.",-0.3
+auth_7,authority,Authority,0,reasoning,0,A child who truly honors a parent will protect them even when it means disagreeing.,0.5
+auth_7,authority,Authority,0,reasoning,1,Respect for a parent's autonomy and dignity is not conditional on agreeing with their choices.,-1
+auth_7,authority,Authority,0,reasoning,2,There is a way to express concern that preserves respect. That is the path to follow.,0
+auth_8,authority,Authority,0,judgment,0,The senior scholars' experience and the weight of tradition should prevail.,-1
+auth_8,authority,Authority,0,judgment,1,The younger scholar is right to insist on fresh reasoning for a genuinely new situation.,1
+auth_8,authority,Authority,0,judgment,2,The community should convene a broader consultation rather than letting either side simply declare the answer.,0
+auth_8,authority,Authority,0,reasoning,0,Centuries of accumulated wisdom are not overturned because one person sees things differently.,-1
+auth_8,authority,Authority,0,reasoning,1,Applying old answers to new problems without examination is not faithfulness — it is rigidity.,1
+auth_8,authority,Authority,0,reasoning,2,The process of consultation itself is more important than which scholar prevails.,0
+auth_9,authority,Authority,0,judgment,0,The teacher's authority comes from deeper knowledge. The student should trust the teacher's judgment over his own experience.,-1
+auth_9,authority,Authority,0,judgment,1,Spiritual practice must ultimately be validated by one's own experience. No teacher can overrule that.,1
+auth_9,authority,Authority,0,judgment,2,He should share his experience honestly with the teacher and see what emerges from the conversation.,0
+auth_9,authority,Authority,0,reasoning,0,A teacher who has walked the path further can see what the student cannot yet see.,-1
+auth_9,authority,Authority,0,reasoning,1,"The purpose of all teaching is to develop the student's own discernment, not permanent dependence.",1
+auth_9,authority,Authority,0,reasoning,2,The relationship between teacher and student is itself the practice — how they navigate disagreement matters.,0
+auth_10,authority,Authority,0,judgment,0,"The council's process must be respected. Consensus is consensus, even when some disagree.",-1
+auth_10,authority,Authority,0,judgment,1,A consensus that excludes affected voices is not real consensus. The women are right to challenge it.,1
+auth_10,authority,Authority,0,judgment,2,"The process failed here. The right response is to fix the process, not to override the council.",0
+auth_10,authority,Authority,0,reasoning,0,"Communal decision-making depends on respecting the process, even when the outcome is imperfect.",-1
+auth_10,authority,Authority,0,reasoning,1,A process that systematically excludes some voices has no moral authority.,1
+auth_10,authority,Authority,0,reasoning,2,The strength of communal deliberation is that it can correct itself. This is that moment.,0
+auth_11,authority,Authority,0,judgment,0,A religious leader's public guidance should be taken seriously. She should reconsider her practices.,-1
+auth_11,authority,Authority,0,judgment,1,She has done her own study and her conscience is clear. She should continue as she believes is right.,1
+auth_11,authority,Authority,0,judgment,2,She should engage the leader in private dialogue rather than either submitting or publicly defying him.,0
+auth_11,authority,Authority,0,reasoning,0,"Religious leaders carry a responsibility to guide the community, and that role deserves deference.",-1
+auth_11,authority,Authority,0,reasoning,1,Each person is ultimately responsible for their own moral choices before God.,1
+auth_11,authority,Authority,0,reasoning,2,Public disagreement between respected community members harms everyone. Resolution should happen privately.,-0.3
+auth_12,authority,Authority,0,judgment,0,The ritual connects the family to something larger than the present moment. Changing it for contemporary values risks losing something irreplaceable.,-1
+auth_12,authority,Authority,0,judgment,1,"A practice that reinforces hierarchy should be changed, regardless of how long it has been observed.",1
+auth_12,authority,Authority,0,judgment,2,The family should discuss it together. Neither unquestioning continuation nor unilateral change is right.,0
+auth_12,authority,Authority,0,reasoning,0,Inherited practices carry wisdom and meaning that may not be visible to those who want to change them.,-1
+auth_12,authority,Authority,0,reasoning,1,Every generation has the right and duty to examine what it inherits and keep only what is just.,1
+auth_12,authority,Authority,0,reasoning,2,The meaning of a ritual can evolve without the ritual being abandoned.,0
+domain_7,domain_boundary,Moral Domain,0,judgment,0,The dietary restrictions carry real moral and spiritual weight. He should observe them out of respect for the ceremony and his family.,-1
+domain_7,domain_boundary,Moral Domain,0,judgment,1,"If the food caused no harm, the restrictions are social customs, not moral obligations.",1
+domain_7,domain_boundary,Moral Domain,0,judgment,2,"He should observe them for the sake of family harmony, even if he personally disagrees about their importance.",-0.3
+domain_7,domain_boundary,Moral Domain,0,reasoning,0,"Purity is a moral category, not just a physical one. Some boundaries matter even when no visible harm is done.",-1
+domain_7,domain_boundary,Moral Domain,0,reasoning,1,"Morality is about harm and fairness. Dietary rules that cause no harm belong to personal preference, not ethics.",1
+domain_7,domain_boundary,Moral Domain,0,reasoning,2,"The family's shared practice deserves respect as a practice, regardless of whether the individual finds it meaningful.",0
+domain_8,domain_boundary,Moral Domain,0,judgment,0,"The family has the right to maintain the moral character of their space, including the break room.",-1
+domain_8,domain_boundary,Moral Domain,0,judgment,1,"What an employee eats on a break is a personal matter, not a moral one the employer can govern.",1
+domain_8,domain_boundary,Moral Domain,0,judgment,2,Both have legitimate concerns. A practical compromise is better than a moral standoff.,0
+domain_8,domain_boundary,Moral Domain,0,reasoning,0,A space created according to moral principles is diminished when those principles are violated within it.,-1
+domain_8,domain_boundary,Moral Domain,0,reasoning,1,Imposing dietary rules on someone who does not share the underlying beliefs crosses a line.,1
+domain_8,domain_boundary,Moral Domain,0,reasoning,2,Employment creates mutual obligations. Both sides should have discussed expectations from the start.,0
+domain_9,domain_boundary,Moral Domain,0,judgment,0,He is violating a moral obligation. Wealth creates duties to the community that produced the conditions for his success.,-1
+domain_9,domain_boundary,Moral Domain,0,judgment,1,He earned his wealth honestly. How he spends it is his own affair.,1
+domain_9,domain_boundary,Moral Domain,0,judgment,2,His behavior is selfish but not immoral. The community can disapprove without claiming he owes them.,0.3
+domain_9,domain_boundary,Moral Domain,0,reasoning,0,"In a community, individual success that is not shared corrodes the bonds that make everyone's life possible.",-1
+domain_9,domain_boundary,Moral Domain,0,reasoning,1,A person's property and choices about it are not subject to communal moral claims.,1
+domain_9,domain_boundary,Moral Domain,0,reasoning,2,"The resentment is real but the solution is dialogue, not declaring his choices immoral.",0
+domain_10,domain_boundary,Moral Domain,0,judgment,0,The rituals honor the relationship and the family's continuity. His personal feelings are not the point.,-1
+domain_10,domain_boundary,Moral Domain,0,judgment,1,Performing rituals without genuine feeling is empty and possibly dishonest.,1
+domain_10,domain_boundary,Moral Domain,0,judgment,2,He should participate in a way that honors his family without pretending to grief he does not feel.,0
+domain_10,domain_boundary,Moral Domain,0,reasoning,0,Ritual maintains moral order. Its value does not depend on the performer's personal emotions.,-1
+domain_10,domain_boundary,Moral Domain,0,reasoning,1,Actions without authentic feeling behind them teach a person to perform virtue rather than practice it.,1
+domain_10,domain_boundary,Moral Domain,0,reasoning,2,The question is not whether to observe the ritual but how to do so honestly.,0
+domain_11,domain_boundary,Moral Domain,0,judgment,0,Modesty has standards that are not up to individual reinterpretation. The grandmother's understanding reflects the tradition more faithfully.,-1
+domain_11,domain_boundary,Moral Domain,0,judgment,1,"Modesty is a principle, not a dress code. Each generation can express it authentically in its own way.",1
+domain_11,domain_boundary,Moral Domain,0,judgment,2,"Both are sincere in their faith. The disagreement is about cultural expression, not moral substance.",0.3
+domain_11,domain_boundary,Moral Domain,0,reasoning,0,"Moral principles require specific practices. Without concrete standards, the principle dissolves into whatever anyone wants it to mean.",-1
+domain_11,domain_boundary,Moral Domain,0,reasoning,1,Clinging to one generation's expression of a principle confuses the form with the substance.,1
+domain_11,domain_boundary,Moral Domain,0,reasoning,2,"What matters is the sincerity of practice, not its external form.",0.5
+domain_12,domain_boundary,Moral Domain,0,judgment,0,The obligation to continue the family line is real and not theirs to set aside unilaterally.,-1
+domain_12,domain_boundary,Moral Domain,0,judgment,1,Having children is a personal decision. Framing it as a moral duty to the dead is an imposition on the living.,1
+domain_12,domain_boundary,Moral Domain,0,judgment,2,The obligation is meaningful but can be honored in ways other than biological continuation.,0
+domain_12,domain_boundary,Moral Domain,0,reasoning,0,We owe something to those who came before us. That debt is not canceled by modern ideas about personal choice.,-1
+domain_12,domain_boundary,Moral Domain,0,reasoning,1,Obligations to the dead cannot override the living's right to make their own life choices.,1
+domain_12,domain_boundary,Moral Domain,0,reasoning,2,The principle of honoring ancestors is valid; the specific form it takes can change with circumstances.,0
+scope_7,scope,Obligation Scope,0,judgment,0,The village's own families come first. You cannot help others by putting your own children at risk.,-1
+scope_7,scope,Obligation Scope,0,judgment,1,Turning away people in desperate need is a moral failure regardless of the cost to the village.,1
+scope_7,scope,Obligation Scope,0,judgment,2,"Share, but with limits that protect both communities. Generosity without self-preservation helps no one.",0
+scope_7,scope,Obligation Scope,0,reasoning,0,Those closest to you have the first claim on your care and resources.,-1
+scope_7,scope,Obligation Scope,0,reasoning,1,A community that lets people die at its gates has lost the right to call itself a community.,1
+scope_7,scope,Obligation Scope,0,reasoning,2,The answer depends on how severe the risk is. At some point generosity becomes recklessness.,0
+scope_8,scope,Obligation Scope,0,judgment,0,His deeper knowledge of and obligation to his home community makes his decision understandable and defensible.,-1
+scope_8,scope,Obligation Scope,0,judgment,1,A public official who favors his own people over others is failing his duty to serve impartially.,1
+scope_8,scope,Obligation Scope,0,judgment,2,His feelings are natural but his role requires him to set them aside. Public office demands impartiality.,0.5
+scope_8,scope,Obligation Scope,0,reasoning,0,"We inevitably know and care more about those closest to us, and that deeper connection produces better care.",-1
+scope_8,scope,Obligation Scope,0,reasoning,1,"Justice requires treating equal needs equally, regardless of personal connection.",1
+scope_8,scope,Obligation Scope,0,reasoning,2,The role changes the obligation. What is natural for a person is a failure for an official.,0.3
+scope_9,scope,Obligation Scope,0,judgment,0,His family has the first claim. You cannot reach across the world while stepping over your own people.,-1
+scope_9,scope,Obligation Scope,0,judgment,1,"The greatest need should determine where help goes, regardless of relationship.",1
+scope_9,scope,Obligation Scope,0,judgment,2,Both claims are real. He should find a balance rather than choosing one at the expense of the other.,0
+scope_9,scope,Obligation Scope,0,reasoning,0,Those God placed in your life are your first responsibility. Distant charity does not excuse local neglect.,-1
+scope_9,scope,Obligation Scope,0,reasoning,1,A person dying of hunger overseas does not suffer less because they are far away.,1
+scope_9,scope,Obligation Scope,0,reasoning,2,"The obligation is to give. How it is divided requires wisdom, not a formula.",0
+scope_10,scope,Obligation Scope,0,judgment,0,"Her husband is right. At this stage of life, family is her primary duty. Compassion for strangers cannot override it.",-1
+scope_10,scope,Obligation Scope,0,judgment,1,Her medical skill creates an obligation to help those in need that cannot be overridden by family convenience.,1
+scope_10,scope,Obligation Scope,0,judgment,2,"Both duties are real. She needs to find a sustainable balance, not choose one over the other.",0
+scope_10,scope,Obligation Scope,0,reasoning,0,Duty changes with life stage. A householder's primary obligation is to the household.,-1
+scope_10,scope,Obligation Scope,0,reasoning,1,A healer who turns away suffering to tend to comfort has lost sight of what healing means.,1
+scope_10,scope,Obligation Scope,0,reasoning,2,The question is not which duty is primary but how to honor both without destroying either.,0
+scope_11,scope,Obligation Scope,0,judgment,0,"The community raised her. She owes it to them to help raise the next generation, even at personal cost.",-1
+scope_11,scope,Obligation Scope,0,judgment,1,She has her own family to provide for. An obligation based on shared origins has limits.,1
+scope_11,scope,Obligation Scope,0,judgment,2,She should try to help but negotiate terms that protect her own family's wellbeing.,0
+scope_11,scope,Obligation Scope,0,reasoning,0,Every child in the community is everyone's responsibility. That is what community means.,-1
+scope_11,scope,Obligation Scope,0,reasoning,1,Communal obligations cannot be open-ended demands on people who have their own families to support.,1
+scope_11,scope,Obligation Scope,0,reasoning,2,The obligation is real but so are the limits. Finding a way to help without breaking is the challenge.,0
+scope_12,scope,Obligation Scope,0,judgment,0,His first duty is to his own family. Generosity that harms your children is not virtue — it is neglect.,-1
+scope_12,scope,Obligation Scope,0,judgment,1,He is right to help. A person who only cares for his own family has a small heart.,1
+scope_12,scope,Obligation Scope,0,judgment,2,His impulse is good but he has extended it past the point where it is sustainable.,0
+scope_12,scope,Obligation Scope,0,reasoning,0,Benevolence starts at home. A man who cannot provide for his own children cannot claim to be virtuous.,-1
+scope_12,scope,Obligation Scope,0,reasoning,1,The measure of a person is how they treat those outside their own circle.,1
+scope_12,scope,Obligation Scope,0,reasoning,2,Virtue without practical wisdom leads to harm. Knowing when to stop is part of being good.,0

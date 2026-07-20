@@ -1,0 +1,814 @@
+{
+  "n_human": 68,
+  "n_models": 11,
+  "models": [
+    "deepseek_v4",
+    "gpt55",
+    "grok45",
+    "inkling",
+    "kimi",
+    "llama33",
+    "minimax",
+    "mistral_large",
+    "o3",
+    "opus",
+    "sonnet"
+  ],
+  "labs": [
+    "Anthropic",
+    "DeepSeek",
+    "Meta",
+    "MiniMax",
+    "Mistral",
+    "Moonshot",
+    "OpenAI",
+    "ThinkingMachines",
+    "xAI"
+  ],
+  "compression": {
+    "moral_agent": {
+      "human_sd": 0.4124,
+      "model_sd": 0.0609,
+      "ratio": 6.78,
+      "p": 0.0,
+      "ratio_ci": [
+        4.95,
+        13.2
+      ],
+      "human_mean": 0.2925,
+      "model_mean": -0.0521,
+      "human_p50": 0.3556
+    },
+    "authority": {
+      "human_sd": 0.4012,
+      "model_sd": 0.0521,
+      "ratio": 7.69,
+      "p": 0.0,
+      "ratio_ci": [
+        5.83,
+        12.53
+      ],
+      "human_mean": 0.1748,
+      "model_mean": 0.1178,
+      "human_p50": 0.1998
+    },
+    "domain_boundary": {
+      "human_sd": 0.3271,
+      "model_sd": 0.0609,
+      "ratio": 5.37,
+      "p": 0.0,
+      "ratio_ci": [
+        3.66,
+        11.65
+      ],
+      "human_mean": 0.366,
+      "model_mean": 0.2929,
+      "human_p50": 0.4322
+    },
+    "scope": {
+      "human_sd": 0.3611,
+      "model_sd": 0.0639,
+      "ratio": 5.65,
+      "p": 0.0,
+      "ratio_ci": [
+        4.57,
+        8.41
+      ],
+      "human_mean": 0.3726,
+      "model_mean": 0.2817,
+      "human_p50": 0.4178
+    }
+  },
+  "frame_displacement": {
+    "cultural": {
+      "mean": 0.363,
+      "ci": [
+        0.307,
+        0.42
+      ]
+    },
+    "nonsense": {
+      "mean": 0.203,
+      "ci": [
+        0.165,
+        0.244
+      ]
+    },
+    "placebo": {
+      "mean": 0.246,
+      "ci": [
+        0.197,
+        0.297
+      ]
+    },
+    "nonsense_over_cultural": 0.559,
+    "cohen_d_cultural_vs_nonsense": 0.95,
+    "per_frame": {
+      "individualist": 0.335,
+      "collectivist": 0.442,
+      "hierarchical": 0.543,
+      "egalitarian": 0.132,
+      "irrelevant": 0.246,
+      "nonsense_geometry": 0.195,
+      "nonsense_color": 0.211
+    }
+  },
+  "direction": {
+    "individualist": {
+      "axis": "Moral Agent",
+      "mean_signed_shift_expected_dir": 0.462,
+      "n_models_correct_dir": 11,
+      "n": 11
+    },
+    "collectivist": {
+      "axis": "Moral Agent",
+      "mean_signed_shift_expected_dir": 0.556,
+      "n_models_correct_dir": 11,
+      "n": 11
+    },
+    "egalitarian": {
+      "axis": "Authority",
+      "mean_signed_shift_expected_dir": 0.16,
+      "n_models_correct_dir": 11,
+      "n": 11
+    },
+    "hierarchical": {
+      "axis": "Authority",
+      "mean_signed_shift_expected_dir": 0.615,
+      "n_models_correct_dir": 11,
+      "n": 11
+    }
+  },
+  "nonsense_direction": {
+    "nonsense_geometry|moral_agent": {
+      "mean_shift": -0.251,
+      "n_positive": 0,
+      "n": 11
+    },
+    "nonsense_geometry|authority": {
+      "mean_shift": -0.063,
+      "n_positive": 3,
+      "n": 11
+    },
+    "nonsense_color|moral_agent": {
+      "mean_shift": -0.24,
+      "n_positive": 0,
+      "n": 11
+    },
+    "nonsense_color|authority": {
+      "mean_shift": -0.056,
+      "n_positive": 4,
+      "n": 11
+    }
+  },
+  "clustering": {
+    "axis_fingerprint": {
+      "nearest_neighbors": {
+        "deepseek_v4": {
+          "nearest": "opus",
+          "r": 0.882,
+          "same_lab": false,
+          "lab": "DeepSeek",
+          "nn_lab": "Anthropic",
+          "top3": [
+            [
+              "opus",
+              0.882
+            ],
+            [
+              "o3",
+              0.593
+            ],
+            [
+              "llama33",
+              -0.019
+            ]
+          ]
+        },
+        "gpt55": {
+          "nearest": "mistral_large",
+          "r": 0.995,
+          "same_lab": false,
+          "lab": "OpenAI",
+          "nn_lab": "Mistral",
+          "top3": [
+            [
+              "mistral_large",
+              0.995
+            ],
+            [
+              "kimi",
+              0.717
+            ],
+            [
+              "llama33",
+              0.487
+            ]
+          ]
+        },
+        "grok45": {
+          "nearest": "minimax",
+          "r": 0.971,
+          "same_lab": false,
+          "lab": "xAI",
+          "nn_lab": "MiniMax",
+          "top3": [
+            [
+              "minimax",
+              0.971
+            ],
+            [
+              "sonnet",
+              0.964
+            ],
+            [
+              "opus",
+              0.182
+            ]
+          ]
+        },
+        "inkling": {
+          "nearest": "llama33",
+          "r": 0.889,
+          "same_lab": false,
+          "lab": "ThinkingMachines",
+          "nn_lab": "Meta",
+          "top3": [
+            [
+              "llama33",
+              0.889
+            ],
+            [
+              "o3",
+              0.57
+            ],
+            [
+              "gpt55",
+              0.224
+            ]
+          ]
+        },
+        "kimi": {
+          "nearest": "gpt55",
+          "r": 0.717,
+          "same_lab": false,
+          "lab": "Moonshot",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "gpt55",
+              0.717
+            ],
+            [
+              "mistral_large",
+              0.694
+            ],
+            [
+              "sonnet",
+              0.134
+            ]
+          ]
+        },
+        "llama33": {
+          "nearest": "inkling",
+          "r": 0.889,
+          "same_lab": false,
+          "lab": "Meta",
+          "nn_lab": "ThinkingMachines",
+          "top3": [
+            [
+              "inkling",
+              0.889
+            ],
+            [
+              "o3",
+              0.739
+            ],
+            [
+              "mistral_large",
+              0.493
+            ]
+          ]
+        },
+        "minimax": {
+          "nearest": "sonnet",
+          "r": 0.984,
+          "same_lab": false,
+          "lab": "MiniMax",
+          "nn_lab": "Anthropic",
+          "top3": [
+            [
+              "sonnet",
+              0.984
+            ],
+            [
+              "grok45",
+              0.971
+            ],
+            [
+              "opus",
+              0.408
+            ]
+          ]
+        },
+        "mistral_large": {
+          "nearest": "gpt55",
+          "r": 0.995,
+          "same_lab": false,
+          "lab": "Mistral",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "gpt55",
+              0.995
+            ],
+            [
+              "kimi",
+              0.694
+            ],
+            [
+              "llama33",
+              0.493
+            ]
+          ]
+        },
+        "o3": {
+          "nearest": "llama33",
+          "r": 0.739,
+          "same_lab": false,
+          "lab": "OpenAI",
+          "nn_lab": "Meta",
+          "top3": [
+            [
+              "llama33",
+              0.739
+            ],
+            [
+              "deepseek_v4",
+              0.593
+            ],
+            [
+              "inkling",
+              0.57
+            ]
+          ]
+        },
+        "opus": {
+          "nearest": "deepseek_v4",
+          "r": 0.882,
+          "same_lab": false,
+          "lab": "Anthropic",
+          "nn_lab": "DeepSeek",
+          "top3": [
+            [
+              "deepseek_v4",
+              0.882
+            ],
+            [
+              "minimax",
+              0.408
+            ],
+            [
+              "sonnet",
+              0.341
+            ]
+          ]
+        },
+        "sonnet": {
+          "nearest": "minimax",
+          "r": 0.984,
+          "same_lab": false,
+          "lab": "Anthropic",
+          "nn_lab": "MiniMax",
+          "top3": [
+            [
+              "minimax",
+              0.984
+            ],
+            [
+              "grok45",
+              0.964
+            ],
+            [
+              "opus",
+              0.341
+            ]
+          ]
+        }
+      },
+      "same_lab_nn_count": 0
+    },
+    "scenario_fingerprint": {
+      "n_scenarios": 48,
+      "nearest_neighbors": {
+        "deepseek_v4": {
+          "nearest": "o3",
+          "r": 0.223,
+          "same_lab": false,
+          "lab": "DeepSeek",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "o3",
+              0.223
+            ],
+            [
+              "mistral_large",
+              0.123
+            ],
+            [
+              "inkling",
+              0.081
+            ]
+          ]
+        },
+        "gpt55": {
+          "nearest": "inkling",
+          "r": 0.144,
+          "same_lab": false,
+          "lab": "OpenAI",
+          "nn_lab": "ThinkingMachines",
+          "top3": [
+            [
+              "inkling",
+              0.144
+            ],
+            [
+              "opus",
+              0.115
+            ],
+            [
+              "kimi",
+              0.112
+            ]
+          ]
+        },
+        "grok45": {
+          "nearest": "sonnet",
+          "r": 0.394,
+          "same_lab": false,
+          "lab": "xAI",
+          "nn_lab": "Anthropic",
+          "top3": [
+            [
+              "sonnet",
+              0.394
+            ],
+            [
+              "minimax",
+              0.152
+            ],
+            [
+              "opus",
+              -0.031
+            ]
+          ]
+        },
+        "inkling": {
+          "nearest": "gpt55",
+          "r": 0.144,
+          "same_lab": false,
+          "lab": "ThinkingMachines",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "gpt55",
+              0.144
+            ],
+            [
+              "deepseek_v4",
+              0.081
+            ],
+            [
+              "kimi",
+              -0.036
+            ]
+          ]
+        },
+        "kimi": {
+          "nearest": "gpt55",
+          "r": 0.112,
+          "same_lab": false,
+          "lab": "Moonshot",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "gpt55",
+              0.112
+            ],
+            [
+              "sonnet",
+              0.069
+            ],
+            [
+              "minimax",
+              0.034
+            ]
+          ]
+        },
+        "llama33": {
+          "nearest": "o3",
+          "r": 0.415,
+          "same_lab": false,
+          "lab": "Meta",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "o3",
+              0.415
+            ],
+            [
+              "mistral_large",
+              0.225
+            ],
+            [
+              "inkling",
+              -0.038
+            ]
+          ]
+        },
+        "minimax": {
+          "nearest": "sonnet",
+          "r": 0.5,
+          "same_lab": false,
+          "lab": "MiniMax",
+          "nn_lab": "Anthropic",
+          "top3": [
+            [
+              "sonnet",
+              0.5
+            ],
+            [
+              "grok45",
+              0.152
+            ],
+            [
+              "kimi",
+              0.034
+            ]
+          ]
+        },
+        "mistral_large": {
+          "nearest": "o3",
+          "r": 0.233,
+          "same_lab": false,
+          "lab": "Mistral",
+          "nn_lab": "OpenAI",
+          "top3": [
+            [
+              "o3",
+              0.233
+            ],
+            [
+              "llama33",
+              0.225
+            ],
+            [
+              "deepseek_v4",
+              0.123
+            ]
+          ]
+        },
+        "o3": {
+          "nearest": "llama33",
+          "r": 0.415,
+          "same_lab": false,
+          "lab": "OpenAI",
+          "nn_lab": "Meta",
+          "top3": [
+            [
+              "llama33",
+              0.415
+            ],
+            [
+              "mistral_large",
+              0.233
+            ],
+            [
+              "deepseek_v4",
+              0.223
+            ]
+          ]
+        },
+        "opus": {
+          "nearest": "sonnet",
+          "r": 0.137,
+          "same_lab": true,
+          "lab": "Anthropic",
+          "nn_lab": "Anthropic",
+          "top3": [
+            [
+              "sonnet",
+              0.137
+            ],
+            [
+              "gpt55",
+              0.115
+            ],
+            [
+              "o3",
+              0.104
+            ]
+          ]
+        },
+        "sonnet": {
+          "nearest": "minimax",
+          "r": 0.5,
+          "same_lab": false,
+          "lab": "Anthropic",
+          "nn_lab": "MiniMax",
+          "top3": [
+            [
+              "minimax",
+              0.5
+            ],
+            [
+              "grok45",
+              0.394
+            ],
+            [
+              "opus",
+              0.137
+            ]
+          ]
+        }
+      },
+      "same_lab_nn_count": 1
+    }
+  },
+  "reliability": {
+    "moral_agent": {
+      "within_run_sd_median": 0.0262,
+      "between_model_sd": 0.0609,
+      "between_over_within": 2.33
+    },
+    "authority": {
+      "within_run_sd_median": 0.0209,
+      "between_model_sd": 0.0521,
+      "between_over_within": 2.5
+    },
+    "domain_boundary": {
+      "within_run_sd_median": 0.0253,
+      "between_model_sd": 0.0609,
+      "between_over_within": 2.41
+    },
+    "scope": {
+      "within_run_sd_median": 0.0327,
+      "between_model_sd": 0.0639,
+      "between_over_within": 1.95
+    }
+  },
+  "sensitivity": {
+    "scope": {
+      "moral_agent": {
+        "model_sd_b12": 0.0609,
+        "model_sd_all48": 0.0307
+      },
+      "authority": {
+        "model_sd_b12": 0.0521,
+        "model_sd_all48": 0.0277
+      },
+      "domain_boundary": {
+        "model_sd_b12": 0.0609,
+        "model_sd_all48": 0.0516
+      },
+      "scope": {
+        "model_sd_b12": 0.0639,
+        "model_sd_all48": 0.0229
+      }
+    },
+    "judgment_reasoning": {
+      "judgment_only": {
+        "moral_agent": 0.0701,
+        "authority": 0.0449,
+        "domain_boundary": 0.0721,
+        "scope": 0.0648
+      },
+      "reasoning_only": {
+        "moral_agent": 0.0594,
+        "authority": 0.0687,
+        "domain_boundary": 0.0503,
+        "scope": 0.0746
+      },
+      "combined": {
+        "moral_agent": 0.0609,
+        "authority": 0.0521,
+        "domain_boundary": 0.0609,
+        "scope": 0.0639
+      }
+    },
+    "including_excluded": {
+      "models_included": [
+        "deepseek_v4",
+        "gpt55",
+        "grok45",
+        "inkling",
+        "kimi",
+        "llama33",
+        "minimax",
+        "mistral_large",
+        "o3",
+        "opus",
+        "sonnet",
+        "command_a",
+        "gemini3pro"
+      ],
+      "n": 13,
+      "model_sd": {
+        "moral_agent": 0.0762,
+        "authority": 0.0614,
+        "domain_boundary": 0.061,
+        "scope": 0.0771
+      }
+    }
+  },
+  "reasoning_tokens": {
+    "per_model": {
+      "deepseek_v4": 1065.8,
+      "gpt55": 130.8,
+      "grok45": 494.3,
+      "inkling": 1117.0,
+      "kimi": 3627.6,
+      "llama33": 0,
+      "minimax": 1189.3,
+      "mistral_large": 0,
+      "o3": 247.2,
+      "opus": 0,
+      "sonnet": 0
+    },
+    "min": 0,
+    "max": 3627.6,
+    "min_nonzero": 130.8,
+    "n": 11,
+    "distance_from_center": {
+      "deepseek_v4": 0.058,
+      "gpt55": 0.06,
+      "grok45": 0.093,
+      "inkling": 0.085,
+      "kimi": 0.031,
+      "llama33": 0.061,
+      "minimax": 0.058,
+      "mistral_large": 0.109,
+      "o3": 0.055,
+      "opus": 0.042,
+      "sonnet": 0.079
+    },
+    "r_tokens_distance": -0.476,
+    "r_tokens_axis": {
+      "moral_agent": -0.08,
+      "authority": -0.13,
+      "domain_boundary": 0.039,
+      "scope": 0.117
+    }
+  },
+  "between_model_dispersion": {
+    "neutral": {
+      "b12": 0.0595,
+      "all48": 0.0332,
+      "b12_x": 1.0,
+      "all48_x": 1.0
+    },
+    "individualist": {
+      "b12": 0.1251,
+      "all48": 0.1294,
+      "b12_x": 2.1,
+      "all48_x": 3.9
+    },
+    "collectivist": {
+      "b12": 0.1483,
+      "all48": 0.1324,
+      "b12_x": 2.5,
+      "all48_x": 4.0
+    },
+    "hierarchical": {
+      "b12": 0.16,
+      "all48": 0.1545,
+      "b12_x": 2.7,
+      "all48_x": 4.7
+    },
+    "egalitarian": {
+      "b12": 0.1302,
+      "all48": 0.0744,
+      "b12_x": 2.2,
+      "all48_x": 2.2
+    },
+    "irrelevant": {
+      "b12": 0.1289,
+      "all48": 0.093,
+      "b12_x": 2.2,
+      "all48_x": 2.8
+    },
+    "nonsense_geometry": {
+      "b12": 0.1448,
+      "all48": 0.0971,
+      "b12_x": 2.4,
+      "all48_x": 2.9
+    },
+    "nonsense_color": {
+      "b12": 0.1425,
+      "all48": 0.1086,
+      "b12_x": 2.4,
+      "all48_x": 3.3
+    }
+  }
+}

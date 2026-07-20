@@ -1,0 +1,320 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "9b69272e-48a3-4589-bef4-1e240fcd240e",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-10T17:33:16.138Z",
+  "end_time": "2026-04-10T17:42:16.451Z",
+  "scenario_order": [
+    "scope_2",
+    "mac_3",
+    "domain_1",
+    "auth_3"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_3"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_3"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_1"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_2"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.2826086956521739,
+      "rScore": -0.36181818181818176,
+      "combined": -0.3142924901185771
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.15483870967741936,
+      "rScore": -0.26644736842105265,
+      "combined": -0.19948217317487268
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.43145161290322576,
+      "rScore": -0.5301204819277109,
+      "combined": -0.47091916051301985
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.2209302325581395,
+      "rScore": -0.12962962962962965,
+      "combined": -0.18440999138673558
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "scope_2",
+      "dimension": "scope",
+      "presentation_order": 1,
+      "timestamp": "2026-04-10T17:34:39.485Z",
+      "scenario_start": "2026-04-10T17:33:22.503Z",
+      "scenario_end": "2026-04-10T17:34:39.485Z",
+      "judgment": {
+        "raw": [
+          19,
+          57,
+          96,
+          0
+        ],
+        "weights": [
+          0.11046511627906977,
+          0.3313953488372093,
+          0.5581395348837209,
+          0
+        ],
+        "labels": [
+          "Loyalty to a colleague who asked for help should carry real weight",
+          "The most qualified person should get the spot, period",
+          "Both relationship and qualification matter \u2014 the manager should weigh them honestly",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          15,
+          29,
+          64,
+          0
+        ],
+        "weights": [
+          0.1388888888888889,
+          0.26851851851851855,
+          0.5925925925925926,
+          0
+        ],
+        "labels": [
+          "Professional relationships involve mutual obligations that matter",
+          "Merit is the fairest and most defensible basis for decisions",
+          "Context matters \u2014 a rigid rule can\u2019t capture every situation",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "mac_3",
+      "dimension": "moral_agent",
+      "presentation_order": 2,
+      "timestamp": "2026-04-10T17:35:15.497Z",
+      "scenario_start": "2026-04-10T17:34:39.487Z",
+      "scenario_end": "2026-04-10T17:35:15.497Z",
+      "judgment": {
+        "raw": [
+          0,
+          48,
+          44,
+          0
+        ],
+        "weights": [
+          0,
+          0.5217391304347826,
+          0.4782608695652174,
+          0
+        ],
+        "labels": [
+          "She is abandoning people who depended on her",
+          "She earned the opportunity and her team will adapt",
+          "She should have made sure her team was taken care of before leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          56,
+          54,
+          0
+        ],
+        "weights": [
+          0,
+          0.509090909090909,
+          0.4909090909090909,
+          0
+        ],
+        "labels": [
+          "When you build something with people, you owe them loyalty",
+          "Professional growth is a legitimate priority \u2014 teams are not permanent",
+          "A good leader ensures continuity before moving on",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 6
+    },
+    {
+      "scenario_id": "domain_1",
+      "dimension": "domain_boundary",
+      "presentation_order": 3,
+      "timestamp": "2026-04-10T17:41:32.807Z",
+      "scenario_start": "2026-04-10T17:35:15.499Z",
+      "scenario_end": "2026-04-10T17:41:32.807Z",
+      "judgment": {
+        "raw": [
+          19,
+          40,
+          65,
+          0
+        ],
+        "weights": [
+          0.1532258064516129,
+          0.3225806451612903,
+          0.5241935483870968,
+          0
+        ],
+        "labels": [
+          "The neighbors are right to hold him accountable to community standards",
+          "What he does privately is outside the scope of anyone else\u2019s moral concern",
+          "This is a matter of social preference, not morality \u2014 the neighbors may dislike it, but that doesn\u2019t make it wrong",
+          "Other"
+        ],
+        "other_text": "It depends on how visible and how distasteful"
+      },
+      "reasoning": {
+        "raw": [
+          10,
+          35,
+          38,
+          62
+        ],
+        "weights": [
+          0.06896551724137931,
+          0.2413793103448276,
+          0.2620689655172414,
+          0.42758620689655175
+        ],
+        "labels": [
+          "A community has the right to uphold shared standards of behavior",
+          "Private behavior that doesn\u2019t affect others is outside the moral domain",
+          "Discomfort is not the same as a moral violation \u2014 people can disapprove without being wronged",
+          "Other"
+        ],
+        "other_text": "One doesn\u2019t have the right to discomfort others with their personal hobbies"
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "auth_3",
+      "dimension": "authority",
+      "presentation_order": 4,
+      "timestamp": "2026-04-10T17:42:16.449Z",
+      "scenario_start": "2026-04-10T17:41:32.809Z",
+      "scenario_end": "2026-04-10T17:42:16.449Z",
+      "judgment": {
+        "raw": [
+          47,
+          23,
+          85,
+          0
+        ],
+        "weights": [
+          0.3032258064516129,
+          0.14838709677419354,
+          0.5483870967741935,
+          0
+        ],
+        "labels": [
+          "The younger members should speak up if the decision is unjust",
+          "Respecting the elder\u2019s authority preserves something valuable in the community",
+          "Both the elder\u2019s wisdom and the younger members\u2019 concerns deserve consideration",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          52,
+          41,
+          59,
+          0
+        ],
+        "weights": [
+          0.34210526315789475,
+          0.26973684210526316,
+          0.3881578947368421,
+          0
+        ],
+        "labels": [
+          "No one\u2019s authority should be beyond challenge",
+          "Traditional authority carries earned wisdom that outsiders may not see",
+          "Fairness matters more than tradition",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    }
+  ],
+  "_meta": {
+    "language": "en-GB",
+    "languages": [
+      "en-GB"
+    ],
+    "timezone": "Europe/London",
+    "screen_width": 402,
+    "screen_height": 874,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "",
+    "slider_adjustments": 820,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "163b7484-9147-446d-bff8-24a650e41336",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-06T20:53:30.252Z",
+  "end_time": "2026-04-06T20:58:43.005Z",
+  "scenario_order": [
+    "auth_1",
+    "mac_1",
+    "scope_2",
+    "domain_2"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_1"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_2"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_2"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.5385245901639344,
+      "rScore": 0.5,
+      "combined": -0.12311475409836059
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.5133928571428571,
+      "rScore": -0.5151515151515151,
+      "combined": -0.5140963203463202
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.5644444444444444,
+      "rScore": -0.02649006622516553,
+      "combined": -0.3492626931567328
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.43410852713178294,
+      "rScore": -0.6363636363636364,
+      "combined": -0.5150105708245243
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "auth_1",
+      "dimension": "authority",
+      "presentation_order": 1,
+      "timestamp": "2026-04-06T20:55:22.325Z",
+      "scenario_start": "2026-04-06T20:53:32.177Z",
+      "scenario_end": "2026-04-06T20:55:22.325Z",
+      "judgment": {
+        "raw": [
+          21,
+          6,
+          85,
+          0
+        ],
+        "weights": [
+          0.1875,
+          0.05357142857142857,
+          0.7589285714285714,
+          0
+        ],
+        "labels": [
+          "Her professional judgment should override the policy",
+          "Institutional rules must be followed even when individuals disagree",
+          "The outcome for students matters more than whether she followed the rule",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          67,
+          21,
+          44,
+          0,
+          0
+        ],
+        "weights": [
+          0.5075757575757576,
+          0.1590909090909091,
+          0.3333333333333333,
+          0,
+          0
+        ],
+        "labels": [
+          "Professionals have a duty to use their own judgment when they see harm",
+          "Rules exist to protect everyone equally, even when imperfect",
+          "The well-being of those affected should determine what\u2019s right",
+          "Authority deserves the benefit of the doubt",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 2,
+      "timestamp": "2026-04-06T20:56:18.804Z",
+      "scenario_start": "2026-04-06T20:55:22.327Z",
+      "scenario_end": "2026-04-06T20:56:18.804Z",
+      "judgment": {
+        "raw": [
+          19,
+          61,
+          42,
+          0
+        ],
+        "weights": [
+          0.1557377049180328,
+          0.5,
+          0.3442622950819672,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          46,
+          46,
+          44,
+          0
+        ],
+        "weights": [
+          0.3382352941176471,
+          0.3382352941176471,
+          0.3235294117647059,
+          0
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "scope_2",
+      "dimension": "scope",
+      "presentation_order": 3,
+      "timestamp": "2026-04-06T20:58:01.726Z",
+      "scenario_start": "2026-04-06T20:56:18.806Z",
+      "scenario_end": "2026-04-06T20:58:01.726Z",
+      "judgment": {
+        "raw": [
+          6,
+          62,
+          61,
+          0
+        ],
+        "weights": [
+          0.046511627906976744,
+          0.4806201550387597,
+          0.4728682170542636,
+          0
+        ],
+        "labels": [
+          "Loyalty to a colleague who asked for help should carry real weight",
+          "The most qualified person should get the spot, period",
+          "Both relationship and qualification matter \u2014 the manager should weigh them honestly",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          16,
+          72,
+          0,
+          46
+        ],
+        "weights": [
+          0.11940298507462686,
+          0.5373134328358209,
+          0,
+          0.34328358208955223
+        ],
+        "labels": [
+          "Professional relationships involve mutual obligations that matter",
+          "Merit is the fairest and most defensible basis for decisions",
+          "Context matters \u2014 a rigid rule can\u2019t capture every situation",
+          "Other"
+        ],
+        "other_text": "Paper qualifications don't tell everything about a person."
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "domain_2",
+      "dimension": "domain_boundary",
+      "presentation_order": 4,
+      "timestamp": "2026-04-06T20:58:43.002Z",
+      "scenario_start": "2026-04-06T20:58:01.727Z",
+      "scenario_end": "2026-04-06T20:58:43.002Z",
+      "judgment": {
+        "raw": [
+          7,
+          64,
+          64,
+          0
+        ],
+        "weights": [
+          0.05185185185185185,
+          0.4740740740740741,
+          0.4740740740740741,
+          0
+        ],
+        "labels": [
+          "Refusing to participate in family traditions is a form of disrespect that matters morally",
+          "Participation in traditions is a personal choice, not a moral obligation",
+          "The family\u2019s feelings are understandable, but no one can be compelled to observe traditions",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          45,
+          49,
+          57,
+          0
+        ],
+        "weights": [
+          0.2980132450331126,
+          0.32450331125827814,
+          0.37748344370860926,
+          0
+        ],
+        "labels": [
+          "Shared traditions hold families together and refusing weakens the bond",
+          "Religious and cultural practice must be freely chosen to be meaningful",
+          "Respect for family can be shown in ways other than participating in specific rituals",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    }
+  ],
+  "_meta": {
+    "language": "en-US",
+    "languages": [
+      "en-US",
+      "fr",
+      "en"
+    ],
+    "timezone": "Europe/Paris",
+    "screen_width": 1512,
+    "screen_height": 982,
+    "device_pixel_ratio": 2,
+    "touch": false,
+    "platform": "macOS",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "4g",
+    "slider_adjustments": 969,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

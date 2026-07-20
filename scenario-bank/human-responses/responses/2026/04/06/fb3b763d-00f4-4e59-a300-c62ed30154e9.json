@@ -1,0 +1,327 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "fb3b763d-00f4-4e59-a300-c62ed30154e9",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-06T20:42:20.280Z",
+  "end_time": "2026-04-06T20:57:11.743Z",
+  "scenario_order": [
+    "scope_3",
+    "mac_2",
+    "domain_3",
+    "auth_2"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_2"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_3"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.6972477064220184,
+      "rScore": -0.4583333333333333,
+      "combined": -0.6016819571865444
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": 0.3055555555555556,
+      "rScore": 0.1527777777777778,
+      "combined": 0.24444444444444446
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.2260504201680672,
+      "rScore": 0.10666666666666667,
+      "combined": -0.09296358543417364
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.7623762376237624,
+      "rScore": -0.5205882352941176,
+      "combined": -0.6656610366919045
+    }
+  ],
+  "archetype": {
+    "name": "Principled Institutionalist",
+    "tagline": "Rules exist for a reason"
+  },
+  "responses": [
+    {
+      "scenario_id": "scope_3",
+      "dimension": "scope",
+      "presentation_order": 1,
+      "timestamp": "2026-04-06T20:50:25.844Z",
+      "scenario_start": "2026-04-06T20:49:18.853Z",
+      "scenario_end": "2026-04-06T20:50:25.844Z",
+      "judgment": {
+        "raw": [
+          0,
+          77,
+          24,
+          0
+        ],
+        "weights": [
+          0,
+          0.7623762376237624,
+          0.2376237623762376,
+          0
+        ],
+        "labels": [
+          "Family is family \u2014 they should help even if they\u2019ve never met",
+          "They have no real obligation to a stranger who happens to share a name",
+          "They should help if they can, but the sacrifice shouldn\u2019t be expected",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          10,
+          40,
+          18,
+          0
+        ],
+        "weights": [
+          0.14705882352941177,
+          0.5882352941176471,
+          0.2647058823529412,
+          0
+        ],
+        "labels": [
+          "Kinship creates obligations that don\u2019t require personal acquaintance",
+          "Obligation follows relationship \u2014 a stranger shares DNA, not a bond",
+          "Generosity is a virtue but not an obligation in this case",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    },
+    {
+      "scenario_id": "mac_2",
+      "dimension": "moral_agent",
+      "presentation_order": 2,
+      "timestamp": "2026-04-06T20:53:14.952Z",
+      "scenario_start": "2026-04-06T20:50:25.845Z",
+      "scenario_end": "2026-04-06T20:53:14.952Z",
+      "judgment": {
+        "raw": [
+          0,
+          33,
+          76,
+          0
+        ],
+        "weights": [
+          0,
+          0.30275229357798167,
+          0.6972477064220184,
+          0
+        ],
+        "labels": [
+          "He put personal ambition ahead of his responsibilities",
+          "He faced a genuine conflict \u2014 both paths had legitimate claims on him",
+          "He exercised his right to shape his own future",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          11,
+          56,
+          77,
+          0
+        ],
+        "weights": [
+          0.0763888888888889,
+          0.3888888888888889,
+          0.5347222222222222,
+          0
+        ],
+        "labels": [
+          "Family members have a right to count on each other",
+          "Education ultimately serves the whole family, even if it takes time",
+          "Each person must decide their own path regardless of expectations",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    },
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 3,
+      "timestamp": "2026-04-06T20:54:53.998Z",
+      "scenario_start": "2026-04-06T20:54:07.200Z",
+      "scenario_end": "2026-04-06T20:54:53.998Z",
+      "judgment": {
+        "raw": [
+          31,
+          45,
+          43,
+          0
+        ],
+        "weights": [
+          0.2605042016806723,
+          0.37815126050420167,
+          0.36134453781512604,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          8,
+          0,
+          67,
+          88
+        ],
+        "weights": [
+          0.049079754601226995,
+          0,
+          0.4110429447852761,
+          0.5398773006134969
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": "It's not about money or business. It's about being respectful to, and understanding of, the culture of your neighbours"
+      },
+      "manipCheck": 1
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 4,
+      "timestamp": "2026-04-06T20:57:11.742Z",
+      "scenario_start": "2026-04-06T20:54:54.000Z",
+      "scenario_end": "2026-04-06T20:57:11.742Z",
+      "judgment": {
+        "raw": [
+          0,
+          22,
+          50,
+          0
+        ],
+        "weights": [
+          0,
+          0.3055555555555556,
+          0.6944444444444444,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          25,
+          0,
+          83,
+          0,
+          93
+        ],
+        "weights": [
+          0.12437810945273632,
+          0,
+          0.4129353233830846,
+          0,
+          0.4626865671641791
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": "I need to know what impact the inaccuracies have before I can really answer these questions. Are they life threatening? Do they affect the bottom line? The user experience? If they impact money she should leave well alone so management feel the pain. If they are life threatening she should correct the errors no matter what."
+      },
+      "manipCheck": 5
+    }
+  ],
+  "_meta": {
+    "language": "en-GB",
+    "languages": [
+      "en-GB",
+      "en-US",
+      "en"
+    ],
+    "timezone": "Europe/London",
+    "screen_width": 1920,
+    "screen_height": 1080,
+    "device_pixel_ratio": 2,
+    "touch": false,
+    "platform": "macOS",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "4g",
+    "slider_adjustments": 482,
+    "back_navigations": 1,
+    "scenarios_revised": [
+      "auth_2"
+    ]
+  }
+}

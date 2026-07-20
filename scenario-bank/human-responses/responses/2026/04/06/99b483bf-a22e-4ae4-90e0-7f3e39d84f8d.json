@@ -1,0 +1,326 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "99b483bf-a22e-4ae4-90e0-7f3e39d84f8d",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-06T00:55:41.153Z",
+  "end_time": "2026-04-06T01:10:26.104Z",
+  "scenario_order": [
+    "auth_1",
+    "domain_3",
+    "scope_1",
+    "mac_2"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_2"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_1"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_1"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.48201438848920863,
+      "rScore": -0.3872549019607843,
+      "combined": -0.4441105938778389
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.20388349514563103,
+      "rScore": -0.04464285714285713,
+      "combined": -0.14018723994452148
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.3686868686868687,
+      "rScore": -0.07486631016042783,
+      "combined": -0.25115864527629234
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -1,
+      "rScore": -1,
+      "combined": -1
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "auth_1",
+      "dimension": "authority",
+      "presentation_order": 1,
+      "timestamp": "2026-04-06T01:01:35.419Z",
+      "scenario_start": "2026-04-06T00:56:46.117Z",
+      "scenario_end": "2026-04-06T01:01:35.419Z",
+      "judgment": {
+        "raw": [
+          17,
+          26,
+          60,
+          100
+        ],
+        "weights": [
+          0.08374384236453201,
+          0.12807881773399016,
+          0.2955665024630542,
+          0.49261083743842365
+        ],
+        "labels": [
+          "Her professional judgment should override the policy",
+          "Institutional rules must be followed even when individuals disagree",
+          "The outcome for students matters more than whether she followed the rule",
+          "Other"
+        ],
+        "other_text": "She should politely and comically point out she does not agree with in a light playful way. Taking turns reading the educations matter while she looks each student in the eyes."
+      },
+      "reasoning": {
+        "raw": [
+          48,
+          29,
+          53,
+          38,
+          0
+        ],
+        "weights": [
+          0.2857142857142857,
+          0.17261904761904762,
+          0.31547619047619047,
+          0.2261904761904762,
+          0
+        ],
+        "labels": [
+          "Professionals have a duty to use their own judgment when they see harm",
+          "Rules exist to protect everyone equally, even when imperfect",
+          "The well-being of those affected should determine what\u2019s right",
+          "Authority deserves the benefit of the doubt",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    },
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 2,
+      "timestamp": "2026-04-06T01:07:25.038Z",
+      "scenario_start": "2026-04-06T01:01:35.421Z",
+      "scenario_end": "2026-04-06T01:07:25.038Z",
+      "judgment": {
+        "raw": [
+          31,
+          77,
+          90,
+          0
+        ],
+        "weights": [
+          0.15656565656565657,
+          0.3888888888888889,
+          0.45454545454545453,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          62,
+          76,
+          49,
+          0
+        ],
+        "weights": [
+          0.3315508021390374,
+          0.40641711229946526,
+          0.2620320855614973,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 3,
+      "timestamp": "2026-04-06T01:08:53.923Z",
+      "scenario_start": "2026-04-06T01:07:25.041Z",
+      "scenario_end": "2026-04-06T01:08:53.923Z",
+      "judgment": {
+        "raw": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          100,
+          0,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "mac_2",
+      "dimension": "moral_agent",
+      "presentation_order": 4,
+      "timestamp": "2026-04-06T01:10:26.100Z",
+      "scenario_start": "2026-04-06T01:08:53.925Z",
+      "scenario_end": "2026-04-06T01:10:26.100Z",
+      "judgment": {
+        "raw": [
+          19,
+          34,
+          86,
+          0
+        ],
+        "weights": [
+          0.1366906474820144,
+          0.2446043165467626,
+          0.6187050359712231,
+          0
+        ],
+        "labels": [
+          "He put personal ambition ahead of his responsibilities",
+          "He faced a genuine conflict \u2014 both paths had legitimate claims on him",
+          "He exercised his right to shape his own future",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          20,
+          85,
+          99,
+          0
+        ],
+        "weights": [
+          0.09803921568627451,
+          0.4166666666666667,
+          0.4852941176470588,
+          0
+        ],
+        "labels": [
+          "Family members have a right to count on each other",
+          "Education ultimately serves the whole family, even if it takes time",
+          "Each person must decide their own path regardless of expectations",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    }
+  ],
+  "_meta": {
+    "language": "en-CA",
+    "languages": [
+      "en-CA"
+    ],
+    "timezone": "America/Toronto",
+    "screen_width": 414,
+    "screen_height": 896,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "",
+    "slider_adjustments": 955,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

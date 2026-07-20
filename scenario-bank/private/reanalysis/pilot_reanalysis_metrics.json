@@ -1,0 +1,136 @@
+{
+  "compression": {
+    "moral_agent": {
+      "name": "Moral Agent",
+      "n_human": 68,
+      "n_model": 5,
+      "human_mean": -0.2792062758932121,
+      "human_sd": 0.41147634107844955,
+      "human_idr": 1.0127728522435073,
+      "model_mean": 0.053259999999999995,
+      "model_sd": 0.0925911064843703,
+      "model_idr": 0.17872,
+      "model_vals": [
+        0.143,
+        0.026,
+        -0.09,
+        0.064,
+        0.123
+      ],
+      "old_coverage_idr": 0.17646602552990748,
+      "centroid_offset_in_human_sd": 0.8079839414869934,
+      "Nmatched_human_sd_median": 0.3898541001374229,
+      "Nmatched_p_sd": 0.00219,
+      "Nmatched_p_range": 0.00252,
+      "model_sd_vs_matched_ratio": 0.2375019435520419
+    },
+    "authority": {
+      "name": "Authority",
+      "n_human": 68,
+      "n_model": 5,
+      "human_mean": -0.17474957891980786,
+      "human_sd": 0.40416911515578363,
+      "human_idr": 0.9547467287002038,
+      "model_mean": -0.16466,
+      "model_sd": 0.08323796009033378,
+      "model_idr": 0.15096,
+      "model_vals": [
+        -0.168,
+        -0.154,
+        -0.077,
+        -0.125,
+        -0.3
+      ],
+      "old_coverage_idr": 0.1581152314661686,
+      "centroid_offset_in_human_sd": 0.0249637553723493,
+      "Nmatched_human_sd_median": 0.36908767939589654,
+      "Nmatched_p_sd": 0.00346,
+      "Nmatched_p_range": 0.00566,
+      "model_sd_vs_matched_ratio": 0.22552354016956982
+    },
+    "domain_boundary": {
+      "name": "Moral Domain",
+      "n_human": 68,
+      "n_model": 5,
+      "human_mean": -0.36604402562584876,
+      "human_sd": 0.3295510811545501,
+      "human_idr": 0.822316957465289,
+      "model_mean": -0.2603,
+      "model_sd": 0.09726818596026143,
+      "model_idr": 0.19794,
+      "model_vals": [
+        -0.251,
+        -0.192,
+        -0.379,
+        -0.145,
+        -0.335
+      ],
+      "old_coverage_idr": 0.2407101035714143,
+      "centroid_offset_in_human_sd": 0.32087294405281536,
+      "Nmatched_human_sd_median": 0.29534812834856283,
+      "Nmatched_p_sd": 0.01741,
+      "Nmatched_p_range": 0.01589,
+      "model_sd_vs_matched_ratio": 0.3293340184823106
+    },
+    "scope": {
+      "name": "Obligation Scope",
+      "n_human": 68,
+      "n_model": 5,
+      "human_mean": -0.37426555310815884,
+      "human_sd": 0.3610486739278964,
+      "human_idr": 0.9377012147217134,
+      "model_mean": -0.3019,
+      "model_sd": 0.10012944122484656,
+      "model_idr": 0.2005,
+      "model_vals": [
+        -0.318,
+        -0.19,
+        -0.35,
+        -0.216,
+        -0.435
+      ],
+      "old_coverage_idr": 0.21382077451984902,
+      "centroid_offset_in_human_sd": 0.2004315715132932,
+      "Nmatched_human_sd_median": 0.34644603763355436,
+      "Nmatched_p_sd": 0.00959,
+      "Nmatched_p_range": 0.00942,
+      "model_sd_vs_matched_ratio": 0.2890188668595952
+    }
+  },
+  "compliance": {
+    "gemini-flash": {
+      "nonsense": 1.6023,
+      "irrelevant": 0.2032,
+      "ratio": 7.885334645669292
+    },
+    "gpt4o": {
+      "nonsense": 0.5747,
+      "irrelevant": 0.04740000000000001,
+      "ratio": 12.12447257383966
+    },
+    "grok": {
+      "nonsense": 1.2092,
+      "irrelevant": 0.2496,
+      "ratio": 4.844551282051283
+    },
+    "llama70b": {
+      "nonsense": 0.5916,
+      "irrelevant": 0.09370000000000002,
+      "ratio": 6.313767342582709
+    },
+    "sonnet": {
+      "nonsense": 0.4683,
+      "irrelevant": 0.023099999999999996,
+      "ratio": 20.272727272727277
+    }
+  },
+  "models": [
+    "gemini-flash",
+    "gpt4o",
+    "grok",
+    "llama70b",
+    "sonnet"
+  ],
+  "n_human": 68,
+  "bootstrap": 100000
+}

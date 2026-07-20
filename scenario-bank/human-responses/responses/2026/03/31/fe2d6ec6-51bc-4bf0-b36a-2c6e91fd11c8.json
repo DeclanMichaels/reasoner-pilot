@@ -1,0 +1,325 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "fe2d6ec6-51bc-4bf0-b36a-2c6e91fd11c8",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-03-31T01:20:04.280Z",
+  "end_time": "2026-03-31T01:25:18.042Z",
+  "scenario_order": [
+    "mac_1",
+    "scope_2",
+    "auth_2",
+    "domain_2"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_2"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_2"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_2"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.14947368421052631,
+      "rScore": 0.5,
+      "combined": 0.11031578947368423
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": 0.3867403314917127,
+      "rScore": 0.30350877192982456,
+      "combined": 0.35344770766695743
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.5872222222222222,
+      "rScore": -0.18297872340425533,
+      "combined": -0.42552482269503544
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": 0.13372093023255816,
+      "rScore": 0.2443181818181818,
+      "combined": 0.1779598308668076
+    }
+  ],
+  "archetype": {
+    "name": "Relational Traditionalist",
+    "tagline": "Bonds and boundaries"
+  },
+  "responses": [
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 1,
+      "timestamp": "2026-03-31T01:22:21.680Z",
+      "scenario_start": "2026-03-31T01:20:06.333Z",
+      "scenario_end": "2026-03-31T01:22:21.680Z",
+      "judgment": {
+        "raw": [
+          76,
+          32,
+          82,
+          0
+        ],
+        "weights": [
+          0.4,
+          0.16842105263157894,
+          0.43157894736842106,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          28,
+          28,
+          30,
+          0
+        ],
+        "weights": [
+          0.32558139534883723,
+          0.32558139534883723,
+          0.3488372093023256,
+          0
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "scope_2",
+      "dimension": "scope",
+      "presentation_order": 2,
+      "timestamp": "2026-03-31T01:23:31.101Z",
+      "scenario_start": "2026-03-31T01:22:21.681Z",
+      "scenario_end": "2026-03-31T01:23:31.101Z",
+      "judgment": {
+        "raw": [
+          54,
+          31,
+          87,
+          0
+        ],
+        "weights": [
+          0.313953488372093,
+          0.18023255813953487,
+          0.5058139534883721,
+          0
+        ],
+        "labels": [
+          "Loyalty to a colleague who asked for help should carry real weight",
+          "The most qualified person should get the spot, period",
+          "Both relationship and qualification matter \u2014 the manager should weigh them honestly",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          69,
+          26,
+          81,
+          0
+        ],
+        "weights": [
+          0.39204545454545453,
+          0.14772727272727273,
+          0.4602272727272727,
+          0
+        ],
+        "labels": [
+          "Professional relationships involve mutual obligations that matter",
+          "Merit is the fairest and most defensible basis for decisions",
+          "Context matters \u2014 a rigid rule can\u2019t capture every situation",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 3,
+      "timestamp": "2026-03-31T01:24:30.100Z",
+      "scenario_start": "2026-03-31T01:23:31.102Z",
+      "scenario_end": "2026-03-31T01:24:30.100Z",
+      "judgment": {
+        "raw": [
+          13,
+          83,
+          85,
+          0
+        ],
+        "weights": [
+          0.0718232044198895,
+          0.4585635359116022,
+          0.4696132596685083,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          77,
+          55,
+          89,
+          64,
+          0
+        ],
+        "weights": [
+          0.27017543859649124,
+          0.19298245614035087,
+          0.312280701754386,
+          0.22456140350877193,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "domain_2",
+      "dimension": "domain_boundary",
+      "presentation_order": 4,
+      "timestamp": "2026-03-31T01:25:18.039Z",
+      "scenario_start": "2026-03-31T01:24:30.101Z",
+      "scenario_end": "2026-03-31T01:25:18.039Z",
+      "judgment": {
+        "raw": [
+          6,
+          85,
+          89,
+          0
+        ],
+        "weights": [
+          0.03333333333333333,
+          0.4722222222222222,
+          0.49444444444444446,
+          0
+        ],
+        "labels": [
+          "Refusing to participate in family traditions is a form of disrespect that matters morally",
+          "Participation in traditions is a personal choice, not a moral obligation",
+          "The family\u2019s feelings are understandable, but no one can be compelled to observe traditions",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          49,
+          92,
+          94,
+          0
+        ],
+        "weights": [
+          0.20851063829787234,
+          0.39148936170212767,
+          0.4,
+          0
+        ],
+        "labels": [
+          "Shared traditions hold families together and refusing weakens the bond",
+          "Religious and cultural practice must be freely chosen to be meaningful",
+          "Respect for family can be shown in ways other than participating in specific rituals",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 6
+    }
+  ],
+  "_meta": {
+    "language": "en-NZ",
+    "languages": [
+      "en-NZ",
+      "en-US",
+      "en"
+    ],
+    "timezone": "Pacific/Auckland",
+    "screen_width": 1920,
+    "screen_height": 1080,
+    "device_pixel_ratio": 1,
+    "touch": false,
+    "platform": "Windows",
+    "referrer": "",
+    "utm_source": "share",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "4g",
+    "slider_adjustments": 850,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

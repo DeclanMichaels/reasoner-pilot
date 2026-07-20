@@ -1,0 +1,323 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "65d69bae-fcae-4d19-a71b-38e0ba91cd1e",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-04T02:09:30.660Z",
+  "end_time": "2026-04-04T02:17:23.582Z",
+  "scenario_order": [
+    "domain_3",
+    "auth_3",
+    "mac_1",
+    "scope_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_3"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_1"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.7082089552238806,
+      "rScore": 0,
+      "combined": -0.4249253731343284
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.19298245614035087,
+      "rScore": -0.5486725663716814,
+      "combined": -0.33525850023288306
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.5365217391304347,
+      "rScore": 0,
+      "combined": -0.3219130434782608
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.5670731707317074,
+      "rScore": 0.01869158878504673,
+      "combined": -0.33276726692500574
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 1,
+      "timestamp": "2026-04-04T02:11:41.704Z",
+      "scenario_start": "2026-04-04T02:09:42.302Z",
+      "scenario_end": "2026-04-04T02:11:41.704Z",
+      "judgment": {
+        "raw": [
+          13,
+          63,
+          39,
+          0
+        ],
+        "weights": [
+          0.11304347826086956,
+          0.5478260869565217,
+          0.3391304347826087,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          9,
+          9,
+          85,
+          0
+        ],
+        "weights": [
+          0.08737864077669903,
+          0.08737864077669903,
+          0.8252427184466019,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 1
+    },
+    {
+      "scenario_id": "auth_3",
+      "dimension": "authority",
+      "presentation_order": 2,
+      "timestamp": "2026-04-04T02:12:44.158Z",
+      "scenario_start": "2026-04-04T02:11:41.706Z",
+      "scenario_end": "2026-04-04T02:12:44.158Z",
+      "judgment": {
+        "raw": [
+          52,
+          19,
+          100,
+          0
+        ],
+        "weights": [
+          0.30409356725146197,
+          0.1111111111111111,
+          0.5847953216374269,
+          0
+        ],
+        "labels": [
+          "The younger members should speak up if the decision is unjust",
+          "Respecting the elder\u2019s authority preserves something valuable in the community",
+          "Both the elder\u2019s wisdom and the younger members\u2019 concerns deserve consideration",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          100,
+          26,
+          100,
+          0
+        ],
+        "weights": [
+          0.4424778761061947,
+          0.11504424778761062,
+          0.4424778761061947,
+          0
+        ],
+        "labels": [
+          "No one\u2019s authority should be beyond challenge",
+          "Traditional authority carries earned wisdom that outsiders may not see",
+          "Fairness matters more than tradition",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 3
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 3,
+      "timestamp": "2026-04-04T02:13:58.429Z",
+      "scenario_start": "2026-04-04T02:12:44.160Z",
+      "scenario_end": "2026-04-04T02:13:58.429Z",
+      "judgment": {
+        "raw": [
+          17,
+          17,
+          100,
+          0
+        ],
+        "weights": [
+          0.12686567164179105,
+          0.12686567164179105,
+          0.746268656716418,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          0,
+          100
+        ],
+        "weights": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": "You would need to know her and ask her to understand her choice"
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 4,
+      "timestamp": "2026-04-04T02:17:23.578Z",
+      "scenario_start": "2026-04-04T02:13:58.431Z",
+      "scenario_end": "2026-04-04T02:17:23.579Z",
+      "judgment": {
+        "raw": [
+          14,
+          15,
+          53,
+          54
+        ],
+        "weights": [
+          0.10294117647058823,
+          0.11029411764705882,
+          0.3897058823529412,
+          0.39705882352941174
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": "I think everyone deserves equal considerations, but practically I cannot imagine turning down someone who arrived first because they were closer in case someone more needy could be found later?"
+      },
+      "reasoning": {
+        "raw": [
+          37,
+          0,
+          35,
+          35,
+          0
+        ],
+        "weights": [
+          0.34579439252336447,
+          0,
+          0.32710280373831774,
+          0.32710280373831774,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": "I realize you don\u2019t owe the most to those closest but in reality I would prioritize the people I am closest to\u2014not because I owe them, because I love them"
+      },
+      "manipCheck": 4
+    }
+  ],
+  "_meta": {
+    "language": "en-US",
+    "languages": [
+      "en-US"
+    ],
+    "timezone": "America/New_York",
+    "screen_width": 440,
+    "screen_height": 956,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "dark",
+    "connection_type": "",
+    "slider_adjustments": 809,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

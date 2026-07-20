@@ -1,0 +1,707 @@
+{
+  "instrument": "CCAS Moral OS v1.0",
+  "respondent_id": "292bcca9-d2bd-40b6-a14c-95dcece32ce0",
+  "start_time": "2026-03-29T18:56:58.066Z",
+  "end_time": "2026-03-29T19:13:57.920Z",
+  "scenario_order": [
+    "auth_3",
+    "domain_1",
+    "mac_1",
+    "scope_3",
+    "auth_1",
+    "domain_2",
+    "scope_1",
+    "mac_3",
+    "scope_2",
+    "mac_2",
+    "auth_2",
+    "domain_3"
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.6998862643416154,
+      "rScore": -0.4353230623048731,
+      "combined": -0.5940609835269185
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.18769282032640802,
+      "rScore": 0.0020976560385427834,
+      "combined": -0.11177662978042768
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.6803108808290155,
+      "rScore": -0.5735469011725293,
+      "combined": -0.637605288966421
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.6110032948644964,
+      "rScore": -0.47221293265564235,
+      "combined": -0.5554871499809548
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "auth_3",
+      "dimension": "authority",
+      "presentation_order": 1,
+      "timestamp": "2026-03-29T18:58:36.582Z",
+      "scenario_start": "2026-03-29T18:57:04.422Z",
+      "scenario_end": "2026-03-29T18:58:36.582Z",
+      "judgment": {
+        "raw": [
+          100,
+          62,
+          100,
+          0
+        ],
+        "weights": [
+          0.3816793893129771,
+          0.2366412213740458,
+          0.3816793893129771,
+          0
+        ],
+        "labels": [
+          "The younger members should speak up if the decision is unjust",
+          "Respecting the elder\u2019s authority preserves something valuable in the community",
+          "Both the elder\u2019s wisdom and the younger members\u2019 concerns deserve consideration",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          97,
+          97,
+          100,
+          0
+        ],
+        "weights": [
+          0.3299319727891156,
+          0.3299319727891156,
+          0.3401360544217687,
+          0
+        ],
+        "labels": [
+          "No one\u2019s authority should be beyond challenge",
+          "Traditional authority carries earned wisdom that outsiders may not see",
+          "Fairness matters more than tradition",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 6
+    },
+    {
+      "scenario_id": "domain_1",
+      "dimension": "domain_boundary",
+      "presentation_order": 2,
+      "timestamp": "2026-03-29T18:59:58.865Z",
+      "scenario_start": "2026-03-29T18:58:36.587Z",
+      "scenario_end": "2026-03-29T18:59:58.865Z",
+      "judgment": {
+        "raw": [
+          0,
+          93,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.48186528497409326,
+          0.5181347150259067,
+          0
+        ],
+        "labels": [
+          "The neighbors are right to hold him accountable to community standards",
+          "What he does privately is outside the scope of anyone else\u2019s moral concern",
+          "This is a matter of social preference, not morality \u2014 the neighbors may dislike it, but that doesn\u2019t make it wrong",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          12,
+          87,
+          100,
+          0
+        ],
+        "weights": [
+          0.06030150753768844,
+          0.4371859296482412,
+          0.5025125628140703,
+          0
+        ],
+        "labels": [
+          "A community has the right to uphold shared standards of behavior",
+          "Private behavior that doesn\u2019t affect others is outside the moral domain",
+          "Discomfort is not the same as a moral violation \u2014 people can disapprove without being wronged",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 3,
+      "timestamp": "2026-03-29T19:02:27.388Z",
+      "scenario_start": "2026-03-29T18:59:58.869Z",
+      "scenario_end": "2026-03-29T19:02:27.388Z",
+      "judgment": {
+        "raw": [
+          12,
+          90,
+          90,
+          0
+        ],
+        "weights": [
+          0.0625,
+          0.46875,
+          0.46875,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "weights": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": "Buddhist"
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "scope_3",
+      "dimension": "scope",
+      "presentation_order": 4,
+      "timestamp": "2026-03-29T19:03:42.909Z",
+      "scenario_start": "2026-03-29T19:02:27.391Z",
+      "scenario_end": "2026-03-29T19:03:42.909Z",
+      "judgment": {
+        "raw": [
+          11,
+          60,
+          100,
+          0
+        ],
+        "weights": [
+          0.06432748538011696,
+          0.3508771929824561,
+          0.5847953216374269,
+          0
+        ],
+        "labels": [
+          "Family is family \u2014 they should help even if they\u2019ve never met",
+          "They have no real obligation to a stranger who happens to share a name",
+          "They should help if they can, but the sacrifice shouldn\u2019t be expected",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          72,
+          80,
+          0
+        ],
+        "weights": [
+          0,
+          0.47368421052631576,
+          0.5263157894736842,
+          0
+        ],
+        "labels": [
+          "Kinship creates obligations that don\u2019t require personal acquaintance",
+          "Obligation follows relationship \u2014 a stranger shares DNA, not a bond",
+          "Generosity is a virtue but not an obligation in this case",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "auth_1",
+      "dimension": "authority",
+      "presentation_order": 5,
+      "timestamp": "2026-03-29T19:05:10.112Z",
+      "scenario_start": "2026-03-29T19:03:42.912Z",
+      "scenario_end": "2026-03-29T19:05:10.112Z",
+      "judgment": {
+        "raw": [
+          71,
+          7,
+          90,
+          0
+        ],
+        "weights": [
+          0.4226190476190476,
+          0.041666666666666664,
+          0.5357142857142857,
+          0
+        ],
+        "labels": [
+          "Her professional judgment should override the policy",
+          "Institutional rules must be followed even when individuals disagree",
+          "The outcome for students matters more than whether she followed the rule",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          100,
+          23,
+          100,
+          9,
+          0
+        ],
+        "weights": [
+          0.43103448275862066,
+          0.09913793103448276,
+          0.43103448275862066,
+          0.03879310344827586,
+          0
+        ],
+        "labels": [
+          "Professionals have a duty to use their own judgment when they see harm",
+          "Rules exist to protect everyone equally, even when imperfect",
+          "The well-being of those affected should determine what\u2019s right",
+          "Authority deserves the benefit of the doubt",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "domain_2",
+      "dimension": "domain_boundary",
+      "presentation_order": 6,
+      "timestamp": "2026-03-29T19:06:10.359Z",
+      "scenario_start": "2026-03-29T19:05:10.115Z",
+      "scenario_end": "2026-03-29T19:06:10.359Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "Refusing to participate in family traditions is a form of disrespect that matters morally",
+          "Participation in traditions is a personal choice, not a moral obligation",
+          "The family\u2019s feelings are understandable, but no one can be compelled to observe traditions",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          8,
+          100,
+          42,
+          0
+        ],
+        "weights": [
+          0.05333333333333334,
+          0.6666666666666666,
+          0.28,
+          0
+        ],
+        "labels": [
+          "Shared traditions hold families together and refusing weakens the bond",
+          "Religious and cultural practice must be freely chosen to be meaningful",
+          "Respect for family can be shown in ways other than participating in specific rituals",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 7,
+      "timestamp": "2026-03-29T19:07:35.493Z",
+      "scenario_start": "2026-03-29T19:06:10.363Z",
+      "scenario_end": "2026-03-29T19:07:35.493Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          78,
+          100,
+          27,
+          0
+        ],
+        "weights": [
+          0,
+          0.3804878048780488,
+          0.4878048780487805,
+          0.13170731707317074,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "mac_3",
+      "dimension": "moral_agent",
+      "presentation_order": 8,
+      "timestamp": "2026-03-29T19:08:52.738Z",
+      "scenario_start": "2026-03-29T19:07:35.497Z",
+      "scenario_end": "2026-03-29T19:08:52.738Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          7,
+          0
+        ],
+        "weights": [
+          0,
+          0.9345794392523364,
+          0.06542056074766354,
+          0
+        ],
+        "labels": [
+          "She is abandoning people who depended on her",
+          "She earned the opportunity and her team will adapt",
+          "She should have made sure her team was taken care of before leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          89,
+          17,
+          0
+        ],
+        "weights": [
+          0,
+          0.839622641509434,
+          0.16037735849056603,
+          0
+        ],
+        "labels": [
+          "When you build something with people, you owe them loyalty",
+          "Professional growth is a legitimate priority \u2014 teams are not permanent",
+          "A good leader ensures continuity before moving on",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "scope_2",
+      "dimension": "scope",
+      "presentation_order": 9,
+      "timestamp": "2026-03-29T19:09:59.628Z",
+      "scenario_start": "2026-03-29T19:08:52.742Z",
+      "scenario_end": "2026-03-29T19:09:59.628Z",
+      "judgment": {
+        "raw": [
+          10,
+          100,
+          3,
+          0
+        ],
+        "weights": [
+          0.08849557522123894,
+          0.8849557522123894,
+          0.02654867256637168,
+          0
+        ],
+        "labels": [
+          "Loyalty to a colleague who asked for help should carry real weight",
+          "The most qualified person should get the spot, period",
+          "Both relationship and qualification matter \u2014 the manager should weigh them honestly",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          71,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0.26199261992619927,
+          0.36900369003690037,
+          0.36900369003690037,
+          0
+        ],
+        "labels": [
+          "Professional relationships involve mutual obligations that matter",
+          "Merit is the fairest and most defensible basis for decisions",
+          "Context matters \u2014 a rigid rule can\u2019t capture every situation",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "mac_2",
+      "dimension": "moral_agent",
+      "presentation_order": 10,
+      "timestamp": "2026-03-29T19:11:11.450Z",
+      "scenario_start": "2026-03-29T19:09:59.632Z",
+      "scenario_end": "2026-03-29T19:11:11.450Z",
+      "judgment": {
+        "raw": [
+          5,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0.024390243902439025,
+          0.4878048780487805,
+          0.4878048780487805,
+          0
+        ],
+        "labels": [
+          "He put personal ambition ahead of his responsibilities",
+          "He faced a genuine conflict \u2014 both paths had legitimate claims on him",
+          "He exercised his right to shape his own future",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          78,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0.2805755395683453,
+          0.3597122302158273,
+          0.3597122302158273,
+          0
+        ],
+        "labels": [
+          "Family members have a right to count on each other",
+          "Education ultimately serves the whole family, even if it takes time",
+          "Each person must decide their own path regardless of expectations",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "auth_2",
+      "dimension": "authority",
+      "presentation_order": 11,
+      "timestamp": "2026-03-29T19:12:45.630Z",
+      "scenario_start": "2026-03-29T19:11:11.454Z",
+      "scenario_end": "2026-03-29T19:12:45.630Z",
+      "judgment": {
+        "raw": [
+          30,
+          78,
+          100,
+          0
+        ],
+        "weights": [
+          0.14423076923076922,
+          0.375,
+          0.4807692307692308,
+          0
+        ],
+        "labels": [
+          "She did the right thing by fixing what she knew was wrong",
+          "She should have followed her manager\u2019s instruction and waited",
+          "Her intent was good but going around her manager creates other problems",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          18,
+          91,
+          100,
+          64,
+          0
+        ],
+        "weights": [
+          0.06593406593406594,
+          0.3333333333333333,
+          0.3663003663003663,
+          0.23443223443223443,
+          0
+        ],
+        "labels": [
+          "Accuracy matters more than following a chain of command",
+          "Organizations depend on people respecting established processes",
+          "She should have escalated rather than acted alone",
+          "A manager\u2019s instructions should be followed unless clearly unethical",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    },
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 12,
+      "timestamp": "2026-03-29T19:13:57.913Z",
+      "scenario_start": "2026-03-29T19:12:45.635Z",
+      "scenario_end": "2026-03-29T19:13:57.913Z",
+      "judgment": {
+        "raw": [
+          0,
+          94,
+          94,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          92,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.4791666666666667,
+          0.5208333333333334,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 0
+    }
+  ],
+  "_meta": {
+    "language": "en-US",
+    "languages": [
+      "en-US",
+      "en"
+    ],
+    "timezone": "America/Denver",
+    "screen_width": 1600,
+    "screen_height": 900,
+    "device_pixel_ratio": 1.8000000715255737,
+    "touch": false,
+    "platform": "Chrome OS",
+    "referrer": "https://www.linkedin.com/",
+    "utm_source": "share",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "4g",
+    "slider_adjustments": 1124,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

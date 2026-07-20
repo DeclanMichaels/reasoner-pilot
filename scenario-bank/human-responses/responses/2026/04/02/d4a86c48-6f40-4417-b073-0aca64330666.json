@@ -1,0 +1,327 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "d4a86c48-6f40-4417-b073-0aca64330666",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-02T18:14:10.145Z",
+  "end_time": "2026-04-02T18:21:56.954Z",
+  "scenario_order": [
+    "domain_3",
+    "auth_1",
+    "scope_1",
+    "mac_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_1"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_1"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.24261363636363642,
+      "rScore": 0.40298507462686567,
+      "combined": 0.01562584803256442
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": 0.44485294117647056,
+      "rScore": 0.4974874371859297,
+      "combined": 0.46590673958025425
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.42142857142857143,
+      "rScore": -0.31612903225806455,
+      "combined": -0.37930875576036865
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.75,
+      "rScore": -0.5494505494505494,
+      "combined": -0.6697802197802197
+    }
+  ],
+  "archetype": {
+    "name": "Principled Communitarian",
+    "tagline": "Collective values, universal standards"
+  },
+  "responses": [
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 1,
+      "timestamp": "2026-04-02T18:18:14.406Z",
+      "scenario_start": "2026-04-02T18:14:23.739Z",
+      "scenario_end": "2026-04-02T18:18:14.406Z",
+      "judgment": {
+        "raw": [
+          29,
+          83,
+          56,
+          0
+        ],
+        "weights": [
+          0.17261904761904762,
+          0.49404761904761907,
+          0.3333333333333333,
+          0
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          28,
+          77,
+          50,
+          0
+        ],
+        "weights": [
+          0.18064516129032257,
+          0.4967741935483871,
+          0.3225806451612903,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    },
+    {
+      "scenario_id": "auth_1",
+      "dimension": "authority",
+      "presentation_order": 2,
+      "timestamp": "2026-04-02T18:19:48.341Z",
+      "scenario_start": "2026-04-02T18:18:14.407Z",
+      "scenario_end": "2026-04-02T18:19:48.341Z",
+      "judgment": {
+        "raw": [
+          7,
+          88,
+          41,
+          0
+        ],
+        "weights": [
+          0.051470588235294115,
+          0.6470588235294118,
+          0.3014705882352941,
+          0
+        ],
+        "labels": [
+          "Her professional judgment should override the policy",
+          "Institutional rules must be followed even when individuals disagree",
+          "The outcome for students matters more than whether she followed the rule",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          23,
+          88,
+          36,
+          52,
+          0
+        ],
+        "weights": [
+          0.11557788944723618,
+          0.44221105527638194,
+          0.18090452261306533,
+          0.2613065326633166,
+          0
+        ],
+        "labels": [
+          "Professionals have a duty to use their own judgment when they see harm",
+          "Rules exist to protect everyone equally, even when imperfect",
+          "The well-being of those affected should determine what\u2019s right",
+          "Authority deserves the benefit of the doubt",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 5
+    },
+    {
+      "scenario_id": "scope_1",
+      "dimension": "scope",
+      "presentation_order": 3,
+      "timestamp": "2026-04-02T18:20:44.578Z",
+      "scenario_start": "2026-04-02T18:19:48.342Z",
+      "scenario_end": "2026-04-02T18:20:44.578Z",
+      "judgment": {
+        "raw": [
+          0,
+          100,
+          100,
+          0
+        ],
+        "weights": [
+          0,
+          0.5,
+          0.5,
+          0
+        ],
+        "labels": [
+          "Those closest to the organization should receive help first",
+          "Those in greatest need should receive help first",
+          "Everyone affected deserves equal consideration regardless of connection",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          100,
+          100,
+          73,
+          0
+        ],
+        "weights": [
+          0,
+          0.3663003663003663,
+          0.3663003663003663,
+          0.2673992673992674,
+          0
+        ],
+        "labels": [
+          "You owe the most to those you know and have relationships with",
+          "Severity of need is the only morally relevant criterion",
+          "Fairness requires equal treatment regardless of relationship",
+          "The community\u2019s long-term survival depends on protecting the most vulnerable",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 4,
+      "timestamp": "2026-04-02T18:21:56.952Z",
+      "scenario_start": "2026-04-02T18:20:44.579Z",
+      "scenario_end": "2026-04-02T18:21:56.952Z",
+      "judgment": {
+        "raw": [
+          65,
+          11,
+          100,
+          0
+        ],
+        "weights": [
+          0.3693181818181818,
+          0.0625,
+          0.5681818181818182,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          54,
+          80,
+          0,
+          0
+        ],
+        "weights": [
+          0.40298507462686567,
+          0.5970149253731343,
+          0,
+          0
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 6
+    }
+  ],
+  "_meta": {
+    "language": "en-US",
+    "languages": [
+      "en-US",
+      "en"
+    ],
+    "timezone": "Pacific/Auckland",
+    "screen_width": 1280,
+    "screen_height": 800,
+    "device_pixel_ratio": 1.5,
+    "touch": false,
+    "platform": "Windows",
+    "referrer": "",
+    "utm_source": "share",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "4g",
+    "slider_adjustments": 917,
+    "back_navigations": 0,
+    "scenarios_revised": []
+  }
+}

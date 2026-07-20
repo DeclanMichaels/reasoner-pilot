@@ -1,0 +1,22 @@
+[
+ {
+  "name": "command_a",
+  "model_id": "command-a-plus-05-2026",
+  "status": "OK   reasoning 2/2  extract 2/2"
+ },
+ {
+  "name": "glm5",
+  "model_id": "zai-org/GLM-4.6",
+  "status": "ERR 400: {\n  \"id\": \"osdZ1cc-2kFHot-a1d2c9322e04677b\",\n  \"error\": {\n    \"message\": \"Unable to access non-serverless mode"
+ },
+ {
+  "name": "qwen",
+  "model_id": "Qwen/Qwen2.5-72B-Instruct-Turbo",
+  "status": "ERR 400: {\n  \"id\": \"osdZ1mL-2kFHot-a1d2c9349979c6de\",\n  \"error\": {\n    \"message\": \"Unable to access non-serverless mode"
+ },
+ {
+  "name": "llama33",
+  "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+  "status": "OK   reasoning 2/2  extract 2/2"
+ }
+]

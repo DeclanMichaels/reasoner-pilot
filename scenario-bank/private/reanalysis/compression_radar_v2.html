@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moral compression — v2</title>
+<style>
+ :root{--bg:#0d0d14;--surface:#1a1a28;--line:rgba(255,255,255,0.10);--text:#d8d8e0;--muted:#9a9aac;
+   --human:#7f8bd6;--median:#e8a838;--model:#e05577}
+ *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
+ .wrap{max-width:900px;margin:0 auto;padding:32px 20px 64px}
+ h1{font-size:22px;font-weight:650;margin:0 0 4px} h2{font-size:15px;color:var(--muted);margin:38px 0 2px}
+ p.note{color:var(--muted);font-size:13.5px;max-width:720px;margin:6px 0 0}
+ .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 12px 8px;margin-top:14px}
+ svg{display:block;width:100%;height:auto}
+ .legend{display:flex;flex-wrap:wrap;gap:16px;margin:8px 4px;font-size:13px}
+ .legend span{display:inline-flex;align-items:center;gap:7px}
+ .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+ .cap{font-size:12.5px;color:var(--muted);margin:2px 6px}
+</style></head><body><div class="wrap">
+ <h1>Moral compression: 68 humans spread, 5 models pile up</h1>
+ <p class="note">Same pilot data as before, but the human side is now drawn as the actual 68 respondents rather than a smooth band, so the contrast is at true weight. Each human is a dot; the five models are the rose dots. The models land in a pile where the humans splay across the whole axis.</p>
+
+ <h2>Radar — dots, not bands</h2>
+ <div class="card"><div id="radar"></div>
+  <div class="legend"><span><i class="dot" style="background:var(--human);opacity:.6"></i> Human respondents (n=68)</span>
+   <span><i class="dot" style="background:var(--model)"></i> Models (n=5)</span>
+   <span><i class="dot" style="background:var(--median);border-radius:2px;width:16px;height:4px"></i> Human median</span></div>
+  <div class="cap">Humans spray from center to rim on every spoke; the five models sit in one tight arc, pushed outward past the human median on Moral Agent (toward Autonomous).</div>
+ </div>
+
+ <h2>True-scale strips — what the radar's geometry hides</h2>
+ <div class="card"><div id="strips"></div>
+  <div class="cap">Each axis at its real linear scale, no radial distortion. Human dots (blue) cover the axis; model dots (rose) clump inside a sliver of it. Model spread is 4 to 10 times tighter than humans in SD on every axis; on a matched-sample bootstrap the models are more clustered than five random humans at p at or below .011.</div>
+ </div>
+</div>
+<script>
+const D={"models":["gemini-flash","gpt4o","grok","llama70b","sonnet"],"axes":[{"name":"Moral Agent","poleA":"Relational","poleB":"Autonomous","p50":-0.289,"hmean":-0.279,"hsd":0.408,"msd":0.083,"humans":[-0.092,0.467,0.06,0.038,-0.594,-0.466,-0.875,0.181,0.601,-0.6,-0.64,-0.151,-0.218,-0.458,0.474,-0.096,-0.889,0.11,-0.28,-0.239,-0.158,0.167,-0.194,-1.0,0.218,-0.369,0.117,0.612,0.0,-0.505,-0.355,-0.032,0.016,-0.48,-1.0,-1.0,-0.12,-0.647,0.202,-0.76,-0.368,-0.74,0.49,0.239,-0.596,0.06,-0.298,-0.619,-0.4,-0.277,-0.8,-0.746,-0.733,-0.685,-0.22,-0.425,-0.784,-0.123,-0.444,-0.602,-0.063,-0.418,-0.261,-0.357,0.022,-0.928,0.363,-0.314],"models":[0.143,0.026,-0.09,0.064,0.126]},{"name":"Authority","poleA":"Deferential","poleB":"Skeptical","p50":-0.2,"hmean":-0.175,"hsd":0.401,"msd":0.042,"humans":[0.025,-0.2,-0.167,0.121,-0.112,-0.56,-0.58,-0.122,-0.312,0.2,0.007,-0.275,-0.007,-0.39,0.057,0.101,0.877,0.353,-0.263,0.4,-0.363,-0.416,-0.329,0.69,-0.413,0.699,-0.235,-0.2,-0.5,-0.793,-0.181,-0.378,0.466,0.2,-0.455,-0.784,-0.393,-0.151,-0.252,-0.554,0.241,0.0,-0.064,0.097,-0.912,-0.908,-0.69,-0.567,-0.6,-0.582,0.7,-0.908,-0.052,-0.173,-0.469,-0.335,0.717,-0.514,-0.14,0.244,-0.182,-0.039,-0.555,0.075,-0.379,-0.343,-0.158,-0.199],"models":[-0.168,-0.154,-0.077,-0.125,-0.061]},{"name":"Moral Domain","poleA":"Broad","poleB":"Narrow","p50":-0.432,"hmean":-0.366,"hsd":0.327,"msd":0.079,"humans":[-0.397,0.2,0.6,-0.342,-0.638,-0.449,-0.77,-0.212,-0.228,-0.5,0.123,0.046,-0.745,-0.702,-0.685,-0.16,-0.567,-0.426,-0.652,0.287,-0.669,0.368,0.056,-0.782,-0.816,-0.772,-0.34,0.0,-0.5,-0.635,-0.441,-0.59,-0.379,-0.5,-0.75,-0.764,-0.564,-0.558,-0.101,-0.827,-0.295,-0.18,-0.204,0.016,0.485,-0.447,-0.656,-0.615,-0.39,-0.553,-0.59,0.233,-0.16,-0.399,-0.69,-0.322,-0.58,-0.349,-0.251,-0.093,-0.104,-0.605,-0.575,-0.176,-0.371,-0.439,-0.33,-0.471],"models":[-0.251,-0.192,-0.379,-0.145,-0.238]},{"name":"Obligation Scope","poleA":"Relational","poleB":"Universal","p50":-0.417,"hmean":-0.374,"hsd":0.358,"msd":0.062,"humans":[-0.377,0.267,0.467,-0.426,-0.555,-0.178,-0.844,-0.273,-0.649,-0.7,-0.146,-0.39,-0.3,-0.436,0.132,0.127,-0.395,0.178,-0.337,-1.0,-0.597,-0.003,0.003,-0.66,0.226,-0.65,-0.559,0.167,-0.016,-0.454,-0.557,-0.238,-0.67,-0.3,-1.0,0.189,-0.409,-0.277,-0.553,-0.605,-0.673,-0.754,-0.002,0.053,-0.3,-0.4,-0.859,0.208,-1.0,-0.617,-0.76,-0.506,-0.003,-0.543,-0.733,-0.333,-0.711,-0.515,-1.0,-0.666,-0.277,-0.786,-0.44,0.395,-0.128,-0.624,-0.489,-0.184],"models":[-0.318,-0.19,-0.35,-0.216,-0.225]}]};
+const J=k=>((Math.sin(k*127.1+ (k%7)*13.7)*43758.5)%1+1)%1-0.5;  // deterministic pseudo-jitter [-0.5,0.5]
+
+// ---------- radar with dots ----------
+(function(){
+ const A=D.axes,N=A.length,W=640,H=560,cx=W/2,cy=H/2+6,R=200;
+ const ang=i=>-Math.PI/2+i*2*Math.PI/N, rad=v=>(v+1)/2*R;
+ const P=(v,i,off=0)=>{const a=ang(i);return [cx+rad(v)*Math.cos(a)+off*Math.cos(a+Math.PI/2), cy+rad(v)*Math.sin(a)+off*Math.sin(a+Math.PI/2)];};
+ let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="radar with respondent dots">`;
+ [-1,-.5,0,.5,1].forEach(g=>{s+=`<polygon points="${A.map((_,i)=>P(g,i).join(",")).join(" ")}" fill="none" stroke="rgba(255,255,255,0.08)"/>`;});
+ A.forEach((a,i)=>{const [ex,ey]=P(1,i);s+=`<line x1="${cx}" y1="${cy}" x2="${ex}" y2="${ey}" stroke="rgba(255,255,255,0.10)"/>`;
+   const [lx,ly]=[cx+(R+34)*Math.cos(ang(i)),cy+(R+34)*Math.sin(ang(i))];
+   const anc=Math.abs(Math.cos(ang(i)))<0.3?"middle":(Math.cos(ang(i))>0?"start":"end");
+   s+=`<text x="${lx}" y="${ly}" fill="#d8d8e0" font-size="13" font-weight="600" text-anchor="${anc}" dominant-baseline="middle">${a.name}</text>`;
+   s+=`<text x="${ex}" y="${ey-5}" fill="#7a7a8c" font-size="10" text-anchor="middle">${a.poleB}</text>`;});
+ // human median polygon
+ s+=`<polygon points="${A.map((a,i)=>P(a.p50,i).join(",")).join(" ")}" fill="none" stroke="var(--median)" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+ // human dots
+ A.forEach((a,i)=>a.humans.forEach((v,k)=>{const [x,y]=P(v,i,J(k+i*97)*13);s+=`<circle cx="${x}" cy="${y}" r="2.2" fill="var(--human)" fill-opacity="0.55"/>`;}));
+ // model dots
+ A.forEach((a,i)=>a.models.forEach((v,k)=>{const [x,y]=P(v,i,J(k*31+i*5)*7);s+=`<circle cx="${x}" cy="${y}" r="3.4" fill="var(--model)" stroke="#1a1a28" stroke-width="0.7"/>`;}));
+ s+="</svg>";document.getElementById("radar").innerHTML=s;
+})();
+
+// ---------- true-scale strips ----------
+(function(){
+ const A=D.axes,W=640,rowH=86,padL=150,padR=40,top=14,H=top+A.length*rowH+10;
+ const x0=padL,x1=W-padR, X=v=>x0+(v+1)/2*(x1-x0);
+ let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="true scale strip plots">`;
+ A.forEach((a,idx)=>{const cy=top+idx*rowH+rowH/2;
+   // track + ticks
+   s+=`<line x1="${x0}" y1="${cy}" x2="${x1}" y2="${cy}" stroke="rgba(255,255,255,0.12)"/>`;
+   [-1,-0.5,0,0.5,1].forEach(t=>{s+=`<line x1="${X(t)}" y1="${cy-30}" x2="${X(t)}" y2="${cy+30}" stroke="rgba(255,255,255,0.06)"/>`;});
+   s+=`<text x="${x0-10}" y="${cy-6}" fill="#d8d8e0" font-size="12.5" font-weight="600" text-anchor="end">${a.name}</text>`;
+   s+=`<text x="${x0-10}" y="${cy+9}" fill="#7a7a8c" font-size="10" text-anchor="end">${a.poleA}</text>`;
+   s+=`<text x="${x1+4}" y="${cy+3}" fill="#7a7a8c" font-size="10">${a.poleB}</text>`;
+   // human dots (jitter vertical)
+   a.humans.forEach((v,k)=>{const jy=cy+J(k+idx*53)*44;s+=`<circle cx="${X(v)}" cy="${jy}" r="2.3" fill="var(--human)" fill-opacity="0.5"/>`;});
+   // model dots
+   a.models.forEach((v,k)=>{const jy=cy+J(k*17+idx*3)*20;s+=`<circle cx="${X(v)}" cy="${jy}" r="3.6" fill="var(--model)" stroke="#1a1a28" stroke-width="0.7"/>`;});
+   // ratio annotation
+   const ratio=(a.hsd/a.msd).toFixed(1);
+   s+=`<text x="${x1}" y="${cy-34}" fill="#e05577" font-size="10.5" text-anchor="end">${ratio}x tighter</text>`;
+ });
+ // scale caption
+ s+=`<text x="${X(-1)}" y="${H-2}" fill="#6a6a7c" font-size="9.5">-1</text><text x="${X(1)}" y="${H-2}" fill="#6a6a7c" font-size="9.5" text-anchor="end">+1</text>`;
+ s+="</svg>";document.getElementById("strips").innerHTML=s;
+})();
+</script></body></html>

@@ -1,0 +1,273 @@
+respondent_id,axis_id,axis_name,score
+h01,moral_agent,Moral Agent,0.0923
+h01,authority,Authority,-0.025
+h01,domain_boundary,Moral Domain,0.3974
+h01,scope,Obligation Scope,0.3774
+h02,moral_agent,Moral Agent,-0.4667
+h02,authority,Authority,0.2
+h02,domain_boundary,Moral Domain,-0.2
+h02,scope,Obligation Scope,-0.2667
+h03,moral_agent,Moral Agent,-0.06
+h03,authority,Authority,0.1667
+h03,domain_boundary,Moral Domain,-0.6
+h03,scope,Obligation Scope,-0.4667
+h04,moral_agent,Moral Agent,-0.0381
+h04,authority,Authority,-0.1215
+h04,domain_boundary,Moral Domain,0.3423
+h04,scope,Obligation Scope,0.4263
+h05,moral_agent,Moral Agent,0.5941
+h05,authority,Authority,0.1118
+h05,domain_boundary,Moral Domain,0.6376
+h05,scope,Obligation Scope,0.5555
+h06,moral_agent,Moral Agent,0.466
+h06,authority,Authority,0.5599
+h06,domain_boundary,Moral Domain,0.449
+h06,scope,Obligation Scope,0.1779
+h07,moral_agent,Moral Agent,0.8754
+h07,authority,Authority,0.58
+h07,domain_boundary,Moral Domain,0.7698
+h07,scope,Obligation Scope,0.8439
+h08,moral_agent,Moral Agent,-0.1805
+h08,authority,Authority,0.122
+h08,domain_boundary,Moral Domain,0.2119
+h08,scope,Obligation Scope,0.2732
+h09,moral_agent,Moral Agent,-0.6013
+h09,authority,Authority,0.3121
+h09,domain_boundary,Moral Domain,0.2279
+h09,scope,Obligation Scope,0.649
+h10,moral_agent,Moral Agent,0.6
+h10,authority,Authority,-0.2
+h10,domain_boundary,Moral Domain,0.5
+h10,scope,Obligation Scope,0.7
+h11,moral_agent,Moral Agent,0.6404
+h11,authority,Authority,-0.0065
+h11,domain_boundary,Moral Domain,-0.1231
+h11,scope,Obligation Scope,0.1461
+h12,moral_agent,Moral Agent,0.1515
+h12,authority,Authority,0.2749
+h12,domain_boundary,Moral Domain,-0.0457
+h12,scope,Obligation Scope,0.3903
+h13,moral_agent,Moral Agent,0.364
+h13,authority,Authority,0.0067
+h13,domain_boundary,Moral Domain,0.7447
+h13,scope,Obligation Scope,0.3
+h14,moral_agent,Moral Agent,0.4581
+h14,authority,Authority,0.3897
+h14,domain_boundary,Moral Domain,0.7019
+h14,scope,Obligation Scope,0.4364
+h15,moral_agent,Moral Agent,-0.4739
+h15,authority,Authority,-0.0571
+h15,domain_boundary,Moral Domain,0.6847
+h15,scope,Obligation Scope,-0.1316
+h16,moral_agent,Moral Agent,0.0965
+h16,authority,Authority,-0.1009
+h16,domain_boundary,Moral Domain,0.1596
+h16,scope,Obligation Scope,-0.1268
+h17,moral_agent,Moral Agent,0.8889
+h17,authority,Authority,-0.8771
+h17,domain_boundary,Moral Domain,0.5667
+h17,scope,Obligation Scope,0.3946
+h18,moral_agent,Moral Agent,-0.1103
+h18,authority,Authority,-0.3534
+h18,domain_boundary,Moral Domain,0.4255
+h18,scope,Obligation Scope,-0.178
+h19,moral_agent,Moral Agent,0.2799
+h19,authority,Authority,0.2633
+h19,domain_boundary,Moral Domain,0.6524
+h19,scope,Obligation Scope,0.3371
+h20,moral_agent,Moral Agent,0.2391
+h20,authority,Authority,-0.4
+h20,domain_boundary,Moral Domain,-0.2867
+h20,scope,Obligation Scope,1.0
+h21,moral_agent,Moral Agent,0.1581
+h21,authority,Authority,0.3633
+h21,domain_boundary,Moral Domain,0.6694
+h21,scope,Obligation Scope,0.5974
+h22,moral_agent,Moral Agent,-0.1667
+h22,authority,Authority,0.4155
+h22,domain_boundary,Moral Domain,-0.3682
+h22,scope,Obligation Scope,0.0026
+h23,moral_agent,Moral Agent,0.4861
+h23,authority,Authority,0.3286
+h23,domain_boundary,Moral Domain,-0.0559
+h23,scope,Obligation Scope,-0.0027
+h24,moral_agent,Moral Agent,1.0
+h24,authority,Authority,-0.6901
+h24,domain_boundary,Moral Domain,0.7819
+h24,scope,Obligation Scope,0.6601
+h25,moral_agent,Moral Agent,-0.2178
+h25,authority,Authority,0.4132
+h25,domain_boundary,Moral Domain,0.8162
+h25,scope,Obligation Scope,-0.2257
+h26,moral_agent,Moral Agent,0.3691
+h26,authority,Authority,-0.6987
+h26,domain_boundary,Moral Domain,0.7724
+h26,scope,Obligation Scope,0.65
+h27,moral_agent,Moral Agent,-0.1165
+h27,authority,Authority,0.2355
+h27,domain_boundary,Moral Domain,0.3396
+h27,scope,Obligation Scope,0.5586
+h28,moral_agent,Moral Agent,-0.6118
+h28,authority,Authority,0.2
+h28,domain_boundary,Moral Domain,0.0
+h28,scope,Obligation Scope,-0.2778
+h29,moral_agent,Moral Agent,0.0
+h29,authority,Authority,0.5
+h29,domain_boundary,Moral Domain,0.5
+h29,scope,Obligation Scope,0.0164
+h30,moral_agent,Moral Agent,0.5051
+h30,authority,Authority,0.7928
+h30,domain_boundary,Moral Domain,0.6347
+h30,scope,Obligation Scope,0.454
+h31,moral_agent,Moral Agent,0.3547
+h31,authority,Authority,0.1808
+h31,domain_boundary,Moral Domain,0.4411
+h31,scope,Obligation Scope,0.5569
+h32,moral_agent,Moral Agent,0.0318
+h32,authority,Authority,0.3784
+h32,domain_boundary,Moral Domain,0.59
+h32,scope,Obligation Scope,0.2383
+h33,moral_agent,Moral Agent,-0.0156
+h33,authority,Authority,-0.4659
+h33,domain_boundary,Moral Domain,0.3793
+h33,scope,Obligation Scope,0.6698
+h34,moral_agent,Moral Agent,0.48
+h34,authority,Authority,-0.2
+h34,domain_boundary,Moral Domain,0.5
+h34,scope,Obligation Scope,0.3
+h35,moral_agent,Moral Agent,1.0
+h35,authority,Authority,0.4547
+h35,domain_boundary,Moral Domain,0.75
+h35,scope,Obligation Scope,1.0
+h36,moral_agent,Moral Agent,1.0
+h36,authority,Authority,0.7836
+h36,domain_boundary,Moral Domain,0.7635
+h36,scope,Obligation Scope,-0.1886
+h37,moral_agent,Moral Agent,0.1195
+h37,authority,Authority,0.3933
+h37,domain_boundary,Moral Domain,0.5638
+h37,scope,Obligation Scope,0.4092
+h38,moral_agent,Moral Agent,0.6474
+h38,authority,Authority,0.1507
+h38,domain_boundary,Moral Domain,0.5584
+h38,scope,Obligation Scope,0.2767
+h39,moral_agent,Moral Agent,-0.2015
+h39,authority,Authority,0.2516
+h39,domain_boundary,Moral Domain,0.1008
+h39,scope,Obligation Scope,0.553
+h40,moral_agent,Moral Agent,0.76
+h40,authority,Authority,0.5541
+h40,domain_boundary,Moral Domain,0.8273
+h40,scope,Obligation Scope,0.6053
+h41,moral_agent,Moral Agent,0.3683
+h41,authority,Authority,-0.2406
+h41,domain_boundary,Moral Domain,0.2952
+h41,scope,Obligation Scope,0.673
+h42,moral_agent,Moral Agent,0.74
+h42,authority,Authority,0.0
+h42,domain_boundary,Moral Domain,0.18
+h42,scope,Obligation Scope,0.7537
+h43,moral_agent,Moral Agent,-0.4898
+h43,authority,Authority,0.0642
+h43,domain_boundary,Moral Domain,0.2044
+h43,scope,Obligation Scope,0.002
+h44,moral_agent,Moral Agent,-0.2394
+h44,authority,Authority,-0.0965
+h44,domain_boundary,Moral Domain,-0.0165
+h44,scope,Obligation Scope,-0.0526
+h45,moral_agent,Moral Agent,0.5957
+h45,authority,Authority,0.912
+h45,domain_boundary,Moral Domain,-0.4855
+h45,scope,Obligation Scope,0.3
+h46,moral_agent,Moral Agent,-0.06
+h46,authority,Authority,0.9085
+h46,domain_boundary,Moral Domain,0.4474
+h46,scope,Obligation Scope,0.4
+h47,moral_agent,Moral Agent,0.2976
+h47,authority,Authority,0.6896
+h47,domain_boundary,Moral Domain,0.6563
+h47,scope,Obligation Scope,0.8592
+h48,moral_agent,Moral Agent,0.619
+h48,authority,Authority,0.5667
+h48,domain_boundary,Moral Domain,0.6148
+h48,scope,Obligation Scope,-0.2077
+h49,moral_agent,Moral Agent,0.4
+h49,authority,Authority,0.6
+h49,domain_boundary,Moral Domain,0.39
+h49,scope,Obligation Scope,1.0
+h50,moral_agent,Moral Agent,0.462
+h50,authority,Authority,0.5819
+h50,domain_boundary,Moral Domain,0.5527
+h50,scope,Obligation Scope,0.617
+h51,moral_agent,Moral Agent,0.8
+h51,authority,Authority,-0.7
+h51,domain_boundary,Moral Domain,0.59
+h51,scope,Obligation Scope,0.7596
+h52,moral_agent,Moral Agent,0.7463
+h52,authority,Authority,0.9077
+h52,domain_boundary,Moral Domain,-0.2331
+h52,scope,Obligation Scope,0.5055
+h53,moral_agent,Moral Agent,0.7333
+h53,authority,Authority,0.0522
+h53,domain_boundary,Moral Domain,0.1603
+h53,scope,Obligation Scope,0.0028
+h54,moral_agent,Moral Agent,0.6851
+h54,authority,Authority,0.1731
+h54,domain_boundary,Moral Domain,0.3991
+h54,scope,Obligation Scope,0.5429
+h55,moral_agent,Moral Agent,0.2204
+h55,authority,Authority,0.4691
+h55,domain_boundary,Moral Domain,0.6904
+h55,scope,Obligation Scope,0.733
+h56,moral_agent,Moral Agent,0.7082
+h56,authority,Authority,0.3353
+h56,domain_boundary,Moral Domain,0.3219
+h56,scope,Obligation Scope,0.3328
+h57,moral_agent,Moral Agent,0.7836
+h57,authority,Authority,-0.7172
+h57,domain_boundary,Moral Domain,0.5801
+h57,scope,Obligation Scope,0.7111
+h58,moral_agent,Moral Agent,0.1231
+h58,authority,Authority,0.5141
+h58,domain_boundary,Moral Domain,0.3493
+h58,scope,Obligation Scope,0.515
+h59,moral_agent,Moral Agent,0.4441
+h59,authority,Authority,0.1402
+h59,domain_boundary,Moral Domain,0.2512
+h59,scope,Obligation Scope,1.0
+h60,moral_agent,Moral Agent,0.6017
+h60,authority,Authority,-0.2444
+h60,domain_boundary,Moral Domain,0.093
+h60,scope,Obligation Scope,0.6657
+h61,moral_agent,Moral Agent,0.063
+h61,authority,Authority,0.1823
+h61,domain_boundary,Moral Domain,0.1037
+h61,scope,Obligation Scope,0.2766
+h62,moral_agent,Moral Agent,0.4177
+h62,authority,Authority,0.0391
+h62,domain_boundary,Moral Domain,0.6052
+h62,scope,Obligation Scope,0.7863
+h63,moral_agent,Moral Agent,0.2608
+h63,authority,Authority,0.5554
+h63,domain_boundary,Moral Domain,0.5754
+h63,scope,Obligation Scope,0.4404
+h64,moral_agent,Moral Agent,0.3565
+h64,authority,Authority,-0.0755
+h64,domain_boundary,Moral Domain,0.1758
+h64,scope,Obligation Scope,-0.3949
+h65,moral_agent,Moral Agent,-0.0216
+h65,authority,Authority,0.3789
+h65,domain_boundary,Moral Domain,0.3705
+h65,scope,Obligation Scope,0.1278
+h66,moral_agent,Moral Agent,0.9277
+h66,authority,Authority,0.3431
+h66,domain_boundary,Moral Domain,0.4389
+h66,scope,Obligation Scope,0.6245
+h67,moral_agent,Moral Agent,-0.3632
+h67,authority,Authority,0.158
+h67,domain_boundary,Moral Domain,0.3296
+h67,scope,Obligation Scope,0.4892
+h68,moral_agent,Moral Agent,0.3143
+h68,authority,Authority,0.1995
+h68,domain_boundary,Moral Domain,0.4709
+h68,scope,Obligation Scope,0.1844

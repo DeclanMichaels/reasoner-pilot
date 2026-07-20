@@ -1,0 +1,325 @@
+{
+  "instrument": "CCAS Moral OS v1.1",
+  "respondent_id": "b654dff4-38fc-43c2-a81b-3b4f46ee8572",
+  "instrument_note": "4-scenario rotation (1 per dimension from pool of 3)",
+  "start_time": "2026-04-03T08:03:01.089Z",
+  "end_time": "2026-04-03T08:09:25.107Z",
+  "scenario_order": [
+    "domain_3",
+    "mac_1",
+    "scope_3",
+    "auth_1"
+  ],
+  "scenarios_available": [
+    {
+      "dimension": "moral_agent",
+      "pool": [
+        "mac_1",
+        "mac_2",
+        "mac_3"
+      ],
+      "presented": "mac_1"
+    },
+    {
+      "dimension": "authority",
+      "pool": [
+        "auth_1",
+        "auth_2",
+        "auth_3"
+      ],
+      "presented": "auth_1"
+    },
+    {
+      "dimension": "domain_boundary",
+      "pool": [
+        "domain_1",
+        "domain_2",
+        "domain_3"
+      ],
+      "presented": "domain_3"
+    },
+    {
+      "dimension": "scope",
+      "pool": [
+        "scope_1",
+        "scope_2",
+        "scope_3"
+      ],
+      "presented": "scope_3"
+    }
+  ],
+  "dimensional_scores": [
+    {
+      "dimId": "moral_agent",
+      "name": "Moral Agent",
+      "poleA": "Relational",
+      "poleB": "Autonomous",
+      "jScore": -0.46199999999999997,
+      "rScore": 0,
+      "combined": -0.27719999999999995
+    },
+    {
+      "dimId": "authority",
+      "name": "Authority",
+      "poleA": "Deferential",
+      "poleB": "Skeptical",
+      "jScore": -0.5,
+      "rScore": -0.7047619047619047,
+      "combined": -0.5819047619047619
+    },
+    {
+      "dimId": "domain_boundary",
+      "name": "Moral Domain",
+      "poleA": "Broad",
+      "poleB": "Narrow",
+      "jScore": -0.9153846153846155,
+      "rScore": -0.008771929824561403,
+      "combined": -0.5527395411605939
+    },
+    {
+      "dimId": "scope",
+      "name": "Obligation Scope",
+      "poleA": "Relational",
+      "poleB": "Universal",
+      "jScore": -0.8282828282828283,
+      "rScore": -0.3,
+      "combined": -0.616969696969697
+    }
+  ],
+  "archetype": {
+    "name": "Autonomous Universalist",
+    "tagline": "Individual rights, universal principles"
+  },
+  "responses": [
+    {
+      "scenario_id": "domain_3",
+      "dimension": "domain_boundary",
+      "presentation_order": 1,
+      "timestamp": "2026-04-03T08:06:50.929Z",
+      "scenario_start": "2026-04-03T08:05:30.606Z",
+      "scenario_end": "2026-04-03T08:06:50.929Z",
+      "judgment": {
+        "raw": [
+          0,
+          80,
+          11,
+          100
+        ],
+        "weights": [
+          0,
+          0.418848167539267,
+          0.05759162303664921,
+          0.5235602094240838
+        ],
+        "labels": [
+          "The restaurant should respect the neighborhood\u2019s established customs",
+          "A business can serve whatever it chooses \u2014 customers will decide with their wallets",
+          "The residents\u2019 concerns are worth hearing, but a business has no obligation to conform",
+          "Other"
+        ],
+        "other_text": "This feels like a forced decision between capitalism and caring about customs. Personally I think the restaurant should be able to serve whatever it wants because that ENRICHES the local area, and it\u2019s inclusive."
+      },
+      "reasoning": {
+        "raw": [
+          7,
+          8,
+          99,
+          0
+        ],
+        "weights": [
+          0.06140350877192982,
+          0.07017543859649122,
+          0.868421052631579,
+          0
+        ],
+        "labels": [
+          "Neighborhoods have a character worth preserving and newcomers should respect it",
+          "In a free society, businesses operate by market rules, not community approval",
+          "Dialogue between the restaurant and residents is more productive than moral judgment",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 1
+    },
+    {
+      "scenario_id": "mac_1",
+      "dimension": "moral_agent",
+      "presentation_order": 2,
+      "timestamp": "2026-04-03T08:06:54.286Z",
+      "scenario_start": "2026-04-03T08:06:50.931Z",
+      "scenario_end": "2026-04-03T08:06:54.286Z",
+      "judgment": {
+        "raw": [
+          7,
+          43,
+          0,
+          0
+        ],
+        "weights": [
+          0.14,
+          0.86,
+          0,
+          0
+        ],
+        "labels": [
+          "She fulfilled a moral obligation to her family",
+          "Her own goals and growth matter too \u2014 staying may not have been the right choice for her",
+          "This was a personal decision about priorities, not a moral one",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          0,
+          47
+        ],
+        "weights": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "labels": [
+          "Family obligations come before personal ambition",
+          "She would carry guilt or regret if she left",
+          "Others in her life would judge her for leaving",
+          "Other"
+        ],
+        "other_text": "The questions feel like a dichotomy whereas the situation is super nuances"
+      },
+      "manipCheck": 4
+    },
+    {
+      "scenario_id": "scope_3",
+      "dimension": "scope",
+      "presentation_order": 3,
+      "timestamp": "2026-04-03T08:08:06.457Z",
+      "scenario_start": "2026-04-03T08:06:54.288Z",
+      "scenario_end": "2026-04-03T08:08:06.457Z",
+      "judgment": {
+        "raw": [
+          0,
+          82,
+          17,
+          0
+        ],
+        "weights": [
+          0,
+          0.8282828282828283,
+          0.1717171717171717,
+          0
+        ],
+        "labels": [
+          "Family is family \u2014 they should help even if they\u2019ve never met",
+          "They have no real obligation to a stranger who happens to share a name",
+          "They should help if they can, but the sacrifice shouldn\u2019t be expected",
+          "Other"
+        ],
+        "other_text": "The could help if they felt strongly that they wanted to."
+      },
+      "reasoning": {
+        "raw": [
+          0,
+          0,
+          52,
+          0
+        ],
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "labels": [
+          "Kinship creates obligations that don\u2019t require personal acquaintance",
+          "Obligation follows relationship \u2014 a stranger shares DNA, not a bond",
+          "Generosity is a virtue but not an obligation in this case",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 4
+    },
+    {
+      "scenario_id": "auth_1",
+      "dimension": "authority",
+      "presentation_order": 4,
+      "timestamp": "2026-04-03T08:09:25.100Z",
+      "scenario_start": "2026-04-03T08:08:06.460Z",
+      "scenario_end": "2026-04-03T08:09:25.100Z",
+      "judgment": {
+        "raw": [
+          0,
+          0,
+          83,
+          100
+        ],
+        "weights": [
+          0,
+          0,
+          0.453551912568306,
+          0.546448087431694
+        ],
+        "labels": [
+          "Her professional judgment should override the policy",
+          "Institutional rules must be followed even when individuals disagree",
+          "The outcome for students matters more than whether she followed the rule",
+          "Other"
+        ],
+        "other_text": "She needs to try and understand fully why the rules is in place before making a decision"
+      },
+      "reasoning": {
+        "raw": [
+          52,
+          3,
+          50,
+          0,
+          0
+        ],
+        "weights": [
+          0.49523809523809526,
+          0.02857142857142857,
+          0.47619047619047616,
+          0,
+          0
+        ],
+        "labels": [
+          "Professionals have a duty to use their own judgment when they see harm",
+          "Rules exist to protect everyone equally, even when imperfect",
+          "The well-being of those affected should determine what\u2019s right",
+          "Authority deserves the benefit of the doubt",
+          "Other"
+        ],
+        "other_text": null
+      },
+      "manipCheck": 2
+    }
+  ],
+  "_meta": {
+    "language": "en-GB",
+    "languages": [
+      "en-GB"
+    ],
+    "timezone": "Europe/London",
+    "screen_width": 393,
+    "screen_height": 852,
+    "device_pixel_ratio": 3,
+    "touch": true,
+    "platform": "iPhone",
+    "referrer": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "color_scheme": "light",
+    "connection_type": "",
+    "slider_adjustments": 1126,
+    "back_navigations": 1,
+    "scenarios_revised": [
+      "mac_1"
+    ]
+  }
+}

@@ -1,0 +1,705 @@
+model,lab,frame,subset,axis_id,axis_name,score,run_sd
+deepseek_v4,DeepSeek,collectivist,b12,moral_agent,Moral Agent,-0.7227,0.0491
+deepseek_v4,DeepSeek,collectivist,b12,authority,Authority,-0.2987,0.1523
+deepseek_v4,DeepSeek,collectivist,b12,domain_boundary,Moral Domain,-0.8464,0.0682
+deepseek_v4,DeepSeek,collectivist,b12,scope,Obligation Scope,-0.4284,0.1083
+deepseek_v4,DeepSeek,collectivist,all48,moral_agent,Moral Agent,-0.6963,0.0262
+deepseek_v4,DeepSeek,collectivist,all48,authority,Authority,-0.2329,0.0581
+deepseek_v4,DeepSeek,collectivist,all48,domain_boundary,Moral Domain,-0.7707,0.0273
+deepseek_v4,DeepSeek,collectivist,all48,scope,Obligation Scope,-0.2786,0.0195
+deepseek_v4,DeepSeek,egalitarian,b12,moral_agent,Moral Agent,0.3217,0.1598
+deepseek_v4,DeepSeek,egalitarian,b12,authority,Authority,0.5057,0.1693
+deepseek_v4,DeepSeek,egalitarian,b12,domain_boundary,Moral Domain,0.4179,0.0529
+deepseek_v4,DeepSeek,egalitarian,b12,scope,Obligation Scope,0.7661,0.0281
+deepseek_v4,DeepSeek,egalitarian,all48,moral_agent,Moral Agent,0.2425,0.0445
+deepseek_v4,DeepSeek,egalitarian,all48,authority,Authority,0.357,0.0669
+deepseek_v4,DeepSeek,egalitarian,all48,domain_boundary,Moral Domain,0.0948,0.044
+deepseek_v4,DeepSeek,egalitarian,all48,scope,Obligation Scope,0.556,0.0255
+deepseek_v4,DeepSeek,hierarchical,b12,moral_agent,Moral Agent,-0.6124,0.0843
+deepseek_v4,DeepSeek,hierarchical,b12,authority,Authority,-0.861,0.0383
+deepseek_v4,DeepSeek,hierarchical,b12,domain_boundary,Moral Domain,-0.9049,0.0303
+deepseek_v4,DeepSeek,hierarchical,b12,scope,Obligation Scope,-0.4105,0.1725
+deepseek_v4,DeepSeek,hierarchical,all48,moral_agent,Moral Agent,-0.7343,0.0243
+deepseek_v4,DeepSeek,hierarchical,all48,authority,Authority,-0.7944,0.0242
+deepseek_v4,DeepSeek,hierarchical,all48,domain_boundary,Moral Domain,-0.6228,0.0922
+deepseek_v4,DeepSeek,hierarchical,all48,scope,Obligation Scope,-0.5225,0.0924
+deepseek_v4,DeepSeek,individualist,b12,moral_agent,Moral Agent,0.5893,0.0894
+deepseek_v4,DeepSeek,individualist,b12,authority,Authority,0.6823,0.0329
+deepseek_v4,DeepSeek,individualist,b12,domain_boundary,Moral Domain,0.7612,0.0112
+deepseek_v4,DeepSeek,individualist,b12,scope,Obligation Scope,0.2789,0.0643
+deepseek_v4,DeepSeek,individualist,all48,moral_agent,Moral Agent,0.6694,0.0316
+deepseek_v4,DeepSeek,individualist,all48,authority,Authority,0.5297,0.0193
+deepseek_v4,DeepSeek,individualist,all48,domain_boundary,Moral Domain,0.7008,0.0175
+deepseek_v4,DeepSeek,individualist,all48,scope,Obligation Scope,-0.1593,0.014
+deepseek_v4,DeepSeek,irrelevant,b12,moral_agent,Moral Agent,-0.4753,0.0661
+deepseek_v4,DeepSeek,irrelevant,b12,authority,Authority,-0.2,0.081
+deepseek_v4,DeepSeek,irrelevant,b12,domain_boundary,Moral Domain,-0.7248,0.0257
+deepseek_v4,DeepSeek,irrelevant,b12,scope,Obligation Scope,0.1371,0.0949
+deepseek_v4,DeepSeek,irrelevant,all48,moral_agent,Moral Agent,-0.4968,0.0267
+deepseek_v4,DeepSeek,irrelevant,all48,authority,Authority,-0.0776,0.0256
+deepseek_v4,DeepSeek,irrelevant,all48,domain_boundary,Moral Domain,-0.5713,0.0368
+deepseek_v4,DeepSeek,irrelevant,all48,scope,Obligation Scope,-0.0818,0.0221
+deepseek_v4,DeepSeek,neutral,b12,moral_agent,Moral Agent,-0.0449,0.0547
+deepseek_v4,DeepSeek,neutral,b12,authority,Authority,0.204,0.0382
+deepseek_v4,DeepSeek,neutral,b12,domain_boundary,Moral Domain,0.3458,0.0325
+deepseek_v4,DeepSeek,neutral,b12,scope,Obligation Scope,0.3625,0.0689
+deepseek_v4,DeepSeek,neutral,all48,moral_agent,Moral Agent,0.0337,0.0278
+deepseek_v4,DeepSeek,neutral,all48,authority,Authority,0.1258,0.0126
+deepseek_v4,DeepSeek,neutral,all48,domain_boundary,Moral Domain,0.0475,0.0259
+deepseek_v4,DeepSeek,neutral,all48,scope,Obligation Scope,0.1566,0.0362
+deepseek_v4,DeepSeek,nonsense_color,b12,moral_agent,Moral Agent,-0.4577,0.0711
+deepseek_v4,DeepSeek,nonsense_color,b12,authority,Authority,-0.2153,0.0771
+deepseek_v4,DeepSeek,nonsense_color,b12,domain_boundary,Moral Domain,-0.5673,0.1561
+deepseek_v4,DeepSeek,nonsense_color,b12,scope,Obligation Scope,0.0112,0.1301
+deepseek_v4,DeepSeek,nonsense_color,all48,moral_agent,Moral Agent,-0.3309,0.0361
+deepseek_v4,DeepSeek,nonsense_color,all48,authority,Authority,-0.1447,0.0705
+deepseek_v4,DeepSeek,nonsense_color,all48,domain_boundary,Moral Domain,-0.6814,0.0191
+deepseek_v4,DeepSeek,nonsense_color,all48,scope,Obligation Scope,-0.1496,0.0893
+deepseek_v4,DeepSeek,nonsense_geometry,b12,moral_agent,Moral Agent,-0.4668,0.0517
+deepseek_v4,DeepSeek,nonsense_geometry,b12,authority,Authority,0.0515,0.0425
+deepseek_v4,DeepSeek,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.7211,0.1183
+deepseek_v4,DeepSeek,nonsense_geometry,b12,scope,Obligation Scope,0.1822,0.0862
+deepseek_v4,DeepSeek,nonsense_geometry,all48,moral_agent,Moral Agent,-0.3548,0.0739
+deepseek_v4,DeepSeek,nonsense_geometry,all48,authority,Authority,-0.0152,0.0417
+deepseek_v4,DeepSeek,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.6644,0.0177
+deepseek_v4,DeepSeek,nonsense_geometry,all48,scope,Obligation Scope,0.084,0.0362
+gpt55,OpenAI,collectivist,b12,moral_agent,Moral Agent,-0.5533,0.0311
+gpt55,OpenAI,collectivist,b12,authority,Authority,-0.1447,0.0403
+gpt55,OpenAI,collectivist,b12,domain_boundary,Moral Domain,-0.6094,0.0269
+gpt55,OpenAI,collectivist,b12,scope,Obligation Scope,-0.2126,0.0115
+gpt55,OpenAI,collectivist,all48,moral_agent,Moral Agent,-0.446,0.0102
+gpt55,OpenAI,collectivist,all48,authority,Authority,-0.13,0.0176
+gpt55,OpenAI,collectivist,all48,domain_boundary,Moral Domain,-0.5739,0.0051
+gpt55,OpenAI,collectivist,all48,scope,Obligation Scope,-0.0872,0.0292
+gpt55,OpenAI,egalitarian,b12,moral_agent,Moral Agent,-0.1069,0.022
+gpt55,OpenAI,egalitarian,b12,authority,Authority,0.2377,0.0168
+gpt55,OpenAI,egalitarian,b12,domain_boundary,Moral Domain,0.3196,0.0073
+gpt55,OpenAI,egalitarian,b12,scope,Obligation Scope,0.5049,0.0265
+gpt55,OpenAI,egalitarian,all48,moral_agent,Moral Agent,0.0158,0.016
+gpt55,OpenAI,egalitarian,all48,authority,Authority,0.2007,0.0106
+gpt55,OpenAI,egalitarian,all48,domain_boundary,Moral Domain,0.0384,0.01
+gpt55,OpenAI,egalitarian,all48,scope,Obligation Scope,0.3351,0.0146
+gpt55,OpenAI,hierarchical,b12,moral_agent,Moral Agent,-0.6049,0.0053
+gpt55,OpenAI,hierarchical,b12,authority,Authority,-0.5403,0.0298
+gpt55,OpenAI,hierarchical,b12,domain_boundary,Moral Domain,-0.6669,0.0166
+gpt55,OpenAI,hierarchical,b12,scope,Obligation Scope,-0.279,0.0399
+gpt55,OpenAI,hierarchical,all48,moral_agent,Moral Agent,-0.5711,0.0174
+gpt55,OpenAI,hierarchical,all48,authority,Authority,-0.5158,0.0192
+gpt55,OpenAI,hierarchical,all48,domain_boundary,Moral Domain,-0.5649,0.0099
+gpt55,OpenAI,hierarchical,all48,scope,Obligation Scope,-0.2579,0.0202
+gpt55,OpenAI,individualist,b12,moral_agent,Moral Agent,0.3602,0.0183
+gpt55,OpenAI,individualist,b12,authority,Authority,0.3367,0.0312
+gpt55,OpenAI,individualist,b12,domain_boundary,Moral Domain,0.5401,0.0173
+gpt55,OpenAI,individualist,b12,scope,Obligation Scope,0.5288,0.0103
+gpt55,OpenAI,individualist,all48,moral_agent,Moral Agent,0.3522,0.0198
+gpt55,OpenAI,individualist,all48,authority,Authority,0.2509,0.0067
+gpt55,OpenAI,individualist,all48,domain_boundary,Moral Domain,0.4178,0.0101
+gpt55,OpenAI,individualist,all48,scope,Obligation Scope,0.2764,0.0102
+gpt55,OpenAI,irrelevant,b12,moral_agent,Moral Agent,-0.3978,0.0267
+gpt55,OpenAI,irrelevant,b12,authority,Authority,0.0553,0.0199
+gpt55,OpenAI,irrelevant,b12,domain_boundary,Moral Domain,-0.4187,0.0177
+gpt55,OpenAI,irrelevant,b12,scope,Obligation Scope,0.1482,0.0353
+gpt55,OpenAI,irrelevant,all48,moral_agent,Moral Agent,-0.2992,0.0053
+gpt55,OpenAI,irrelevant,all48,authority,Authority,-0.0067,0.0087
+gpt55,OpenAI,irrelevant,all48,domain_boundary,Moral Domain,-0.3651,0.0061
+gpt55,OpenAI,irrelevant,all48,scope,Obligation Scope,0.0784,0.0129
+gpt55,OpenAI,neutral,b12,moral_agent,Moral Agent,-0.0792,0.0228
+gpt55,OpenAI,neutral,b12,authority,Authority,0.177,0.0129
+gpt55,OpenAI,neutral,b12,domain_boundary,Moral Domain,0.2993,0.0112
+gpt55,OpenAI,neutral,b12,scope,Obligation Scope,0.3825,0.0277
+gpt55,OpenAI,neutral,all48,moral_agent,Moral Agent,0.0056,0.0103
+gpt55,OpenAI,neutral,all48,authority,Authority,0.1087,0.004
+gpt55,OpenAI,neutral,all48,domain_boundary,Moral Domain,0.0231,0.0076
+gpt55,OpenAI,neutral,all48,scope,Obligation Scope,0.2031,0.0128
+gpt55,OpenAI,nonsense_color,b12,moral_agent,Moral Agent,-0.4183,0.0301
+gpt55,OpenAI,nonsense_color,b12,authority,Authority,0.1213,0.0166
+gpt55,OpenAI,nonsense_color,b12,domain_boundary,Moral Domain,-0.4205,0.0245
+gpt55,OpenAI,nonsense_color,b12,scope,Obligation Scope,0.0918,0.0619
+gpt55,OpenAI,nonsense_color,all48,moral_agent,Moral Agent,-0.2524,0.0185
+gpt55,OpenAI,nonsense_color,all48,authority,Authority,0.026,0.0095
+gpt55,OpenAI,nonsense_color,all48,domain_boundary,Moral Domain,-0.4357,0.0119
+gpt55,OpenAI,nonsense_color,all48,scope,Obligation Scope,0.0887,0.0261
+gpt55,OpenAI,nonsense_geometry,b12,moral_agent,Moral Agent,-0.4064,0.009
+gpt55,OpenAI,nonsense_geometry,b12,authority,Authority,0.1187,0.024
+gpt55,OpenAI,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.4329,0.0342
+gpt55,OpenAI,nonsense_geometry,b12,scope,Obligation Scope,0.0869,0.0658
+gpt55,OpenAI,nonsense_geometry,all48,moral_agent,Moral Agent,-0.241,0.0109
+gpt55,OpenAI,nonsense_geometry,all48,authority,Authority,0.0256,0.0129
+gpt55,OpenAI,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.4554,0.0176
+gpt55,OpenAI,nonsense_geometry,all48,scope,Obligation Scope,0.109,0.02
+grok45,xAI,collectivist,b12,moral_agent,Moral Agent,-0.7107,0.0284
+grok45,xAI,collectivist,b12,authority,Authority,-0.5587,0.0327
+grok45,xAI,collectivist,b12,domain_boundary,Moral Domain,-0.7144,0.0113
+grok45,xAI,collectivist,b12,scope,Obligation Scope,-0.4329,0.0397
+grok45,xAI,collectivist,all48,moral_agent,Moral Agent,-0.6457,0.0136
+grok45,xAI,collectivist,all48,authority,Authority,-0.3326,0.0129
+grok45,xAI,collectivist,all48,domain_boundary,Moral Domain,-0.6739,0.0119
+grok45,xAI,collectivist,all48,scope,Obligation Scope,-0.3467,0.0389
+grok45,xAI,egalitarian,b12,moral_agent,Moral Agent,0.1711,0.0321
+grok45,xAI,egalitarian,b12,authority,Authority,0.2023,0.035
+grok45,xAI,egalitarian,b12,domain_boundary,Moral Domain,0.5228,0.018
+grok45,xAI,egalitarian,b12,scope,Obligation Scope,0.6642,0.0087
+grok45,xAI,egalitarian,all48,moral_agent,Moral Agent,0.1987,0.0147
+grok45,xAI,egalitarian,all48,authority,Authority,0.2392,0.0246
+grok45,xAI,egalitarian,all48,domain_boundary,Moral Domain,0.1513,0.009
+grok45,xAI,egalitarian,all48,scope,Obligation Scope,0.4337,0.01
+grok45,xAI,hierarchical,b12,moral_agent,Moral Agent,-0.4103,0.0275
+grok45,xAI,hierarchical,b12,authority,Authority,-0.806,0.0295
+grok45,xAI,hierarchical,b12,domain_boundary,Moral Domain,-0.7446,0.0105
+grok45,xAI,hierarchical,b12,scope,Obligation Scope,-0.4935,0.0658
+grok45,xAI,hierarchical,all48,moral_agent,Moral Agent,-0.6437,0.0052
+grok45,xAI,hierarchical,all48,authority,Authority,-0.6965,0.0109
+grok45,xAI,hierarchical,all48,domain_boundary,Moral Domain,-0.4807,0.0368
+grok45,xAI,hierarchical,all48,scope,Obligation Scope,-0.4388,0.0318
+grok45,xAI,individualist,b12,moral_agent,Moral Agent,0.6001,0.0366
+grok45,xAI,individualist,b12,authority,Authority,0.5667,0.0349
+grok45,xAI,individualist,b12,domain_boundary,Moral Domain,0.6909,0.0144
+grok45,xAI,individualist,b12,scope,Obligation Scope,0.5217,0.1221
+grok45,xAI,individualist,all48,moral_agent,Moral Agent,0.6112,0.0098
+grok45,xAI,individualist,all48,authority,Authority,0.4712,0.0181
+grok45,xAI,individualist,all48,domain_boundary,Moral Domain,0.6505,0.0208
+grok45,xAI,individualist,all48,scope,Obligation Scope,0.0743,0.0379
+grok45,xAI,irrelevant,b12,moral_agent,Moral Agent,-0.3652,0.06
+grok45,xAI,irrelevant,b12,authority,Authority,-0.198,0.0274
+grok45,xAI,irrelevant,b12,domain_boundary,Moral Domain,-0.5537,0.0226
+grok45,xAI,irrelevant,b12,scope,Obligation Scope,0.4525,0.107
+grok45,xAI,irrelevant,all48,moral_agent,Moral Agent,-0.4338,0.0311
+grok45,xAI,irrelevant,all48,authority,Authority,-0.1077,0.0273
+grok45,xAI,irrelevant,all48,domain_boundary,Moral Domain,-0.4185,0.0388
+grok45,xAI,irrelevant,all48,scope,Obligation Scope,0.0514,0.0285
+grok45,xAI,neutral,b12,moral_agent,Moral Agent,-0.0056,0.0218
+grok45,xAI,neutral,b12,authority,Authority,0.0587,0.0209
+grok45,xAI,neutral,b12,domain_boundary,Moral Domain,0.4156,0.011
+grok45,xAI,neutral,b12,scope,Obligation Scope,0.3555,0.0397
+grok45,xAI,neutral,all48,moral_agent,Moral Agent,0.0416,0.0111
+grok45,xAI,neutral,all48,authority,Authority,0.0503,0.0104
+grok45,xAI,neutral,all48,domain_boundary,Moral Domain,0.1057,0.0194
+grok45,xAI,neutral,all48,scope,Obligation Scope,0.1536,0.0107
+grok45,xAI,nonsense_color,b12,moral_agent,Moral Agent,-0.3827,0.0671
+grok45,xAI,nonsense_color,b12,authority,Authority,-0.102,0.0766
+grok45,xAI,nonsense_color,b12,domain_boundary,Moral Domain,-0.6059,0.0739
+grok45,xAI,nonsense_color,b12,scope,Obligation Scope,0.2019,0.0744
+grok45,xAI,nonsense_color,all48,moral_agent,Moral Agent,-0.3059,0.0528
+grok45,xAI,nonsense_color,all48,authority,Authority,-0.0757,0.0195
+grok45,xAI,nonsense_color,all48,domain_boundary,Moral Domain,-0.5776,0.0584
+grok45,xAI,nonsense_color,all48,scope,Obligation Scope,-0.0401,0.0531
+grok45,xAI,nonsense_geometry,b12,moral_agent,Moral Agent,-0.4939,0.0619
+grok45,xAI,nonsense_geometry,b12,authority,Authority,-0.283,0.1106
+grok45,xAI,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.2783,0.1734
+grok45,xAI,nonsense_geometry,b12,scope,Obligation Scope,0.3665,0.0988
+grok45,xAI,nonsense_geometry,all48,moral_agent,Moral Agent,-0.3332,0.0105
+grok45,xAI,nonsense_geometry,all48,authority,Authority,-0.1867,0.0863
+grok45,xAI,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.5466,0.0381
+grok45,xAI,nonsense_geometry,all48,scope,Obligation Scope,0.1364,0.035
+inkling,ThinkingMachines,collectivist,b12,moral_agent,Moral Agent,-0.8027,0.0163
+inkling,ThinkingMachines,collectivist,b12,authority,Authority,-0.488,0.026
+inkling,ThinkingMachines,collectivist,b12,domain_boundary,Moral Domain,-0.8748,0.0179
+inkling,ThinkingMachines,collectivist,b12,scope,Obligation Scope,-0.6399,0.0423
+inkling,ThinkingMachines,collectivist,all48,moral_agent,Moral Agent,-0.7763,0.0122
+inkling,ThinkingMachines,collectivist,all48,authority,Authority,-0.3223,0.02
+inkling,ThinkingMachines,collectivist,all48,domain_boundary,Moral Domain,-0.857,0.0085
+inkling,ThinkingMachines,collectivist,all48,scope,Obligation Scope,-0.276,0.0136
+inkling,ThinkingMachines,egalitarian,b12,moral_agent,Moral Agent,0.3821,0.0986
+inkling,ThinkingMachines,egalitarian,b12,authority,Authority,0.3788,0.1912
+inkling,ThinkingMachines,egalitarian,b12,domain_boundary,Moral Domain,0.4396,0.0374
+inkling,ThinkingMachines,egalitarian,b12,scope,Obligation Scope,0.7329,0.036
+inkling,ThinkingMachines,egalitarian,all48,moral_agent,Moral Agent,0.2378,0.0277
+inkling,ThinkingMachines,egalitarian,all48,authority,Authority,0.3376,0.0355
+inkling,ThinkingMachines,egalitarian,all48,domain_boundary,Moral Domain,0.0909,0.0111
+inkling,ThinkingMachines,egalitarian,all48,scope,Obligation Scope,0.5294,0.0196
+inkling,ThinkingMachines,hierarchical,b12,moral_agent,Moral Agent,-0.7579,0.0682
+inkling,ThinkingMachines,hierarchical,b12,authority,Authority,-0.8597,0.0139
+inkling,ThinkingMachines,hierarchical,b12,domain_boundary,Moral Domain,-0.9026,0.0148
+inkling,ThinkingMachines,hierarchical,b12,scope,Obligation Scope,-0.1346,0.0665
+inkling,ThinkingMachines,hierarchical,all48,moral_agent,Moral Agent,-0.799,0.0143
+inkling,ThinkingMachines,hierarchical,all48,authority,Authority,-0.726,0.0225
+inkling,ThinkingMachines,hierarchical,all48,domain_boundary,Moral Domain,-0.7225,0.0143
+inkling,ThinkingMachines,hierarchical,all48,scope,Obligation Scope,-0.2773,0.0406
+inkling,ThinkingMachines,individualist,b12,moral_agent,Moral Agent,0.6963,0.0324
+inkling,ThinkingMachines,individualist,b12,authority,Authority,0.6589,0.0164
+inkling,ThinkingMachines,individualist,b12,domain_boundary,Moral Domain,0.7169,0.0361
+inkling,ThinkingMachines,individualist,b12,scope,Obligation Scope,0.6367,0.1069
+inkling,ThinkingMachines,individualist,all48,moral_agent,Moral Agent,0.648,0.0125
+inkling,ThinkingMachines,individualist,all48,authority,Authority,0.5327,0.0199
+inkling,ThinkingMachines,individualist,all48,domain_boundary,Moral Domain,0.697,0.0159
+inkling,ThinkingMachines,individualist,all48,scope,Obligation Scope,0.1424,0.0525
+inkling,ThinkingMachines,irrelevant,b12,moral_agent,Moral Agent,-0.4303,0.0848
+inkling,ThinkingMachines,irrelevant,b12,authority,Authority,-0.1013,0.0449
+inkling,ThinkingMachines,irrelevant,b12,domain_boundary,Moral Domain,-0.5605,0.0963
+inkling,ThinkingMachines,irrelevant,b12,scope,Obligation Scope,0.1668,0.017
+inkling,ThinkingMachines,irrelevant,all48,moral_agent,Moral Agent,-0.516,0.029
+inkling,ThinkingMachines,irrelevant,all48,authority,Authority,-0.0602,0.0134
+inkling,ThinkingMachines,irrelevant,all48,domain_boundary,Moral Domain,-0.5134,0.0334
+inkling,ThinkingMachines,irrelevant,all48,scope,Obligation Scope,-0.0888,0.0508
+inkling,ThinkingMachines,neutral,b12,moral_agent,Moral Agent,0.0676,0.0351
+inkling,ThinkingMachines,neutral,b12,authority,Authority,0.1021,0.0176
+inkling,ThinkingMachines,neutral,b12,domain_boundary,Moral Domain,0.3212,0.035
+inkling,ThinkingMachines,neutral,b12,scope,Obligation Scope,0.2959,0.0281
+inkling,ThinkingMachines,neutral,all48,moral_agent,Moral Agent,0.0437,0.0147
+inkling,ThinkingMachines,neutral,all48,authority,Authority,0.0602,0.0077
+inkling,ThinkingMachines,neutral,all48,domain_boundary,Moral Domain,-0.052,0.0257
+inkling,ThinkingMachines,neutral,all48,scope,Obligation Scope,0.1658,0.0146
+inkling,ThinkingMachines,nonsense_color,b12,moral_agent,Moral Agent,-0.7022,0.0587
+inkling,ThinkingMachines,nonsense_color,b12,authority,Authority,0.075,0.0442
+inkling,ThinkingMachines,nonsense_color,b12,domain_boundary,Moral Domain,-0.7315,0.0414
+inkling,ThinkingMachines,nonsense_color,b12,scope,Obligation Scope,-0.1979,0.0438
+inkling,ThinkingMachines,nonsense_color,all48,moral_agent,Moral Agent,-0.4496,0.0306
+inkling,ThinkingMachines,nonsense_color,all48,authority,Authority,0.0421,0.0073
+inkling,ThinkingMachines,nonsense_color,all48,domain_boundary,Moral Domain,-0.6598,0.014
+inkling,ThinkingMachines,nonsense_color,all48,scope,Obligation Scope,-0.0894,0.0641
+inkling,ThinkingMachines,nonsense_geometry,b12,moral_agent,Moral Agent,-0.619,0.0561
+inkling,ThinkingMachines,nonsense_geometry,b12,authority,Authority,0.019,0.0422
+inkling,ThinkingMachines,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.3695,0.078
+inkling,ThinkingMachines,nonsense_geometry,b12,scope,Obligation Scope,0.1895,0.0307
+inkling,ThinkingMachines,nonsense_geometry,all48,moral_agent,Moral Agent,-0.4172,0.0296
+inkling,ThinkingMachines,nonsense_geometry,all48,authority,Authority,-0.0031,0.0186
+inkling,ThinkingMachines,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.5793,0.0253
+inkling,ThinkingMachines,nonsense_geometry,all48,scope,Obligation Scope,0.1098,0.0172
+kimi,Moonshot,collectivist,b12,moral_agent,Moral Agent,-0.839,0.0158
+kimi,Moonshot,collectivist,b12,authority,Authority,-0.2947,0.1244
+kimi,Moonshot,collectivist,b12,domain_boundary,Moral Domain,-0.9035,0.0546
+kimi,Moonshot,collectivist,b12,scope,Obligation Scope,-0.3925,0.0296
+kimi,Moonshot,collectivist,all48,moral_agent,Moral Agent,-0.8213,0.0183
+kimi,Moonshot,collectivist,all48,authority,Authority,-0.2591,0.0666
+kimi,Moonshot,collectivist,all48,domain_boundary,Moral Domain,-0.8451,0.0122
+kimi,Moonshot,collectivist,all48,scope,Obligation Scope,-0.3149,0.0529
+kimi,Moonshot,egalitarian,b12,moral_agent,Moral Agent,-0.0151,0.1031
+kimi,Moonshot,egalitarian,b12,authority,Authority,0.4563,0.1332
+kimi,Moonshot,egalitarian,b12,domain_boundary,Moral Domain,0.3751,0.0319
+kimi,Moonshot,egalitarian,b12,scope,Obligation Scope,0.6467,0.0642
+kimi,Moonshot,egalitarian,all48,moral_agent,Moral Agent,0.057,0.0415
+kimi,Moonshot,egalitarian,all48,authority,Authority,0.3182,0.0437
+kimi,Moonshot,egalitarian,all48,domain_boundary,Moral Domain,0.1088,0.0371
+kimi,Moonshot,egalitarian,all48,scope,Obligation Scope,0.4726,0.0373
+kimi,Moonshot,hierarchical,b12,moral_agent,Moral Agent,-0.7951,0.0257
+kimi,Moonshot,hierarchical,b12,authority,Authority,-0.8925,0.0274
+kimi,Moonshot,hierarchical,b12,domain_boundary,Moral Domain,-0.9636,0.0226
+kimi,Moonshot,hierarchical,b12,scope,Obligation Scope,-0.495,0.1146
+kimi,Moonshot,hierarchical,all48,moral_agent,Moral Agent,-0.8466,0.0153
+kimi,Moonshot,hierarchical,all48,authority,Authority,-0.8224,0.0215
+kimi,Moonshot,hierarchical,all48,domain_boundary,Moral Domain,-0.7311,0.0305
+kimi,Moonshot,hierarchical,all48,scope,Obligation Scope,-0.5106,0.0416
+kimi,Moonshot,individualist,b12,moral_agent,Moral Agent,0.669,0.0669
+kimi,Moonshot,individualist,b12,authority,Authority,0.7363,0.0575
+kimi,Moonshot,individualist,b12,domain_boundary,Moral Domain,0.7268,0.0403
+kimi,Moonshot,individualist,b12,scope,Obligation Scope,0.6162,0.1463
+kimi,Moonshot,individualist,all48,moral_agent,Moral Agent,0.6501,0.0469
+kimi,Moonshot,individualist,all48,authority,Authority,0.5985,0.0465
+kimi,Moonshot,individualist,all48,domain_boundary,Moral Domain,0.6803,0.0193
+kimi,Moonshot,individualist,all48,scope,Obligation Scope,0.1511,0.0764
+kimi,Moonshot,irrelevant,b12,moral_agent,Moral Agent,-0.4781,0.1605
+kimi,Moonshot,irrelevant,b12,authority,Authority,0.0157,0.0601
+kimi,Moonshot,irrelevant,b12,domain_boundary,Moral Domain,-0.4422,0.0737
+kimi,Moonshot,irrelevant,b12,scope,Obligation Scope,0.1811,0.0582
+kimi,Moonshot,irrelevant,all48,moral_agent,Moral Agent,-0.4489,0.0224
+kimi,Moonshot,irrelevant,all48,authority,Authority,-0.0535,0.034
+kimi,Moonshot,irrelevant,all48,domain_boundary,Moral Domain,-0.5282,0.0298
+kimi,Moonshot,irrelevant,all48,scope,Obligation Scope,-0.0071,0.0242
+kimi,Moonshot,neutral,b12,moral_agent,Moral Agent,-0.1523,0.035
+kimi,Moonshot,neutral,b12,authority,Authority,0.1413,0.0387
+kimi,Moonshot,neutral,b12,domain_boundary,Moral Domain,0.2637,0.0272
+kimi,Moonshot,neutral,b12,scope,Obligation Scope,0.3304,0.0491
+kimi,Moonshot,neutral,all48,moral_agent,Moral Agent,-0.017,0.0104
+kimi,Moonshot,neutral,all48,authority,Authority,0.0707,0.0217
+kimi,Moonshot,neutral,all48,domain_boundary,Moral Domain,0.0232,0.0158
+kimi,Moonshot,neutral,all48,scope,Obligation Scope,0.1623,0.0192
+kimi,Moonshot,nonsense_color,b12,moral_agent,Moral Agent,-0.3893,0.0576
+kimi,Moonshot,nonsense_color,b12,authority,Authority,0.135,0.0414
+kimi,Moonshot,nonsense_color,b12,domain_boundary,Moral Domain,-0.2671,0.1859
+kimi,Moonshot,nonsense_color,b12,scope,Obligation Scope,0.0243,0.1265
+kimi,Moonshot,nonsense_color,all48,moral_agent,Moral Agent,-0.1748,0.0192
+kimi,Moonshot,nonsense_color,all48,authority,Authority,0.0761,0.0364
+kimi,Moonshot,nonsense_color,all48,domain_boundary,Moral Domain,-0.3931,0.0796
+kimi,Moonshot,nonsense_color,all48,scope,Obligation Scope,0.0328,0.0516
+kimi,Moonshot,nonsense_geometry,b12,moral_agent,Moral Agent,-0.531,0.0608
+kimi,Moonshot,nonsense_geometry,b12,authority,Authority,0.131,0.0344
+kimi,Moonshot,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.2081,0.0401
+kimi,Moonshot,nonsense_geometry,b12,scope,Obligation Scope,0.2113,0.2035
+kimi,Moonshot,nonsense_geometry,all48,moral_agent,Moral Agent,-0.3449,0.0444
+kimi,Moonshot,nonsense_geometry,all48,authority,Authority,0.0469,0.0514
+kimi,Moonshot,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.4556,0.0344
+kimi,Moonshot,nonsense_geometry,all48,scope,Obligation Scope,0.1004,0.0667
+llama33,Meta,collectivist,b12,moral_agent,Moral Agent,-0.6088,0.0312
+llama33,Meta,collectivist,b12,authority,Authority,0.0647,0.0475
+llama33,Meta,collectivist,b12,domain_boundary,Moral Domain,-0.4789,0.0819
+llama33,Meta,collectivist,b12,scope,Obligation Scope,-0.0804,0.0355
+llama33,Meta,collectivist,all48,moral_agent,Moral Agent,-0.3644,0.0164
+llama33,Meta,collectivist,all48,authority,Authority,0.0281,0.0239
+llama33,Meta,collectivist,all48,domain_boundary,Moral Domain,-0.4051,0.0206
+llama33,Meta,collectivist,all48,scope,Obligation Scope,0.0197,0.0203
+llama33,Meta,egalitarian,b12,moral_agent,Moral Agent,-0.0711,0.0369
+llama33,Meta,egalitarian,b12,authority,Authority,0.3067,0.0294
+llama33,Meta,egalitarian,b12,domain_boundary,Moral Domain,0.2887,0.033
+llama33,Meta,egalitarian,b12,scope,Obligation Scope,0.4107,0.0435
+llama33,Meta,egalitarian,all48,moral_agent,Moral Agent,0.0499,0.0142
+llama33,Meta,egalitarian,all48,authority,Authority,0.2099,0.021
+llama33,Meta,egalitarian,all48,domain_boundary,Moral Domain,0.017,0.0206
+llama33,Meta,egalitarian,all48,scope,Obligation Scope,0.2744,0.0042
+llama33,Meta,hierarchical,b12,moral_agent,Moral Agent,-0.3873,0.057
+llama33,Meta,hierarchical,b12,authority,Authority,-0.4247,0.0181
+llama33,Meta,hierarchical,b12,domain_boundary,Moral Domain,-0.5931,0.0329
+llama33,Meta,hierarchical,b12,scope,Obligation Scope,0.0212,0.0417
+llama33,Meta,hierarchical,all48,moral_agent,Moral Agent,-0.3684,0.0212
+llama33,Meta,hierarchical,all48,authority,Authority,-0.2079,0.0154
+llama33,Meta,hierarchical,all48,domain_boundary,Moral Domain,-0.4105,0.0118
+llama33,Meta,hierarchical,all48,scope,Obligation Scope,-0.0512,0.0131
+llama33,Meta,individualist,b12,moral_agent,Moral Agent,0.2985,0.0172
+llama33,Meta,individualist,b12,authority,Authority,0.438,0.049
+llama33,Meta,individualist,b12,domain_boundary,Moral Domain,0.4301,0.0668
+llama33,Meta,individualist,b12,scope,Obligation Scope,0.4169,0.0419
+llama33,Meta,individualist,all48,moral_agent,Moral Agent,0.2889,0.0093
+llama33,Meta,individualist,all48,authority,Authority,0.2604,0.0272
+llama33,Meta,individualist,all48,domain_boundary,Moral Domain,0.2878,0.0168
+llama33,Meta,individualist,all48,scope,Obligation Scope,0.1893,0.0105
+llama33,Meta,irrelevant,b12,moral_agent,Moral Agent,-0.3065,0.0378
+llama33,Meta,irrelevant,b12,authority,Authority,0.0927,0.0668
+llama33,Meta,irrelevant,b12,domain_boundary,Moral Domain,-0.1701,0.0426
+llama33,Meta,irrelevant,b12,scope,Obligation Scope,0.0311,0.0653
+llama33,Meta,irrelevant,all48,moral_agent,Moral Agent,-0.1557,0.0184
+llama33,Meta,irrelevant,all48,authority,Authority,0.0768,0.0208
+llama33,Meta,irrelevant,all48,domain_boundary,Moral Domain,-0.2072,0.0117
+llama33,Meta,irrelevant,all48,scope,Obligation Scope,0.098,0.0351
+llama33,Meta,neutral,b12,moral_agent,Moral Agent,-0.0392,0.0213
+llama33,Meta,neutral,b12,authority,Authority,0.1227,0.0208
+llama33,Meta,neutral,b12,domain_boundary,Moral Domain,0.1667,0.0128
+llama33,Meta,neutral,b12,scope,Obligation Scope,0.2276,0.023
+llama33,Meta,neutral,all48,moral_agent,Moral Agent,0.0231,0.0131
+llama33,Meta,neutral,all48,authority,Authority,0.0917,0.0186
+llama33,Meta,neutral,all48,domain_boundary,Moral Domain,-0.0345,0.0169
+llama33,Meta,neutral,all48,scope,Obligation Scope,0.1657,0.0042
+llama33,Meta,nonsense_color,b12,moral_agent,Moral Agent,-0.3293,0.0614
+llama33,Meta,nonsense_color,b12,authority,Authority,0.122,0.0522
+llama33,Meta,nonsense_color,b12,domain_boundary,Moral Domain,-0.1559,0.0393
+llama33,Meta,nonsense_color,b12,scope,Obligation Scope,0.0741,0.0227
+llama33,Meta,nonsense_color,all48,moral_agent,Moral Agent,-0.1143,0.0344
+llama33,Meta,nonsense_color,all48,authority,Authority,0.0963,0.0177
+llama33,Meta,nonsense_color,all48,domain_boundary,Moral Domain,-0.2099,0.026
+llama33,Meta,nonsense_color,all48,scope,Obligation Scope,0.0931,0.0196
+llama33,Meta,nonsense_geometry,b12,moral_agent,Moral Agent,-0.3057,0.0654
+llama33,Meta,nonsense_geometry,b12,authority,Authority,0.156,0.0586
+llama33,Meta,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.1831,0.0311
+llama33,Meta,nonsense_geometry,b12,scope,Obligation Scope,0.1188,0.0352
+llama33,Meta,nonsense_geometry,all48,moral_agent,Moral Agent,-0.1093,0.0231
+llama33,Meta,nonsense_geometry,all48,authority,Authority,0.1068,0.0207
+llama33,Meta,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.2605,0.0252
+llama33,Meta,nonsense_geometry,all48,scope,Obligation Scope,0.1397,0.0245
+minimax,MiniMax,collectivist,b12,moral_agent,Moral Agent,-0.4841,0.0288
+minimax,MiniMax,collectivist,b12,authority,Authority,-0.333,0.0594
+minimax,MiniMax,collectivist,b12,domain_boundary,Moral Domain,-0.5566,0.0845
+minimax,MiniMax,collectivist,b12,scope,Obligation Scope,-0.1985,0.0589
+minimax,MiniMax,collectivist,all48,moral_agent,Moral Agent,-0.4229,0.0136
+minimax,MiniMax,collectivist,all48,authority,Authority,-0.1595,0.0239
+minimax,MiniMax,collectivist,all48,domain_boundary,Moral Domain,-0.4711,0.043
+minimax,MiniMax,collectivist,all48,scope,Obligation Scope,-0.0975,0.0466
+minimax,MiniMax,egalitarian,b12,moral_agent,Moral Agent,0.1841,0.0879
+minimax,MiniMax,egalitarian,b12,authority,Authority,0.1906,0.113
+minimax,MiniMax,egalitarian,b12,domain_boundary,Moral Domain,0.39,0.0537
+minimax,MiniMax,egalitarian,b12,scope,Obligation Scope,0.3939,0.0608
+minimax,MiniMax,egalitarian,all48,moral_agent,Moral Agent,0.1394,0.0399
+minimax,MiniMax,egalitarian,all48,authority,Authority,0.216,0.041
+minimax,MiniMax,egalitarian,all48,domain_boundary,Moral Domain,0.0501,0.0263
+minimax,MiniMax,egalitarian,all48,scope,Obligation Scope,0.3104,0.0327
+minimax,MiniMax,hierarchical,b12,moral_agent,Moral Agent,-0.3413,0.077
+minimax,MiniMax,hierarchical,b12,authority,Authority,-0.5243,0.0529
+minimax,MiniMax,hierarchical,b12,domain_boundary,Moral Domain,-0.5975,0.0421
+minimax,MiniMax,hierarchical,b12,scope,Obligation Scope,-0.038,0.0821
+minimax,MiniMax,hierarchical,all48,moral_agent,Moral Agent,-0.421,0.0353
+minimax,MiniMax,hierarchical,all48,authority,Authority,-0.3884,0.0355
+minimax,MiniMax,hierarchical,all48,domain_boundary,Moral Domain,-0.3752,0.0181
+minimax,MiniMax,hierarchical,all48,scope,Obligation Scope,-0.1527,0.0377
+minimax,MiniMax,individualist,b12,moral_agent,Moral Agent,0.3513,0.0252
+minimax,MiniMax,individualist,b12,authority,Authority,0.3313,0.0331
+minimax,MiniMax,individualist,b12,domain_boundary,Moral Domain,0.5299,0.0231
+minimax,MiniMax,individualist,b12,scope,Obligation Scope,0.3191,0.0834
+minimax,MiniMax,individualist,all48,moral_agent,Moral Agent,0.3428,0.0277
+minimax,MiniMax,individualist,all48,authority,Authority,0.2572,0.0213
+minimax,MiniMax,individualist,all48,domain_boundary,Moral Domain,0.4507,0.0304
+minimax,MiniMax,individualist,all48,scope,Obligation Scope,0.0436,0.0297
+minimax,MiniMax,irrelevant,b12,moral_agent,Moral Agent,-0.3019,0.0545
+minimax,MiniMax,irrelevant,b12,authority,Authority,-0.2183,0.074
+minimax,MiniMax,irrelevant,b12,domain_boundary,Moral Domain,-0.2719,0.0451
+minimax,MiniMax,irrelevant,b12,scope,Obligation Scope,0.0775,0.0977
+minimax,MiniMax,irrelevant,all48,moral_agent,Moral Agent,-0.249,0.0198
+minimax,MiniMax,irrelevant,all48,authority,Authority,-0.0786,0.0307
+minimax,MiniMax,irrelevant,all48,domain_boundary,Moral Domain,-0.276,0.021
+minimax,MiniMax,irrelevant,all48,scope,Obligation Scope,0.0174,0.0182
+minimax,MiniMax,neutral,b12,moral_agent,Moral Agent,-0.0459,0.0287
+minimax,MiniMax,neutral,b12,authority,Authority,0.0385,0.0527
+minimax,MiniMax,neutral,b12,domain_boundary,Moral Domain,0.3043,0.0406
+minimax,MiniMax,neutral,b12,scope,Obligation Scope,0.2103,0.0276
+minimax,MiniMax,neutral,all48,moral_agent,Moral Agent,0.0059,0.017
+minimax,MiniMax,neutral,all48,authority,Authority,0.0461,0.0183
+minimax,MiniMax,neutral,all48,domain_boundary,Moral Domain,0.0591,0.0268
+minimax,MiniMax,neutral,all48,scope,Obligation Scope,0.1216,0.0104
+minimax,MiniMax,nonsense_color,b12,moral_agent,Moral Agent,-0.3236,0.0932
+minimax,MiniMax,nonsense_color,b12,authority,Authority,-0.036,0.0649
+minimax,MiniMax,nonsense_color,b12,domain_boundary,Moral Domain,-0.2677,0.0496
+minimax,MiniMax,nonsense_color,b12,scope,Obligation Scope,-0.0179,0.0593
+minimax,MiniMax,nonsense_color,all48,moral_agent,Moral Agent,-0.1621,0.0291
+minimax,MiniMax,nonsense_color,all48,authority,Authority,0.025,0.0263
+minimax,MiniMax,nonsense_color,all48,domain_boundary,Moral Domain,-0.2929,0.0291
+minimax,MiniMax,nonsense_color,all48,scope,Obligation Scope,0.0402,0.0257
+minimax,MiniMax,nonsense_geometry,b12,moral_agent,Moral Agent,-0.2384,0.0276
+minimax,MiniMax,nonsense_geometry,b12,authority,Authority,-0.1215,0.1269
+minimax,MiniMax,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.1585,0.1151
+minimax,MiniMax,nonsense_geometry,b12,scope,Obligation Scope,0.1481,0.0794
+minimax,MiniMax,nonsense_geometry,all48,moral_agent,Moral Agent,-0.1546,0.0352
+minimax,MiniMax,nonsense_geometry,all48,authority,Authority,-0.0063,0.0159
+minimax,MiniMax,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.264,0.0386
+minimax,MiniMax,nonsense_geometry,all48,scope,Obligation Scope,0.0965,0.0436
+mistral_large,Mistral,collectivist,b12,moral_agent,Moral Agent,-0.7086,0.0577
+mistral_large,Mistral,collectivist,b12,authority,Authority,-0.436,0.0346
+mistral_large,Mistral,collectivist,b12,domain_boundary,Moral Domain,-0.6418,0.0455
+mistral_large,Mistral,collectivist,b12,scope,Obligation Scope,-0.1788,0.1542
+mistral_large,Mistral,collectivist,all48,moral_agent,Moral Agent,-0.5515,0.0112
+mistral_large,Mistral,collectivist,all48,authority,Authority,-0.2212,0.0435
+mistral_large,Mistral,collectivist,all48,domain_boundary,Moral Domain,-0.5915,0.0234
+mistral_large,Mistral,collectivist,all48,scope,Obligation Scope,-0.0556,0.0665
+mistral_large,Mistral,egalitarian,b12,moral_agent,Moral Agent,-0.1232,0.1324
+mistral_large,Mistral,egalitarian,b12,authority,Authority,0.242,0.022
+mistral_large,Mistral,egalitarian,b12,domain_boundary,Moral Domain,0.4263,0.0267
+mistral_large,Mistral,egalitarian,b12,scope,Obligation Scope,0.3633,0.0289
+mistral_large,Mistral,egalitarian,all48,moral_agent,Moral Agent,0.0391,0.0479
+mistral_large,Mistral,egalitarian,all48,authority,Authority,0.2406,0.0064
+mistral_large,Mistral,egalitarian,all48,domain_boundary,Moral Domain,0.1029,0.0213
+mistral_large,Mistral,egalitarian,all48,scope,Obligation Scope,0.3628,0.028
+mistral_large,Mistral,hierarchical,b12,moral_agent,Moral Agent,-0.6141,0.0292
+mistral_large,Mistral,hierarchical,b12,authority,Authority,-0.6311,0.0311
+mistral_large,Mistral,hierarchical,b12,domain_boundary,Moral Domain,-0.754,0.0698
+mistral_large,Mistral,hierarchical,b12,scope,Obligation Scope,0.0163,0.143
+mistral_large,Mistral,hierarchical,all48,moral_agent,Moral Agent,-0.5946,0.0172
+mistral_large,Mistral,hierarchical,all48,authority,Authority,-0.5263,0.0189
+mistral_large,Mistral,hierarchical,all48,domain_boundary,Moral Domain,-0.5688,0.0254
+mistral_large,Mistral,hierarchical,all48,scope,Obligation Scope,-0.1471,0.0574
+mistral_large,Mistral,individualist,b12,moral_agent,Moral Agent,0.4844,0.0335
+mistral_large,Mistral,individualist,b12,authority,Authority,0.4913,0.0705
+mistral_large,Mistral,individualist,b12,domain_boundary,Moral Domain,0.7199,0.0146
+mistral_large,Mistral,individualist,b12,scope,Obligation Scope,0.576,0.0467
+mistral_large,Mistral,individualist,all48,moral_agent,Moral Agent,0.5207,0.0066
+mistral_large,Mistral,individualist,all48,authority,Authority,0.4304,0.0275
+mistral_large,Mistral,individualist,all48,domain_boundary,Moral Domain,0.6447,0.0208
+mistral_large,Mistral,individualist,all48,scope,Obligation Scope,0.1346,0.0119
+mistral_large,Mistral,irrelevant,b12,moral_agent,Moral Agent,-0.5067,0.0529
+mistral_large,Mistral,irrelevant,b12,authority,Authority,-0.174,0.0793
+mistral_large,Mistral,irrelevant,b12,domain_boundary,Moral Domain,-0.4869,0.0409
+mistral_large,Mistral,irrelevant,b12,scope,Obligation Scope,-0.0943,0.0331
+mistral_large,Mistral,irrelevant,all48,moral_agent,Moral Agent,-0.3723,0.0321
+mistral_large,Mistral,irrelevant,all48,authority,Authority,-0.1059,0.0322
+mistral_large,Mistral,irrelevant,all48,domain_boundary,Moral Domain,-0.4526,0.0285
+mistral_large,Mistral,irrelevant,all48,scope,Obligation Scope,-0.0026,0.0345
+mistral_large,Mistral,neutral,b12,moral_agent,Moral Agent,-0.1476,0.0262
+mistral_large,Mistral,neutral,b12,authority,Authority,0.082,0.0233
+mistral_large,Mistral,neutral,b12,domain_boundary,Moral Domain,0.2541,0.0253
+mistral_large,Mistral,neutral,b12,scope,Obligation Scope,0.2304,0.0216
+mistral_large,Mistral,neutral,all48,moral_agent,Moral Agent,-0.0679,0.0162
+mistral_large,Mistral,neutral,all48,authority,Authority,0.052,0.0108
+mistral_large,Mistral,neutral,all48,domain_boundary,Moral Domain,-0.0476,0.0201
+mistral_large,Mistral,neutral,all48,scope,Obligation Scope,0.1445,0.0184
+mistral_large,Mistral,nonsense_color,b12,moral_agent,Moral Agent,-0.4491,0.0217
+mistral_large,Mistral,nonsense_color,b12,authority,Authority,0.0547,0.0528
+mistral_large,Mistral,nonsense_color,b12,domain_boundary,Moral Domain,-0.3507,0.075
+mistral_large,Mistral,nonsense_color,b12,scope,Obligation Scope,-0.0293,0.0588
+mistral_large,Mistral,nonsense_color,all48,moral_agent,Moral Agent,-0.2975,0.0128
+mistral_large,Mistral,nonsense_color,all48,authority,Authority,0.0198,0.0275
+mistral_large,Mistral,nonsense_color,all48,domain_boundary,Moral Domain,-0.433,0.0267
+mistral_large,Mistral,nonsense_color,all48,scope,Obligation Scope,0.0517,0.021
+mistral_large,Mistral,nonsense_geometry,b12,moral_agent,Moral Agent,-0.4489,0.0381
+mistral_large,Mistral,nonsense_geometry,b12,authority,Authority,-0.1093,0.0784
+mistral_large,Mistral,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.5023,0.0437
+mistral_large,Mistral,nonsense_geometry,b12,scope,Obligation Scope,0.2115,0.0694
+mistral_large,Mistral,nonsense_geometry,all48,moral_agent,Moral Agent,-0.3398,0.0048
+mistral_large,Mistral,nonsense_geometry,all48,authority,Authority,-0.0209,0.0429
+mistral_large,Mistral,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.5082,0.0187
+mistral_large,Mistral,nonsense_geometry,all48,scope,Obligation Scope,0.1633,0.0215
+o3,OpenAI,collectivist,b12,moral_agent,Moral Agent,-0.5444,0.0144
+o3,OpenAI,collectivist,b12,authority,Authority,-0.115,0.0732
+o3,OpenAI,collectivist,b12,domain_boundary,Moral Domain,-0.5929,0.0273
+o3,OpenAI,collectivist,b12,scope,Obligation Scope,-0.1644,0.028
+o3,OpenAI,collectivist,all48,moral_agent,Moral Agent,-0.4325,0.0151
+o3,OpenAI,collectivist,all48,authority,Authority,-0.1142,0.0271
+o3,OpenAI,collectivist,all48,domain_boundary,Moral Domain,-0.5233,0.0165
+o3,OpenAI,collectivist,all48,scope,Obligation Scope,-0.0884,0.0194
+o3,OpenAI,egalitarian,b12,moral_agent,Moral Agent,-0.1491,0.0757
+o3,OpenAI,egalitarian,b12,authority,Authority,0.2527,0.0256
+o3,OpenAI,egalitarian,b12,domain_boundary,Moral Domain,0.2981,0.0406
+o3,OpenAI,egalitarian,b12,scope,Obligation Scope,0.3823,0.0326
+o3,OpenAI,egalitarian,all48,moral_agent,Moral Agent,0.0332,0.0279
+o3,OpenAI,egalitarian,all48,authority,Authority,0.1937,0.0076
+o3,OpenAI,egalitarian,all48,domain_boundary,Moral Domain,-0.0058,0.0219
+o3,OpenAI,egalitarian,all48,scope,Obligation Scope,0.2988,0.0154
+o3,OpenAI,hierarchical,b12,moral_agent,Moral Agent,-0.4574,0.0127
+o3,OpenAI,hierarchical,b12,authority,Authority,-0.5303,0.0287
+o3,OpenAI,hierarchical,b12,domain_boundary,Moral Domain,-0.6525,0.0366
+o3,OpenAI,hierarchical,b12,scope,Obligation Scope,-0.0901,0.0744
+o3,OpenAI,hierarchical,all48,moral_agent,Moral Agent,-0.4845,0.0134
+o3,OpenAI,hierarchical,all48,authority,Authority,-0.4899,0.0249
+o3,OpenAI,hierarchical,all48,domain_boundary,Moral Domain,-0.4764,0.022
+o3,OpenAI,hierarchical,all48,scope,Obligation Scope,-0.0969,0.0338
+o3,OpenAI,individualist,b12,moral_agent,Moral Agent,0.338,0.0445
+o3,OpenAI,individualist,b12,authority,Authority,0.3833,0.0152
+o3,OpenAI,individualist,b12,domain_boundary,Moral Domain,0.4899,0.0376
+o3,OpenAI,individualist,b12,scope,Obligation Scope,0.4822,0.0466
+o3,OpenAI,individualist,all48,moral_agent,Moral Agent,0.3439,0.0266
+o3,OpenAI,individualist,all48,authority,Authority,0.2727,0.0145
+o3,OpenAI,individualist,all48,domain_boundary,Moral Domain,0.3673,0.0209
+o3,OpenAI,individualist,all48,scope,Obligation Scope,0.1818,0.012
+o3,OpenAI,irrelevant,b12,moral_agent,Moral Agent,-0.3225,0.047
+o3,OpenAI,irrelevant,b12,authority,Authority,0.0633,0.0676
+o3,OpenAI,irrelevant,b12,domain_boundary,Moral Domain,-0.3125,0.061
+o3,OpenAI,irrelevant,b12,scope,Obligation Scope,0.0878,0.0255
+o3,OpenAI,irrelevant,all48,moral_agent,Moral Agent,-0.2096,0.0052
+o3,OpenAI,irrelevant,all48,authority,Authority,0.0009,0.031
+o3,OpenAI,irrelevant,all48,domain_boundary,Moral Domain,-0.3209,0.019
+o3,OpenAI,irrelevant,all48,scope,Obligation Scope,0.0455,0.0168
+o3,OpenAI,neutral,b12,moral_agent,Moral Agent,-0.0377,0.0126
+o3,OpenAI,neutral,b12,authority,Authority,0.1833,0.0122
+o3,OpenAI,neutral,b12,domain_boundary,Moral Domain,0.2516,0.0094
+o3,OpenAI,neutral,b12,scope,Obligation Scope,0.207,0.0389
+o3,OpenAI,neutral,all48,moral_agent,Moral Agent,0.0352,0.0097
+o3,OpenAI,neutral,all48,authority,Authority,0.1124,0.0092
+o3,OpenAI,neutral,all48,domain_boundary,Moral Domain,-0.0107,0.0114
+o3,OpenAI,neutral,all48,scope,Obligation Scope,0.1371,0.01
+o3,OpenAI,nonsense_color,b12,moral_agent,Moral Agent,-0.3453,0.0179
+o3,OpenAI,nonsense_color,b12,authority,Authority,0.036,0.0348
+o3,OpenAI,nonsense_color,b12,domain_boundary,Moral Domain,-0.1116,0.1074
+o3,OpenAI,nonsense_color,b12,scope,Obligation Scope,0.0241,0.0177
+o3,OpenAI,nonsense_color,all48,moral_agent,Moral Agent,-0.1749,0.0138
+o3,OpenAI,nonsense_color,all48,authority,Authority,0.0231,0.0138
+o3,OpenAI,nonsense_color,all48,domain_boundary,Moral Domain,-0.2959,0.0403
+o3,OpenAI,nonsense_color,all48,scope,Obligation Scope,0.0568,0.0233
+o3,OpenAI,nonsense_geometry,b12,moral_agent,Moral Agent,-0.2937,0.0173
+o3,OpenAI,nonsense_geometry,b12,authority,Authority,0.13,0.0141
+o3,OpenAI,nonsense_geometry,b12,domain_boundary,Moral Domain,-0.0599,0.0577
+o3,OpenAI,nonsense_geometry,b12,scope,Obligation Scope,0.1319,0.0585
+o3,OpenAI,nonsense_geometry,all48,moral_agent,Moral Agent,-0.126,0.0149
+o3,OpenAI,nonsense_geometry,all48,authority,Authority,0.0516,0.0163
+o3,OpenAI,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.2701,0.0426
+o3,OpenAI,nonsense_geometry,all48,scope,Obligation Scope,0.1438,0.0076
+opus,Anthropic,collectivist,b12,moral_agent,Moral Agent,-0.5303,0.0466
+opus,Anthropic,collectivist,b12,authority,Authority,-0.1733,0.0306
+opus,Anthropic,collectivist,b12,domain_boundary,Moral Domain,-0.5374,0.0443
+opus,Anthropic,collectivist,b12,scope,Obligation Scope,-0.332,0.0448
+opus,Anthropic,collectivist,all48,moral_agent,Moral Agent,-0.3945,0.0229
+opus,Anthropic,collectivist,all48,authority,Authority,-0.0997,0.0155
+opus,Anthropic,collectivist,all48,domain_boundary,Moral Domain,-0.471,0.0141
+opus,Anthropic,collectivist,all48,scope,Obligation Scope,-0.1788,0.0297
+opus,Anthropic,egalitarian,b12,moral_agent,Moral Agent,-0.159,0.05
+opus,Anthropic,egalitarian,b12,authority,Authority,0.1483,0.0116
+opus,Anthropic,egalitarian,b12,domain_boundary,Moral Domain,0.3497,0.0155
+opus,Anthropic,egalitarian,b12,scope,Obligation Scope,0.3675,0.0214
+opus,Anthropic,egalitarian,all48,moral_agent,Moral Agent,0.0028,0.0192
+opus,Anthropic,egalitarian,all48,authority,Authority,0.1713,0.0126
+opus,Anthropic,egalitarian,all48,domain_boundary,Moral Domain,0.0327,0.0257
+opus,Anthropic,egalitarian,all48,scope,Obligation Scope,0.283,0.0123
+opus,Anthropic,hierarchical,b12,moral_agent,Moral Agent,-0.509,0.0374
+opus,Anthropic,hierarchical,b12,authority,Authority,-0.4386,0.026
+opus,Anthropic,hierarchical,b12,domain_boundary,Moral Domain,-0.6027,0.0333
+opus,Anthropic,hierarchical,b12,scope,Obligation Scope,-0.2514,0.0568
+opus,Anthropic,hierarchical,all48,moral_agent,Moral Agent,-0.4363,0.0088
+opus,Anthropic,hierarchical,all48,authority,Authority,-0.3303,0.02
+opus,Anthropic,hierarchical,all48,domain_boundary,Moral Domain,-0.4471,0.009
+opus,Anthropic,hierarchical,all48,scope,Obligation Scope,-0.1529,0.0155
+opus,Anthropic,individualist,b12,moral_agent,Moral Agent,0.3306,0.0146
+opus,Anthropic,individualist,b12,authority,Authority,0.3787,0.0245
+opus,Anthropic,individualist,b12,domain_boundary,Moral Domain,0.5506,0.0165
+opus,Anthropic,individualist,b12,scope,Obligation Scope,0.4173,0.0249
+opus,Anthropic,individualist,all48,moral_agent,Moral Agent,0.3447,0.0162
+opus,Anthropic,individualist,all48,authority,Authority,0.3049,0.0069
+opus,Anthropic,individualist,all48,domain_boundary,Moral Domain,0.4087,0.0211
+opus,Anthropic,individualist,all48,scope,Obligation Scope,0.1898,0.0209
+opus,Anthropic,irrelevant,b12,moral_agent,Moral Agent,-0.3789,0.0244
+opus,Anthropic,irrelevant,b12,authority,Authority,0.0679,0.0221
+opus,Anthropic,irrelevant,b12,domain_boundary,Moral Domain,-0.1524,0.0451
+opus,Anthropic,irrelevant,b12,scope,Obligation Scope,-0.0111,0.1022
+opus,Anthropic,irrelevant,all48,moral_agent,Moral Agent,-0.2942,0.0129
+opus,Anthropic,irrelevant,all48,authority,Authority,0.0402,0.0224
+opus,Anthropic,irrelevant,all48,domain_boundary,Moral Domain,-0.2287,0.0135
+opus,Anthropic,irrelevant,all48,scope,Obligation Scope,-0.0239,0.031
+opus,Anthropic,neutral,b12,moral_agent,Moral Agent,-0.0879,0.0198
+opus,Anthropic,neutral,b12,authority,Authority,0.1215,0.0057
+opus,Anthropic,neutral,b12,domain_boundary,Moral Domain,0.3303,0.0124
+opus,Anthropic,neutral,b12,scope,Obligation Scope,0.2188,0.0373
+opus,Anthropic,neutral,all48,moral_agent,Moral Agent,0.0063,0.0203
+opus,Anthropic,neutral,all48,authority,Authority,0.0968,0.0069
+opus,Anthropic,neutral,all48,domain_boundary,Moral Domain,0.037,0.0084
+opus,Anthropic,neutral,all48,scope,Obligation Scope,0.1169,0.0149
+opus,Anthropic,nonsense_color,b12,moral_agent,Moral Agent,-0.3669,0.0202
+opus,Anthropic,nonsense_color,b12,authority,Authority,0.159,0.0318
+opus,Anthropic,nonsense_color,b12,domain_boundary,Moral Domain,-0.0165,0.0174
+opus,Anthropic,nonsense_color,b12,scope,Obligation Scope,0.0519,0.0947
+opus,Anthropic,nonsense_color,all48,moral_agent,Moral Agent,-0.1753,0.0145
+opus,Anthropic,nonsense_color,all48,authority,Authority,0.1054,0.0226
+opus,Anthropic,nonsense_color,all48,domain_boundary,Moral Domain,-0.2357,0.0123
+opus,Anthropic,nonsense_color,all48,scope,Obligation Scope,0.0424,0.0249
+opus,Anthropic,nonsense_geometry,b12,moral_agent,Moral Agent,-0.3417,0.0242
+opus,Anthropic,nonsense_geometry,b12,authority,Authority,0.1744,0.0228
+opus,Anthropic,nonsense_geometry,b12,domain_boundary,Moral Domain,0.0487,0.0189
+opus,Anthropic,nonsense_geometry,b12,scope,Obligation Scope,0.0521,0.0553
+opus,Anthropic,nonsense_geometry,all48,moral_agent,Moral Agent,-0.1435,0.0124
+opus,Anthropic,nonsense_geometry,all48,authority,Authority,0.1061,0.0153
+opus,Anthropic,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.2021,0.0174
+opus,Anthropic,nonsense_geometry,all48,scope,Obligation Scope,0.0679,0.0158
+sonnet,Anthropic,collectivist,b12,moral_agent,Moral Agent,-0.5057,0.0184
+sonnet,Anthropic,collectivist,b12,authority,Authority,-0.3399,0.0407
+sonnet,Anthropic,collectivist,b12,domain_boundary,Moral Domain,-0.4751,0.0598
+sonnet,Anthropic,collectivist,b12,scope,Obligation Scope,-0.2711,0.0366
+sonnet,Anthropic,collectivist,all48,moral_agent,Moral Agent,-0.4398,0.0039
+sonnet,Anthropic,collectivist,all48,authority,Authority,-0.1708,0.0146
+sonnet,Anthropic,collectivist,all48,domain_boundary,Moral Domain,-0.4208,0.0226
+sonnet,Anthropic,collectivist,all48,scope,Obligation Scope,-0.2496,0.0336
+sonnet,Anthropic,egalitarian,b12,moral_agent,Moral Agent,0.091,0.0232
+sonnet,Anthropic,egalitarian,b12,authority,Authority,0.0913,0.0352
+sonnet,Anthropic,egalitarian,b12,domain_boundary,Moral Domain,0.3715,0.0242
+sonnet,Anthropic,egalitarian,b12,scope,Obligation Scope,0.4427,0.0272
+sonnet,Anthropic,egalitarian,all48,moral_agent,Moral Agent,0.109,0.0135
+sonnet,Anthropic,egalitarian,all48,authority,Authority,0.1409,0.0099
+sonnet,Anthropic,egalitarian,all48,domain_boundary,Moral Domain,0.1097,0.013
+sonnet,Anthropic,egalitarian,all48,scope,Obligation Scope,0.2773,0.0128
+sonnet,Anthropic,hierarchical,b12,moral_agent,Moral Agent,-0.5376,0.0483
+sonnet,Anthropic,hierarchical,b12,authority,Authority,-0.5165,0.0352
+sonnet,Anthropic,hierarchical,b12,domain_boundary,Moral Domain,-0.4956,0.0317
+sonnet,Anthropic,hierarchical,b12,scope,Obligation Scope,-0.1271,0.0898
+sonnet,Anthropic,hierarchical,all48,moral_agent,Moral Agent,-0.5143,0.0126
+sonnet,Anthropic,hierarchical,all48,authority,Authority,-0.3992,0.0124
+sonnet,Anthropic,hierarchical,all48,domain_boundary,Moral Domain,-0.4068,0.0271
+sonnet,Anthropic,hierarchical,all48,scope,Obligation Scope,-0.268,0.0526
+sonnet,Anthropic,individualist,b12,moral_agent,Moral Agent,0.4301,0.0275
+sonnet,Anthropic,individualist,b12,authority,Authority,0.3877,0.0217
+sonnet,Anthropic,individualist,b12,domain_boundary,Moral Domain,0.5313,0.0209
+sonnet,Anthropic,individualist,b12,scope,Obligation Scope,0.4761,0.0343
+sonnet,Anthropic,individualist,all48,moral_agent,Moral Agent,0.4292,0.0099
+sonnet,Anthropic,individualist,all48,authority,Authority,0.3289,0.0174
+sonnet,Anthropic,individualist,all48,domain_boundary,Moral Domain,0.4702,0.0145
+sonnet,Anthropic,individualist,all48,scope,Obligation Scope,0.1211,0.0201
+sonnet,Anthropic,irrelevant,b12,moral_agent,Moral Agent,-0.2523,0.0703
+sonnet,Anthropic,irrelevant,b12,authority,Authority,-0.0813,0.0297
+sonnet,Anthropic,irrelevant,b12,domain_boundary,Moral Domain,-0.1393,0.0412
+sonnet,Anthropic,irrelevant,b12,scope,Obligation Scope,0.2264,0.0541
+sonnet,Anthropic,irrelevant,all48,moral_agent,Moral Agent,-0.2166,0.0333
+sonnet,Anthropic,irrelevant,all48,authority,Authority,0.0001,0.01
+sonnet,Anthropic,irrelevant,all48,domain_boundary,Moral Domain,-0.1337,0.0194
+sonnet,Anthropic,irrelevant,all48,scope,Obligation Scope,0.0495,0.0231
+sonnet,Anthropic,neutral,b12,moral_agent,Moral Agent,-0.0008,0.0304
+sonnet,Anthropic,neutral,b12,authority,Authority,0.065,0.0349
+sonnet,Anthropic,neutral,b12,domain_boundary,Moral Domain,0.2691,0.029
+sonnet,Anthropic,neutral,b12,scope,Obligation Scope,0.2776,0.0327
+sonnet,Anthropic,neutral,all48,moral_agent,Moral Agent,0.0127,0.0116
+sonnet,Anthropic,neutral,all48,authority,Authority,0.052,0.0101
+sonnet,Anthropic,neutral,all48,domain_boundary,Moral Domain,0.0959,0.0103
+sonnet,Anthropic,neutral,all48,scope,Obligation Scope,0.138,0.0073
+sonnet,Anthropic,nonsense_color,b12,moral_agent,Moral Agent,-0.1188,0.0703
+sonnet,Anthropic,nonsense_color,b12,authority,Authority,0.096,0.0471
+sonnet,Anthropic,nonsense_color,b12,domain_boundary,Moral Domain,-0.1093,0.138
+sonnet,Anthropic,nonsense_color,b12,scope,Obligation Scope,0.2193,0.0325
+sonnet,Anthropic,nonsense_color,all48,moral_agent,Moral Agent,-0.0807,0.02
+sonnet,Anthropic,nonsense_color,all48,authority,Authority,0.0597,0.0106
+sonnet,Anthropic,nonsense_color,all48,domain_boundary,Moral Domain,-0.0812,0.0253
+sonnet,Anthropic,nonsense_color,all48,scope,Obligation Scope,0.113,0.0088
+sonnet,Anthropic,nonsense_geometry,b12,moral_agent,Moral Agent,-0.1513,0.0481
+sonnet,Anthropic,nonsense_geometry,b12,authority,Authority,0.1149,0.0138
+sonnet,Anthropic,nonsense_geometry,b12,domain_boundary,Moral Domain,0.0666,0.0294
+sonnet,Anthropic,nonsense_geometry,b12,scope,Obligation Scope,0.2191,0.0208
+sonnet,Anthropic,nonsense_geometry,all48,moral_agent,Moral Agent,-0.0747,0.0216
+sonnet,Anthropic,nonsense_geometry,all48,authority,Authority,0.0663,0.0114
+sonnet,Anthropic,nonsense_geometry,all48,domain_boundary,Moral Domain,-0.1247,0.0174
+sonnet,Anthropic,nonsense_geometry,all48,scope,Obligation Scope,0.1149,0.0199
