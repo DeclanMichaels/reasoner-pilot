@@ -121,6 +121,11 @@ def main():
          f"universal. **n = {len(models)} — suggestive, not confirmatory.**", "",
          (f"**Pre-specified directions confirmed: {hits}/{testable}"
           + (f" — {untested} prediction(s) not administered this run.**" if untested else ".**")), "",
+         "> **Instrument wording is not reproduced** here or anywhere in this repository. "
+         "MFQ-30 (Graham et al. 2011) is available for research use at moralfoundations.org; "
+         "PVQ-40 is from Schwartz's authorized repository (Schwartz, 2021, _Online Readings in "
+         "Psychology and Culture_ 2(2):9, licensed **CC BY-NC-ND 3.0**). The tables below — and the "
+         "per-model scores in `instrument_scores.json` — are derived measures that contain no item text.", "",
          "## Pre-registered predictions", "",
          "| Reasoner axis | Instrument metric | Predicted | r | n | Direction holds |",
          "|---|---|:--:|--:|:--:|:--:|"]

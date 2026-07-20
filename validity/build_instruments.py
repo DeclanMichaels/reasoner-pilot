@@ -89,8 +89,8 @@ for _num in range(1, 41):
                    "num": _num, "catch": False, "text": ""})
 pvq40 = {
     "instrument": "PVQ-40",
-    "citation": "Schwartz, S. H. (2003/2005). Portrait Values Questionnaire (PVQ-40). See Schwartz (1992); ESS PVQ-21 short form.",
-    "source": "Schwartz PVQ-40 official portraits + value key (obtain from Schwartz materials / ESS documentation). Free for research use.",
+    "citation": "Schwartz, S. H. (1992, 2003). Portrait Values Questionnaire (PVQ-40). Authorized items in Schwartz (2021), Online Readings in Psychology and Culture, 2(2):9.",
+    "source": "Schwartz (2021), 'A Repository of Schwartz Value Scales', Online Readings in Psychology and Culture 2(2):9, https://scholarworks.gvsu.edu/orpc/vol2/iss2/9/ (includes PVQ-40). Licensed CC BY-NC-ND 3.0 (attribution / non-commercial / verbatim-only). Item wording is NOT redistributed in this repo.",
     "fill_note": ("Paste the OFFICIAL 40 portraits keyed by item 'num' (1-40). Distribution is "
                   "UNEQUAL per value (universalism 6, security 5, conformity/tradition/benevolence/"
                   "self_direction/achievement 4, stimulation/hedonism/power 3). The portraits use "

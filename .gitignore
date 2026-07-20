@@ -19,7 +19,9 @@ Thumbs.db
 /tmp/
 *.log
 
-# convergent-validity module: local filled items + outputs
+# convergent-validity module.
+# Item wording is NOT redistributed (see validity/README.md): filled instruments and
+# raw per-cell run files stay local. Derived results (correlations + numeric scores,
+# no item text) ARE published under validity/results/.
 validity/instruments/*.filled.json
 validity/runs/
-validity/results/

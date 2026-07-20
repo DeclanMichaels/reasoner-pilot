@@ -37,13 +37,19 @@ predictions whose instrument was actually administered (MFQ-2 predictions are ma
 ## Items are NOT included here
 
 The instrument files ship as **scaffolds with empty `text` fields** — only structure
-and scoring keys. The item wording is a proprietary research instrument (free for
-research use, but not redistributed in this repo). Before running:
+and scoring keys. **The item wording is not redistributed in this repository**; obtain it
+from the authoritative sources below and paste it into local, git-ignored `*.filled.json`
+copies. Before running:
 
 1. Obtain the official items:
-   - MFQ-30: <https://moralfoundations.org/questionnaires/> (`MFQ30.item-key.doc`)
-   - MFQ-2: moralfoundations.org / Atari et al. (2023) OSF supplement
-   - PVQ-40: Schwartz's official portraits + value key (Schwartz materials / ESS docs)
+   - MFQ-30: <https://moralfoundations.org/questionnaires/> (`MFQ30.item-key.doc`) —
+     free for research/non-commercial use.
+   - MFQ-2: moralfoundations.org / Atari et al. (2023) OSF supplement.
+   - PVQ-40: Schwartz (2021), "A Repository of Schwartz Value Scales", *Online Readings in
+     Psychology and Culture* 2(2):9, <https://scholarworks.gvsu.edu/orpc/vol2/iss2/9/> —
+     licensed **CC BY-NC-ND 3.0** (attribution, non-commercial, verbatim only). We use the
+     **male ('he') portrait form**. Because the license is non-commercial and no-derivatives,
+     the wording is kept out of this (Apache-2.0) repo rather than bundled.
 2. Copy each scaffold to a git-ignored filled copy and paste the official wording into it:
    `cp instruments/mfq30.json instruments/mfq30.filled.json` (then fill `text`), likewise
    `mfq2.filled.json`, `pvq40.filled.json`. The loaders prefer `*.filled.json` when present,

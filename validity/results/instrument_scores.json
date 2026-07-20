@@ -1,0 +1,321 @@
+{
+  "deepseek_v4": {
+    "mfq30": {
+      "care": 4.133333333333334,
+      "fairness": 4.4,
+      "loyalty": 2.566666666666667,
+      "authority": 2.0,
+      "sanctity": 1.4333333333333333,
+      "individualizing": 4.2666666666666675,
+      "binding": 2.0,
+      "_catch_mean": 2.4
+    },
+    "pvq40": {
+      "conformity": 0.029999999999999805,
+      "tradition": -1.0699999999999998,
+      "benevolence": 1.0799999999999996,
+      "universalism": 1.23,
+      "self_direction": 1.0299999999999998,
+      "stimulation": -0.5699999999999998,
+      "hedonism": 0.029999999999999805,
+      "achievement": -0.9700000000000002,
+      "power": -2.3033333333333337,
+      "security": 0.1499999999999999,
+      "openness_to_change": 0.16333333333333325,
+      "self_enhancement": -1.0811111111111114,
+      "conservation": -0.2966666666666667,
+      "self_transcendence": 1.1549999999999998,
+      "_mrat": 3.77
+    }
+  },
+  "gpt55": {
+    "mfq30": {
+      "care": 4.533333333333333,
+      "fairness": 4.7,
+      "loyalty": 1.5666666666666669,
+      "authority": 1.8666666666666667,
+      "sanctity": 0.8666666666666667,
+      "individualizing": 4.616666666666667,
+      "binding": 1.4333333333333333,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": 1.475,
+      "tradition": -0.4249999999999998,
+      "benevolence": 1.6250000000000004,
+      "universalism": 1.7416666666666667,
+      "self_direction": 0.7250000000000001,
+      "stimulation": -0.9249999999999998,
+      "hedonism": -2.2583333333333333,
+      "achievement": -1.275,
+      "power": -2.3916666666666666,
+      "security": -0.44499999999999984,
+      "openness_to_change": -0.8194444444444443,
+      "self_enhancement": -1.9749999999999999,
+      "conservation": 0.2016666666666668,
+      "self_transcendence": 1.6833333333333336,
+      "_mrat": 3.525
+    }
+  },
+  "grok45": {
+    "mfq30": {
+      "care": 3.9333333333333336,
+      "fairness": 4.333333333333333,
+      "loyalty": 2.7333333333333334,
+      "authority": 2.466666666666667,
+      "sanctity": 1.5333333333333334,
+      "individualizing": 4.133333333333333,
+      "binding": 2.2444444444444445,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": -0.9650000000000003,
+      "tradition": -1.7150000000000003,
+      "benevolence": 0.9849999999999994,
+      "universalism": 0.7683333333333326,
+      "self_direction": 1.9349999999999996,
+      "stimulation": 1.001666666666666,
+      "hedonism": 0.4016666666666664,
+      "achievement": -0.5150000000000001,
+      "power": -1.8650000000000002,
+      "security": -0.42500000000000027,
+      "openness_to_change": 1.1127777777777774,
+      "self_enhancement": -0.6594444444444446,
+      "conservation": -1.0350000000000004,
+      "self_transcendence": 0.876666666666666,
+      "_mrat": 4.065
+    }
+  },
+  "inkling": {
+    "mfq30": {
+      "care": 4.0,
+      "fairness": 4.533333333333333,
+      "loyalty": 1.3,
+      "authority": 1.6666666666666667,
+      "sanctity": 0.9,
+      "individualizing": 4.266666666666667,
+      "binding": 1.288888888888889,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": 0.14500000000000046,
+      "tradition": -0.9550000000000001,
+      "benevolence": 1.1449999999999996,
+      "universalism": 1.378333333333333,
+      "self_direction": 1.3949999999999996,
+      "stimulation": -0.5550000000000002,
+      "hedonism": -0.8216666666666668,
+      "achievement": -1.105,
+      "power": -2.0883333333333334,
+      "security": -0.07500000000000018,
+      "openness_to_change": 0.0061111111111108824,
+      "self_enhancement": -1.3383333333333334,
+      "conservation": -0.29499999999999993,
+      "self_transcendence": 1.2616666666666663,
+      "_mrat": 3.955
+    }
+  },
+  "kimi": {
+    "mfq30": {
+      "care": 4.366666666666666,
+      "fairness": 4.833333333333333,
+      "loyalty": 2.0666666666666664,
+      "authority": 1.6666666666666667,
+      "sanctity": 0.6333333333333333,
+      "individualizing": 4.6,
+      "binding": 1.4555555555555555,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": 0.9550000000000001,
+      "tradition": -0.29499999999999993,
+      "benevolence": 1.505,
+      "universalism": 2.088333333333333,
+      "self_direction": 1.255,
+      "stimulation": -0.8450000000000002,
+      "hedonism": -2.245,
+      "achievement": -1.645,
+      "power": -2.245,
+      "security": -0.7250000000000001,
+      "openness_to_change": -0.6116666666666668,
+      "self_enhancement": -2.045,
+      "conservation": -0.02166666666666665,
+      "self_transcendence": 1.7966666666666664,
+      "_mrat": 3.245
+    }
+  },
+  "llama33": {
+    "mfq30": {
+      "care": 4.766666666666667,
+      "fairness": 4.9,
+      "loyalty": 3.1,
+      "authority": 2.1666666666666665,
+      "sanctity": 1.8333333333333335,
+      "individualizing": 4.833333333333334,
+      "binding": 2.3666666666666667,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": -0.7849999999999997,
+      "tradition": -0.9349999999999996,
+      "benevolence": 1.2650000000000006,
+      "universalism": 1.3816666666666668,
+      "self_direction": 1.5150000000000006,
+      "stimulation": 0.015000000000000568,
+      "hedonism": 0.14833333333333343,
+      "achievement": -0.9849999999999994,
+      "power": -2.718333333333333,
+      "security": -0.1849999999999996,
+      "openness_to_change": 0.5594444444444449,
+      "self_enhancement": -1.1849999999999996,
+      "conservation": -0.6349999999999997,
+      "self_transcendence": 1.3233333333333337,
+      "_mrat": 4.185
+    }
+  },
+  "minimax": {
+    "mfq30": {
+      "care": 4.333333333333333,
+      "fairness": 4.466666666666667,
+      "loyalty": 2.7,
+      "authority": 2.6,
+      "sanctity": 2.2,
+      "individualizing": 4.4,
+      "binding": 2.5,
+      "_catch_mean": 2.4
+    },
+    "pvq40": {
+      "conformity": 0.21999999999999975,
+      "tradition": -0.8799999999999999,
+      "benevolence": 1.0200000000000005,
+      "universalism": 0.6033333333333335,
+      "self_direction": 0.8700000000000001,
+      "stimulation": -0.4633333333333334,
+      "hedonism": 0.07000000000000028,
+      "achievement": -0.7799999999999998,
+      "power": -1.8633333333333333,
+      "security": 0.27000000000000046,
+      "openness_to_change": 0.158888888888889,
+      "self_enhancement": -0.8577777777777776,
+      "conservation": -0.1299999999999999,
+      "self_transcendence": 0.811666666666667,
+      "_mrat": 4.13
+    }
+  },
+  "mistral_large": {
+    "mfq30": {
+      "care": 4.666666666666667,
+      "fairness": 4.866666666666667,
+      "loyalty": 2.8666666666666667,
+      "authority": 2.4,
+      "sanctity": 2.033333333333333,
+      "individualizing": 4.7666666666666675,
+      "binding": 2.433333333333333,
+      "_catch_mean": 2.6
+    },
+    "pvq40": {
+      "conformity": -0.1849999999999996,
+      "tradition": -1.1849999999999996,
+      "benevolence": 0.9649999999999999,
+      "universalism": 0.9316666666666666,
+      "self_direction": 1.415,
+      "stimulation": -0.20166666666666666,
+      "hedonism": -0.06833333333333336,
+      "achievement": -0.835,
+      "power": -1.7349999999999999,
+      "security": -0.054999999999999716,
+      "openness_to_change": 0.38166666666666665,
+      "self_enhancement": -0.8794444444444444,
+      "conservation": -0.47499999999999964,
+      "self_transcendence": 0.9483333333333333,
+      "_mrat": 4.135
+    }
+  },
+  "o3": {
+    "mfq30": {
+      "care": 4.166666666666667,
+      "fairness": 4.433333333333334,
+      "loyalty": 2.3,
+      "authority": 1.5,
+      "sanctity": 0.8666666666666667,
+      "individualizing": 4.300000000000001,
+      "binding": 1.5555555555555556,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": -0.2949999999999995,
+      "tradition": -1.2449999999999997,
+      "benevolence": 0.9050000000000002,
+      "universalism": 1.3883333333333336,
+      "self_direction": 1.3550000000000004,
+      "stimulation": -0.2783333333333329,
+      "hedonism": -0.011666666666666714,
+      "achievement": -0.7949999999999995,
+      "power": -1.6783333333333328,
+      "security": -0.4249999999999994,
+      "openness_to_change": 0.35500000000000026,
+      "self_enhancement": -0.828333333333333,
+      "conservation": -0.6549999999999995,
+      "self_transcendence": 1.146666666666667,
+      "_mrat": 4.145
+    }
+  },
+  "opus": {
+    "mfq30": {
+      "care": 3.8333333333333335,
+      "fairness": 3.7666666666666666,
+      "loyalty": 2.1999999999999997,
+      "authority": 2.0,
+      "sanctity": 1.2666666666666666,
+      "individualizing": 3.8,
+      "binding": 1.8222222222222222,
+      "_catch_mean": 2.2
+    },
+    "pvq40": {
+      "conformity": -0.2999999999999998,
+      "tradition": -1.0499999999999998,
+      "benevolence": 0.8499999999999996,
+      "universalism": 0.7666666666666666,
+      "self_direction": 1.25,
+      "stimulation": 0.0,
+      "hedonism": -0.20000000000000018,
+      "achievement": -0.8500000000000001,
+      "power": -1.2666666666666666,
+      "security": 0.040000000000000036,
+      "openness_to_change": 0.3499999999999999,
+      "self_enhancement": -0.7722222222222223,
+      "conservation": -0.43666666666666654,
+      "self_transcendence": 0.8083333333333331,
+      "_mrat": 4.0
+    }
+  },
+  "sonnet": {
+    "mfq30": {
+      "care": 4.3,
+      "fairness": 4.4,
+      "loyalty": 2.1,
+      "authority": 1.8333333333333333,
+      "sanctity": 1.1666666666666667,
+      "individualizing": 4.35,
+      "binding": 1.7,
+      "_catch_mean": 2.5
+    },
+    "pvq40": {
+      "conformity": -0.2849999999999997,
+      "tradition": -0.9849999999999999,
+      "benevolence": 1.165,
+      "universalism": 0.9483333333333333,
+      "self_direction": 1.3150000000000004,
+      "stimulation": -0.08499999999999996,
+      "hedonism": -0.01833333333333309,
+      "achievement": -1.0349999999999997,
+      "power": -1.7516666666666665,
+      "security": -0.1649999999999996,
+      "openness_to_change": 0.40388888888888913,
+      "self_enhancement": -0.9349999999999997,
+      "conservation": -0.47833333333333306,
+      "self_transcendence": 1.0566666666666666,
+      "_mrat": 3.885
+    }
+  }
+}
