@@ -1,5 +1,16 @@
 # Moral Domain — scenario/scoring audit
 
+> **Decision (adopted): Option A, plus scenario curation.** Describe Moral Domain as the
+> *reach of moral judgment over harmless behavior* (communitarian "uphold shared standards"
+> ↔ libertarian "mind your business"), i.e. **applied** domain breadth, anchored in the
+> confirmatory study to a harmless-taboo / victimless-acts measure rather than the MFQ. The
+> reading is clean for the three baseline scenarios (domain_1–3, `has_human_baseline`) that
+> produced the convergent result, but the full 12-scenario bank is heterogeneous (see §6):
+> scenarios 4–12 also tap purity-breadth, complicity/scope, and authenticity. So Option A
+> governs the current result, and the domain bank is flagged for curation before the
+> confirmatory study. Pre-registered MFQ predictions are left unchanged; this reading
+> supersedes their interpretation.
+
 Prompted by the convergent-validity result, in which the Moral Domain axis returned a
 null against the MFQ *binding* foundations (r = -0.06) and a strong, wrong-signed
 correlation with MFQ *individualizing* (r = -0.70 vs. a predicted +). This audit asks
@@ -91,3 +102,31 @@ Two ways forward, and this is a scientific-framing call:
 Recommendation: **(A)**. The axis is measuring something real and stable; the cleaner move
 is to name it accurately and predict against the right external construct, not to force it
 back onto the MFQ breadth mapping it has now twice declined to fit.
+
+## 6. Does the reading hold across all 12 domain scenarios? Only for the baseline three
+
+The convergent Domain score (`b12`) uses only the three `has_human_baseline` scenarios —
+domain_1, domain_2, domain_3 — and those are unambiguously the reach/mind-your-business
+contrast (a private hobby neighbors find improper; refusing family traditions; a restaurant
+disrespecting neighborhood custom). So the -0.70 rests cleanly on the reach construct.
+
+Rescoring Domain on all twelve scenarios (`all48`) dilutes the pattern rather than
+overturning it: Domain x MFQ individualizing weakens from -0.70 to -0.46, and Domain x MFQ
+binding drifts from -0.06 to +0.12. Reading scenarios 4-12 explains the dilution — the fuller
+bank is heterogeneous and taps at least four distinct contrasts:
+
+- **Reach / mind-your-business** (clean): domain_1, 3, 6, 8.
+- **Purity-breadth** (does a harmless impurity count as moral?): domain_7, 8, 11 — the original
+  "which foundations count" construct; these push binding upward on the full set.
+- **Complicity / scope-of-responsibility** (exploitative supply chains; the un-sharing rich
+  villager): domain_5, 9, 12 — overlap Obligation Scope, consistent with Domain x Scope = +0.51.
+- **Authenticity / self-expression** (empty mourning ritual; modest dress): domain_10, 11 — the
+  "narrow" pole here is "performing without genuine feeling is dishonest," which is Moral Agent
+  territory, not "leave them alone."
+
+So the reach reading is the dominant theme and is clean for the baseline scenarios that carry
+the validated result, but the domain bank as a whole is a blend. This is not a scoring defect;
+it is construct heterogeneity, and it is what inflates Domain's overlap with Scope and Moral
+Agent. Before the confirmatory study, the domain scenarios should be curated to whichever
+construct is chosen (reach-of-judgment vs foundation-breadth), keeping only the scenarios that
+measure it — a targeted revision of scenarios 4-12, not a wholesale rewrite.

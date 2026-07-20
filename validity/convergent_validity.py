@@ -30,6 +30,11 @@ EXPECTED = [
     ("authority",       "mfq2.authority",            "-", "skeptical <-> lower Authority foundation (MFQ-2)"),
     ("authority",       "pvq40.conservation",        "-", "skeptical <-> lower conservation values"),
     ("authority",       "pvq40.openness_to_change",  "+", "skeptical <-> higher openness"),
+    # NOTE (post-hoc, see results/domain_scenario_audit.md): the Domain axis measures APPLIED
+    # domain breadth (reach of moral judgment over harmless behavior; communitarian<->libertarian),
+    # not the MFQ's abstract foundation endorsement. These MFQ predictions are left UNCHANGED as
+    # the pre-registered record; the audit supersedes their interpretation and re-anchors Domain to
+    # a harmless-taboo/victimless-acts measure for the confirmatory study.
     ("domain_boundary", "mfq30.binding",             "-", "narrow domain <-> weaker binding"),
     ("domain_boundary", "mfq30.sanctity",            "-", "narrow <-> lower Sanctity"),
     ("domain_boundary", "mfq30.individualizing",     "+", "narrow <-> individualizing-only morality"),
@@ -126,6 +131,12 @@ def main():
          "PVQ-40 is from Schwartz's authorized repository (Schwartz, 2021, _Online Readings in "
          "Psychology and Culture_ 2(2):9, licensed **CC BY-NC-ND 3.0**). The tables below — and the "
          "per-model scores in `instrument_scores.json` — are derived measures that contain no item text.", "",
+         "> **Moral Domain rows:** the Domain predictions below test the MFQ foundations, which a "
+         "scenario audit (`domain_scenario_audit.md`) shows is the wrong external anchor. Domain "
+         "measures *applied* breadth — the reach of moral judgment over harmless behavior "
+         "(communitarian ↔ libertarian) — so its \"no\" against MFQ individualizing is expected, not "
+         "a failure; its confirmatory anchor is a harmless-taboo measure. Predictions are left as "
+         "pre-registered.", "",
          "## Pre-registered predictions", "",
          "| Reasoner axis | Instrument metric | Predicted | r | n | Direction holds |",
          "|---|---|:--:|--:|:--:|:--:|"]

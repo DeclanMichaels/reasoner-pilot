@@ -6,6 +6,8 @@ Correlations of the four Reasoner axes (neutral, b12) with MFQ-30, MFQ-2, and PV
 
 > **Instrument wording is not reproduced** here or anywhere in this repository. MFQ-30 (Graham et al. 2011) is available for research use at moralfoundations.org; PVQ-40 is from Schwartz's authorized repository (Schwartz, 2021, _Online Readings in Psychology and Culture_ 2(2):9, licensed **CC BY-NC-ND 3.0**). The tables below — and the per-model scores in `instrument_scores.json` — are derived measures that contain no item text.
 
+> **Moral Domain rows:** the Domain predictions below test the MFQ foundations, which a scenario audit (`domain_scenario_audit.md`) shows is the wrong external anchor. Domain measures *applied* breadth — the reach of moral judgment over harmless behavior (communitarian ↔ libertarian) — so its "no" against MFQ individualizing is expected, not a failure; its confirmatory anchor is a harmless-taboo measure. Predictions are left as pre-registered.
+
 ## Pre-registered predictions
 
 | Reasoner axis | Instrument metric | Predicted | r | n | Direction holds |

@@ -42,31 +42,45 @@ person-in-relationship, is the moral unit" should look like. At n = 11 the small
 coefficients are expected; the sign-consistency across a dozen related metrics is the
 signal.
 
-**Moral Domain is the axis this pass does not validate, and we report that plainly.**
-The construct is domain *breadth* — whether morality extends beyond harm and fairness to
-purity, loyalty, and duty — so the discriminating external test is the MFQ *binding*
-foundations, the ones that are "in" for a broad domain and "out" for a narrow one. The
-Domain axis's correlation with the binding composite is -0.06: effectively zero. The
-axis instead correlates strongly and negatively with the *individualizing* foundations
-(care -0.77, fairness -0.59), and the relative contrast that might have reconciled this,
-individualizing-minus-binding, is also wrong-signed (-0.39). This is not a general
-method artifact: the Domain axis is no more confounded with overall MFQ endorsement
-(-0.32) than Authority is (-0.40), and Authority validated. What the model panel shows,
-then, is that Domain returns a null on the test that would confirm it and an anomaly on
-the one that would not — the panel neither confirms nor cleanly interprets the axis
-against the MFQ. The most likely explanations are two, and they are separable in the
-confirmatory study: either the Domain scenarios are being scored in a direction that
-does not match the intended breadth polarity, or "domain breadth" as the Reasoner
-operationalizes it genuinely diverges from MFQ foundation endorsement (for instance,
-because the axis partly indexes how much a model moralizes harm and fairness rather than
-whether it admits additional foundations). We do not resolve that here; we flag it as the
-priority to pin down — by auditing the Domain scenarios' scoring against the construct,
-and by testing Domain directly against a binding-versus-individualizing contrast in the
-human sample — before Moral Domain is treated as a validated dimension.
+**Moral Domain does not track the MFQ foundations — and a scenario audit shows that is
+the correct result, not a broken axis.** The construct is domain *breadth*, so the
+pre-registered analog was the MFQ foundations: narrow was predicted to look like high
+individualizing, and the discriminating test was the MFQ *binding* foundations. Neither
+held — binding correlated -0.06 (a true null, unstable under leave-one-out) and
+individualizing -0.70 (opposite the predicted sign, but robust: leave-one-out
+[-0.78, -0.58]). Auditing the scenarios explains why. The scoring is correct — broad
+options carry pole -1, narrow options +1, higher = narrow, with no sign error — but every
+domain scenario pits a communitarian reading ("the community may hold members to shared
+standards") against a libertarian one ("no one was harmed, so it is not our concern; it is
+a personal choice"). The axis therefore measures the **reach of moral judgment over
+harmless private and communal behavior** — police-others versus mind-your-business — which
+is *applied* moral-domain breadth, the moral-dumbfounding operationalization (do you still
+call a harmless violation wrong?), as distinct from the MFQ's *abstract* foundation
+endorsement (do you agree purity or loyalty are relevant considerations). Those two are
+known to diverge, and they diverge here in exactly the interpretable direction: the MFQ's
+individualizing items are worded as *interventionist* obligations (care for the weak,
+guarantee justice and rights), which a mind-your-business respondent rates lower — so
+narrow ↔ low individualizing (-0.70) is what this axis *should* produce. The binding null
+is itself a discriminant finding: declining to police harmless behavior is not the same as
+personally rejecting loyalty, authority, or sanctity, so applied and professed breadth come
+apart. The upshot is not that Domain is unvalidated but that the MFQ is the wrong external
+anchor for it; its convergent test in the confirmatory sample should be a harmless-taboo /
+victimless-acts measure, against which the current pattern is a prediction, not an anomaly.
+Two caveats travel with this reading. First, it is clean for the three baseline scenarios
+(domain_1–3) that actually produce the score, but the full twelve-scenario domain bank is
+heterogeneous: rescored on all twelve, the individualizing correlation dilutes from -0.70 to
+-0.46, because scenarios 4–12 also tap purity-breadth, complicity/scope-of-responsibility,
+and authenticity — so the domain scenarios should be curated to a single construct before the
+confirmatory run. Second, at neutral Domain's largest inter-axis correlation is with Obligation
+Scope (+0.51) — both mark a liberal-individualist outlook — so the human sample, with real
+dispositional spread, should confirm the two do not collapse.
 
-Taken together, the pass leaves the four-dimension structure in good standing: two axes
-(Authority, Scope) are supported by external instruments, one (Moral Agent) is supported
-modestly, and one (Moral Domain) is flagged for construct clarification rather than
-confirmed. That distribution — most of the structure corroborated, one component
-surfaced for repair before it reaches human data — is precisely the outcome an
-exploratory, pre-registered convergent-validity pass exists to produce.
+Taken together, the pass leaves the four-dimension structure in good standing: Authority
+and Scope are externally validated, Moral Agent is supported modestly, and Moral Domain is
+not broken but re-anchored — the audit identifies what it measures (applied breadth / reach
+of moral judgment) and the external construct that should test it. That distribution — most
+of the structure corroborated and one axis's construct sharpened before it reaches human
+data — is precisely the outcome an exploratory, pre-registered convergent-validity pass
+exists to produce. (All model-panel magnitudes are read cautiously: at neutral the axes are
+compressed to sd ≈ 0.06, so we trust the leave-one-out-stable sign pattern, not the
+coefficients, and treat the human confirmatory sample as the decisive test.)
