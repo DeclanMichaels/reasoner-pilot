@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+title: "The Reasoner: a cross-model, cross-cultural instrument for the STRUCTURE of moral reasoning. Full pilot (11 models, 8 framings, 48 scenarios, 68 humans) with raw data, scoring/analysis code, papers, and an interactive viewer. Reproduces every published number."
+authors:
+  - family-names: Michaels
+    given-names: Declan
+version: "1.0.0"
+date-released: "2026-07-20"
+url: "https://github.com/DeclanMichaels/reasoner-pilot"
+repository-code: "https://github.com/DeclanMichaels/reasoner-pilot"
+license: Apache-2.0
+# doi: 10.5281/zenodo.XXXXXXX   # add after minting the Zenodo DOI
