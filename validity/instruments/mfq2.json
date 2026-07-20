@@ -1,0 +1,287 @@
+{
+  "instrument": "MFQ-2",
+  "citation": "Atari, M., Haidt, J., Graham, J., et al. (2023). Morality beyond the WEIRD. JPSP, 125(5), 1157-1188 (MFQ-2).",
+  "source": "moralfoundations.org and the Atari et al. (2023) OSF supplement. Free for research use.",
+  "fill_note": "Paste OFFICIAL MFQ-2 wording (six items per foundation). VERIFY each item's foundation against the official MFQ-2 key. Do NOT commit filled items.",
+  "scales": {
+    "main": {
+      "prompt": "For each statement, indicate how well it describes you. Rate each from 1 to 5.",
+      "min": 1,
+      "max": 5,
+      "anchors": {
+        "1": "does not describe me at all",
+        "2": "slightly describes me",
+        "3": "moderately describes me",
+        "4": "describes me fairly well",
+        "5": "describes me extremely well"
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "care_1",
+      "group": "care",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_2",
+      "group": "care",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_3",
+      "group": "care",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_4",
+      "group": "care",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_5",
+      "group": "care",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_6",
+      "group": "care",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "equality_1",
+      "group": "equality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "equality_2",
+      "group": "equality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "equality_3",
+      "group": "equality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "equality_4",
+      "group": "equality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "equality_5",
+      "group": "equality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "equality_6",
+      "group": "equality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "proportionality_1",
+      "group": "proportionality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "proportionality_2",
+      "group": "proportionality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "proportionality_3",
+      "group": "proportionality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "proportionality_4",
+      "group": "proportionality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "proportionality_5",
+      "group": "proportionality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "proportionality_6",
+      "group": "proportionality",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_1",
+      "group": "loyalty",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_2",
+      "group": "loyalty",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_3",
+      "group": "loyalty",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_4",
+      "group": "loyalty",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_5",
+      "group": "loyalty",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_6",
+      "group": "loyalty",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_1",
+      "group": "authority",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_2",
+      "group": "authority",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_3",
+      "group": "authority",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_4",
+      "group": "authority",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_5",
+      "group": "authority",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_6",
+      "group": "authority",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "purity_1",
+      "group": "purity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "purity_2",
+      "group": "purity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "purity_3",
+      "group": "purity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "purity_4",
+      "group": "purity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "purity_5",
+      "group": "purity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "purity_6",
+      "group": "purity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    }
+  ],
+  "score": {
+    "foundations": [
+      "care",
+      "equality",
+      "proportionality",
+      "loyalty",
+      "authority",
+      "purity"
+    ],
+    "composites": {},
+    "method": "mean",
+    "exclude_catch": false
+  }
+}

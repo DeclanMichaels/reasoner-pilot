@@ -1,0 +1,282 @@
+{
+  "instrument": "MFQ-30",
+  "citation": "Graham, J., Nosek, B. A., Haidt, J., Iyer, R., Koleva, S., & Ditto, P. H. (2011). Mapping the moral domain. JPSP, 101(2), 366-385.",
+  "source": "https://moralfoundations.org/questionnaires/ (MFQ30.item-key.doc + MFQ30.self-scorable.doc). Free for research/non-commercial use.",
+  "fill_note": "Paste OFFICIAL wording into each empty text. Per foundation: three relevance items (part1) then three agreement items (part2), matching the official item key. Fill both catch items. VERIFY every item's foundation and part against MFQ30.item-key.doc. Do NOT commit filled items.",
+  "scales": {
+    "part1": {
+      "prompt": "Part 1. When you decide whether something is right or wrong, to what extent are the following considerations relevant to your thinking? Rate each from 0 to 5.",
+      "min": 0,
+      "max": 5,
+      "anchors": {
+        "0": "not at all relevant",
+        "1": "not very relevant",
+        "2": "slightly relevant",
+        "3": "somewhat relevant",
+        "4": "very relevant",
+        "5": "extremely relevant"
+      }
+    },
+    "part2": {
+      "prompt": "Part 2. Read each statement and indicate your agreement. Rate each from 0 to 5.",
+      "min": 0,
+      "max": 5,
+      "anchors": {
+        "0": "strongly disagree",
+        "1": "moderately disagree",
+        "2": "slightly disagree",
+        "3": "slightly agree",
+        "4": "moderately agree",
+        "5": "strongly agree"
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "care_p1_1",
+      "group": "care",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_p1_2",
+      "group": "care",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_p1_3",
+      "group": "care",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_p2_1",
+      "group": "care",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_p2_2",
+      "group": "care",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "care_p2_3",
+      "group": "care",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "fairness_p1_1",
+      "group": "fairness",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "fairness_p1_2",
+      "group": "fairness",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "fairness_p1_3",
+      "group": "fairness",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "fairness_p2_1",
+      "group": "fairness",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "fairness_p2_2",
+      "group": "fairness",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "fairness_p2_3",
+      "group": "fairness",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_p1_1",
+      "group": "loyalty",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_p1_2",
+      "group": "loyalty",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_p1_3",
+      "group": "loyalty",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_p2_1",
+      "group": "loyalty",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_p2_2",
+      "group": "loyalty",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "loyalty_p2_3",
+      "group": "loyalty",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_p1_1",
+      "group": "authority",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_p1_2",
+      "group": "authority",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_p1_3",
+      "group": "authority",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_p2_1",
+      "group": "authority",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_p2_2",
+      "group": "authority",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "authority_p2_3",
+      "group": "authority",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "sanctity_p1_1",
+      "group": "sanctity",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "sanctity_p1_2",
+      "group": "sanctity",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "sanctity_p1_3",
+      "group": "sanctity",
+      "scale": "part1",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "sanctity_p2_1",
+      "group": "sanctity",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "sanctity_p2_2",
+      "group": "sanctity",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "sanctity_p2_3",
+      "group": "sanctity",
+      "scale": "part2",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "catch_p1",
+      "group": "_catch",
+      "scale": "part1",
+      "catch": true,
+      "text": ""
+    },
+    {
+      "id": "catch_p2",
+      "group": "_catch",
+      "scale": "part2",
+      "catch": true,
+      "text": ""
+    }
+  ],
+  "score": {
+    "foundations": [
+      "care",
+      "fairness",
+      "loyalty",
+      "authority",
+      "sanctity"
+    ],
+    "composites": {
+      "individualizing": [
+        "care",
+        "fairness"
+      ],
+      "binding": [
+        "loyalty",
+        "authority",
+        "sanctity"
+      ]
+    },
+    "method": "mean",
+    "exclude_catch": true
+  }
+}

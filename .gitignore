@@ -18,3 +18,8 @@ Thumbs.db
 # Local scratch
 /tmp/
 *.log
+
+# convergent-validity module: local filled items + outputs
+validity/instruments/*.filled.json
+validity/runs/
+validity/results/

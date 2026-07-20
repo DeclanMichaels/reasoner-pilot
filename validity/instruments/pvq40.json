@@ -1,0 +1,339 @@
+{
+  "instrument": "PVQ-40",
+  "citation": "Schwartz, S. H. (2003/2005). Portrait Values Questionnaire (PVQ-40). See Schwartz (1992); ESS PVQ-21 short form.",
+  "source": "Schwartz PVQ-40 official portraits + value key (obtain from Schwartz materials / ESS documentation). Free for research use.",
+  "fill_note": "Paste the OFFICIAL 40 portraits (four per value). The portraits use gendered phrasing ('he'/'she'); for LLM administration pick ONE variant and use it consistently. VERIFY each item's value against the official key. Do NOT commit filled items.",
+  "scales": {
+    "main": {
+      "prompt": "Here are short descriptions of people. For each, how much is this person like you? Rate each from 1 to 6.",
+      "min": 1,
+      "max": 6,
+      "anchors": {
+        "1": "not like me at all",
+        "2": "not like me",
+        "3": "a little like me",
+        "4": "somewhat like me",
+        "5": "like me",
+        "6": "very much like me"
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "conformity_1",
+      "group": "conformity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_2",
+      "group": "conformity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_3",
+      "group": "conformity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_4",
+      "group": "conformity",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_1",
+      "group": "tradition",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_2",
+      "group": "tradition",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_3",
+      "group": "tradition",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_4",
+      "group": "tradition",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_1",
+      "group": "benevolence",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_2",
+      "group": "benevolence",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_3",
+      "group": "benevolence",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_4",
+      "group": "benevolence",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_1",
+      "group": "universalism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_2",
+      "group": "universalism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_3",
+      "group": "universalism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_4",
+      "group": "universalism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_1",
+      "group": "self_direction",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_2",
+      "group": "self_direction",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_3",
+      "group": "self_direction",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_4",
+      "group": "self_direction",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_1",
+      "group": "stimulation",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_2",
+      "group": "stimulation",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_3",
+      "group": "stimulation",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_4",
+      "group": "stimulation",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_1",
+      "group": "hedonism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_2",
+      "group": "hedonism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_3",
+      "group": "hedonism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_4",
+      "group": "hedonism",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_1",
+      "group": "achievement",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_2",
+      "group": "achievement",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_3",
+      "group": "achievement",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_4",
+      "group": "achievement",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "power_1",
+      "group": "power",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "power_2",
+      "group": "power",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "power_3",
+      "group": "power",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "power_4",
+      "group": "power",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "security_1",
+      "group": "security",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "security_2",
+      "group": "security",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "security_3",
+      "group": "security",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "security_4",
+      "group": "security",
+      "scale": "main",
+      "catch": false,
+      "text": ""
+    }
+  ],
+  "score": {
+    "values": [
+      "conformity",
+      "tradition",
+      "benevolence",
+      "universalism",
+      "self_direction",
+      "stimulation",
+      "hedonism",
+      "achievement",
+      "power",
+      "security"
+    ],
+    "higher_order": {
+      "openness_to_change": [
+        "self_direction",
+        "stimulation",
+        "hedonism"
+      ],
+      "self_enhancement": [
+        "achievement",
+        "power",
+        "hedonism"
+      ],
+      "conservation": [
+        "security",
+        "conformity",
+        "tradition"
+      ],
+      "self_transcendence": [
+        "universalism",
+        "benevolence"
+      ]
+    },
+    "method": "ipsative_mean"
+  }
+}
