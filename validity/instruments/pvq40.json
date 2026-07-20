@@ -2,7 +2,7 @@
   "instrument": "PVQ-40",
   "citation": "Schwartz, S. H. (2003/2005). Portrait Values Questionnaire (PVQ-40). See Schwartz (1992); ESS PVQ-21 short form.",
   "source": "Schwartz PVQ-40 official portraits + value key (obtain from Schwartz materials / ESS documentation). Free for research use.",
-  "fill_note": "Paste the OFFICIAL 40 portraits (four per value). The portraits use gendered phrasing ('he'/'she'); for LLM administration pick ONE variant and use it consistently. VERIFY each item's value against the official key. Do NOT commit filled items.",
+  "fill_note": "Paste the OFFICIAL 40 portraits keyed by item 'num' (1-40). Distribution is UNEQUAL per value (universalism 6, security 5, conformity/tradition/benevolence/self_direction/achievement 4, stimulation/hedonism/power 3). The portraits use gendered phrasing; we use the MALE ('he') form consistently for LLM administration. VERIFY each item's value against the official key. Do NOT commit filled items.",
   "scales": {
     "main": {
       "prompt": "Here are short descriptions of people. For each, how much is this person like you? Rate each from 1 to 6.",
@@ -20,226 +20,10 @@
   },
   "items": [
     {
-      "id": "conformity_1",
-      "group": "conformity",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "conformity_2",
-      "group": "conformity",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "conformity_3",
-      "group": "conformity",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "conformity_4",
-      "group": "conformity",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "tradition_1",
-      "group": "tradition",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "tradition_2",
-      "group": "tradition",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "tradition_3",
-      "group": "tradition",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "tradition_4",
-      "group": "tradition",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "benevolence_1",
-      "group": "benevolence",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "benevolence_2",
-      "group": "benevolence",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "benevolence_3",
-      "group": "benevolence",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "benevolence_4",
-      "group": "benevolence",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "universalism_1",
-      "group": "universalism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "universalism_2",
-      "group": "universalism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "universalism_3",
-      "group": "universalism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "universalism_4",
-      "group": "universalism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
       "id": "self_direction_1",
       "group": "self_direction",
       "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "self_direction_2",
-      "group": "self_direction",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "self_direction_3",
-      "group": "self_direction",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "self_direction_4",
-      "group": "self_direction",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "stimulation_1",
-      "group": "stimulation",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "stimulation_2",
-      "group": "stimulation",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "stimulation_3",
-      "group": "stimulation",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "stimulation_4",
-      "group": "stimulation",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "hedonism_1",
-      "group": "hedonism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "hedonism_2",
-      "group": "hedonism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "hedonism_3",
-      "group": "hedonism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "hedonism_4",
-      "group": "hedonism",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "achievement_1",
-      "group": "achievement",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "achievement_2",
-      "group": "achievement",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "achievement_3",
-      "group": "achievement",
-      "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "achievement_4",
-      "group": "achievement",
-      "scale": "main",
+      "num": 1,
       "catch": false,
       "text": ""
     },
@@ -247,27 +31,23 @@
       "id": "power_1",
       "group": "power",
       "scale": "main",
+      "num": 2,
       "catch": false,
       "text": ""
     },
     {
-      "id": "power_2",
-      "group": "power",
+      "id": "universalism_1",
+      "group": "universalism",
       "scale": "main",
+      "num": 3,
       "catch": false,
       "text": ""
     },
     {
-      "id": "power_3",
-      "group": "power",
+      "id": "achievement_1",
+      "group": "achievement",
       "scale": "main",
-      "catch": false,
-      "text": ""
-    },
-    {
-      "id": "power_4",
-      "group": "power",
-      "scale": "main",
+      "num": 4,
       "catch": false,
       "text": ""
     },
@@ -275,6 +55,71 @@
       "id": "security_1",
       "group": "security",
       "scale": "main",
+      "num": 5,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_1",
+      "group": "stimulation",
+      "scale": "main",
+      "num": 6,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_1",
+      "group": "conformity",
+      "scale": "main",
+      "num": 7,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_2",
+      "group": "universalism",
+      "scale": "main",
+      "num": 8,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_1",
+      "group": "tradition",
+      "scale": "main",
+      "num": 9,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_1",
+      "group": "hedonism",
+      "scale": "main",
+      "num": 10,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_2",
+      "group": "self_direction",
+      "scale": "main",
+      "num": 11,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_1",
+      "group": "benevolence",
+      "scale": "main",
+      "num": 12,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_2",
+      "group": "achievement",
+      "scale": "main",
+      "num": 13,
       "catch": false,
       "text": ""
     },
@@ -282,6 +127,55 @@
       "id": "security_2",
       "group": "security",
       "scale": "main",
+      "num": 14,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_2",
+      "group": "stimulation",
+      "scale": "main",
+      "num": 15,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_2",
+      "group": "conformity",
+      "scale": "main",
+      "num": 16,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "power_2",
+      "group": "power",
+      "scale": "main",
+      "num": 17,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_2",
+      "group": "benevolence",
+      "scale": "main",
+      "num": 18,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_3",
+      "group": "universalism",
+      "scale": "main",
+      "num": 19,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_2",
+      "group": "tradition",
+      "scale": "main",
+      "num": 20,
       "catch": false,
       "text": ""
     },
@@ -289,6 +183,79 @@
       "id": "security_3",
       "group": "security",
       "scale": "main",
+      "num": 21,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_3",
+      "group": "self_direction",
+      "scale": "main",
+      "num": 22,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_4",
+      "group": "universalism",
+      "scale": "main",
+      "num": 23,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_3",
+      "group": "achievement",
+      "scale": "main",
+      "num": 24,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_3",
+      "group": "tradition",
+      "scale": "main",
+      "num": 25,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_2",
+      "group": "hedonism",
+      "scale": "main",
+      "num": 26,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_3",
+      "group": "benevolence",
+      "scale": "main",
+      "num": 27,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_3",
+      "group": "conformity",
+      "scale": "main",
+      "num": 28,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_5",
+      "group": "universalism",
+      "scale": "main",
+      "num": 29,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "stimulation_3",
+      "group": "stimulation",
+      "scale": "main",
+      "num": 30,
       "catch": false,
       "text": ""
     },
@@ -296,6 +263,79 @@
       "id": "security_4",
       "group": "security",
       "scale": "main",
+      "num": 31,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "achievement_4",
+      "group": "achievement",
+      "scale": "main",
+      "num": 32,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "benevolence_4",
+      "group": "benevolence",
+      "scale": "main",
+      "num": 33,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "self_direction_4",
+      "group": "self_direction",
+      "scale": "main",
+      "num": 34,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "security_5",
+      "group": "security",
+      "scale": "main",
+      "num": 35,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "conformity_4",
+      "group": "conformity",
+      "scale": "main",
+      "num": 36,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "hedonism_3",
+      "group": "hedonism",
+      "scale": "main",
+      "num": 37,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "tradition_4",
+      "group": "tradition",
+      "scale": "main",
+      "num": 38,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "power_3",
+      "group": "power",
+      "scale": "main",
+      "num": 39,
+      "catch": false,
+      "text": ""
+    },
+    {
+      "id": "universalism_6",
+      "group": "universalism",
+      "scale": "main",
+      "num": 40,
       "catch": false,
       "text": ""
     }

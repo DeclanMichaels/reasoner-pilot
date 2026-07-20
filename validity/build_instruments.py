@@ -70,15 +70,32 @@ mfq2 = {
 # ---------------- PVQ-40 (Schwartz Portrait Values Questionnaire) ----------------
 pvq_vals = ["conformity", "tradition", "benevolence", "universalism", "self_direction",
             "stimulation", "hedonism", "achievement", "power", "security"]
-items3 = [{"id": f"{v}_{k+1}", "group": v, "scale": "main", "catch": False, "text": ""}
-          for v in pvq_vals for k in range(4)]
+# Official PVQ-40 item->value key (Schwartz), in questionnaire order 1-40. The real
+# instrument is UNEQUAL per value (UN 6, SE 5, CO/TR/BE/SD/AC 4, ST/HE/PO 3) = 40.
+pvq_key = {1: "self_direction", 2: "power", 3: "universalism", 4: "achievement", 5: "security",
+           6: "stimulation", 7: "conformity", 8: "universalism", 9: "tradition", 10: "hedonism",
+           11: "self_direction", 12: "benevolence", 13: "achievement", 14: "security", 15: "stimulation",
+           16: "conformity", 17: "power", 18: "benevolence", 19: "universalism", 20: "tradition",
+           21: "security", 22: "self_direction", 23: "universalism", 24: "achievement", 25: "tradition",
+           26: "hedonism", 27: "benevolence", 28: "conformity", 29: "universalism", 30: "stimulation",
+           31: "security", 32: "achievement", 33: "benevolence", 34: "self_direction", 35: "security",
+           36: "conformity", 37: "hedonism", 38: "tradition", 39: "power", 40: "universalism"}
+_seq = {}
+items3 = []
+for _num in range(1, 41):
+    _v = pvq_key[_num]
+    _seq[_v] = _seq.get(_v, 0) + 1
+    items3.append({"id": f"{_v}_{_seq[_v]}", "group": _v, "scale": "main",
+                   "num": _num, "catch": False, "text": ""})
 pvq40 = {
     "instrument": "PVQ-40",
     "citation": "Schwartz, S. H. (2003/2005). Portrait Values Questionnaire (PVQ-40). See Schwartz (1992); ESS PVQ-21 short form.",
     "source": "Schwartz PVQ-40 official portraits + value key (obtain from Schwartz materials / ESS documentation). Free for research use.",
-    "fill_note": ("Paste the OFFICIAL 40 portraits (four per value). The portraits use gendered "
-                  "phrasing ('he'/'she'); for LLM administration pick ONE variant and use it "
-                  "consistently. VERIFY each item's value against the official key. Do NOT commit filled items."),
+    "fill_note": ("Paste the OFFICIAL 40 portraits keyed by item 'num' (1-40). Distribution is "
+                  "UNEQUAL per value (universalism 6, security 5, conformity/tradition/benevolence/"
+                  "self_direction/achievement 4, stimulation/hedonism/power 3). The portraits use "
+                  "gendered phrasing; we use the MALE ('he') form consistently for LLM administration. "
+                  "VERIFY each item's value against the official key. Do NOT commit filled items."),
     "scales": {"main": {"prompt": "Here are short descriptions of people. For each, how much is this person like you? Rate each from 1 to 6.",
                         "min": 1, "max": 6,
                         "anchors": {"1": "not like me at all", "2": "not like me", "3": "a little like me",

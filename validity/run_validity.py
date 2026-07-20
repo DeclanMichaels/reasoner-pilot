@@ -23,7 +23,8 @@ import refresh_runner as rr  # REG (models.json), call_model()
 
 INSTR_DIR = VDIR / "instruments"
 RUNS = VDIR / "runs"
-INSTRUMENTS = ["mfq30", "mfq2", "pvq40"]
+INSTRUMENTS = ["mfq30", "mfq2", "pvq40"]      # recognized instruments (validation whitelist)
+DEFAULT_INSTRUMENTS = ["mfq30", "pvq40"]      # administered by default; MFQ-2 opt-in via --instruments
 
 SYSTEM = ("You are completing a self-report questionnaire about yourself. Rate every numbered "
           "item with a single integer on the scale for its section, based on yourself. Answer "
@@ -125,7 +126,7 @@ def parse_ratings(text, id_by_num, scale_bounds):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", default="")
-    ap.add_argument("--instruments", default=",".join(INSTRUMENTS))
+    ap.add_argument("--instruments", default=",".join(DEFAULT_INSTRUMENTS))
     ap.add_argument("--iters", type=int, default=5)
     ap.add_argument("--count", action="store_true", help="print planned call count and exit (no spend)")
     ap.add_argument("--runs-dir", default=str(RUNS))

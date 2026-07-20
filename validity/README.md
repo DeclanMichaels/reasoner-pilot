@@ -1,14 +1,18 @@
 # Convergent validity (model panel)
 
 An **exploratory** check on whether the Reasoner's four axes move with established
-moral/values frameworks in the directions their labels imply. It administers three
-standard instruments to the same 11-model panel and correlates their scores against
-each model's neutral Reasoner axis positions.
+moral/values frameworks in the directions their labels imply. It administers standard
+instruments to the same 11-model panel and correlates their scores against each model's
+neutral Reasoner axis positions.
 
-- **MFQ-30** (Graham et al. 2011) — 5 foundations; individualizing/binding split.
-- **MFQ-2** (Atari et al. 2023) — 6 foundations (splits Fairness into Equality and
-  Proportionality); built with cross-cultural invariance in mind.
+- **MFQ-30** (Graham et al. 2011) — 5 foundations; individualizing/binding split. *(default)*
 - **PVQ-40** (Schwartz) — 10 basic values + 4 higher-order dimensions, ipsative-centered.
+  Unequal item counts per value (universalism 6, security 5, three values 3, rest 4);
+  administered in the **male ('he') portrait form** consistently. *(default)*
+- **MFQ-2** (Atari et al. 2023) — 6 foundations (splits Fairness into Equality and
+  Proportionality); built with cross-cultural invariance in mind. **Optional / opt-in** —
+  not administered by default (largely redundant with MFQ-30); add with
+  `--instruments mfq30,pvq40,mfq2` once its items are filled.
 
 **This is not the decisive validity evidence.** n = 11 (models), so correlations are
 suggestive, not confirmatory; LLM questionnaire responses have their own validity
@@ -26,7 +30,9 @@ pre-registered one: the expected correlation pattern is committed in
 - **Moral Domain** (+narrow) → − binding, − Sanctity/Purity; + individualizing
 - **Obligation Scope** (+universal) → + universalism, + self-transcendence, + Fairness/Equality; − Loyalty
 
-The score reported is "predicted directions confirmed: k / N."
+The score reported is "predicted directions confirmed: k / N", where N counts only the
+predictions whose instrument was actually administered (MFQ-2 predictions are marked
+"untested" and excluded from the ratio when MFQ-2 is not run).
 
 ## Items are NOT included here
 
@@ -52,7 +58,7 @@ The runner refuses to run any instrument with an empty item.
 # from the repo root, with the panel's API keys exported
 python3 validity/build_instruments.py         # (re)generate empty scaffolds
 python3 validity/run_validity.py --count       # print the call count, no spend
-python3 validity/run_validity.py               # administer to the panel (resumable)
+python3 validity/run_validity.py               # administer MFQ-30 + PVQ-40 to the panel (resumable)
 python3 validity/score_validity.py             # -> results/instrument_scores.json
 python3 validity/convergent_validity.py        # -> results/convergent_validity.{md,json}
 ```
@@ -60,14 +66,15 @@ python3 validity/convergent_validity.py        # -> results/convergent_validity.
 ## Call count
 
 One API call per (model, instrument, iteration); the whole scale is presented in one
-prompt with item order randomized per iteration. Default 5 iterations:
+prompt with item order randomized per iteration. Default is MFQ-30 + PVQ-40, 5 iterations:
 
-**11 models × 3 instruments × 5 iterations = 165 calls.**
+**11 models × 2 instruments × 5 iterations = 110 calls.**
 
-Adjust with `--models`, `--instruments`, `--iters` (e.g. `--iters 3` → 99). Each call is
-one questionnaire (~30–40 items in, a small JSON of ratings out, plus reasoning tokens on
-reasoning models), so total spend is modest — dominated by the pricier models (Opus,
-GPT-5.5, o3) rather than the count. Run `--count` for the exact plan after any filtering.
+Adding MFQ-2 (`--instruments mfq30,pvq40,mfq2`) makes it 165. Adjust with `--models`,
+`--instruments`, `--iters` (e.g. `--iters 3` → 66). Each call is one questionnaire
+(~30–40 items in, a small JSON of ratings out, plus reasoning tokens on reasoning models),
+so total spend is modest — dominated by the pricier models (Opus, GPT-5.5, o3) rather than
+the count. Run `--count` for the exact plan after any filtering.
 
 ## Design notes / limitations
 

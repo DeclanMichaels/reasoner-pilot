@@ -82,15 +82,22 @@ def main():
     if len(models) < 3:
         sys.exit(f"only {len(models)} models have both Reasoner axes and instrument scores; run the panel first.")
 
-    # pre-specified pattern
-    rows, hits = [], 0
+    # pre-specified pattern. Predictions whose metric was not administered (e.g. MFQ-2 when
+    # skipped) yield r=None; they are marked "untested" and excluded from the confirmed ratio
+    # rather than counted as failures.
+    rows, hits, testable = [], 0, 0
     for axis, ref, sign, why in EXPECTED:
         xs = [axes[m][axis] for m in models]
         ys = [metric(scores, m, ref) for m in models]
         r, n = pearson(xs, ys)
-        ok = (r is not None) and ((r > 0) == (sign == "+"))
-        hits += 1 if ok else 0
+        if r is None:
+            ok = None
+        else:
+            testable += 1
+            ok = (r > 0) == (sign == "+")
+            hits += 1 if ok else 0
         rows.append({"axis": axis, "metric": ref, "expected": sign, "r": r, "n": n, "match": ok, "rationale": why})
+    untested = len(EXPECTED) - testable
 
     # full exploratory matrix (all axes x all metrics present)
     all_refs = sorted({f"{inst}.{met}" for m in models for inst, d in scores[m].items()
@@ -103,7 +110,8 @@ def main():
             matrix[axis][ref] = r
 
     report = {"n_models": len(models), "models": models, "expected": rows, "matrix": matrix,
-              "predicted_directions_confirmed": f"{hits}/{len(EXPECTED)}"}
+              "predicted_directions_confirmed": f"{hits}/{testable}",
+              "n_testable": testable, "n_untested": untested}
     (RES / "convergent_validity.json").write_text(json.dumps(report, indent=2))
 
     # markdown
@@ -111,14 +119,16 @@ def main():
          "Correlations of the four Reasoner axes (neutral, b12) with MFQ-30, MFQ-2, and PVQ-40 "
          "scores across the model panel. Axis polarity: higher = autonomous / skeptical / narrow / "
          f"universal. **n = {len(models)} — suggestive, not confirmatory.**", "",
-         f"**Pre-specified directions confirmed: {hits}/{len(EXPECTED)}.**", "",
+         (f"**Pre-specified directions confirmed: {hits}/{testable}"
+          + (f" — {untested} prediction(s) not administered this run.**" if untested else ".**")), "",
          "## Pre-registered predictions", "",
          "| Reasoner axis | Instrument metric | Predicted | r | n | Direction holds |",
          "|---|---|:--:|--:|:--:|:--:|"]
     for row in rows:
         rr = "n/a" if row["r"] is None else f"{row['r']:+.2f}"
+        hold = {None: "untested", True: "yes", False: "no"}[row["match"]]
         L.append(f"| {row['axis']} | {row['metric']} | {row['expected']} | {rr} | {row['n']} | "
-                 f"{'yes' if row['match'] else 'no'} |")
+                 f"{hold} |")
     L += ["", "## Full correlation matrix (exploratory)", "",
           "| Axis | " + " | ".join(all_refs) + " |",
           "|---|" + "|".join(["--:"] * len(all_refs)) + "|"]
@@ -129,7 +139,8 @@ def main():
           "have their own validity limits). Human convergent validity requires co-administration in the "
           "confirmatory sample._"]
     (RES / "convergent_validity.md").write_text("\n".join(L))
-    print(f"n={len(models)} models | predicted directions confirmed {hits}/{len(EXPECTED)}")
+    print(f"n={len(models)} models | predicted directions confirmed {hits}/{testable}"
+          f" ({untested} untested)")
     print("wrote", RES / "convergent_validity.md", "and .json")
 
 

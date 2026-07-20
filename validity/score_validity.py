@@ -95,8 +95,18 @@ def score_pvq(name):
     return out
 
 
+def has_runs(name):
+    return any(glob.glob(str(RUNS / f"*_{name}_*.json")))
+
+
 def main():
-    scores = {"mfq30": score_mfq("mfq30"), "mfq2": score_mfq("mfq2"), "pvq40": score_pvq("pvq40")}
+    # Score only instruments that were actually administered (have run files). MFQ-2 is
+    # optional, so it simply won't appear if it wasn't run — no spurious "0 scored" note.
+    scorers = {"mfq30": score_mfq, "mfq2": score_mfq, "pvq40": score_pvq}
+    scores = {name: fn(name) for name, fn in scorers.items() if has_runs(name)}
+    if not scores:
+        print("no run files in", RUNS, "— run validity/run_validity.py first.")
+        return
     # reshape to {model: {instrument: {...}}}
     models = sorted({m for inst in scores.values() for m in inst})
     by_model = {m: {inst: scores[inst].get(m, {}) for inst in scores} for m in models}
@@ -105,7 +115,7 @@ def main():
     print("scored models per instrument:", n_by)
     print("wrote", OUT / "instrument_scores.json")
     if any(v == 0 for v in n_by.values()):
-        print("NOTE: an instrument has 0 scored models — run validity/run_validity.py first (or check parse errors).")
+        print("NOTE: an administered instrument parsed 0 models — check run files for parse errors.")
 
 
 if __name__ == "__main__":
