@@ -262,6 +262,6 @@ Moral-Reasoning Space.* Cross-Cultural Alignment Study, moral-os.com.
 
 ## License
 
-Code is released under the MIT License (see `LICENSE`). The data, papers, and
-figures are released under CC BY 4.0. If you use the instrument or data, please
-cite the work above.
+Code is released under the Apache License 2.0 (see `LICENSE`). The data, papers,
+and figures are additionally offered under CC BY 4.0 (see `DATA-LICENSE.md`). If
+you use the instrument or data, please cite the work above (see `CITATION.cff`).
