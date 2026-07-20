@@ -57,7 +57,7 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--workers", type=int, default=24)
     ap.add_argument("--per-provider", type=int, default=5)
-    ap.add_argument("--runs-dir", default=str(ROOT / "runs_v2"))
+    ap.add_argument("--runs-dir", default=str(ROOT / "runs"))
     a = ap.parse_args()
 
     models = a.models.split(",") if a.models else list(REG["models"].keys())

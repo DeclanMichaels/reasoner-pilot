@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Build the data payload for the CMRB interactive viewer. Stdlib only.
-Emits private/reanalysis/viewer_data.json:
+"""Build the data payload for the Reasoner interactive viewer. Stdlib only.
+Emits results/viewer_data.json:
   meta, human baseline (baseline-12 distribution per axis), model scores per
   (model,frame,axis) for baseline-12 and all-48, scenario + frame prompt text,
   and one representative response per (model,frame,scenario) with mean weights + text.
 """
 import glob, json, os, statistics, sys
 from pathlib import Path
-ROOT = Path(os.environ.get("CMRB_ROOT", Path(__file__).resolve().parents[2]))
+ROOT = Path(os.environ.get("REASONER_ROOT", Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT))
 from scenario_bank import compute_dimensional_score
-BANK = json.load(open(ROOT / "ccas_bank_full.json"))
-PROMPTS = json.load(open(ROOT / "ccas_prompts_v2.json"))["prompts"]
+BANK = json.load(open(ROOT / "scenarios.json"))
+PROMPTS = json.load(open(ROOT / "framings.json"))["prompts"]
 DIMS = [d["id"] for d in BANK["dimensions"]]
 DMETA = {d["id"]: d for d in BANK["dimensions"]}
 BASE = {s["id"] for s in BANK["scenarios"] if s.get("has_human_baseline")}
@@ -20,7 +20,7 @@ LAB = {"opus":"Anthropic","sonnet":"Anthropic","gpt55":"OpenAI","o3":"OpenAI","g
        "mistral_large":"Mistral","deepseek_v4":"DeepSeek","minimax":"MiniMax","kimi":"Moonshot",
        "inkling":"ThinkingMachines","llama33":"Meta"}
 HUMAN = ROOT / "human-responses" / "responses"
-RUNS = ROOT / "runs_v2"
+RUNS = ROOT / "runs"
 
 def pole(d, s): p=d["pole_a"] if s=="a" else d["pole_b"]; return p["label"] if isinstance(p,dict) else p
 def pct(s,q):
@@ -32,7 +32,7 @@ for f in sorted(glob.glob(str(RUNS / "*.json"))):  # one complete file per (mode
     d = json.load(open(f))
     if len(d.get("responses", [])) != 240 or d["model_name"] in DROP: continue
     key = (d["model_name"], d["frame"])
-    if key in cells_files: raise SystemExit(f"duplicate complete run for {key}: {_src[key]} and {f}; archive one to runs_v2/_superseded/")
+    if key in cells_files: raise SystemExit(f"duplicate complete run for {key}: {_src[key]} and {f}; archive one to runs/_superseded/")
     cells_files[key] = d; _src[key] = f
 models = sorted({m for (m,fr) in cells_files})
 frames = ["neutral","individualist","collectivist","hierarchical","egalitarian","irrelevant","nonsense_geometry","nonsense_color"]
@@ -102,7 +102,7 @@ out={"meta":{"models":models,"frames":frames,"lab":{m:LAB[m] for m in models},
              "n_human":len(hum[DIMS[0]])},
      "humans":humans,"scores":scores,"scenarios":scenarios,"framePrompts":{fr:PROMPTS.get(fr,"") for fr in frames},
      "cells":cells}
-op=ROOT/"private"/"reanalysis"/"viewer_data.json"
+op=ROOT/"results"/"viewer_data.json"
 json.dump(out,open(op,"w"))
 print("models",len(models),"frames",len(frames),"scenarios",len(scenarios),"cells",len(cells))
 print("size:", round(op.stat().st_size/1e6,2),"MB ->",op)

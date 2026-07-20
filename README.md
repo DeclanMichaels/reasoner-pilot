@@ -1,4 +1,4 @@
-# The Reasoner — Cross-Model Moral-Reasoning Benchmark (Pilot)
+# The Reasoner — a Benchmark for the Structure of Moral Reasoning (Pilot)
 
 The Reasoner is an instrument that measures the **structure** of moral reasoning —
 not which values a respondent endorses, but the shape of how they reason — and
@@ -29,8 +29,8 @@ framing the models fold the nonsense into fluent moral reasoning rather than
 rejecting it; and reasoning-token spend does not predict where a model lands.
 
 - Paper and interactive viewer: https://moral-os.com (Scenario Bank card)
-- Papers in this repo: `scenario-bank/papers/`
-- Interactive viewer in this repo: `scenario-bank/cmrb_viewer.html` (open in a browser)
+- Papers in this repo: `papers/`
+- Interactive viewer in this repo: `viewer.html` (open in a browser)
 
 Responsibility for the work, and for any errors in it, is the author's alone.
 Methodology was AI-assisted and that assistance is disclosed.
@@ -39,32 +39,24 @@ Methodology was AI-assisted and that assistance is disclosed.
 
 ## What's in here
 
-The layout mirrors the working tree, so every script runs with no path changes.
-
 ```
 reasoner-pilot/
-  models.json                     model registry (provider, model_id, env-var NAME; no keys)
-  shared/styles/ccas-viewer.css   styling used by the viewer build
-  scenario-bank/
-    scenario_bank.py              the scoring function (compute_dimensional_score) — humans & models
-    ccas_bank_full.json           the 48-scenario bank (dimensions, stimuli, options, pole loadings)
-    ccas_prompts_v2.json          the framing library (neutral + 8 framings, incl. a draft example)
-    refresh_runner.py             provider adapters + prompt builder + weight extraction
-    concurrent_runner.py          the runner (concurrent, resumable) — regenerates runs_v2/
-    discover_models.py            helper to probe available model IDs per provider
-    requirements.txt              runtime deps (just `requests`, for the runner)
-    runs_v2/                      RAW MODEL RUNS — 92 files, one per (model, framing), 5 reruns each
-    human-responses/responses/    68 human responses (anonymous; see "Human data" below)
-    papers/                       pilot report + statistical appendix (.md and .pdf)
-    cmrb_viewer.html              self-contained interactive viewer (open in a browser)
-    private/
-      viz/                        analysis + build scripts (stdlib only) and figure templates
-      reanalysis/                 GENERATED OUTPUTS: appendix_stats.json, viewer_data.json, CSV bundle, figures
+  README.md  LICENSE  DATA-LICENSE.md  CITATION.cff  requirements.txt
+  models.json                 model registry (provider, model_id, env-var NAME; no keys)
+  scenario_bank.py            the scoring function (compute_dimensional_score) — humans & models
+  scenarios.json              the 48-scenario bank (dimensions, stimuli, options, pole loadings)
+  framings.json               the framing library (neutral + 8 framings, plus a draft example)
+  refresh_runner.py           provider adapters + prompt builder + weight extraction
+  concurrent_runner.py        the runner (concurrent, resumable) — regenerates runs/
+  discover_models.py          helper to probe available model IDs per provider
+  viewer.html                 self-contained interactive viewer (open in a browser)
+  runs/                       RAW MODEL RUNS — 92 files, one per (model, framing), 5 reruns each
+  human-responses/responses/  68 human responses (anonymous; see "Human data" below)
+  analysis/                   analysis + build scripts (stdlib only) and figure templates
+  results/                    GENERATED OUTPUTS: appendix_stats.json, viewer_data.json, CSV bundle, figures
+  papers/                     pilot report + statistical appendix (.md and .pdf)
+  shared/styles/              viewer styling
 ```
-
-Note: the `private/` directory name is inherited from the author's working tree.
-Nothing in this repository is secret; `private/viz` holds the analysis code and
-`private/reanalysis` holds its generated outputs.
 
 ---
 
@@ -72,20 +64,22 @@ Nothing in this repository is secret; `private/viz` holds the analysis code and
 
 The analysis is pure Python standard library and reads the raw runs already in
 this repo. All bootstraps use fixed seeds, so results are bit-for-bit stable.
+Run from the repository root:
 
 ```bash
-cd scenario-bank
-python3 private/viz/build_appendix.py      # -> private/reanalysis/appendix_stats.json (all stats in the appendix)
-python3 private/viz/build_viewer_data.py   # -> private/reanalysis/viewer_data.json   (data behind the viewer)
-python3 private/viz/build_csv.py           # -> private/reanalysis/csv/                (tidy CSV tables)
-python3 private/viz/build_figures.py       # -> private/reanalysis/*.html             (compression + panel figures)
-python3 private/viz/build_viewer.py        # -> cmrb_viewer.html                       (rebuild the interactive viewer)
+python3 analysis/build_appendix.py      # -> results/appendix_stats.json  (all stats in the appendix)
+python3 analysis/build_viewer_data.py   # -> results/viewer_data.json     (data behind the viewer)
+python3 analysis/build_csv.py           # -> results/csv/                 (tidy CSV tables)
+python3 analysis/build_figures.py       # -> results/*.html              (compression + panel figures)
+python3 analysis/build_viewer.py        # -> viewer.html                  (rebuild the interactive viewer)
 ```
 
 Each script prints a summary and overwrites its outputs in place; re-running is
 idempotent. `build_appendix.py` and `build_viewer_data.py` regenerate the exact
 values shipped in the papers and the viewer. The runners each raise on a
 duplicate complete cell, so a stray extra run can never silently change a number.
+Set `REASONER_ROOT` to point the scripts at a copy of the tree that lives
+elsewhere.
 
 ---
 
@@ -117,7 +111,7 @@ Each subject is one entry under `"models"`:
 - `discover_models.py` probes a provider for currently available model IDs, which
   is useful because vendor model strings change often.
 
-### 2. Framings — `ccas_prompts_v2.json`
+### 2. Framings — `framings.json`
 
 Framings live under `"prompts"` as `name -> preamble`. The preamble is prepended
 as the system prompt; `neutral` is the empty string (no preamble). The pilot's
@@ -134,7 +128,7 @@ To add a framing, add a key with your preamble. The file already includes a draf
 of the pilot's 8 framings (there are no runs for it here), so it does not affect
 reproduction — it is there to show the pattern.
 
-### 3. Scenarios — `ccas_bank_full.json`
+### 3. Scenarios — `scenarios.json`
 
 Top level: `dimensions` (the four axes and which scenario IDs belong to each) and
 `scenarios`. Each scenario:
@@ -160,39 +154,38 @@ question with poles; add its `id` to that dimension's list.
 
 ### 4. Run the instrument — `concurrent_runner.py`
 
-Export the API keys you need (only the providers you actually call), then run:
+Export the API keys you need (only the providers you actually call), then run
+from the repository root:
 
 ```bash
-cd scenario-bank
 export ANTHROPIC_API_KEY=...   OPENAI_API_KEY=...   XAI_API_KEY=...   # etc.
 python3 concurrent_runner.py                          # all models × all framings × 48 scenarios × 5 reruns
 python3 concurrent_runner.py --models opus,gpt55 --frames neutral,individualist --iters 3 --limit 6
 ```
 
 Flags: `--models a,b` and `--frames x,y` subset the run (default = everything in
-`models.json` / `ccas_prompts_v2.json`); `--iters N` sets reruns per cell
-(default 5); `--limit N` caps scenarios; `--workers` and `--per-provider` control
-concurrency. The runner is **resumable** — it skips cells already complete in
-`--runs-dir` (default `runs_v2/`) and aborts before spending if a required env key
-is missing. Each cell is written as `runs_v2/<model>_<frame>_<timestamp>.json`
-holding every rerun's raw text, extracted weights, per-axis scores, and token
-usage. **Cost warning:** a full run is thousands of API calls; start with
-`--limit`/`--iters 1` on a couple of models to estimate spend.
+`models.json` / `framings.json`); `--iters N` sets reruns per cell (default 5);
+`--limit N` caps scenarios; `--workers` and `--per-provider` control concurrency.
+The runner is **resumable** — it skips cells already complete in `--runs-dir`
+(default `runs/`) and aborts before spending if a required env key is missing.
+Each cell is written as `runs/<model>_<frame>_<timestamp>.json` holding every
+rerun's raw text, extracted weights, per-axis scores, and token usage. **Cost
+warning:** a full run is thousands of API calls; start with `--limit`/`--iters 1`
+on a couple of models to estimate spend.
 
 ### 5. Re-analyze
 
-Point the same analysis scripts at your new `runs_v2/` (and, if you collected
-new humans, `human-responses/responses/`) and re-run the "Reproduce" commands
-above. They recompute compression, framing displacement, between-model
-dispersion, run-to-run reliability, reasoning-token relationships, and the viewer
-payload from whatever runs are present. Set `CMRB_ROOT` to analyze a bank that
-lives elsewhere.
+Point the same analysis scripts at your new `runs/` (and, if you collected new
+humans, `human-responses/responses/`) and re-run the "Reproduce" commands above.
+They recompute compression, framing displacement, between-model dispersion,
+run-to-run reliability, reasoning-token relationships, and the viewer payload from
+whatever runs are present.
 
 ### 6. Humans
 
-Humans answer the same `ccas_bank_full.json` items through a web instrument and
-are scored by the same function, which is what places them in the model space.
-Each response file records the allocations, the derived per-axis scores, scenario
+Humans answer the same `scenarios.json` items through a web instrument and are
+scored by the same function, which is what places them in the model space. Each
+response file records the allocations, the derived per-axis scores, scenario
 order, timing, and coarse browser telemetry (`_meta`: timezone, language,
 platform). Match this schema (see below) to fold your own human samples in.
 
@@ -200,24 +193,24 @@ platform). Match this schema (see below) to fold your own human samples in.
 
 ## Data dictionary
 
-**`runs_v2/<model>_<frame>_<ts>.json`** — one model×framing cell. Contains the
-model and framing, and a list of per-scenario, per-rerun records: the raw model
-text, the extracted `judgment_weights` / `reasoning_weights`, the computed
-per-axis scores, and token usage (including reasoning tokens where the provider
-reports them).
+**`runs/<model>_<frame>_<ts>.json`** — one model×framing cell. Contains the model
+and framing, and a list of per-scenario, per-rerun records: the raw model text,
+the extracted `judgment_weights` / `reasoning_weights`, the computed per-axis
+scores, and token usage (including reasoning tokens where the provider reports
+them).
 
 **`human-responses/responses/**/<uuid>.json`** — one respondent. Keys include
 `respondent_id` (a UUID), `responses` (per-scenario allocations and timing),
 `dimensional_scores` (the four axis scores), `scenario_order`, `archetype`,
 `_duration_sec`, and `_meta` (browser telemetry). See "Human data" below.
 
-**`ccas_bank_full.json`** — the scenario bank (dimensions + scenarios, schema
-above). **`ccas_prompts_v2.json`** — the framing library.
+**`scenarios.json`** — the scenario bank (dimensions + scenarios, schema above).
+**`framings.json`** — the framing library.
 
-**`private/reanalysis/appendix_stats.json`** — every statistic in the appendix.
-**`private/reanalysis/viewer_data.json`** — the payload the interactive viewer
-reads. **`private/reanalysis/csv/`** and `cmrb_pilot_data_csv.zip` — tidy CSV
-exports; humans are anonymized to sequential ids (h01…).
+**`results/appendix_stats.json`** — every statistic in the appendix.
+**`results/viewer_data.json`** — the payload the interactive viewer reads.
+**`results/csv/`** — tidy CSV exports; humans are anonymized to sequential ids
+(h01…).
 
 ---
 
@@ -256,12 +249,11 @@ clean inert control. See the paper's Limitations section for the full treatment.
 
 ## Citation
 
-Michaels, D. (2026). *Frontier Language Models Converge in a Narrow Region of a
-Moral-Reasoning Space.* Cross-Cultural Alignment Study, moral-os.com.
-(A Zenodo DOI will be added here once minted.)
+See `CITATION.cff` (GitHub renders a "Cite this repository" button). A Zenodo DOI
+will be added there once minted.
 
 ## License
 
 Code is released under the Apache License 2.0 (see `LICENSE`). The data, papers,
 and figures are additionally offered under CC BY 4.0 (see `DATA-LICENSE.md`). If
-you use the instrument or data, please cite the work above (see `CITATION.cff`).
+you use the instrument or data, please cite the work above.

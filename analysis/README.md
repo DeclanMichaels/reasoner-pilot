@@ -1,4 +1,4 @@
-# CMRB pilot visuals
+# the Reasoner pilot visuals
 
 Self-contained regeneration of the three pilot figures from the raw run data.
 Stdlib only (no numpy/pandas). Any session can rebuild the figures with one command.
@@ -9,19 +9,19 @@ Stdlib only (no numpy/pandas). Any session can rebuild the figures with one comm
 python3 build_figures.py
 ```
 
-Resolves the repo root automatically (this dir is `<root>/private/viz/`).
-Override with `CMRB_ROOT=/path/to/scenario-bank` and/or `CMRB_VIZ_OUT=/path/to/out`.
+Resolves the repo root automatically (this dir is `<root>/analysis/`).
+Override with `REASONER_ROOT=/path/to/scenario-bank` and/or `REASONER_FIG_OUT=/path/to/out`.
 
 ## Inputs (all under the repo root)
 
-- `ccas_bank_full.json` — 48-scenario bank. Option pole signs must be correct
+- `scenarios.json` — 48-scenario bank. Option pole signs must be correct
   (`pole_a` = -1 side, `pole_b` = +1 side). See the sign note below.
-- `runs_v2/*.json` — one file per (model, frame) cell, 240 responses each.
+- `runs/*.json` — one file per (model, frame) cell, 240 responses each.
 - `human-responses/responses/**/*.json` — 68 respondents, raw allocation weights.
 - `scenario_bank.py` — provides `compute_dimensional_score`, the single scorer used
   for both humans and models.
 
-## Outputs (to `private/reanalysis/` by default)
+## Outputs (to `results/` by default)
 
 Payloads: `figure_payload.json`, `radar_payload_v3.json`, `radar48_payload.json`.
 Figures (self-contained HTML, dark theme, data inlined):
@@ -44,5 +44,5 @@ each `file://` and screenshot full-page (optional; not needed for the HTML).
 If it reads the opposite (Relational / Deferential / Broad / Relational), the bank's
 option pole signs are inverted and every directional claim is backwards. A global
 inversion was fixed 2026-07-19; the pre-fix bank is preserved at
-`private/_pre_review/ccas_bank_full.preflip.json`. The JS collector used for human
+`private/_pre_review/scenarios.preflip.json`. The JS collector used for human
 data collection carries the same pole table and must match the bank.

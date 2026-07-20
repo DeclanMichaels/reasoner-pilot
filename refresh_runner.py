@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CMRB refreshed-pilot runner: DIRECT ALLOCATION (with token accounting).
+"""Reasoner refreshed-pilot runner: DIRECT ALLOCATION (with token accounting).
 
 Each model, per scenario, reasons in free text AND outputs its own judgment/
 reasoning weight allocation in one response. Weights are the PRIMARY measure,
@@ -15,9 +15,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from scenario_bank import compute_dimensional_score, normalize_weights
 
 ROOT = Path(__file__).resolve().parent
-REG = json.load(open(ROOT.parent / "models.json"))
-BANK = json.load(open(ROOT / "ccas_bank_full.json"))
-FRAMES = json.load(open(ROOT / "ccas_prompts_v2.json"))["prompts"]
+REG = json.load(open(ROOT / "models.json"))
+BANK = json.load(open(ROOT / "scenarios.json"))
+FRAMES = json.load(open(ROOT / "framings.json"))["prompts"]
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
 
@@ -184,7 +184,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", default=""); ap.add_argument("--frames", default="")
     ap.add_argument("--iters", type=int, default=5); ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--runs-dir", default=str(ROOT / "runs_v2"))
+    ap.add_argument("--runs-dir", default=str(ROOT / "runs"))
     a = ap.parse_args()
     models = a.models.split(",") if a.models else list(REG["models"].keys())
     frames = a.frames.split(",") if a.frames else list(FRAMES.keys())

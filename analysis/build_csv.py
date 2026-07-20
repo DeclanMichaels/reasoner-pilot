@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Export tidy CSV tables of the CMRB pilot for external inspection. Stdlib only.
-Writes to private/reanalysis/csv/. The raw JSON runs remain the source of truth;
+"""Export tidy CSV tables of the Reasoner pilot for external inspection. Stdlib only.
+Writes to results/csv/. The raw JSON runs remain the source of truth;
 these tables are the same data in long (tidy) form, joinable on scenario_id.
-Humans are anonymized to sequential ids (h01..). Run: python3 private/viz/build_csv.py
+Humans are anonymized to sequential ids (h01..). Run: python3 analysis/build_csv.py
 """
 import json, glob, os, csv, statistics, sys
 from pathlib import Path
-ROOT = Path(os.environ.get("CMRB_ROOT", Path(__file__).resolve().parents[2]))
+ROOT = Path(os.environ.get("REASONER_ROOT", Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT))
 from scenario_bank import compute_dimensional_score
-BANK = json.load(open(ROOT/"ccas_bank_full.json"))
+BANK = json.load(open(ROOT/"scenarios.json"))
 DIMS = [d["id"] for d in BANK["dimensions"]]
 NAME = {d["id"]: d["name"] for d in BANK["dimensions"]}
 BASE = {s["id"] for s in BANK["scenarios"] if s.get("has_human_baseline")}
@@ -17,8 +17,8 @@ DROP = {"gemini3pro", "gemini35flash", "command_a"}
 LAB = {"opus":"Anthropic","sonnet":"Anthropic","gpt55":"OpenAI","o3":"OpenAI","grok45":"xAI",
        "mistral_large":"Mistral","deepseek_v4":"DeepSeek","minimax":"MiniMax","kimi":"Moonshot",
        "inkling":"ThinkingMachines","llama33":"Meta"}
-RUNS = ROOT/"runs_v2"; HUMAN = ROOT/"human-responses"/"responses"
-OUT = ROOT/"private"/"reanalysis"/"csv"; OUT.mkdir(parents=True, exist_ok=True)
+RUNS = ROOT/"runs"; HUMAN = ROOT/"human-responses"/"responses"
+OUT = ROOT/"results"/"csv"; OUT.mkdir(parents=True, exist_ok=True)
 def w(name, header, rows):
     with open(OUT/name, "w", newline="") as f:
         c = csv.writer(f); c.writerow(header); c.writerows(rows)
@@ -41,7 +41,7 @@ for f in sorted(glob.glob(str(RUNS/"*.json"))):
     d=json.load(open(f))
     if len(d.get("responses",[]))!=240 or d["model_name"] in DROP: continue
     key=(d["model_name"], d["frame"])
-    if key in cells: raise SystemExit(f"duplicate complete run for {key}: {_src[key]} and {f}; archive one to runs_v2/_superseded/")
+    if key in cells: raise SystemExit(f"duplicate complete run for {key}: {_src[key]} and {f}; archive one to runs/_superseded/")
     cells[key]=d; _src[key]=f
 models=sorted({m for (m,fr) in cells})
 def axis_scores(resps, subset):

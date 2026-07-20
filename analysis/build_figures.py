@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate the three CMRB pilot visuals from the raw run data. Stdlib only.
+"""Regenerate the three Reasoner pilot visuals from the raw run data. Stdlib only.
 
-Reads:  <root>/ccas_bank_full.json, <root>/runs_v2/*.json,
+Reads:  <root>/scenarios.json, <root>/runs/*.json,
         <root>/human-responses/responses/**/*.json, <root>/scenario_bank.py
-Writes (to <root>/private/reanalysis/ by default):
+Writes (to <root>/results/ by default):
   figure_payload.json, radar_payload_v3.json, radar48_payload.json
   compression_radar_v3.html   (68 humans + models on the 12 baseline scenarios)
   model_radar48.html          (models on 4 axes, all 48 scenarios)
@@ -11,30 +11,30 @@ Writes (to <root>/private/reanalysis/ by default):
 
 The HTML templates live next to this file as tpl_*.html with a __PAYLOAD__ marker.
 Run:  python3 build_figures.py            (paths resolve to the repo root)
-Env:  CMRB_ROOT overrides the scenario-bank root; CMRB_VIZ_OUT overrides output dir.
+Env:  REASONER_ROOT overrides the scenario-bank root; REASONER_FIG_OUT overrides output dir.
 
 To render PNGs (optional, needs Node + playwright), point a headless Chromium at
 each file:// URL and screenshot fullPage. Not required to produce the HTML.
 
-NOTE ON SIGNS: option pole codings in ccas_bank_full.json must be correct
+NOTE ON SIGNS: option pole codings in scenarios.json must be correct
 (pole_a = -1 side, pole_b = +1 side). A global sign inversion was fixed on
-2026-07-19; the pre-fix bank is at private/_pre_review/ccas_bank_full.preflip.json.
+2026-07-19; all data in this repository is post-fix.
 If the human baseline does NOT read autonomous/skeptical/narrow/universal, the
 poles are inverted again and every directional claim will be backwards.
 """
 import json, glob, os, random, statistics, sys
 from pathlib import Path
 
-ROOT = Path(os.environ.get("CMRB_ROOT", Path(__file__).resolve().parents[2]))
+ROOT = Path(os.environ.get("REASONER_ROOT", Path(__file__).resolve().parents[1]))
 TPL_DIR = Path(__file__).resolve().parent
-OUT = Path(os.environ.get("CMRB_VIZ_OUT", ROOT / "private" / "reanalysis"))
+OUT = Path(os.environ.get("REASONER_FIG_OUT", ROOT / "results"))
 sys.path.insert(0, str(ROOT))
 from scenario_bank import compute_dimensional_score
 
 random.seed(20260719)
 BOOT = 100_000
 
-BANK = json.load(open(ROOT / "ccas_bank_full.json"))
+BANK = json.load(open(ROOT / "scenarios.json"))
 DIMS = [d["id"] for d in BANK["dimensions"]]
 DMETA = {d["id"]: d for d in BANK["dimensions"]}
 BASE = {s["id"] for s in BANK["scenarios"] if s.get("has_human_baseline")}
@@ -45,7 +45,7 @@ LAB = {"opus": "Anthropic", "sonnet": "Anthropic", "gpt55": "OpenAI", "o3": "Ope
        "llama33": "Meta", "gemini3pro": "Google", "gemini35flash": "Google",
        "command_a": "Cohere"}
 HUMAN = ROOT / "human-responses" / "responses"
-RUNS = ROOT / "runs_v2"
+RUNS = ROOT / "runs"
 
 
 def polelabel(d, side):
@@ -66,7 +66,7 @@ def complete_neutral_cells():
         d = json.load(open(f))
         if len(d.get("responses", [])) == 240 and d["model_name"] not in DROP:
             m = d["model_name"]
-            if m in cells: raise SystemExit(f"duplicate complete neutral run for {m}: {src[m]} and {f}; archive one to runs_v2/_superseded/")
+            if m in cells: raise SystemExit(f"duplicate complete neutral run for {m}: {src[m]} and {f}; archive one to runs/_superseded/")
             cells[m] = d; src[m] = f
     return cells
 

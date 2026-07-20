@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Numbers-appendix statistics for the CMRB pilot. Stdlib only.
-Reads the same raw runs as build_figures.py; writes private/reanalysis/appendix_stats.json
-and prints a summary. Reproducible: python3 private/viz/build_appendix.py
+"""Numbers-appendix statistics for the Reasoner pilot. Stdlib only.
+Reads the same raw runs as build_figures.py; writes results/appendix_stats.json
+and prints a summary. Reproducible: python3 analysis/build_appendix.py
 """
 import json, glob, os, statistics, math, random, sys
 from pathlib import Path
-ROOT = Path(os.environ.get("CMRB_ROOT", Path(__file__).resolve().parents[2]))
+ROOT = Path(os.environ.get("REASONER_ROOT", Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT))
 from scenario_bank import compute_dimensional_score
 random.seed(20260720)
-BANK = json.load(open(ROOT/"ccas_bank_full.json"))
+BANK = json.load(open(ROOT/"scenarios.json"))
 DIMS = [d["id"] for d in BANK["dimensions"]]
 DMETA = {d["id"]: d for d in BANK["dimensions"]}
 NAME = {d["id"]: d["name"] for d in BANK["dimensions"]}
@@ -18,7 +18,7 @@ DROP = {"gemini3pro", "gemini35flash", "command_a"}
 LAB = {"opus":"Anthropic","sonnet":"Anthropic","gpt55":"OpenAI","o3":"OpenAI","grok45":"xAI",
        "mistral_large":"Mistral","deepseek_v4":"DeepSeek","minimax":"MiniMax","kimi":"Moonshot",
        "inkling":"ThinkingMachines","llama33":"Meta","gemini3pro":"Google","gemini35flash":"Google","command_a":"Cohere"}
-RUNS = ROOT/"runs_v2"; HUMAN = ROOT/"human-responses"/"responses"
+RUNS = ROOT/"runs"; HUMAN = ROOT/"human-responses"/"responses"
 def pstd(xs): return statistics.pstdev(xs)
 def mean(xs): return statistics.mean(xs)
 def pctl(s,q):
@@ -31,7 +31,7 @@ for f in sorted(glob.glob(str(RUNS/"*.json"))):  # one complete file per (model,
     d=json.load(open(f))
     if len(d.get("responses",[]))!=240: continue
     key=(d["model_name"], d["frame"])
-    if key in cells: raise SystemExit(f"duplicate complete run for {key}: {_src[key]} and {f}; archive one to runs_v2/_superseded/")
+    if key in cells: raise SystemExit(f"duplicate complete run for {key}: {_src[key]} and {f}; archive one to runs/_superseded/")
     cells[key]=d; _src[key]=f
 allmodels=sorted({m for (m,fr) in cells})
 models=[m for m in allmodels if m not in DROP]
@@ -180,7 +180,7 @@ out={"n_human":n_h,"n_models":len(models),"models":models,"labs":sorted(set(LAB[
                    "scenario_fingerprint":{"n_scenarios":n_common,"nearest_neighbors":nn_scen,"same_lab_nn_count":same_scen}},
      "reliability":reliab,"sensitivity":{"scope":sens_scope,"judgment_reasoning":sens_jr,"including_excluded":sens_incl},
      "reasoning_tokens":tokens,"between_model_dispersion":disp_between}
-json.dump(out, open(ROOT/"private"/"reanalysis"/"appendix_stats.json","w"), indent=2)
+json.dump(out, open(ROOT/"results"/"appendix_stats.json","w"), indent=2)
 
 print("=== COMPRESSION (b12), n_human", n_h, "n_models", len(models), "===")
 for a in DIMS:
