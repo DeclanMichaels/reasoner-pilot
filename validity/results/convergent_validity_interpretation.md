@@ -67,13 +67,15 @@ apart. The upshot is not that Domain is unvalidated but that the MFQ is the wron
 anchor for it; its convergent test in the confirmatory sample should be a harmless-taboo /
 victimless-acts measure, against which the current pattern is a prediction, not an anomaly.
 Two caveats travel with this reading. First, it is clean for the three baseline scenarios
-(domain_1–3) that actually produce the score, but the full twelve-scenario domain bank is
-heterogeneous: rescored on all twelve, the individualizing correlation dilutes from -0.70 to
--0.46, because scenarios 4–12 also tap purity-breadth, complicity/scope-of-responsibility,
-and authenticity — so the domain scenarios should be curated to a single construct before the
-confirmatory run. Second, at neutral Domain's largest inter-axis correlation is with Obligation
-Scope (+0.51) — both mark a liberal-individualist outlook — so the human sample, with real
-dispositional spread, should confirm the two do not collapse.
+(domain_1–3) that actually produce the score — the relabel is read off their content, not
+imposed on it — but the full twelve-scenario domain bank is heterogeneous: rescored on all
+twelve, the individualizing correlation dilutes from -0.70 to -0.46, because scenarios 4–12 also
+tap purity-breadth, complicity/scope-of-responsibility, and authenticity. Those non-baseline
+scenarios are drafts, and which dimension each one loads on — cross-culturally — is exactly what
+the expert panel is convened to adjudicate in the full study; the pilot surfaces the loading
+signals but cannot and should not settle them. Second, at neutral Domain's largest inter-axis
+correlation is with Obligation Scope (+0.51) — both mark a liberal-individualist outlook — so the
+human sample, with real dispositional spread, should confirm the two do not collapse.
 
 Taken together, the pass leaves the four-dimension structure in good standing: Authority
 and Scope are externally validated, Moral Agent is supported modestly, and Moral Domain is

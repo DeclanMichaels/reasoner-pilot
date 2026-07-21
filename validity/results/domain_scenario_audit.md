@@ -1,15 +1,17 @@
 # Moral Domain — scenario/scoring audit
 
-> **Decision (adopted): Option A, plus scenario curation.** Describe Moral Domain as the
+> **Decision (adopted): Option A.** Describe Moral Domain as the
 > *reach of moral judgment over harmless behavior* (communitarian "uphold shared standards"
 > ↔ libertarian "mind your business"), i.e. **applied** domain breadth, anchored in the
 > confirmatory study to a harmless-taboo / victimless-acts measure rather than the MFQ. The
 > reading is clean for the three baseline scenarios (domain_1–3, `has_human_baseline`) that
 > produced the convergent result, but the full 12-scenario bank is heterogeneous (see §6):
-> scenarios 4–12 also tap purity-breadth, complicity/scope, and authenticity. So Option A
-> governs the current result, and the domain bank is flagged for curation before the
-> confirmatory study. Pre-registered MFQ predictions are left unchanged; this reading
-> supersedes their interpretation.
+> scenarios 4–12 also tap purity-breadth, complicity/scope, and authenticity. Option A holds
+> for the pilot because the baseline scenarios' *content* instantiates the reach construct. The
+> non-baseline scenarios are drafts: adjudicating which one loads on which dimension —
+> cross-culturally — is the designed job of the expert panel in the full study, and the loading
+> signals in §6 are input to that deliberation, not a curation the pilot should impose.
+> Pre-registered MFQ predictions are left unchanged; this reading supersedes their interpretation.
 
 Prompted by the convergent-validity result, in which the Moral Domain axis returned a
 null against the MFQ *binding* foundations (r = -0.06) and a strong, wrong-signed
@@ -127,6 +129,10 @@ bank is heterogeneous and taps at least four distinct contrasts:
 So the reach reading is the dominant theme and is clean for the baseline scenarios that carry
 the validated result, but the domain bank as a whole is a blend. This is not a scoring defect;
 it is construct heterogeneity, and it is what inflates Domain's overlap with Scope and Moral
-Agent. Before the confirmatory study, the domain scenarios should be curated to whichever
-construct is chosen (reach-of-judgment vs foundation-breadth), keeping only the scenarios that
-measure it — a targeted revision of scenarios 4-12, not a wholesale rewrite.
+Agent. Crucially, that heterogeneity is expected: the non-baseline scenarios (domain_4–12) are
+drafts, and whether each loads on Moral Domain — versus Scope, Moral Agent, or something the
+panel names — is precisely the question the cross-cultural expert panel is convened to decide in
+the full study. An 11-model, neutral-frame pilot cannot settle scenario-to-dimension loading,
+least of all cross-culturally. So the taxonomy above is empirical input to that deliberation,
+not a curation the pilot should impose; and the pilot's reach relabel stands on its own, because
+it is read off the baseline scenarios' actual content (domain_1–3), which cleanly instantiate it.
