@@ -3,9 +3,8 @@
 An extension of the model-panel work: MFQ-2 re-administered under a **country framing** — the
 system prompt asks the model to answer "as a typical person living in [country]" — for six
 countries chosen to span the cross-cultural range: United States, Sweden, Japan, India, Egypt,
-Nigeria. Same 11-model panel, 5 iterations. **Status: results below are from 9 of 11 models
-(mistral_large partial after API rate-limits; inkling/kimi/llama33 still running); the
-between-country pattern is stable and will not materially change. Numbers to be finalized.**
+Nigeria. Same 11-model panel, 5 iterations = 330 calls. **Complete: all 11 models, 330/330 cells
+(the ~20 rate-limited / parse-failed cells were recovered on a resume pass).**
 
 **Confound to state up front:** the models have almost certainly seen the MFQ items *and* the
 published cross-cultural norms in training, so a country-framed profile that matches the real
@@ -20,34 +19,35 @@ MFQ-2 binding composite (loyalty + authority + purity, 1–5), panel mean by con
 
 | Condition | Binding | Between-model SD |
 |---|--:|--:|
-| Sweden | 2.27 | 0.18 |
-| **Neutral (default)** | **2.72** | 0.28 |
-| United States | 3.32 | 0.18 |
-| Japan | 3.63 | 0.26 |
-| India | 4.43 | 0.21 |
-| Nigeria | 4.60 | 0.20 |
-| Egypt | 4.62 | 0.17 |
+| Sweden | 2.23 | 0.22 |
+| **Neutral (default)** | **2.71** | 0.34 |
+| United States | 3.34 | 0.20 |
+| Japan | 3.67 | 0.29 |
+| India | 4.43 | 0.17 |
+| Nigeria | 4.56 | 0.17 |
+| Egypt | 4.61 | 0.15 |
 
-Each model now spans ~2.3→4.8 across countries. Within-model across-country binding SD averages
-**0.84**, versus the neutral between-model SD of **0.28** — framing fans each model out ~3× wider
+Each model spans ~1.7→4.9 across countries. Within-model across-country binding SD averages
+**0.86**, versus the neutral between-model SD of **0.34** — framing fans each model out ~2.5× wider
 than its resting cluster. The neutral compression dissolves under framing, replicating the
 Reasoner's core neutral-vs-framed effect on a fully independent instrument.
 
 The country ordering — Egypt ≈ Nigeria > India > Japan > US > Sweden — is culturally sensible
 (high binding in MENA / Sub-Saharan Africa / South Asia, low in Scandinavia). And the unframed
-**default (2.72) sits at the liberal end**, essentially at Sweden and *below* the models' own
-simulation of a typical American (3.32).
+**default (2.71) sits at the liberal end**, essentially at Sweden and *below* the models' own
+simulation of a typical American (3.34).
 
 ## Result 2 — yes, they stereotype (two signatures), but it is an *informed* stereotype
 
 **Overshoot.** Egypt/Nigeria binding ~4.6, with authority ~4.8 and purity ~4.3, presses the 5.0
-ceiling; Sweden sits at 2.27 with purity 1.55 near the floor. The models stretch the range past
+ceiling; Sweden sits at 2.23 with purity 1.55 near the floor. The models stretch the range past
 what real national means plausibly reach at *both* ends — caricatured-high for the binding
 cultures, caricatured-low for Sweden. (Overshoot to be quantified against Atari et al.'s published
 country means.)
 
-**Convergence into a shared caricature.** The between-model SD *collapses to ~0.18 per country* —
-tighter than the models' neutral disagreement of 0.28. Told to be "an Egyptian," the models
+**Convergence into a shared caricature.** The between-model SD *collapses to 0.15–0.22* for the
+binding-heavy and WEIRD anchors (Egypt 0.15, Nigeria/India 0.17; Japan is the loosest at 0.29) —
+at or below the models' neutral disagreement of 0.34. Told to be "an Egyptian," the models
 produce nearly the identical high-binding profile; they do not argue about what a culture looks
 like, they share one picture of it. That convergence is the fingerprint of a common stereotype.
 
@@ -69,5 +69,8 @@ stereotype — it is one portrait in that gallery, sitting at the secular-libera
 - Quantify overshoot precisely against Atari et al.'s per-country MFQ-2 means (extremity residual).
 - Add an **abstract-descriptor** framing ("a highly religious, community-oriented society") to
   partly disentangle genuine cultural mapping from memorized country-norm lookup.
-- Finalize to 11 models (resume pass to recover the rate-limited mistral cells).
 - Extend to MFQ-30 / PVQ-40 and, most importantly, to the Reasoner's own axes.
+
+_All 11 models complete (330/330 cells). Full per-model, per-country, per-foundation numbers are
+reproducible via `validity/run_framed.py` + `validity/analyze_framed.py` (raw cells in the
+git-ignored `validity/runs_framed/`)._
