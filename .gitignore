@@ -26,3 +26,6 @@ Thumbs.db
 validity/instruments/*.filled.json
 validity/runs/
 validity/runs_framed/
+
+# SMB network-volume deletion artifacts
+*.smbdelete*
