@@ -1,5 +1,5 @@
 {
-  "_note": "Reasoner refreshed pilot panel, 14 subjects across 8 labs. Fixed extractor+coder = Haiku 4.5. IDs discovered live 2026-07-18; six fixed after smoke test.",
+  "_note": "CMRB refreshed pilot panel, 14 subjects across 8 labs. Fixed extractor+coder = Haiku 4.5. IDs discovered live 2026-07-18; six fixed after smoke test.",
   "models": {
     "opus": {
       "provider": "anthropic",
