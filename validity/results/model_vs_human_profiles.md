@@ -2,8 +2,9 @@
 
 How the eleven-model panel's self-report on the three established instruments compares to
 published human norms. **Model numbers are ours (exact, averaged across 5 iterations per
-model, n = 11 models).** Human numbers are published normative values, shown as approximate
-and **to be finalized against the source tables** before publication. Two caveats frame
+model, n = 11 models).** For **MFQ-2** the human numbers are now exact (Atari et al. 2023,
+Table 7); the **MFQ-30 and PVQ-40** human columns are still approximate (marked ≈) and remain to
+be finalized against their own source tables. Two caveats frame
 everything below: (1) our pilot humans never took these questionnaires — they answered only
 the 12 Reasoner scenarios — so the comparison is model-vs-published-norms, not against our own
 sample; and (2) a model rating "how much does this describe you" is trained-persona output,
@@ -30,21 +31,30 @@ The individualizing–binding gap is **2.5 in the models vs ~0.85 in the general
 (~1.5 even among liberal humans). The models sit *beyond* the most liberal human subgroup:
 individualizing near ceiling, sanctity near floor.
 
-## MFQ-2 (1–5)
+## MFQ-2 (1–5) — exact human norms (Atari et al. 2023, Table 7)
 
-| Foundation | Models | Humans (≈) |
-|---|--:|--:|
-| Care | 4.54 | ~3.7 |
-| Equality | 2.02 | ~2.9 |
-| Proportionality | 4.24 | ~3.7 |
-| Loyalty | 3.13 | ~2.8 |
-| Authority | 3.09 | ~3.1 |
-| Purity | 1.90 | ~2.7 |
+Model neutral means vs. the mean of five WEIRD nations (Belgium, France, Ireland, New Zealand,
+Switzerland) and the mean of all 19 Study-2 nations. (Atari's Study 2 has no US sample; the US
+mean would come from their Study 1.)
 
-The split-fairness result is the informative part: models *embrace proportionality* (merit, 4.24)
-while *rejecting equality* (equal outcomes, 2.02) — a meritocratic-care profile — and sit well
-below humans on purity. That equality/proportionality split is why the pre-registered
-`scope × equality` prediction flipped sign (universal moral concern is not economic egalitarianism).
+| Foundation | Models (neutral) | WEIRD-5 | All-19 | Model − WEIRD |
+|---|--:|--:|--:|--:|
+| Care | 4.54 | 3.96 | 3.96 | **+0.58** |
+| Equality | 2.02 | 3.05 | 3.00 | **−1.03** |
+| Proportionality | 4.24 | 3.84 | 3.90 | +0.40 |
+| Loyalty | 3.13 | 3.51 | 3.74 | −0.38 |
+| Authority | 3.09 | 3.61 | 3.78 | −0.52 |
+| Purity | 1.90 | 2.83 | 3.19 | **−0.93** |
+| *Binding* | 2.71 | 3.32 | 3.57 | −0.61 |
+
+The exact norms make the headline sharper: the models' unframed default is *more extreme than even
+WEIRD humans* — higher on care (+0.58) and proportionality, but well below the WEIRD mean on
+equality (−1.03), purity (−0.93), and binding overall (−0.61). The "WEIRD default" is not just
+WEIRD; it is a hyper-WEIRD caricature that overshoots real Western respondents in the same
+direction. The models also *reject equality* far more than any human sample (2.02 vs. ~3.0
+everywhere) while embracing proportionality — a distinctive meritocratic-care signature, and the
+reason the pre-registered `scope × equality` prediction flipped sign (universal moral concern is
+not economic egalitarianism).
 
 ## PVQ-40 (mean-centered value hierarchy)
 
