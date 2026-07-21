@@ -45,9 +45,9 @@
       "axis": "moral_agent",
       "metric": "mfq2.loyalty",
       "expected": "-",
-      "r": null,
-      "n": 0,
-      "match": null,
+      "r": -0.08282538964902249,
+      "n": 11,
+      "match": true,
       "rationale": "autonomous <-> weaker loyalty"
     },
     {
@@ -63,9 +63,9 @@
       "axis": "authority",
       "metric": "mfq2.authority",
       "expected": "-",
-      "r": null,
-      "n": 0,
-      "match": null,
+      "r": -0.42474990440826405,
+      "n": 11,
+      "match": true,
       "rationale": "skeptical <-> lower Authority foundation (MFQ-2)"
     },
     {
@@ -117,9 +117,9 @@
       "axis": "domain_boundary",
       "metric": "mfq2.purity",
       "expected": "-",
-      "r": null,
-      "n": 0,
-      "match": null,
+      "r": -0.4594956223804143,
+      "n": 11,
+      "match": true,
       "rationale": "narrow <-> lower Purity (MFQ-2)"
     },
     {
@@ -162,14 +162,20 @@
       "axis": "scope",
       "metric": "mfq2.equality",
       "expected": "+",
-      "r": null,
-      "n": 0,
-      "match": null,
+      "r": -0.4109741591832327,
+      "n": 11,
+      "match": false,
       "rationale": "universal <-> Equality (MFQ-2)"
     }
   ],
   "matrix": {
     "moral_agent": {
+      "mfq2.authority": 0.013604969759142858,
+      "mfq2.care": -0.4017024664371899,
+      "mfq2.equality": -0.2835061366562082,
+      "mfq2.loyalty": -0.08282538964902249,
+      "mfq2.proportionality": -0.0007168997457096042,
+      "mfq2.purity": -0.02415165315501054,
       "mfq30.authority": -0.1280593772377689,
       "mfq30.binding": -0.1878291353013787,
       "mfq30.care": -0.42534743712182477,
@@ -193,6 +199,12 @@
       "pvq40.universalism": -0.25125207971269414
     },
     "authority": {
+      "mfq2.authority": -0.42474990440826405,
+      "mfq2.care": 0.34603190499957764,
+      "mfq2.equality": 0.16688148974889638,
+      "mfq2.loyalty": -0.3388509043634003,
+      "mfq2.proportionality": -0.07671896200881936,
+      "mfq2.purity": -0.20846325403262644,
       "mfq30.authority": -0.6289685329744542,
       "mfq30.binding": -0.4847903979569584,
       "mfq30.care": 0.021147114202461636,
@@ -216,6 +228,12 @@
       "pvq40.universalism": 0.6465558289218384
     },
     "domain_boundary": {
+      "mfq2.authority": -0.2311463724271238,
+      "mfq2.care": -0.7562483955275809,
+      "mfq2.equality": -0.5736084374467103,
+      "mfq2.loyalty": -0.15108213158758038,
+      "mfq2.proportionality": 0.11908585635134172,
+      "mfq2.purity": -0.4594956223804143,
       "mfq30.authority": 0.22583374602853157,
       "mfq30.binding": -0.05833246387729373,
       "mfq30.care": -0.7723878344756844,
@@ -239,6 +257,12 @@
       "pvq40.universalism": -0.36708739727515977
     },
     "scope": {
+      "mfq2.authority": -0.5513657444480083,
+      "mfq2.care": -0.09497313258950414,
+      "mfq2.equality": -0.4109741591832327,
+      "mfq2.loyalty": -0.4466047105807697,
+      "mfq2.proportionality": 0.17196951300644697,
+      "mfq2.purity": -0.7455846537349091,
       "mfq30.authority": -0.14302968346895878,
       "mfq30.binding": -0.3650883696313849,
       "mfq30.care": -0.12552683230355738,
@@ -262,7 +286,7 @@
       "pvq40.universalism": 0.43416803806450266
     }
   },
-  "predicted_directions_confirmed": "10/13",
-  "n_testable": 13,
-  "n_untested": 4
+  "predicted_directions_confirmed": "13/17",
+  "n_testable": 17,
+  "n_untested": 0
 }

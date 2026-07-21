@@ -10,6 +10,14 @@
       "binding": 2.0,
       "_catch_mean": 2.4
     },
+    "mfq2": {
+      "care": 4.166666666666667,
+      "equality": 1.7,
+      "proportionality": 3.9333333333333336,
+      "loyalty": 2.8333333333333335,
+      "authority": 2.8333333333333335,
+      "purity": 2.0666666666666664
+    },
     "pvq40": {
       "conformity": 0.029999999999999805,
       "tradition": -1.0699999999999998,
@@ -38,6 +46,14 @@
       "individualizing": 4.616666666666667,
       "binding": 1.4333333333333333,
       "_catch_mean": 2.5
+    },
+    "mfq2": {
+      "care": 4.966666666666667,
+      "equality": 2.3666666666666667,
+      "proportionality": 4.266666666666667,
+      "loyalty": 2.7666666666666666,
+      "authority": 2.8666666666666667,
+      "purity": 1.1666666666666667
     },
     "pvq40": {
       "conformity": 1.475,
@@ -68,6 +84,14 @@
       "binding": 2.2444444444444445,
       "_catch_mean": 2.5
     },
+    "mfq2": {
+      "care": 3.966666666666667,
+      "equality": 1.1333333333333333,
+      "proportionality": 4.966666666666667,
+      "loyalty": 3.6666666666666665,
+      "authority": 3.3333333333333335,
+      "purity": 1.5
+    },
     "pvq40": {
       "conformity": -0.9650000000000003,
       "tradition": -1.7150000000000003,
@@ -96,6 +120,14 @@
       "individualizing": 4.266666666666667,
       "binding": 1.288888888888889,
       "_catch_mean": 2.5
+    },
+    "mfq2": {
+      "care": 4.6,
+      "equality": 2.2333333333333334,
+      "proportionality": 4.066666666666666,
+      "loyalty": 2.533333333333333,
+      "authority": 2.9,
+      "purity": 1.4666666666666666
     },
     "pvq40": {
       "conformity": 0.14500000000000046,
@@ -126,6 +158,14 @@
       "binding": 1.4555555555555555,
       "_catch_mean": 2.5
     },
+    "mfq2": {
+      "care": 4.9,
+      "equality": 1.9333333333333333,
+      "proportionality": 4.233333333333333,
+      "loyalty": 2.6,
+      "authority": 2.566666666666667,
+      "purity": 1.2333333333333334
+    },
     "pvq40": {
       "conformity": 0.9550000000000001,
       "tradition": -0.29499999999999993,
@@ -154,6 +194,14 @@
       "individualizing": 4.833333333333334,
       "binding": 2.3666666666666667,
       "_catch_mean": 2.5
+    },
+    "mfq2": {
+      "care": 5,
+      "equality": 2.033333333333333,
+      "proportionality": 4.4,
+      "loyalty": 3.6333333333333333,
+      "authority": 3.4333333333333336,
+      "purity": 2.466666666666667
     },
     "pvq40": {
       "conformity": -0.7849999999999997,
@@ -184,6 +232,14 @@
       "binding": 2.5,
       "_catch_mean": 2.4
     },
+    "mfq2": {
+      "care": 4.2,
+      "equality": 2.0,
+      "proportionality": 3.9,
+      "loyalty": 3.033333333333333,
+      "authority": 3.1666666666666665,
+      "purity": 2.2
+    },
     "pvq40": {
       "conformity": 0.21999999999999975,
       "tradition": -0.8799999999999999,
@@ -212,6 +268,14 @@
       "individualizing": 4.7666666666666675,
       "binding": 2.433333333333333,
       "_catch_mean": 2.6
+    },
+    "mfq2": {
+      "care": 5,
+      "equality": 2.466666666666667,
+      "proportionality": 4.366666666666667,
+      "loyalty": 3.566666666666667,
+      "authority": 3.6,
+      "purity": 2.4
     },
     "pvq40": {
       "conformity": -0.1849999999999996,
@@ -242,6 +306,14 @@
       "binding": 1.5555555555555556,
       "_catch_mean": 2.5
     },
+    "mfq2": {
+      "care": 4.8,
+      "equality": 2.1333333333333333,
+      "proportionality": 4.5,
+      "loyalty": 3.3333333333333335,
+      "authority": 3.2333333333333334,
+      "purity": 2.1333333333333333
+    },
     "pvq40": {
       "conformity": -0.2949999999999995,
       "tradition": -1.2449999999999997,
@@ -271,6 +343,14 @@
       "binding": 1.8222222222222222,
       "_catch_mean": 2.2
     },
+    "mfq2": {
+      "care": 4.1,
+      "equality": 2.2,
+      "proportionality": 3.966666666666667,
+      "loyalty": 3.2666666666666666,
+      "authority": 3.033333333333333,
+      "purity": 2.033333333333333
+    },
     "pvq40": {
       "conformity": -0.2999999999999998,
       "tradition": -1.0499999999999998,
@@ -299,6 +379,14 @@
       "individualizing": 4.35,
       "binding": 1.7,
       "_catch_mean": 2.5
+    },
+    "mfq2": {
+      "care": 4.266666666666667,
+      "equality": 2.033333333333333,
+      "proportionality": 4,
+      "loyalty": 3.1666666666666665,
+      "authority": 3.033333333333333,
+      "purity": 2.2
     },
     "pvq40": {
       "conformity": -0.2849999999999997,
