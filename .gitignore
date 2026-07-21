@@ -25,3 +25,4 @@ Thumbs.db
 # no item text) ARE published under validity/results/.
 validity/instruments/*.filled.json
 validity/runs/
+validity/runs_framed/
