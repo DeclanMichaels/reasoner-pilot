@@ -1,0 +1,17 @@
+{
+  "results/appendix_stats.json": "67ff5c7e3ccf33f012c9186e68a9130200ca258eb49940198f498e6960734624",
+  "results/compression_radar_v3.html": "a36a55fc300dbe38a47f415747dc9dc16024b950bff8fd9a6fd33ef49922d1ca",
+  "results/csv/human_allocations.csv": "f545433936c639914384cc8eaa341cbcc5e327f8586b671788e546ced86e5272",
+  "results/csv/human_scores.csv": "b870e69e120d8722bbe095eb6d7c8c81d4b89cf9cee0b2a8712729944a2d2c9a",
+  "results/csv/model_allocations.csv": "c80f10bac592b38bbec7a85cefc3ebb830c33652463bf0495585b0da4d410afd",
+  "results/csv/model_reasoning.csv": "3ba31e9d0a38f44af03444cad3fd81ac9482cf7495fa3a2c1e61cb45dfdb3f50",
+  "results/csv/model_scores.csv": "d4412f50078ed2317b2bacc9a247423e95a1e72a47af21acb93218424383bb05",
+  "results/csv/scenarios.csv": "fe681b4b8989554c917c00ebefb7ed0a11d9627f8f7d82150a9693602274dbf7",
+  "results/figure_payload.json": "9967081b103a17c863e045b25a97baafe9f6fad99260a3927a899e55a5213b89",
+  "results/model_radar48.html": "5c35d4f10b7dc3f8a2fdd6ccf075911f189f7c3c42de3a2e08a27c18662ce237",
+  "results/model_strips48.html": "d7e915038fcb896dd0a8de13aeec471667002401c96d6c8edab31c5fe7db9482",
+  "results/radar48_payload.json": "a2360736d7cb84f2cdd740feb454f9e6179a9a1adb4eba9bf899cb3796cf2112",
+  "results/radar_payload_v3.json": "355d7c4484f635675104625e21af9e29e04a28b1aba8cbe73006c91e77bd7769",
+  "results/viewer_data.json": "80bd87bafb2c6a7b4b3d521cefc9a7f98672cef5f2dcaf7bce67acbe3b619ec2",
+  "viewer.html": "bf30a28c92d8e148a84d85ef2064741ea1c1746c2f3b6a56bd8015412a7f1352"
+}
