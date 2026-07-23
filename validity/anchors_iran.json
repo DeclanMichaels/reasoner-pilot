@@ -1,0 +1,52 @@
+{
+  "country": "Iran",
+  "source": "Hazrati, Nejat & Daneshi (2025), The Revised Moral Foundations in Iran, Collabra: Psychology 11(1):140952. CC-BY 4.0. Foundation means computed as the mean of Table 2 item means (exact, equal item weighting).",
+  "instrument": "Persian MFQ-2 (Atari's official translation obtained via personal communication, with minor linguistic edits, their Table S1)",
+  "scale_note": "Administered 0-4; +1 linear shift applied for comparability with the 1-5 runs and Atari Table 7.",
+  "samples": {
+    "s1": {
+      "n": 392,
+      "collected": "Aug-Dec 2023"
+    },
+    "s2": {
+      "n": 989,
+      "collected": "Sep 2023-Feb 2024"
+    }
+  },
+  "caveats": [
+    "convenience online samples (Telegram/snowball), ~68-71% female, mean age ~26-28, ~57-59% bachelor's+ -- likely less binding-endorsing than the general Iranian population",
+    "different collection conditions than Atari et al. Table 7 anchors (cross-paper comparison)",
+    "foundation SDs not derivable from item table; raw data at their view-only OSF link if exact SDs needed: https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed",
+    "collection began one year after the Woman, Life, Freedom movement; authors note possible period effects"
+  ],
+  "means_1to5": {
+    "care": {
+      "s1": 3.907,
+      "s2": 3.948
+    },
+    "equality": {
+      "s1": 2.63,
+      "s2": 2.672
+    },
+    "proportionality": {
+      "s1": 4.17,
+      "s2": 4.147
+    },
+    "loyalty": {
+      "s1": 3.537,
+      "s2": 3.63
+    },
+    "authority": {
+      "s1": 2.902,
+      "s2": 3.05
+    },
+    "purity": {
+      "s1": 3.253,
+      "s2": 3.318
+    }
+  },
+  "binding_1to5": {
+    "s1": 3.231,
+    "s2": 3.333
+  }
+}
