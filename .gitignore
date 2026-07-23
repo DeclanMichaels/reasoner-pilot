@@ -29,3 +29,5 @@ validity/runs_framed/
 
 # SMB network-volume deletion artifacts
 *.smbdelete*
+validity/instruments/mfq2_translations_extracted.json
+validity/runs_framed_lang/
