@@ -95,6 +95,23 @@ model *along the dimension* (across countries) while *converging the models with
 exaggerated in magnitude, and eerily agreed-upon. The WEIRD default is not the *absence* of a
 stereotype — it is one portrait in that gallery, sitting at the secular-liberal end.
 
+## Why country framing is MFQ-2 only
+
+Country framing needs real national means to compare the model profiles against, and at the time
+of this run those existed only for MFQ-2 (Atari, Haidt & Graham 2023, and even there only for three
+of the six framed countries). PVQ-40 and MFQ-30 were therefore administered **neutral**, as the
+convergent-validity arm, with no country-framed counterpart: a country-framed values profile with
+nothing to validate it against would be uninterpretable. This was a **data-availability limit, not
+an instrument choice.**
+
+The `reasoner-study/MFQ-PVQ/` scaffold (built 2026-07-22) is what closes the gap: `pvq21/ess_reference/`
+builds Schwartz country means from the ESS export, and `mfq/reference/` builds foundation means from
+raw or published data. Once those reference means are populated, a country-framed PVQ-21 (and MFQ-30)
+run becomes comparable the same way MFQ-2 was here. Caveat on reach: ESS covers ~30 mostly-European
+countries, so a country-framed PVQ would test de-compression and stereotyping largely *within* Europe
+(e.g. Sweden vs. Poland vs. Portugal) rather than across the Egypt / Nigeria / India cross-cultural
+span MFQ-2 reached. Different question, complementary to this one.
+
 ## Next
 
 - Overshoot quantified for the 3 covered countries (Result 3). Remaining: obtain MFQ-2 means for the
