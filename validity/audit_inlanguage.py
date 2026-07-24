@@ -49,7 +49,7 @@ def permodel(pattern, keyfn):
 lang = permodel(str(VDIR/"runs_framed_lang"/"*.json"),
                 lambda d: (d["instrument"].split("_")[1], d["condition"]))
 enfr = permodel(str(VDIR/"runs_framed"/"*_mfq2_*.json"),
-                lambda d: d.get("country") if d.get("country") in ("Egypt","Japan") else None)
+                lambda d: d.get("country") if d.get("country") in ("Egypt","Japan","Iran") else None)
 ennu = permodel(str(VDIR/"runs"/"*mfq2*.json"),
                 lambda d: "en_neutral" if d.get("instrument")=="mfq2" else None)
 
@@ -122,6 +122,11 @@ d = [v-ANCH["Egypt"] for v in CONDS["ar_framed"].values()]
 tests["T7 AR-framed vs Egypt anchor 4.27"] = (sum(d)/len(d), signflip_exact(d), d)
 d,_ = paired(CONDS["ja_framed"], CONDS["ja_neutral"])
 tests["T8 Japan: framed vs neutral (in-lang)"] = (sum(d)/len(d), signflip_exact(d), d)
+if "EN_framed_Iran" in CONDS:
+    d = [v-ANCH["Iran"] for v in CONDS["EN_framed_Iran"].values()]
+    tests["T9 EN-framed Iran vs anchor 3.33"] = (sum(d)/len(d), signflip_exact(d), d)
+    d,_ = paired(CONDS["EN_framed_Iran"], CONDS["fa_framed"])
+    tests["T10 Iran: EN-framed vs FA-framed"] = (sum(d)/len(d), signflip_exact(d), d)
 
 # Holm
 ps = sorted((p,k) for k,(eff,p,_) in tests.items())

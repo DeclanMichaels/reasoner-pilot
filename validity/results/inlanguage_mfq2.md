@@ -21,7 +21,7 @@ validity/anchors_iran.json for the sampling caveats, which are real: young, onli
 |---|--:|--:|--:|--:|--:|--:|
 | Egypt | 4.27 | 4.61 | 4.61 | 3.03 | +0.34 | +0.34 |
 | Japan | 2.65 | 3.67 | 3.46 | 2.66 | +1.02 | +0.81 |
-| Iran | 3.33 | not run | 4.36 | 2.72 | - | +1.03 |
+| Iran | 3.33 | 4.59 | 4.36 | 2.72 | +1.26 | +1.03 |
 
 English neutral baseline (07-20): 2.71, between-model SD 0.34.
 
@@ -49,7 +49,10 @@ selecting the stereotype over knowledge the model demonstrably has.
 
 ## Finding 3: Iran is where the template fails worst
 
-Framed-as-Iran in Farsi lands at 4.36, one full point above the measured Iranian 3.33, the
+English-framed Iran (added 2026-07-24 to close the audit's open hole) lands at 4.59, within 0.02 of
+English-framed Egypt: the English template does not distinguish the two countries, and its Iran
+overshoot (+1.26, every model, LOO floor +1.23) is the largest measured in the program. In-language
+framing shrinks it by 0.23 (paired, CI [+0.14,+0.32]), replicating the Japanese shrink. Framed-as-Iran in Farsi lands at 4.36, one full point above the measured Iranian 3.33, the
 largest in-language overshoot in the set. The models template Iran as Egypt (framed 4.36 vs
 4.61) but the real populations sit a point apart (3.33 vs 4.27). Per-foundation, the error
 concentrates exactly in binding: authority 4.48 vs real 3.05, loyalty 4.45 vs 3.63, purity 4.14
