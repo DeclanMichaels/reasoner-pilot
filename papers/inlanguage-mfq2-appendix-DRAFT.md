@@ -64,9 +64,12 @@ Panel means by foundation. Iranian anchor row from the independent validation (i
 | JA neutral | 4.56 | 2.16 | 3.94 | 2.90 | 3.09 | 2.00 |
 | FA framed | 4.78 | 2.65 | 4.29 | 4.45 | 4.48 | 4.14 |
 | FA neutral | 4.59 | 2.07 | 4.12 | 3.03 | 2.99 | 2.14 |
+| Japan, measured | 3.03 | 2.27 | 3.14 | 2.66 | 2.67 | 2.63 |
 | Iran, measured | 3.95 | 2.67 | 4.15 | 3.63 | 3.05 | 3.32 |
 
-The framed-Iran error concentrates in the binding foundations (Authority +1.43, Loyalty +0.82, Purity +0.82 against the measured sample) while Equality is accurate to 0.02: the template misses exactly where the population departs from it.
+Japan measured row: Atari et al. (2023) Table 7. The framed-Iran error concentrates in the binding foundations (Authority +1.43, Loyalty +0.82, Purity +0.82 against the measured sample) while Equality is accurate to 0.02: the template misses exactly where the population departs from it.
+
+Two properties of the JA-neutral match, quantified by the foundation-level extension (`validity/audit_foundations_ext.py`, same seed and conventions). Per-foundation deltas vs the Japan anchors: Care +1.53 [+1.31, +1.74], Proportionality +0.80 [+0.61, +1.03], Authority +0.42 [+0.27, +0.59], Purity -0.63 [-0.79, -0.47], all at the exact-test floor; Equality -0.11 [-0.34, +0.08] and Loyalty +0.24 [-0.03, +0.52] indistinguishable from zero. Within the binding composite the significant Authority and Purity misses offset, netting +0.01 [-0.16, +0.19], which reconciles with T3. The match does not extend beyond binding: Care is a panel constant, not a population-tracking quantity. Across all fourteen conditions ever run (this study's ten plus the country-framing run's India, Nigeria, Sweden, and United States arms), panel Care spans 4.29 to 4.88 with every CI floor at or above 4.11; the lowest condition (JA framed, 4.29) sits +1.26 [+1.09, +1.45] above the measured Japanese Care of 3.03.
 
 ## B7. The refusal
 
