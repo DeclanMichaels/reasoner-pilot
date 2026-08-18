@@ -1,0 +1,54 @@
+{
+ "_provenance": {
+  "script": "validity/aggregation_artifact.py",
+  "source": "results/appendix_stats.json",
+  "k_iterations_verified": 5,
+  "cross_check_passed": true
+ },
+ "per_axis": {
+  "moral_agent": {
+   "human_sd": 0.4124,
+   "model_sd_reported": 0.0609,
+   "within_run_sd": 0.0262,
+   "model_sd_as_single_draw": 0.06525,
+   "ratio_reported": 6.77,
+   "ratio_corrected": 6.32,
+   "pct_change": -6.7,
+   "noise_share_of_model_var": 0.037,
+   "human_noise_share_needed_for_ratio_3": 0.775
+  },
+  "authority": {
+   "human_sd": 0.4012,
+   "model_sd_reported": 0.0521,
+   "within_run_sd": 0.0209,
+   "model_sd_as_single_draw": 0.05535,
+   "ratio_reported": 7.7,
+   "ratio_corrected": 7.25,
+   "pct_change": -5.9,
+   "noise_share_of_model_var": 0.0322,
+   "human_noise_share_needed_for_ratio_3": 0.829
+  },
+  "domain_boundary": {
+   "human_sd": 0.3271,
+   "model_sd_reported": 0.0609,
+   "within_run_sd": 0.0253,
+   "model_sd_as_single_draw": 0.06497,
+   "ratio_reported": 5.37,
+   "ratio_corrected": 5.03,
+   "pct_change": -6.3,
+   "noise_share_of_model_var": 0.0345,
+   "human_noise_share_needed_for_ratio_3": 0.645
+  },
+  "scope": {
+   "human_sd": 0.3611,
+   "model_sd_reported": 0.0639,
+   "within_run_sd": 0.0327,
+   "model_sd_as_single_draw": 0.07028,
+   "ratio_reported": 5.65,
+   "ratio_corrected": 5.14,
+   "pct_change": -9.1,
+   "noise_share_of_model_var": 0.0524,
+   "human_noise_share_needed_for_ratio_3": 0.659
+  }
+ }
+}
