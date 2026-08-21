@@ -1,0 +1,26 @@
+=== SCOPE ===
+  models 10, conditions 19, scored cells 837
+
+=== COST AND WHAT IT BUYS, per model ===
+  model           cells reason/call  out/call  reason%    gap-to-       own        total   reason tok
+                                               of gen      panel    spread    reasoning per 0.01 gap
+  inkling            58       2382      2607      48%      0.198     0.125       138135         6975
+  deepseek_v4        94       1828      2054      47%      0.193     0.156       171829         8883
+  grok45             95       1258       219      85%      0.257     0.090       119513         4642
+  minimax            61       1040      1263      45%      0.111     0.137        63424         5717
+  o3                 92       1018      1245      45%      0.179     0.112        93632         5232
+  gpt55              95        412       568      42%      0.207     0.086        39134         1893
+  llama33            57          0       220       0%      0.257     0.187            0            0
+  mistral_large      95          0       293       0%      0.201     0.103            0            0
+  opus               95          0       226       0%      0.156     0.092            0            0
+  sonnet             95          0       238       0%      0.284     0.157            0            0
+
+=== REASONING MODELS VS THE REST ===
+  reasoning (>0 tok/call)  n=6  mean gap-to-panel 0.191  mean own spread 0.118  mean reason/call 1323
+  no reasoning tokens      n=4  mean gap-to-panel 0.224  mean own spread 0.135  mean reason/call 0
+
+=== DOES SPENDING MORE MOVE THE ANSWER? (descriptive, n=10 models) ===
+  Spearman, reasoning per call vs gap to panel:   -0.244
+  Spearman, reasoning per call vs own spread:     -0.069
+  A correlation near zero means the tokens are not buying a different answer
+  or a steadier one. With eleven models this is descriptive, not a test.
