@@ -58,6 +58,24 @@ copies. Before running:
 
 The runner refuses to run any instrument with an empty item.
 
+## Where the run data lives
+
+The per-cell run files (`runs/`, `runs_framed/`, `runs_framed_lang/`) and the filled
+instruments are git-ignored for the reasons above, so this repository is not a copy of
+them. They live in two places:
+
+- **Working copy** — `validity/` in your local clone. `audit_inlanguage.py`,
+  `analyze_framed.py` and `overshoot_framed.py` read them from there and will not run
+  without them.
+- **Archive** — `s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/`
+  (STANDARD_IA). Restore with
+  `aws s3 sync s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/ validity/`
+  after `aws login`. Synced and verified 2026-08-21: 929 objects, 2.2 MB, matching the
+  working copy file for file.
+
+Appendices B3, B4 and B5 of the in-language MFQ-2 write-up are regenerated from this data
+by `audit_inlanguage.py`. Without it those numbers cannot be recomputed.
+
 ## Run it
 
 ```bash
