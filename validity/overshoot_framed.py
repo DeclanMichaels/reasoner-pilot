@@ -1,6 +1,6 @@
 import json, glob, statistics, collections
 from pathlib import Path
-V = Path(".")
+V = Path(__file__).resolve().parent
 instr = json.load(open(V / "instruments/mfq2.filled.json"))
 grp = {it["id"]: it["group"] for it in instr["items"]}
 FOUND = ["care","equality","proportionality","loyalty","authority","purity"]
