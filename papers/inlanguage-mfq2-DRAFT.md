@@ -56,6 +56,14 @@ Eleven models is a panel, not a sample (three more configured models are absent 
 
 This study becomes validation groundwork for the pre-registered Reasoner study, which collects in-group human samples across five moral traditions on expert-reviewed scenarios that carry no published norms to memorize. The design now includes an in-language condition, because this result earned it a place. If the language-carries-the-population effect survives on an instrument that cannot be retrieved from training data, it stops being a memorization curiosity and becomes a deployment principle.
 
+## Sources
+
+The MFQ-2, its six foundations, and the Egypt and Japan human means: Atari, M., Haidt, J., Graham, J., Koleva, S., Stevens, S. T., and Dehghani, M. (2023). Morality beyond the WEIRD: How the nomological network of morality varies across cultures. *Journal of Personality and Social Psychology*, 125, 1157-1188.
+
+The Iran human mean: Hazrati, Nejat, and Daneshi (2025). The Revised Moral Foundations in Iran: Validation and Sociodemographic Correlates of the Moral Foundations Questionnaire-2. *Collabra: Psychology*, 11(1), 140952. https://doi.org/10.1525/collabra.140952
+
+Moral stereotyping in model estimates of national moral values: Zewail, A., Figueroa, A., Graham, J., and Atari, M. (2026). Moral stereotyping in large language models. *Proceedings of the National Academy of Sciences*. https://doi.org/10.1073/pnas.2519941123
+
 ---
 
 Analysis is stdlib-reproducible from the raw runs; every inferential number regenerates from one audit script with a fixed seed. The statistical appendix carries the full test family, intervals, and sweeps. Responsibility for the work, and for any errors in it, is mine alone. Methodology was AI-assisted and that assistance is disclosed.
