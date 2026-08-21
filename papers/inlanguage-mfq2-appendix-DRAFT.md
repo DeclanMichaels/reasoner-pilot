@@ -29,9 +29,11 @@ Resampling models with replacement, 100,000 draws, percentile intervals.
 
 Human anchors, treated as constants (their standard errors, at N of 989 to several thousand, are an order of magnitude below the effects tested): Egypt 4.27, Japan 2.65, Iran 3.33.
 
-## B4. The test family
+## B4. The test families
 
-Ten comparisons, one declared family, Holm-corrected. Paired tests use per-model differences; anchor tests subtract the constant from each model's mean. Exact sign-flip permutation: with eleven models the minimum attainable two-sided p is 2/2048, reported as 0.001. Nothing was pre-registered; the family is exploratory. T9 and T10 were added with the English-framed Iran arm after the first-draft audit identified its absence.
+Two families, one per headline claim, both post hoc and both exploratory. Paired tests use per-model differences; anchor tests subtract the constant from each model's mean. Exact sign-flip permutation: with eleven models the minimum attainable two-sided p is 2/2048, reported as 0.001. Nothing was pre-registered.
+
+**Family A, the framing claim.** Ten comparisons, Holm across the ten. T9 and T10 were added with the English-framed Iran arm after the first-draft audit identified its absence.
 
 | test | difference | 95% CI | exact p | Holm |
 |---|--:|:--:|--:|--:|
@@ -47,6 +49,18 @@ Ten comparisons, one declared family, Holm-corrected. Paired tests use per-model
 | T10 Iran: EN framed vs FA framed | +0.229 | [+0.142, +0.321] | .001 | .0098 |
 
 The three null results (T1, T3, T5) are reported as bounds, not as demonstrated absence: any Egypt language effect is smaller than 0.04, any Japanese-neutral displacement from the population mean is within 0.19, any Farsi-neutral departure from the English default is within 0.17.
+
+**Family B, the language claim.** One comparison per language, asking whether that language's unframed condition departs from the panel's English default. Holm across the three. Added 2026-08-21: family A holds the Farsi and Arabic cases but not the Japanese one, so it contains no complete test of what the language does. T5 and T6 sit in both families. The double membership is disclosed rather than removed by re-cutting family A, because re-partitioning a declared family after seeing results is the larger problem, and every conclusion below holds under either cut.
+
+| test | difference | 95% CI | exact p | Holm | models moving up |
+|---|--:|:--:|--:|--:|--:|
+| T5 FA neutral vs EN neutral | +0.015 | [-0.148, +0.173] | .872 | 1.00 | 6 of 11 |
+| T6 AR neutral vs EN neutral | +0.328 | [+0.207, +0.457] | .001 | .003 | 11 of 11 |
+| T11 JA neutral vs EN neutral | -0.043 | [-0.183, +0.080] | .582 | 1.00 | 6 of 11 |
+
+Arabic is the only language that moves the panel, and every model moves the same way. Farsi and Japanese split six to five, which is what no effect looks like at this unit. As bounds: any Farsi departure from the English default is within 0.17, and any Japanese departure is within 0.18.
+
+One further comparison bears on the same claim and is reported outside both families as a single descriptive, from `validity/audit_inlanguage_grid.py`: the English default sits +0.053 from the Japanese human mean (exact p .622, interval [-0.148, +0.246]; that script carries the anchors at three decimals, Japan 2.652, where this appendix rounds to 2.65). The panel's untouched English resting point is already indistinguishable from Japan's measured binding composite.
 
 ## B5. Robustness: leave-one-model-out
 
@@ -81,7 +95,7 @@ Post-hoc verification across every recorded run in this study and its baselines:
 
 ## B9. Reproducibility
 
-`validity/build_lang_instruments.py` rebuilds the per-language instruments from the official translation files (item wording is not redistributed; filled instruments are git-ignored). `validity/run_framed_lang.py` and `validity/run_framed.py` produced the cells; both are resumable, and every cell records its seed, presentation order, raw text, and (for framed in-language cells) the framing translation used. `validity/analyze_lang.py` produces the descriptive tables; `validity/audit_inlanguage.py` produces every number in B3, B4, and B5 deterministically and reconciles its panel means against the descriptive analysis before testing.
+`validity/build_lang_instruments.py` rebuilds the per-language instruments from the official translation files (item wording is not redistributed; filled instruments are git-ignored). `validity/run_framed_lang.py` and `validity/run_framed.py` produced the cells; both are resumable, and every cell records its seed, presentation order, raw text, and (for framed in-language cells) the framing translation used. `validity/analyze_lang.py` produces the descriptive tables; `validity/audit_inlanguage.py` produces every number in B3, B4, and B5 deterministically and reconciles its panel means against the descriptive analysis before testing. `validity/audit_inlanguage_grid.py` carries the language-by-framing grid, the per-foundation profiles for the English conditions, and the single descriptive noted in B4; it reconciles all ten panel means against B3 before computing anything new, and its saved output is `validity/results/inlanguage_grid_audit.txt`.
 
 ---
 

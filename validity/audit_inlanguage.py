@@ -6,7 +6,18 @@ Independent unit: MODEL (11 clusters). All tests aggregate per model first.
 - Exact sign-flip permutation tests (2^11 = 2048 enumerations) on paired per-model
   differences and one-sample-vs-anchor differences.
 - Leave-one-model-out sweeps on the two headline quantities.
-- Holm correction across the declared (post hoc, therefore exploratory) family.
+- Holm correction within each family.
+
+TWO FAMILIES, one per headline claim.
+  Family A (T1-T10): the framing claim. Declared and reported in appendix B4; the
+    values here are unchanged from the version that produced that table.
+  Family B (T5, T6, T11): the language claim. One test per language, asking whether
+    the local-language unframed condition departs from the English default. Added
+    2026-08-21, after the results were seen, because the declared family omitted the
+    Japanese case and so contained no complete test of the claim the title makes.
+    T5 and T6 belong to both families; that double membership is disclosed rather
+    than resolved by re-partitioning A, since re-cutting a declared family after
+    seeing results is the larger sin and every conclusion holds under both cuts.
 
 Verification pass: raw per-model descriptives printed first; panel means must
 reconcile with analyze_lang.py's reported values before anything else is trusted.
@@ -103,7 +114,6 @@ for k in sorted(CONDS):
     CI[k]=(lo,hi)
     print(f"  {k:<18} mean={sum(vals)/len(vals):.3f}  CI[{lo:.3f},{hi:.3f}]")
 
-print("\n=== declared family (post hoc, exploratory): exact sign-flip tests ===")
 tests = {}
 d,_ = paired(CONDS["EN_framed_Egypt"], CONDS["ar_framed"])
 tests["T1 Egypt: EN-framed vs AR-framed"] = (sum(d)/len(d), signflip_exact(d), d)
@@ -128,17 +138,57 @@ if "EN_framed_Iran" in CONDS:
     d,_ = paired(CONDS["EN_framed_Iran"], CONDS["fa_framed"])
     tests["T10 Iran: EN-framed vs FA-framed"] = (sum(d)/len(d), signflip_exact(d), d)
 
-# Holm
-ps = sorted((p,k) for k,(eff,p,_) in tests.items())
-mtot = len(ps); holm = {}
-running = 0
-for i,(p,k) in enumerate(ps):
-    running = max(running, p*(mtot-i))
-    holm[k] = min(1.0, running)
-for k in tests:
+FAMILY_A = list(tests)
+
+# T11 completes the language family: one test per language against the English default.
+d,_ = paired(CONDS["ja_neutral"], CONDS["en_neutral"])
+tests["T11 JA-neutral vs EN-neutral"] = (sum(d)/len(d), signflip_exact(d), d)
+
+FAMILY_B = ["T5 FA-neutral vs EN-neutral",
+            "T6 AR-neutral vs EN-neutral",
+            "T11 JA-neutral vs EN-neutral"]
+
+def holm(names):
+    ps = sorted((tests[k][1], k) for k in names)
+    m = len(ps); out = {}; running = 0.0
+    for i,(p,k) in enumerate(ps):
+        running = max(running, p*(m-i))
+        out[k] = min(1.0, running)
+    return out
+
+hA = holm(FAMILY_A)
+hB = holm(FAMILY_B)
+
+# One interval per test, drawn once, in family-A order and then T11. A test that
+# belongs to both families therefore reports the same interval in both, and the
+# family-A draws sit at the same position in the RNG stream as before T11 existed,
+# so appendix B4 still reproduces line for line.
+CIT = {}
+for k in FAMILY_A + ["T11 JA-neutral vs EN-neutral"]:
+    CIT[k] = boot_ci(tests[k][2])
+
+print("\n=== FAMILY A, the framing claim (post hoc, exploratory): exact sign-flip tests ===")
+print("    Ten tests, Holm across the ten. Unchanged from appendix B4.")
+for k in FAMILY_A:
     eff,p,d = tests[k]
-    lo,hi = boot_ci(d)
-    print(f"  {k:<40} diff={eff:+.3f} CI[{lo:+.3f},{hi:+.3f}]  p={p:.4f}  holm={holm[k]:.4f}  n={len(d)}")
+    lo,hi = CIT[k]
+    print(f"  {k:<40} diff={eff:+.3f} CI[{lo:+.3f},{hi:+.3f}]  p={p:.4f}  holm={hA[k]:.4f}  n={len(d)}")
+
+print("\n=== FAMILY B, the language claim (post hoc, exploratory): one test per language ===")
+print("    Does the local-language unframed condition depart from the English default?")
+print("    Holm across the three. T5 and T6 also appear in family A; see the module docstring.")
+for k in FAMILY_B:
+    eff,p,d = tests[k]
+    lo,hi = CIT[k]
+    print(f"  {k:<40} diff={eff:+.3f} CI[{lo:+.3f},{hi:+.3f}]  p={p:.4f}  holm={hB[k]:.4f}  n={len(d)}")
+print("  Nulls are bounds, not demonstrated absence. Largest effect each rules out:")
+for k in FAMILY_B:
+    lo,hi = CIT[k]
+    print(f"    {k:<40} |effect| <= {max(abs(lo),abs(hi)):.3f}")
+print("  Per-model sign counts (a real shift moves models together):")
+for k in FAMILY_B:
+    d = tests[k][2]
+    print(f"    {k:<40} up {sum(1 for x in d if x>0)}/{len(d)}, down {sum(1 for x in d if x<0)}/{len(d)}")
 
 print("\n=== leave-one-model-out sweeps ===")
 def loo(vals_by_model):
@@ -153,3 +203,8 @@ for m,mu in sorted(loo(CONDS["ja_neutral"]), key=lambda x:x[1]):
 print("  FA-framed overshoot vs 3.33 without each model:")
 for m,mu in sorted(loo(CONDS["fa_framed"]), key=lambda x:x[1]):
     print(f"    -{m:<14} {mu-3.33:+.3f}")
+print("  T11 (JA-neutral minus EN-neutral) without each model:")
+ms = sorted(set(CONDS["ja_neutral"]) & set(CONDS["en_neutral"]))
+for drop in ms:
+    rest = [CONDS["ja_neutral"][m]-CONDS["en_neutral"][m] for m in ms if m != drop]
+    print(f"    -{drop:<14} {sum(rest)/len(rest):+.4f}")
