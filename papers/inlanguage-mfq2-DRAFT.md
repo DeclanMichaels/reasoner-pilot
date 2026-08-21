@@ -32,6 +32,14 @@ Two honest qualifications on the Japanese match, both quantified in the appendix
 
 **Put together: two separate behaviors.** Framing displaces the panel by large amounts in every language, +1.6 in Arabic and Farsi, +0.8 in Japanese, whether or not the language carried any population signal. So the two effects come apart. What the language elicits tracks the real population well, partially, or not at all. What the framing elicits is the same template everywhere. For Japan they collide head-on: the language alone puts the panel on the population, and the instruction to imitate the population pulls it away. The largest distortion in the country-framing run is not missing knowledge. The behavior is in there, and the persona instruction overrides it.
 
+## Asking about a population, and answering as one
+
+Zewail, Figueroa, Graham and Atari (2026) put the MFQ-2 to five language models and asked them to estimate the average person in each of 48 countries, then scored those estimates against survey responses from 90,802 people in the same countries. The models distorted the populations in a consistent, Western-centric direction, which the authors read as moral stereotyping.
+
+That study measures what a model says about a population. This one measures what a model does when it answers the questionnaire itself, in the population's own language, against norms collected in that language. Our framed condition is the closer of the two to their task, since both hand the model a population and ask it to produce that population's answers. The unframed in-language condition asks nothing about a population at all, and that is what makes the dissociation visible: the models can carry a population without being told to.
+
+The two tasks also miss in different directions. Their estimates distort populations Western-centrically. Ours, instructed to be a person from the country, run high on binding for all three countries we tested, by between a third of a point and a point and a quarter. The designs differ in models, countries, anchors, and the foundations in play, so these are not matched conditions and the comparison is directional. A model asked to describe a population and a model asked to speak as one do not miss the same way.
+
 ## What the refusal looks like
 
 One cell in 330 returned no rating, and not because parsing failed. On one specific shuffle of the Arabic unframed questionnaire, Kimi declines, in Arabic: as an AI it has no self these statements could describe, so it cannot honestly fill in the scale. Our fixed-seed protocol replays the identical prompt on retry, and the refusal reproduces, four times. The same model answers the other four shuffles of the same condition, and every English cell, without complaint. We score the condition on its four completed runs and report the refusal as what it is: a behavior triggered by one language and one ordering, not by the instrument.
