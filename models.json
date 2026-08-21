@@ -66,6 +66,11 @@
       "model_id": "moonshotai/Kimi-K2.6",
       "env_key": "TOGETHER_API_KEY"
     },
+    "kimi_k3": {
+      "provider": "together",
+      "model_id": "moonshotai/Kimi-K3",
+      "env_key": "TOGETHER_API_KEY"
+    },
     "llama33": {
       "provider": "together",
       "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
@@ -113,8 +118,14 @@
       "deepseek_v4",
       "minimax",
       "inkling",
-      "kimi",
+      "kimi_k3",
       "llama33"
-    ]
+    ],
+    "kimi_k3_substitution": {
+      "date": "2026-08-21",
+      "what": "moonshotai/Kimi-K2.6 replaced by moonshotai/Kimi-K3 in the pilot_roster; the kimi entry stays so archived July cells remain readable.",
+      "why": "Together moved K2.6 and K2.5-fp4 off serverless; both return HTTP 400 model_not_available and need a dedicated endpoint. K3 is the only Moonshot model Together serves serverless. Same failure mode that dropped Qwen and GLM in July.",
+      "naming": "new roster key kimi_k3, not a swap under the name kimi, so no cell collected before and after can be confused in a filename."
+    }
   }
 }
