@@ -87,7 +87,11 @@ def main():
         safe_c = c.replace(" ", "_")
         out = {"model": m, "instrument": name, "country": c, "iter": it, "seed": seed,
                "presentation_order": [id_by_num[str(i + 1)] for i in range(len(id_by_num))],
-               "ratings": ratings, "parse_error": err, "usage": usage, "raw_text": text}
+               "ratings": ratings, "parse_error": err, "usage": usage, "raw_text": text,
+               # The framing instruction verbatim, not a description of it. Cells collected
+               # before 2026-08-21 carry no such field; frame_system is unchanged since, so
+               # theirs is recoverable from the country, but only this field proves it.
+               "system_prompt": frame_system(c)}
         (FRAMED_RUNS / f"{m}_{name}_{safe_c}_{it}_{ts}.json").write_text(json.dumps(out, indent=2))
         print(f"  {rid}: {'OK' if ratings else 'PARSE-FAIL: ' + str(err)}")
 

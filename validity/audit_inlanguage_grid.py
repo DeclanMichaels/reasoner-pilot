@@ -78,8 +78,11 @@ def permodel(pattern, keyfn, what):
 
 
 def load_all(what):
+    # Framed in-language cells are keyed BY COUNTRY; see audit_inlanguage.py.
     lang = permodel(str(VDIR / "runs_framed_lang" / "*.json"),
-                    lambda d: "%s_%s" % (d["instrument"].split("_")[1], d["condition"]), what)
+                    lambda d: "%s_%s" % (d["instrument"].split("_")[1],
+                                         d["condition"] if d["condition"] != "framed"
+                                         else "framed_" + d["country"]), what)
     enfr = permodel(str(VDIR / "runs_framed" / "*_mfq2_*.json"),
                     lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None, what)
     ennu = permodel(str(VDIR / "runs" / "*mfq2*.json"),
@@ -108,8 +111,8 @@ print("\n  roster (%d): %s" % (len(ROSTER), ", ".join(ROSTER)))
 bad = dict((k, sorted(set(ROSTER) - set(v))) for k, v in CONDS.items() if sorted(v) != ROSTER)
 print("  conditions missing a model: %s" % (bad if bad else "none"))
 
-EXPECT = {"ar_framed": 4.613, "ar_neutral": 3.033, "ja_framed": 3.459, "ja_neutral": 2.662,
-          "fa_framed": 4.358, "fa_neutral": 2.720, "EN_framed_Egypt": 4.607,
+EXPECT = {"ar_framed_Egypt": 4.613, "ar_neutral": 3.033, "ja_framed_Japan": 3.459, "ja_neutral": 2.662,
+          "fa_framed_Iran": 4.358, "fa_neutral": 2.720, "EN_framed_Egypt": 4.607,
           "EN_framed_Japan": 3.668, "EN_framed_Iran": 4.587, "en_neutral": 2.705}
 print("\n  reconcile against appendix B3 (audit_inlanguage.py):")
 ok = True
@@ -122,10 +125,10 @@ print("  RECONCILED" if ok else "  *** RECONCILIATION FAILED, STOP ***")
 if not ok:
     raise SystemExit(1)
 
-rng = random.Random(SEED)
-
-
-def boot_ci(vals):
+def boot_ci(vals, key):
+    """Seeded from (SEED, key) so an interval never depends on what else was computed
+    first. See the same note in audit_inlanguage.py."""
+    rng = random.Random("%d|%s" % (SEED, key))
     n = len(vals)
     s = []
     for _ in range(B):
@@ -156,7 +159,7 @@ cache = {}
 
 def ci(k):
     if k not in cache:
-        cache[k] = boot_ci(list(CONDS[k].values()))
+        cache[k] = boot_ci(list(CONDS[k].values()), k)
     return cache[k]
 
 
@@ -165,7 +168,7 @@ hdr = "  %-18s%8s%22s%22s%22s%22s" % ("country/lang", "human", "EN unframed",
 print(hdr)
 for country, langname, code in GRID:
     cells = []
-    for k in ["en_neutral", code + "_neutral", "EN_framed_" + country, code + "_framed"]:
+    for k in ["en_neutral", code + "_neutral", "EN_framed_" + country, code + "_framed_" + country]:
         mu = mean(list(CONDS[k].values()))
         lo, hi = ci(k)
         cells.append(("%.3f [%.2f,%.2f]" % (mu, lo, hi)).rjust(22))
@@ -176,7 +179,7 @@ print("  %-18s%16s%16s%16s%16s" % ("country/lang", "EN unframed", "LOCAL unframe
                                    "EN framed", "LOCAL framed"))
 for country, langname, code in GRID:
     cells = []
-    for k in ["en_neutral", code + "_neutral", "EN_framed_" + country, code + "_framed"]:
+    for k in ["en_neutral", code + "_neutral", "EN_framed_" + country, code + "_framed_" + country]:
         cells.append("%+16.3f" % (mean(list(CONDS[k].values())) - ANCH[country]))
     print("  %-18s%s" % (country + "/" + langname, "".join(cells)))
 
@@ -191,21 +194,21 @@ def add(name, diffs):
     order.append(name)
 
 
-add("T1  Egypt: EN-framed vs AR-framed", paired(CONDS["EN_framed_Egypt"], CONDS["ar_framed"]))
-add("T2  Japan: EN-framed vs JA-framed", paired(CONDS["EN_framed_Japan"], CONDS["ja_framed"]))
+add("T1  Egypt: EN-framed vs AR-framed", paired(CONDS["EN_framed_Egypt"], CONDS["ar_framed_Egypt"]))
+add("T2  Japan: EN-framed vs JA-framed", paired(CONDS["EN_framed_Japan"], CONDS["ja_framed_Japan"]))
 add("T3  JA-neutral vs Japan anchor", [v - ANCH["Japan"] for v in CONDS["ja_neutral"].values()])
-add("T4  FA-framed vs Iran anchor", [v - ANCH["Iran"] for v in CONDS["fa_framed"].values()])
+add("T4  FA-framed vs Iran anchor", [v - ANCH["Iran"] for v in CONDS["fa_framed_Iran"].values()])
 add("T5  FA-neutral vs EN-neutral", paired(CONDS["fa_neutral"], CONDS["en_neutral"]))
 add("T6  AR-neutral vs EN-neutral", paired(CONDS["ar_neutral"], CONDS["en_neutral"]))
-add("T7  AR-framed vs Egypt anchor", [v - ANCH["Egypt"] for v in CONDS["ar_framed"].values()])
-add("T8  Japan: framed vs neutral in-lang", paired(CONDS["ja_framed"], CONDS["ja_neutral"]))
+add("T7  AR-framed vs Egypt anchor", [v - ANCH["Egypt"] for v in CONDS["ar_framed_Egypt"].values()])
+add("T8  Japan: framed vs neutral in-lang", paired(CONDS["ja_framed_Japan"], CONDS["ja_neutral"]))
 add("T9  EN-framed Iran vs Iran anchor", [v - ANCH["Iran"] for v in CONDS["EN_framed_Iran"].values()])
-add("T10 Iran: EN-framed vs FA-framed", paired(CONDS["EN_framed_Iran"], CONDS["fa_framed"]))
+add("T10 Iran: EN-framed vs FA-framed", paired(CONDS["EN_framed_Iran"], CONDS["fa_framed_Iran"]))
 DECLARED = list(order)
 add("T11 JA-neutral vs EN-neutral", paired(CONDS["ja_neutral"], CONDS["en_neutral"]))
 add("T12 EN-neutral vs Japan anchor", [v - ANCH["Japan"] for v in CONDS["en_neutral"].values()])
-add("T13 Egypt: AR-framed vs AR-neutral", paired(CONDS["ar_framed"], CONDS["ar_neutral"]))
-add("T14 Iran: FA-framed vs FA-neutral", paired(CONDS["fa_framed"], CONDS["fa_neutral"]))
+add("T13 Egypt: AR-framed vs AR-neutral", paired(CONDS["ar_framed_Egypt"], CONDS["ar_neutral"]))
+add("T14 Iran: FA-framed vs FA-neutral", paired(CONDS["fa_framed_Iran"], CONDS["fa_neutral"]))
 add("T15 Egypt: EN-framed vs EN-neutral", paired(CONDS["EN_framed_Egypt"], CONDS["en_neutral"]))
 add("T16 Japan: EN-framed vs EN-neutral", paired(CONDS["EN_framed_Japan"], CONDS["en_neutral"]))
 add("T17 Iran: EN-framed vs EN-neutral", paired(CONDS["EN_framed_Iran"], CONDS["en_neutral"]))
@@ -233,7 +236,7 @@ h_all = holm(order)
 print("\n  %-38s%8s  %-19s%9s%10s%10s" % ("test", "diff", "  95% CI", "exact p", "Holm(10)", "Holm(22)"))
 for k in order:
     eff, p, d = tests[k]
-    lo, hi = boot_ci(d)
+    lo, hi = boot_ci(d, k)
     hd = ("%.4f" % h_dec[k]) if k in h_dec else "-"
     print("  %-38s%+8.3f  [%+.3f,%+.3f]%9.4f%10s%10.4f" % (k, eff, lo, hi, p, hd, h_all[k]))
 
@@ -242,7 +245,7 @@ for k in ["T1  Egypt: EN-framed vs AR-framed", "T3  JA-neutral vs Japan anchor",
           "T5  FA-neutral vs EN-neutral", "T11 JA-neutral vs EN-neutral",
           "T12 EN-neutral vs Japan anchor"]:
     eff, p, d = tests[k]
-    lo, hi = boot_ci(d)
+    lo, hi = boot_ci(d, k)
     print("    %-38s |effect| <= %.3f" % (k, max(abs(lo), abs(hi))))
 
 print("\n=== STEP 4. PER-FOUNDATION PANEL MEANS, English conditions (absent from appendix B6) ===")
@@ -253,7 +256,7 @@ for k in ["en_neutral", "EN_framed_Egypt", "EN_framed_Japan", "EN_framed_Iran", 
     row = dict((g, mean([FCONDS[k][m][g] for m in FCONDS[k]])) for g in FOUND)
     print("  %-22s%s" % (k, "".join("%16.3f" % row[g] for g in FOUND)))
 print("  in-language cells, recomputed for cross-check against B6:")
-for k in ["ar_framed", "ar_neutral", "ja_framed", "ja_neutral", "fa_framed", "fa_neutral"]:
+for k in ["ar_framed_Egypt", "ar_neutral", "ja_framed_Japan", "ja_neutral", "fa_framed_Iran", "fa_neutral"]:
     row = dict((g, mean([FCONDS[k][m][g] for m in FCONDS[k]])) for g in FOUND)
     print("  %-22s%s" % (k, "".join("%16.3f" % row[g] for g in FOUND)))
 print("  measured anchors:")
@@ -263,7 +266,7 @@ for c in ANCH_FOUND:
 print("\n  EN-framed Iran per-foundation error vs the measured Iranian sample:")
 for g in FOUND:
     d = [FCONDS["EN_framed_Iran"][m][g] - ANCH_FOUND["Iran"][g] for m in FCONDS["EN_framed_Iran"]]
-    lo, hi = boot_ci(d)
+    lo, hi = boot_ci(d, "EN_framed_Iran_vs_anchor::" + g)
     print("    %-18s%+8.3f  [%+.3f,%+.3f]  p=%.4f" % (g, mean(d), lo, hi, signflip_exact(d)))
 
 print("\n=== STEP 5. CLAIM CHECKS ===")
@@ -279,11 +282,11 @@ noanch = [c for c in ["India", "Sweden", "United States"] if "EN_framed_" + c in
 print("      No anchor in the MFQ-2 19-nation set, so not comparable: %s" % ", ".join(noanch))
 
 print('\n  C2. B6 prose vs table: JA-framed panel Care')
-vals = [FCONDS["ja_framed"][m]["care"] for m in FCONDS["ja_framed"]]
-lo, hi = boot_ci(vals)
+vals = [FCONDS["ja_framed_Japan"][m]["care"] for m in FCONDS["ja_framed_Japan"]]
+lo, hi = boot_ci(vals, "C2:ja_framed_care")
 print("      JA-framed Care = %.4f  CI[%.3f,%.3f]   (table says 4.28, prose says 4.29)" % (mean(vals), lo, hi))
 d = [v - ANCH_FOUND["Japan"]["care"] for v in vals]
-lo, hi = boot_ci(d)
+lo, hi = boot_ci(d, "C2:ja_framed_care_vs_anchor")
 print("      above measured Japanese Care 3.03 by %+.3f [%+.3f,%+.3f]  (prose says +1.26 [+1.09,+1.45])"
       % (mean(d), lo, hi))
 
@@ -291,7 +294,7 @@ print('\n  C3. Care span across all conditions run')
 allc = {}
 for k in sorted(FCONDS):
     vals = [FCONDS[k][m]["care"] for m in FCONDS[k]]
-    allc[k] = (mean(vals), boot_ci(vals)[0])
+    allc[k] = (mean(vals), boot_ci(vals, "C3:" + k)[0])
 lowk = min(allc, key=lambda k: allc[k][0])
 hik = max(allc, key=lambda k: allc[k][0])
 print("      %d conditions; Care spans %.3f (%s) to %.3f (%s)" % (len(allc), allc[lowk][0], lowk, allc[hik][0], hik))
@@ -299,7 +302,7 @@ print("      lowest CI floor across conditions: %.3f  (prose says every floor >=
       % min(v[1] for v in allc.values()))
 
 print('\n  C4. "disagreeing less about what an Egyptian is than about what they themselves are"')
-for k in ["EN_framed_Egypt", "ar_framed", "en_neutral"]:
+for k in ["EN_framed_Egypt", "ar_framed_Egypt", "en_neutral"]:
     v = list(CONDS[k].values())
     mu = mean(v)
     print("      %-20s between-model SD %.3f" % (k, (sum((x - mu) ** 2 for x in v) / len(v)) ** 0.5))
@@ -309,7 +312,7 @@ for lab, a in [("s2, n=989 (used)", 3.333), ("s1, n=392", 3.231),
                ("n-weighted pool", (392 * 3.231 + 989 * 3.333) / 1381)]:
     print("      anchor %.3f (%s): EN-framed overshoot %+.3f, FA-framed %+.3f"
           % (a, lab, mean(list(CONDS["EN_framed_Iran"].values())) - a,
-             mean(list(CONDS["fa_framed"].values())) - a))
+             mean(list(CONDS["fa_framed_Iran"].values())) - a))
 
 print('\n  C6. Leave-one-model-out on the headline quantities')
 for k, a in [("ja_neutral", ANCH["Japan"]), ("EN_framed_Iran", ANCH["Iran"])]:

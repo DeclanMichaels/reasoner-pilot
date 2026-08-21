@@ -136,7 +136,11 @@ def main():
                "country": country, "iter": it, "seed": seed,
                "presentation_order": [id_by_num[str(i+1)] for i in range(len(id_by_num))],
                "ratings": ratings, "parse_error": err, "usage": usage, "raw_text": text,
-               "framing_translation": "ours (AI-assisted), disclosed; items/anchors official"}
+               "framing_translation": "ours (AI-assisted), disclosed; items/anchors official",
+               # The framing instruction verbatim, not a description of it. Cells collected
+               # before 2026-08-21 carry only the description above; for those the text is
+               # recoverable from CELLS by country, but only this field proves what was sent.
+               "system_prompt": sys_prompt}
         (OUT / f"{m}_{instr_name}_{cond}{slug}_{it}_{ts}.json").write_text(json.dumps(out, indent=2))
         print(f"  {rid}: {'OK' if ratings else 'PARSE-FAIL: ' + str(err)}")
 

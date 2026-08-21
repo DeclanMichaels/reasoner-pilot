@@ -57,8 +57,13 @@ def permodel(pattern, keyfn):
     return {k: {m: sum(v)/len(v) for m,v in md.items()} for k,md in acc.items()}
 
 # ---- load all three sources
+# Framed in-language cells are keyed BY COUNTRY. Without the country every Arabic
+# framed country pools into a single "ar_framed" bucket and silently moves the published
+# Egypt number; that happened for real on 2026-08-21 with three test cells.
 lang = permodel(str(VDIR/"runs_framed_lang"/"*.json"),
-                lambda d: (d["instrument"].split("_")[1], d["condition"]))
+                lambda d: (d["instrument"].split("_")[1],
+                           d["condition"] if d["condition"] != "framed"
+                           else "framed_" + d["country"]))
 enfr = permodel(str(VDIR/"runs_framed"/"*_mfq2_*.json"),
                 lambda d: d.get("country") if d.get("country") in ("Egypt","Japan","Iran") else None)
 ennu = permodel(str(VDIR/"runs"/"*mfq2*.json"),
@@ -74,8 +79,8 @@ for k in sorted(CONDS):
     v = CONDS[k]
     mu = sum(v.values())/len(v)
     print(f"  {k:<18} n={len(v):<3} mean={mu:.3f}  models={sorted(v)==ROSTER or sorted(v)}")
-EXPECT = {"ar_framed":4.61,"ar_neutral":3.03,"ja_framed":3.46,"ja_neutral":2.66,
-          "fa_framed":4.36,"fa_neutral":2.72,"EN_framed_Egypt":4.61,"EN_framed_Japan":3.67}
+EXPECT = {"ar_framed_Egypt":4.61,"ar_neutral":3.03,"ja_framed_Japan":3.46,"ja_neutral":2.66,
+          "fa_framed_Iran":4.36,"fa_neutral":2.72,"EN_framed_Egypt":4.61,"EN_framed_Japan":3.67}
 print("  reconcile vs analyze_lang.py:")
 ok = True
 for k,e in EXPECT.items():
@@ -85,8 +90,14 @@ for k,e in EXPECT.items():
     print(f"    {k:<18} expected {e:.2f} got {got:.3f} {'OK' if match else 'MISMATCH'}")
 print("  RECONCILED" if ok else "  *** RECONCILIATION FAILED — STOP ***")
 
-rng = random.Random(SEED)
-def boot_ci(vals):
+def boot_ci(vals, key):
+    """Percentile bootstrap over models. The RNG is seeded from (SEED, key), so each
+    interval is independent of how many other quantities were computed first. Seeding
+    one shared stream made every interval depend on the order and NUMBER of conditions
+    present, so adding a condition silently moved the third decimal of unrelated
+    intervals. Changed 2026-08-21; that change moved four published bounds by 0.001
+    once, and no addition can move them again."""
+    rng = random.Random("%d|%s" % (SEED, key))
     n = len(vals); stats = []
     for _ in range(B):
         s = [vals[rng.randrange(n)] for _ in range(n)]
@@ -110,32 +121,32 @@ print("\n=== bootstrap 95% CIs on panel means (cluster = model, 100k) ===")
 CI = {}
 for k in sorted(CONDS):
     vals = list(CONDS[k].values())
-    lo,hi = boot_ci(vals)
+    lo,hi = boot_ci(vals, k)
     CI[k]=(lo,hi)
     print(f"  {k:<18} mean={sum(vals)/len(vals):.3f}  CI[{lo:.3f},{hi:.3f}]")
 
 tests = {}
-d,_ = paired(CONDS["EN_framed_Egypt"], CONDS["ar_framed"])
+d,_ = paired(CONDS["EN_framed_Egypt"], CONDS["ar_framed_Egypt"])
 tests["T1 Egypt: EN-framed vs AR-framed"] = (sum(d)/len(d), signflip_exact(d), d)
-d,_ = paired(CONDS["EN_framed_Japan"], CONDS["ja_framed"])
+d,_ = paired(CONDS["EN_framed_Japan"], CONDS["ja_framed_Japan"])
 tests["T2 Japan: EN-framed vs JA-framed"] = (sum(d)/len(d), signflip_exact(d), d)
 d = [v-ANCH["Japan"] for v in CONDS["ja_neutral"].values()]
 tests["T3 JA-neutral vs Japan anchor 2.65"] = (sum(d)/len(d), signflip_exact(d), d)
-d = [v-ANCH["Iran"] for v in CONDS["fa_framed"].values()]
+d = [v-ANCH["Iran"] for v in CONDS["fa_framed_Iran"].values()]
 tests["T4 FA-framed vs Iran anchor 3.33"] = (sum(d)/len(d), signflip_exact(d), d)
 if "en_neutral" in CONDS:
     d,_ = paired(CONDS["fa_neutral"], CONDS["en_neutral"])
     tests["T5 FA-neutral vs EN-neutral"] = (sum(d)/len(d), signflip_exact(d), d)
     d,_ = paired(CONDS["ar_neutral"], CONDS["en_neutral"])
     tests["T6 AR-neutral vs EN-neutral"] = (sum(d)/len(d), signflip_exact(d), d)
-d = [v-ANCH["Egypt"] for v in CONDS["ar_framed"].values()]
+d = [v-ANCH["Egypt"] for v in CONDS["ar_framed_Egypt"].values()]
 tests["T7 AR-framed vs Egypt anchor 4.27"] = (sum(d)/len(d), signflip_exact(d), d)
-d,_ = paired(CONDS["ja_framed"], CONDS["ja_neutral"])
+d,_ = paired(CONDS["ja_framed_Japan"], CONDS["ja_neutral"])
 tests["T8 Japan: framed vs neutral (in-lang)"] = (sum(d)/len(d), signflip_exact(d), d)
 if "EN_framed_Iran" in CONDS:
     d = [v-ANCH["Iran"] for v in CONDS["EN_framed_Iran"].values()]
     tests["T9 EN-framed Iran vs anchor 3.33"] = (sum(d)/len(d), signflip_exact(d), d)
-    d,_ = paired(CONDS["EN_framed_Iran"], CONDS["fa_framed"])
+    d,_ = paired(CONDS["EN_framed_Iran"], CONDS["fa_framed_Iran"])
     tests["T10 Iran: EN-framed vs FA-framed"] = (sum(d)/len(d), signflip_exact(d), d)
 
 FAMILY_A = list(tests)
@@ -165,7 +176,7 @@ hB = holm(FAMILY_B)
 # so appendix B4 still reproduces line for line.
 CIT = {}
 for k in FAMILY_A + ["T11 JA-neutral vs EN-neutral"]:
-    CIT[k] = boot_ci(tests[k][2])
+    CIT[k] = boot_ci(tests[k][2], k)
 
 print("\n=== FAMILY A, the framing claim (post hoc, exploratory): exact sign-flip tests ===")
 print("    Ten tests, Holm across the ten. Unchanged from appendix B4.")
@@ -201,7 +212,7 @@ print("  JA-neutral panel mean without each model (anchor 2.65):")
 for m,mu in sorted(loo(CONDS["ja_neutral"]), key=lambda x:x[1]):
     print(f"    -{m:<14} {mu:.3f}")
 print("  FA-framed overshoot vs 3.33 without each model:")
-for m,mu in sorted(loo(CONDS["fa_framed"]), key=lambda x:x[1]):
+for m,mu in sorted(loo(CONDS["fa_framed_Iran"]), key=lambda x:x[1]):
     print(f"    -{m:<14} {mu-3.33:+.3f}")
 print("  T11 (JA-neutral minus EN-neutral) without each model:")
 ms = sorted(set(CONDS["ja_neutral"]) & set(CONDS["en_neutral"]))

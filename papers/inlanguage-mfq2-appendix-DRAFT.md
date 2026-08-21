@@ -1,6 +1,6 @@
 # Statistical Appendix
 
-Companion to "The Language Carries the Population; the Prompt Carries the Caricature." Every number here regenerates from the raw runs with one stdlib script, `validity/audit_inlanguage.py` (random seed 20260723; bootstrap 100,000 iterations; sign-flip tests enumerate all 2,048 sign patterns exactly). This appendix is deliberately terse and table-first; the readable account is in the main report.
+Companion to "The Language Carries the Population; the Prompt Carries the Caricature." Every number here regenerates from the raw runs with one stdlib script, `validity/audit_inlanguage.py` (random seed 20260723; bootstrap 100,000 iterations; sign-flip tests enumerate all 2,048 sign patterns exactly). Each interval is drawn from a stream seeded by that seed and the quantity's own name, so an interval does not depend on how many other quantities the run computed, and adding a condition to the study cannot move an existing one. That was not true before 2026-08-21, and correcting it moved seven of these bounds by 0.001. This appendix is deliberately terse and table-first; the readable account is in the main report.
 
 ## B1. Sample and data
 
@@ -39,14 +39,14 @@ Two families, one per headline claim, both post hoc and both exploratory. Paired
 |---|--:|:--:|--:|--:|
 | T1 Egypt: EN framed vs AR framed | -0.006 | [-0.038, +0.025] | .813 | 1.00 |
 | T2 Japan: EN framed vs JA framed | +0.209 | [+0.080, +0.361] | .0098 | .039 |
-| T3 JA neutral vs Japan anchor | +0.012 | [-0.155, +0.192] | .905 | 1.00 |
-| T4 FA framed vs Iran anchor | +1.028 | [+0.894, +1.157] | .001 | .0098 |
+| T3 JA neutral vs Japan anchor | +0.012 | [-0.155, +0.191] | .905 | 1.00 |
+| T4 FA framed vs Iran anchor | +1.028 | [+0.894, +1.156] | .001 | .0098 |
 | T5 FA neutral vs EN neutral | +0.015 | [-0.148, +0.173] | .872 | 1.00 |
-| T6 AR neutral vs EN neutral | +0.328 | [+0.207, +0.457] | .001 | .0098 |
-| T7 AR framed vs Egypt anchor | +0.343 | [+0.249, +0.432] | .001 | .0098 |
-| T8 Japan: framed vs neutral, in-language | +0.797 | [+0.636, +0.961] | .001 | .0098 |
-| T9 EN framed Iran vs Iran anchor | +1.257 | [+1.151, +1.350] | .001 | .0098 |
-| T10 Iran: EN framed vs FA framed | +0.229 | [+0.142, +0.321] | .001 | .0098 |
+| T6 AR neutral vs EN neutral | +0.328 | [+0.207, +0.456] | .001 | .0098 |
+| T7 AR framed vs Egypt anchor | +0.343 | [+0.249, +0.433] | .001 | .0098 |
+| T8 Japan: framed vs neutral, in-language | +0.797 | [+0.637, +0.961] | .001 | .0098 |
+| T9 EN framed Iran vs Iran anchor | +1.257 | [+1.152, +1.350] | .001 | .0098 |
+| T10 Iran: EN framed vs FA framed | +0.229 | [+0.141, +0.322] | .001 | .0098 |
 
 The three null results (T1, T3, T5) are reported as bounds, not as demonstrated absence: any Egypt language effect is smaller than 0.04, any Japanese-neutral displacement from the population mean is within 0.19, any Farsi-neutral departure from the English default is within 0.17.
 
@@ -55,8 +55,8 @@ The three null results (T1, T3, T5) are reported as bounds, not as demonstrated 
 | test | difference | 95% CI | exact p | Holm | models moving up |
 |---|--:|:--:|--:|--:|--:|
 | T5 FA neutral vs EN neutral | +0.015 | [-0.148, +0.173] | .872 | 1.00 | 6 of 11 |
-| T6 AR neutral vs EN neutral | +0.328 | [+0.207, +0.457] | .001 | .003 | 11 of 11 |
-| T11 JA neutral vs EN neutral | -0.043 | [-0.183, +0.080] | .582 | 1.00 | 6 of 11 |
+| T6 AR neutral vs EN neutral | +0.328 | [+0.207, +0.456] | .001 | .003 | 11 of 11 |
+| T11 JA neutral vs EN neutral | -0.043 | [-0.183, +0.081] | .582 | 1.00 | 6 of 11 |
 
 Arabic is the only language that moves the panel, and every model moves the same way. Farsi and Japanese split six to five, which is what no effect looks like at this unit. As bounds: any Farsi departure from the English default is within 0.17, and any Japanese departure is within 0.18.
 

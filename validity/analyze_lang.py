@@ -67,12 +67,14 @@ def report(bind, prof, title):
 
 # in-language runs
 bl, pl = collect(str(VDIR / "runs_framed_lang" / "*.json"),
-                 lambda d: (d["instrument"].split("_")[1], d["condition"]))
+                 lambda d: (d["instrument"].split("_")[1],
+                            d["condition"] if d["condition"] != "framed"
+                            else "framed_" + d["country"]))
 rl = report(bl, pl, "IN-LANGUAGE (official translations)")
 
 # English framed runs, restrict to countries of interest
 be, pe = collect(str(VDIR / "runs_framed" / "*_mfq2_*.json"),
-                 lambda d: d.get("country") if d.get("country") in ("Egypt", "Japan") else None)
+                 lambda d: d.get("country") if d.get("country") in ("Egypt", "Japan", "Iran") else None)
 re_ = report(be, pe, "ENGLISH framed (07-20 run)")
 
 LANG_COUNTRY = {"ar": "Egypt", "ja": "Japan", "fa": "Iran"}
@@ -82,7 +84,7 @@ print(f"{'country':<8} {'human':>6} {'EN-framed':>10} {'LANG-framed':>12} {'LANG
 for code, country in LANG_COUNTRY.items():
     hf = ANCHOR.get(country, {}).get("binding")
     en = re_.get(country, (None,))[0] if re_.get(country) else None
-    lf = rl.get((code, "framed"), (None,))[0] if rl.get((code, "framed")) else None
+    lf = rl.get((code, "framed_" + country), (None,))[0] if rl.get((code, "framed_" + country)) else None
     ln = rl.get((code, "neutral"), (None,))[0] if rl.get((code, "neutral")) else None
     if lf is None:
         continue
