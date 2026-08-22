@@ -691,14 +691,26 @@ function boot(d){
   const over  = withH.filter(c => lead(c) > 0);
   const avg   = withH.reduce((s,c)=>s+lead(c),0)/withH.length;
   const nulls = d.language_groups.filter(g => (g.local_framed||{}).spearman === 0);
+  const under = withH.filter(c => lead(c) < 0);
+  const underLangs = [...new Set(under.map(c => c.language).filter(Boolean))];
+  // if every country that lands low shares one language, say so: a uniform-overshoot
+  // sentence would be the wrong summary of this grid.
+  const oneLang = under.length > 0 && underLangs.length === 1 &&
+    d.countries.filter(c => c.language === underLangs[0] && c.human !== null).length === under.length;
   document.getElementById("story").innerHTML =
-    `Eleven frontier models were asked to answer a moral-foundations questionnaire
+    `A panel of ${d.meta.models} frontier models was asked to answer a moral-foundations questionnaire
      <strong>as a typical person from a named country</strong>, in English and in that country's language.
-     Across the ${withH.length} countries with a published human mean, the panel reports
-     <strong>${over.length} of ${withH.length}</strong> above the population on binding morality, by
-     <strong>${fmtS(avg,2)}</strong> scale points on average${
-       nulls.length ? `, and in ${nulls.map(g=>g.language).join(" and ")} it orders the countries
-       with <strong>no relationship at all</strong> to the human ordering` : ""}.`;
+     Across the ${withH.length} countries with a published human mean, the panel lands
+     <strong>above</strong> the population on binding morality in ${over.length} of them, by
+     <strong>${fmtS(avg,2)}</strong> scale points on average. ${
+       under.length
+         ? (oneLang
+             ? `The ${under.length} it puts <strong>below</strong> are the ${underLangs[0]}-speaking
+                countries, every one of them.`
+             : `It lands <strong>below</strong> in ${under.length}: ${under.map(c=>esc(c.country)).join(", ")}.`)
+         : ""}${
+       nulls.length ? ` In ${nulls.map(g=>esc(g.language)).join(" and ")} it orders the countries with
+       <strong>no relationship at all</strong> to the human ordering.` : ""}`;
 
   const p = document.getElementById("prov");
   p.innerHTML = [

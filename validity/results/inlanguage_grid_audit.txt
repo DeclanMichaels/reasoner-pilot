@@ -1,13 +1,22 @@
 === STEP 1. PLAIN DESCRIPTIVES, computed directly from the raw cells ===
     (no resampling, no correction; every later estimate reconciles against these)
+  EN_framed_Argentina  n_models=11  mean=3.437  between-model SD=0.203
+  EN_framed_Belgium    n_models=11  mean=2.622  between-model SD=0.186
+  EN_framed_Chile      n_models=11  mean=3.654  between-model SD=0.213
+  EN_framed_Colombia   n_models=11  mean=4.100  between-model SD=0.203
   EN_framed_Egypt      n_models=11  mean=4.605  between-model SD=0.171
+  EN_framed_France     n_models=11  mean=2.725  between-model SD=0.172
   EN_framed_India      n_models=11  mean=4.439  between-model SD=0.177
   EN_framed_Iran       n_models=11  mean=4.577  between-model SD=0.170
   EN_framed_Japan      n_models=11  mean=3.668  between-model SD=0.330
+  EN_framed_Mexico     n_models=11  mean=4.141  between-model SD=0.130
   EN_framed_Morocco    n_models=11  mean=4.570  between-model SD=0.143
   EN_framed_Nigeria    n_models=11  mean=4.515  between-model SD=0.154
+  EN_framed_Peru       n_models=11  mean=4.133  between-model SD=0.191
+  EN_framed_Russia     n_models=11  mean=4.117  between-model SD=0.238
   EN_framed_Saudi Arabia n_models=11  mean=4.733  between-model SD=0.127
   EN_framed_Sweden     n_models=11  mean=2.282  between-model SD=0.145
+  EN_framed_Switzerland n_models=11  mean=3.063  between-model SD=0.260
   EN_framed_United Arab Emirates n_models=11  mean=4.629  between-model SD=0.131
   EN_framed_United States n_models=11  mean=3.331  between-model SD=0.223
   ar_framed_Egypt      n_models=11  mean=4.604  between-model SD=0.197
@@ -16,10 +25,22 @@
   ar_framed_United Arab Emirates n_models=11  mean=4.726  between-model SD=0.113
   ar_neutral           n_models=11  mean=3.104  between-model SD=0.451
   en_neutral           n_models=11  mean=2.713  between-model SD=0.303
+  es_framed_Argentina  n_models=11  mean=3.349  between-model SD=0.202
+  es_framed_Chile      n_models=11  mean=3.576  between-model SD=0.169
+  es_framed_Colombia   n_models=11  mean=3.996  between-model SD=0.155
+  es_framed_Mexico     n_models=11  mean=3.947  between-model SD=0.165
+  es_framed_Peru       n_models=11  mean=4.038  between-model SD=0.200
+  es_neutral           n_models=11  mean=2.780  between-model SD=0.327
   fa_framed_Iran       n_models=11  mean=4.314  between-model SD=0.279
   fa_neutral           n_models=11  mean=2.809  between-model SD=0.426
+  fr_framed_Belgium    n_models=11  mean=2.797  between-model SD=0.152
+  fr_framed_France     n_models=11  mean=2.834  between-model SD=0.141
+  fr_framed_Switzerland n_models=11  mean=3.076  between-model SD=0.180
+  fr_neutral           n_models=11  mean=2.777  between-model SD=0.329
   ja_framed_Japan      n_models=11  mean=3.434  between-model SD=0.137
   ja_neutral           n_models=11  mean=2.676  between-model SD=0.331
+  ru_framed_Russia     n_models=11  mean=4.047  between-model SD=0.239
+  ru_neutral           n_models=11  mean=2.788  between-model SD=0.356
 
   roster (11): deepseek_v4, gpt55, grok45, inkling, kimi_k3, llama33, minimax, mistral_large, o3, opus, sonnet
   conditions missing a model: none
@@ -34,10 +55,22 @@
     ar_framed_United Arab Emirates ref 4.7263  recomputed 4.7263  OK
     ar_neutral                     ref 3.1040  recomputed 3.1040  OK
     en_neutral                     ref 2.7131  recomputed 2.7131  OK
+    es_framed_Argentina            ref 3.3495  recomputed 3.3495  OK
+    es_framed_Chile                ref 3.5758  recomputed 3.5758  OK
+    es_framed_Colombia             ref 3.9960  recomputed 3.9960  OK
+    es_framed_Mexico               ref 3.9475  recomputed 3.9475  OK
+    es_framed_Peru                 ref 4.0384  recomputed 4.0384  OK
+    es_neutral                     ref 2.7798  recomputed 2.7798  OK
     fa_framed_Iran                 ref 4.3141  recomputed 4.3141  OK
     fa_neutral                     ref 2.8091  recomputed 2.8091  OK
+    fr_framed_Belgium              ref 2.7970  recomputed 2.7970  OK
+    fr_framed_France               ref 2.8343  recomputed 2.8343  OK
+    fr_framed_Switzerland          ref 3.0758  recomputed 3.0758  OK
+    fr_neutral                     ref 2.7768  recomputed 2.7768  OK
     ja_framed_Japan                ref 3.4343  recomputed 3.4343  OK
     ja_neutral                     ref 2.6758  recomputed 2.6758  OK
+    ru_framed_Russia               ref 4.0475  recomputed 4.0475  OK
+    ru_neutral                     ref 2.7879  recomputed 2.7879  OK
   RECONCILED
 
 === STEP 2. THE GRID: binding composite, panel mean [95% CI] ===
@@ -133,8 +166,8 @@
       above measured Japanese Care 3.03 by +1.258 [+1.085,+1.452]  (prose says +1.26 [+1.09,+1.45])
 
   C3. Care span across all conditions run
-      20 conditions; Care spans 4.288 (ja_framed_Japan) to 4.873 (ar_framed_Egypt)
-      lowest CI floor across conditions: 4.115  (prose says every floor >= 4.11)
+      41 conditions; Care spans 4.288 (ja_framed_Japan) to 4.894 (EN_framed_Mexico)
+      lowest CI floor across conditions: 4.067  (prose says every floor >= 4.11)
 
   C4. "disagreeing less about what an Egyptian is than about what they themselves are"
       EN_framed_Egypt      between-model SD 0.171

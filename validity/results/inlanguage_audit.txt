@@ -8,10 +8,22 @@
   ar_framed_United Arab Emirates n=11  mean=4.726  models=True
   ar_neutral         n=11  mean=3.104  models=True
   en_neutral         n=11  mean=2.713  models=True
+  es_framed_Argentina n=11  mean=3.349  models=True
+  es_framed_Chile    n=11  mean=3.576  models=True
+  es_framed_Colombia n=11  mean=3.996  models=True
+  es_framed_Mexico   n=11  mean=3.947  models=True
+  es_framed_Peru     n=11  mean=4.038  models=True
+  es_neutral         n=11  mean=2.780  models=True
   fa_framed_Iran     n=11  mean=4.314  models=True
   fa_neutral         n=11  mean=2.809  models=True
+  fr_framed_Belgium  n=11  mean=2.797  models=True
+  fr_framed_France   n=11  mean=2.834  models=True
+  fr_framed_Switzerland n=11  mean=3.076  models=True
+  fr_neutral         n=11  mean=2.777  models=True
   ja_framed_Japan    n=11  mean=3.434  models=True
   ja_neutral         n=11  mean=2.676  models=True
+  ru_framed_Russia   n=11  mean=4.047  models=True
+  ru_neutral         n=11  mean=2.788  models=True
   reconcile against an independent recomputation from the raw cells:
     EN_framed_Egypt                foundation-route 4.6051  item-route 4.6051  OK
     EN_framed_Iran                 foundation-route 4.5768  item-route 4.5768  OK
@@ -22,10 +34,22 @@
     ar_framed_United Arab Emirates foundation-route 4.7263  item-route 4.7263  OK
     ar_neutral                     foundation-route 3.1040  item-route 3.1040  OK
     en_neutral                     foundation-route 2.7131  item-route 2.7131  OK
+    es_framed_Argentina            foundation-route 3.3495  item-route 3.3495  OK
+    es_framed_Chile                foundation-route 3.5758  item-route 3.5758  OK
+    es_framed_Colombia             foundation-route 3.9960  item-route 3.9960  OK
+    es_framed_Mexico               foundation-route 3.9475  item-route 3.9475  OK
+    es_framed_Peru                 foundation-route 4.0384  item-route 4.0384  OK
+    es_neutral                     foundation-route 2.7798  item-route 2.7798  OK
     fa_framed_Iran                 foundation-route 4.3141  item-route 4.3141  OK
     fa_neutral                     foundation-route 2.8091  item-route 2.8091  OK
+    fr_framed_Belgium              foundation-route 2.7970  item-route 2.7970  OK
+    fr_framed_France               foundation-route 2.8343  item-route 2.8343  OK
+    fr_framed_Switzerland          foundation-route 3.0758  item-route 3.0758  OK
+    fr_neutral                     foundation-route 2.7768  item-route 2.7768  OK
     ja_framed_Japan                foundation-route 3.4343  item-route 3.4343  OK
     ja_neutral                     foundation-route 2.6758  item-route 2.6758  OK
+    ru_framed_Russia               foundation-route 4.0475  item-route 4.0475  OK
+    ru_neutral                     foundation-route 2.7879  item-route 2.7879  OK
   RECONCILED
 
 === bootstrap 95% CIs on panel means (cluster = model, 100k) ===
@@ -38,10 +62,22 @@
   ar_framed_United Arab Emirates mean=4.726  CI[4.658,4.791]
   ar_neutral         mean=3.104  CI[2.840,3.374]
   en_neutral         mean=2.713  CI[2.542,2.898]
+  es_framed_Argentina mean=3.349  CI[3.236,3.475]
+  es_framed_Chile    mean=3.576  CI[3.478,3.677]
+  es_framed_Colombia mean=3.996  CI[3.909,4.091]
+  es_framed_Mexico   mean=3.947  CI[3.849,4.045]
+  es_framed_Peru     mean=4.038  CI[3.920,4.157]
+  es_neutral         mean=2.780  CI[2.582,2.967]
   fa_framed_Iran     mean=4.314  CI[4.148,4.476]
   fa_neutral         mean=2.809  CI[2.565,3.066]
+  fr_framed_Belgium  mean=2.797  CI[2.713,2.893]
+  fr_framed_France   mean=2.834  CI[2.755,2.921]
+  fr_framed_Switzerland mean=3.076  CI[2.972,3.185]
+  fr_neutral         mean=2.777  CI[2.590,2.977]
   ja_framed_Japan    mean=3.434  CI[3.353,3.514]
   ja_neutral         mean=2.676  CI[2.494,2.885]
+  ru_framed_Russia   mean=4.047  CI[3.908,4.189]
+  ru_neutral         mean=2.788  CI[2.582,3.004]
 
 === FAMILY A, the framing claim (post hoc, exploratory): exact sign-flip tests ===
     Ten tests, Holm across the ten. Unchanged from appendix B4.

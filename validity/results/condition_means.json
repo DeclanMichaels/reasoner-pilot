@@ -8,8 +8,20 @@
   "ar_framed_United Arab Emirates": 4.726262626262626,
   "ar_neutral": 3.104040404040404,
   "en_neutral": 2.713131313131313,
+  "es_framed_Argentina": 3.3494949494949497,
+  "es_framed_Chile": 3.575757575757576,
+  "es_framed_Colombia": 3.995959595959596,
+  "es_framed_Mexico": 3.947474747474747,
+  "es_framed_Peru": 4.038383838383838,
+  "es_neutral": 2.7797979797979795,
   "fa_framed_Iran": 4.314141414141414,
   "fa_neutral": 2.809090909090909,
+  "fr_framed_Belgium": 2.796969696969697,
+  "fr_framed_France": 2.834343434343434,
+  "fr_framed_Switzerland": 3.075757575757576,
+  "fr_neutral": 2.7767676767676766,
   "ja_framed_Japan": 3.4343434343434343,
-  "ja_neutral": 2.675757575757576
+  "ja_neutral": 2.675757575757576,
+  "ru_framed_Russia": 4.047474747474748,
+  "ru_neutral": 2.787878787878788
 }
