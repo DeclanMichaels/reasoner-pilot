@@ -42,6 +42,41 @@ ARABIC_TEMPLATE_CHECK = (
 assert arabic_frame("مصر", "مصري") == ARABIC_TEMPLATE_CHECK, \
     "Arabic framing template no longer reproduces the Egypt prompt as collected"
 
+def spanish_frame(country_es, demonym_es):
+    """Demonyms are gendered in Spanish. Anchoring them to *persona*, which is feminine,
+    avoids defaulting the respondent to masculine, which English and Arabic sidestep and
+    Spanish cannot."""
+    return ("Estás completando un cuestionario de autoevaluación como una persona corriente y "
+            f"típica que vive en {country_es}. "
+            f"Responde a cada ítem como respondería sobre sí misma una persona {demonym_es} "
+            f"representativa, reflejando la perspectiva moral y los valores comunes en "
+            f"{country_es}, no tus propias opiniones. Califica cada ítem numerado con un solo "
+            "número entero en la escala de su sección. Responde a todos los ítems. "
+            "Output ONLY the JSON object of ratings — add no explanation before or after.")
+
+
+def french_frame(country_fr, demonym_fr):
+    return ("Vous remplissez un questionnaire d'auto-évaluation en tant que personne ordinaire "
+            f"et typique vivant en {country_fr}. "
+            f"Répondez à chaque item comme y répondrait à son sujet une personne {demonym_fr} "
+            f"représentative, en reflétant la perspective morale et les valeurs courantes en "
+            f"{country_fr}, et non vos propres opinions. Évaluez chaque item numéroté par un seul "
+            "nombre entier sur l'échelle de sa section. Répondez à tous les items. "
+            "Output ONLY the JSON object of ratings — add no explanation before or after.")
+
+
+def russian_frame(country_ru_prep, demonym_ru):
+    """россиянин is the civic term, a citizen of Russia, rather than русский, the ethnic one.
+    The anchor is a country sample, so the civic reading is the matching one."""
+    return ("Вы заполняете опросник самоотчёта как обычный, типичный человек, живущий в "
+            f"{country_ru_prep}. "
+            f"Отвечайте на каждый пункт так, как ответил бы о себе типичный {demonym_ru}, "
+            f"отражая моральные взгляды и ценности, распространённые в {country_ru_prep}, "
+            "а не ваши собственные. Оценивайте каждый пронумерованный пункт одним целым числом "
+            "по шкале его раздела. Ответьте на все пункты. "
+            "Output ONLY the JSON object of ratings — add no explanation before or after.")
+
+
 # (instrument, language, country, framed system prompt in that language)
 CELLS = [
     ("mfq2_ar", "arabic", "Egypt", arabic_frame("مصر", "مصري")),
@@ -50,6 +85,15 @@ CELLS = [
      arabic_frame("المملكة العربية السعودية", "سعودي")),
     ("mfq2_ar", "arabic", "United Arab Emirates",
      arabic_frame("الإمارات العربية المتحدة", "إماراتي")),
+    ("mfq2_es", "spanish", "Argentina", spanish_frame("Argentina", "argentina")),
+    ("mfq2_es", "spanish", "Chile", spanish_frame("Chile", "chilena")),
+    ("mfq2_es", "spanish", "Colombia", spanish_frame("Colombia", "colombiana")),
+    ("mfq2_es", "spanish", "Mexico", spanish_frame("México", "mexicana")),
+    ("mfq2_es", "spanish", "Peru", spanish_frame("Perú", "peruana")),
+    ("mfq2_fr", "french", "France", french_frame("France", "française")),
+    ("mfq2_fr", "french", "Belgium", french_frame("Belgique", "belge")),
+    ("mfq2_fr", "french", "Switzerland", french_frame("Suisse", "suisse")),
+    ("mfq2_ru", "russian", "Russia", russian_frame("России", "россиянин")),
     ("mfq2_ja", "japanese", "Japan",
      "あなたは日本に住むごく普通の典型的な人として自己報告式の質問票に回答しています。"
      "各項目に、日本の代表的な人が自分自身について答えるように回答してください。あなた自身の意見ではなく、"
