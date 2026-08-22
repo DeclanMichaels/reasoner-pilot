@@ -36,8 +36,8 @@ fill "in-language" \
      "python3 -u $V/run_framed_lang.py"
 
 fill "english-framed" \
-     "python3 -u $V/run_framed.py --countries 'Egypt,India,Iran,Japan,Nigeria,Sweden,United States,Morocco,Saudi Arabia,United Arab Emirates' --count" \
-     "python3 -u $V/run_framed.py --countries 'Egypt,India,Iran,Japan,Nigeria,Sweden,United States,Morocco,Saudi Arabia,United Arab Emirates'"
+     "python3 -u $V/run_framed.py --countries 'Egypt,India,Iran,Japan,Nigeria,Sweden,United States,Morocco,Saudi Arabia,United Arab Emirates,Argentina,Chile,Colombia,Mexico,Peru,France,Belgium,Switzerland,Russia' --count" \
+     "python3 -u $V/run_framed.py --countries 'Egypt,India,Iran,Japan,Nigeria,Sweden,United States,Morocco,Saudi Arabia,United Arab Emirates,Argentina,Chile,Colombia,Mexico,Peru,France,Belgium,Switzerland,Russia'"
 
 fill "english-unframed" \
      "python3 -u $V/run_validity.py --instruments mfq2 --count" \

@@ -1,0 +1,3183 @@
+{
+ "meta": {
+  "generated": "2026-08-21T23:15:04",
+  "produced_by": "validity/build_viewer_data.py",
+  "reads": "validity/runs_framed_lang, validity/runs_framed, validity/runs",
+  "scored_cells": 1449,
+  "conditions": 32,
+  "models": 11,
+  "roster": [
+   "deepseek_v4",
+   "gpt55",
+   "grok45",
+   "inkling",
+   "kimi_k3",
+   "llama33",
+   "minimax",
+   "mistral_large",
+   "o3",
+   "opus",
+   "sonnet"
+  ],
+  "unit_of_analysis": "model; each model's iterations averaged before any test",
+  "intervals": "percentile bootstrap, 100,000 draws resampling models, seeded per quantity from seed 20260723",
+  "scale": [
+   1,
+   5
+  ],
+  "measure": "binding composite, the mean of Loyalty, Authority and Purity"
+ },
+ "countries": [
+  {
+   "country": "Argentina",
+   "language": "Spanish",
+   "lang_code": "es",
+   "human": 3.283,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9302,
+     "ci": [
+      2.8,
+      3.0508
+     ],
+     "sd": 0.1715,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 2.6222,
+      "grok45": 3.0778,
+      "llama33": 3.0556,
+      "mistral_large": 3.1556,
+      "o3": 2.9444,
+      "opus": 2.8,
+      "sonnet": 2.8556
+     },
+     "foundations": {
+      "care": 4.5175,
+      "equality": 2.0667,
+      "proportionality": 4.1127,
+      "loyalty": 3.3032,
+      "authority": 3.354,
+      "purity": 2.1333
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 3.3715,
+     "ci": [
+      3.2771,
+      3.4694
+     ],
+     "sd": 0.1405,
+     "n_models": 8,
+     "per_model": {
+      "deepseek_v4": 3.1944,
+      "gpt55": 3.3111,
+      "grok45": 3.5667,
+      "llama33": 3.3333,
+      "mistral_large": 3.5889,
+      "o3": 3.2,
+      "opus": 3.3333,
+      "sonnet": 3.4444
+     },
+     "foundations": {
+      "care": 4.6875,
+      "equality": 2.5844,
+      "proportionality": 4.0531,
+      "loyalty": 3.9229,
+      "authority": 3.7292,
+      "purity": 2.4625
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.5699,
+    "local_unframed": -0.3528,
+    "en_framed": null,
+    "local_framed": 0.0885
+   }
+  },
+  {
+   "country": "Belgium",
+   "language": "French",
+   "lang_code": "fr",
+   "human": 3.444,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9463,
+     "ci": [
+      2.6556,
+      3.4056
+     ],
+     "sd": 0.5078,
+     "n_models": 6,
+     "per_model": {
+      "gpt55": 2.5889,
+      "grok45": 2.7222,
+      "llama33": 4.0556,
+      "o3": 2.9333,
+      "opus": 2.6333,
+      "sonnet": 2.7444
+     },
+     "foundations": {
+      "care": 4.4833,
+      "equality": 2.1944,
+      "proportionality": 4.2444,
+      "loyalty": 3.3111,
+      "authority": 3.1611,
+      "purity": 2.3667
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 2.8574,
+     "ci": [
+      2.7519,
+      3.0315
+     ],
+     "sd": 0.191,
+     "n_models": 6,
+     "per_model": {
+      "gpt55": 2.7667,
+      "grok45": 2.8333,
+      "llama33": 3.2778,
+      "o3": 2.7222,
+      "opus": 2.7556,
+      "sonnet": 2.7889
+     },
+     "foundations": {
+      "care": 4.5556,
+      "equality": 2.3667,
+      "proportionality": 4.05,
+      "loyalty": 3.3389,
+      "authority": 3.0111,
+      "purity": 2.2222
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.7309,
+    "local_unframed": -0.4977,
+    "en_framed": null,
+    "local_framed": -0.5866
+   }
+  },
+  {
+   "country": "Chile",
+   "language": "Spanish",
+   "lang_code": "es",
+   "human": 3.22,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9302,
+     "ci": [
+      2.8,
+      3.0508
+     ],
+     "sd": 0.1715,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 2.6222,
+      "grok45": 3.0778,
+      "llama33": 3.0556,
+      "mistral_large": 3.1556,
+      "o3": 2.9444,
+      "opus": 2.8,
+      "sonnet": 2.8556
+     },
+     "foundations": {
+      "care": 4.5175,
+      "equality": 2.0667,
+      "proportionality": 4.1127,
+      "loyalty": 3.3032,
+      "authority": 3.354,
+      "purity": 2.1333
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 3.6794,
+     "ci": [
+      3.5508,
+      3.8159
+     ],
+     "sd": 0.1807,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 3.6556,
+      "grok45": 3.8333,
+      "llama33": 4.0,
+      "mistral_large": 3.7222,
+      "o3": 3.6,
+      "opus": 3.4111,
+      "sonnet": 3.5333
+     },
+     "foundations": {
+      "care": 4.6667,
+      "equality": 2.4429,
+      "proportionality": 4.1952,
+      "loyalty": 4.019,
+      "authority": 4.0429,
+      "purity": 2.9762
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.5069,
+    "local_unframed": -0.2898,
+    "en_framed": null,
+    "local_framed": 0.4594
+   }
+  },
+  {
+   "country": "Colombia",
+   "language": "Spanish",
+   "lang_code": "es",
+   "human": 3.497,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9302,
+     "ci": [
+      2.8,
+      3.0508
+     ],
+     "sd": 0.1715,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 2.6222,
+      "grok45": 3.0778,
+      "llama33": 3.0556,
+      "mistral_large": 3.1556,
+      "o3": 2.9444,
+      "opus": 2.8,
+      "sonnet": 2.8556
+     },
+     "foundations": {
+      "care": 4.5175,
+      "equality": 2.0667,
+      "proportionality": 4.1127,
+      "loyalty": 3.3032,
+      "authority": 3.354,
+      "purity": 2.1333
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 4.0095,
+     "ci": [
+      3.8857,
+      4.1444
+     ],
+     "sd": 0.1778,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 4.0444,
+      "grok45": 4.3333,
+      "llama33": 4.0,
+      "mistral_large": 4.1556,
+      "o3": 3.9,
+      "opus": 3.8778,
+      "sonnet": 3.7556
+     },
+     "foundations": {
+      "care": 4.7762,
+      "equality": 2.4714,
+      "proportionality": 4.2571,
+      "loyalty": 4.2762,
+      "authority": 4.381,
+      "purity": 3.3714
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.7839,
+    "local_unframed": -0.5668,
+    "en_framed": null,
+    "local_framed": 0.5125
+   }
+  },
+  {
+   "country": "Egypt",
+   "language": "Arabic",
+   "lang_code": "ar",
+   "human": 4.267,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 3.104,
+     "ci": [
+      2.8404,
+      3.3737
+     ],
+     "sd": 0.4513,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.7444,
+      "gpt55": 2.7889,
+      "grok45": 3.0889,
+      "inkling": 2.3778,
+      "kimi_k3": 2.6,
+      "llama33": 3.8778,
+      "minimax": 3.3,
+      "mistral_large": 3.7444,
+      "o3": 3.1333,
+      "opus": 3.5111,
+      "sonnet": 2.9778
+     },
+     "foundations": {
+      "care": 4.7273,
+      "equality": 2.3152,
+      "proportionality": 4.2394,
+      "loyalty": 3.4212,
+      "authority": 3.3455,
+      "purity": 2.5455
+     }
+    },
+    "en_framed": {
+     "mean": 4.6051,
+     "ci": [
+      4.502,
+      4.703
+     ],
+     "sd": 0.1707,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.6,
+      "gpt55": 4.8556,
+      "grok45": 4.8222,
+      "inkling": 4.5111,
+      "kimi_k3": 4.7556,
+      "llama33": 4.7,
+      "minimax": 4.4889,
+      "mistral_large": 4.4778,
+      "o3": 4.5,
+      "opus": 4.6889,
+      "sonnet": 4.2556
+     },
+     "foundations": {
+      "care": 4.7424,
+      "equality": 2.5394,
+      "proportionality": 4.2515,
+      "loyalty": 4.7273,
+      "authority": 4.797,
+      "purity": 4.2909
+     }
+    },
+    "local_framed": {
+     "mean": 4.604,
+     "ci": [
+      4.4859,
+      4.7182
+     ],
+     "sd": 0.1967,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.7889,
+      "gpt55": 4.8111,
+      "grok45": 4.8444,
+      "inkling": 4.5667,
+      "kimi_k3": 4.7111,
+      "llama33": 4.8222,
+      "minimax": 4.4333,
+      "mistral_large": 4.4444,
+      "o3": 4.3889,
+      "opus": 4.5889,
+      "sonnet": 4.2444
+     },
+     "foundations": {
+      "care": 4.8727,
+      "equality": 2.7818,
+      "proportionality": 4.4606,
+      "loyalty": 4.7424,
+      "authority": 4.7424,
+      "purity": 4.3273
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -1.5539,
+    "local_unframed": -1.163,
+    "en_framed": 0.3381,
+    "local_framed": 0.337
+   }
+  },
+  {
+   "country": "France",
+   "language": "French",
+   "lang_code": "fr",
+   "human": 3.61,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9463,
+     "ci": [
+      2.6556,
+      3.4056
+     ],
+     "sd": 0.5078,
+     "n_models": 6,
+     "per_model": {
+      "gpt55": 2.5889,
+      "grok45": 2.7222,
+      "llama33": 4.0556,
+      "o3": 2.9333,
+      "opus": 2.6333,
+      "sonnet": 2.7444
+     },
+     "foundations": {
+      "care": 4.4833,
+      "equality": 2.1944,
+      "proportionality": 4.2444,
+      "loyalty": 3.3111,
+      "authority": 3.1611,
+      "purity": 2.3667
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 2.8593,
+     "ci": [
+      2.7426,
+      2.9889
+     ],
+     "sd": 0.1544,
+     "n_models": 6,
+     "per_model": {
+      "gpt55": 2.8444,
+      "grok45": 2.7667,
+      "llama33": 3.1111,
+      "o3": 2.6667,
+      "opus": 2.7556,
+      "sonnet": 3.0111
+     },
+     "foundations": {
+      "care": 4.4611,
+      "equality": 2.4056,
+      "proportionality": 4.0111,
+      "loyalty": 3.3667,
+      "authority": 3.0,
+      "purity": 2.2111
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.8969,
+    "local_unframed": -0.6637,
+    "en_framed": null,
+    "local_framed": -0.7507
+   }
+  },
+  {
+   "country": "India",
+   "language": null,
+   "lang_code": null,
+   "human": null,
+   "human_source": null,
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": null,
+    "en_framed": {
+     "mean": 4.4394,
+     "ci": [
+      4.3354,
+      4.5434
+     ],
+     "sd": 0.1768,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.4778,
+      "gpt55": 4.5667,
+      "grok45": 4.7333,
+      "inkling": 4.2333,
+      "kimi_k3": 4.6222,
+      "llama33": 4.5556,
+      "minimax": 4.3,
+      "mistral_large": 4.3667,
+      "o3": 4.2111,
+      "opus": 4.5667,
+      "sonnet": 4.2
+     },
+     "foundations": {
+      "care": 4.7667,
+      "equality": 2.503,
+      "proportionality": 4.2152,
+      "loyalty": 4.597,
+      "authority": 4.7121,
+      "purity": 4.0091
+     }
+    },
+    "local_framed": null
+   },
+   "deviation": {
+    "en_unframed": null,
+    "local_unframed": null,
+    "en_framed": null,
+    "local_framed": null
+   }
+  },
+  {
+   "country": "Iran",
+   "language": "Farsi",
+   "lang_code": "fa",
+   "human": 3.333,
+   "human_source": "Hazrati et al. 2025, sample 2",
+   "human_foundations": {
+    "care": 3.948,
+    "equality": 2.672,
+    "proportionality": 4.147,
+    "loyalty": 3.63,
+    "authority": 3.05,
+    "purity": 3.318
+   },
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.8091,
+     "ci": [
+      2.5646,
+      3.0657
+     ],
+     "sd": 0.4255,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.5556,
+      "gpt55": 2.5111,
+      "grok45": 2.9778,
+      "inkling": 2.1333,
+      "kimi_k3": 2.4333,
+      "llama33": 3.4889,
+      "minimax": 2.4889,
+      "mistral_large": 3.5222,
+      "o3": 3.0667,
+      "opus": 3.0444,
+      "sonnet": 2.6778
+     },
+     "foundations": {
+      "care": 4.6727,
+      "equality": 2.2091,
+      "proportionality": 4.1697,
+      "loyalty": 3.097,
+      "authority": 3.0758,
+      "purity": 2.2545
+     }
+    },
+    "en_framed": {
+     "mean": 4.5768,
+     "ci": [
+      4.4697,
+      4.6707
+     ],
+     "sd": 0.1703,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.5889,
+      "gpt55": 4.7556,
+      "grok45": 4.8111,
+      "inkling": 4.5556,
+      "kimi_k3": 4.4889,
+      "llama33": 4.7111,
+      "minimax": 4.5778,
+      "mistral_large": 4.7,
+      "o3": 4.4,
+      "opus": 4.5778,
+      "sonnet": 4.1778
+     },
+     "foundations": {
+      "care": 4.8485,
+      "equality": 2.5485,
+      "proportionality": 4.2333,
+      "loyalty": 4.7152,
+      "authority": 4.6939,
+      "purity": 4.3212
+     }
+    },
+    "local_framed": {
+     "mean": 4.3141,
+     "ci": [
+      4.1485,
+      4.4758
+     ],
+     "sd": 0.2794,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.6222,
+      "gpt55": 4.3222,
+      "grok45": 4.8,
+      "inkling": 4.4889,
+      "kimi_k3": 4.3556,
+      "llama33": 4.4778,
+      "minimax": 3.9444,
+      "mistral_large": 4.4,
+      "o3": 4.1222,
+      "opus": 4.1,
+      "sonnet": 3.8222
+     },
+     "foundations": {
+      "care": 4.7091,
+      "equality": 2.6152,
+      "proportionality": 4.3242,
+      "loyalty": 4.4182,
+      "authority": 4.3788,
+      "purity": 4.1455
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.6199,
+    "local_unframed": -0.5239,
+    "en_framed": 1.2438,
+    "local_framed": 0.9811
+   }
+  },
+  {
+   "country": "Japan",
+   "language": "Japanese",
+   "lang_code": "ja",
+   "human": 2.652,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": {
+    "care": 3.03,
+    "equality": 2.27,
+    "proportionality": 3.14,
+    "loyalty": 2.66,
+    "authority": 2.67,
+    "purity": 2.63
+   },
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.6758,
+     "ci": [
+      2.4939,
+      2.8848
+     ],
+     "sd": 0.3314,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5,
+      "grok45": 3.4,
+      "inkling": 2.6333,
+      "kimi_k3": 2.2889,
+      "llama33": 2.3889,
+      "minimax": 2.6778,
+      "mistral_large": 3.1667,
+      "o3": 2.9,
+      "opus": 2.6111,
+      "sonnet": 2.4889
+     },
+     "foundations": {
+      "care": 4.6121,
+      "equality": 2.1,
+      "proportionality": 3.997,
+      "loyalty": 2.9364,
+      "authority": 3.0636,
+      "purity": 2.0273
+     }
+    },
+    "en_framed": {
+     "mean": 3.6677,
+     "ci": [
+      3.4788,
+      3.8687
+     ],
+     "sd": 0.3304,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 3.7222,
+      "gpt55": 3.3778,
+      "grok45": 4.0444,
+      "inkling": 3.5333,
+      "kimi_k3": 3.2667,
+      "llama33": 4.2556,
+      "minimax": 3.9,
+      "mistral_large": 4.0556,
+      "o3": 3.4778,
+      "opus": 3.2778,
+      "sonnet": 3.4333
+     },
+     "foundations": {
+      "care": 4.3121,
+      "equality": 2.403,
+      "proportionality": 4.0455,
+      "loyalty": 3.8515,
+      "authority": 4.1818,
+      "purity": 2.9697
+     }
+    },
+    "local_framed": {
+     "mean": 3.4343,
+     "ci": [
+      3.3525,
+      3.5141
+     ],
+     "sd": 0.1367,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 3.5222,
+      "gpt55": 3.3667,
+      "grok45": 3.6889,
+      "inkling": 3.5,
+      "kimi_k3": 3.3444,
+      "llama33": 3.5111,
+      "minimax": 3.4,
+      "mistral_large": 3.5667,
+      "o3": 3.4,
+      "opus": 3.1556,
+      "sonnet": 3.3222
+     },
+     "foundations": {
+      "care": 4.2879,
+      "equality": 2.397,
+      "proportionality": 3.9788,
+      "loyalty": 3.5424,
+      "authority": 3.8212,
+      "purity": 2.9394
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": 0.0611,
+    "local_unframed": 0.0238,
+    "en_framed": 1.0157,
+    "local_framed": 0.7823
+   }
+  },
+  {
+   "country": "Mexico",
+   "language": "Spanish",
+   "lang_code": "es",
+   "human": 3.512,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9302,
+     "ci": [
+      2.8,
+      3.0508
+     ],
+     "sd": 0.1715,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 2.6222,
+      "grok45": 3.0778,
+      "llama33": 3.0556,
+      "mistral_large": 3.1556,
+      "o3": 2.9444,
+      "opus": 2.8,
+      "sonnet": 2.8556
+     },
+     "foundations": {
+      "care": 4.5175,
+      "equality": 2.0667,
+      "proportionality": 4.1127,
+      "loyalty": 3.3032,
+      "authority": 3.354,
+      "purity": 2.1333
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 3.9524,
+     "ci": [
+      3.819,
+      4.081
+     ],
+     "sd": 0.1768,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 3.9889,
+      "grok45": 4.2333,
+      "llama33": 4.0,
+      "mistral_large": 4.0778,
+      "o3": 3.9444,
+      "opus": 3.7556,
+      "sonnet": 3.6667
+     },
+     "foundations": {
+      "care": 4.7095,
+      "equality": 2.4905,
+      "proportionality": 4.2,
+      "loyalty": 4.2238,
+      "authority": 4.3095,
+      "purity": 3.3238
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.7989,
+    "local_unframed": -0.5818,
+    "en_framed": null,
+    "local_framed": 0.4404
+   }
+  },
+  {
+   "country": "Morocco",
+   "language": "Arabic",
+   "lang_code": "ar",
+   "human": 4.014,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 3.104,
+     "ci": [
+      2.8404,
+      3.3737
+     ],
+     "sd": 0.4513,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.7444,
+      "gpt55": 2.7889,
+      "grok45": 3.0889,
+      "inkling": 2.3778,
+      "kimi_k3": 2.6,
+      "llama33": 3.8778,
+      "minimax": 3.3,
+      "mistral_large": 3.7444,
+      "o3": 3.1333,
+      "opus": 3.5111,
+      "sonnet": 2.9778
+     },
+     "foundations": {
+      "care": 4.7273,
+      "equality": 2.3152,
+      "proportionality": 4.2394,
+      "loyalty": 3.4212,
+      "authority": 3.3455,
+      "purity": 2.5455
+     }
+    },
+    "en_framed": {
+     "mean": 4.5697,
+     "ci": [
+      4.4818,
+      4.6485
+     ],
+     "sd": 0.1426,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.6444,
+      "gpt55": 4.7222,
+      "grok45": 4.7444,
+      "inkling": 4.4889,
+      "kimi_k3": 4.6778,
+      "llama33": 4.6667,
+      "minimax": 4.4778,
+      "mistral_large": 4.5222,
+      "o3": 4.2556,
+      "opus": 4.6444,
+      "sonnet": 4.4222
+     },
+     "foundations": {
+      "care": 4.8424,
+      "equality": 2.5303,
+      "proportionality": 4.2,
+      "loyalty": 4.6909,
+      "authority": 4.7697,
+      "purity": 4.2485
+     }
+    },
+    "local_framed": {
+     "mean": 4.5818,
+     "ci": [
+      4.4727,
+      4.6818
+     ],
+     "sd": 0.1773,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.7667,
+      "gpt55": 4.7556,
+      "grok45": 4.7556,
+      "inkling": 4.5556,
+      "kimi_k3": 4.5889,
+      "llama33": 4.8111,
+      "minimax": 4.5222,
+      "mistral_large": 4.4889,
+      "o3": 4.3444,
+      "opus": 4.5889,
+      "sonnet": 4.2222
+     },
+     "foundations": {
+      "care": 4.8273,
+      "equality": 2.7212,
+      "proportionality": 4.3909,
+      "loyalty": 4.6848,
+      "authority": 4.7333,
+      "purity": 4.3273
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -1.3009,
+    "local_unframed": -0.91,
+    "en_framed": 0.5557,
+    "local_framed": 0.5678
+   }
+  },
+  {
+   "country": "Nigeria",
+   "language": null,
+   "lang_code": null,
+   "human": 4.038,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": null,
+    "en_framed": {
+     "mean": 4.5152,
+     "ci": [
+      4.4253,
+      4.6061
+     ],
+     "sd": 0.1538,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.5111,
+      "gpt55": 4.6111,
+      "grok45": 4.8,
+      "inkling": 4.4333,
+      "kimi_k3": 4.6,
+      "llama33": 4.6111,
+      "minimax": 4.3778,
+      "mistral_large": 4.4556,
+      "o3": 4.3111,
+      "opus": 4.6778,
+      "sonnet": 4.2778
+     },
+     "foundations": {
+      "care": 4.7606,
+      "equality": 2.5879,
+      "proportionality": 4.4121,
+      "loyalty": 4.5758,
+      "authority": 4.7758,
+      "purity": 4.1939
+     }
+    },
+    "local_framed": null
+   },
+   "deviation": {
+    "en_unframed": -1.3249,
+    "local_unframed": null,
+    "en_framed": 0.4772,
+    "local_framed": null
+   }
+  },
+  {
+   "country": "Peru",
+   "language": "Spanish",
+   "lang_code": "es",
+   "human": 3.514,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9302,
+     "ci": [
+      2.8,
+      3.0508
+     ],
+     "sd": 0.1715,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 2.6222,
+      "grok45": 3.0778,
+      "llama33": 3.0556,
+      "mistral_large": 3.1556,
+      "o3": 2.9444,
+      "opus": 2.8,
+      "sonnet": 2.8556
+     },
+     "foundations": {
+      "care": 4.5175,
+      "equality": 2.0667,
+      "proportionality": 4.1127,
+      "loyalty": 3.3032,
+      "authority": 3.354,
+      "purity": 2.1333
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 4.021,
+     "ci": [
+      3.854,
+      4.1976
+     ],
+     "sd": 0.2324,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 4.1778,
+      "grok45": 4.4444,
+      "llama33": 4.0,
+      "mistral_large": 4.0694,
+      "o3": 3.8667,
+      "opus": 3.9444,
+      "sonnet": 3.6444
+     },
+     "foundations": {
+      "care": 4.7976,
+      "equality": 2.5214,
+      "proportionality": 4.2202,
+      "loyalty": 4.3071,
+      "authority": 4.3512,
+      "purity": 3.4048
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.8009,
+    "local_unframed": -0.5838,
+    "en_framed": null,
+    "local_framed": 0.507
+   }
+  },
+  {
+   "country": "Russia",
+   "language": "Russian",
+   "lang_code": "ru",
+   "human": 3.599,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.8513,
+     "ci": [
+      2.6635,
+      3.1063
+     ],
+     "sd": 0.3108,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 2.5889,
+      "grok45": 3.0,
+      "llama33": 2.7222,
+      "mistral_large": 3.5444,
+      "o3": 2.8148,
+      "opus": 2.6667,
+      "sonnet": 2.6222
+     },
+     "foundations": {
+      "care": 4.6349,
+      "equality": 2.0603,
+      "proportionality": 4.2413,
+      "loyalty": 3.2714,
+      "authority": 3.2159,
+      "purity": 2.0667
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 3.955,
+     "ci": [
+      3.7995,
+      4.1265
+     ],
+     "sd": 0.223,
+     "n_models": 7,
+     "per_model": {
+      "gpt55": 3.8778,
+      "grok45": 4.3778,
+      "llama33": 4.1111,
+      "mistral_large": 3.963,
+      "o3": 3.9556,
+      "opus": 3.6333,
+      "sonnet": 3.7667
+     },
+     "foundations": {
+      "care": 4.5159,
+      "equality": 2.4365,
+      "proportionality": 4.3254,
+      "loyalty": 4.3048,
+      "authority": 4.3683,
+      "purity": 3.1921
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.8859,
+    "local_unframed": -0.7477,
+    "en_framed": null,
+    "local_framed": 0.356
+   }
+  },
+  {
+   "country": "Saudi Arabia",
+   "language": "Arabic",
+   "lang_code": "ar",
+   "human": 4.083,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 3.104,
+     "ci": [
+      2.8404,
+      3.3737
+     ],
+     "sd": 0.4513,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.7444,
+      "gpt55": 2.7889,
+      "grok45": 3.0889,
+      "inkling": 2.3778,
+      "kimi_k3": 2.6,
+      "llama33": 3.8778,
+      "minimax": 3.3,
+      "mistral_large": 3.7444,
+      "o3": 3.1333,
+      "opus": 3.5111,
+      "sonnet": 2.9778
+     },
+     "foundations": {
+      "care": 4.7273,
+      "equality": 2.3152,
+      "proportionality": 4.2394,
+      "loyalty": 3.4212,
+      "authority": 3.3455,
+      "purity": 2.5455
+     }
+    },
+    "en_framed": {
+     "mean": 4.7333,
+     "ci": [
+      4.6535,
+      4.803
+     ],
+     "sd": 0.1271,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.8444,
+      "gpt55": 4.8667,
+      "grok45": 4.8556,
+      "inkling": 4.6556,
+      "kimi_k3": 4.8,
+      "llama33": 4.8111,
+      "minimax": 4.7778,
+      "mistral_large": 4.7778,
+      "o3": 4.4444,
+      "opus": 4.6444,
+      "sonnet": 4.5889
+     },
+     "foundations": {
+      "care": 4.7455,
+      "equality": 2.1152,
+      "proportionality": 4.4273,
+      "loyalty": 4.8121,
+      "authority": 4.9152,
+      "purity": 4.4727
+     }
+    },
+    "local_framed": {
+     "mean": 4.7566,
+     "ci": [
+      4.6818,
+      4.8222
+     ],
+     "sd": 0.1203,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.8556,
+      "gpt55": 4.8889,
+      "grok45": 4.8444,
+      "inkling": 4.8444,
+      "kimi_k3": 4.7444,
+      "llama33": 4.8778,
+      "minimax": 4.7778,
+      "mistral_large": 4.7222,
+      "o3": 4.6556,
+      "opus": 4.6222,
+      "sonnet": 4.4889
+     },
+     "foundations": {
+      "care": 4.8545,
+      "equality": 2.2697,
+      "proportionality": 4.6152,
+      "loyalty": 4.8424,
+      "authority": 4.8939,
+      "purity": 4.5333
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -1.3699,
+    "local_unframed": -0.979,
+    "en_framed": 0.6503,
+    "local_framed": 0.6736
+   }
+  },
+  {
+   "country": "Sweden",
+   "language": null,
+   "lang_code": null,
+   "human": null,
+   "human_source": null,
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": null,
+    "en_framed": {
+     "mean": 2.2818,
+     "ci": [
+      2.1939,
+      2.3646
+     ],
+     "sd": 0.1449,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.0,
+      "gpt55": 2.4222,
+      "grok45": 2.3111,
+      "inkling": 2.2444,
+      "kimi_k3": 2.1667,
+      "llama33": 2.5111,
+      "minimax": 2.1,
+      "mistral_large": 2.3778,
+      "o3": 2.3444,
+      "opus": 2.4,
+      "sonnet": 2.2222
+     },
+     "foundations": {
+      "care": 4.6879,
+      "equality": 2.8758,
+      "proportionality": 3.6576,
+      "loyalty": 2.9091,
+      "authority": 2.3394,
+      "purity": 1.597
+     }
+    },
+    "local_framed": null
+   },
+   "deviation": {
+    "en_unframed": null,
+    "local_unframed": null,
+    "en_framed": null,
+    "local_framed": null
+   }
+  },
+  {
+   "country": "Switzerland",
+   "language": "French",
+   "lang_code": "fr",
+   "human": 3.349,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 2.9463,
+     "ci": [
+      2.6556,
+      3.4056
+     ],
+     "sd": 0.5078,
+     "n_models": 6,
+     "per_model": {
+      "gpt55": 2.5889,
+      "grok45": 2.7222,
+      "llama33": 4.0556,
+      "o3": 2.9333,
+      "opus": 2.6333,
+      "sonnet": 2.7444
+     },
+     "foundations": {
+      "care": 4.4833,
+      "equality": 2.1944,
+      "proportionality": 4.2444,
+      "loyalty": 3.3111,
+      "authority": 3.1611,
+      "purity": 2.3667
+     }
+    },
+    "en_framed": null,
+    "local_framed": {
+     "mean": 3.1352,
+     "ci": [
+      2.9019,
+      3.4259
+     ],
+     "sd": 0.3314,
+     "n_models": 6,
+     "per_model": {
+      "gpt55": 3.0111,
+      "grok45": 3.3333,
+      "llama33": 3.7778,
+      "o3": 3.0,
+      "opus": 2.8,
+      "sonnet": 2.8889
+     },
+     "foundations": {
+      "care": 4.4389,
+      "equality": 2.1056,
+      "proportionality": 4.2167,
+      "loyalty": 3.6111,
+      "authority": 3.2278,
+      "purity": 2.5667
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -0.6359,
+    "local_unframed": -0.4027,
+    "en_framed": null,
+    "local_framed": -0.2138
+   }
+  },
+  {
+   "country": "United Arab Emirates",
+   "language": "Arabic",
+   "lang_code": "ar",
+   "human": 3.892,
+   "human_source": "Atari et al. 2023, Study 2",
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": {
+     "mean": 3.104,
+     "ci": [
+      2.8404,
+      3.3737
+     ],
+     "sd": 0.4513,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.7444,
+      "gpt55": 2.7889,
+      "grok45": 3.0889,
+      "inkling": 2.3778,
+      "kimi_k3": 2.6,
+      "llama33": 3.8778,
+      "minimax": 3.3,
+      "mistral_large": 3.7444,
+      "o3": 3.1333,
+      "opus": 3.5111,
+      "sonnet": 2.9778
+     },
+     "foundations": {
+      "care": 4.7273,
+      "equality": 2.3152,
+      "proportionality": 4.2394,
+      "loyalty": 3.4212,
+      "authority": 3.3455,
+      "purity": 2.5455
+     }
+    },
+    "en_framed": {
+     "mean": 4.6293,
+     "ci": [
+      4.5505,
+      4.704
+     ],
+     "sd": 0.1309,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.8111,
+      "gpt55": 4.7778,
+      "grok45": 4.7778,
+      "inkling": 4.5778,
+      "kimi_k3": 4.7,
+      "llama33": 4.5778,
+      "minimax": 4.6556,
+      "mistral_large": 4.5333,
+      "o3": 4.4667,
+      "opus": 4.6667,
+      "sonnet": 4.3778
+     },
+     "foundations": {
+      "care": 4.7242,
+      "equality": 2.1788,
+      "proportionality": 4.3515,
+      "loyalty": 4.7818,
+      "authority": 4.8727,
+      "purity": 4.2333
+     }
+    },
+    "local_framed": {
+     "mean": 4.7263,
+     "ci": [
+      4.6576,
+      4.7909
+     ],
+     "sd": 0.113,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 4.8667,
+      "gpt55": 4.8667,
+      "grok45": 4.8444,
+      "inkling": 4.7444,
+      "kimi_k3": 4.6667,
+      "llama33": 4.8333,
+      "minimax": 4.7111,
+      "mistral_large": 4.6444,
+      "o3": 4.6667,
+      "opus": 4.6556,
+      "sonnet": 4.4889
+     },
+     "foundations": {
+      "care": 4.8636,
+      "equality": 2.1909,
+      "proportionality": 4.5636,
+      "loyalty": 4.8727,
+      "authority": 4.897,
+      "purity": 4.4091
+     }
+    }
+   },
+   "deviation": {
+    "en_unframed": -1.1789,
+    "local_unframed": -0.788,
+    "en_framed": 0.7373,
+    "local_framed": 0.8343
+   }
+  },
+  {
+   "country": "United States",
+   "language": null,
+   "lang_code": null,
+   "human": null,
+   "human_source": null,
+   "human_foundations": null,
+   "conditions": {
+    "en_unframed": {
+     "mean": 2.7131,
+     "ci": [
+      2.5424,
+      2.898
+     ],
+     "sd": 0.303,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.3778,
+      "gpt55": 2.5556,
+      "grok45": 2.7556,
+      "inkling": 2.3778,
+      "kimi_k3": 2.3,
+      "llama33": 3.2111,
+      "minimax": 2.6556,
+      "mistral_large": 3.2667,
+      "o3": 2.7667,
+      "opus": 2.7,
+      "sonnet": 2.8778
+     },
+     "foundations": {
+      "care": 4.697,
+      "equality": 2.0455,
+      "proportionality": 4.203,
+      "loyalty": 3.1424,
+      "authority": 3.1152,
+      "purity": 1.8818
+     }
+    },
+    "local_unframed": null,
+    "en_framed": {
+     "mean": 3.3313,
+     "ci": [
+      3.1929,
+      3.4556
+     ],
+     "sd": 0.2232,
+     "n_models": 11,
+     "per_model": {
+      "deepseek_v4": 2.9444,
+      "gpt55": 3.5111,
+      "grok45": 3.4444,
+      "inkling": 3.2556,
+      "kimi_k3": 3.3778,
+      "llama33": 3.6889,
+      "minimax": 3.2556,
+      "mistral_large": 3.4444,
+      "o3": 3.4,
+      "opus": 3.4222,
+      "sonnet": 2.9
+     },
+     "foundations": {
+      "care": 4.3515,
+      "equality": 2.0212,
+      "proportionality": 4.4636,
+      "loyalty": 3.8061,
+      "authority": 3.5242,
+      "purity": 2.6636
+     }
+    },
+    "local_framed": null
+   },
+   "deviation": {
+    "en_unframed": null,
+    "local_unframed": null,
+    "en_framed": null,
+    "local_framed": null
+   }
+  }
+ ],
+ "language_groups": [
+  {
+   "lang_code": "ar",
+   "language": "Arabic",
+   "countries": [
+    "Egypt",
+    "Morocco",
+    "Saudi Arabia",
+    "United Arab Emirates"
+   ],
+   "local_framed": {
+    "human_order": [
+     "Egypt",
+     "Saudi Arabia",
+     "Morocco",
+     "United Arab Emirates"
+    ],
+    "panel_order": [
+     "Saudi Arabia",
+     "United Arab Emirates",
+     "Egypt",
+     "Morocco"
+    ],
+    "spearman": 0.0,
+    "panel_spread": 0.1748,
+    "human_spread": 0.375
+   },
+   "en_framed": {
+    "human_order": [
+     "Egypt",
+     "Saudi Arabia",
+     "Morocco",
+     "United Arab Emirates"
+    ],
+    "panel_order": [
+     "Saudi Arabia",
+     "United Arab Emirates",
+     "Egypt",
+     "Morocco"
+    ],
+    "spearman": 0.0,
+    "panel_spread": 0.1636,
+    "human_spread": 0.375
+   }
+  },
+  {
+   "lang_code": "es",
+   "language": "Spanish",
+   "countries": [
+    "Argentina",
+    "Chile",
+    "Colombia",
+    "Mexico",
+    "Peru"
+   ],
+   "local_framed": {
+    "human_order": [
+     "Peru",
+     "Mexico",
+     "Colombia",
+     "Argentina",
+     "Chile"
+    ],
+    "panel_order": [
+     "Peru",
+     "Colombia",
+     "Mexico",
+     "Chile",
+     "Argentina"
+    ],
+    "spearman": 0.8,
+    "panel_spread": 0.6495,
+    "human_spread": 0.294
+   }
+  },
+  {
+   "lang_code": "fr",
+   "language": "French",
+   "countries": [
+    "Belgium",
+    "France",
+    "Switzerland"
+   ],
+   "local_framed": {
+    "human_order": [
+     "France",
+     "Belgium",
+     "Switzerland"
+    ],
+    "panel_order": [
+     "Switzerland",
+     "France",
+     "Belgium"
+    ],
+    "spearman": -0.5,
+    "panel_spread": 0.2778,
+    "human_spread": 0.261
+   }
+  }
+ ],
+ "models": [
+  {
+   "model": "deepseek_v4",
+   "cells": 104,
+   "reasoning_per_call": 1794.7,
+   "output_per_call": 2020.0,
+   "reasoning_share": 0.4705,
+   "total_reasoning": 186650,
+   "gap_to_panel": 0.1878,
+   "own_spread": 0.1711
+  },
+  {
+   "model": "gpt55",
+   "cells": 160,
+   "reasoning_per_call": 424.6,
+   "output_per_call": 581.2,
+   "reasoning_share": 0.4221,
+   "total_reasoning": 67941,
+   "gap_to_panel": 0.1729,
+   "own_spread": 0.0953
+  },
+  {
+   "model": "grok45",
+   "cells": 160,
+   "reasoning_per_call": 1262.9,
+   "output_per_call": 219.0,
+   "reasoning_share": 0.8522,
+   "total_reasoning": 202058,
+   "gap_to_panel": 0.2445,
+   "own_spread": 0.1141
+  },
+  {
+   "model": "inkling",
+   "cells": 100,
+   "reasoning_per_call": 2255.7,
+   "output_per_call": 2480.7,
+   "reasoning_share": 0.4762,
+   "total_reasoning": 225574,
+   "gap_to_panel": 0.1678,
+   "own_spread": 0.1314
+  },
+  {
+   "model": "kimi_k3",
+   "cells": 100,
+   "reasoning_per_call": 1205.0,
+   "output_per_call": 1437.0,
+   "reasoning_share": 0.4561,
+   "total_reasoning": 120500,
+   "gap_to_panel": 0.1821,
+   "own_spread": 0.1113
+  },
+  {
+   "model": "llama33",
+   "cells": 112,
+   "reasoning_per_call": 0.0,
+   "output_per_call": 220.0,
+   "reasoning_share": 0.0,
+   "total_reasoning": 0,
+   "gap_to_panel": 0.2935,
+   "own_spread": 0.1819
+  },
+  {
+   "model": "minimax",
+   "cells": 100,
+   "reasoning_per_call": 1141.5,
+   "output_per_call": 1364.5,
+   "reasoning_share": 0.4555,
+   "total_reasoning": 114151,
+   "gap_to_panel": 0.1261,
+   "own_spread": 0.1609
+  },
+  {
+   "model": "mistral_large",
+   "cells": 137,
+   "reasoning_per_call": 0.0,
+   "output_per_call": 293.0,
+   "reasoning_share": 0.0,
+   "total_reasoning": 0,
+   "gap_to_panel": 0.2257,
+   "own_spread": 0.1236
+  },
+  {
+   "model": "o3",
+   "cells": 156,
+   "reasoning_per_call": 953.4,
+   "output_per_call": 1182.6,
+   "reasoning_share": 0.4464,
+   "total_reasoning": 148736,
+   "gap_to_panel": 0.1488,
+   "own_spread": 0.1103
+  },
+  {
+   "model": "opus",
+   "cells": 160,
+   "reasoning_per_call": 0.0,
+   "output_per_call": 226.0,
+   "reasoning_share": 0.0,
+   "total_reasoning": 0,
+   "gap_to_panel": 0.171,
+   "own_spread": 0.1047
+  },
+  {
+   "model": "sonnet",
+   "cells": 160,
+   "reasoning_per_call": 0.0,
+   "output_per_call": 237.0,
+   "reasoning_share": 0.0,
+   "total_reasoning": 0,
+   "gap_to_panel": 0.2539,
+   "own_spread": 0.1501
+  }
+ ],
+ "conditions_raw": {
+  "EN_framed_Egypt": {
+   "mean": 4.6051,
+   "ci": [
+    4.502,
+    4.703
+   ],
+   "sd": 0.1707,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.6,
+    "gpt55": 4.8556,
+    "grok45": 4.8222,
+    "inkling": 4.5111,
+    "kimi_k3": 4.7556,
+    "llama33": 4.7,
+    "minimax": 4.4889,
+    "mistral_large": 4.4778,
+    "o3": 4.5,
+    "opus": 4.6889,
+    "sonnet": 4.2556
+   },
+   "foundations": {
+    "care": 4.7424,
+    "equality": 2.5394,
+    "proportionality": 4.2515,
+    "loyalty": 4.7273,
+    "authority": 4.797,
+    "purity": 4.2909
+   }
+  },
+  "EN_framed_India": {
+   "mean": 4.4394,
+   "ci": [
+    4.3354,
+    4.5434
+   ],
+   "sd": 0.1768,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.4778,
+    "gpt55": 4.5667,
+    "grok45": 4.7333,
+    "inkling": 4.2333,
+    "kimi_k3": 4.6222,
+    "llama33": 4.5556,
+    "minimax": 4.3,
+    "mistral_large": 4.3667,
+    "o3": 4.2111,
+    "opus": 4.5667,
+    "sonnet": 4.2
+   },
+   "foundations": {
+    "care": 4.7667,
+    "equality": 2.503,
+    "proportionality": 4.2152,
+    "loyalty": 4.597,
+    "authority": 4.7121,
+    "purity": 4.0091
+   }
+  },
+  "EN_framed_Iran": {
+   "mean": 4.5768,
+   "ci": [
+    4.4697,
+    4.6707
+   ],
+   "sd": 0.1703,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.5889,
+    "gpt55": 4.7556,
+    "grok45": 4.8111,
+    "inkling": 4.5556,
+    "kimi_k3": 4.4889,
+    "llama33": 4.7111,
+    "minimax": 4.5778,
+    "mistral_large": 4.7,
+    "o3": 4.4,
+    "opus": 4.5778,
+    "sonnet": 4.1778
+   },
+   "foundations": {
+    "care": 4.8485,
+    "equality": 2.5485,
+    "proportionality": 4.2333,
+    "loyalty": 4.7152,
+    "authority": 4.6939,
+    "purity": 4.3212
+   }
+  },
+  "EN_framed_Japan": {
+   "mean": 3.6677,
+   "ci": [
+    3.4788,
+    3.8687
+   ],
+   "sd": 0.3304,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 3.7222,
+    "gpt55": 3.3778,
+    "grok45": 4.0444,
+    "inkling": 3.5333,
+    "kimi_k3": 3.2667,
+    "llama33": 4.2556,
+    "minimax": 3.9,
+    "mistral_large": 4.0556,
+    "o3": 3.4778,
+    "opus": 3.2778,
+    "sonnet": 3.4333
+   },
+   "foundations": {
+    "care": 4.3121,
+    "equality": 2.403,
+    "proportionality": 4.0455,
+    "loyalty": 3.8515,
+    "authority": 4.1818,
+    "purity": 2.9697
+   }
+  },
+  "EN_framed_Morocco": {
+   "mean": 4.5697,
+   "ci": [
+    4.4818,
+    4.6485
+   ],
+   "sd": 0.1426,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.6444,
+    "gpt55": 4.7222,
+    "grok45": 4.7444,
+    "inkling": 4.4889,
+    "kimi_k3": 4.6778,
+    "llama33": 4.6667,
+    "minimax": 4.4778,
+    "mistral_large": 4.5222,
+    "o3": 4.2556,
+    "opus": 4.6444,
+    "sonnet": 4.4222
+   },
+   "foundations": {
+    "care": 4.8424,
+    "equality": 2.5303,
+    "proportionality": 4.2,
+    "loyalty": 4.6909,
+    "authority": 4.7697,
+    "purity": 4.2485
+   }
+  },
+  "EN_framed_Nigeria": {
+   "mean": 4.5152,
+   "ci": [
+    4.4253,
+    4.6061
+   ],
+   "sd": 0.1538,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.5111,
+    "gpt55": 4.6111,
+    "grok45": 4.8,
+    "inkling": 4.4333,
+    "kimi_k3": 4.6,
+    "llama33": 4.6111,
+    "minimax": 4.3778,
+    "mistral_large": 4.4556,
+    "o3": 4.3111,
+    "opus": 4.6778,
+    "sonnet": 4.2778
+   },
+   "foundations": {
+    "care": 4.7606,
+    "equality": 2.5879,
+    "proportionality": 4.4121,
+    "loyalty": 4.5758,
+    "authority": 4.7758,
+    "purity": 4.1939
+   }
+  },
+  "EN_framed_Saudi Arabia": {
+   "mean": 4.7333,
+   "ci": [
+    4.6535,
+    4.803
+   ],
+   "sd": 0.1271,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.8444,
+    "gpt55": 4.8667,
+    "grok45": 4.8556,
+    "inkling": 4.6556,
+    "kimi_k3": 4.8,
+    "llama33": 4.8111,
+    "minimax": 4.7778,
+    "mistral_large": 4.7778,
+    "o3": 4.4444,
+    "opus": 4.6444,
+    "sonnet": 4.5889
+   },
+   "foundations": {
+    "care": 4.7455,
+    "equality": 2.1152,
+    "proportionality": 4.4273,
+    "loyalty": 4.8121,
+    "authority": 4.9152,
+    "purity": 4.4727
+   }
+  },
+  "EN_framed_Sweden": {
+   "mean": 2.2818,
+   "ci": [
+    2.1939,
+    2.3646
+   ],
+   "sd": 0.1449,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.0,
+    "gpt55": 2.4222,
+    "grok45": 2.3111,
+    "inkling": 2.2444,
+    "kimi_k3": 2.1667,
+    "llama33": 2.5111,
+    "minimax": 2.1,
+    "mistral_large": 2.3778,
+    "o3": 2.3444,
+    "opus": 2.4,
+    "sonnet": 2.2222
+   },
+   "foundations": {
+    "care": 4.6879,
+    "equality": 2.8758,
+    "proportionality": 3.6576,
+    "loyalty": 2.9091,
+    "authority": 2.3394,
+    "purity": 1.597
+   }
+  },
+  "EN_framed_United Arab Emirates": {
+   "mean": 4.6293,
+   "ci": [
+    4.5505,
+    4.704
+   ],
+   "sd": 0.1309,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.8111,
+    "gpt55": 4.7778,
+    "grok45": 4.7778,
+    "inkling": 4.5778,
+    "kimi_k3": 4.7,
+    "llama33": 4.5778,
+    "minimax": 4.6556,
+    "mistral_large": 4.5333,
+    "o3": 4.4667,
+    "opus": 4.6667,
+    "sonnet": 4.3778
+   },
+   "foundations": {
+    "care": 4.7242,
+    "equality": 2.1788,
+    "proportionality": 4.3515,
+    "loyalty": 4.7818,
+    "authority": 4.8727,
+    "purity": 4.2333
+   }
+  },
+  "EN_framed_United States": {
+   "mean": 3.3313,
+   "ci": [
+    3.1929,
+    3.4556
+   ],
+   "sd": 0.2232,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.9444,
+    "gpt55": 3.5111,
+    "grok45": 3.4444,
+    "inkling": 3.2556,
+    "kimi_k3": 3.3778,
+    "llama33": 3.6889,
+    "minimax": 3.2556,
+    "mistral_large": 3.4444,
+    "o3": 3.4,
+    "opus": 3.4222,
+    "sonnet": 2.9
+   },
+   "foundations": {
+    "care": 4.3515,
+    "equality": 2.0212,
+    "proportionality": 4.4636,
+    "loyalty": 3.8061,
+    "authority": 3.5242,
+    "purity": 2.6636
+   }
+  },
+  "ar_framed_Egypt": {
+   "mean": 4.604,
+   "ci": [
+    4.4859,
+    4.7182
+   ],
+   "sd": 0.1967,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.7889,
+    "gpt55": 4.8111,
+    "grok45": 4.8444,
+    "inkling": 4.5667,
+    "kimi_k3": 4.7111,
+    "llama33": 4.8222,
+    "minimax": 4.4333,
+    "mistral_large": 4.4444,
+    "o3": 4.3889,
+    "opus": 4.5889,
+    "sonnet": 4.2444
+   },
+   "foundations": {
+    "care": 4.8727,
+    "equality": 2.7818,
+    "proportionality": 4.4606,
+    "loyalty": 4.7424,
+    "authority": 4.7424,
+    "purity": 4.3273
+   }
+  },
+  "ar_framed_Morocco": {
+   "mean": 4.5818,
+   "ci": [
+    4.4727,
+    4.6818
+   ],
+   "sd": 0.1773,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.7667,
+    "gpt55": 4.7556,
+    "grok45": 4.7556,
+    "inkling": 4.5556,
+    "kimi_k3": 4.5889,
+    "llama33": 4.8111,
+    "minimax": 4.5222,
+    "mistral_large": 4.4889,
+    "o3": 4.3444,
+    "opus": 4.5889,
+    "sonnet": 4.2222
+   },
+   "foundations": {
+    "care": 4.8273,
+    "equality": 2.7212,
+    "proportionality": 4.3909,
+    "loyalty": 4.6848,
+    "authority": 4.7333,
+    "purity": 4.3273
+   }
+  },
+  "ar_framed_Saudi Arabia": {
+   "mean": 4.7566,
+   "ci": [
+    4.6818,
+    4.8222
+   ],
+   "sd": 0.1203,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.8556,
+    "gpt55": 4.8889,
+    "grok45": 4.8444,
+    "inkling": 4.8444,
+    "kimi_k3": 4.7444,
+    "llama33": 4.8778,
+    "minimax": 4.7778,
+    "mistral_large": 4.7222,
+    "o3": 4.6556,
+    "opus": 4.6222,
+    "sonnet": 4.4889
+   },
+   "foundations": {
+    "care": 4.8545,
+    "equality": 2.2697,
+    "proportionality": 4.6152,
+    "loyalty": 4.8424,
+    "authority": 4.8939,
+    "purity": 4.5333
+   }
+  },
+  "ar_framed_United Arab Emirates": {
+   "mean": 4.7263,
+   "ci": [
+    4.6576,
+    4.7909
+   ],
+   "sd": 0.113,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.8667,
+    "gpt55": 4.8667,
+    "grok45": 4.8444,
+    "inkling": 4.7444,
+    "kimi_k3": 4.6667,
+    "llama33": 4.8333,
+    "minimax": 4.7111,
+    "mistral_large": 4.6444,
+    "o3": 4.6667,
+    "opus": 4.6556,
+    "sonnet": 4.4889
+   },
+   "foundations": {
+    "care": 4.8636,
+    "equality": 2.1909,
+    "proportionality": 4.5636,
+    "loyalty": 4.8727,
+    "authority": 4.897,
+    "purity": 4.4091
+   }
+  },
+  "ar_neutral": {
+   "mean": 3.104,
+   "ci": [
+    2.8404,
+    3.3737
+   ],
+   "sd": 0.4513,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.7444,
+    "gpt55": 2.7889,
+    "grok45": 3.0889,
+    "inkling": 2.3778,
+    "kimi_k3": 2.6,
+    "llama33": 3.8778,
+    "minimax": 3.3,
+    "mistral_large": 3.7444,
+    "o3": 3.1333,
+    "opus": 3.5111,
+    "sonnet": 2.9778
+   },
+   "foundations": {
+    "care": 4.7273,
+    "equality": 2.3152,
+    "proportionality": 4.2394,
+    "loyalty": 3.4212,
+    "authority": 3.3455,
+    "purity": 2.5455
+   }
+  },
+  "en_neutral": {
+   "mean": 2.7131,
+   "ci": [
+    2.5424,
+    2.898
+   ],
+   "sd": 0.303,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.3778,
+    "gpt55": 2.5556,
+    "grok45": 2.7556,
+    "inkling": 2.3778,
+    "kimi_k3": 2.3,
+    "llama33": 3.2111,
+    "minimax": 2.6556,
+    "mistral_large": 3.2667,
+    "o3": 2.7667,
+    "opus": 2.7,
+    "sonnet": 2.8778
+   },
+   "foundations": {
+    "care": 4.697,
+    "equality": 2.0455,
+    "proportionality": 4.203,
+    "loyalty": 3.1424,
+    "authority": 3.1152,
+    "purity": 1.8818
+   }
+  },
+  "es_framed_Argentina": {
+   "mean": 3.3715,
+   "ci": [
+    3.2771,
+    3.4694
+   ],
+   "sd": 0.1405,
+   "n_models": 8,
+   "per_model": {
+    "deepseek_v4": 3.1944,
+    "gpt55": 3.3111,
+    "grok45": 3.5667,
+    "llama33": 3.3333,
+    "mistral_large": 3.5889,
+    "o3": 3.2,
+    "opus": 3.3333,
+    "sonnet": 3.4444
+   },
+   "foundations": {
+    "care": 4.6875,
+    "equality": 2.5844,
+    "proportionality": 4.0531,
+    "loyalty": 3.9229,
+    "authority": 3.7292,
+    "purity": 2.4625
+   }
+  },
+  "es_framed_Chile": {
+   "mean": 3.6794,
+   "ci": [
+    3.5508,
+    3.8159
+   ],
+   "sd": 0.1807,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 3.6556,
+    "grok45": 3.8333,
+    "llama33": 4.0,
+    "mistral_large": 3.7222,
+    "o3": 3.6,
+    "opus": 3.4111,
+    "sonnet": 3.5333
+   },
+   "foundations": {
+    "care": 4.6667,
+    "equality": 2.4429,
+    "proportionality": 4.1952,
+    "loyalty": 4.019,
+    "authority": 4.0429,
+    "purity": 2.9762
+   }
+  },
+  "es_framed_Colombia": {
+   "mean": 4.0095,
+   "ci": [
+    3.8857,
+    4.1444
+   ],
+   "sd": 0.1778,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 4.0444,
+    "grok45": 4.3333,
+    "llama33": 4.0,
+    "mistral_large": 4.1556,
+    "o3": 3.9,
+    "opus": 3.8778,
+    "sonnet": 3.7556
+   },
+   "foundations": {
+    "care": 4.7762,
+    "equality": 2.4714,
+    "proportionality": 4.2571,
+    "loyalty": 4.2762,
+    "authority": 4.381,
+    "purity": 3.3714
+   }
+  },
+  "es_framed_Mexico": {
+   "mean": 3.9524,
+   "ci": [
+    3.819,
+    4.081
+   ],
+   "sd": 0.1768,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 3.9889,
+    "grok45": 4.2333,
+    "llama33": 4.0,
+    "mistral_large": 4.0778,
+    "o3": 3.9444,
+    "opus": 3.7556,
+    "sonnet": 3.6667
+   },
+   "foundations": {
+    "care": 4.7095,
+    "equality": 2.4905,
+    "proportionality": 4.2,
+    "loyalty": 4.2238,
+    "authority": 4.3095,
+    "purity": 3.3238
+   }
+  },
+  "es_framed_Peru": {
+   "mean": 4.021,
+   "ci": [
+    3.854,
+    4.1976
+   ],
+   "sd": 0.2324,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 4.1778,
+    "grok45": 4.4444,
+    "llama33": 4.0,
+    "mistral_large": 4.0694,
+    "o3": 3.8667,
+    "opus": 3.9444,
+    "sonnet": 3.6444
+   },
+   "foundations": {
+    "care": 4.7976,
+    "equality": 2.5214,
+    "proportionality": 4.2202,
+    "loyalty": 4.3071,
+    "authority": 4.3512,
+    "purity": 3.4048
+   }
+  },
+  "es_neutral": {
+   "mean": 2.9302,
+   "ci": [
+    2.8,
+    3.0508
+   ],
+   "sd": 0.1715,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 2.6222,
+    "grok45": 3.0778,
+    "llama33": 3.0556,
+    "mistral_large": 3.1556,
+    "o3": 2.9444,
+    "opus": 2.8,
+    "sonnet": 2.8556
+   },
+   "foundations": {
+    "care": 4.5175,
+    "equality": 2.0667,
+    "proportionality": 4.1127,
+    "loyalty": 3.3032,
+    "authority": 3.354,
+    "purity": 2.1333
+   }
+  },
+  "fa_framed_Iran": {
+   "mean": 4.3141,
+   "ci": [
+    4.1485,
+    4.4758
+   ],
+   "sd": 0.2794,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 4.6222,
+    "gpt55": 4.3222,
+    "grok45": 4.8,
+    "inkling": 4.4889,
+    "kimi_k3": 4.3556,
+    "llama33": 4.4778,
+    "minimax": 3.9444,
+    "mistral_large": 4.4,
+    "o3": 4.1222,
+    "opus": 4.1,
+    "sonnet": 3.8222
+   },
+   "foundations": {
+    "care": 4.7091,
+    "equality": 2.6152,
+    "proportionality": 4.3242,
+    "loyalty": 4.4182,
+    "authority": 4.3788,
+    "purity": 4.1455
+   }
+  },
+  "fa_neutral": {
+   "mean": 2.8091,
+   "ci": [
+    2.5646,
+    3.0657
+   ],
+   "sd": 0.4255,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.5556,
+    "gpt55": 2.5111,
+    "grok45": 2.9778,
+    "inkling": 2.1333,
+    "kimi_k3": 2.4333,
+    "llama33": 3.4889,
+    "minimax": 2.4889,
+    "mistral_large": 3.5222,
+    "o3": 3.0667,
+    "opus": 3.0444,
+    "sonnet": 2.6778
+   },
+   "foundations": {
+    "care": 4.6727,
+    "equality": 2.2091,
+    "proportionality": 4.1697,
+    "loyalty": 3.097,
+    "authority": 3.0758,
+    "purity": 2.2545
+   }
+  },
+  "fr_framed_Belgium": {
+   "mean": 2.8574,
+   "ci": [
+    2.7519,
+    3.0315
+   ],
+   "sd": 0.191,
+   "n_models": 6,
+   "per_model": {
+    "gpt55": 2.7667,
+    "grok45": 2.8333,
+    "llama33": 3.2778,
+    "o3": 2.7222,
+    "opus": 2.7556,
+    "sonnet": 2.7889
+   },
+   "foundations": {
+    "care": 4.5556,
+    "equality": 2.3667,
+    "proportionality": 4.05,
+    "loyalty": 3.3389,
+    "authority": 3.0111,
+    "purity": 2.2222
+   }
+  },
+  "fr_framed_France": {
+   "mean": 2.8593,
+   "ci": [
+    2.7426,
+    2.9889
+   ],
+   "sd": 0.1544,
+   "n_models": 6,
+   "per_model": {
+    "gpt55": 2.8444,
+    "grok45": 2.7667,
+    "llama33": 3.1111,
+    "o3": 2.6667,
+    "opus": 2.7556,
+    "sonnet": 3.0111
+   },
+   "foundations": {
+    "care": 4.4611,
+    "equality": 2.4056,
+    "proportionality": 4.0111,
+    "loyalty": 3.3667,
+    "authority": 3.0,
+    "purity": 2.2111
+   }
+  },
+  "fr_framed_Switzerland": {
+   "mean": 3.1352,
+   "ci": [
+    2.9019,
+    3.4259
+   ],
+   "sd": 0.3314,
+   "n_models": 6,
+   "per_model": {
+    "gpt55": 3.0111,
+    "grok45": 3.3333,
+    "llama33": 3.7778,
+    "o3": 3.0,
+    "opus": 2.8,
+    "sonnet": 2.8889
+   },
+   "foundations": {
+    "care": 4.4389,
+    "equality": 2.1056,
+    "proportionality": 4.2167,
+    "loyalty": 3.6111,
+    "authority": 3.2278,
+    "purity": 2.5667
+   }
+  },
+  "fr_neutral": {
+   "mean": 2.9463,
+   "ci": [
+    2.6556,
+    3.4056
+   ],
+   "sd": 0.5078,
+   "n_models": 6,
+   "per_model": {
+    "gpt55": 2.5889,
+    "grok45": 2.7222,
+    "llama33": 4.0556,
+    "o3": 2.9333,
+    "opus": 2.6333,
+    "sonnet": 2.7444
+   },
+   "foundations": {
+    "care": 4.4833,
+    "equality": 2.1944,
+    "proportionality": 4.2444,
+    "loyalty": 3.3111,
+    "authority": 3.1611,
+    "purity": 2.3667
+   }
+  },
+  "ja_framed_Japan": {
+   "mean": 3.4343,
+   "ci": [
+    3.3525,
+    3.5141
+   ],
+   "sd": 0.1367,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 3.5222,
+    "gpt55": 3.3667,
+    "grok45": 3.6889,
+    "inkling": 3.5,
+    "kimi_k3": 3.3444,
+    "llama33": 3.5111,
+    "minimax": 3.4,
+    "mistral_large": 3.5667,
+    "o3": 3.4,
+    "opus": 3.1556,
+    "sonnet": 3.3222
+   },
+   "foundations": {
+    "care": 4.2879,
+    "equality": 2.397,
+    "proportionality": 3.9788,
+    "loyalty": 3.5424,
+    "authority": 3.8212,
+    "purity": 2.9394
+   }
+  },
+  "ja_neutral": {
+   "mean": 2.6758,
+   "ci": [
+    2.4939,
+    2.8848
+   ],
+   "sd": 0.3314,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.3778,
+    "gpt55": 2.5,
+    "grok45": 3.4,
+    "inkling": 2.6333,
+    "kimi_k3": 2.2889,
+    "llama33": 2.3889,
+    "minimax": 2.6778,
+    "mistral_large": 3.1667,
+    "o3": 2.9,
+    "opus": 2.6111,
+    "sonnet": 2.4889
+   },
+   "foundations": {
+    "care": 4.6121,
+    "equality": 2.1,
+    "proportionality": 3.997,
+    "loyalty": 2.9364,
+    "authority": 3.0636,
+    "purity": 2.0273
+   }
+  },
+  "ru_framed_Russia": {
+   "mean": 3.955,
+   "ci": [
+    3.7995,
+    4.1265
+   ],
+   "sd": 0.223,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 3.8778,
+    "grok45": 4.3778,
+    "llama33": 4.1111,
+    "mistral_large": 3.963,
+    "o3": 3.9556,
+    "opus": 3.6333,
+    "sonnet": 3.7667
+   },
+   "foundations": {
+    "care": 4.5159,
+    "equality": 2.4365,
+    "proportionality": 4.3254,
+    "loyalty": 4.3048,
+    "authority": 4.3683,
+    "purity": 3.1921
+   }
+  },
+  "ru_neutral": {
+   "mean": 2.8513,
+   "ci": [
+    2.6635,
+    3.1063
+   ],
+   "sd": 0.3108,
+   "n_models": 7,
+   "per_model": {
+    "gpt55": 2.5889,
+    "grok45": 3.0,
+    "llama33": 2.7222,
+    "mistral_large": 3.5444,
+    "o3": 2.8148,
+    "opus": 2.6667,
+    "sonnet": 2.6222
+   },
+   "foundations": {
+    "care": 4.6349,
+    "equality": 2.0603,
+    "proportionality": 4.2413,
+    "loyalty": 3.2714,
+    "authority": 3.2159,
+    "purity": 2.0667
+   }
+  }
+ }
+}
