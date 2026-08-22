@@ -30,7 +30,11 @@ from collections import defaultdict
 VDIR = Path(__file__).resolve().parent
 FOUND = ["care","equality","proportionality","loyalty","authority","purity"]
 BIND = ["loyalty","authority","purity"]
-ANCH = {"Egypt":4.27, "Japan":2.65, "Iran":3.33}
+# Anchors carried at the precision of their sources. Egypt and Japan from Atari et al.
+# (2023) Study 2 via the reasoner-study reference build; Iran from Hazrati et al. (2025)
+# sample 2, per anchors_iran.json. The appendix previously rounded these to two decimals
+# here and used three elsewhere, so two of its own tables disagreed by a thousandth.
+ANCH = {"Egypt": 4.267, "Japan": 2.652, "Iran": 3.333}
 SEED = 20260723
 B = 100_000
 
@@ -167,21 +171,21 @@ tests["T1 Egypt: EN-framed vs AR-framed"] = (sum(d)/len(d), signflip_exact(d), d
 d,_ = paired(CONDS["EN_framed_Japan"], CONDS["ja_framed_Japan"])
 tests["T2 Japan: EN-framed vs JA-framed"] = (sum(d)/len(d), signflip_exact(d), d)
 d = [v-ANCH["Japan"] for v in CONDS["ja_neutral"].values()]
-tests["T3 JA-neutral vs Japan anchor 2.65"] = (sum(d)/len(d), signflip_exact(d), d)
+tests["T3 JA-neutral vs Japan anchor"] = (sum(d)/len(d), signflip_exact(d), d)
 d = [v-ANCH["Iran"] for v in CONDS["fa_framed_Iran"].values()]
-tests["T4 FA-framed vs Iran anchor 3.33"] = (sum(d)/len(d), signflip_exact(d), d)
+tests["T4 FA-framed vs Iran anchor"] = (sum(d)/len(d), signflip_exact(d), d)
 if "en_neutral" in CONDS:
     d,_ = paired(CONDS["fa_neutral"], CONDS["en_neutral"])
     tests["T5 FA-neutral vs EN-neutral"] = (sum(d)/len(d), signflip_exact(d), d)
     d,_ = paired(CONDS["ar_neutral"], CONDS["en_neutral"])
     tests["T6 AR-neutral vs EN-neutral"] = (sum(d)/len(d), signflip_exact(d), d)
 d = [v-ANCH["Egypt"] for v in CONDS["ar_framed_Egypt"].values()]
-tests["T7 AR-framed vs Egypt anchor 4.27"] = (sum(d)/len(d), signflip_exact(d), d)
+tests["T7 AR-framed vs Egypt anchor"] = (sum(d)/len(d), signflip_exact(d), d)
 d,_ = paired(CONDS["ja_framed_Japan"], CONDS["ja_neutral"])
 tests["T8 Japan: framed vs neutral (in-lang)"] = (sum(d)/len(d), signflip_exact(d), d)
 if "EN_framed_Iran" in CONDS:
     d = [v-ANCH["Iran"] for v in CONDS["EN_framed_Iran"].values()]
-    tests["T9 EN-framed Iran vs anchor 3.33"] = (sum(d)/len(d), signflip_exact(d), d)
+    tests["T9 EN-framed Iran vs Iran anchor"] = (sum(d)/len(d), signflip_exact(d), d)
     d,_ = paired(CONDS["EN_framed_Iran"], CONDS["fa_framed_Iran"])
     tests["T10 Iran: EN-framed vs FA-framed"] = (sum(d)/len(d), signflip_exact(d), d)
 
@@ -244,12 +248,12 @@ def loo(vals_by_model):
         rest=[v for k,v in vals_by_model.items() if k!=m]
         out.append((m, sum(rest)/len(rest)))
     return out
-print("  JA-neutral panel mean without each model (anchor 2.65):")
+print("  JA-neutral panel mean without each model (anchor 2.652):")
 for m,mu in sorted(loo(CONDS["ja_neutral"]), key=lambda x:x[1]):
     print(f"    -{m:<14} {mu:.3f}")
-print("  FA-framed overshoot vs 3.33 without each model:")
+print("  FA-framed overshoot vs the Iran anchor without each model:")
 for m,mu in sorted(loo(CONDS["fa_framed_Iran"]), key=lambda x:x[1]):
-    print(f"    -{m:<14} {mu-3.33:+.3f}")
+    print(f"    -{m:<14} {mu-ANCH["Iran"]:+.3f}")
 print("  T11 (JA-neutral minus EN-neutral) without each model:")
 ms = sorted(set(CONDS["ja_neutral"]) & set(CONDS["en_neutral"]))
 for drop in ms:
