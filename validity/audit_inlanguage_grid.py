@@ -29,7 +29,8 @@ B = 100_000
 # Anchors. Egypt/Japan/Nigeria from Atari et al. (2023) Study 2 via the reasoner-study
 # reference build (mfq2_country_means.csv); Iran from Hazrati et al. (2025) sample 2,
 # per validity/anchors_iran.json.
-ANCH = {"Egypt": 4.267, "Japan": 2.652, "Nigeria": 4.038, "Iran": 3.333}
+ANCH = {"Egypt": 4.267, "Japan": 2.652, "Nigeria": 4.038, "Iran": 3.333,
+        "Morocco": 4.014, "Saudi Arabia": 4.083, "United Arab Emirates": 3.892}
 ANCH_FOUND = {
     "Japan": {"care": 3.03, "equality": 2.27, "proportionality": 3.14,
               "loyalty": 2.66, "authority": 2.67, "purity": 2.63},
@@ -111,16 +112,21 @@ print("\n  roster (%d): %s" % (len(ROSTER), ", ".join(ROSTER)))
 bad = dict((k, sorted(set(ROSTER) - set(v))) for k, v in CONDS.items() if sorted(v) != ROSTER)
 print("  conditions missing a model: %s" % (bad if bad else "none"))
 
-EXPECT = {"ar_framed_Egypt": 4.613, "ar_neutral": 3.033, "ja_framed_Japan": 3.459, "ja_neutral": 2.662,
-          "fa_framed_Iran": 4.358, "fa_neutral": 2.720, "EN_framed_Egypt": 4.607,
-          "EN_framed_Japan": 3.668, "EN_framed_Iran": 4.587, "en_neutral": 2.705}
-print("\n  reconcile against appendix B3 (audit_inlanguage.py):")
+# Reconcile against the means audit_inlanguage.py just wrote, not against constants
+# frozen from an earlier collection. Run that script first; this one refuses without it.
+ref_path = VDIR / "results" / "condition_means.json"
+if not ref_path.exists():
+    raise SystemExit("run validity/audit_inlanguage.py first; it writes results/condition_means.json")
+EXPECT = json.load(open(ref_path))
+print("\n  reconcile against audit_inlanguage.py's condition means:")
 ok = True
 for k in sorted(EXPECT):
+    if k not in CONDS:
+        print("    %-30s MISSING from this run" % k); ok = False; continue
     got = mean(list(CONDS[k].values()))
-    m = abs(got - EXPECT[k]) < 0.0015
+    m = abs(got - EXPECT[k]) < 1e-9
     ok = ok and m
-    print("    %-20s B3 %.3f  recomputed %.3f  %s" % (k, EXPECT[k], got, "OK" if m else "MISMATCH"))
+    print("    %-30s ref %.4f  recomputed %.4f  %s" % (k, EXPECT[k], got, "OK" if m else "MISMATCH"))
 print("  RECONCILED" if ok else "  *** RECONCILIATION FAILED, STOP ***")
 if not ok:
     raise SystemExit(1)
@@ -153,7 +159,8 @@ def paired(a, b):
 
 
 print("\n=== STEP 2. THE GRID: binding composite, panel mean [95% CI] ===")
-GRID = [("Egypt", "Arabic", "ar"), ("Japan", "Japanese", "ja"), ("Iran", "Farsi", "fa")]
+GRID = [("Egypt", "Arabic", "ar"), ("Morocco", "Arabic", "ar"), ("Saudi Arabia", "Arabic", "ar"),
+        ("United Arab Emirates", "Arabic", "ar"), ("Japan", "Japanese", "ja"), ("Iran", "Farsi", "fa")]
 cache = {}
 
 

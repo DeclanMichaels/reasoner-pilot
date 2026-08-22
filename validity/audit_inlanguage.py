@@ -79,16 +79,52 @@ for k in sorted(CONDS):
     v = CONDS[k]
     mu = sum(v.values())/len(v)
     print(f"  {k:<18} n={len(v):<3} mean={mu:.3f}  models={sorted(v)==ROSTER or sorted(v)}")
-EXPECT = {"ar_framed_Egypt":4.61,"ar_neutral":3.03,"ja_framed_Japan":3.46,"ja_neutral":2.66,
-          "fa_framed_Iran":4.36,"fa_neutral":2.72,"EN_framed_Egypt":4.61,"EN_framed_Japan":3.67}
-print("  reconcile vs analyze_lang.py:")
+# INDEPENDENT RECOMPUTATION, the reconciliation gate. The old gate compared against
+# panel means hardcoded from the July collection, which cannot survive a re-collection
+# and would have to be edited by hand every time the data changes, defeating its purpose.
+# This route reaches the same quantity by different code: it takes the plain mean of the
+# eighteen binding ITEMS in a cell rather than averaging three foundation means. The two
+# agree only if each binding foundation carries the same number of items, so the check
+# also verifies the item counts it depends on.
+def direct_binding(ratings):
+    vals = [v for iid, v in ratings.items() if iid.rsplit("_", 1)[0] in BIND]
+    return (sum(vals) / len(vals)) if vals else None
+
+alt = defaultdict(lambda: defaultdict(list))
+for pattern, keyfn in ((str(VDIR/"runs_framed_lang"/"*.json"),
+                        lambda d: "%s_%s" % (d["instrument"].split("_")[1],
+                                             d["condition"] if d["condition"] != "framed"
+                                             else "framed_" + d["country"])),
+                       (str(VDIR/"runs_framed"/"*_mfq2_*.json"),
+                        lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
+                       (str(VDIR/"runs"/"*mfq2*.json"),
+                        lambda d: "en_neutral" if d.get("instrument") == "mfq2" else None)):
+    import glob as _g
+    for f in _g.glob(pattern):
+        d = json.load(open(f))
+        if not d.get("ratings"): continue
+        k = keyfn(d)
+        if k is None: continue
+        b = direct_binding(d["ratings"])
+        if b is None: continue
+        alt[k][d["model"]].append(b)
+ALT = {k: sum(sum(v)/len(v) for v in md.values())/len(md) for k, md in alt.items()}
+
+print("  reconcile against an independent recomputation from the raw cells:")
 ok = True
-for k,e in EXPECT.items():
+for k in sorted(CONDS):
     got = sum(CONDS[k].values())/len(CONDS[k])
-    match = abs(got-e) < 0.006
+    exp = ALT.get(k)
+    match = exp is not None and abs(got-exp) < 1e-9
     ok &= match
-    print(f"    {k:<18} expected {e:.2f} got {got:.3f} {'OK' if match else 'MISMATCH'}")
-print("  RECONCILED" if ok else "  *** RECONCILIATION FAILED — STOP ***")
+    print(f"    {k:<30} foundation-route {got:.4f}  item-route {exp if exp is None else '%.4f'%exp}  {'OK' if match else 'MISMATCH'}")
+print("  RECONCILED" if ok else "  *** RECONCILIATION FAILED - STOP ***")
+if not ok: raise SystemExit(1)
+
+# hand the condition means to audit_inlanguage_grid.py so it reconciles against this
+# run rather than against numbers frozen from an earlier collection
+(VDIR/"results"/"condition_means.json").write_text(json.dumps(
+    {k: sum(v.values())/len(v) for k, v in CONDS.items()}, indent=2, sort_keys=True) + "\n")
 
 def boot_ci(vals, key):
     """Percentile bootstrap over models. The RNG is seeded from (SEED, key), so each

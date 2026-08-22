@@ -1,148 +1,157 @@
 === STEP 1. PLAIN DESCRIPTIVES, computed directly from the raw cells ===
     (no resampling, no correction; every later estimate reconciles against these)
-  EN_framed_Egypt      n_models=11  mean=4.607  between-model SD=0.150
-  EN_framed_India      n_models=11  mean=4.432  between-model SD=0.174
-  EN_framed_Iran       n_models=11  mean=4.587  between-model SD=0.169
-  EN_framed_Japan      n_models=11  mean=3.668  between-model SD=0.286
-  EN_framed_Morocco    n_models=1   mean=4.722  between-model SD=0.000
-  EN_framed_Nigeria    n_models=11  mean=4.562  between-model SD=0.171
-  EN_framed_Saudi Arabia n_models=1   mean=4.833  between-model SD=0.000
-  EN_framed_Sweden     n_models=11  mean=2.233  between-model SD=0.223
-  EN_framed_United Arab Emirates n_models=1   mean=4.667  between-model SD=0.000
-  EN_framed_United States n_models=11  mean=3.341  between-model SD=0.200
-  ar_framed_Egypt      n_models=11  mean=4.613  between-model SD=0.155
-  ar_framed_Morocco    n_models=1   mean=4.333  between-model SD=0.000
-  ar_framed_Saudi Arabia n_models=1   mean=4.722  between-model SD=0.000
-  ar_framed_United Arab Emirates n_models=1   mean=4.833  between-model SD=0.000
-  ar_neutral           n_models=11  mean=3.033  between-model SD=0.456
-  en_neutral           n_models=11  mean=2.705  between-model SD=0.335
-  fa_framed_Iran       n_models=11  mean=4.358  between-model SD=0.222
-  fa_neutral           n_models=11  mean=2.720  between-model SD=0.504
-  ja_framed_Japan      n_models=11  mean=3.459  between-model SD=0.160
-  ja_neutral           n_models=11  mean=2.662  between-model SD=0.295
+  EN_framed_Egypt      n_models=11  mean=4.605  between-model SD=0.171
+  EN_framed_India      n_models=11  mean=4.439  between-model SD=0.177
+  EN_framed_Iran       n_models=11  mean=4.577  between-model SD=0.170
+  EN_framed_Japan      n_models=11  mean=3.668  between-model SD=0.330
+  EN_framed_Morocco    n_models=11  mean=4.570  between-model SD=0.143
+  EN_framed_Nigeria    n_models=11  mean=4.515  between-model SD=0.154
+  EN_framed_Saudi Arabia n_models=11  mean=4.733  between-model SD=0.127
+  EN_framed_Sweden     n_models=11  mean=2.282  between-model SD=0.145
+  EN_framed_United Arab Emirates n_models=11  mean=4.629  between-model SD=0.131
+  EN_framed_United States n_models=11  mean=3.331  between-model SD=0.223
+  ar_framed_Egypt      n_models=11  mean=4.604  between-model SD=0.197
+  ar_framed_Morocco    n_models=11  mean=4.582  between-model SD=0.177
+  ar_framed_Saudi Arabia n_models=11  mean=4.757  between-model SD=0.120
+  ar_framed_United Arab Emirates n_models=11  mean=4.726  between-model SD=0.113
+  ar_neutral           n_models=11  mean=3.104  between-model SD=0.451
+  en_neutral           n_models=11  mean=2.713  between-model SD=0.303
+  fa_framed_Iran       n_models=11  mean=4.314  between-model SD=0.279
+  fa_neutral           n_models=11  mean=2.809  between-model SD=0.426
+  ja_framed_Japan      n_models=11  mean=3.434  between-model SD=0.137
+  ja_neutral           n_models=11  mean=2.676  between-model SD=0.331
 
-  roster (11): deepseek_v4, gpt55, grok45, inkling, kimi, llama33, minimax, mistral_large, o3, opus, sonnet
-  conditions missing a model: {'ar_framed_Morocco': ['deepseek_v4', 'gpt55', 'grok45', 'inkling', 'kimi', 'minimax', 'mistral_large', 'o3', 'opus', 'sonnet'], 'ar_framed_Saudi Arabia': ['deepseek_v4', 'gpt55', 'grok45', 'inkling', 'kimi', 'minimax', 'mistral_large', 'o3', 'opus', 'sonnet'], 'ar_framed_United Arab Emirates': ['deepseek_v4', 'gpt55', 'grok45', 'inkling', 'kimi', 'minimax', 'mistral_large', 'o3', 'opus', 'sonnet'], 'EN_framed_United Arab Emirates': ['deepseek_v4', 'gpt55', 'grok45', 'inkling', 'kimi', 'minimax', 'mistral_large', 'o3', 'opus', 'sonnet'], 'EN_framed_Morocco': ['deepseek_v4', 'gpt55', 'grok45', 'inkling', 'kimi', 'minimax', 'mistral_large', 'o3', 'opus', 'sonnet'], 'EN_framed_Saudi Arabia': ['deepseek_v4', 'gpt55', 'grok45', 'inkling', 'kimi', 'minimax', 'mistral_large', 'o3', 'opus', 'sonnet']}
+  roster (11): deepseek_v4, gpt55, grok45, inkling, kimi_k3, llama33, minimax, mistral_large, o3, opus, sonnet
+  conditions missing a model: none
 
-  reconcile against appendix B3 (audit_inlanguage.py):
-    EN_framed_Egypt      B3 4.607  recomputed 4.607  OK
-    EN_framed_Iran       B3 4.587  recomputed 4.587  OK
-    EN_framed_Japan      B3 3.668  recomputed 3.668  OK
-    ar_framed_Egypt      B3 4.613  recomputed 4.613  OK
-    ar_neutral           B3 3.033  recomputed 3.033  OK
-    en_neutral           B3 2.705  recomputed 2.705  OK
-    fa_framed_Iran       B3 4.358  recomputed 4.358  OK
-    fa_neutral           B3 2.720  recomputed 2.720  OK
-    ja_framed_Japan      B3 3.459  recomputed 3.459  OK
-    ja_neutral           B3 2.662  recomputed 2.662  OK
+  reconcile against audit_inlanguage.py's condition means:
+    EN_framed_Egypt                ref 4.6051  recomputed 4.6051  OK
+    EN_framed_Iran                 ref 4.5768  recomputed 4.5768  OK
+    EN_framed_Japan                ref 3.6677  recomputed 3.6677  OK
+    ar_framed_Egypt                ref 4.6040  recomputed 4.6040  OK
+    ar_framed_Morocco              ref 4.5818  recomputed 4.5818  OK
+    ar_framed_Saudi Arabia         ref 4.7566  recomputed 4.7566  OK
+    ar_framed_United Arab Emirates ref 4.7263  recomputed 4.7263  OK
+    ar_neutral                     ref 3.1040  recomputed 3.1040  OK
+    en_neutral                     ref 2.7131  recomputed 2.7131  OK
+    fa_framed_Iran                 ref 4.3141  recomputed 4.3141  OK
+    fa_neutral                     ref 2.8091  recomputed 2.8091  OK
+    ja_framed_Japan                ref 3.4343  recomputed 3.4343  OK
+    ja_neutral                     ref 2.6758  recomputed 2.6758  OK
   RECONCILED
 
 === STEP 2. THE GRID: binding composite, panel mean [95% CI] ===
   country/lang         human           EN unframed        LOCAL unframed             EN framed          LOCAL framed
-  Egypt/Arabic         4.267     2.705 [2.51,2.90]     3.033 [2.77,3.31]     4.607 [4.52,4.69]     4.613 [4.52,4.70]
-  Japan/Japanese       2.652     2.705 [2.51,2.90]     2.662 [2.49,2.84]     3.668 [3.51,3.84]     3.459 [3.37,3.56]
-  Iran/Farsi           3.333     2.705 [2.51,2.90]     2.720 [2.42,3.01]     4.587 [4.48,4.68]     4.358 [4.22,4.49]
+  Egypt/Arabic         4.267     2.713 [2.54,2.90]     3.104 [2.84,3.37]     4.605 [4.50,4.70]     4.604 [4.49,4.72]
+  Morocco/Arabic       4.014     2.713 [2.54,2.90]     3.104 [2.84,3.37]     4.570 [4.48,4.65]     4.582 [4.47,4.68]
+  Saudi Arabia/Arabic   4.083     2.713 [2.54,2.90]     3.104 [2.84,3.37]     4.733 [4.65,4.80]     4.757 [4.68,4.82]
+  United Arab Emirates/Arabic   3.892     2.713 [2.54,2.90]     3.104 [2.84,3.37]     4.629 [4.55,4.70]     4.726 [4.66,4.79]
+  Japan/Japanese       2.652     2.713 [2.54,2.90]     2.676 [2.49,2.88]     3.668 [3.48,3.87]     3.434 [3.35,3.51]
+  Iran/Farsi           3.333     2.713 [2.54,2.90]     2.809 [2.56,3.07]     4.577 [4.47,4.67]     4.314 [4.15,4.48]
 
   same grid as deviation from that country's measured human mean:
   country/lang           EN unframed  LOCAL unframed       EN framed    LOCAL framed
-  Egypt/Arabic                -1.562          -1.234          +0.340          +0.346
-  Japan/Japanese              +0.053          +0.010          +1.016          +0.807
-  Iran/Farsi                  -0.628          -0.613          +1.254          +1.025
+  Egypt/Arabic                -1.554          -1.163          +0.338          +0.337
+  Morocco/Arabic              -1.301          -0.910          +0.556          +0.568
+  Saudi Arabia/Arabic          -1.370          -0.979          +0.650          +0.674
+  United Arab Emirates/Arabic          -1.179          -0.788          +0.737          +0.834
+  Japan/Japanese              +0.061          +0.024          +1.016          +0.782
+  Iran/Farsi                  -0.620          -0.524          +1.244          +0.981
 
 === STEP 3. TEST FAMILY. T1-T10 are the declared family (appendix B4).
     T11+ are added here; each is fixed by the grid's structure, not chosen by its values.
 
   test                                      diff    95% CI             exact p  Holm(10)  Holm(22)
-  T1  Egypt: EN-framed vs AR-framed       -0.006  [-0.038,+0.025]   0.8125    1.0000    1.0000
-  T2  Japan: EN-framed vs JA-framed       +0.209  [+0.081,+0.361]   0.0098    0.0391    0.0586
-  T3  JA-neutral vs Japan anchor          +0.010  [-0.158,+0.188]   0.9170    1.0000    1.0000
-  T4  FA-framed vs Iran anchor            +1.025  [+0.892,+1.154]   0.0010    0.0098    0.0215
-  T5  FA-neutral vs EN-neutral            +0.015  [-0.149,+0.174]   0.8721    1.0000    1.0000
-  T6  AR-neutral vs EN-neutral            +0.328  [+0.207,+0.456]   0.0010    0.0098    0.0215
-  T7  AR-framed vs Egypt anchor           +0.346  [+0.252,+0.436]   0.0010    0.0098    0.0215
-  T8  Japan: framed vs neutral in-lang    +0.797  [+0.637,+0.962]   0.0010    0.0098    0.0215
-  T9  EN-framed Iran vs Iran anchor       +1.254  [+1.148,+1.347]   0.0010    0.0098    0.0215
-  T10 Iran: EN-framed vs FA-framed        +0.229  [+0.141,+0.322]   0.0010    0.0098    0.0215
-  T11 JA-neutral vs EN-neutral            -0.043  [-0.183,+0.081]   0.5820         -    1.0000
-  T12 EN-neutral vs Japan anchor          +0.053  [-0.146,+0.247]   0.6221         -    1.0000
-  T13 Egypt: AR-framed vs AR-neutral      +1.581  [+1.296,+1.862]   0.0010         -    0.0215
-  T14 Iran: FA-framed vs FA-neutral       +1.637  [+1.310,+1.988]   0.0010         -    0.0215
-  T15 Egypt: EN-framed vs EN-neutral      +1.902  [+1.672,+2.140]   0.0010         -    0.0215
-  T16 Japan: EN-framed vs EN-neutral      +0.963  [+0.790,+1.131]   0.0010         -    0.0215
-  T17 Iran: EN-framed vs EN-neutral       +1.882  [+1.664,+2.100]   0.0010         -    0.0215
-  T18 EN-framed Egypt vs Egypt anchor     +0.340  [+0.248,+0.426]   0.0010         -    0.0215
-  T19 EN-framed Japan vs Japan anchor     +1.016  [+0.855,+1.191]   0.0010         -    0.0215
-  T20 AR-neutral vs Egypt anchor          -1.234  [-1.498,-0.958]   0.0010         -    0.0215
-  T21 FA-neutral vs Iran anchor           -0.613  [-0.917,-0.321]   0.0039         -    0.0273
-  T22 EN-framed Nigeria vs Nga anchor     +0.524  [+0.423,+0.625]   0.0010         -    0.0215
+  T1  Egypt: EN-framed vs AR-framed       +0.001  [-0.054,+0.049]   1.0000    1.0000    1.0000
+  T2  Japan: EN-framed vs JA-framed       +0.233  [+0.098,+0.385]   0.0059    0.0234    0.0410
+  T3  JA-neutral vs Japan anchor          +0.024  [-0.156,+0.233]   0.8330    1.0000    1.0000
+  T4  FA-framed vs Iran anchor            +0.981  [+0.815,+1.146]   0.0010    0.0098    0.0215
+  T5  FA-neutral vs EN-neutral            +0.096  [-0.031,+0.214]   0.1758    0.5273    0.8789
+  T6  AR-neutral vs EN-neutral            +0.391  [+0.254,+0.530]   0.0020    0.0137    0.0215
+  T7  AR-framed vs Egypt anchor           +0.337  [+0.219,+0.450]   0.0020    0.0137    0.0215
+  T8  Japan: framed vs neutral in-lang    +0.759  [+0.591,+0.920]   0.0010    0.0098    0.0215
+  T9  EN-framed Iran vs Iran anchor       +1.244  [+1.137,+1.338]   0.0010    0.0098    0.0215
+  T10 Iran: EN-framed vs FA-framed        +0.263  [+0.148,+0.380]   0.0029    0.0146    0.0234
+  T11 JA-neutral vs EN-neutral            -0.037  [-0.249,+0.164]   0.7500         -    1.0000
+  T12 EN-neutral vs Japan anchor          +0.061  [-0.110,+0.246]   0.5371         -    1.0000
+  T13 Egypt: AR-framed vs AR-neutral      +1.500  [+1.201,+1.804]   0.0010         -    0.0215
+  T14 Iran: FA-framed vs FA-neutral       +1.505  [+1.223,+1.796]   0.0010         -    0.0215
+  T15 Egypt: EN-framed vs EN-neutral      +1.892  [+1.663,+2.110]   0.0010         -    0.0215
+  T16 Japan: EN-framed vs EN-neutral      +0.955  [+0.795,+1.113]   0.0010         -    0.0215
+  T17 Iran: EN-framed vs EN-neutral       +1.864  [+1.665,+2.049]   0.0010         -    0.0215
+  T18 EN-framed Egypt vs Egypt anchor     +0.338  [+0.235,+0.437]   0.0020         -    0.0215
+  T19 EN-framed Japan vs Japan anchor     +1.016  [+0.828,+1.215]   0.0010         -    0.0215
+  T20 AR-neutral vs Egypt anchor          -1.163  [-1.424,-0.892]   0.0010         -    0.0215
+  T21 FA-neutral vs Iran anchor           -0.524  [-0.768,-0.266]   0.0059         -    0.0410
+  T22 EN-framed Nigeria vs Nga anchor     +0.477  [+0.387,+0.568]   0.0010         -    0.0215
 
   Nulls stated as bounds (the CI is what can be ruled out, not evidence of zero):
-    T1  Egypt: EN-framed vs AR-framed      |effect| <= 0.038
-    T3  JA-neutral vs Japan anchor         |effect| <= 0.188
-    T5  FA-neutral vs EN-neutral           |effect| <= 0.174
-    T11 JA-neutral vs EN-neutral           |effect| <= 0.183
-    T12 EN-neutral vs Japan anchor         |effect| <= 0.247
+    T1  Egypt: EN-framed vs AR-framed      |effect| <= 0.054
+    T3  JA-neutral vs Japan anchor         |effect| <= 0.233
+    T5  FA-neutral vs EN-neutral           |effect| <= 0.214
+    T11 JA-neutral vs EN-neutral           |effect| <= 0.249
+    T12 EN-neutral vs Japan anchor         |effect| <= 0.246
 
 === STEP 4. PER-FOUNDATION PANEL MEANS, English conditions (absent from appendix B6) ===
   condition                         care        equality  proportionalit         loyalty       authority          purity
-  en_neutral                       4.542           2.021           4.236           3.127           3.091           1.897
-  EN_framed_Egypt                  4.694           2.542           4.252           4.748           4.791           4.282
-  EN_framed_Japan                  4.345           2.361           4.055           3.839           4.167           2.997
-  EN_framed_Iran                   4.833           2.676           4.155           4.724           4.730           4.306
-  EN_framed_Nigeria                4.791           2.533           4.445           4.633           4.815           4.236
+  en_neutral                       4.697           2.045           4.203           3.142           3.115           1.882
+  EN_framed_Egypt                  4.742           2.539           4.252           4.727           4.797           4.291
+  EN_framed_Japan                  4.312           2.403           4.045           3.852           4.182           2.970
+  EN_framed_Iran                   4.848           2.548           4.233           4.715           4.694           4.321
+  EN_framed_Nigeria                4.761           2.588           4.412           4.576           4.776           4.194
   in-language cells, recomputed for cross-check against B6:
-  ar_framed_Egypt                  4.876           2.782           4.452           4.727           4.767           4.345
-  ar_neutral                       4.595           2.283           4.177           3.380           3.248           2.469
-  ja_framed_Japan                  4.285           2.312           3.976           3.570           3.845           2.961
-  ja_neutral                       4.561           2.164           3.939           2.897           3.088           2.000
-  fa_framed_Iran                   4.785           2.652           4.294           4.455           4.479           4.139
-  fa_neutral                       4.594           2.070           4.115           3.030           2.994           2.136
+  ar_framed_Egypt                  4.873           2.782           4.461           4.742           4.742           4.327
+  ar_neutral                       4.727           2.315           4.239           3.421           3.345           2.545
+  ja_framed_Japan                  4.288           2.397           3.979           3.542           3.821           2.939
+  ja_neutral                       4.612           2.100           3.997           2.936           3.064           2.027
+  fa_framed_Iran                   4.709           2.615           4.324           4.418           4.379           4.145
+  fa_neutral                       4.673           2.209           4.170           3.097           3.076           2.255
   measured anchors:
   Japan, measured                  3.030           2.270           3.140           2.660           2.670           2.630
   Iran, measured                   3.948           2.672           4.147           3.630           3.050           3.318
 
   EN-framed Iran per-foundation error vs the measured Iranian sample:
-    care                +0.885  [+0.779,+0.979]  p=0.0010
-    equality            +0.004  [-0.190,+0.204]  p=0.9658
-    proportionality     +0.008  [-0.114,+0.165]  p=0.9463
-    loyalty             +1.094  [+0.961,+1.206]  p=0.0010
-    authority           +1.680  [+1.574,+1.774]  p=0.0010
-    purity              +0.988  [+0.867,+1.097]  p=0.0010
+    care                +0.900  [+0.807,+0.985]  p=0.0010
+    equality            -0.124  [-0.287,+0.052]  p=0.2051
+    proportionality     +0.086  [-0.044,+0.229]  p=0.2783
+    loyalty             +1.085  [+0.973,+1.197]  p=0.0010
+    authority           +1.644  [+1.532,+1.744]  p=0.0010
+    purity              +1.003  [+0.879,+1.109]  p=0.0010
 
 === STEP 5. CLAIM CHECKS ===
 
   C1. "an overshoot of +1.26, the largest we have measured on any country"
       Overshoot is computable only where a published human mean exists.
-      EN-framed Egypt    4.607 vs anchor 4.267  overshoot +0.340
+      EN-framed Egypt    4.605 vs anchor 4.267  overshoot +0.338
       EN-framed Japan    3.668 vs anchor 2.652  overshoot +1.016
-      EN-framed Nigeria  4.562 vs anchor 4.038  overshoot +0.524
-      EN-framed Iran     4.587 vs anchor 3.333  overshoot +1.254
+      EN-framed Nigeria  4.515 vs anchor 4.038  overshoot +0.477
+      EN-framed Iran     4.577 vs anchor 3.333  overshoot +1.244
       No anchor in the MFQ-2 19-nation set, so not comparable: India, Sweden, United States
 
   C2. B6 prose vs table: JA-framed panel Care
-      JA-framed Care = 4.2848  CI[4.112,4.476]   (table says 4.28, prose says 4.29)
-      above measured Japanese Care 3.03 by +1.255 [+1.085,+1.446]  (prose says +1.26 [+1.09,+1.45])
+      JA-framed Care = 4.2879  CI[4.115,4.479]   (table says 4.28, prose says 4.29)
+      above measured Japanese Care 3.03 by +1.258 [+1.085,+1.452]  (prose says +1.26 [+1.09,+1.45])
 
   C3. Care span across all conditions run
-      20 conditions; Care spans 4.285 (ja_framed_Japan) to 5.000 (EN_framed_Morocco)
+      20 conditions; Care spans 4.288 (ja_framed_Japan) to 4.873 (ar_framed_Egypt)
       lowest CI floor across conditions: 4.115  (prose says every floor >= 4.11)
 
   C4. "disagreeing less about what an Egyptian is than about what they themselves are"
-      EN_framed_Egypt      between-model SD 0.150
-      ar_framed_Egypt      between-model SD 0.155
-      en_neutral           between-model SD 0.335
+      EN_framed_Egypt      between-model SD 0.171
+      ar_framed_Egypt      between-model SD 0.197
+      en_neutral           between-model SD 0.303
 
   C5. Iran anchor sensitivity (anchors_iran.json gives two samples)
-      anchor 3.333 (s2, n=989 (used)): EN-framed overshoot +1.254, FA-framed +1.025
-      anchor 3.231 (s1, n=392): EN-framed overshoot +1.356, FA-framed +1.127
-      anchor 3.304 (n-weighted pool): EN-framed overshoot +1.283, FA-framed +1.054
+      anchor 3.333 (s2, n=989 (used)): EN-framed overshoot +1.244, FA-framed +0.981
+      anchor 3.231 (s1, n=392): EN-framed overshoot +1.346, FA-framed +1.083
+      anchor 3.304 (n-weighted pool): EN-framed overshoot +1.273, FA-framed +1.010
 
   C6. Leave-one-model-out on the headline quantities
-      ja_neutral         panel mean spans 2.603 to 2.707  (vs anchor 2.652: -0.049 to +0.055)
-      EN_framed_Iran     panel mean spans 4.564 to 4.619  (vs anchor 3.333: +1.231 to +1.286)
-      T11 (JA-neutral vs EN-neutral) leave-one-model-out spans -0.0678 to +0.0067
+      ja_neutral         panel mean spans 2.603 to 2.714  (vs anchor 2.652: -0.049 to +0.062)
+      EN_framed_Iran     panel mean spans 4.553 to 4.617  (vs anchor 3.333: +1.220 to +1.284)
+      T11 (JA-neutral vs EN-neutral) leave-one-model-out spans -0.1056 to +0.0411
 
   C7. Per-model sign counts on the three claims that rest on direction
-      T11 JA-neutral - EN-neutral    positive 6/11, negative 5/11
-      T6 AR-neutral - EN-neutral     positive 11/11, negative 0/11
-      T5 FA-neutral - EN-neutral     positive 6/11, negative 5/11
+      T11 JA-neutral - EN-neutral    positive 4/11, negative 6/11
+      T6 AR-neutral - EN-neutral     positive 10/11, negative 0/11
+      T5 FA-neutral - EN-neutral     positive 7/11, negative 4/11

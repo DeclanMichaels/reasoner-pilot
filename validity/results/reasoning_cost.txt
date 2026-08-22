@@ -1,26 +1,27 @@
 === SCOPE ===
-  models 10, conditions 19, scored cells 837
+  models 11, conditions 20, scored cells 1100
 
 === COST AND WHAT IT BUYS, per model ===
   model           cells reason/call  out/call  reason%    gap-to-       own        total   reason tok
                                                of gen      panel    spread    reasoning per 0.01 gap
-  inkling            58       2382      2607      48%      0.198     0.125       138135         6975
-  deepseek_v4        94       1828      2054      47%      0.193     0.156       171829         8883
-  grok45             95       1258       219      85%      0.257     0.090       119513         4642
-  minimax            61       1040      1263      45%      0.111     0.137        63424         5717
-  o3                 92       1018      1245      45%      0.179     0.112        93632         5232
-  gpt55              95        412       568      42%      0.207     0.086        39134         1893
-  llama33            57          0       220       0%      0.257     0.187            0            0
-  mistral_large      95          0       293       0%      0.201     0.103            0            0
-  opus               95          0       226       0%      0.156     0.092            0            0
-  sonnet             95          0       238       0%      0.284     0.157            0            0
+  inkling           100       2256      2481      48%      0.168     0.131       225574        13445
+  deepseek_v4       100       1783      2009      47%      0.187     0.162       178329         9531
+  grok45            100       1258       219      85%      0.237     0.096       125792         5311
+  kimi_k3           100       1205      1437      46%      0.182     0.111       120500         6617
+  minimax           100       1142      1365      46%      0.126     0.161       114151         9052
+  o3                100        980      1207      45%      0.176     0.113        97984         5558
+  gpt55             100        407       564      42%      0.186     0.084        40748         2197
+  llama33           100          0       220       0%      0.275     0.182            0            0
+  mistral_large     100          0       293       0%      0.228     0.105            0            0
+  opus              100          0       226       0%      0.144     0.092            0            0
+  sonnet            100          0       238       0%      0.271     0.159            0            0
 
 === REASONING MODELS VS THE REST ===
-  reasoning (>0 tok/call)  n=6  mean gap-to-panel 0.191  mean own spread 0.118  mean reason/call 1323
-  no reasoning tokens      n=4  mean gap-to-panel 0.224  mean own spread 0.135  mean reason/call 0
+  reasoning (>0 tok/call)  n=7  mean gap-to-panel 0.180  mean own spread 0.123  mean reason/call 1290
+  no reasoning tokens      n=4  mean gap-to-panel 0.230  mean own spread 0.134  mean reason/call 0
 
-=== DOES SPENDING MORE MOVE THE ANSWER? (descriptive, n=10 models) ===
-  Spearman, reasoning per call vs gap to panel:   -0.244
-  Spearman, reasoning per call vs own spread:     -0.069
+=== DOES SPENDING MORE MOVE THE ANSWER? (descriptive, n=11 models) ===
+  Spearman, reasoning per call vs gap to panel:   -0.312
+  Spearman, reasoning per call vs own spread:     +0.135
   A correlation near zero means the tokens are not buying a different answer
   or a steadier one. With eleven models this is descriptive, not a test.
