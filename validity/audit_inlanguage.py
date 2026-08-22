@@ -70,12 +70,24 @@ lang = permodel(str(VDIR/"runs_framed_lang"/"*.json"),
                            else "framed_" + d["country"]))
 enfr = permodel(str(VDIR/"runs_framed"/"*_mfq2_*.json"),
                 lambda d: d.get("country") if d.get("country") in ("Egypt","Japan","Iran") else None)
-ennu = permodel(str(VDIR/"runs"/"*mfq2*.json"),
-                lambda d: "en_neutral" if d.get("instrument")=="mfq2" else None)
+# ENGLISH UNFRAMED, changed 2026-08-22. This used to be our own transcription of the
+# MFQ-2 administered with run_validity.py's self-report system prompt, while every
+# in-language unframed arm used the official Atari et al. translation with NO system
+# prompt: the comparator differed from what it was compared against in two ways at once.
+# Both were measured (results/english_baseline_audit.txt): instrument -0.038 p=.47,
+# system prompt +0.026 p=.49, neither distinguishable from zero. The official no-system
+# cell is the baseline now because it is the matched one. The old cell is kept under
+# en_neutral_ours so the errata can cite what was published before.
+ennu = permodel(str(VDIR/"runs_english_baseline"/"*.json"),
+                lambda d: "en_neutral" if d.get("condition")=="official_nosystem" else None)
+enold = permodel(str(VDIR/"runs"/"*mfq2*.json"),
+                 lambda d: "en_neutral_ours" if d.get("instrument")=="mfq2" else None)
 
 CONDS = {**{f"{c[0]}_{c[1]}": v for c,v in lang.items()},
          **{f"EN_framed_{k}": v for k,v in enfr.items()},
-         **({"en_neutral": ennu["en_neutral"]} if "en_neutral" in ennu else {})}
+         **({"en_neutral": ennu["en_neutral"]} if "en_neutral" in ennu else {}),
+         **({"en_neutral_ours": enold["en_neutral_ours"]}
+            if "en_neutral_ours" in enold else {})}
 
 print("=== VERIFICATION: per-model binding by condition (n models, panel mean) ===")
 ROSTER = sorted(set(m for v in CONDS.values() for m in v))
@@ -101,8 +113,11 @@ for pattern, keyfn in ((str(VDIR/"runs_framed_lang"/"*.json"),
                                              else "framed_" + d["country"])),
                        (str(VDIR/"runs_framed"/"*_mfq2_*.json"),
                         lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
+                       (str(VDIR/"runs_english_baseline"/"*.json"),
+                        lambda d: "en_neutral" if d.get("condition") == "official_nosystem"
+                        else None),
                        (str(VDIR/"runs"/"*mfq2*.json"),
-                        lambda d: "en_neutral" if d.get("instrument") == "mfq2" else None)):
+                        lambda d: "en_neutral_ours" if d.get("instrument") == "mfq2" else None)):
     import glob as _g
     for f in _g.glob(pattern):
         d = json.load(open(f))

@@ -1,10 +1,10 @@
 {
  "meta": {
-  "generated": "2026-08-22T10:03:14",
+  "generated": "2026-08-22T11:16:35",
   "produced_by": "validity/build_viewer_data.py",
   "reads": "validity/runs_framed_lang, validity/runs_framed, validity/runs",
-  "scored_cells": 2255,
-  "conditions": 41,
+  "scored_cells": 2475,
+  "conditions": 45,
   "models": 11,
   "roster": [
    "deepseek_v4",
@@ -37,33 +37,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -158,7 +158,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.5699,
+    "en_unframed": -0.5143,
     "local_unframed": -0.5032,
     "en_framed": 0.1544,
     "local_framed": 0.0665
@@ -173,33 +173,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -294,7 +294,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.7309,
+    "en_unframed": -0.6753,
     "local_unframed": -0.6672,
     "en_framed": -0.8218,
     "local_framed": -0.647
@@ -309,33 +309,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -430,7 +430,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.5069,
+    "en_unframed": -0.4513,
     "local_unframed": -0.4402,
     "en_framed": 0.4335,
     "local_framed": 0.3558
@@ -445,33 +445,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -566,7 +566,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.7839,
+    "en_unframed": -0.7283,
     "local_unframed": -0.7172,
     "en_framed": 0.603,
     "local_framed": 0.499
@@ -581,33 +581,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -702,7 +702,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -1.5539,
+    "en_unframed": -1.4983,
     "local_unframed": -1.163,
     "en_framed": 0.3381,
     "local_framed": 0.337
@@ -717,33 +717,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -838,7 +838,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.8969,
+    "en_unframed": -0.8413,
     "local_unframed": -0.8332,
     "en_framed": -0.8847,
     "local_framed": -0.7757
@@ -853,33 +853,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": null,
@@ -938,33 +938,33 @@
    },
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1059,7 +1059,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.6199,
+    "en_unframed": -0.5643,
     "local_unframed": -0.5239,
     "en_framed": 1.2438,
     "local_framed": 0.9811
@@ -1081,33 +1081,33 @@
    },
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1202,7 +1202,7 @@
     }
    },
    "deviation": {
-    "en_unframed": 0.0611,
+    "en_unframed": 0.1167,
     "local_unframed": 0.0238,
     "en_framed": 1.0157,
     "local_framed": 0.7823
@@ -1217,33 +1217,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1338,7 +1338,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.7989,
+    "en_unframed": -0.7433,
     "local_unframed": -0.7322,
     "en_framed": 0.6294,
     "local_framed": 0.4355
@@ -1353,33 +1353,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1474,7 +1474,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -1.3009,
+    "en_unframed": -1.2453,
     "local_unframed": -0.91,
     "en_framed": 0.5557,
     "local_framed": 0.5678
@@ -1489,33 +1489,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": null,
@@ -1552,7 +1552,7 @@
     "local_framed": null
    },
    "deviation": {
-    "en_unframed": -1.3249,
+    "en_unframed": -1.2693,
     "local_unframed": null,
     "en_framed": 0.4772,
     "local_framed": null
@@ -1567,33 +1567,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1688,7 +1688,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.8009,
+    "en_unframed": -0.7453,
     "local_unframed": -0.7342,
     "en_framed": 0.6193,
     "local_framed": 0.5244
@@ -1703,33 +1703,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1824,7 +1824,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.8859,
+    "en_unframed": -0.8303,
     "local_unframed": -0.8111,
     "en_framed": 0.5182,
     "local_framed": 0.4485
@@ -1839,33 +1839,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -1960,7 +1960,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -1.3699,
+    "en_unframed": -1.3143,
     "local_unframed": -0.979,
     "en_framed": 0.6503,
     "local_framed": 0.6736
@@ -1975,33 +1975,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": null,
@@ -2053,33 +2053,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -2174,7 +2174,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -0.6359,
+    "en_unframed": -0.5803,
     "local_unframed": -0.5722,
     "en_framed": -0.2864,
     "local_framed": -0.2732
@@ -2189,33 +2189,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": {
@@ -2310,7 +2310,7 @@
     }
    },
    "deviation": {
-    "en_unframed": -1.1789,
+    "en_unframed": -1.1233,
     "local_unframed": -0.788,
     "en_framed": 0.7373,
     "local_framed": 0.8343
@@ -2325,33 +2325,33 @@
    "human_foundations": null,
    "conditions": {
     "en_unframed": {
-     "mean": 2.7131,
+     "mean": 2.7687,
      "ci": [
-      2.5424,
-      2.898
+      2.6081,
+      2.9343
      ],
-     "sd": 0.303,
+     "sd": 0.2769,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 2.3778,
-      "gpt55": 2.5556,
-      "grok45": 2.7556,
-      "inkling": 2.3778,
-      "kimi_k3": 2.3,
+      "deepseek_v4": 2.7333,
+      "gpt55": 2.6,
+      "grok45": 2.8,
+      "inkling": 2.3222,
+      "kimi_k3": 2.4111,
       "llama33": 3.2111,
-      "minimax": 2.6556,
-      "mistral_large": 3.2667,
-      "o3": 2.7667,
-      "opus": 2.7,
-      "sonnet": 2.8778
+      "minimax": 3.0111,
+      "mistral_large": 3.2,
+      "o3": 2.8778,
+      "opus": 2.6778,
+      "sonnet": 2.6111
      },
      "foundations": {
-      "care": 4.697,
-      "equality": 2.0455,
-      "proportionality": 4.203,
-      "loyalty": 3.1424,
-      "authority": 3.1152,
-      "purity": 1.8818
+      "care": 4.7091,
+      "equality": 1.9848,
+      "proportionality": 4.1788,
+      "loyalty": 3.1939,
+      "authority": 3.1455,
+      "purity": 1.9667
      }
     },
     "local_unframed": null,
@@ -2532,113 +2532,113 @@
  "models": [
   {
    "model": "deepseek_v4",
-   "cells": 205,
-   "reasoning_per_call": 1795.5,
-   "output_per_call": 2021.2,
-   "reasoning_share": 0.4704,
-   "total_reasoning": 368087,
-   "gap_to_panel": 0.1862,
-   "own_spread": 0.1929
+   "cells": 225,
+   "reasoning_per_call": 1741.5,
+   "output_per_call": 1966.9,
+   "reasoning_share": 0.4696,
+   "total_reasoning": 391829,
+   "gap_to_panel": 0.1849,
+   "own_spread": 0.2001
   },
   {
    "model": "gpt55",
-   "cells": 205,
-   "reasoning_per_call": 422.2,
-   "output_per_call": 578.8,
-   "reasoning_share": 0.4218,
-   "total_reasoning": 86558,
-   "gap_to_panel": 0.1388,
-   "own_spread": 0.0948
+   "cells": 225,
+   "reasoning_per_call": 415.3,
+   "output_per_call": 571.8,
+   "reasoning_share": 0.4207,
+   "total_reasoning": 93437,
+   "gap_to_panel": 0.1488,
+   "own_spread": 0.1019
   },
   {
    "model": "grok45",
-   "cells": 205,
-   "reasoning_per_call": 1258.7,
+   "cells": 225,
+   "reasoning_per_call": 1248.0,
    "output_per_call": 219.0,
-   "reasoning_share": 0.8518,
-   "total_reasoning": 258032,
-   "gap_to_panel": 0.2309,
-   "own_spread": 0.1115
+   "reasoning_share": 0.8507,
+   "total_reasoning": 280811,
+   "gap_to_panel": 0.2231,
+   "own_spread": 0.1142
   },
   {
    "model": "inkling",
-   "cells": 205,
-   "reasoning_per_call": 2313.1,
-   "output_per_call": 2538.1,
-   "reasoning_share": 0.4768,
-   "total_reasoning": 474191,
-   "gap_to_panel": 0.1815,
-   "own_spread": 0.1425
+   "cells": 225,
+   "reasoning_per_call": 2271.1,
+   "output_per_call": 2496.1,
+   "reasoning_share": 0.4764,
+   "total_reasoning": 510996,
+   "gap_to_panel": 0.2004,
+   "own_spread": 0.1467
   },
   {
    "model": "kimi_k3",
-   "cells": 205,
-   "reasoning_per_call": 1364.4,
-   "output_per_call": 1596.5,
-   "reasoning_share": 0.4608,
-   "total_reasoning": 279709,
-   "gap_to_panel": 0.1864,
-   "own_spread": 0.1334
+   "cells": 225,
+   "reasoning_per_call": 1373.7,
+   "output_per_call": 1605.7,
+   "reasoning_share": 0.4611,
+   "total_reasoning": 309086,
+   "gap_to_panel": 0.2152,
+   "own_spread": 0.1402
   },
   {
    "model": "llama33",
-   "cells": 205,
+   "cells": 225,
    "reasoning_per_call": 0.0,
    "output_per_call": 220.0,
    "reasoning_share": 0.0,
    "total_reasoning": 0,
-   "gap_to_panel": 0.3168,
-   "own_spread": 0.1903
+   "gap_to_panel": 0.3394,
+   "own_spread": 0.1943
   },
   {
    "model": "minimax",
-   "cells": 205,
-   "reasoning_per_call": 1196.8,
-   "output_per_call": 1420.0,
-   "reasoning_share": 0.4573,
-   "total_reasoning": 245340,
-   "gap_to_panel": 0.1183,
-   "own_spread": 0.1674
+   "cells": 225,
+   "reasoning_per_call": 1177.3,
+   "output_per_call": 1400.5,
+   "reasoning_share": 0.4567,
+   "total_reasoning": 264889,
+   "gap_to_panel": 0.1167,
+   "own_spread": 0.1772
   },
   {
    "model": "mistral_large",
-   "cells": 205,
+   "cells": 225,
    "reasoning_per_call": 0.0,
    "output_per_call": 293.0,
    "reasoning_share": 0.0,
    "total_reasoning": 0,
-   "gap_to_panel": 0.2323,
-   "own_spread": 0.118
+   "gap_to_panel": 0.2597,
+   "own_spread": 0.128
   },
   {
    "model": "o3",
-   "cells": 205,
-   "reasoning_per_call": 983.4,
-   "output_per_call": 1212.4,
-   "reasoning_share": 0.4479,
-   "total_reasoning": 201600,
-   "gap_to_panel": 0.152,
-   "own_spread": 0.1113
+   "cells": 225,
+   "reasoning_per_call": 950.0,
+   "output_per_call": 1179.1,
+   "reasoning_share": 0.4462,
+   "total_reasoning": 213760,
+   "gap_to_panel": 0.1506,
+   "own_spread": 0.113
   },
   {
    "model": "opus",
-   "cells": 205,
+   "cells": 225,
    "reasoning_per_call": 0.0,
    "output_per_call": 226.0,
    "reasoning_share": 0.0,
    "total_reasoning": 0,
-   "gap_to_panel": 0.1447,
-   "own_spread": 0.1086
+   "gap_to_panel": 0.1351,
+   "own_spread": 0.1045
   },
   {
    "model": "sonnet",
-   "cells": 205,
+   "cells": 225,
    "reasoning_per_call": 0.0,
-   "output_per_call": 239.1,
+   "output_per_call": 238.9,
    "reasoning_share": 0.0,
    "total_reasoning": 0,
-   "gap_to_panel": 0.2335,
-   "own_spread": 0.155
+   "gap_to_panel": 0.228,
+   "own_spread": 0.1524
   }
  ],
  "conditions_raw": {
@@ -3362,11 +3362,131 @@
     "purity": 2.5455
    }
   },
+  "en_baseline_official_selfreport": {
+   "mean": 2.6949,
+   "ci": [
+    2.5263,
+    2.8596
+   ],
+   "sd": 0.2843,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.6778,
+    "gpt55": 2.3889,
+    "grok45": 2.8444,
+    "inkling": 2.2778,
+    "kimi_k3": 2.2333,
+    "llama33": 3.1333,
+    "minimax": 2.7333,
+    "mistral_large": 3.1222,
+    "o3": 2.7444,
+    "opus": 2.7111,
+    "sonnet": 2.7778
+   },
+   "foundations": {
+    "care": 4.6242,
+    "equality": 1.9667,
+    "proportionality": 4.1879,
+    "loyalty": 3.1545,
+    "authority": 3.0515,
+    "purity": 1.8788
+   }
+  },
+  "en_baseline_ours_nosystem": {
+   "mean": 2.7596,
+   "ci": [
+    2.5485,
+    2.9828
+   ],
+   "sd": 0.3687,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.4667,
+    "gpt55": 2.5333,
+    "grok45": 3.0333,
+    "inkling": 2.3444,
+    "kimi_k3": 2.1889,
+    "llama33": 3.3889,
+    "minimax": 2.8222,
+    "mistral_large": 3.3333,
+    "o3": 2.9111,
+    "opus": 2.7556,
+    "sonnet": 2.5778
+   },
+   "foundations": {
+    "care": 4.6788,
+    "equality": 2.0303,
+    "proportionality": 4.2061,
+    "loyalty": 3.1758,
+    "authority": 3.1303,
+    "purity": 1.9727
+   }
+  },
+  "en_baseline_ours_selfreport": {
+   "mean": 2.7333,
+   "ci": [
+    2.5596,
+    2.9242
+   ],
+   "sd": 0.309,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.4556,
+    "gpt55": 2.5222,
+    "grok45": 2.8,
+    "inkling": 2.5778,
+    "kimi_k3": 2.2667,
+    "llama33": 3.3,
+    "minimax": 2.7111,
+    "mistral_large": 3.2667,
+    "o3": 2.9222,
+    "opus": 2.7111,
+    "sonnet": 2.5333
+   },
+   "foundations": {
+    "care": 4.6091,
+    "equality": 1.9939,
+    "proportionality": 4.2182,
+    "loyalty": 3.1848,
+    "authority": 3.1091,
+    "purity": 1.9061
+   }
+  },
   "en_neutral": {
+   "mean": 2.7687,
+   "ci": [
+    2.6081,
+    2.9343
+   ],
+   "sd": 0.2769,
+   "n_models": 11,
+   "per_model": {
+    "deepseek_v4": 2.7333,
+    "gpt55": 2.6,
+    "grok45": 2.8,
+    "inkling": 2.3222,
+    "kimi_k3": 2.4111,
+    "llama33": 3.2111,
+    "minimax": 3.0111,
+    "mistral_large": 3.2,
+    "o3": 2.8778,
+    "opus": 2.6778,
+    "sonnet": 2.6111
+   },
+   "foundations": {
+    "care": 4.7091,
+    "equality": 1.9848,
+    "proportionality": 4.1788,
+    "loyalty": 3.1939,
+    "authority": 3.1455,
+    "purity": 1.9667
+   }
+  },
+  "en_neutral_ours": {
    "mean": 2.7131,
    "ci": [
-    2.5424,
-    2.898
+    2.5414,
+    2.897
    ],
    "sd": 0.303,
    "n_models": 11,

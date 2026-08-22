@@ -86,8 +86,16 @@ def load_all(what):
                                          else "framed_" + d["country"]), what)
     enfr = permodel(str(VDIR / "runs_framed" / "*_mfq2_*.json"),
                     lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None, what)
-    ennu = permodel(str(VDIR / "runs" / "*mfq2*.json"),
-                    lambda d: "en_neutral" if d.get("instrument") == "mfq2" else None, what)
+    # ENGLISH UNFRAMED, changed 2026-08-22. See the note in audit_inlanguage.py: the old
+    # comparator differed from the in-language arms in instrument AND system prompt, both
+    # measured at effectively zero. The matched cell is the baseline now; the old one is
+    # kept as en_neutral_ours so the errata can cite what was published before.
+    ennu = permodel(str(VDIR / "runs_english_baseline" / "*.json"),
+                    lambda d: "en_neutral" if d.get("condition") == "official_nosystem"
+                    else None, what)
+    enold = permodel(str(VDIR / "runs" / "*mfq2*.json"),
+                     lambda d: "en_neutral_ours" if d.get("instrument") == "mfq2" else None, what)
+    ennu = {**ennu, **enold}
     return dict(list(lang.items()) + list(enfr.items()) + list(ennu.items()))
 
 

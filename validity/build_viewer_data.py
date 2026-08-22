@@ -72,13 +72,24 @@ found_acc = defaultdict(lambda: defaultdict(list))
 usage = defaultdict(lambda: {"reasoning": 0, "output": 0, "input": 0, "n": 0})
 cells = 0
 
+# ENGLISH UNFRAMED, changed 2026-08-22. This used to be our own transcription of the
+# MFQ-2 administered with run_validity.py's self-report system prompt, while every
+# in-language unframed arm used the official Atari et al. translation with NO system
+# prompt: the comparator differed from what it was compared against in two ways at once.
+# Both were measured (results/english_baseline_audit.txt): instrument -0.038 p=.47,
+# system prompt +0.026 p=.49, neither distinguishable from zero. The official no-system
+# cell is the baseline now because it is the matched one. The old cell is kept under
+# en_neutral_ours so the errata can cite what was published before.
 SRC = [(VDIR / "runs_framed_lang" / "*.json",
         lambda d: "%s_%s" % (d["instrument"].split("_")[1],
                              d["condition"] if d["condition"] != "framed"
                              else "framed_" + d["country"])),
        (VDIR / "runs_framed" / "*_mfq2_*.json",
         lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
-       (VDIR / "runs" / "*_mfq2_*.json", lambda d: "en_neutral")]
+       (VDIR / "runs_english_baseline" / "*.json",
+        lambda d: "en_neutral" if d["condition"] == "official_nosystem"
+        else "en_baseline_" + d["condition"]),
+       (VDIR / "runs" / "*_mfq2_*.json", lambda d: "en_neutral_ours")]
 
 for pat, keyf in SRC:
     for f in glob.glob(str(pat)):

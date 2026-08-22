@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Unlisted: reachable by URL, not linked from the site and not in the sitemap.
+     These results are exploratory and none of it was preregistered, so it should not
+     turn up in a search before it has been reviewed. Remove this line to publish. -->
+<meta name="robots" content="noindex, nofollow">
 <title>In-language society framing - MFQ-2 binding composite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -751,17 +755,28 @@ function boot(d){
   render();
 }
 
-fetch("results/viewer_data.json", {cache:"no-store"})
-  .then(r => { if (!r.ok) throw new Error(r.status + " " + r.statusText); return r.json(); })
-  .then(boot)
-  .catch(e => {
-    document.getElementById("main").innerHTML =
-      `<div class="err"><strong>Could not load results/viewer_data.json</strong> - ${esc(e.message)}.
-       <br>Opening this file straight off disk blocks the read. Serve the directory instead:
-       <br><code>cd validity &amp;&amp; python3 -m http.server 8017</code>
-       <br>then open <code>http://localhost:8017/viewer.html</code>.</div>`;
-    document.getElementById("story").textContent = "";
-  });
+/* One file serves both places: the repo, where the JSON sits under results/, and the
+   website, where it is flat beside the page. Tried in order, first hit wins. */
+const DATA_PATHS = ["results/viewer_data.json", "inlanguage-mfq2-data.json"];
+
+(async () => {
+  const tried = [];
+  for (const p of DATA_PATHS){
+    try {
+      const r = await fetch(p, {cache:"no-store"});
+      if (!r.ok) { tried.push(`${p} (${r.status})`); continue; }
+      boot(await r.json());
+      return;
+    } catch (e) { tried.push(`${p} (${e.message})`); }
+  }
+  document.getElementById("main").innerHTML =
+    `<div class="err"><strong>Could not load the data file.</strong>
+     Tried ${tried.map(esc).join(", ")}.
+     <br>Opening this page straight off disk blocks the read. Serve the directory instead:
+     <br><code>cd validity &amp;&amp; python3 -m http.server 8017</code>
+     <br>then open <code>http://localhost:8017/viewer.html</code>.</div>`;
+  document.getElementById("story").textContent = "";
+})();
 </script>
 </body>
 </html>

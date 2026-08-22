@@ -7,7 +7,8 @@
   ar_framed_Saudi Arabia n=11  mean=4.757  models=True
   ar_framed_United Arab Emirates n=11  mean=4.726  models=True
   ar_neutral         n=11  mean=3.104  models=True
-  en_neutral         n=11  mean=2.713  models=True
+  en_neutral         n=11  mean=2.769  models=True
+  en_neutral_ours    n=11  mean=2.713  models=True
   es_framed_Argentina n=11  mean=3.349  models=True
   es_framed_Chile    n=11  mean=3.576  models=True
   es_framed_Colombia n=11  mean=3.996  models=True
@@ -33,7 +34,8 @@
     ar_framed_Saudi Arabia         foundation-route 4.7566  item-route 4.7566  OK
     ar_framed_United Arab Emirates foundation-route 4.7263  item-route 4.7263  OK
     ar_neutral                     foundation-route 3.1040  item-route 3.1040  OK
-    en_neutral                     foundation-route 2.7131  item-route 2.7131  OK
+    en_neutral                     foundation-route 2.7687  item-route 2.7687  OK
+    en_neutral_ours                foundation-route 2.7131  item-route 2.7131  OK
     es_framed_Argentina            foundation-route 3.3495  item-route 3.3495  OK
     es_framed_Chile                foundation-route 3.5758  item-route 3.5758  OK
     es_framed_Colombia             foundation-route 3.9960  item-route 3.9960  OK
@@ -61,7 +63,8 @@
   ar_framed_Saudi Arabia mean=4.757  CI[4.682,4.822]
   ar_framed_United Arab Emirates mean=4.726  CI[4.658,4.791]
   ar_neutral         mean=3.104  CI[2.840,3.374]
-  en_neutral         mean=2.713  CI[2.542,2.898]
+  en_neutral         mean=2.769  CI[2.608,2.934]
+  en_neutral_ours    mean=2.713  CI[2.541,2.897]
   es_framed_Argentina mean=3.349  CI[3.236,3.475]
   es_framed_Chile    mean=3.576  CI[3.478,3.677]
   es_framed_Colombia mean=3.996  CI[3.909,4.091]
@@ -85,9 +88,9 @@
   T2 Japan: EN-framed vs JA-framed         diff=+0.233 CI[+0.098,+0.384]  p=0.0059  holm=0.0234  n=11
   T3 JA-neutral vs Japan anchor            diff=+0.024 CI[-0.155,+0.233]  p=0.8330  holm=1.0000  n=11
   T4 FA-framed vs Iran anchor              diff=+0.981 CI[+0.815,+1.144]  p=0.0010  holm=0.0098  n=11
-  T5 FA-neutral vs EN-neutral              diff=+0.096 CI[-0.031,+0.214]  p=0.1758  holm=0.5273  n=11
-  T6 AR-neutral vs EN-neutral              diff=+0.391 CI[+0.255,+0.529]  p=0.0020  holm=0.0137  n=11
-  T7 AR-framed vs Egypt anchor             diff=+0.337 CI[+0.218,+0.450]  p=0.0020  holm=0.0137  n=11
+  T5 FA-neutral vs EN-neutral              diff=+0.040 CI[-0.117,+0.184]  p=0.6357  holm=1.0000  n=11
+  T6 AR-neutral vs EN-neutral              diff=+0.335 CI[+0.201,+0.483]  p=0.0010  holm=0.0098  n=11
+  T7 AR-framed vs Egypt anchor             diff=+0.337 CI[+0.218,+0.450]  p=0.0020  holm=0.0117  n=11
   T8 Japan: framed vs neutral (in-lang)    diff=+0.759 CI[+0.592,+0.921]  p=0.0010  holm=0.0098  n=11
   T9 EN-framed Iran vs Iran anchor         diff=+1.244 CI[+1.137,+1.338]  p=0.0010  holm=0.0098  n=11
   T10 Iran: EN-framed vs FA-framed         diff=+0.263 CI[+0.148,+0.380]  p=0.0029  holm=0.0146  n=11
@@ -95,17 +98,17 @@
 === FAMILY B, the language claim (post hoc, exploratory): one test per language ===
     Does the local-language unframed condition depart from the English default?
     Holm across the three. T5 and T6 also appear in family A; see the module docstring.
-  T5 FA-neutral vs EN-neutral              diff=+0.096 CI[-0.031,+0.214]  p=0.1758  holm=0.3516  n=11
-  T6 AR-neutral vs EN-neutral              diff=+0.391 CI[+0.255,+0.529]  p=0.0020  holm=0.0059  n=11
-  T11 JA-neutral vs EN-neutral             diff=-0.037 CI[-0.249,+0.164]  p=0.7500  holm=0.7500  n=11
+  T5 FA-neutral vs EN-neutral              diff=+0.040 CI[-0.117,+0.184]  p=0.6357  holm=0.8613  n=11
+  T6 AR-neutral vs EN-neutral              diff=+0.335 CI[+0.201,+0.483]  p=0.0010  holm=0.0029  n=11
+  T11 JA-neutral vs EN-neutral             diff=-0.093 CI[-0.299,+0.111]  p=0.4307  holm=0.8613  n=11
   Nulls are bounds, not demonstrated absence. Largest effect each rules out:
-    T5 FA-neutral vs EN-neutral              |effect| <= 0.214
-    T6 AR-neutral vs EN-neutral              |effect| <= 0.529
-    T11 JA-neutral vs EN-neutral             |effect| <= 0.249
+    T5 FA-neutral vs EN-neutral              |effect| <= 0.184
+    T6 AR-neutral vs EN-neutral              |effect| <= 0.483
+    T11 JA-neutral vs EN-neutral             |effect| <= 0.299
   Per-model sign counts (a real shift moves models together):
     T5 FA-neutral vs EN-neutral              up 7/11, down 4/11
-    T6 AR-neutral vs EN-neutral              up 10/11, down 0/11
-    T11 JA-neutral vs EN-neutral             up 4/11, down 6/11
+    T6 AR-neutral vs EN-neutral              up 11/11, down 0/11
+    T11 JA-neutral vs EN-neutral             up 3/11, down 8/11
 
 === leave-one-model-out sweeps ===
   JA-neutral panel mean without each model (anchor 2.652):
@@ -133,14 +136,14 @@
     -minimax        +1.018
     -sonnet         +1.030
   T11 (JA-neutral minus EN-neutral) without each model:
-    -deepseek_v4    -0.0411
-    -gpt55          -0.0356
-    -grok45         -0.1056
-    -inkling        -0.0667
-    -kimi_k3        -0.0400
-    -llama33        +0.0411
-    -minimax        -0.0433
-    -mistral_large  -0.0311
-    -o3             -0.0544
-    -opus           -0.0322
-    -sonnet         -0.0022
+    -deepseek_v4    -0.0667
+    -gpt55          -0.0922
+    -grok45         -0.1622
+    -inkling        -0.1333
+    -kimi_k3        -0.0900
+    -llama33        -0.0200
+    -minimax        -0.0689
+    -mistral_large  -0.0989
+    -o3             -0.1044
+    -opus           -0.0956
+    -sonnet         -0.0900

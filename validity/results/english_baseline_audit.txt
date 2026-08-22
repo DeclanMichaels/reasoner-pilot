@@ -1,0 +1,71 @@
+=== THE 2x2 ===
+
+Instrument: 'ours' is our transcription from moralfoundations.org, 'official' is the
+Atari et al. 2023 OSF supplement English. System: 'self-report' is the prompt
+run_validity.py sends, 'none' is the empty system prompt every in-language arm got.
+
+| cell | instrument | system | panel mean | 95% CI | SD | n |
+|---|---|---|--:|:--:|--:|--:|
+| ours_selfreport | ours | self-report | 2.733 | [2.560, 2.924] | 0.31 | 11 |
+| official_selfreport | official | self-report | 2.695 | [2.525, 2.860] | 0.28 | 11 |
+| ours_nosystem | ours | none | 2.760 | [2.546, 2.981] | 0.37 | 11 |
+| official_nosystem | official | none | 2.769 | [2.608, 2.934] | 0.28 | 11 |
+| published en_neutral | ours | self-report | 2.713 | [2.541, 2.898] | 0.30 | 11 |
+
+
+=== WHAT EACH DIFFERENCE IS WORTH ===
+
+Paired by model, exact sign-flip over 2^11 patterns. Holm across the four.
+
+  E1 instrument, holding the system prompt   diff=-0.038 CI[-0.130,+0.060]  p=0.4668  holm=1.0000  up 4/11 down 7/11
+  E2 system prompt, holding the instrument   diff=+0.026 CI[-0.042,+0.090]  p=0.4873  holm=1.0000  up 8/11 down 3/11
+  E3 both at once                            diff=+0.035 CI[-0.056,+0.128]  p=0.5000  holm=1.0000  up 5/11 down 5/11
+  E4 convention: seed and shuffle only       diff=+0.020 CI[-0.069,+0.090]  p=0.6895  holm=1.0000  up 7/11 down 4/11
+
+
+=== FAMILY B REDONE ===
+
+Comparator is the official English translation with no system prompt, which is
+what every in-language unframed arm received. Six tests, Holm across the six.
+
+  Arabic unframed vs English unframed        diff=+0.335 CI[+0.202,+0.483]  p=0.0010  holm=0.0059  up 11 down 0
+  Japanese unframed vs English unframed      diff=-0.093 CI[-0.298,+0.113]  p=0.4307  holm=1.0000  up 3 down 8
+  Farsi unframed vs English unframed         diff=+0.040 CI[-0.117,+0.182]  p=0.6357  holm=1.0000  up 7 down 4
+  Russian unframed vs English unframed       diff=+0.019 CI[-0.066,+0.111]  p=0.7188  holm=1.0000  up 5 down 6
+  French unframed vs English unframed        diff=+0.008 CI[-0.064,+0.069]  p=0.8594  holm=1.0000  up 6 down 5
+  Spanish unframed vs English unframed       diff=+0.011 CI[-0.112,+0.122]  p=0.8779  holm=1.0000  up 7 down 4
+
+  Same six tests against the OLD comparator, for comparison:
+
+  Arabic unframed vs English unframed        diff=+0.391 CI[+0.256,+0.531]  p=0.0020  holm=0.0117  up 10 down 0
+  Farsi unframed vs English unframed         diff=+0.096 CI[-0.031,+0.214]  p=0.1758  holm=0.8789  up 7 down 4
+  Spanish unframed vs English unframed       diff=+0.067 CI[-0.023,+0.160]  p=0.2119  holm=0.8789  up 7 down 4
+  French unframed vs English unframed        diff=+0.064 CI[-0.016,+0.158]  p=0.2168  holm=0.8789  up 6 down 5
+  Russian unframed vs English unframed       diff=+0.075 CI[-0.062,+0.210]  p=0.3291  holm=0.8789  up 7 down 4
+  Japanese unframed vs English unframed      diff=-0.037 CI[-0.248,+0.164]  p=0.7500  holm=0.8789  up 4 down 6
+
+  Movement in each language's estimate when the comparator is fixed:
+
+    Arabic unframed vs English unframed        +0.391 -> +0.335   (-0.056)
+    Farsi unframed vs English unframed         +0.096 -> +0.040   (-0.056)
+    French unframed vs English unframed        +0.064 -> +0.008   (-0.056)
+    Japanese unframed vs English unframed      -0.037 -> -0.093   (-0.056)
+    Russian unframed vs English unframed       +0.075 -> +0.019   (-0.056)
+    Spanish unframed vs English unframed       +0.067 -> +0.011   (-0.056)
+
+
+=== PER MODEL, ALL FOUR CELLS ===
+
+| model | ours_selfreport | official_selfreport | ours_nosystem | official_nosystem |
+|---|---|---|---|---|
+| deepseek_v4 | 2.456 | 2.678 | 2.467 | 2.733 |
+| gpt55 | 2.522 | 2.389 | 2.533 | 2.600 |
+| grok45 | 2.800 | 2.844 | 3.033 | 2.800 |
+| inkling | 2.578 | 2.278 | 2.344 | 2.322 |
+| kimi_k3 | 2.267 | 2.233 | 2.189 | 2.411 |
+| llama33 | 3.300 | 3.133 | 3.389 | 3.211 |
+| minimax | 2.711 | 2.733 | 2.822 | 3.011 |
+| mistral_large | 3.267 | 3.122 | 3.333 | 3.200 |
+| o3 | 2.922 | 2.744 | 2.911 | 2.878 |
+| opus | 2.711 | 2.711 | 2.756 | 2.678 |
+| sonnet | 2.533 | 2.778 | 2.578 | 2.611 |
