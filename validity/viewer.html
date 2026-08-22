@@ -162,6 +162,7 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);
   <div class="panel" id="p-overshoot" role="tabpanel" aria-hidden="false"></div>
   <div class="panel" id="p-order"     role="tabpanel" aria-hidden="true"></div>
   <div class="panel" id="p-matrix"    role="tabpanel" aria-hidden="true"></div>
+  <div class="panel" id="p-found"     role="tabpanel" aria-hidden="true"></div>
   <div class="panel" id="p-models"    role="tabpanel" aria-hidden="true"></div>
 </main>
 
@@ -500,6 +501,160 @@ function panelOrder(){
 }
 
 /* ============================================================
+   PANEL - which foundations move
+   ============================================================ */
+const FOUND = ["care","equality","proportionality","loyalty","authority","purity"];
+const BIND = new Set(["loyalty","authority","purity"]);
+const FLABEL = {care:"Care", equality:"Equality", proportionality:"Proportionality",
+                loyalty:"Loyalty", authority:"Authority", purity:"Purity"};
+
+function panelFoundations(){
+  const S = D.foundation_shifts || [];
+  if (!S.length) return `<div class="cbox"><h2>Which foundations move</h2>
+    <p class="lede">This view needs foundation_shifts in the data file. Re-run
+    <span class="mono">build_viewer_data.py</span>.</p></div>`;
+
+  // ---- A. the shift, one row per foundation, one mark per language
+  let lo = 0, hi = 0;
+  for (const r of S) for (const f of FOUND){
+    lo = Math.min(lo, r.foundations[f].ci[0]); hi = Math.max(hi, r.foundations[f].ci[1]);
+  }
+  lo = Math.floor(lo*4)/4 - 0.1; hi = Math.ceil(hi*4)/4 + 0.1;
+  // One row per language inside a group per foundation, the same idiom as the main chart:
+  // a mark that has to carry its own text label cannot share a row with five others.
+  const W = 980, L = 232, R = 96, RH = 27, GH = 30, TOP = 46;
+  const H = TOP + FOUND.length*(GH + S.length*RH) + 34;
+  const x = v => L + (v - lo)/(hi - lo)*(W - L - R);
+
+  let a = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"
+    aria-label="Shift in each moral foundation when the panel is framed as a local, by language">`;
+  for (let v = Math.ceil(lo*4)/4; v <= hi; v += 0.25)
+    a += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-30}" stroke="var(--border)"/>
+      <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
+        text-anchor="middle">${v>0?"+":""}${v.toFixed(2)}</text>`;
+  a += `<line x1="${x(0)}" y1="${TOP-14}" x2="${x(0)}" y2="${H-30}"
+          stroke="var(--human)" stroke-width="2"/>
+        <text x="${x(0)}" y="${H-10}" fill="var(--text-dim)" font-size="15"
+          text-anchor="middle">no change</text>
+        <text x="${W-R+14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15">shift</text>`;
+
+  let yc2 = TOP;
+  for (const f of FOUND){
+    const gh = GH + S.length*RH;
+    if (BIND.has(f))
+      a += `<rect x="0" y="${yc2}" width="${W-R+8}" height="${gh}"
+              fill="var(--framed)" opacity=".06"/>`;
+    yc2 += GH;
+    a += `<text x="0" y="${yc2-10}" fill="var(--text-bright)" font-size="15"
+            font-weight="600">${FLABEL[f]}</text>
+          <text class="m" x="${L-14}" y="${yc2-10}" fill="var(--text-dim)" font-size="15"
+            text-anchor="end">${BIND.has(f) ? "binding" : ""}</text>`;
+    const marks = S.map(r => ({lang:r.language, v:r.foundations[f]}))
+                   .sort((p,q) => q.v.shift - p.v.shift);
+    for (const mk of marks){
+      const y = yc2 + RH/2, solid = mk.v.p <= 0.05;
+      a += `<text x="14" y="${y+5}" fill="${solid?"var(--text-bright)":"var(--text-dim)"}"
+              font-size="15">${esc(mk.lang)}</text>`;
+      a += `<line x1="${x(mk.v.ci[0])}" y1="${y}" x2="${x(mk.v.ci[1])}" y2="${y}"
+              stroke="var(--framed)" stroke-width="1.8" opacity="${solid?.6:.3}"/>`;
+      a += solid
+        ? `<circle cx="${x(mk.v.shift)}" cy="${y}" r="5.5" fill="var(--framed)"/>`
+        : `<circle cx="${x(mk.v.shift)}" cy="${y}" r="5" fill="var(--bg)"
+             stroke="var(--framed)" stroke-width="2.2"/>`;
+      a += `<text class="m" x="${W-R+14}" y="${y+5}" font-size="15"
+              fill="${solid?"var(--text-bright)":"var(--text-dim)"}">${fmtS(mk.v.shift,2)}</text>`;
+      yc2 += RH;
+    }
+  }
+  a += `</svg>`;
+
+  // ---- B. where each language's panel actually sits, on the 1 to 5 scale
+  let b = "";
+  for (const r of S){
+    const anchorRow = r.countries.length === 1
+      ? D.countries.find(c => c.country === r.countries[0] && c.human_foundations) : null;
+    const W2 = 940, L2 = 190, R2 = 130, RH2 = 34, TOP2 = 40;
+    const H2 = TOP2 + FOUND.length*RH2 + 16;
+    const x2 = v => L2 + (v - 1)/4*(W2 - L2 - R2);
+    let s = `<svg class="chart" viewBox="0 0 ${W2} ${H2}" role="img"
+      aria-label="Foundation profile for ${esc(r.language)}">`;
+    for (let v = 1; v <= 5; v += 0.5)
+      s += `<line x1="${x2(v)}" y1="${TOP2-12}" x2="${x2(v)}" y2="${H2-8}" stroke="var(--border)"/>
+        ${v % 1 === 0 ? `<text class="m" x="${x2(v)}" y="${TOP2-20}" fill="var(--text-dim)"
+          font-size="15" text-anchor="middle">${v}</text>` : ""}`;
+    FOUND.forEach((f,i) => {
+      const y = TOP2 + i*RH2 + RH2/2, v = r.foundations[f];
+      s += `<text x="0" y="${y+5}" fill="${BIND.has(f)?"var(--text-bright)":"var(--text)"}"
+              font-size="15"${BIND.has(f)?' font-weight="600"':''}>${FLABEL[f]}</text>`;
+      s += `<line x1="${x2(v.unframed)}" y1="${y}" x2="${x2(v.framed)}" y2="${y}"
+              stroke="var(--framed)" stroke-width="2" opacity=".4"/>`;
+      s += `<circle cx="${x2(v.unframed)}" cy="${y}" r="6" fill="var(--bg)"
+              stroke="var(--unframed)" stroke-width="2.6"/>`;
+      s += `<circle cx="${x2(v.framed)}" cy="${y}" r="6.5" fill="var(--framed)"/>`;
+      if (anchorRow){
+        const hx = x2(anchorRow.human_foundations[f]);
+        s += `<line x1="${hx}" y1="${y-10}" x2="${hx}" y2="${y+10}" stroke="var(--human)" stroke-width="2.5"/>
+              <path d="M${hx-5},${y-10} L${hx+5},${y-10} L${hx},${y-4} Z" fill="var(--human)"/>`;
+      }
+      s += `<text class="m" x="${W2-R2+14}" y="${y+5}" font-size="15"
+              fill="${v.shift>0?"#f0a58c":"#8fbdf0"}">${fmtS(v.shift,2)}</text>`;
+    });
+    s += `</svg>`;
+    b += `<h3 class="grp">${esc(r.language)} &middot; framed as
+      ${r.countries.length === 1 ? esc(r.countries[0])
+        : "each of " + r.countries.map(esc).join(", ")}</h3>${s}`;
+  }
+
+  // ---- the table
+  let t = `<table class="data"><thead><tr><th>Foundation</th>
+    ${S.map(r=>`<th>${esc(r.language)}</th>`).join("")}<th>Mean</th></tr></thead><tbody>`;
+  for (const f of FOUND){
+    const vs = S.map(r => r.foundations[f].shift);
+    t += `<tr><td>${FLABEL[f]}${BIND.has(f)?" <span style='color:var(--text-dim)'>(binding)</span>":""}</td>
+      ${S.map(r=>{const v=r.foundations[f];
+        return `<td class="num" title="p=${v.p}">${fmtS(v.shift,2)}${
+          v.p<=0.05?"":" <span style='color:var(--text-dim)'>ns</span>"}</td>`;}).join("")}
+      <td class="num">${fmtS(vs.reduce((s,v)=>s+v,0)/vs.length,2)}</td></tr>`;
+  }
+  t += `</tbody></table>`;
+
+  return `<div class="cbox">
+    <h2>Which foundations move</h2>
+    <p class="lede">The binding composite is three of the six foundations averaged, so a
+      shift in it says nothing about the other three. This is each foundation on its own:
+      how far the panel moves when it is told to answer as a local, in that language,
+      against the same panel answering the same questionnaire in the same language with no
+      framing at all. Positive is upward. The shaded rows are the three that make up the
+      binding composite. A filled mark clears p &le; .05 on the exact sign-flip test, a
+      hollow one does not; the bar is the 95% bootstrap interval.</p>
+    ${a}
+    <p class="note"><strong>The answer is no, but not by much.</strong> Framing lifts the
+      three binding foundations by roughly a full scale point, purity most of all. Equality
+      also moves, by about a third of that. Proportionality barely moves and Care does not
+      move up anywhere; in Japanese and Russian it moves slightly down. So the composite is
+      not hiding a general inflation of every answer: it is picking up a specific,
+      lopsided change.</p>
+  </div>
+  <div class="cbox">
+    <h2>Where that leaves the panel</h2>
+    <p class="lede">The same shifts on the questionnaire's own 1 to 5 scale. The blue ring
+      is unframed, the orange disc is framed, and the bar between them is the move. Where a
+      published human profile exists for the country, the white caret is the population.</p>
+    ${b}
+    <p class="note">Unframed, the panel already sits near the ceiling on Care (about 4.7)
+      and near the floor on Purity (about 2.0). Most of the room to move is in the
+      foundations it starts low on, which is worth holding in mind before reading the
+      pattern as a claim about what framing does to moral reasoning.</p>
+  </div>
+  <div class="cbox">
+    <h2>Every shift</h2>
+    <p class="lede">Scale points, framed minus unframed, model as the unit.
+      <span class="mono">ns</span> marks a shift that does not clear p &le; .05.</p>
+    ${t}
+  </div>`;
+}
+
+/* ============================================================
    PANEL 3 - deviation matrix
    ============================================================ */
 /* Diverging ramp for the matrix. The poles are deliberately held below the
@@ -655,6 +810,7 @@ function panelModels(){
 const TABS = [
   {id:"overshoot", label:"Against the population", fn:panelOvershoot},
   {id:"order",     label:"Ordering",               fn:panelOrder},
+  {id:"found",     label:"Which foundations move", fn:panelFoundations},
   {id:"matrix",    label:"Every cell",             fn:panelMatrix},
   {id:"models",    label:"Models",                 fn:panelModels},
 ];

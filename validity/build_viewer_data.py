@@ -9,7 +9,7 @@ seed plus the quantity's own name.
 
     python3 validity/build_viewer_data.py > validity/results/viewer_data.json
 """
-import json, glob, random, sys, time
+import json, glob, itertools, random, sys, time
 from pathlib import Path
 from collections import defaultdict
 
@@ -186,6 +186,43 @@ for code, name in LANGS.items():
         }
     groups.append(g)
 
+# ---- what framing moves, foundation by foundation
+# The binding composite is three of the six foundations averaged, so a shift in it says
+# nothing about whether the other three moved. This computes, per model, the mean over a
+# language's countries of (in-language framed minus in-language unframed) for each
+# foundation separately, and tests each with the same exact sign-flip used elsewhere.
+def signflip(d):
+    n = len(d)
+    obs = abs(mean(d))
+    hits = sum(1 for s in itertools.product((1, -1), repeat=n)
+               if abs(mean([a * b for a, b in zip(s, d)])) >= obs - 1e-12)
+    return hits / 2 ** n
+
+
+shifts = []
+for g in groups + [{"lang_code": c, "language": LANGS[c],
+                    "countries": [r["country"] for r in countries if r["lang_code"] == c]}
+                   for c in LANGS if not any(x["lang_code"] == c for x in groups)]:
+    code = g["lang_code"]
+    nk = code + "_neutral"
+    cs = [c for c in g["countries"] if code + "_framed_" + c in F]
+    if nk not in F or not cs:
+        continue
+    ms = sorted(set(F[nk]) & set.intersection(*[set(F[code + "_framed_" + c]) for c in cs]))
+    row = {"lang_code": code, "language": g["language"], "countries": cs,
+           "n_models": len(ms), "foundations": {}}
+    for fo in FOUND:
+        d = [mean([F[code + "_framed_" + c][m][fo] for c in cs]) - F[nk][m][fo] for m in ms]
+        lo, hi = boot(d, "shift|%s|%s" % (code, fo))
+        row["foundations"][fo] = {
+            "shift": round(mean(d), 4), "ci": [round(lo, 4), round(hi, 4)],
+            "p": round(signflip(d), 4),
+            "up": sum(1 for x in d if x > 0), "down": sum(1 for x in d if x < 0),
+            "unframed": round(mean([F[nk][m][fo] for m in ms]), 4),
+            "framed": round(mean([mean([F[code + "_framed_" + c][m][fo] for c in cs])
+                                  for m in ms]), 4)}
+    shifts.append(row)
+
 # ---- reasoning cost, per model
 gap = defaultdict(list)
 for k in C:
@@ -233,6 +270,7 @@ out = {
     "countries": countries,
     "language_groups": groups,
     "models": models,
+    "foundation_shifts": shifts,
     "conditions_raw": {k: cond(k) for k in sorted(C)},
 }
 json.dump(out, sys.stdout, indent=1, sort_keys=False)

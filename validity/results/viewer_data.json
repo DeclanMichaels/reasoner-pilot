@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-08-22T11:16:35",
+  "generated": "2026-08-22T11:33:45",
   "produced_by": "validity/build_viewer_data.py",
   "reads": "validity/runs_framed_lang, validity/runs_framed, validity/runs",
   "scored_cells": 2475,
@@ -2639,6 +2639,509 @@
    "total_reasoning": 0,
    "gap_to_panel": 0.228,
    "own_spread": 0.1524
+  }
+ ],
+ "foundation_shifts": [
+  {
+   "lang_code": "ar",
+   "language": "Arabic",
+   "countries": [
+    "Egypt",
+    "Morocco",
+    "Saudi Arabia",
+    "United Arab Emirates"
+   ],
+   "n_models": 11,
+   "foundations": {
+    "care": {
+     "shift": 0.1273,
+     "ci": [
+      -0.0447,
+      0.3545
+     ],
+     "p": 0.3037,
+     "up": 6,
+     "down": 5,
+     "unframed": 4.7273,
+     "framed": 4.8545
+    },
+    "equality": {
+     "shift": 0.1758,
+     "ci": [
+      -0.0402,
+      0.428
+     ],
+     "p": 0.1992,
+     "up": 6,
+     "down": 5,
+     "unframed": 2.3152,
+     "framed": 2.4909
+    },
+    "proportionality": {
+     "shift": 0.2682,
+     "ci": [
+      0.0689,
+      0.4424
+     ],
+     "p": 0.0254,
+     "up": 9,
+     "down": 1,
+     "unframed": 4.2394,
+     "framed": 4.5076
+    },
+    "loyalty": {
+     "shift": 1.3644,
+     "ci": [
+      1.0947,
+      1.6439
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.4212,
+     "framed": 4.7856
+    },
+    "authority": {
+     "shift": 1.4712,
+     "ci": [
+      1.2326,
+      1.7053
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.3455,
+     "framed": 4.8167
+    },
+    "purity": {
+     "shift": 1.8538,
+     "ci": [
+      1.4886,
+      2.2205
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 2.5455,
+     "framed": 4.3992
+    }
+   }
+  },
+  {
+   "lang_code": "es",
+   "language": "Spanish",
+   "countries": [
+    "Argentina",
+    "Chile",
+    "Colombia",
+    "Mexico",
+    "Peru"
+   ],
+   "n_models": 11,
+   "foundations": {
+    "care": {
+     "shift": 0.0952,
+     "ci": [
+      -0.0667,
+      0.2764
+     ],
+     "p": 0.3281,
+     "up": 4,
+     "down": 6,
+     "unframed": 4.5667,
+     "framed": 4.6618
+    },
+    "equality": {
+     "shift": 0.6,
+     "ci": [
+      0.3588,
+      0.8527
+     ],
+     "p": 0.002,
+     "up": 10,
+     "down": 1,
+     "unframed": 1.9939,
+     "framed": 2.5939
+    },
+    "proportionality": {
+     "shift": 0.0958,
+     "ci": [
+      -0.0909,
+      0.2739
+     ],
+     "p": 0.3467,
+     "up": 8,
+     "down": 3,
+     "unframed": 4.0697,
+     "framed": 4.1655
+    },
+    "loyalty": {
+     "shift": 1.0279,
+     "ci": [
+      0.8855,
+      1.1939
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.0697,
+     "framed": 4.0976
+    },
+    "authority": {
+     "shift": 0.9109,
+     "ci": [
+      0.8079,
+      1.0248
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.2091,
+     "framed": 4.12
+    },
+    "purity": {
+     "shift": 1.0661,
+     "ci": [
+      0.7861,
+      1.3497
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 2.0606,
+     "framed": 3.1267
+    }
+   }
+  },
+  {
+   "lang_code": "fr",
+   "language": "French",
+   "countries": [
+    "Belgium",
+    "France",
+    "Switzerland"
+   ],
+   "n_models": 11,
+   "foundations": {
+    "care": {
+     "shift": 0.0202,
+     "ci": [
+      -0.2758,
+      0.3566
+     ],
+     "p": 0.9219,
+     "up": 4,
+     "down": 5,
+     "unframed": 4.4333,
+     "framed": 4.4535
+    },
+    "equality": {
+     "shift": 0.1,
+     "ci": [
+      -0.1657,
+      0.4293
+     ],
+     "p": 0.6504,
+     "up": 6,
+     "down": 5,
+     "unframed": 2.2273,
+     "framed": 2.3273
+    },
+    "proportionality": {
+     "shift": 0.0808,
+     "ci": [
+      -0.1576,
+      0.3646
+     ],
+     "p": 0.6377,
+     "up": 6,
+     "down": 5,
+     "unframed": 3.9697,
+     "framed": 4.0505
+    },
+    "loyalty": {
+     "shift": 0.2949,
+     "ci": [
+      0.1364,
+      0.4687
+     ],
+     "p": 0.0049,
+     "up": 9,
+     "down": 2,
+     "unframed": 3.0788,
+     "framed": 3.3737
+    },
+    "authority": {
+     "shift": -0.0111,
+     "ci": [
+      -0.1475,
+      0.1162
+     ],
+     "p": 0.8848,
+     "up": 7,
+     "down": 4,
+     "unframed": 3.0242,
+     "framed": 3.0131
+    },
+    "purity": {
+     "shift": 0.0929,
+     "ci": [
+      -0.1333,
+      0.3061
+     ],
+     "p": 0.4434,
+     "up": 7,
+     "down": 4,
+     "unframed": 2.2273,
+     "framed": 2.3202
+    }
+   }
+  },
+  {
+   "lang_code": "ja",
+   "language": "Japanese",
+   "countries": [
+    "Japan"
+   ],
+   "n_models": 11,
+   "foundations": {
+    "care": {
+     "shift": -0.3242,
+     "ci": [
+      -0.497,
+      -0.1455
+     ],
+     "p": 0.0117,
+     "up": 2,
+     "down": 8,
+     "unframed": 4.6121,
+     "framed": 4.2879
+    },
+    "equality": {
+     "shift": 0.297,
+     "ci": [
+      0.1,
+      0.5273
+     ],
+     "p": 0.0195,
+     "up": 8,
+     "down": 1,
+     "unframed": 2.1,
+     "framed": 2.397
+    },
+    "proportionality": {
+     "shift": -0.0182,
+     "ci": [
+      -0.1727,
+      0.0939
+     ],
+     "p": 0.9102,
+     "up": 6,
+     "down": 4,
+     "unframed": 3.997,
+     "framed": 3.9788
+    },
+    "loyalty": {
+     "shift": 0.6061,
+     "ci": [
+      0.3909,
+      0.8242
+     ],
+     "p": 0.002,
+     "up": 10,
+     "down": 1,
+     "unframed": 2.9364,
+     "framed": 3.5424
+    },
+    "authority": {
+     "shift": 0.7576,
+     "ci": [
+      0.5515,
+      0.9697
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.0636,
+     "framed": 3.8212
+    },
+    "purity": {
+     "shift": 0.9121,
+     "ci": [
+      0.7455,
+      1.0879
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 2.0273,
+     "framed": 2.9394
+    }
+   }
+  },
+  {
+   "lang_code": "fa",
+   "language": "Farsi",
+   "countries": [
+    "Iran"
+   ],
+   "n_models": 11,
+   "foundations": {
+    "care": {
+     "shift": 0.0364,
+     "ci": [
+      -0.1242,
+      0.203
+     ],
+     "p": 0.7148,
+     "up": 5,
+     "down": 6,
+     "unframed": 4.6727,
+     "framed": 4.7091
+    },
+    "equality": {
+     "shift": 0.4061,
+     "ci": [
+      0.1606,
+      0.6667
+     ],
+     "p": 0.0107,
+     "up": 9,
+     "down": 2,
+     "unframed": 2.2091,
+     "framed": 2.6152
+    },
+    "proportionality": {
+     "shift": 0.1545,
+     "ci": [
+      -0.0667,
+      0.3606
+     ],
+     "p": 0.21,
+     "up": 8,
+     "down": 3,
+     "unframed": 4.1697,
+     "framed": 4.3242
+    },
+    "loyalty": {
+     "shift": 1.3212,
+     "ci": [
+      1.0727,
+      1.5848
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.097,
+     "framed": 4.4182
+    },
+    "authority": {
+     "shift": 1.303,
+     "ci": [
+      1.1,
+      1.5242
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.0758,
+     "framed": 4.3788
+    },
+    "purity": {
+     "shift": 1.8909,
+     "ci": [
+      1.4515,
+      2.3303
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 2.2545,
+     "framed": 4.1455
+    }
+   }
+  },
+  {
+   "lang_code": "ru",
+   "language": "Russian",
+   "countries": [
+    "Russia"
+   ],
+   "n_models": 11,
+   "foundations": {
+    "care": {
+     "shift": -0.1697,
+     "ci": [
+      -0.2788,
+      -0.0636
+     ],
+     "p": 0.0195,
+     "up": 1,
+     "down": 9,
+     "unframed": 4.7121,
+     "framed": 4.5424
+    },
+    "equality": {
+     "shift": 0.4727,
+     "ci": [
+      0.2667,
+      0.703
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 2.097,
+     "framed": 2.5697
+    },
+    "proportionality": {
+     "shift": 0.1091,
+     "ci": [
+      -0.0848,
+      0.297
+     ],
+     "p": 0.3184,
+     "up": 7,
+     "down": 3,
+     "unframed": 4.2091,
+     "framed": 4.3182
+    },
+    "loyalty": {
+     "shift": 1.2182,
+     "ci": [
+      0.9333,
+      1.5
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.1606,
+     "framed": 4.3788
+    },
+    "authority": {
+     "shift": 1.2515,
+     "ci": [
+      1.0485,
+      1.4333
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 3.1576,
+     "framed": 4.4091
+    },
+    "purity": {
+     "shift": 1.3091,
+     "ci": [
+      1.0212,
+      1.6
+     ],
+     "p": 0.001,
+     "up": 11,
+     "down": 0,
+     "unframed": 2.0455,
+     "framed": 3.3545
+    }
+   }
   }
  ],
  "conditions_raw": {
