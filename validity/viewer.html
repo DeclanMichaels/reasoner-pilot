@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In-language society framing - MFQ-2 binding composite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Tokens. Surfaces and ink follow ccas-viewer.css; the encoding
+   slots are the validated dark categorical palette, checked
+   against this surface (#0c0c14).
+   ============================================================ */
+:root{
+  --bg:#0c0c14; --surface:#101018; --surface-2:#151520; --surface-3:#1c1c2a;
+  --border:rgba(255,255,255,0.08); --border-hi:rgba(255,255,255,0.16);
+  --text:#c8c8d0; --text-dim:#9898a8; --text-bright:#eaeaf0;
+
+  /* the 2x2. hue = framing, fill = language. */
+  --unframed:#3987e5;      /* categorical slot 1, dark step */
+  --framed:#d95926;        /* categorical slot 2, dark step */
+  --human:#eaeaf0;         /* reference ink - never a hue */
+
+  /* diverging, used only where position is unavailable (the matrix) */
+  --div-lo:#3987e5; --div-mid:#2a2a38; --div-hi:#e66767;
+
+  --warn:#fab219;
+  --focus:#eda100;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+html{background:var(--bg)}
+body{
+  background:var(--bg); color:var(--text);
+  font:400 16px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 96px}
+
+a{color:#7fb3f0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:99;background:var(--surface-3);color:var(--text-bright);padding:12px 16px;border-radius:6px}
+
+/* ---- header ---- */
+.hdr{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:28px}
+.hdr .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:15px;letter-spacing:.06em;color:var(--text-dim);text-transform:uppercase;margin-bottom:10px}
+.hdr h1{font-size:34px;line-height:1.2;font-weight:600;color:var(--text-bright);letter-spacing:-.01em}
+.hdr .sub{font-size:18px;color:var(--text);margin-top:14px;max-width:74ch}
+.hdr .sub strong{color:var(--text-bright);font-weight:600}
+
+.prov{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.prov span{font-family:"IBM Plex Mono",monospace;font-size:15px;color:var(--text-dim);
+  background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:5px 10px}
+
+.banner{margin:22px 0 0;padding:14px 18px;border-radius:7px;font-size:16px;
+  background:rgba(250,178,25,.09);border:1px solid rgba(250,178,25,.38);color:#f3d79a}
+.banner strong{color:#fce3ae}
+.banner code{font-family:"IBM Plex Mono",monospace;font-size:15px}
+
+/* ---- tabs ---- */
+.nav{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--border);margin:30px 0 26px}
+.nav button{
+  min-height:44px;padding:11px 18px;font:500 16px/1 "IBM Plex Sans",sans-serif;
+  background:none;border:none;border-bottom:3px solid transparent;color:var(--text-dim);cursor:pointer;
+}
+.nav button:hover{color:var(--text-bright);background:var(--surface-2)}
+.nav button[aria-selected="true"]{color:var(--text-bright);border-bottom-color:var(--framed)}
+.panel[aria-hidden="true"]{display:none}
+
+/* ---- chart boxes ---- */
+.cbox{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:22px 24px 20px;margin-bottom:26px}
+.cbox > h2{font-size:21px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
+.cbox > .lede{font-size:16px;color:var(--text);max-width:78ch;margin-bottom:20px}
+.cbox > .lede strong{color:var(--text-bright);font-weight:600}
+h3.grp{font-size:17px;font-weight:600;color:var(--text-bright);margin:26px 0 10px}
+h3.grp:first-of-type{margin-top:6px}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.controls button, select{
+  min-height:44px;padding:10px 16px;border-radius:6px;cursor:pointer;
+  font:500 15px/1 "IBM Plex Sans",sans-serif;
+  background:var(--surface-2);color:var(--text);border:1px solid var(--border-hi);
+}
+.controls button[aria-pressed="true"]{background:var(--surface-3);color:var(--text-bright);border-color:var(--framed)}
+.controls button:hover, select:hover{color:var(--text-bright)}
+
+/* ---- legend: the 2x2, drawn as a 2x2 ---- */
+.legend{border:1px solid var(--border);border-radius:7px;padding:16px 18px;margin-bottom:20px;background:var(--surface-2)}
+.legend table{border-collapse:collapse;font-size:15px}
+.legend th,.legend td{padding:7px 14px 7px 0;text-align:left;font-weight:400;color:var(--text)}
+.legend th{color:var(--text-dim);font-family:"IBM Plex Mono",monospace;font-size:15px;
+  letter-spacing:.05em;text-transform:uppercase}
+.legend td svg{vertical-align:-4px;margin-right:8px}
+.legend .ref{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:15px;color:var(--text)}
+
+svg.chart{display:block;width:100%;height:auto;overflow:visible;margin-top:4px}
+svg text{font-family:"IBM Plex Sans",sans-serif}
+svg text.m{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.axcap{font-size:15px;color:var(--text-dim);margin:2px 0 10px}
+
+/* ---- data tables ---- */
+table.data{border-collapse:collapse;width:100%;font-size:15px;margin-top:6px}
+table.data th,table.data td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:right}
+table.data th:first-child,table.data td:first-child{text-align:left}
+table.data thead th{color:var(--text-dim);font-weight:500;font-size:15px;
+  letter-spacing:.04em;text-transform:uppercase;font-family:"IBM Plex Mono",monospace;
+  border-bottom:1px solid var(--border-hi)}
+table.data td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;color:var(--text-bright)}
+table.data tbody tr:hover{background:var(--surface-2)}
+.partial{color:var(--warn)}
+
+.note{border-left:3px solid var(--framed);background:var(--surface-2);padding:14px 18px;
+  border-radius:0 7px 7px 0;font-size:16px;color:var(--text);margin-top:20px;max-width:82ch}
+.note strong{color:var(--text-bright)}
+
+/* ---- tooltip ---- */
+.tt{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;z-index:50;
+  background:#1c1c2a;border:1px solid var(--border-hi);border-radius:7px;padding:11px 14px;
+  font-size:15px;color:var(--text);box-shadow:0 8px 26px rgba(0,0,0,.6);max-width:320px}
+.tt strong{color:var(--text-bright);display:block;margin-bottom:4px;font-size:15px}
+.tt .mono{color:var(--text-bright)}
+
+.err{border:1px solid rgba(230,103,103,.5);background:rgba(230,103,103,.08);color:#f0b3b3;
+  padding:22px 24px;border-radius:9px;font-size:16px}
+.err code{font-family:"IBM Plex Mono",monospace;background:#00000055;padding:3px 7px;border-radius:4px;
+  display:inline-block;margin-top:8px;color:#fff;font-size:15px}
+
+footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);
+  font-size:15px;color:var(--text-dim)}
+
+@media (max-width:720px){
+  .wrap{padding:22px 15px 72px}
+  .hdr h1{font-size:27px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+
+<header class="hdr">
+  <div class="eyebrow mono">CCAS &middot; reasoner-pilot &middot; validity</div>
+  <h1>Asked to be someone from somewhere</h1>
+  <p class="sub" id="story">Loading&hellip;</p>
+  <div class="prov mono" id="prov"></div>
+  <div id="banner"></div>
+</header>
+
+<nav class="nav" role="tablist" aria-label="Views" id="nav"></nav>
+
+<main id="main">
+  <div class="panel" id="p-overshoot" role="tabpanel" aria-hidden="false"></div>
+  <div class="panel" id="p-order"     role="tabpanel" aria-hidden="true"></div>
+  <div class="panel" id="p-matrix"    role="tabpanel" aria-hidden="true"></div>
+  <div class="panel" id="p-models"    role="tabpanel" aria-hidden="true"></div>
+</main>
+
+<footer id="foot"></footer>
+</div>
+<div class="tt" id="tt" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   Everything below is driven by results/viewer_data.json.
+   A country added to the collection appears here without an
+   edit to this file.
+   ============================================================ */
+
+const COND = [
+  {key:"en_unframed",    label:"English, unframed",  framed:false, local:false},
+  {key:"local_unframed", label:"In-language, unframed", framed:false, local:true},
+  {key:"en_framed",      label:"English, framed",    framed:true,  local:false},
+  {key:"local_framed",   label:"In-language, framed",framed:true,  local:true},
+];
+const CK = Object.fromEntries(COND.map(c => [c.key, c]));
+
+const fmt  = (v, n=3) => v === null || v === undefined ? "–" : v.toFixed(n);
+const fmtS = (v, n=3) => v === null || v === undefined ? "–" : (v>=0?"+":"−")+Math.abs(v).toFixed(n);
+const esc  = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let D = null, MAXN = 0;
+
+/* ---------- tooltip ---------- */
+const tt = document.getElementById("tt");
+function ttShow(e, html){
+  tt.innerHTML = html; tt.style.opacity = 1;
+  const r = tt.getBoundingClientRect();
+  let x = e.clientX + 16, y = e.clientY + 16;
+  if (x + r.width  > innerWidth - 12) x = e.clientX - r.width - 16;
+  if (y + r.height > innerHeight - 12) y = e.clientY - r.height - 16;
+  tt.style.left = Math.max(8,x)+"px"; tt.style.top = Math.max(8,y)+"px";
+}
+function ttHide(){ tt.style.opacity = 0; }
+addEventListener("scroll", ttHide, {passive:true});
+
+function hook(el, html){
+  el.setAttribute("tabindex","0");
+  el.addEventListener("mousemove", e => ttShow(e, html));
+  el.addEventListener("mouseleave", ttHide);
+  el.addEventListener("focus", e => {
+    const b = el.getBoundingClientRect();
+    ttShow({clientX:b.left+b.width/2, clientY:b.top+b.height/2}, html);
+  });
+  el.addEventListener("blur", ttHide);
+}
+
+/* ---------- mark shapes: hue = framing, fill = language ----------
+   A solid disc is the in-language arm; a hollow ring is English.
+   The ring is not "lighter" - it is a different shape, so the
+   distinction survives a greyscale print and CVD. */
+function markSVG(c, x, y, r=6.5){
+  const hue = c.framed ? "var(--framed)" : "var(--unframed)";
+  return c.local
+    ? `<circle cx="${x}" cy="${y}" r="${r}" fill="${hue}" stroke="${hue}" stroke-width="1.5"/>`
+    : `<circle cx="${x}" cy="${y}" r="${r-0.6}" fill="var(--bg)" stroke="${hue}" stroke-width="2.6"/>`;
+}
+function swatch(c){
+  return `<svg width="20" height="20" aria-hidden="true">${markSVG(c,10,10,6.5)}</svg>`;
+}
+
+/* ============================================================
+   PANEL 1 - overshoot dot plot
+   ============================================================ */
+function panelOvershoot(){
+  // Chartable = a published human mean AND at least one framed arm. Grouped by
+  // language so the in-language-unframed constant can be drawn as one contiguous
+  // rule over exactly the rows it applies to; sorted by the human mean inside each
+  // group, so the human column descends and the panel's flatness is the thing you see.
+  const chartable = D.countries.filter(c => c.human !== null &&
+    (c.conditions.local_framed || c.conditions.en_framed));
+  const orphans = D.countries.filter(c => !chartable.includes(c));
+
+  const gmap = new Map();
+  for (const c of chartable){
+    const k = c.lang_code || "__en";
+    if (!gmap.has(k)) gmap.set(k, {code:c.lang_code, name:c.language || "No in-language arm", rows:[]});
+    gmap.get(k).rows.push(c);
+  }
+  // complete language groups first, then partial ones, then countries with no
+  // in-language arm - so the rows you can actually conclude from sit at the top.
+  const full = g => g.rows.every(r => Object.values(r.conditions)
+    .every(v => !v || v.n_models >= MAXN)) ? 1 : 0;
+  const groups = [...gmap.values()]
+    .sort((a,b) => (b.code?1:0)-(a.code?1:0) || full(b)-full(a)
+                || b.rows.length - a.rows.length || a.name.localeCompare(b.name));
+  groups.forEach(g => g.rows.sort((a,b) => b.human - a.human));
+  const rows = groups.flatMap(g => g.rows);
+
+  // shared axis domain across every value drawn here
+  let lo = Infinity, hi = -Infinity;
+  for (const c of D.countries){
+    if (c.human !== null){ lo = Math.min(lo,c.human); hi = Math.max(hi,c.human); }
+    for (const k in c.conditions){
+      const v = c.conditions[k]; if (!v) continue;
+      lo = Math.min(lo, v.ci[0]); hi = Math.max(hi, v.ci[1]);
+    }
+  }
+  lo = Math.floor(lo*2)/2 - 0.25; hi = Math.ceil(hi*2)/2 + 0.25;
+
+  const W = 980, L = 216, R = 108, RH = 34, GH = 32, TOP = 46;
+  const H = TOP + rows.length*RH + groups.length*GH + 30;
+  const x = v => L + (v - lo)/(hi - lo)*(W - L - R);
+
+  // the two unframed conditions are ONE measurement each, not one per country:
+  // draw them as vertical rules, so the chart cannot be misread as 19 samples.
+  const enU = D.countries.find(c => c.conditions.en_unframed)?.conditions.en_unframed || null;
+
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="ov-t ov-d">
+    <title id="ov-t">Binding composite by country</title>
+    <desc id="ov-d">For each country, the measured human population mean and the model panel's
+      mean when framed as a person from that country, in English and in the local language.
+      The same numbers are in the table below this chart.</desc>`;
+
+  for (let v = Math.ceil(lo*2)/2; v <= hi; v += 0.5){
+    s += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-26}"
+            stroke="var(--border)" stroke-width="1"/>
+          <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
+            text-anchor="middle">${v.toFixed(1)}</text>`;
+  }
+  // English-unframed constant, spanning the whole chart
+  if (enU){
+    s += `<line x1="${x(enU.mean)}" y1="${TOP-12}" x2="${x(enU.mean)}" y2="${H-24}"
+            stroke="var(--unframed)" stroke-width="2" stroke-dasharray="2 5" opacity=".9"/>
+          <text class="m" x="${x(enU.mean)}" y="${H-6}" fill="var(--unframed)" font-size="15"
+            text-anchor="middle">English, unframed &middot; ${fmt(enU.mean,2)}</text>`;
+  }
+  s += `<text x="${W-R+14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15">vs human</text>
+        <text x="${L-14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
+          text-anchor="end">people</text>`;
+
+  let yc = TOP;
+  for (const g of groups){
+    const lu = g.rows[0].conditions.local_unframed;
+    const y0 = yc + 6, y1 = yc + GH + g.rows.length*RH - 2;
+    if (lu) s += `<line x1="${x(lu.mean)}" y1="${y0}" x2="${x(lu.mean)}" y2="${y1}"
+            stroke="var(--unframed)" stroke-width="2.5" opacity=".95"/>`;
+
+    yc += GH;
+    s += `<text x="0" y="${yc-11}" fill="var(--text-bright)" font-size="15"
+            font-weight="600">${esc(g.name)}</text>`;
+    if (lu) s += `<text class="m" x="${x(lu.mean)+7}" y="${yc-11}" fill="var(--unframed)"
+            font-size="15">unframed ${fmt(lu.mean,2)}${lu.n_models<MAXN?" *":""}</text>`;
+
+    for (const r of g.rows){
+      const y = yc + RH/2;
+      s += `<line x1="${L-6}" y1="${y}" x2="${W-R+6}" y2="${y}" stroke="var(--border)"/>`;
+      s += `<text x="10" y="${y+5}" fill="var(--text-bright)" font-size="15">${esc(r.country)}</text>`;
+      s += `<text class="m" x="${L-14}" y="${y+5}" fill="var(--text-dim)" font-size="15"
+              text-anchor="end">${fmt(r.human,2)}</text>`;
+
+      // gap ribbon: human -> the framed arm. the story as a length, not just two dots.
+      const hx = x(r.human);
+      const lead = r.conditions.local_framed || r.conditions.en_framed;
+      if (lead) s += `<line x1="${hx}" y1="${y}" x2="${x(lead.mean)}" y2="${y}"
+              stroke="var(--framed)" stroke-width="2" opacity=".42"/>`;
+      // human reference: primary ink, its own shape, never a hue
+      s += `<line x1="${hx}" y1="${y-11}" x2="${hx}" y2="${y+11}" stroke="var(--human)" stroke-width="2.5"/>
+            <path d="M${hx-5},${y-11} L${hx+5},${y-11} L${hx},${y-5} Z" fill="var(--human)"/>`;
+
+      for (const c of COND){
+        const v = r.conditions[c.key];
+        if (!v || !c.framed) continue;         // the unframed arms are the rules above
+        const px = x(v.mean);
+        const g2 = `<g class="mk">${markSVG(c, px, y)}${v.n_models < MAXN
+          ? `<circle cx="${px}" cy="${y}" r="10.5" fill="none" stroke="var(--warn)"
+               stroke-width="1.4" stroke-dasharray="2 2.6"/>` : ""}</g>`;
+        s += g2.replace("<g ", `<g data-tip="${esc(JSON.stringify({c:r.country,k:c.key}))}" `);
+      }
+
+      const dv = r.deviation.local_framed ?? r.deviation.en_framed;
+      if (dv !== null && dv !== undefined)
+        s += `<text class="m" x="${W-R+14}" y="${y+5}" font-size="15"
+          fill="${dv>0?"#f0a58c":"#8fbdf0"}" text-anchor="start">${fmtS(dv)}</text>`;
+      yc += RH;
+    }
+  }
+  s += `</svg>`;
+
+  let html = `
+  <div class="cbox">
+    <h2>Every country, against its own population</h2>
+    <p class="lede">One row per country, grouped by language and sorted by the
+      <strong>measured human mean</strong> inside each group. The human mark is the white caret. The orange
+      marks are the panel of ${D.meta.models} models <strong>told to answer as a typical person from that
+      country</strong>, in English (ring) and in the local language (disc); the bar between caret and disc is
+      the distance between them. The blue rules are the two unframed conditions: each is a
+      <strong>single measurement</strong> that does not name a country, so it is drawn as one line rather
+      than repeated as a dot on every row. Read down the human column and it descends; read down the orange
+      marks and it mostly does not.</p>
+    ${legendHTML()}
+    <p class="axcap">MFQ-2 binding composite - the mean of Loyalty, Authority and Purity, on the
+      questionnaire's 1&ndash;5 scale. The axis is cropped to the range the data occupies. Countries are
+      grouped by language and sorted by their human mean, highest first, inside each group.</p>
+    ${s}
+    ${orphans.length ? `<p class="note"><strong>Not charted:</strong>
+      ${orphans.map(o=>esc(o.country)).join(", ")} - no published human mean in the MFQ-2
+      nineteen-nation set, so there is nothing to measure the panel against. Their panel values are in
+      the table below.</p>` : ""}
+  </div>
+  <div class="cbox">
+    <h2>The numbers</h2>
+    <p class="lede">Panel means, each model's iterations averaged before the model enters the average.
+      Bracketed figures are 95% bootstrap intervals over models.</p>
+    ${tableHTML()}
+  </div>`;
+  return html;
+}
+
+function legendHTML(){
+  return `<div class="legend">
+    <table><caption class="sr-only">How the marks encode framing and language</caption>
+    <tr><th></th><th>English</th><th>In the local language</th></tr>
+    <tr><th>Unframed</th>
+      <td><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8"
+        stroke="var(--unframed)" stroke-width="2" stroke-dasharray="2 5"/></svg>one dashed rule</td>
+      <td><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8"
+        stroke="var(--unframed)" stroke-width="2.5"/></svg>one rule per language</td></tr>
+    <tr><th>Framed as a local</th>
+      <td>${swatch(CK.en_framed)}hollow ring</td>
+      <td>${swatch(CK.local_framed)}solid disc</td></tr>
+    </table>
+    <div class="ref">
+      <svg width="18" height="20" aria-hidden="true"><line x1="9" y1="3" x2="9" y2="17"
+        stroke="var(--human)" stroke-width="2.5"/><path d="M4,3 L14,3 L9,9 Z" fill="var(--human)"/></svg>
+      the measured human population mean - the reference, drawn in plain ink and never given a hue.
+      <span style="display:inline-block;margin-left:14px">
+      <svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" fill="none"
+        stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="2 2.6"/></svg>
+      fewer than ${D.meta.models} models have landed in that cell.</span>
+    </div>
+  </div>`;
+}
+
+/* ---------- the full table ---------- */
+function tableHTML(){
+  const rows = D.countries.slice().sort((a,b) =>
+    (b.human ?? -9) - (a.human ?? -9) || a.country.localeCompare(b.country));
+  let h = `<table class="data"><thead><tr>
+    <th>Country</th><th>Language</th><th>Human</th>
+    ${COND.map(c=>`<th>${esc(c.label)}</th>`).join("")}
+    <th>Framed &minus; human</th></tr></thead><tbody>`;
+  for (const r of rows){
+    h += `<tr><td>${esc(r.country)}</td><td>${esc(r.language||"–")}</td>
+      <td class="num">${fmt(r.human)}</td>`;
+    for (const c of COND){
+      const v = r.conditions[c.key];
+      h += `<td class="num${v && v.n_models<MAXN ? " partial":""}">${v
+        ? fmt(v.mean) + (v.n_models<MAXN ? ` <span class="partial" title="partial panel">n=${v.n_models}</span>` : "")
+        : "–"}</td>`;
+    }
+    const lf = r.deviation.local_framed, ef = r.deviation.en_framed;
+    h += `<td class="num">${lf !== null && lf !== undefined ? fmtS(lf)
+      : (ef !== null && ef !== undefined
+          ? fmtS(ef) + ` <span style="color:var(--text-dim)">EN</span>` : "–")}</td></tr>`;
+  }
+  return h + `</tbody></table>
+    <p class="note">The <em>English, unframed</em> column is one condition repeated down the table, and
+    <em>in-language, unframed</em> is one condition per language repeated across the countries that share it:
+    neither prompt names a country. Only the two framed columns vary country by country. The last column
+    uses the in-language framed arm where one was collected and the English framed arm, marked
+    <span style="color:var(--text-dim)">EN</span>, where it was not.</p>`;
+}
+
+/* ============================================================
+   PANEL 2 - ordering
+   ============================================================ */
+function panelOrder(){
+  let out = `<div class="cbox">
+    <h2>Does the panel rank countries the way people do?</h2>
+    <p class="lede">Within each language, countries ordered by their <strong>measured human mean</strong> on the
+    left and by the <strong>panel's mean when framed</strong> on the right. A line that runs flat is a country the
+    panel placed where the population is. Crossing lines are disagreement.</p>`;
+
+  for (const g of D.language_groups){
+    const o = g.local_framed || g.en_framed;
+    if (!o) continue;
+    const n = o.human_order.length;
+    const W = 900, RH = 44, TOP = 34, H = TOP + n*RH + 26;
+    const xl = 300, xr = 600;
+    let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Ordering for ${esc(g.language)}">
+      <text x="${xl}" y="16" fill="var(--text-dim)" font-size="15" text-anchor="end">people</text>
+      <text x="${xr}" y="16" fill="var(--text-dim)" font-size="15" text-anchor="start">the panel, framed</text>`;
+    const rp = Object.fromEntries(o.panel_order.map((c,i)=>[c,i]));
+    o.human_order.forEach((c,i) => {
+      const y0 = TOP + i*RH + RH/2, y1 = TOP + rp[c]*RH + RH/2;
+      const moved = i !== rp[c];
+      s += `<path d="M${xl+8},${y0} C${xl+110},${y0} ${xr-110},${y1} ${xr-8},${y1}"
+              fill="none" stroke="${moved?"var(--framed)":"var(--human)"}"
+              stroke-width="${moved?2.4:2}" opacity="${moved?.95:.5}"/>`;
+      const row = D.countries.find(r=>r.country===c);
+      const pv  = (row.conditions.local_framed||row.conditions.en_framed).mean;
+      s += `<text x="${xl}" y="${y0+5}" fill="var(--text-bright)" font-size="15" text-anchor="end"
+              >${esc(c)} <tspan class="m" fill="var(--text-dim)" font-size="15">${fmt(row.human,2)}</tspan></text>`;
+      s += `<text x="${xr}" y="${y1+5}" fill="var(--text-bright)" font-size="15" text-anchor="start"
+              ><tspan class="m" fill="var(--text-dim)" font-size="15">${fmt(pv,2)}</tspan> ${esc(c)}</text>`;
+    });
+    s += `</svg>`;
+
+    const spreadRatio = o.panel_spread / o.human_spread;
+    const ns = g.countries.map(c => {
+      const row = D.countries.find(r => r.country === c);
+      const v = row.conditions.local_framed || row.conditions.en_framed;
+      return v ? v.n_models : 0;
+    });
+    const minN = Math.min(...ns);
+    out += `<h3 class="grp">${esc(g.language)} - ${n} countries</h3>${s}
+      ${minN < MAXN ? `<p class="banner" style="margin:0 0 6px">This ordering rests on a
+        <strong>partial panel</strong> - as few as ${minN} of ${MAXN} models have landed in these
+        cells. Models differ from one another more than these countries do, so the order can still change
+        as the rest arrive. Treat it as provisional.</p>` : ""}
+      <p class="note">Rank correlation with the human ordering:
+        <strong class="mono">&rho; = ${o.spearman.toFixed(2)}</strong>${
+          o.spearman === 0 ? " - exactly no relationship." :
+          o.spearman < 0 ? " - the panel's order runs against the human one." :
+          o.spearman >= 0.8 ? " - the panel tracks the human order closely." : ""}
+        The countries span <span class="mono">${fmt(o.human_spread,2)}</span> scale points in people and
+        <span class="mono">${fmt(o.panel_spread,2)}</span> in the panel - ${
+          spreadRatio < 1
+            ? `the panel compresses the differences between these countries to <strong>${
+                Math.round(spreadRatio*100)}%</strong> of their real size`
+            : `the panel exaggerates the differences to <strong>${Math.round(spreadRatio*100)}%</strong> of their real size`
+        }.${n < 4 ? ` With only ${n} countries a rank correlation can only take a few values; read it as
+          direction, not strength.` : ""}</p>`;
+  }
+  return out + `<p class="note"><strong>Reading this honestly:</strong> the panel is
+    ${D.meta.models} models, not a sample of people, and these countries were chosen because a
+    published human mean exists for them. Nothing here was preregistered.</p></div>`;
+}
+
+/* ============================================================
+   PANEL 3 - deviation matrix
+   ============================================================ */
+/* Diverging ramp for the matrix. The poles are deliberately held below the
+   luminance at which #eaeaf0 stops clearing 4.5:1, so one ink colour is legible
+   on every step and no cell needs a text-colour switch part-way up the ramp. */
+function divColor(v, cap){
+  if (v === null || v === undefined) return "var(--surface-2)";
+  const t = Math.max(-1, Math.min(1, v/cap));
+  const mid = [34,34,46], lo = [42,95,158], hi = [163,63,63];
+  const to = t < 0 ? lo : hi, k = Math.abs(t);
+  const c = mid.map((m,i) => Math.round(m + (to[i]-m)*k));
+  return `rgb(${c.join(",")})`;
+}
+function panelMatrix(){
+  const rows = D.countries.filter(c => c.human !== null)
+                          .sort((a,b) => b.human - a.human);
+  let cap = 0;
+  for (const r of rows) for (const k in r.deviation)
+    if (r.deviation[k] !== null) cap = Math.max(cap, Math.abs(r.deviation[k]));
+  cap = Math.max(cap, 0.4);
+
+  let h = `<div class="cbox">
+    <h2>Distance from the population, every cell</h2>
+    <p class="lede">The same numbers as a grid: how far each condition sits from that country's measured
+    human mean. Warm is <strong>above</strong> the population, cool is <strong>below</strong>. Position is not
+    available in a grid, so colour carries the magnitude here - and every cell prints its number, so the
+    colour is never the only thing saying it.</p>
+    <table class="data"><thead><tr><th>Country</th><th>Human</th>
+    ${COND.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr></thead><tbody>`;
+  for (const r of rows){
+    h += `<tr><td>${esc(r.country)}</td><td class="num">${fmt(r.human,2)}</td>`;
+    for (const c of COND){
+      const d = r.deviation[c.key], v = r.conditions[c.key];
+      const bg = divColor(d, cap);
+      h += `<td class="num" style="background:${bg};color:${d===null?"var(--text-dim)":"#eaeaf0"}"
+        >${fmtS(d)}${v && v.n_models<MAXN?` <span style="color:var(--warn)">*</span>`:""}</td>`;
+    }
+    h += `</tr>`;
+  }
+  h += `</tbody></table>
+    <p class="note">Scale runs to &plusmn;${cap.toFixed(2)} scale points. A cell marked
+      <span class="partial">*</span> has fewer than ${D.meta.models} models in it - the collection is
+      still filling. Positive means the models report <em>more</em> binding morality (loyalty, authority,
+      purity) than the population they were asked to speak for.</p></div>`;
+  return h;
+}
+
+/* ============================================================
+   PANEL 4 - models
+   ============================================================ */
+/* "ar_framed_Egypt" is how the pipeline keys a cell; nobody should have to read that. */
+const LANGNAME = {ar:"Arabic", ja:"Japanese", fa:"Farsi", es:"Spanish", fr:"French", ru:"Russian", EN:"English"};
+function condName(k){
+  if (k === "en_neutral") return "English, unframed";
+  const m = k.match(/^([A-Za-z]+)_framed_(.+)$/);
+  if (m) return `${LANGNAME[m[1]] || m[1]}, framed as ${m[2]}`;
+  const n = k.match(/^([a-z]{2})_neutral$/);
+  if (n) return `${LANGNAME[n[1]] || n[1]}, unframed`;
+  return k;
+}
+/* Which human anchor, if any, this condition can be judged against. */
+function condAnchor(k){
+  const m = k.match(/^[A-Za-z]+_framed_(.+)$/);
+  if (!m) return null;
+  const row = D.countries.find(r => r.country === m[1]);
+  return row && row.human !== null ? row : null;
+}
+
+function panelModels(){
+  const keys = Object.keys(D.conditions_raw).sort((a,b)=>condName(a).localeCompare(condName(b)));
+  const sel = document.getElementById("mcond")?.value || keys.find(k=>k.includes("framed")) || keys[0];
+  const c = D.conditions_raw[sel];
+  const anch = condAnchor(sel);
+
+  let strip = "";
+  if (c){
+    const entries = Object.entries(c.per_model).sort((a,b)=>a[1]-b[1]);
+    const vals = entries.map(e=>e[1]);
+    let lo = Math.min(...vals, c.ci[0], anch ? anch.human : Infinity) - 0.15;
+    let hi = Math.max(...vals, c.ci[1], anch ? anch.human : -Infinity) + 0.15;
+    const W = 900, L = 150, R = 60, RH = 30, TOP = 40, H = TOP + entries.length*RH + 40;
+    const x = v => L + (v-lo)/(hi-lo)*(W-L-R);
+    strip = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Per-model values for ${esc(sel)}">`;
+    for (let v = Math.ceil(lo*4)/4; v <= hi; v += 0.25)
+      strip += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-30}" stroke="var(--border)"/>
+        <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
+          text-anchor="middle">${v.toFixed(2)}</text>`;
+    strip += `<rect x="${x(c.ci[0])}" y="${TOP-8}" width="${x(c.ci[1])-x(c.ci[0])}" height="${H-TOP-22}"
+        fill="var(--framed)" opacity=".12"/>
+      <line x1="${x(c.mean)}" y1="${TOP-10}" x2="${x(c.mean)}" y2="${H-30}"
+        stroke="var(--framed)" stroke-width="2"/>`;
+    if (anch){
+      const hx = x(anch.human);
+      strip += `<line x1="${hx}" y1="${TOP-10}" x2="${hx}" y2="${H-30}" stroke="var(--human)" stroke-width="2.5"/>
+        <path d="M${hx-6},${TOP-10} L${hx+6},${TOP-10} L${hx},${TOP-2} Z" fill="var(--human)"/>
+        <text class="m" x="${hx}" y="${TOP-18}" fill="var(--human)" font-size="15"
+          text-anchor="middle">people ${fmt(anch.human,2)}</text>`;
+    }
+    entries.forEach(([m,v],i) => {
+      const y = TOP + i*RH + RH/2;
+      strip += `<text x="0" y="${y+5}" fill="var(--text-bright)" font-size="15">${esc(m)}</text>
+        <circle cx="${x(v)}" cy="${y}" r="6" fill="var(--framed)"/>
+        <text class="m" x="${x(v)+13}" y="${y+5}" fill="var(--text-dim)" font-size="15">${fmt(v,2)}</text>`;
+    });
+    strip += `<text x="${L}" y="${H-6}" fill="var(--text-dim)" font-size="15">panel mean
+      ${fmt(c.mean)} &middot; 95% CI [${fmt(c.ci[0])}, ${fmt(c.ci[1])}] &middot; between-model SD
+      ${fmt(c.sd,2)} &middot; n = ${c.n_models}</text></svg>`;
+  }
+
+  const ms = D.models.slice().sort((a,b)=>b.reasoning_per_call - a.reasoning_per_call);
+  let tbl = `<table class="data"><thead><tr>
+    <th>Model</th><th>Cells</th><th>Reasoning tokens / call</th><th>Reasoning share</th>
+    <th>Distance from the rest of the panel</th><th>Its own spread across iterations</th>
+    </tr></thead><tbody>`;
+  for (const m of ms)
+    tbl += `<tr><td>${esc(m.model)}</td><td class="num">${m.cells}</td>
+      <td class="num">${m.reasoning_per_call.toFixed(0)}</td>
+      <td class="num">${(m.reasoning_share*100).toFixed(0)}%</td>
+      <td class="num">${fmt(m.gap_to_panel)}</td><td class="num">${fmt(m.own_spread)}</td></tr>`;
+  tbl += `</tbody></table>`;
+
+  return `<div class="cbox">
+    <h2>Where each model sits</h2>
+    <p class="lede">The model is the unit of analysis: every model's iterations are averaged before it enters
+      a panel mean, so one talkative model cannot outvote the rest. The orange line is the panel mean and the
+      band around it the 95% bootstrap interval over models. Where the condition names a country, the white
+      caret is that country's measured human mean.</p>
+    <div class="controls">
+      <label for="mcond" style="font-size:15px;color:var(--text-dim)">Condition</label>
+      <select id="mcond" onchange="render()">
+        ${keys.map(k=>`<option value="${esc(k)}"${k===sel?" selected":""}>${esc(condName(k))}</option>`).join("")}
+      </select>
+    </div>
+    ${strip}
+  </div>
+  <div class="cbox">
+    <h2>What the thinking costs</h2>
+    <p class="lede">Reasoning tokens spent per call, beside how far that model lands from the rest of the panel.
+      More thinking is not obviously buying a different answer.</p>
+    ${tbl}
+    <p class="note">"Distance from the rest of the panel" is the mean absolute gap between a model's value
+      and the mean of the other models, over every condition. "Its own spread" is the average SD across that
+      model's five iterations within a condition. <strong>A zero in the reasoning column means the provider
+      returned no reasoning-token count</strong> - for some of these models because they do not expose
+      one, for others because they do not do separate reasoning at all. It is not evidence that no reasoning
+      happened, so read the zeros as "not reported" and compare only the models that do report.</p>
+  </div>`;
+}
+
+/* ============================================================
+   shell
+   ============================================================ */
+const TABS = [
+  {id:"overshoot", label:"Against the population", fn:panelOvershoot},
+  {id:"order",     label:"Ordering",               fn:panelOrder},
+  {id:"matrix",    label:"Every cell",             fn:panelMatrix},
+  {id:"models",    label:"Models",                 fn:panelModels},
+];
+let active = "overshoot";
+
+function render(){
+  for (const t of TABS){
+    const p = document.getElementById("p-"+t.id);
+    p.setAttribute("aria-hidden", t.id === active ? "false" : "true");
+    if (t.id === active) p.innerHTML = t.fn();
+  }
+  document.querySelectorAll("#nav button").forEach(b =>
+    b.setAttribute("aria-selected", b.dataset.id === active ? "true" : "false"));
+  wireTips();
+}
+
+function wireTips(){
+  document.querySelectorAll("[data-tip]").forEach(g => {
+    const {c,k} = JSON.parse(g.dataset.tip);
+    const row = D.countries.find(r => r.country === c);
+    const v = row.conditions[k];
+    hook(g, `<strong>${esc(c)} - ${esc(CK[k].label)}</strong>
+      <span class="mono">${fmt(v.mean)}</span> &nbsp;95% CI [<span class="mono">${fmt(v.ci[0])}, ${fmt(v.ci[1])}</span>]<br>
+      human <span class="mono">${fmt(row.human)}</span>,
+      difference <span class="mono">${fmtS(row.deviation[k])}</span><br>
+      <span style="color:var(--text-dim)">${v.n_models} of ${MAXN} models${
+        v.n_models<MAXN ? " - still filling" : ""}, between-model SD ${fmt(v.sd,2)}</span>`);
+  });
+}
+
+function boot(d){
+  D = d;
+  MAXN = d.meta.models;
+
+  // headline sentence, computed rather than typed, so it cannot go stale
+  const lead  = c => c.deviation.local_framed ?? c.deviation.en_framed;
+  const withH = d.countries.filter(c => c.human !== null && lead(c) !== null && lead(c) !== undefined);
+  const over  = withH.filter(c => lead(c) > 0);
+  const avg   = withH.reduce((s,c)=>s+lead(c),0)/withH.length;
+  const nulls = d.language_groups.filter(g => (g.local_framed||{}).spearman === 0);
+  document.getElementById("story").innerHTML =
+    `Eleven frontier models were asked to answer a moral-foundations questionnaire
+     <strong>as a typical person from a named country</strong>, in English and in that country's language.
+     Across the ${withH.length} countries with a published human mean, the panel reports
+     <strong>${over.length} of ${withH.length}</strong> above the population on binding morality, by
+     <strong>${fmtS(avg,2)}</strong> scale points on average${
+       nulls.length ? `, and in ${nulls.map(g=>g.language).join(" and ")} it orders the countries
+       with <strong>no relationship at all</strong> to the human ordering` : ""}.`;
+
+  const p = document.getElementById("prov");
+  p.innerHTML = [
+    `${d.meta.scored_cells.toLocaleString()} scored cells`,
+    `${d.meta.models} models`,
+    `${d.countries.length} countries`,
+    `${d.meta.conditions} conditions`,
+    `generated ${esc(d.meta.generated.replace("T"," "))}`,
+  ].map(t=>`<span>${t}</span>`).join("");
+
+  const partial = [];
+  for (const c of d.countries) for (const k in c.conditions){
+    const v = c.conditions[k];
+    if (v && v.n_models < MAXN) partial.push(`${c.country} / ${CK[k].label} (n=${v.n_models})`);
+  }
+  if (partial.length)
+    document.getElementById("banner").innerHTML =
+      `<div class="banner"><strong>The collection is still filling.</strong>
+       ${partial.length} cell${partial.length>1?"s have":" has"} fewer than ${MAXN} models in
+       ${partial.length>1?"them":"it"}, so ${partial.length>1?"their":"its"} panel mean rests on a different
+       roster than the rest and is not comparable yet. Those marks carry a dashed ring and their numbers a
+       <span class="partial">warning colour</span>. Re-run
+       <code>python3 validity/build_viewer_data.py &gt; validity/results/viewer_data.json</code> to refresh.</div>`;
+
+  document.getElementById("nav").innerHTML = TABS.map(t =>
+    `<button role="tab" data-id="${t.id}" aria-selected="${t.id===active}"
+       aria-controls="p-${t.id}">${esc(t.label)}</button>`).join("");
+  document.querySelectorAll("#nav button").forEach(b =>
+    b.onclick = () => { active = b.dataset.id; render(); });
+
+  document.getElementById("foot").innerHTML =
+    `Produced by <span class="mono">${esc(d.meta.produced_by)}</span> from
+     <span class="mono">${esc(d.meta.reads)}</span>.
+     ${esc(d.meta.unit_of_analysis)}. ${esc(d.meta.intervals)}.
+     Human anchors: Atari et al. 2023 Study 2, except Iran (Hazrati et al. 2025, sample 2).
+     Exploratory throughout - none of this was preregistered.`;
+
+  render();
+}
+
+fetch("results/viewer_data.json", {cache:"no-store"})
+  .then(r => { if (!r.ok) throw new Error(r.status + " " + r.statusText); return r.json(); })
+  .then(boot)
+  .catch(e => {
+    document.getElementById("main").innerHTML =
+      `<div class="err"><strong>Could not load results/viewer_data.json</strong> - ${esc(e.message)}.
+       <br>Opening this file straight off disk blocks the read. Serve the directory instead:
+       <br><code>cd validity &amp;&amp; python3 -m http.server 8017</code>
+       <br>then open <code>http://localhost:8017/viewer.html</code>.</div>`;
+    document.getElementById("story").textContent = "";
+  });
+</script>
+</body>
+</html>
