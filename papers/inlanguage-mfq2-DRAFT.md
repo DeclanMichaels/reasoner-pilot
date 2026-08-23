@@ -1,71 +1,141 @@
-# The Language Carries the Population; the Prompt Carries the Caricature
+# Framing, Not Language: how eleven models answer a moral questionnaire as someone from each of nineteen countries
+
+*Exploratory. Nothing here was preregistered.*
 
 ## Summary
 
-Ask a model in English to answer the MFQ-2 as a typical Japanese person and you get a caricature: our 11-model panel lands at 3.67 on the binding composite, a full point above the measured Japanese mean of 2.65. Hand the same models the official Japanese translation of the questionnaire with no framing at all and they land on the mean: 2.66. Ask them to answer that same Japanese version as a typical Japanese person and they move away from the mean again, to 3.46. That is the whole study in one country: the models match the Japanese population's binding profile when the questionnaire is simply in Japanese, and the instruction to imitate a Japanese person replaces that match with a stereotype. We ran the same three-condition design in three countries, using the official Arabic, Japanese, and Farsi MFQ-2 translations, the same wordings the published human norms were collected with, framed and unframed in each language, against the same 11-model panel as our pilot, with English baselines from an earlier country-framing run under the identical protocol (appendix B1). The unframed in-language condition separates answering in Japanese from answering as a Japanese person. The three countries came back three different ways. For Japan, the language carries the population and the framing overrides it. For Egypt, framing overshoots the real mean by +0.34 whether the instruction and instrument are in English or Arabic, any language effect bounded below 0.04 points, while unframed Arabic closes only a fifth of the distance to the Egyptian mean. For Iran, the language carries nothing, unframed Farsi sits within 0.02 of the English default, and the framing fails worst: framed in English the panel renders Iran as Egypt, 4.59 against 4.61, though the two measured populations sit nearly a point apart, an overshoot of +1.26, the largest we have measured on any country; framing in Farsi trims it to +1.03. Across all three, the pattern is the same dissociation: what the language of the questionnaire elicits tracks the real population completely, partially, or not at all, and what the framing instruction elicits is one shared template, applied uniformly to populations that are not uniform. Telling a model to be Japanese makes it less accurate than speaking Japanese to it.
+Tell a language model to answer a moral questionnaire as a typical Egyptian and it changes its answers a great deal. Ask it the same questionnaire in Arabic, without telling it to be anyone, and it barely moves. Across six languages the instruction shifts the panel by 1.04 scale points on average and the language by 0.05. The countries whose measured populations span this questionnaire's whole range differ from each other by 1.62 points, so the persona instruction moves the panel through nearly two thirds of the human range while the language of the questionnaire moves it through a twentieth.
 
-## The design
+Where the panel lands is a separate question from how far it moves, and it has a shape we did not expect. Against twenty countries with a published human mean, the panel sits above the population in fifteen and at or below it in five: France, Belgium, Switzerland, New Zealand and Ireland. Ireland is the only country in the study whose measured mean falls inside the panel's interval.
 
-The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rated 1 to 5 for how well it describes you, scored into six moral foundations. We track one number, the binding composite, the average of Loyalty, Authority, and Purity. It is the number that separates traditional moral profiles from secular-liberal ones, and it is where the action is: the country-framing run found the models stereotyping hardest on these three foundations, and the other three barely move in this study. The models rate Care between 4.3 and 4.9 in every condition and every language, whatever the real population does; Equality stays low and Proportionality high throughout, shifting a few tenths under framing where binding shifts by up to 1.6. The appendix carries all six foundations per condition.
+## Where this came from
 
-The questionnaire's authors published translations with their validation materials, and their human country norms were collected in those languages. We gave the models the same wordings the people got. Three countries, chosen because each has a published human mean: Egypt in Arabic, Japan in Japanese, Iran in Farsi. Two conditions per language: framed, where a system prompt in that language tells the model to answer as a typical person from the country, and unframed, no system prompt, just the questionnaire in the language. English framed and unframed baselines come from that earlier run. Eleven models, five runs per condition, statement order freshly shuffled every run; we verified afterward that all 770 recorded runs used 770 different orders.
+We built an instrument called the Reasoner and wanted to know whether a model panel behaves sensibly on a questionnaire that already has human norms, so we administered the MFQ-2 to eleven models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it because the grid is now complete, not because it tested a hypothesis we started with.
 
-The human anchors: Egypt 4.27 and Japan 2.65, from the questionnaire's own 19-nation validation. Iran 3.33, from an independent Iranian validation of the Persian version (989 respondents), which sampled young, online, and mostly female; every Iran number below carries that caveat. All statistics treat the model as the unit, eleven of them: intervals come from resampling models, tests from exact permutation on per-model differences, ten tests corrected as one family. Nothing was pre-registered. Every test is exploratory and labeled so; the appendix holds the full table.
+## What we did
 
-## The results
+The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rated 1 to 5 for how well it describes the respondent, scored into six foundations. We track one number, the binding composite, the mean of Loyalty, Authority and Purity. The other three are reported separately below and they behave differently.
 
-Binding composite, panel average, against each population's measured mean:
+Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit: each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models.
 
-| | human | framed, English | framed, in-language | unframed, in-language | unframed, English |
-|---|--:|--:|--:|--:|--:|
-| Egypt / Arabic | 4.27 | 4.61 | 4.61 | 3.03 | 2.71 |
-| Japan / Japanese | 2.65 | 3.67 | 3.46 | 2.66 | 2.71 |
-| Iran / Farsi | 3.33 | 4.59 | 4.36 | 2.72 | 2.71 |
+Twenty-three countries. Nineteen are the questionnaire authors' own validation set, all of them, with human means computed from their published raw data using their own scoring. Four are ours: India, Sweden, the United States and Iran. Twenty of the twenty-three have a human mean to compare against; India, Sweden and the United States have none.
 
-**Translation does not touch the caricature.** Framed as an Egyptian, the panel overshoots the Egyptian mean by +0.34, and it does not matter whether we ask in English or Arabic: the difference between the two is 0.006, bounded below 0.04. The English cells were collected three days before the Arabic ones, so that bound also shows the panel holding still across dates. Japanese administration shrinks Japan's overshoot from +1.02 to +0.81, a real reduction, but the caricature stands. And in every framed condition the eleven models collapse onto one shared portrait, disagreeing with each other less about what an Egyptian is than they do about what they themselves are. That is the signature of a stereotype, and it survives translation into three scripts.
+Two things vary. **Framing**: a system prompt telling the model to answer as a typical person living in the named country, or no system prompt at all. **Language**: the questionnaire in English, or in the authors' official translation, with the framing prompt written in that language. Six translations exist and we used all six: Arabic, Spanish, Farsi, French, Japanese and Russian.
 
-**Each language carries a different amount of its population.** Unframed, the language of the questionnaire moves the models' resting point, and how far depends on the language. Japanese carries the binding profile whole: 2.66 against a measured 2.65, on the lowest-scoring population in the reference data, the same population the framed condition misses by a point. Arabic carries a trace: a third of a point toward binding, a fifth of the distance to the Egyptian mean, with the models disagreeing more here than anywhere else about where the default even sits. Farsi carries nothing: 2.72 against the English 2.71. One language contains its population, one holds a fragment, one is empty, and nothing in the framed conditions predicts which.
+## Framing moves the panel; language mostly does not
 
-Two honest qualifications on the Japanese match, both quantified in the appendix. The composite hides offsetting misses inside it: unframed in Japanese, the panel runs high on Authority (+0.42) and low on Purity (-0.63) against the real Japanese foundations, with Loyalty in between (+0.24, indistinguishable from zero), and the errors cancel to +0.01 in the average. And the match is a binding match, not a whole-profile match: the panel runs +0.80 high on Proportionality, and it rates Care at 4.56 where real Japanese sit at 3.03, because Care never moves. Across every condition we have ever run, fourteen in all, panel Care spans 4.29 to 4.88; even its lowest point sits 1.26 above the Japanese mean. No language and no framing brings the models anywhere near a real population's Care score; they hold a ceiling of their own. The language carries the population's binding structure. Nothing we tested carries its Care.
+Unframed, the panel answers at nearly the same place whatever language you hand it:
 
-**The template is one portrait; the populations are three.** Framed in English, Iran and Egypt are the same country to this panel: 4.59 and 4.61. The real populations sit a point apart, because the measured Iranian sample is not a generic religious society: it scores highest on Proportionality, lowest on Equality, near the midpoint on Authority. The panel misses exactly where the population departs from the stereotype, rendering Authority at 4.48 against a measured 3.05, and is accurate to two hundredths on Equality, where the stereotype happens to be right. Every model overshoots Iran; remove any one and the panel still overshoots by at least +1.23. The models do not miss Iran randomly. They paint it with the same brush as Egypt, and Iran is simply the country the brush fits worst.
+| language | unframed panel | against English |
+|---|--:|--:|
+| Japanese | 2.676 | -0.093 |
+| English | 2.769 | - |
+| French | 2.777 | +0.008 |
+| Spanish | 2.780 | +0.011 |
+| Russian | 2.788 | +0.019 |
+| Farsi | 2.809 | +0.040 |
+| **Arabic** | **3.104** | **+0.335** |
 
-**Put together: two separate behaviors.** Framing displaces the panel by large amounts in every language, +1.6 in Arabic and Farsi, +0.8 in Japanese, whether or not the language carried any population signal. So the two effects come apart. What the language elicits tracks the real population well, partially, or not at all. What the framing elicits is the same template everywhere. For Japan they collide head-on: the language alone puts the panel on the population, and the instruction to imitate the population pulls it away. The largest distortion in the country-framing run is not missing knowledge. The behavior is in there, and the persona instruction overrides it.
+Five of the six sit within a tenth of the English default. Arabic departs, and all eleven models move the same direction.
+
+Framing moves it far more. Averaged over the six languages, telling the panel to answer as a local lifts the binding composite by 1.04 points, against 0.05 for language alone. The framing effect ranges from +0.13 in French to +1.56 in Arabic; the language effect never exceeds 0.34.
+
+## Where the panel lands against real populations
+
+Distance from each country's measured mean, English framing, which every country received:
+
+| country | human | panel | difference |
+|---|--:|--:|--:|
+| France | 3.610 | 2.725 | -0.885 |
+| Belgium | 3.444 | 2.622 | -0.822 |
+| Switzerland | 3.349 | 3.063 | -0.286 |
+| New Zealand | 3.094 | 2.878 | -0.216 |
+| Ireland | 3.096 | 3.094 | -0.002 |
+| Argentina | 3.283 | 3.437 | +0.154 |
+| South Africa | 3.749 | 3.935 | +0.186 |
+| Egypt | 4.267 | 4.605 | +0.338 |
+| Chile | 3.220 | 3.654 | +0.433 |
+| Nigeria | 4.038 | 4.515 | +0.477 |
+| Russia | 3.599 | 4.117 | +0.518 |
+| Morocco | 4.014 | 4.570 | +0.556 |
+| Kenya | 3.867 | 4.432 | +0.565 |
+| Colombia | 3.497 | 4.100 | +0.603 |
+| Peru | 3.514 | 4.133 | +0.619 |
+| Mexico | 3.512 | 4.141 | +0.629 |
+| Saudi Arabia | 4.083 | 4.733 | +0.650 |
+| United Arab Emirates | 3.892 | 4.629 | +0.737 |
+| Japan | 2.652 | 3.668 | +1.016 |
+| Iran | 3.333 | 4.577 | +1.244 |
+
+Five countries sit at or below their populations and fifteen sit above, with nothing between -0.002 and +0.154. We report the members rather than a name for the set: nothing in this design sampled a country property that would let us say what the five have in common, and any label we supplied would be ours rather than the data's.
+
+The direction is not a function of how the population scores. Japan has the lowest measured mean in the set and receives the second largest positive difference. Across all twenty, the correlation between a country's human mean and the panel's distance from it is 0.07.
+
+Ireland is the one country the panel is not measurably wrong about: the Irish mean of 3.096 falls inside the panel interval of [2.96, 3.25]. For the other nineteen it does not.
+
+In human standard deviations, computed from the same respondents the means come from, the in-language framed panel sits +1.22 from Japanese respondents, -0.90 from French-administered respondents, +0.85 from Arabic, +0.64 from Russian and +0.55 from Spanish.
+
+## Which foundations move
+
+The binding composite averages three of six foundations, so a shift in it says nothing about the other three. Mean shift under framing, across the six languages:
+
+| foundation | mean shift | in the composite |
+|---|--:|---|
+| Purity | +1.19 | yes |
+| Loyalty | +0.97 | yes |
+| Authority | +0.95 | yes |
+| Equality | +0.34 | no |
+| Proportionality | +0.12 | no |
+| Care | -0.04 | no |
+
+Purity moves most wherever anything moves. Equality moves about a third as much as the binding three and sits outside the composite, so no analysis of the composite alone would show it. Care does not rise anywhere by an amount the data distinguishes from zero, and in Japanese and Russian it falls.
+
+One caveat travels with this. Unframed, the panel already sits near the top of the scale on Care at 4.71 and near the bottom on Purity at 1.97 and Equality at 1.99. Most of the room to move is in the foundations it starts low on, so part of the shape of the table is the scale rather than the framing.
+
+French is the exception on the binding three as well. There, Loyalty rises 0.30, Purity 0.09, and Authority does not move.
+
+## Ordering
+
+Within a language group, does the panel rank countries the way their populations rank?
+
+| language | countries | rank correlation | human spread | panel spread |
+|---|--:|--:|--:|--:|
+| Arabic | 4 | 0.00 | 0.375 | 0.175 (47%) |
+| Spanish | 5 | +0.80 | 0.294 | 0.689 (234%) |
+| French | 3 | -0.50 | 0.261 | 0.279 (107%) |
+
+In Arabic the panel's ordering has no relationship to the human one, and it compresses the differences between the four countries to under half their real size. In Spanish it gets the order roughly right and the distances wrong in the other direction, exaggerating them more than twofold. These are three, four and five countries, so the correlations carry very little precision; read them as direction.
+
+## What the panel is not doing
+
+**Care never comes down.** Across all fifty conditions the panel's Care score runs from 4.29 to 4.88. The lowest measured Care in the reference set is Japan at 3.03. No language and no framing brings the panel near it.
+
+**Framed, the models agree with each other more than they do unframed.** Answering as themselves in English, the eleven models have a between-model spread of 0.28 on the binding composite. Told to answer as Egyptians, that falls to 0.17. They disagree less about what an Egyptian is than about what they are.
+
+**Two countries a point apart come out the same.** Framed in English, the panel puts Iran at 4.58 and Egypt at 4.61. The measured populations sit at 3.33 and 4.27.
 
 ## Asking about a population, and answering as one
 
-Zewail, Figueroa, Graham and Atari (2026) put the MFQ-2 to five language models and asked them to estimate the average person in each of 48 countries, then scored those estimates against survey responses from 90,802 people in the same countries. The models distorted the populations in a consistent, Western-centric direction, which the authors read as moral stereotyping.
+Zewail, Figueroa, Graham and Atari (2026) gave the MFQ-2 to five language models and asked them to estimate the average person in each of 48 countries, scoring those estimates against survey responses from the same countries. They report distortions in a consistent direction.
 
-That study measures what a model says about a population. This one measures what a model does when it answers the questionnaire itself, in the population's own language, against norms collected in that language. Our framed condition is the closer of the two to their task, since both hand the model a population and ask it to produce that population's answers. The unframed in-language condition asks nothing about a population at all, and that is what makes the dissociation visible: the models can carry a population without being told to.
+That study measures what a model says about a population. This one measures what a model produces when it answers the questionnaire itself, in the population's own language, against norms collected in that language. The framed condition is the nearer of the two, since both hand the model a population and ask for that population's answers. The unframed in-language condition asks about no population at all.
 
-The two tasks also miss in different directions. Their estimates distort populations Western-centrically. Ours, instructed to be a person from the country, run high on binding for all three countries we tested, by between a third of a point and a point and a quarter. The designs differ in models, countries, anchors, and the foundations in play, so these are not matched conditions and the comparison is directional. A model asked to describe a population and a model asked to speak as one do not miss the same way.
+## Limits
 
-## What the refusal looks like
+**Nothing was preregistered.** The design grew from a validation exercise. Every quantity here is exploratory and no threshold was fixed before the data existed. We report intervals rather than marking results as passing or failing a test, because a significance mark implies a decision rule this study never committed to.
 
-One cell in 330 returned no rating, and not because parsing failed. On one specific shuffle of the Arabic unframed questionnaire, Kimi declines, in Arabic: as an AI it has no self these statements could describe, so it cannot honestly fill in the scale. Our fixed-seed protocol replays the identical prompt on retry, and the refusal reproduces, four times. The same model answers the other four shuffles of the same condition, and every English cell, without complaint. We score the condition on its four completed runs and report the refusal as what it is: a behavior triggered by one language and one ordering, not by the instrument.
+**Iran's anchor comes from a different study.** Every other population is from the questionnaire authors' own validation set. Iran is not in that set, so it is anchored to an independent Iranian validation of the same official Persian translation, n=989. That study administered on a 0-to-4 scale and we shifted by one for comparability, its sample is younger, more educated and majority female relative to the country, and its authors state it is likely less binding-endorsing than the general population, which would make the gap we report larger than a nationally stratified sample would give. Their other sample gives 3.23 rather than 3.33, moving Iran's English-framed difference from +1.24 to +1.35.
 
-## Why this matters
+**Morocco's human sample answered in Spanish.** The authors' own table records the administration language for each country. It matches the language of our in-language arm everywhere except Morocco, where their sample was collected in Spanish while we frame it in Arabic. We collected a Spanish-framed Moroccan arm alongside so the mismatch is measured rather than assumed.
 
-Evaluating a model's cultural competence by asking it to play a culture measures the costume, not the model. The costume is shared across the industry, identical across countries, and wrong in proportion to how far a real population sits from the stereotype of its region. Meanwhile the behavior that actually tracks a population, when it exists, shows up unprompted in the population's own language, and nothing about the costume tells you whether it exists. The deployment consequence is blunt: an assistant serving people in their own language may represent them better unframed than the same assistant instructed to adopt their culture, and for at least one country the persona makes it strictly worse. Any audit, benchmark, or product decision that reads cultural alignment off persona behavior is reading the wrong layer.
+**Our language groups are administration languages, not cohorts.** The grouping names the language we administered in. That matches the authors' administration language for Belgium and Switzerland, so the comparison is like for like, but French is a first language for roughly 36 percent of Belgians and 23 percent of Swiss residents. Those rows describe respondents answering in French rather than typical residents of either country.
 
-## Limitations
-
-Eleven models is a panel, not a sample (three more configured models are absent for infrastructure reasons, never response content; appendix B1), and nothing here was pre-registered: every test is exploratory however small its corrected p. We ran one instrument, three languages, one framed country per language. Arabic belongs to no single country, which may be exactly why it carries only a fragment; whether it would track Gulf, Levantine, or North African means differently is unmeasured. Each human anchor is one study. The Iran anchor comes from a different research group than the others, on a shifted response scale we rescaled linearly, from a young online sample, so the true Iranian mean is plausibly higher than 3.33 and the overshoot somewhat smaller than +1.26, though a 1.4-point Authority error does not reduce to sampling. The framing instructions in Arabic, Japanese, and Farsi are our translations, unvalidated; the English-Arabic match on Egypt argues the framed results are not translation artifacts, without proving it for the other languages. The English-framed Iran arm was added after an audit of the first draft flagged its absence, the one analysis whose motivation postdates seeing other results. And the models have plausibly seen the MFQ-2 and its published norms in training, so everything here is behavior, not understanding: the Japanese result in particular could be an internalized population profile or memorized questionnaire norms surfacing under Japanese text. Telling those apart requires an instrument the models have never seen. Building one is the point of our confirmatory study.
-
-## What comes next
-
-This study becomes validation groundwork for the pre-registered Reasoner study, which collects in-group human samples across five moral traditions on expert-reviewed scenarios that carry no published norms to memorize. The design now includes an in-language condition, because this result earned it a place. If the language-carries-the-population effect survives on an instrument that cannot be retrieved from training data, it stops being a memorization curiosity and becomes a deployment principle.
+**One panel, one questionnaire, one time.** Eleven models is not a sample of models, twenty countries is not a sample of countries, and the countries are here because someone published a mean for them.
 
 ## Sources
 
-The MFQ-2, its six foundations, and the Egypt and Japan human means: Atari, M., Haidt, J., Graham, J., Koleva, S., Stevens, S. T., and Dehghani, M. (2023). Morality beyond the WEIRD: How the nomological network of morality varies across cultures. *Journal of Personality and Social Psychology*, 125, 1157-1188.
+Atari, M., Haidt, J., Graham, J., Koleva, S., Stevens, S. T., & Dehghani, M. (2023). Morality beyond the WEIRD: How the nomological network of morality varies across cultures. *Journal of Personality and Social Psychology*, 125(5), 1157-1188. doi:10.1037/pspp0000470
 
-The Iran human mean: Hazrati, Nejat, and Daneshi (2025). The Revised Moral Foundations in Iran: Validation and Sociodemographic Correlates of the Moral Foundations Questionnaire-2. *Collabra: Psychology*, 11(1), 140952. https://doi.org/10.1525/collabra.140952
+Hazrati, M., Nejat, P., & Daneshi, A. (2025). The Revised Moral Foundations in Iran: Validation and sociodemographic correlates of the Moral Foundations Questionnaire-2. *Collabra: Psychology*, 11(1), 140952. doi:10.1525/collabra.140952
 
-Moral stereotyping in model estimates of national moral values: Zewail, A., Figueroa, A., Graham, J., and Atari, M. (2026). Moral stereotyping in large language models. *Proceedings of the National Academy of Sciences*. https://doi.org/10.1073/pnas.2519941123
-
----
-
-Analysis is stdlib-reproducible from the raw runs; every inferential number regenerates from one audit script with a fixed seed. The statistical appendix carries the full test family, intervals, and sweeps. Responsibility for the work, and for any errors in it, is mine alone. Methodology was AI-assisted and that assistance is disclosed.
-
-Declan Michaels | Cross-Cultural Alignment Study | moral-os.com
+Zewail, A., Figueroa, N., Graham, J., & Atari, M. (2026). Moral stereotyping in large language models. *PNAS*. doi:10.1073/pnas.2519941123
