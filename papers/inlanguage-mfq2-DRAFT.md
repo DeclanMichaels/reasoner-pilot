@@ -4,15 +4,15 @@
 
 ## Summary
 
-Tell a language model to answer a moral questionnaire as a typical Egyptian and it changes its answers a great deal. Ask it the same questionnaire in Arabic, without telling it to be anyone, and it barely moves. Across six languages the instruction shifts the panel by 1.04 scale points on average and the language by 0.05. For scale, the measured country means span 1.62 points, so the average framing shift is about 64 percent as large as the entire observed range between populations, and the average language shift is about 5 percent of it.
+Tell a language model to answer a moral questionnaire as a typical person living in Egypt and it changes its answers a great deal. Ask it the same questionnaire in Arabic, without telling it to be anyone, and it barely moves. Across six languages the instruction shifts the panel by 1.04 scale points on average and the language by 0.05. For scale, the measured country means span 1.62 points, so the average framing shift is about 64 percent as large as the entire observed range between populations. The language shift is about 3 percent of that range as a signed mean, or 5 percent ignoring direction.
 
-Being told who to be also makes the models agree with each other. The eleven spread half as widely under a country framing as they do answering as themselves, and thirty-seven of thirty-nine framed conditions are tighter than any unframed one.
+Being told who to be also makes the models agree with each other. Across conditions the eleven spread about half as widely under a country framing as they do without one, and thirty-seven of the thirty-nine framed conditions are tighter than every unframed condition.
 
 Where the panel lands is a separate question from how far it moves, and it has a shape we did not expect. Against twenty countries with a published human mean, the panel sits above the population in fifteen and at or below it in five: France, Belgium, Switzerland, New Zealand and Ireland. Ireland is the only country in the study whose measured mean falls inside the panel's interval.
 
 ## Where this came from
 
-We built an instrument called the Reasoner and wanted to know whether a model panel behaves sensibly on a questionnaire that already has human norms, so we administered the MFQ-2 to eleven large language models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it because the grid is now complete, not because it tested a hypothesis we started with.
+We built an instrument called the Reasoner and wanted to know whether a model panel behaves sensibly on a questionnaire that already has human norms, so we administered the MFQ-2 to eleven large language models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it now because we have run every condition we intended to run, not because it tested a hypothesis we started with.
 
 ## What we did
 
@@ -34,7 +34,7 @@ Which language each country was administered in, and whether a human mean exists
 | Russian | Russia | yes | yes |
 | none | India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden, United States | yes | yes |
 
-Sixteen of the twenty anchored countries were administered in the same language their human norms were collected in. The eight with no in-language arm received the English conditions only; six of them have a human mean, and India, Sweden and the United States do not.
+For sixteen of the twenty countries with a human anchor, our in-language condition uses the same language the human norms were collected in. The eight with no in-language arm received the English conditions only; six of them have a human mean, and India, Sweden and the United States do not.
 
 Two things vary. **Framing**: a framing prompt telling the model to answer as a typical person living in the named country, or no framing prompt at all. **Language**: the questionnaire in English, or in the authors' official translation, with the framing prompt written in that language. Six translations exist and we used all six: Arabic, Spanish, Farsi, French, Japanese and Russian.
 
@@ -91,7 +91,7 @@ The direction does not appear to be explained by how highly the population itsel
 
 Ireland is the only country whose measured human mean falls inside the panel's interval: 3.096 against [2.96, 3.25]. For the other nineteen it falls outside.
 
-In human standard deviations, computed from the same respondents the means come from, the in-language framed panel sits +1.22 from Japanese respondents, -0.90 from French-administered respondents, +0.85 from Arabic, +0.64 from Russian and +0.55 from Spanish.
+The same distances in human standard deviations. For each language, we pool the respondents of every country administered in it, take the panel's in-language framed mean over the same countries, and divide the difference by the pooled human standard deviation: Japanese +1.22, French -0.90, Arabic +0.85, Russian +0.64, Spanish +0.55. Farsi is absent because the Iranian study reports means without the item-level data needed to recover a respondent-level standard deviation.
 
 ## Which foundations move
 
@@ -146,7 +146,7 @@ That study measures what a model says about a population. This one measures what
 
 **Our language groups are administration languages, not cohorts.** The grouping names the language we administered in. That matches the authors' administration language for Belgium and Switzerland, so the comparison is like for like, but French is a first language for roughly 36 percent of Belgians and 23 percent of Swiss residents. Those rows describe respondents answering in French rather than typical residents of either country.
 
-**Five runs per model is not a lot.** Within a model, the spread across its five runs has a median of 0.137, against a median between-model spread of 0.188. Repeated-generation noise is therefore not small next to the differences between models. Averaging five runs cuts its contribution to a model's own figure to roughly a third of the between-model spread, which is why we average before any comparison, but the panel figures carry more run-to-run noise than a larger number of runs would leave.
+**Five runs per model is not a lot.** Within a model, the spread across its five runs has a median of 0.137, against a median between-model spread of 0.188. Repeated-generation noise is therefore not small next to the differences between models. Averaging five runs reduces that contribution without removing it, which is why we average before any comparison, but the panel figures carry more run-to-run noise than a larger number of runs would leave.
 
 **One panel, one questionnaire, one time.** Eleven models is not a sample of models, twenty countries is not a sample of countries, and the countries are here because someone published a mean for them.
 
