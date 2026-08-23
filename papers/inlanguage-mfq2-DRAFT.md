@@ -4,7 +4,9 @@
 
 ## Summary
 
-Tell a language model to answer a moral questionnaire as a typical Egyptian and it changes its answers a great deal. Ask it the same questionnaire in Arabic, without telling it to be anyone, and it barely moves. Across six languages the instruction shifts the panel by 1.04 scale points on average and the language by 0.05. The countries whose measured populations span this questionnaire's whole range differ from each other by 1.62 points, so the persona instruction moves the panel through nearly two thirds of the human range while the language of the questionnaire moves it through a twentieth.
+Tell a language model to answer a moral questionnaire as a typical Egyptian and it changes its answers a great deal. Ask it the same questionnaire in Arabic, without telling it to be anyone, and it barely moves. Across six languages the instruction shifts the panel by 1.04 scale points on average and the language by 0.05. For scale, the measured country means span 1.62 points, so the average framing shift is about 64 percent as large as the entire observed range between populations, and the average language shift is about 5 percent of it.
+
+Being told who to be also makes the models agree with each other. The eleven spread half as widely under a country framing as they do answering as themselves, and thirty-seven of thirty-nine framed conditions are tighter than any unframed one.
 
 Where the panel lands is a separate question from how far it moves, and it has a shape we did not expect. Against twenty countries with a published human mean, the panel sits above the population in fifteen and at or below it in five: France, Belgium, Switzerland, New Zealand and Ireland. Ireland is the only country in the study whose measured mean falls inside the panel's interval.
 
@@ -16,9 +18,23 @@ We built an instrument called the Reasoner and wanted to know whether a model pa
 
 The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rated 1 to 5 for how well it describes the respondent, scored into six foundations. We track one number, the binding composite, the mean of Loyalty, Authority and Purity. The other three are reported separately below and they behave differently.
 
-Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit: each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models.
+Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit: each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models and are descriptive: they show how much a panel figure moves when models like these are resampled. The eleven are not a probability sample from any defined population of models, so an interval here is not a confidence interval for models in general. Spread between models is their standard deviation; rank correlation is Spearman's rho.
 
 Twenty-three countries. Nineteen are the questionnaire authors' own validation set, all of them, with human means computed from their published raw data using their own scoring. Four are ours: India, Sweden, the United States and Iran. Twenty of the twenty-three have a human mean to compare against; India, Sweden and the United States have none.
+
+Which language each country was administered in, and whether a human mean exists to compare against:
+
+| language | countries administered in it | English framed | English unframed |
+|---|---|---|---|
+| Arabic | Egypt, Morocco, Saudi Arabia, United Arab Emirates | yes | yes |
+| Spanish | Argentina, Chile, Colombia, Mexico, Peru | yes | yes |
+| French | Belgium, France, Switzerland | yes | yes |
+| Japanese | Japan | yes | yes |
+| Farsi | Iran | yes | yes |
+| Russian | Russia | yes | yes |
+| none | India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden, United States | yes | yes |
+
+Sixteen of the twenty anchored countries were administered in the same language their human norms were collected in. The eight with no in-language arm received the English conditions only; six of them have a human mean, and India, Sweden and the United States do not.
 
 Two things vary. **Framing**: a framing prompt telling the model to answer as a typical person living in the named country, or no framing prompt at all. **Language**: the questionnaire in English, or in the authors' official translation, with the framing prompt written in that language. Six translations exist and we used all six: Arabic, Spanish, Farsi, French, Japanese and Russian.
 
@@ -38,7 +54,7 @@ Unframed, the panel answers at nearly the same place whatever language you hand 
 
 Five of the six sit within a tenth of the English default. Arabic departs, and all eleven models move the same direction.
 
-Framing moves it far more. Averaged over the six languages, telling the panel to answer as a local lifts the binding composite by 1.04 points, against 0.05 for language alone. The framing effect ranges from +0.13 in French to +1.56 in Arabic; the language effect never exceeds 0.34.
+Framing moves it far more. Averaged over the six languages, telling the panel to answer as a local lifts the binding composite by 1.04 points. Language alone moves it 0.05 as a signed mean and 0.09 ignoring direction, since Japanese moves down where Arabic moves up. The framing effect ranges from +0.13 in French to +1.56 in Arabic; the largest language effect is Arabic's 0.34.
 
 ## Where the panel lands against real populations
 
@@ -71,9 +87,9 @@ Distance from each country's measured mean, English framing, which every country
 
 Five countries sit at or below their populations and fifteen sit above, with nothing between -0.002 and +0.154.
 
-The direction is not a function of how the population scores. Japan has the lowest measured mean in the set and receives the second largest positive difference. Across all twenty, the correlation between a country's human mean and the panel's distance from it is 0.07.
+The direction does not appear to be explained by how highly the population itself scores. Japan has the lowest measured mean in the set and receives the second largest positive difference, and across all twenty the correlation between a country's human mean and the panel's distance from it is 0.07.
 
-Ireland is the one country the panel is not measurably wrong about: the Irish mean of 3.096 falls inside the panel interval of [2.96, 3.25]. For the other nineteen it does not.
+Ireland is the only country whose measured human mean falls inside the panel's interval: 3.096 against [2.96, 3.25]. For the other nineteen it falls outside.
 
 In human standard deviations, computed from the same respondents the means come from, the in-language framed panel sits +1.22 from Japanese respondents, -0.90 from French-administered respondents, +0.85 from Arabic, +0.64 from Russian and +0.55 from Spanish.
 
@@ -104,13 +120,13 @@ Within a language group, does the panel rank countries the way their populations
 | Spanish | 5 | +0.80 | 0.294 | 0.689 (234%) |
 | French | 3 | -0.50 | 0.261 | 0.279 (107%) |
 
-In Arabic the panel's ordering has no relationship to the human one, and it compresses the differences between the four countries to under half their real size. In Spanish it gets the order roughly right and the distances wrong in the other direction, exaggerating them more than twofold. These are three, four and five countries, so the correlations carry very little precision; read them as direction.
+In Arabic the observed rank correlation is zero, and the panel compresses the differences between the four countries to under half their real size. In Spanish it gets the order roughly right and the distances wrong in the other direction, exaggerating them more than twofold. These are three, four and five countries, so the correlations carry very little precision; read them as direction.
 
 ## What the panel is not doing
 
 **Care never comes down.** Across all fifty conditions the panel's Care score runs from 4.29 to 4.88. The lowest measured Care in the reference set is Japan at 3.03. No language and no framing brings the panel near it.
 
-**Framed, the models agree with each other more than they do unframed.** Answering as themselves in English, the eleven models have a between-model spread of 0.28 on the binding composite. Told to answer as Egyptians, that falls to 0.17. They disagree less about what an Egyptian is than about what they are.
+**Framed, the models agree with each other more than they do unframed, and it holds across the grid.** The median between-model spread is 0.33 across the seven unframed conditions and 0.17 across the thirty-nine framed ones. Thirty-seven of the thirty-nine framed conditions are tighter than every unframed condition. Answering as themselves in English the eleven models spread 0.28; told to answer as Egyptians, 0.17. They disagree less about what an Egyptian is than about what they are, and that holds for almost every country we named.
 
 **Two countries a point apart come out the same.** Framed in English, the panel puts Iran at 4.58 and Egypt at 4.61. The measured populations sit at 3.33 and 4.27.
 
@@ -129,6 +145,8 @@ That study measures what a model says about a population. This one measures what
 **Morocco's human sample answered in Spanish.** The authors' table records an administration language per country. It matches our in-language arm everywhere except Morocco, whose sample they collected in Spanish while we frame it in Arabic. We ran a Spanish-framed Moroccan arm as well: it lands at 4.589 against the Arabic arm's 4.582, a difference of 0.007. The mismatch does not move Morocco.
 
 **Our language groups are administration languages, not cohorts.** The grouping names the language we administered in. That matches the authors' administration language for Belgium and Switzerland, so the comparison is like for like, but French is a first language for roughly 36 percent of Belgians and 23 percent of Swiss residents. Those rows describe respondents answering in French rather than typical residents of either country.
+
+**Five runs per model is not a lot.** Within a model, the spread across its five runs has a median of 0.137, against a median between-model spread of 0.188. Repeated-generation noise is therefore not small next to the differences between models. Averaging five runs cuts its contribution to a model's own figure to roughly a third of the between-model spread, which is why we average before any comparison, but the panel figures carry more run-to-run noise than a larger number of runs would leave.
 
 **One panel, one questionnaire, one time.** Eleven models is not a sample of models, twenty countries is not a sample of countries, and the countries are here because someone published a mean for them.
 
