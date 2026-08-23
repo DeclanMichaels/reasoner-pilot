@@ -18,7 +18,11 @@ We built an instrument called the Reasoner and wanted to know whether a model pa
 
 The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rated 1 to 5 for how well it describes the respondent, scored into six foundations. We track one number, the binding composite, the mean of Loyalty, Authority and Purity. The other three are reported separately below and they behave differently.
 
-Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit: each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models and are descriptive: they show how much a panel figure moves when models like these are resampled. The eleven are not a probability sample from any defined population of models, so an interval here is not a confidence interval for models in general. Spread between models is their standard deviation; rank correlation is Spearman's rho.
+Comparing raw composite means across countries needs the instrument to behave the same way in each of them. We recomputed the authors' own alignment check on their raw data: intercept R-squared runs from 0.993 for Purity to 0.999 for Care across the nineteen countries, which is what licenses comparing these means rather than assuming it. Scoring follows their published composites exactly, six items per foundation.
+
+Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit: each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models and are descriptive: they show how much a panel figure moves when models like these are resampled. They resample eleven values, so their tails are coarse and should be read as a range rather than a calibrated bound. The eleven are not a probability sample from any defined population of models, so an interval here is not a confidence interval for models in general. Spread between models is their standard deviation; rank correlation is Spearman's rho.
+
+Administration: each model receives the questionnaire in a single user message, with the framing prompt as the framing prompt and nothing else, and returns its ratings as a structured object read by a deterministic parser. Statement order is drawn fresh per run from a seed built from model, instrument, country and iteration. We set a request seed where the provider accepts one and a token ceiling; we do not pin temperature, so each model runs at its provider's default. That is a reproducibility limit rather than a design choice, and it is part of why five runs per model still leave the run-to-run noise reported below.
 
 Twenty-three countries. Nineteen are the questionnaire authors' own validation set, all of them, with human means computed from their published raw data using their own scoring. Four are ours: India, Sweden, the United States and Iran. Twenty of the twenty-three have a human mean to compare against; India, Sweden and the United States have none.
 
@@ -91,7 +95,17 @@ The direction does not appear to be explained by how highly the population itsel
 
 Ireland is the only country whose measured human mean falls inside the panel's interval: 3.096 against [2.96, 3.25]. For the other nineteen it falls outside.
 
-The same distances in human standard deviations. For each language, we pool the respondents of every country administered in it, take the panel's in-language framed mean over the same countries, and divide the difference by the pooled human standard deviation: Japanese +1.22, French -0.90, Arabic +0.85, Russian +0.64, Spanish +0.55. Farsi is absent because the Iranian study reports means without the item-level data needed to recover a respondent-level standard deviation.
+The same distances in human standard deviations, computed per country: the panel's in-language framed mean for a country, minus that country's human mean, divided by that country's own respondent-level standard deviation. Averaged within a language, and with the country range beside it:
+
+| language | mean d | range across countries |
+|---|--:|---|
+| Japanese | +1.22 | Japan only |
+| French | -0.97 | -0.38 Switzerland to -1.40 France |
+| Arabic | +0.86 | +0.59 Egypt to +1.03 Saudi Arabia |
+| Russian | +0.64 | Russia only |
+| Spanish | +0.57 | +0.10 Argentina to +0.81 Peru |
+
+Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. Farsi is absent because the Iranian study reports means without the item-level data needed to recover a respondent-level standard deviation.
 
 ## Which foundations move
 

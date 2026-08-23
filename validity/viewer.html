@@ -178,7 +178,8 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);
 
 <footer id="foot"></footer>
 </div>
-<div class="tt" id="tt" role="status" aria-live="polite"></div>
+<div class="tt" id="tt" aria-hidden="true"></div>
+<div class="sr-only" id="ttlive" role="status" aria-live="polite"></div>
 
 <script>
 "use strict";
@@ -205,15 +206,19 @@ let D = null, MAXN = 0;
 
 /* ---------- tooltip ---------- */
 const tt = document.getElementById("tt");
-function ttShow(e, html){
+function ttShow(e, html, announce){
   tt.innerHTML = html; tt.style.opacity = 1;
+  // Only a keyboard focus speaks. A pointer crossing thirty marks would otherwise
+  // narrate continuously.
+  if (announce) document.getElementById("ttlive").textContent =
+    tt.textContent.replace(/\s+/g, " ").trim();
   const r = tt.getBoundingClientRect();
   let x = e.clientX + 16, y = e.clientY + 16;
   if (x + r.width  > innerWidth - 12) x = e.clientX - r.width - 16;
   if (y + r.height > innerHeight - 12) y = e.clientY - r.height - 16;
   tt.style.left = Math.max(8,x)+"px"; tt.style.top = Math.max(8,y)+"px";
 }
-function ttHide(){ tt.style.opacity = 0; }
+function ttHide(){ tt.style.opacity = 0; document.getElementById("ttlive").textContent = ""; }
 addEventListener("scroll", ttHide, {passive:true});
 
 function hook(el, html){
@@ -222,9 +227,10 @@ function hook(el, html){
   el.addEventListener("mouseleave", ttHide);
   el.addEventListener("focus", e => {
     const b = el.getBoundingClientRect();
-    ttShow({clientX:b.left+b.width/2, clientY:b.top+b.height/2}, html);
+    ttShow({clientX:b.left+b.width/2, clientY:b.top+b.height/2}, html, true);
   });
   el.addEventListener("blur", ttHide);
+  el.addEventListener("keydown", e => { if (e.key === "Escape") { ttHide(); el.blur(); } });
 }
 
 /* ---------- mark shapes: hue = framing, fill = language ----------
@@ -1048,10 +1054,29 @@ function boot(d){
        <code>python3 validity/build_viewer_data.py &gt; validity/results/viewer_data.json</code> to refresh.</div>`;
 
   document.getElementById("nav").innerHTML = TABS.map(t =>
-    `<button role="tab" data-id="${t.id}" aria-selected="${t.id===active}"
-       aria-controls="p-${t.id}">${esc(t.label)}</button>`).join("");
-  document.querySelectorAll("#nav button").forEach(b =>
-    b.onclick = () => { active = b.dataset.id; render(); });
+    `<button role="tab" id="tab-${t.id}" data-id="${t.id}" aria-selected="${t.id===active}"
+       aria-controls="p-${t.id}" tabindex="${t.id===active?0:-1}">${esc(t.label)}</button>`).join("");
+  TABS.forEach(t => {
+    const panel = document.getElementById("p-"+t.id);
+    panel.setAttribute("aria-labelledby", "tab-"+t.id);
+    panel.setAttribute("tabindex", "0");
+  });
+  const btns = [...document.querySelectorAll("#nav button")];
+  btns.forEach((b,i) => {
+    b.onclick = () => { active = b.dataset.id; render(); };
+    // The ARIA tabs pattern moves selection with the arrow keys; without this a keyboard
+    // user can reach the tab strip and not move along it.
+    b.onkeydown = e => {
+      const k = e.key, n = btns.length;
+      let j = k === "ArrowRight" ? (i+1)%n : k === "ArrowLeft" ? (i-1+n)%n
+            : k === "Home" ? 0 : k === "End" ? n-1 : -1;
+      if (j < 0) return;
+      e.preventDefault();
+      active = btns[j].dataset.id;
+      render();
+      document.getElementById("tab-"+active).focus();
+    };
+  });
 
   document.getElementById("foot").innerHTML =
     `Produced by <span class="mono">${esc(d.meta.produced_by)}</span> from
