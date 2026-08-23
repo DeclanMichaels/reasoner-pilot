@@ -1,4 +1,4 @@
-# Framing, Not Language: how eleven models answer a moral questionnaire as someone from each of nineteen countries
+# Framing, Not Language: how eleven AI models answer a moral questionnaire as someone from each of twenty-three countries
 
 *Exploratory. Nothing here was preregistered.*
 
@@ -10,7 +10,7 @@ Where the panel lands is a separate question from how far it moves, and it has a
 
 ## Where this came from
 
-We built an instrument called the Reasoner and wanted to know whether a model panel behaves sensibly on a questionnaire that already has human norms, so we administered the MFQ-2 to eleven models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it because the grid is now complete, not because it tested a hypothesis we started with.
+We built an instrument called the Reasoner and wanted to know whether a model panel behaves sensibly on a questionnaire that already has human norms, so we administered the MFQ-2 to eleven large language models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it because the grid is now complete, not because it tested a hypothesis we started with.
 
 ## What we did
 
