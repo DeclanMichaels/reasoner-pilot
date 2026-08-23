@@ -19,20 +19,41 @@ BIND = ["loyalty", "authority", "purity"]
 SEED = 20260723
 B = 100_000
 
-ANCH = {"Egypt": 4.267, "Saudi Arabia": 4.083, "Nigeria": 4.038, "Morocco": 4.014,
-        "United Arab Emirates": 3.892, "Japan": 2.652, "Iran": 3.333,
-        "Peru": 3.514, "Mexico": 3.512, "Colombia": 3.497, "Argentina": 3.283,
-        "Chile": 3.220, "France": 3.610, "Belgium": 3.444, "Switzerland": 3.349,
-        "Russia": 3.599}
-ANCH_SRC = {c: "Atari et al. 2023, Study 2" for c in ANCH}
-ANCH_SRC["Iran"] = "Hazrati et al. 2025, sample 2"
+# Iran is the only anchor not from Atari Study 2 and is the only one stated by hand.
+# Everything else is derived below from the committed reference, so a country gets its
+# anchor by being in that file rather than by someone retyping a number.
+ANCH = {"Iran": 3.333}
+ANCH_SRC = {"Iran": "Hazrati et al. 2025, sample 2"}
 
+# Per-foundation human profiles. Every Atari country has one in the published reference; they
+# are read from a committed copy of mfq2_country_means.csv rather than retyped, so a country
+# gains its profile by existing in that file. Iran is not in Atari and is carried separately.
+# Repo boundary: reasoner-study owns the reference, this is a documented copy (4_toolbox Paths).
 ANCH_FOUND = {
-    "Japan": {"care": 3.03, "equality": 2.27, "proportionality": 3.14,
-              "loyalty": 2.66, "authority": 2.67, "purity": 2.63},
     "Iran": {"care": 3.948, "equality": 2.672, "proportionality": 4.147,
              "loyalty": 3.630, "authority": 3.050, "purity": 3.318},
 }
+ANCH_N = {"Iran": 989}   # Hazrati sample 2
+_CSV_NAME = {"UAE": "United Arab Emirates", "Columbia": "Colombia"}
+_ref = VDIR / "reference" / "mfq2_country_means.csv"
+if _ref.exists():
+    import csv as _csv
+    for _r in _csv.DictReader(open(_ref)):
+        _c = _CSV_NAME.get(_r["country"].strip(), _r["country"].strip())
+        ANCH_FOUND.setdefault(_c, {f: round(float(_r[f]), 4) for f in FOUND})
+        ANCH_N.setdefault(_c, int(_r["n"]))
+        ANCH.setdefault(_c, round(sum(float(_r[b]) for b in BIND) / 3, 3))
+        ANCH_SRC.setdefault(_c, "Atari et al. 2023, Study 2")
+else:
+    sys.exit(f"missing {_ref}; copy it from reasoner-study/instruments/MFQ-PVQ/mfq/reference/")
+
+# The composites above must equal (loyalty + authority + purity) / 3 of the profile just loaded.
+# A silent disagreement would put a country's caret and its dot on different scales.
+for _c, _v in ANCH.items():
+    _f = ANCH_FOUND.get(_c)
+    if _f and abs(sum(_f[b] for b in BIND) / 3 - _v) > 0.001:
+        sys.exit(f"{_c}: composite {_v} disagrees with its foundation profile "
+                 f"{sum(_f[b] for b in BIND) / 3:.4f}")
 
 LANGS = {"ar": "Arabic", "ja": "Japanese", "fa": "Farsi",
          "es": "Spanish", "fr": "French", "ru": "Russian"}
@@ -146,6 +167,7 @@ for country in sorted(set(list(pairs) + [c.split("EN_framed_", 1)[1]
         "human": ANCH.get(country),
         "human_source": ANCH_SRC.get(country),
         "human_foundations": ANCH_FOUND.get(country),
+        "human_n": ANCH_N.get(country),
         "conditions": {
             "en_unframed": cond("en_neutral"),
             "local_unframed": cond(code + "_neutral") if code else None,

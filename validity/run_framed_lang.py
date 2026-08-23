@@ -90,6 +90,11 @@ CELLS = [
     ("mfq2_es", "spanish", "Colombia", spanish_frame("Colombia", "colombiana")),
     ("mfq2_es", "spanish", "Mexico", spanish_frame("México", "mexicana")),
     ("mfq2_es", "spanish", "Peru", spanish_frame("Perú", "peruana")),
+    # Morocco in SPANISH, added 2026-08-22. Not a language the framing claims for Morocco:
+    # Atari et al. 2023 Table 3 administered their Moroccan sample in Spanish, so this is the
+    # arm that matches the human anchor's administration language. The Arabic Morocco cell
+    # above stays; the pair is the measurement of whether the mismatch moved anything.
+    ("mfq2_es", "spanish", "Morocco", spanish_frame("Marruecos", "marroquí")),
     ("mfq2_fr", "french", "France", french_frame("France", "française")),
     ("mfq2_fr", "french", "Belgium", french_frame("Belgique", "belge")),
     ("mfq2_fr", "french", "Switzerland", french_frame("Suisse", "suisse")),
