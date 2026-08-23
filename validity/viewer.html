@@ -103,7 +103,17 @@ h3.grp:first-of-type{margin-top:6px}
 .legend td svg{vertical-align:-4px;margin-right:8px}
 .legend .ref{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:15px;color:var(--text)}
 
-svg.chart{display:block;width:100%;height:auto;overflow:visible;margin-top:4px}
+/* A chart's text is declared in viewBox units, so its on-screen size is the
+   declared size times the container scale. Letting the SVG shrink below its
+   viewBox width therefore shrinks every label below the 15px floor: at a 1024
+   viewport the old rule rendered 15 as 14.2px, and at 200% zoom as 8.6px.
+   min-width pins the chart at 1:1 and lets its own box scroll instead, so the
+   page body never scrolls sideways and the type never drops under the floor. */
+.scrollbox{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+  margin-top:4px;padding-bottom:2px}
+.scrollbox:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+table.data{min-width:640px}
 svg text{font-family:"IBM Plex Sans",sans-serif}
 svg text.m{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 .axcap{font-size:15px;color:var(--text-dim);margin:2px 0 10px}
@@ -387,8 +397,8 @@ function panelOvershoot(){
       on the two samples pooled it is +1.01, against the +0.98 shown here. Iran is the widest gap in
       this collection, and it rests on the least comparable anchor in it.</p>
     ${orphans.length ? `<p class="note"><strong>Not charted:</strong>
-      ${orphans.map(o=>esc(o.country)).join(", ")} - no published human mean in the MFQ-2
-      nineteen-nation set, so there is nothing to measure the panel against. Their panel values are in
+      ${orphans.map(o=>esc(o.country)).join(", ")} - not in the questionnaire authors'
+      validation set, so there is no published human mean to measure the panel against. Their panel values are in
       the table below.</p>` : ""}
   </div>
   <div class="cbox">
@@ -479,8 +489,8 @@ function panelOrder(){
       const y0 = TOP + i*RH + RH/2, y1 = TOP + rp[c]*RH + RH/2;
       const moved = i !== rp[c];
       s += `<path d="M${xl+8},${y0} C${xl+110},${y0} ${xr-110},${y1} ${xr-8},${y1}"
-              fill="none" stroke="${moved?"var(--framed)":"var(--human)"}"
-              stroke-width="${moved?2.4:2}" opacity="${moved?.95:.5}"/>`;
+              fill="none" stroke="${moved?"var(--framed)":"var(--text-dim)"}"
+              stroke-width="${moved?2.4:2}" opacity="${moved?.95:.55}"/>`;
       const row = D.countries.find(r=>r.country===c);
       const pv  = (row.conditions.local_framed||row.conditions.en_framed).mean;
       s += `<text x="${xl}" y="${y0+5}" fill="var(--text-bright)" font-size="15" text-anchor="end"
@@ -513,10 +523,16 @@ function panelOrder(){
             ? `the panel compresses the differences between these countries to <strong>${
                 Math.round(spreadRatio*100)}%</strong> of their real size`
             : `the panel exaggerates the differences to <strong>${Math.round(spreadRatio*100)}%</strong> of their real size`
-        }.${n < 4 ? ` With only ${n} countries a rank correlation can only take a few values; read it as
-          direction, not strength.` : ""}</p>`;
+        }. With ${n} countries a rank correlation can take only a handful of values and carries
+        almost no precision; read it as direction, not strength.${
+          Math.abs(spreadRatio - 1) < 0.15
+            ? ` The two spreads are within ${Math.round(Math.abs(spreadRatio-1)*100)}% of each other,
+                which is not a difference this design resolves.` : ""}</p>`;
   }
-  return out + `<p class="note"><strong>Reading this honestly:</strong> the panel is
+  const solo = D.foundation_shifts.filter(r => r.countries.length === 1).map(r => r.language);
+  return out + (solo.length ? `<p class="note">${solo.join(", ")} are not here: each covers one
+    country, and one country has no ordering to correlate.</p>` : "")
+  + `<p class="note"><strong>Reading this honestly:</strong> the panel is
     ${D.meta.models} models, not a sample of people, and these countries were chosen because a
     published human mean exists for them. Nothing here was preregistered.</p></div>`;
 }
@@ -554,7 +570,7 @@ function panelFoundations(){
       <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
         text-anchor="middle">${v>0?"+":""}${v.toFixed(2)}</text>`;
   a += `<line x1="${x(0)}" y1="${TOP-14}" x2="${x(0)}" y2="${H-30}"
-          stroke="var(--human)" stroke-width="2"/>
+          stroke="var(--text-dim)" stroke-width="2"/>
         <text x="${x(0)}" y="${H-10}" fill="var(--text-dim)" font-size="15"
           text-anchor="middle">no change</text>
         <text x="${W-R+14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15">shift</text>`;
@@ -573,17 +589,19 @@ function panelFoundations(){
     const marks = S.map(r => ({lang:r.language, v:r.foundations[f]}))
                    .sort((p,q) => q.v.shift - p.v.shift);
     for (const mk of marks){
-      const y = yc2 + RH/2, solid = mk.v.p <= 0.05;
-      a += `<text x="14" y="${y+5}" fill="${solid?"var(--text-bright)":"var(--text-dim)"}"
-              font-size="15">${esc(mk.lang)}</text>`;
+      const y = yc2 + RH/2;
+      a += `<text x="14" y="${y+5}" fill="var(--text-bright)" font-size="15">${esc(mk.lang)}</text>`;
+      // The interval carries precision. A filled-versus-hollow significance mark would
+      // both borrow a decision rule this study never set and give fill a third meaning.
       a += `<line x1="${x(mk.v.ci[0])}" y1="${y}" x2="${x(mk.v.ci[1])}" y2="${y}"
-              stroke="var(--framed)" stroke-width="1.8" opacity="${solid?.6:.3}"/>`;
-      a += solid
-        ? `<circle cx="${x(mk.v.shift)}" cy="${y}" r="5.5" fill="var(--framed)"/>`
-        : `<circle cx="${x(mk.v.shift)}" cy="${y}" r="5" fill="var(--bg)"
-             stroke="var(--framed)" stroke-width="2.2"/>`;
+              stroke="var(--framed)" stroke-width="1.8" opacity=".6"/>
+            <line x1="${x(mk.v.ci[0])}" y1="${y-4}" x2="${x(mk.v.ci[0])}" y2="${y+4}"
+              stroke="var(--framed)" stroke-width="1.8" opacity=".6"/>
+            <line x1="${x(mk.v.ci[1])}" y1="${y-4}" x2="${x(mk.v.ci[1])}" y2="${y+4}"
+              stroke="var(--framed)" stroke-width="1.8" opacity=".6"/>`;
+      a += `<circle cx="${x(mk.v.shift)}" cy="${y}" r="5.5" fill="var(--framed)"/>`;
       a += `<text class="m" x="${W-R+14}" y="${y+5}" font-size="15"
-              fill="${solid?"var(--text-bright)":"var(--text-dim)"}">${fmtS(mk.v.shift,2)}</text>`;
+              fill="var(--text-bright)">${fmtS(mk.v.shift,2)}</text>`;
       yc2 += RH;
     }
   }
@@ -620,8 +638,7 @@ function panelFoundations(){
               font-size="15"${BIND.has(f)?' font-weight="600"':''}>${FLABEL[f]}</text>`;
       s += `<line x1="${x2(v.unframed)}" y1="${y}" x2="${x2(v.framed)}" y2="${y}"
               stroke="var(--framed)" stroke-width="2" opacity=".4"/>`;
-      s += `<circle cx="${x2(v.unframed)}" cy="${y}" r="6" fill="var(--bg)"
-              stroke="var(--unframed)" stroke-width="2.6"/>`;
+      s += `<circle cx="${x2(v.unframed)}" cy="${y}" r="6" fill="var(--unframed)"/>`;
       s += `<circle cx="${x2(v.framed)}" cy="${y}" r="6.5" fill="var(--framed)"/>`;
       const hu = humanAt(f);
       if (hu){
@@ -654,8 +671,8 @@ function panelFoundations(){
     const vs = S.map(r => r.foundations[f].shift);
     t += `<tr><td>${FLABEL[f]}${BIND.has(f)?" <span style='color:var(--text-dim)'>(binding)</span>":""}</td>
       ${S.map(r=>{const v=r.foundations[f];
-        return `<td class="num" title="p=${v.p}">${fmtS(v.shift,2)}${
-          v.p<=0.05?"":" <span style='color:var(--text-dim)'>ns</span>"}</td>`;}).join("")}
+        return `<td class="num">${fmtS(v.shift,2)}<br>
+          <span style="color:var(--text-dim);font-size:14px">[${fmtS(v.ci[0],2)}, ${fmtS(v.ci[1],2)}]</span></td>`;}).join("")}
       <td class="num">${fmtS(vs.reduce((s,v)=>s+v,0)/vs.length,2)}</td></tr>`;
   }
   t += `</tbody></table>`;
@@ -667,8 +684,8 @@ function panelFoundations(){
       how far the panel moves when it is told to answer as a local, in that language,
       against the same panel answering the same questionnaire in the same language with no
       framing at all. Positive is upward. The shaded rows are the three that make up the
-      binding composite. A filled mark clears p &le; .05 on the exact sign-flip test, a
-      hollow one does not; the bar is the 95% bootstrap interval.</p>
+      binding composite. The bar is the 95% bootstrap interval over models; a bar that
+      crosses the zero line is a shift this panel does not resolve.</p>
     ${a}
     <p class="note"><strong>The change is lopsided, not a general lift.</strong> In five of the
       six languages the three binding foundations rise by about half a scale point to nearly two;
@@ -680,7 +697,7 @@ function panelFoundations(){
   </div>
   <div class="cbox">
     <h2>Where that leaves the panel</h2>
-    <p class="lede">The same shifts on the questionnaire's own 1 to 5 scale. The blue ring
+    <p class="lede">The same shifts on the questionnaire's own 1 to 5 scale. The blue disc
       is unframed, the orange disc is framed, and the bar between them is the move. The white
       caret is the measured population: for a single country its own profile, and for a group of
       countries the sample-size-weighted mean of them, with a thin white bar above it spanning
@@ -693,8 +710,9 @@ function panelFoundations(){
   </div>
   <div class="cbox">
     <h2>Every shift</h2>
-    <p class="lede">Scale points, framed minus unframed, model as the unit.
-      <span class="mono">ns</span> marks a shift that does not clear p &le; .05.</p>
+    <p class="lede">Scale points, framed minus unframed, model as the unit, with the 95%
+      bootstrap interval under each. <strong>Mean</strong> is the unweighted average of the six
+      languages, which counts a one-country language the same as a five-country one.</p>
     ${t}
   </div>`;
 }
@@ -713,25 +731,33 @@ function divColor(v, cap){
   const c = mid.map((m,i) => Math.round(m + (to[i]-m)*k));
   return `rgb(${c.join(",")})`;
 }
+const MCOND = COND.filter(c => c.framed);
 function panelMatrix(){
   const rows = D.countries.filter(c => c.human !== null)
-                          .sort((a,b) => b.human - a.human);
+                          .sort((a,b) => (b.deviation.en_framed ?? -9) - (a.deviation.en_framed ?? -9));
+  // Only the framed columns vary country by country, so only they set the ramp. The
+  // unframed conditions are one measurement each; including them put a constant's
+  // distance from each human mean on the scale and flattened the real comparison.
   let cap = 0;
-  for (const r of rows) for (const k in r.deviation)
-    if (r.deviation[k] !== null) cap = Math.max(cap, Math.abs(r.deviation[k]));
+  for (const r of rows) for (const c of MCOND)
+    if (r.deviation[c.key] !== null && r.deviation[c.key] !== undefined)
+      cap = Math.max(cap, Math.abs(r.deviation[c.key]));
   cap = Math.max(cap, 0.4);
 
   let h = `<div class="cbox">
     <h2>Distance from the population, every cell</h2>
-    <p class="lede">The same numbers as a grid: how far each condition sits from that country's measured
-    human mean. Warm is <strong>above</strong> the population, cool is <strong>below</strong>. Position is not
-    available in a grid, so colour carries the magnitude here - and every cell prints its number, so the
-    colour is never the only thing saying it.</p>
-    <table class="data"><thead><tr><th>Country</th><th>Human</th>
-    ${COND.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr></thead><tbody>`;
+    <p class="lede">How far each <strong>framed</strong> condition sits from that country's measured human
+    mean, ordered by the English-framed distance, which every country received. Warm is <strong>above</strong> the population, cool is
+    <strong>below</strong>. Position is not available in a grid, so colour carries the magnitude here, and
+    every cell prints its number, so the colour is never the only thing saying it. The two unframed
+    conditions are not here: each is a single measurement that names no country, and repeating it down a
+    column of countries would make one number look like twenty. They are the blue rules on the first tab.</p>
+    <table class="data"><thead><tr><th>Country</th><th>Language</th><th>Human</th>
+    ${MCOND.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr></thead><tbody>`;
   for (const r of rows){
-    h += `<tr><td>${esc(r.country)}</td><td class="num">${fmt(r.human,2)}</td>`;
-    for (const c of COND){
+    h += `<tr><td>${esc(r.country)}</td><td>${esc(r.language||"–")}</td>
+      <td class="num">${fmt(r.human,2)}</td>`;
+    for (const c of MCOND){
       const d = r.deviation[c.key], v = r.conditions[c.key];
       const bg = divColor(d, cap);
       h += `<td class="num" style="background:${bg};color:${d===null?"var(--text-dim)":"#eaeaf0"}"
@@ -740,9 +766,9 @@ function panelMatrix(){
     h += `</tr>`;
   }
   h += `</tbody></table>
-    <p class="note">Scale runs to &plusmn;${cap.toFixed(2)} scale points. Every cell here carries
-      the full panel of ${D.meta.models} models. Positive means the models report <em>more</em> binding morality (loyalty, authority,
-      purity) than the population they were asked to speak for.</p></div>`;
+    <p class="note">Scale runs to &plusmn;${cap.toFixed(2)} scale points. Every cell carries the full
+      panel of ${D.meta.models} models. Positive means the models report <em>more</em> binding morality
+      (loyalty, authority, purity) than the population they were asked to speak for.</p></div>`;
   return h;
 }
 
@@ -767,8 +793,12 @@ function condAnchor(k){
   return row && row.human !== null ? row : null;
 }
 
+/* The English-baseline arms measured an instrument-and-prompt confound. They are audit
+   cells, not conditions of the study, and their raw keys are unreadable in a menu. */
+const AUDIT = /^en_baseline_|^en_neutral_ours$/;
 function panelModels(){
-  const keys = Object.keys(D.conditions_raw).sort((a,b)=>condName(a).localeCompare(condName(b)));
+  const keys = Object.keys(D.conditions_raw).filter(k => !AUDIT.test(k))
+                     .sort((a,b)=>condName(a).localeCompare(condName(b)));
   const sel = document.getElementById("mcond")?.value || keys.find(k=>k.includes("framed")) || keys[0];
   const c = D.conditions_raw[sel];
   const anch = condAnchor(sel);
@@ -781,26 +811,28 @@ function panelModels(){
     let hi = Math.max(...vals, c.ci[1], anch ? anch.human : -Infinity) + 0.15;
     const W = 900, L = 150, R = 60, RH = 30, TOP = 40, H = TOP + entries.length*RH + 40;
     const x = v => L + (v-lo)/(hi-lo)*(W-L-R);
-    strip = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Per-model values for ${esc(sel)}">`;
+    const isFramed = /_framed_/.test(sel);
+    const hue = isFramed ? "var(--framed)" : "var(--unframed)";
+    strip = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Per-model values for ${esc(condName(sel))}">`;
     for (let v = Math.ceil(lo*4)/4; v <= hi; v += 0.25)
       strip += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-30}" stroke="var(--border)"/>
         <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
           text-anchor="middle">${v.toFixed(2)}</text>`;
     strip += `<rect x="${x(c.ci[0])}" y="${TOP-8}" width="${x(c.ci[1])-x(c.ci[0])}" height="${H-TOP-22}"
-        fill="var(--framed)" opacity=".12"/>
+        fill="${hue}" opacity=".12"/>
       <line x1="${x(c.mean)}" y1="${TOP-10}" x2="${x(c.mean)}" y2="${H-30}"
-        stroke="var(--framed)" stroke-width="2"/>`;
+        stroke="${hue}" stroke-width="2"/>`;
     if (anch){
       const hx = x(anch.human);
       strip += `<line x1="${hx}" y1="${TOP-10}" x2="${hx}" y2="${H-30}" stroke="var(--human)" stroke-width="2.5"/>
         <path d="M${hx-6},${TOP-10} L${hx+6},${TOP-10} L${hx},${TOP-2} Z" fill="var(--human)"/>
-        <text class="m" x="${hx}" y="${TOP-18}" fill="var(--human)" font-size="15"
+        <text class="m" x="${hx}" y="${H-8}" fill="var(--human)" font-size="15"
           text-anchor="middle">people ${fmt(anch.human,2)}</text>`;
     }
     entries.forEach(([m,v],i) => {
       const y = TOP + i*RH + RH/2;
       strip += `<text x="0" y="${y+5}" fill="var(--text-bright)" font-size="15">${esc(m)}</text>
-        <circle cx="${x(v)}" cy="${y}" r="6" fill="var(--framed)"/>
+        <circle cx="${x(v)}" cy="${y}" r="6" fill="${hue}"/>
         <text class="m" x="${x(v)+13}" y="${y+5}" fill="var(--text-dim)" font-size="15">${fmt(v,2)}</text>`;
     });
     strip += `<text x="${L}" y="${H-6}" fill="var(--text-dim)" font-size="15">panel mean
@@ -836,10 +868,13 @@ function panelModels(){
   </div>
   <div class="cbox">
     <h2>What the thinking costs</h2>
-    <p class="lede">Reasoning tokens spent per call, beside how far that model lands from the rest of the panel.
-      More thinking is not obviously buying a different answer.</p>
+    <p class="lede">Reasoning tokens spent per call, beside how far that model lands from the rest of
+      the panel. Sorted by tokens; the two columns are reported side by side, and no relationship
+      between them is computed here.</p>
     ${tbl}
-    <p class="note">"Distance from the rest of the panel" is the mean absolute gap between a model's value
+    <p class="note">"Cells" is every scored run for that model, ${D.meta.conditions} conditions times
+      five iterations. "Reasoning share" is reasoning tokens as a fraction of reasoning plus output
+      tokens. "Distance from the rest of the panel" is the mean absolute gap between a model's value
       and the mean of the other models, over every condition. "Its own spread" is the average SD across that
       model's five iterations within a condition. <strong>A zero in the reasoning column means the provider
       returned no reasoning-token count</strong> - for some of these models because they do not expose
@@ -868,7 +903,30 @@ function render(){
   }
   document.querySelectorAll("#nav button").forEach(b =>
     b.setAttribute("aria-selected", b.dataset.id === active ? "true" : "false"));
+  fitCharts();
   wireTips();
+}
+
+/* Pin every chart to its own viewBox width and give it a scrollable box.
+   Keyboard users get the box in the tab order so it can be scrolled without a
+   pointer. Runs after each render; idempotent. */
+function fitCharts(){
+  document.querySelectorAll("svg.chart").forEach(s => {
+    const w = s.viewBox.baseVal.width;
+    if (w) s.style.minWidth = w + "px";
+    wrapScroll(s, `Chart, ${w}px wide, scrollable`);
+  });
+  document.querySelectorAll("table.data").forEach(t => wrapScroll(t, "Table, scrollable"));
+}
+function wrapScroll(el, label){
+  if (el.parentElement && el.parentElement.classList.contains("scrollbox")) return;
+  const d = document.createElement("div");
+  d.className = "scrollbox";
+  d.setAttribute("tabindex", "0");
+  d.setAttribute("role", "group");
+  d.setAttribute("aria-label", label);
+  el.parentNode.insertBefore(d, el);
+  d.appendChild(el);
 }
 
 function wireTips(){
@@ -907,7 +965,7 @@ function boot(d){
   const oneLang = under.length > 0 && underLangs.length === 1 &&
     d.countries.filter(c => c.language === underLangs[0] && c.human !== null).length === under.length;
   document.getElementById("story").innerHTML =
-    `A panel of ${d.meta.models} frontier models was asked to answer a moral-foundations questionnaire
+    `A panel of ${d.meta.models} large language models was asked to answer a moral-foundations questionnaire
      <strong>as a typical person from a named country</strong>, in English and in that country's language.
      Across the ${withH.length} countries with a published human mean, the panel lands
      <strong>above</strong> the population on binding morality in ${over.length} of them, by
