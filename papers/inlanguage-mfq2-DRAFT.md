@@ -20,7 +20,7 @@ Eleven models, five runs each, statement order reshuffled every run. Fifty condi
 
 Twenty-three countries. Nineteen are the questionnaire authors' own validation set, all of them, with human means computed from their published raw data using their own scoring. Four are ours: India, Sweden, the United States and Iran. Twenty of the twenty-three have a human mean to compare against; India, Sweden and the United States have none.
 
-Two things vary. **Framing**: a system prompt telling the model to answer as a typical person living in the named country, or no system prompt at all. **Language**: the questionnaire in English, or in the authors' official translation, with the framing prompt written in that language. Six translations exist and we used all six: Arabic, Spanish, Farsi, French, Japanese and Russian.
+Two things vary. **Framing**: a framing prompt telling the model to answer as a typical person living in the named country, or no framing prompt at all. **Language**: the questionnaire in English, or in the authors' official translation, with the framing prompt written in that language. Six translations exist and we used all six: Arabic, Spanish, Farsi, French, Japanese and Russian.
 
 ## Framing moves the panel; language mostly does not
 
@@ -65,9 +65,11 @@ Distance from each country's measured mean, English framing, which every country
 | Saudi Arabia | 4.083 | 4.733 | +0.650 |
 | United Arab Emirates | 3.892 | 4.629 | +0.737 |
 | Japan | 2.652 | 3.668 | +1.016 |
-| Iran | 3.333 | 4.577 | +1.244 |
+| Iran † | 3.333 | 4.577 | +1.244 |
 
-Five countries sit at or below their populations and fifteen sit above, with nothing between -0.002 and +0.154. We report the members rather than a name for the set: nothing in this design sampled a country property that would let us say what the five have in common, and any label we supplied would be ours rather than the data's.
+† Iran's mean is from Hazrati, Nejat and Daneshi (2025), not the questionnaire authors' set. See Limits.
+
+Five countries sit at or below their populations and fifteen sit above, with nothing between -0.002 and +0.154.
 
 The direction is not a function of how the population scores. Japan has the lowest measured mean in the set and receives the second largest positive difference. Across all twenty, the correlation between a country's human mean and the panel's distance from it is 0.07.
 
@@ -88,9 +90,7 @@ The binding composite averages three of six foundations, so a shift in it says n
 | Proportionality | +0.12 | no |
 | Care | -0.04 | no |
 
-Purity moves most wherever anything moves. Equality moves about a third as much as the binding three and sits outside the composite, so no analysis of the composite alone would show it. Care does not rise anywhere by an amount the data distinguishes from zero, and in Japanese and Russian it falls.
-
-One caveat travels with this. Unframed, the panel already sits near the top of the scale on Care at 4.71 and near the bottom on Purity at 1.97 and Equality at 1.99. Most of the room to move is in the foundations it starts low on, so part of the shape of the table is the scale rather than the framing.
+Unframed, the panel sits near the top of the scale on Care at 4.71 and near the bottom on Purity at 1.97 and Equality at 1.99. Part of the shape of the table is the scale rather than the framing.
 
 French is the exception on the binding three as well. There, Loyalty rises 0.30, Purity 0.09, and Authority does not move.
 
@@ -122,11 +122,11 @@ That study measures what a model says about a population. This one measures what
 
 ## Limits
 
-**Nothing was preregistered.** The design grew from a validation exercise. Every quantity here is exploratory and no threshold was fixed before the data existed. We report intervals rather than marking results as passing or failing a test, because a significance mark implies a decision rule this study never committed to.
+**Nothing was preregistered.** The design grew from a validation exercise, and no threshold was fixed before the data existed. Quantities are reported as intervals.
 
 **Iran's anchor comes from a different study.** Every other population is from the questionnaire authors' own validation set. Iran is not in that set, so it is anchored to an independent Iranian validation of the same official Persian translation, n=989. That study administered on a 0-to-4 scale and we shifted by one for comparability, its sample is younger, more educated and majority female relative to the country, and its authors state it is likely less binding-endorsing than the general population, which would make the gap we report larger than a nationally stratified sample would give. Their other sample gives 3.23 rather than 3.33, moving Iran's English-framed difference from +1.24 to +1.35.
 
-**Morocco's human sample answered in Spanish.** The authors' own table records the administration language for each country. It matches the language of our in-language arm everywhere except Morocco, where their sample was collected in Spanish while we frame it in Arabic. We collected a Spanish-framed Moroccan arm alongside so the mismatch is measured rather than assumed.
+**Morocco's human sample answered in Spanish.** The authors' table records an administration language per country. It matches our in-language arm everywhere except Morocco, whose sample they collected in Spanish while we frame it in Arabic. We ran a Spanish-framed Moroccan arm as well: it lands at 4.589 against the Arabic arm's 4.582, a difference of 0.007. The mismatch does not move Morocco.
 
 **Our language groups are administration languages, not cohorts.** The grouping names the language we administered in. That matches the authors' administration language for Belgium and Switzerland, so the comparison is like for like, but French is a first language for roughly 36 percent of Belgians and 23 percent of Swiss residents. Those rows describe respondents answering in French rather than typical residents of either country.
 
