@@ -566,7 +566,7 @@ function panelFoundations(){
   let a = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img"
     aria-label="Shift in each moral foundation when the panel is framed as a local, by language">`;
   for (let v = Math.ceil(lo*4)/4; v <= hi; v += 0.25)
-    a += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-30}" stroke="var(--border)"/>
+    a += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-58}" stroke="var(--border)"/>
       <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
         text-anchor="middle">${v>0?"+":""}${v.toFixed(2)}</text>`;
   a += `<line x1="${x(0)}" y1="${TOP-14}" x2="${x(0)}" y2="${H-30}"
@@ -809,7 +809,7 @@ function panelModels(){
     const vals = entries.map(e=>e[1]);
     let lo = Math.min(...vals, c.ci[0], anch ? anch.human : Infinity) - 0.15;
     let hi = Math.max(...vals, c.ci[1], anch ? anch.human : -Infinity) + 0.15;
-    const W = 900, L = 150, R = 60, RH = 30, TOP = 40, H = TOP + entries.length*RH + 40;
+    const W = 900, L = 150, R = 60, RH = 30, TOP = 40, H = TOP + entries.length*RH + 68;
     const x = v => L + (v-lo)/(hi-lo)*(W-L-R);
     const isFramed = /_framed_/.test(sel);
     const hue = isFramed ? "var(--framed)" : "var(--unframed)";
@@ -818,15 +818,15 @@ function panelModels(){
       strip += `<line x1="${x(v)}" y1="${TOP-14}" x2="${x(v)}" y2="${H-30}" stroke="var(--border)"/>
         <text class="m" x="${x(v)}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
           text-anchor="middle">${v.toFixed(2)}</text>`;
-    strip += `<rect x="${x(c.ci[0])}" y="${TOP-8}" width="${x(c.ci[1])-x(c.ci[0])}" height="${H-TOP-22}"
+    strip += `<rect x="${x(c.ci[0])}" y="${TOP-8}" width="${x(c.ci[1])-x(c.ci[0])}" height="${H-TOP-50}"
         fill="${hue}" opacity=".12"/>
-      <line x1="${x(c.mean)}" y1="${TOP-10}" x2="${x(c.mean)}" y2="${H-30}"
+      <line x1="${x(c.mean)}" y1="${TOP-10}" x2="${x(c.mean)}" y2="${H-58}"
         stroke="${hue}" stroke-width="2"/>`;
     if (anch){
       const hx = x(anch.human);
-      strip += `<line x1="${hx}" y1="${TOP-10}" x2="${hx}" y2="${H-30}" stroke="var(--human)" stroke-width="2.5"/>
+      strip += `<line x1="${hx}" y1="${TOP-10}" x2="${hx}" y2="${H-58}" stroke="var(--human)" stroke-width="2.5"/>
         <path d="M${hx-6},${TOP-10} L${hx+6},${TOP-10} L${hx},${TOP-2} Z" fill="var(--human)"/>
-        <text class="m" x="${hx}" y="${H-8}" fill="var(--human)" font-size="15"
+        <text class="m" x="${hx}" y="${H-40}" fill="var(--human)" font-size="15"
           text-anchor="middle">people ${fmt(anch.human,2)}</text>`;
     }
     entries.forEach(([m,v],i) => {
@@ -835,7 +835,7 @@ function panelModels(){
         <circle cx="${x(v)}" cy="${y}" r="6" fill="${hue}"/>
         <text class="m" x="${x(v)+13}" y="${y+5}" fill="var(--text-dim)" font-size="15">${fmt(v,2)}</text>`;
     });
-    strip += `<text x="${L}" y="${H-6}" fill="var(--text-dim)" font-size="15">panel mean
+    strip += `<text x="${L}" y="${H-10}" fill="var(--text-dim)" font-size="15">panel mean
       ${fmt(c.mean)} &middot; 95% CI [${fmt(c.ci[0])}, ${fmt(c.ci[1])}] &middot; between-model SD
       ${fmt(c.sd,2)} &middot; n = ${c.n_models}</text></svg>`;
   }
@@ -852,7 +852,50 @@ function panelModels(){
       <td class="num">${fmt(m.gap_to_panel)}</td><td class="num">${fmt(m.own_spread)}</td></tr>`;
   tbl += `</tbody></table>`;
 
+  // Every condition's between-model spread on one axis, framed against unframed. Position on a
+  // common scale is the channel the eye reads best, so the separation is the thing you see; the
+  // counts are underneath for anyone who wants them rather than asserted over the top.
+  const notAudit = k => !AUDIT.test(k);
+  const uKeys = Object.keys(D.conditions_raw).filter(k => notAudit(k) && !/_framed_/.test(k));
+  const fKeys = Object.keys(D.conditions_raw).filter(k => notAudit(k) && /_framed_/.test(k));
+  const med = a => { const s=a.slice().sort((x,y)=>x-y), h=s.length>>1;
+                     return s.length%2 ? s[h] : (s[h-1]+s[h])/2; };
+  const uSD = uKeys.map(k=>D.conditions_raw[k].sd), fSD = fKeys.map(k=>D.conditions_raw[k].sd);
+  const SW=900, SL=132, SR=40, SH=176;
+  const slo=0, shi=Math.ceil(Math.max(...uSD,...fSD)*20)/20+0.02;
+  const sx = v => SL + (v-slo)/(shi-slo)*(SW-SL-SR);
+  let disp = `<svg class="chart" viewBox="0 0 ${SW} ${SH}" role="img"
+    aria-label="Between-model spread for every condition, unframed against framed">`;
+  for (let v=0; v<=shi; v+=0.05)
+    disp += `<line x1="${sx(v)}" y1="34" x2="${sx(v)}" y2="${SH-34}" stroke="var(--border)"/>
+      <text class="m" x="${sx(v)}" y="26" fill="var(--text-dim)" font-size="15"
+        text-anchor="middle">${v.toFixed(2)}</text>`;
+  [["No framing", uKeys, "var(--unframed)", 66],
+   ["Framed as a local", fKeys, "var(--framed)", 122]].forEach(([lab,keys,col,y]) => {
+    disp += `<text x="0" y="${y+5}" fill="var(--text-bright)" font-size="15">${lab}</text>`;
+    disp += `<line x1="${SL}" y1="${y}" x2="${SW-SR}" y2="${y}" stroke="var(--border)"/>`;
+    keys.forEach((k,i) => {
+      const v=D.conditions_raw[k].sd, off=((i%3)-1)*7;
+      disp += `<circle cx="${sx(v)}" cy="${y+off}" r="5" fill="${col}" opacity=".8"/>`;
+    });
+  });
+  disp += `<text class="m" x="${SW-SR}" y="${SH-10}" fill="var(--text-dim)" font-size="15"
+    text-anchor="end">between-model SD, binding composite</text></svg>`;
+  const tighter = fSD.filter(v => v < Math.min(...uSD)).length;
+
   return `<div class="cbox">
+    <h2>How much the models disagree with each other</h2>
+    <p class="lede">One dot per condition: the spread between the eleven models' own figures.
+      Every condition where the panel was told to answer as someone from a country, against every
+      condition where it was not.</p>
+    ${disp}
+    <p class="note">Median <span class="mono">${med(uSD).toFixed(3)}</span> across the
+      ${uKeys.length} unframed conditions and <span class="mono">${med(fSD).toFixed(3)}</span>
+      across the ${fSD.length} framed ones. <strong>${tighter} of the ${fSD.length}</strong> framed
+      conditions are tighter than every unframed condition. Why that happens is not something this
+      collection can say.</p>
+  </div>
+  <div class="cbox">
     <h2>Where each model sits</h2>
     <p class="lede">The model is the unit of analysis: every model's iterations are averaged before it enters
       a panel mean, so one talkative model cannot outvote the rest. The orange line is the panel mean and the
@@ -966,7 +1009,7 @@ function boot(d){
     d.countries.filter(c => c.language === underLangs[0] && c.human !== null).length === under.length;
   document.getElementById("story").innerHTML =
     `A panel of ${d.meta.models} large language models was asked to answer a moral-foundations questionnaire
-     <strong>as a typical person from a named country</strong>, in English and in that country's language.
+     <strong>as a typical person living in a named country</strong>, in English and in that country's language.
      Across the ${withH.length} countries with a published human mean, the panel lands
      <strong>above</strong> the population on binding morality in ${over.length} of them, by
      <strong>${fmtS(avg,2)}</strong> scale points on average. ${
@@ -976,8 +1019,8 @@ function boot(d){
                 administered in ${underLangs[0]}.`
              : `It lands <strong>below</strong> in ${under.length}: ${under.map(c=>esc(c.country)).join(", ")}.`)
          : ""}${
-       nulls.length ? ` In ${nulls.map(g=>esc(g.language)).join(" and ")} it orders the countries with
-       <strong>no relationship at all</strong> to the human ordering.` : ""}${
+       nulls.length ? ` In ${nulls.map(g=>esc(g.language)).join(" and ")} the observed rank
+       correlation with the human ordering is <strong>zero</strong>.` : ""}${
        heldBack ? ` A further ${heldBack} anchored ${heldBack>1?"countries are":"country is"} left out of
        these figures until ${heldBack>1?"their":"its"} panel is complete.` : ""}`;
 
@@ -1013,7 +1056,10 @@ function boot(d){
   document.getElementById("foot").innerHTML =
     `Produced by <span class="mono">${esc(d.meta.produced_by)}</span> from
      <span class="mono">${esc(d.meta.reads)}</span>.
-     ${esc(d.meta.unit_of_analysis)}. ${esc(d.meta.intervals)}.
+     ${esc(d.meta.unit_of_analysis)}. ${esc(d.meta.intervals)}. Intervals are descriptive: they show
+     how far a panel figure moves when models like these are resampled. The eleven are not a
+     probability sample from any population of models, so an interval here is not a confidence
+     interval for models in general.
      Human anchors: Atari et al. 2023 Study 2, except Iran (Hazrati et al. 2025, sample 2).
      Exploratory throughout - none of this was preregistered.`;
 
