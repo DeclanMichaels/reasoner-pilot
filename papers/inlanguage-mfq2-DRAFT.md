@@ -12,7 +12,7 @@ Where the panel lands is a separate question from how far it moves, and it has a
 
 ## Where this came from
 
-We built an instrument called the Reasoner and wanted to know whether a model panel behaves sensibly on a questionnaire that already has human norms, so we administered the MFQ-2 to eleven large language models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it now because we have run every condition we intended to run, not because it tested a hypothesis we started with.
+We built an instrument called the Reasoner, and before trusting a model panel on it we put that panel on a questionnaire that already has published human norms. So we administered the MFQ-2 to eleven large language models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it now because we have run every condition we intended to run, not because it tested a hypothesis we started with.
 
 ## What we did
 
@@ -20,23 +20,25 @@ The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rate
 
 Comparing raw composite means across countries needs the instrument to behave the same way in each of them. We recomputed the authors' own alignment check on their raw data: intercept R-squared runs from 0.993 for Purity to 0.999 for Care across the nineteen countries, which is what licenses comparing these means rather than assuming it. Scoring follows their published composites exactly, six items per foundation.
 
-Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit: each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models and are descriptive: they show how much a panel figure moves when models like these are resampled. They resample eleven values, so their tails are coarse and should be read as a range rather than a calibrated bound. The eleven are not a probability sample from any defined population of models, so an interval here is not a confidence interval for models in general. Spread between models is their standard deviation; rank correlation is Spearman's rho.
+Eleven models, five runs each, statement order reshuffled every run. Fifty conditions, 2,750 scored cells, no cell missing a model. The model is the unit. Each model's five runs are averaged before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models and are descriptive: they show how much a panel figure moves when models like these are resampled. They resample eleven values, so their tails are coarse and should be read as a range rather than a calibrated bound. The eleven are not a probability sample from any defined population of models, so an interval here is not a confidence interval for models in general. Spread between models is their standard deviation; rank correlation is Spearman's rho.
 
-Administration: each model receives the questionnaire in a single user message, with the framing prompt as the framing prompt and nothing else, and returns its ratings as a structured object read by a deterministic parser. Statement order is drawn fresh per run from a seed built from model, instrument, country and iteration. We set a request seed where the provider accepts one and a token ceiling. We do not send a temperature, so each model answered at its provider's default, and the run records do not capture what that default was. The eleven models sit behind five providers whose defaults are not all the same, so the run-to-run noise reported below is not on a common footing across models: some part of the difference between one model's spread and another's may be a sampling temperature we never set and did not log. A pinned temperature would remove that, and any further collection should set and record one.
+Administration: each model receives the questionnaire in a single user message, with the framing prompt as the framing prompt and nothing else, and returns its ratings as a structured object read by a deterministic parser. Statement order is drawn fresh per run from a seed built from model, instrument, country and iteration. We set a request seed where the provider accepts one and a token ceiling. We do not send a temperature, so each model answered at its provider's default, and the run records do not capture what that default was. The eleven models sit behind five providers whose defaults are not all the same. So the run-to-run noise reported below is not on a common footing across models. Some part of the difference between one model's spread and another's may be a sampling temperature we never set and did not log. A pinned temperature would remove that, and any further collection should set and record one.
 
 Twenty-three countries. Nineteen are the questionnaire authors' own validation set, all of them, with human means computed from their published raw data using their own scoring. Four are ours: India, Sweden, the United States and Iran. Twenty of the twenty-three have a human mean to compare against; India, Sweden and the United States have none.
 
 Which language each country was administered in, and whether a human mean exists to compare against:
 
-| language | countries administered in it | English framed | English unframed |
-|---|---|---|---|
-| Arabic | Egypt, Morocco, Saudi Arabia, United Arab Emirates | yes | yes |
-| Spanish | Argentina, Chile, Colombia, Mexico, Peru | yes | yes |
-| French | Belgium, France, Switzerland | yes | yes |
-| Japanese | Japan | yes | yes |
-| Farsi | Iran | yes | yes |
-| Russian | Russia | yes | yes |
-| none | India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden, United States | yes | yes |
+| language | countries administered in it |
+|---|---|
+| Arabic | Egypt, Morocco, Saudi Arabia, United Arab Emirates |
+| Spanish | Argentina, Chile, Colombia, Mexico, Peru |
+| French | Belgium, France, Switzerland |
+| Japanese | Japan |
+| Farsi | Iran |
+| Russian | Russia |
+| no in-language arm | India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden, United States |
+
+Every one of the twenty-three received both English conditions, framed and unframed, so the English framed arm is the one comparison every country shares.
 
 For sixteen of the twenty countries with a human anchor, our in-language condition uses the same language the human norms were collected in. The eight with no in-language arm received the English conditions only; six of them have a human mean, and India, Sweden and the United States do not.
 
@@ -122,7 +124,7 @@ The binding composite averages three of six foundations, so a shift in it says n
 
 Unframed, the panel sits near the top of the scale on Care at 4.71 and near the bottom on Purity at 1.97 and Equality at 1.99. Part of the shape of the table is the scale rather than the framing.
 
-French is the exception on the binding three as well. There, Loyalty rises 0.30, Purity 0.09, and Authority does not move.
+French is the exception on the binding three as well. There, Loyalty rises 0.30, Purity 0.09, and Authority does not move. The three French-administered countries also all sit below their populations on the composite, so the exception runs the same way in every country it covers rather than resting on one of them.
 
 ## Ordering
 
@@ -140,7 +142,7 @@ In Arabic the observed rank correlation is zero, and the panel compresses the di
 
 **Care never comes down.** Across all fifty conditions the panel's Care score runs from 4.29 to 4.88. The lowest measured Care in the reference set is Japan at 3.03. No language and no framing brings the panel near it.
 
-**Framed, the models agree with each other more than they do unframed, and it holds across the grid.** The median between-model spread is 0.33 across the seven unframed conditions and 0.17 across the thirty-nine framed ones. Thirty-seven of the thirty-nine framed conditions are tighter than every unframed condition. Answering as themselves in English the eleven models spread 0.28; told to answer as Egyptians, 0.17. They disagree less about what an Egyptian is than about what they are, and that holds for almost every country we named.
+**Framed, the models agree with each other more than they do unframed, and it holds across the grid.** The median between-model spread is 0.33 across the seven unframed conditions and 0.17 across the thirty-nine framed ones. Thirty-seven of the thirty-nine framed conditions have a smaller between-model standard deviation than any of the seven unframed ones. Answering as themselves in English the eleven models spread 0.28; told to answer as Egyptians, 0.17. They disagree less about what an Egyptian is than about what they are, and that holds for almost every country we named.
 
 **Two countries a point apart come out the same.** Framed in English, the panel puts Iran at 4.58 and Egypt at 4.61. The measured populations sit at 3.33 and 4.27.
 
