@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-08-23T06:20:05",
+  "generated": "2026-08-23T12:08:59",
   "produced_by": "validity/build_viewer_data.py",
   "reads": "validity/runs_framed_lang, validity/runs_framed, validity/runs",
   "scored_cells": 2750,
@@ -1682,41 +1682,73 @@
      }
     },
     "local_framed": {
-     "mean": 4.5818,
+     "mean": 4.5889,
      "ci": [
-      4.4727,
-      4.6818
+      4.496,
+      4.6687
      ],
-     "sd": 0.1773,
+     "sd": 0.1466,
      "n_models": 11,
      "per_model": {
-      "deepseek_v4": 4.7667,
-      "gpt55": 4.7556,
-      "grok45": 4.7556,
-      "inkling": 4.5556,
-      "kimi_k3": 4.5889,
-      "llama33": 4.8111,
-      "minimax": 4.5222,
-      "mistral_large": 4.4889,
-      "o3": 4.3444,
-      "opus": 4.5889,
-      "sonnet": 4.2222
+      "deepseek_v4": 4.6667,
+      "gpt55": 4.7111,
+      "grok45": 4.7778,
+      "inkling": 4.5222,
+      "kimi_k3": 4.7333,
+      "llama33": 4.5889,
+      "minimax": 4.2556,
+      "mistral_large": 4.6333,
+      "o3": 4.3889,
+      "opus": 4.5778,
+      "sonnet": 4.6222
      },
      "foundations": {
-      "care": 4.8273,
-      "equality": 2.7212,
-      "proportionality": 4.3909,
-      "loyalty": 4.6848,
-      "authority": 4.7333,
-      "purity": 4.3273
+      "care": 4.7909,
+      "equality": 2.4424,
+      "proportionality": 4.1818,
+      "loyalty": 4.6152,
+      "authority": 4.8333,
+      "purity": 4.3182
      }
+    }
+   },
+   "anchor_lang": "Spanish",
+   "group_lang": "Arabic",
+   "group_framed": {
+    "mean": 4.5818,
+    "ci": [
+     4.4727,
+     4.6818
+    ],
+    "sd": 0.1773,
+    "n_models": 11,
+    "per_model": {
+     "deepseek_v4": 4.7667,
+     "gpt55": 4.7556,
+     "grok45": 4.7556,
+     "inkling": 4.5556,
+     "kimi_k3": 4.5889,
+     "llama33": 4.8111,
+     "minimax": 4.5222,
+     "mistral_large": 4.4889,
+     "o3": 4.3444,
+     "opus": 4.5889,
+     "sonnet": 4.2222
+    },
+    "foundations": {
+     "care": 4.8273,
+     "equality": 2.7212,
+     "proportionality": 4.3909,
+     "loyalty": 4.6848,
+     "authority": 4.7333,
+     "purity": 4.3273
     }
    },
    "deviation": {
     "en_unframed": -1.2453,
     "local_unframed": -0.91,
     "en_framed": 0.5557,
-    "local_framed": 0.5678
+    "local_framed": 0.5749
    }
   },
   {
@@ -2880,7 +2912,7 @@
      "Morocco"
     ],
     "spearman": 0.0,
-    "panel_spread": 0.1748,
+    "panel_spread": 0.1677,
     "human_spread": 0.375
    },
    "en_framed": {

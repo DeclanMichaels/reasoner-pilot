@@ -384,9 +384,14 @@ function panelOvershoot(){
     ${s}
     <p class="note"><strong>What the language groups are.</strong> The heading is the language
       <em>we</em> administered in. It matches the language Atari et al. administered the human sample
-      in for every country here except <strong>Morocco</strong>, whose human sample was collected in
-      <strong>Spanish</strong> (their Table 3) while we frame it in Arabic; a Spanish-framed Moroccan
-      arm is collected alongside so the mismatch is measured rather than assumed. Belgium and
+      in for every country here except <strong>Morocco</strong>, whose human sample they collected in
+      <strong>Spanish</strong> (their Table 3) while Morocco's own majority language is Arabic. We ran
+      both. Morocco is compared to its anchor using the <strong>Spanish</strong> arm, which is the
+      like-for-like match, and it stays in the Arabic group for the ordering and foundation-shift
+      views, which ask what administering in Arabic does. The two arms land at
+      <span class="mono">4.589</span> and <span class="mono">4.582</span>, so the choice moves Morocco
+      by <span class="mono">0.007</span>. Rows marked <span class="partial">§</span> are compared on an
+      arm other than their group's language. Belgium and
       Switzerland are worth naming too: both were administered in French on both sides, so the
       comparison is like for like, but French is a first language for roughly 36 percent of Belgians
       and 23 percent of Swiss residents, so these rows describe French-answering respondents rather
@@ -450,7 +455,9 @@ function tableHTML(){
     ${COND.map(c=>`<th>${esc(c.label)}</th>`).join("")}
     <th>Framed &minus; human</th></tr></thead><tbody>`;
   for (const r of rows){
-    h += `<tr><td>${esc(r.country)}</td><td>${esc(r.language||"–")}</td>
+    h += `<tr><td>${esc(r.country)}${r.anchor_lang
+        ? ` <span class="partial" title="in-language arm is ${esc(r.anchor_lang)}">§</span>` : ""}</td>
+      <td>${esc(r.language||"–")}</td>
       <td class="num">${fmt(r.human)}</td>`;
     for (const c of COND){
       const v = r.conditions[c.key];
@@ -468,7 +475,9 @@ function tableHTML(){
     <em>in-language, unframed</em> is one condition per language repeated across the countries that share it:
     neither prompt names a country. Only the two framed columns vary country by country. The last column
     uses the in-language framed arm where one was collected and the English framed arm, marked
-    <span style="color:var(--text-dim)">EN</span>, where it was not.</p>`;
+    <span style="color:var(--text-dim)">EN</span>, where it was not. A row marked
+    <span class="partial">§</span> is compared on an arm other than its group's language, because the
+    human sample for that country was collected in the other language; hover the mark for which.</p>`;
 }
 
 /* ============================================================

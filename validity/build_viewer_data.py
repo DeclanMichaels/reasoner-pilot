@@ -156,6 +156,14 @@ for k in C:
         code, country = k.split("_framed_", 1)
         pairs[country] = code
 
+# Morocco was administered to HUMANS in Spanish (Atari et al. 2023, Table 3) while its own
+# majority language is Arabic. The two analyses want different arms. Comparing the panel to
+# Morocco's human anchor wants the Spanish arm, because that is the like-for-like match. The
+# ordering and foundation-shift analyses ask what administering in ARABIC does, and
+# Morocco-in-Arabic is a real observation of that, so the language group keeps the Arabic run.
+# Both arms are carried; neither is discarded.
+ANCHOR_CODE = {"Morocco": "es"}
+
 countries = []
 for country in sorted(set(list(pairs) + [c.split("EN_framed_", 1)[1]
                                          for c in C if c.startswith("EN_framed_")])):
@@ -172,9 +180,17 @@ for country in sorted(set(list(pairs) + [c.split("EN_framed_", 1)[1]
             "en_unframed": cond("en_neutral"),
             "local_unframed": cond(code + "_neutral") if code else None,
             "en_framed": cond("EN_framed_" + country),
-            "local_framed": cond(code + "_framed_" + country) if code else None,
+            "local_framed": cond((ANCHOR_CODE.get(country) or code) + "_framed_" + country)
+                            if code else None,
         },
     }
+    # where the two differ, carry the group's own arm beside the anchor-matched one so the
+    # page can show both rather than implying only one run exists
+    ac = ANCHOR_CODE.get(country)
+    if ac and code and ac != code:
+        row["anchor_lang"] = LANGS.get(ac)
+        row["group_lang"] = LANGS.get(code)
+        row["group_framed"] = cond(code + "_framed_" + country)
     h = row["human"]
     row["deviation"] = {kk: (round(v["mean"] - h, 4) if (v and h is not None) else None)
                         for kk, v in row["conditions"].items()}
