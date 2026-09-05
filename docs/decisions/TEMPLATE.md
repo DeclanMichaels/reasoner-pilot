@@ -4,7 +4,7 @@
 **Status:** active | superseded by #N | historic
 
 > Save as `docs/decisions/NNN-<slug>.md`, zero-padded to three digits, and add the
-> matching row to `DECISIONS.md`. Both, or neither, a detail file with no index
+> matching row to `DECISIONS.md`. Both, or neither - a detail file with no index
 > row will not be found, and an index row with no detail file loses the reasoning
 > that was the point.
 >
@@ -25,7 +25,7 @@ choice.>
 ## Rejected alternatives
 
 <What else was considered and why it lost. Record these when the rejection is
-non-obvious otherwise the same alternative gets proposed again in six months.>
+non-obvious - otherwise the same alternative gets proposed again in six months.>
 
 ## Consequences and gotchas
 
