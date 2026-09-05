@@ -92,6 +92,14 @@ Russian collection landed after it. A clean clone plus a restore gives the origi
 family, not the fifty-condition grid the paper describes, and `audit_inlanguage.py` will run clean
 against it and reconcile, which makes the shortfall easy to miss. Tracked by issue 4.
 
+**The audit scripts write tracked outputs, so running one against partial data corrupts the
+published record.** Running `audit_inlanguage.py` on the restored three-language subset rewrote
+`validity/results/condition_means.json` from 26 conditions to 11, dropping every Spanish, French
+and Russian condition and three of the four Arabic ones. It exited clean and printed RECONCILED,
+because it reconciles whatever it can see. Committed, that output would have reproduced perfectly
+against itself. **Check `git status` after running anything under `validity/`, and treat a clean
+exit as saying nothing about whether the right data was present.**
+
 ## Human data
 
 `human-responses/` is published under `DATA-LICENSE.md`. The `_server` block holding hashes of IP
