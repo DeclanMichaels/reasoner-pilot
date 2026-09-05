@@ -78,6 +78,20 @@ numbers do not regenerate from a fresh clone until that data is restored, and
 `.gitignore` also excludes `*.smbdelete*`, residue from the retired SMB share. If those appear,
 something is reading from dead infrastructure.
 
+**The documented restore command overwrites tracked files.** `aws s3 sync <archive> validity/`
+restores the ignored run data and also writes the archive's versions of every tracked file it
+contains. Run on 2026-09-05 it reverted five of them to their 2026-08-21 state, including
+`audit_inlanguage.py`, which lost 162 lines and the matched English-baseline change that is
+decision 11. The sync reports success and the tree looks restored. Check `git status` immediately
+after any sync into `validity/` and `git checkout --` anything tracked that it touched. Tracked by
+issue 3.
+
+**The archive does not cover the completed grid.** It was written 2026-08-21 and holds Arabic,
+Farsi and Japanese only: 929 objects, 780 cell-records, 14 conditions. The Spanish, French and
+Russian collection landed after it. A clean clone plus a restore gives the original three-language
+family, not the fifty-condition grid the paper describes, and `audit_inlanguage.py` will run clean
+against it and reconcile, which makes the shortfall easy to miss. Tracked by issue 4.
+
 ## Human data
 
 `human-responses/` is published under `DATA-LICENSE.md`. The `_server` block holding hashes of IP
