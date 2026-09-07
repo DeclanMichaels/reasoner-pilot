@@ -7,44 +7,54 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree. The working tree is clean.
-- **The published record reproduces.** `python3 analysis/test_reproduce.py` reports 15 reproduced,
-  0 mismatched, 0 missing, run 2026-09-05. No keys and no network.
-- The document set is installed: `CLAUDE.md`, `CONTEXT.md`, `DECISIONS.md` with 13 entries under
-  `docs/decisions/`, `docs/DEVELOPMENT_NOTES.md`, and this file.
-- Four issues are open on the tracker, numbered 1 to 4. It had none before today.
-- The 2026-09-05 entries below were written on the Black M2 Air. The 2026-09-07 session ran on the
-  Silver M5 Air, which holds the completed grid in `validity/`; that grid is now also in S3.
+- Local and remote agree at `fc1ccef` plus this handoff. The working tree is clean apart from one
+  untracked scratch file, `reasoner-pilot-directory-contents-Code`, an `ls` dump from 2026-08-21.
+- **The published record reproduces** as of 2026-09-05 (15 reproduced, 0 mismatched, 0 missing).
+  Not re-run this session; nothing under `analysis/` or `results/` was touched.
+- **The completed in-language grid has two copies.** The working copy in `validity/` on the Silver
+  M5 Air, and `s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/`.
+  Counted on disk 2026-09-07 with the grid audit's own keying, read-only: 50 conditions, 11
+  models, 550 model-by-condition cells, every cell with exactly 5 reruns carrying ratings, 2,750
+  scored cells. 46 further files are retried parse failures with no ratings object.
+- Four issues are open on the tracker, numbered 1 to 4.
+- This session ran on the Silver M5 Air. The next one is planned for the Black M2 Air.
 
 ## What changed outside the repository
 
-The S3 validity archive was restored into `validity/` on this machine: 890 run files, 8.1 MB, from
-`s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/`. The
-data remains gitignored and is not committed.
+2026-09-07, from the M5 Air: 2,692 objects, 7.8 MB, written to the dated S3 prefix above, storage
+class STANDARD. Contents are the 2,690 gitignored data files (`runs/` 165, `runs_framed/` 1,267,
+`runs_framed_lang/` 1,246, `instruments/` 12) plus `ARCHIVE_MANIFEST.sha256` and
+`ARCHIVE_NOTE.txt`. No tracked file is in it. Restored into a scratch directory and verified: all
+2,690 checksums match, file list identical, the three run directories byte-identical to the working
+copy. The 2026-08-21 objects at the prefix root were listed and not touched: 929 objects, Arabic,
+Farsi and Japanese only, all written 07:46 on 2026-08-21, tracked files mixed in.
 
-That sync also overwrote five tracked files with their 2026-08-21 versions. All five were restored
-from git and the tree is clean. Nothing else outside the repository changed: no model runs, no data
-written, nothing spent.
+Nothing under `validity/` was run or written. No model calls. Nothing spent beyond the S3 writes.
 
-Eleven labels were created here yesterday. No deployments were made.
+Also on the M5 Air, outside any repository: `~/.claude/CLAUDE.md` was created as the symlink to
+`~/Code/claude-continuity/CLAUDE.md`, and that clone was fast-forwarded two commits.
 
-2026-09-07, on the M5 Air: the completed grid was written to
-`s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/`,
-2,692 objects, 7.8 MB, STANDARD: the 2,690 gitignored data files plus a sha256 manifest and a
-coverage note, no tracked files. Restored into a scratch directory and verified byte for byte
-against the working copy. The 2026-08-21 objects at the prefix root were not touched. Nothing under
-`validity/` was run or written. Nothing spent beyond the S3 writes.
+## Next session, on the Black M2 Air
+
+The one thing #4 still needs is a restore test on a machine that does not hold the data. The M2
+Air holds only the 2026-08-21 three-language restore in `validity/`, so it is the right machine.
+The recipe is in `validity/README.md` under "Where the run data lives": sync the dated prefix into
+a scratch directory, `shasum -c` the manifest, then rsync the four directories into `validity/`
+and check `git status` before anything else. Expect 2,690 data files. Do not sync the prefix root.
+
+After that restore, the M2 Air holds the full grid and #1 stops being `blocked-on-phase` on
+machine grounds. Whether it is worked is a separate decision.
 
 ## Open items
 
-- **#4, the completed grid is now two-copy.** Counted on disk 2026-09-07: 50 conditions, 11
-  models, 550 cells, every cell with exactly 5 reruns carrying ratings, 2,750 scored cells.
-  Archived to the dated S3 prefix above; restore verified on the M5 Air only. Still open,
-  `ready-for-human`: a restore test on a machine that does not hold the data, and closing.
-- **#3, the documented restore command reverts tracked code**, silently, to the archive's date.
-- **#1, the appendix regeneration**, labelled `blocked-on-phase`. It cannot run on this machine.
-  `papers/inlanguage-mfq2-appendix-DRAFT.md` still describes eleven models, 20 conditions and 1,100
-  cells against a paper describing fifty conditions and 2,750 cells.
+- **#4, the completed grid is two-copy**, `ready-for-human`. Open for the M2 Air restore test and
+  closing. Result comment posted 2026-09-07.
+- **#3, syncing the 2026-08-21 archive root into `validity/` reverts tracked code**,
+  `ready-for-agent`. The README now documents a path that cannot, via the dated prefix; the old
+  command and the old snapshot still exist.
+- **#1, the appendix regeneration**, `blocked-on-phase`. `papers/inlanguage-mfq2-appendix-DRAFT.md`
+  still describes eleven models, 20 conditions and 1,100 cells against a paper describing fifty
+  conditions and 2,750 cells.
 - **#2, reconciling the paper against the regenerated appendix**, `ready-for-human`, waiting on #1.
 - Sampling temperature is unset and unrecorded in the runners, so every collection here was made at
   five unrecorded provider defaults.
@@ -55,6 +65,9 @@ against the working copy. The 2026-08-21 objects at the prefix root were not tou
   been re-verified against the review.
 - `validity/results/` outputs are not covered by `analysis/reproduce_manifest.json`, which pins the
   15 pilot outputs only.
+- `runs_english_baseline/` (228 files) and `archive-2026-07/` (786 files) are tracked in git while
+  the other run directories are ignored. Noticed, not changed; whether that is intended is a
+  question for the licence position in decision 7.
 
 ## Unresolved - needs a decision
 
@@ -70,20 +83,19 @@ against the working copy. The 2026-08-21 objects at the prefix root were not tou
 
 ## Known-broken and known-strange
 
-Nothing in this repository's code is known broken, and the published outputs reproduce. The
-findings that look like defects and are not, and the two restore traps found today, are in
-`docs/DEVELOPMENT_NOTES.md`.
+Nothing in this repository's code is known broken. The findings that look like defects and are
+not, and the two restore traps, are in `docs/DEVELOPMENT_NOTES.md`.
 
-One worth repeating because it makes a shortfall invisible: after restoring the archive here,
-`audit_inlanguage.py` runs clean and reconciles. It is analysing the original three-language family,
-not the grid the paper describes, so a clean run is not evidence the right data is present.
+Worth repeating because it makes a shortfall invisible: against the three-language restore,
+`audit_inlanguage.py` runs clean and reconciles, and it rewrites tracked outputs in
+`validity/results/` to match whatever it saw. A clean exit says nothing about whether the right data
+was present. Check `git status` after running anything under `validity/`.
 
 ## Loose ends
 
-- The restored run data sits in `validity/` on this machine, gitignored. It is the older
-  three-language subset and is not a substitute for the M5 Air's copy.
 - `DECISIONS.md` was reconstructed rather than ported, from commit bodies, the README, the papers
   and the framing library. Entries 3 and 5 carry rationale implied by those sources rather than
   stated in them.
 - The in-language write-up is still a draft that grew out of its results, so decisions recorded from
   it are expected to be revisited during review rather than treated as settled.
+- The 2026-09-05 archive has been verified only on the machine that produced it.
