@@ -13,6 +13,7 @@
   es_framed_Chile    n=11  mean=3.576  models=True
   es_framed_Colombia n=11  mean=3.996  models=True
   es_framed_Mexico   n=11  mean=3.947  models=True
+  es_framed_Morocco  n=11  mean=4.589  models=True
   es_framed_Peru     n=11  mean=4.038  models=True
   es_neutral         n=11  mean=2.780  models=True
   fa_framed_Iran     n=11  mean=4.314  models=True
@@ -40,6 +41,7 @@
     es_framed_Chile                foundation-route 3.5758  item-route 3.5758  OK
     es_framed_Colombia             foundation-route 3.9960  item-route 3.9960  OK
     es_framed_Mexico               foundation-route 3.9475  item-route 3.9475  OK
+    es_framed_Morocco              foundation-route 4.5889  item-route 4.5889  OK
     es_framed_Peru                 foundation-route 4.0384  item-route 4.0384  OK
     es_neutral                     foundation-route 2.7798  item-route 2.7798  OK
     fa_framed_Iran                 foundation-route 4.3141  item-route 4.3141  OK
@@ -69,6 +71,7 @@
   es_framed_Chile    mean=3.576  CI[3.478,3.677]
   es_framed_Colombia mean=3.996  CI[3.909,4.091]
   es_framed_Mexico   mean=3.947  CI[3.849,4.045]
+  es_framed_Morocco  mean=4.589  CI[4.496,4.669]
   es_framed_Peru     mean=4.038  CI[3.920,4.157]
   es_neutral         mean=2.780  CI[2.582,2.967]
   fa_framed_Iran     mean=4.314  CI[4.148,4.476]
@@ -135,6 +138,18 @@
     -opus           +1.003
     -minimax        +1.018
     -sonnet         +1.030
+  EN-framed Iran overshoot vs the Iran anchor without each model:
+    -grok45         +1.220
+    -gpt55          +1.226
+    -llama33        +1.230
+    -mistral_large  +1.231
+    -deepseek_v4    +1.243
+    -minimax        +1.244
+    -opus           +1.244
+    -inkling        +1.246
+    -kimi_k3        +1.253
+    -o3             +1.261
+    -sonnet         +1.284
   T11 (JA-neutral minus EN-neutral) without each model:
     -deepseek_v4    -0.0667
     -gpt55          -0.0922
@@ -147,3 +162,5 @@
     -o3             -0.1044
     -opus           -0.0956
     -sonnet         -0.0900
+
+wrote results/appendix_b4_b5.md

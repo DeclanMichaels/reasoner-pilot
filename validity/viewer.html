@@ -396,17 +396,24 @@ function panelOvershoot(){
       comparison is like for like, but French is a first language for roughly 36 percent of Belgians
       and 23 percent of Swiss residents, so these rows describe French-answering respondents rather
       than a typical resident of either country.</p>
-    <p class="note"><strong>Iran's anchor is not from the same study as the others.</strong>
+    ${(() => { const IA = D.meta.iran_anchor; if (!IA) return "";
+      const used = IA.alternatives.find(a => a.label === IA.in_use);
+      const alt  = IA.alternatives.filter(a => a.label !== IA.in_use);
+      return `<p class="note"><strong>Iran's anchor is not from the same study as the others.</strong>
       Every other population here comes from Atari et al. 2023 Study 2. Iran is not in that set, so
-      it is anchored to Hazrati, Nejat and Daneshi (2025), n=989, who administered Atari's official
-      Persian MFQ-2, which matches the language of our Farsi arm. Three differences travel with it.
-      They administered on a 0 to 4 scale and we apply a +1 shift for comparability. Their sample is
-      an online convenience sample, younger, majority female and more educated than the country, and
-      the authors state it is likely less binding-endorsing than the general Iranian population,
-      which would make the gap we report larger than a nationally stratified sample would give.
-      And the choice of sample moves the number: on their sample 1 the in-language gap is +1.08 and
-      on the two samples pooled it is +1.01, against the +0.98 shown here. Iran is the widest gap in
-      this collection, and it rests on the least comparable anchor in it.</p>
+      it is anchored to Hazrati, Nejat and Daneshi (2025), n=${used.n}, who administered Atari's
+      official Persian MFQ-2, which matches the language of our Farsi arm. Three differences travel
+      with it. They administered on a 0 to 4 scale and we apply a +1 shift for comparability.
+      Their sample is an online convenience sample, younger, majority
+      female and more educated than the country, and the authors state it is likely less
+      binding-endorsing than the general Iranian population, which would make the gap we report
+      larger than a nationally stratified sample would give.
+      And the choice of sample moves the number: ${alt.map(a =>
+        `on their ${esc(a.label)} the in-language gap is ${fmtS(a.fa_framed_overshoot,2)}`
+        ).join(" and ")}, against the ${fmtS(used.fa_framed_overshoot,2)} shown here. The anchor in
+      use is the ${esc(IA.in_use_is)} of the ${["zero","one","two","three","four"][IA.alternatives.length]
+      || IA.alternatives.length}, so the gap shown is the smallest the source supports. Iran is the widest gap in this collection, and it rests on the
+      least comparable anchor in it.</p>`; })()}
     ${orphans.length ? `<p class="note"><strong>Not charted:</strong>
       ${orphans.map(o=>esc(o.country)).join(", ")} - not in the questionnaire authors'
       validation set, so there is no published human mean to measure the panel against. Their panel values are in
@@ -673,10 +680,11 @@ function panelFoundations(){
         : "each of " + r.countries.map(esc).join(", ")}</h3>${s}`;
     // the caret on this chart is Hazrati's sample, not Atari's; say so where it is drawn
     if (r.countries.length === 1 && r.countries[0] === "Iran")
-      b += `<p class="note">The caret on this chart is Hazrati, Nejat and Daneshi (2025) sample 2,
-        n=989, not Atari et al. Same instrument and same language, different study, and an online
-        convenience sample their authors describe as likely less binding-endorsing than the country.
-        See the note on the first tab.</p>`;
+      b += `<p class="note">The caret on this chart is Hazrati, Nejat and Daneshi (2025)
+        ${esc(D.meta.iran_anchor.in_use)}, n=${D.meta.iran_anchor.alternatives.find(
+          a => a.label === D.meta.iran_anchor.in_use).n}, not Atari et al. Same instrument and same
+        language, different study, and an online convenience sample their authors describe as likely
+        less binding-endorsing than the country. See the note on the first tab.</p>`;
   }
 
   // ---- the table

@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-08-23T12:08:59",
+  "generated": "2026-09-07T17:08:11",
   "produced_by": "validity/build_viewer_data.py",
   "reads": "validity/runs_framed_lang, validity/runs_framed, validity/runs",
   "scored_cells": 2750,
@@ -25,7 +25,43 @@
    1,
    5
   ],
-  "measure": "binding composite, the mean of Loyalty, Authority and Purity"
+  "measure": "binding composite, the mean of Loyalty, Authority and Purity",
+  "iran_anchor": {
+   "source": "Hazrati, Nejat & Daneshi (2025), The Revised Moral Foundations in Iran, Collabra: Psychology 11(1):140952. CC-BY 4.0. Foundation means computed as the mean of Table 2 item means (exact, equal item weighting).",
+   "instrument": "Persian MFQ-2 (Atari's official translation obtained via personal communication, with minor linguistic edits, their Table S1)",
+   "scale_note": "Administered 0-4; +1 linear shift applied for comparability with the 1-5 runs and Atari Table 7.",
+   "caveats": [
+    "convenience online samples (Telegram/snowball), ~68-71% female, mean age ~26-28, ~57-59% bachelor's+ -- likely less binding-endorsing than the general Iranian population",
+    "different collection conditions than Atari et al. Table 7 anchors (cross-paper comparison)",
+    "foundation SDs not derivable from item table; raw data at their view-only OSF link if exact SDs needed: https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed",
+    "collection began one year after the Woman, Life, Freedom movement; authors note possible period effects"
+   ],
+   "in_use": "sample 2",
+   "alternatives": [
+    {
+     "label": "sample 2",
+     "n": 989,
+     "binding": 3.333,
+     "en_framed_overshoot": 1.244,
+     "fa_framed_overshoot": 0.981
+    },
+    {
+     "label": "sample 1",
+     "n": 392,
+     "binding": 3.231,
+     "en_framed_overshoot": 1.346,
+     "fa_framed_overshoot": 1.083
+    },
+    {
+     "label": "n-weighted pool",
+     "n": 1381,
+     "binding": 3.304,
+     "en_framed_overshoot": 1.273,
+     "fa_framed_overshoot": 1.01
+    }
+   ],
+   "in_use_is": "largest"
+  }
  },
  "countries": [
   {

@@ -19,21 +19,19 @@ BIND = ["loyalty", "authority", "purity"]
 SEED = 20260723
 B = 100_000
 
-# Iran is the only anchor not from Atari Study 2 and is the only one stated by hand.
-# Everything else is derived below from the committed reference, so a country gets its
-# anchor by being in that file rather than by someone retyping a number.
-ANCH = {"Iran": 3.333}
+# Iran is the only anchor not from Atari Study 2. It is read from anchors_iran.json rather
+# than retyped, on the same principle as the reference file below: a number that appears in
+# two places drifts in one of them. The viewer renders its caveats and sensitivity from here.
+IRAN = json.load(open(VDIR / "anchors_iran.json"))
+ANCH = {"Iran": IRAN["binding_1to5"]["s2"]}
 ANCH_SRC = {"Iran": "Hazrati et al. 2025, sample 2"}
 
 # Per-foundation human profiles. Every Atari country has one in the published reference; they
 # are read from a committed copy of mfq2_country_means.csv rather than retyped, so a country
 # gains its profile by existing in that file. Iran is not in Atari and is carried separately.
 # Repo boundary: reasoner-study owns the reference, this is a documented copy (4_toolbox Paths).
-ANCH_FOUND = {
-    "Iran": {"care": 3.948, "equality": 2.672, "proportionality": 4.147,
-             "loyalty": 3.630, "authority": 3.050, "purity": 3.318},
-}
-ANCH_N = {"Iran": 989}   # Hazrati sample 2
+ANCH_FOUND = {"Iran": {g: IRAN["means_1to5"][g]["s2"] for g in FOUND}}
+ANCH_N = {"Iran": IRAN["samples"]["s2"]["n"]}
 _CSV_NAME = {"UAE": "United Arab Emirates", "Columbia": "Colombia"}
 _ref = VDIR / "reference" / "mfq2_country_means.csv"
 if _ref.exists():
@@ -290,6 +288,34 @@ for m in ROSTER:
         "own_spread": round(mean(spread[m]), 4) if spread.get(m) else None,
     })
 
+def iran_anchor():
+    """Everything the page needs to caveat Iran, computed rather than typed into the HTML."""
+    n1, n2 = IRAN["samples"]["s1"]["n"], IRAN["samples"]["s2"]["n"]
+    b1, b2 = IRAN["binding_1to5"]["s1"], IRAN["binding_1to5"]["s2"]
+    pool = (b1 * n1 + b2 * n2) / (n1 + n2)
+    en = mean(list(C["EN_framed_Iran"].values())) if "EN_framed_Iran" in C else None
+    fa = mean(list(C["fa_framed_Iran"].values())) if "fa_framed_Iran" in C else None
+    def row(label, n, a):
+        r = {"label": label, "n": n, "binding": round(a, 3)}
+        if en is not None:
+            r["en_framed_overshoot"] = round(en - a, 3)
+        if fa is not None:
+            r["fa_framed_overshoot"] = round(fa - a, 3)
+        return r
+    alts = [row("sample 2", n2, b2), row("sample 1", n1, b1),
+            row("n-weighted pool", n1 + n2, pool)]
+    return {
+        "source": IRAN["source"],
+        "instrument": IRAN["instrument"],
+        "scale_note": IRAN["scale_note"],
+        "caveats": IRAN["caveats"],
+        "in_use": "sample 2",
+        "alternatives": alts,
+        "in_use_is": ("largest" if b2 == max(b1, b2, pool)
+                      else "smallest" if b2 == min(b1, b2, pool) else "middle"),
+    }
+
+
 out = {
     "meta": {
         "generated": time.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -304,6 +330,7 @@ out = {
                      "seeded per quantity from seed %d" % SEED,
         "scale": [1, 5],
         "measure": "binding composite, the mean of Loyalty, Authority and Purity",
+        "iran_anchor": iran_anchor(),
     },
     "countries": countries,
     "language_groups": groups,

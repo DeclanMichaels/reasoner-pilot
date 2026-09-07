@@ -12,7 +12,7 @@ seeded from the run seed plus the quantity's own name.
 
     python3 validity/build_appendix_tables.py > validity/results/appendix_tables.md
 """
-import json, glob, random
+import csv, json, glob, random
 from pathlib import Path
 from collections import defaultdict
 
@@ -22,17 +22,45 @@ BIND = ["loyalty", "authority", "purity"]
 SEED = 20260723
 B = 100_000
 
-ANCH = {"Egypt": 4.267, "Saudi Arabia": 4.083, "Morocco": 4.014,
-        "United Arab Emirates": 3.892, "Nigeria": 4.038, "Japan": 2.652, "Iran": 3.333}
-ANCH_SRC = {c: "Atari 2023 Study 2" for c in ANCH}
-ANCH_SRC["Iran"] = "Hazrati 2025 sample 2"
+# Human anchors, computed rather than transcribed. The nineteen-nation set comes from
+# Atari et al. (2023) Study 2 via reference/mfq2_country_means.csv; Iran is not in that set
+# and comes from anchors_iran.json. Binding is the mean of loyalty, authority and purity.
+# Rounded to three decimals, the precision the appendix has always carried them at: the
+# unrounded means would move published overshoots in the third decimal for no gain.
+REF_NAME = {"Columbia": "Colombia", "UAE": "United Arab Emirates"}
 
-# country, language name, instrument code (None where no in-language arm was run)
-ROWS = [("Egypt", "Arabic", "ar"), ("Morocco", "Arabic", "ar"),
-        ("Saudi Arabia", "Arabic", "ar"), ("United Arab Emirates", "Arabic", "ar"),
-        ("Japan", "Japanese", "ja"), ("Iran", "Farsi", "fa"),
-        ("Nigeria", None, None), ("India", None, None),
-        ("Sweden", None, None), ("United States", None, None)]
+
+ANCH_N = {}
+
+
+def anchors():
+    a, src = {}, {}
+    with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
+        for r in csv.DictReader(fh):
+            c = REF_NAME.get(r["country"], r["country"])
+            a[c] = round(sum(float(r[g]) for g in BIND) / 3, 3)
+            src[c] = "Atari 2023 Study 2"
+            ANCH_N[c] = int(r["n"])
+    ir = json.load(open(VDIR / "anchors_iran.json"))
+    a["Iran"] = ir["binding_1to5"]["s2"]
+    src["Iran"] = "Hazrati 2025 sample 2"
+    return a, src
+
+
+ANCH, ANCH_SRC = anchors()
+
+LANG_NAME = {"ar": "Arabic", "es": "Spanish", "fr": "French",
+             "ja": "Japanese", "fa": "Farsi", "ru": "Russian"}
+LANG_ORDER = ["ar", "es", "fr", "ja", "fa", "ru", None]
+
+# Decision 12. Morocco was administered in Spanish by Atari et al. though its majority
+# language is Arabic, so the anchor comparison uses the Spanish arm while the country stays
+# in the Arabic group for the ordering and foundation-shift views. Both runs are carried.
+# A country appearing in two in-language arms and listed in neither map is an error, not a
+# default: raise rather than silently pick one.
+GROUP_ARM = {"Morocco": "ar"}
+ANCHOR_ARM = {"Morocco": "es"}
+MARK = {"Morocco": " [d12]", "Iran": " [*]"}
 
 
 def fmeans(r):
@@ -93,6 +121,24 @@ C = load("binding")
 F = load("found")
 
 
+def build_rows():
+    """country, language name, instrument code - derived from the conditions present."""
+    out = []
+    for c in sorted(k[len("EN_framed_"):] for k in C if k.startswith("EN_framed_")):
+        arms = [code for code in LANG_ORDER[:-1] if (code + "_framed_" + c) in C]
+        if len(arms) > 1:
+            code = GROUP_ARM.get(c)
+            if code not in arms:
+                raise SystemExit("%s has arms %s and no GROUP_ARM entry" % (c, arms))
+        else:
+            code = arms[0] if arms else None
+        out.append((c, LANG_NAME.get(code), code))
+    return sorted(out, key=lambda r: (LANG_ORDER.index(r[2]), r[0]))
+
+
+ROWS = build_rows()
+
+
 def mean(v):
     return sum(v) / len(v)
 
@@ -132,7 +178,7 @@ for country, lang, code in ROWS:
     lf = cell(code + "_framed_" + country) if code else None
     ef = cell("EN_framed_" + country)
     print("| %s | %s | %s | %.3f | %s | %s | %s |" % (
-        country, lang or "n/a", h, EN,
+        country + MARK.get(country, ""), lang or "n/a", h, EN,
         "%.3f" % ln if ln is not None else "-",
         "%.3f" % ef if ef is not None else "-",
         "%.3f" % lf if lf is not None else "-"))
@@ -145,20 +191,43 @@ for country, lang, code in ROWS:
     if country not in ANCH:
         continue
     a = ANCH[country]
+    code = ANCHOR_ARM.get(country, code)   # decision 12
     ln = cell(code + "_neutral") if code else None
     lf = cell(code + "_framed_" + country) if code else None
     ef = cell("EN_framed_" + country)
     print("| %s | %+.3f | %s | %s | %s |" % (
-        country, EN - a,
+        country + MARK.get(country, ""), EN - a,
         "%+.3f" % (ln - a) if ln is not None else "-",
         "%+.3f" % (ef - a) if ef is not None else "-",
         "%+.3f" % (lf - a) if lf is not None else "-"))
 
-print("\nHuman anchors: %s. India, Sweden and the United States are not in the MFQ-2 "
-      "nineteen-nation set, so no overshoot is computable for them.\n"
-      % ", ".join("%s %.3f (%s)" % (c, ANCH[c], ANCH_SRC[c]) for c in
-                  ["Egypt", "Saudi Arabia", "Morocco", "United Arab Emirates",
-                   "Nigeria", "Japan", "Iran"]))
+ARTICLE = {"United States": "the United States"}
+UNANCHORED = [ARTICLE.get(c, c) for c, _, _ in ROWS if c not in ANCH]
+_ns = sorted(ANCH_N.values())
+print("Each of those nineteen means rests on %d to %d respondents for its country, %s in all, "
+      "collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within "
+      "each nation on age, gender and political orientation. Education was not a "
+      "stratification variable, and the authors state their results rest on \"a subset of "
+      "these populations who were educated enough to complete the surveys online\", noting "
+      "that people from traditional, small-scale communities are absent. Every overshoot in "
+      "this appendix is a distance from those samples' means.\n"
+      % (_ns[0], _ns[-1], format(sum(_ns), ",")))
+print("[*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 "
+      "carries the source, the sample's own caveats and the sensitivity across every anchor "
+      "that source offers.\n")
+print("[d12] Morocco: grouped with Arabic above, compared against its human mean on the "
+      "Spanish arm, because Atari et al. administered Morocco's sample in Spanish. Both "
+      "runs are carried in the data.\n")
+print("Human anchors, treated as constants, binding as the mean of loyalty, authority and "
+      "purity: %s. %s %s not in the MFQ-2 nineteen-nation set, so no overshoot is "
+      "computable for %s. Iran's sample was administered on a 0-4 scale and shifted "
+      "linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the "
+      "detail and the caveats.\n"
+      % (", ".join("%s %.3f (%s)" % (c, ANCH[c], ANCH_SRC[c])
+                   for c, _, _ in ROWS if c in ANCH),
+         ", ".join(UNANCHORED[:-1]) + " and " + UNANCHORED[-1],
+         "is" if len(UNANCHORED) == 1 else "are",
+         "it" if len(UNANCHORED) == 1 else "them"))
 
 print("\n## B3a. Every condition, with intervals\n")
 print("| condition | panel mean | 95% CI | between-model SD |")
@@ -167,9 +236,30 @@ for k in sorted(C):
     lo, hi = boot(list(C[k].values()), k)
     print("| %s | %.3f | [%.3f, %.3f] | %.2f |" % (k, cell(k), lo, hi, sd(k)))
 
+def measured():
+    """Per-foundation human means for the twenty anchored countries, same sources as ANCH."""
+    ref = {}
+    with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
+        for r in csv.DictReader(fh):
+            ref[REF_NAME.get(r["country"], r["country"])] = {g: float(r[g]) for g in FOUND}
+    ir = json.load(open(VDIR / "anchors_iran.json"))["means_1to5"]
+    ref["Iran"] = {g: ir[g]["s2"] for g in FOUND}
+    return ref
+
+
 print("\n## B6. Per-foundation panel means\n")
+print("All fifty conditions, then the measured human mean for each of the twenty anchored "
+      "countries, in the country order of B3. The measured rows are populations, not "
+      "conditions; they are here to be read against the panel rows above.\n")
 print("| condition | Care | Equality | Proportionality | Loyalty | Authority | Purity |")
 print("|---|--:|--:|--:|--:|--:|--:|")
 for k in sorted(F):
     row = {g: mean([F[k][m][g] for m in F[k]]) for g in FOUND}
     print("| %s | %s |" % (k, " | ".join("%.2f" % row[g] for g in FOUND)))
+REF = measured()
+for country, _, _ in ROWS:
+    if country not in REF:
+        continue
+    print("| **%s, measured**%s | %s |" % (
+        country, MARK.get(country, ""),
+        " | ".join("%.2f" % REF[country][g] for g in FOUND)))

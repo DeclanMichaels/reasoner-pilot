@@ -269,8 +269,146 @@ for m,mu in sorted(loo(CONDS["ja_neutral"]), key=lambda x:x[1]):
 print("  FA-framed overshoot vs the Iran anchor without each model:")
 for m,mu in sorted(loo(CONDS["fa_framed_Iran"]), key=lambda x:x[1]):
     print(f"    -{m:<14} {mu-ANCH["Iran"]:+.3f}")
+print("  EN-framed Iran overshoot vs the Iran anchor without each model:")
+for m,mu in sorted(loo(CONDS["EN_framed_Iran"]), key=lambda x:x[1]):
+    print(f"    -{m:<14} {mu-ANCH['Iran']:+.3f}")
 print("  T11 (JA-neutral minus EN-neutral) without each model:")
 ms = sorted(set(CONDS["ja_neutral"]) & set(CONDS["en_neutral"]))
 for drop in ms:
     rest = [CONDS["ja_neutral"][m]-CONDS["en_neutral"][m] for m in ms if m != drop]
     print(f"    -{drop:<14} {sum(rest)/len(rest):+.4f}")
+
+
+# ------------------------------------------------------------------ appendix B4/B5
+# Emitted as markdown so the appendix document splices these sections rather than
+# transcribing them. The stdout above stays the verification trail; this is the same
+# numbers in the document's shape. Nothing is recomputed here: every value comes from
+# tests, CIT, hA, hB and CONDS as already built.
+
+def _t11_loo():
+    ms = sorted(set(CONDS["ja_neutral"]) & set(CONDS["en_neutral"]))
+    return [(d, sum(CONDS["ja_neutral"][m] - CONDS["en_neutral"][m]
+                    for m in ms if m != d) / (len(ms) - 1)) for d in ms]
+
+
+def _span(pairs):
+    v = [x[1] for x in pairs]
+    return min(v), max(v)
+
+
+def _bound(k):
+    lo, hi = CIT[k]
+    return max(abs(lo), abs(hi))
+
+
+def _up(k):
+    d = tests[k][2]
+    return sum(1 for x in d if x > 0), sum(1 for x in d if x < 0), len(d)
+
+
+TEST_MARK = {"T4 FA-framed vs Iran anchor": " [*]",
+             "T9 EN-framed Iran vs Iran anchor": " [*]"}
+
+
+def _row(k, fam_holm, with_signs=False):
+    eff, p, d = tests[k]
+    lo, hi = CIT[k]
+    cells = ["%s%s" % (k, TEST_MARK.get(k, "")), "%+.3f" % eff, "[%+.3f, %+.3f]" % (lo, hi),
+             "%.4f" % p, "%.4f" % fam_holm[k]]
+    if with_signs:
+        u, dn, n = _up(k)
+        cells.append("%d of %d%s" % (u, n, ", none down" if dn == 0 else ""))
+    return "| " + " | ".join(cells) + " |"
+
+
+L = []
+L.append("## B4. The test families\n")
+L.append("Two families, one per headline claim, both post hoc and both exploratory. Paired "
+         "tests use per-model differences; anchor tests subtract the constant from each "
+         "model's mean. Exact sign-flip permutation: with eleven models the minimum "
+         "attainable two-sided p is 2/2048, reported as 0.001. Nothing was pre-registered.\n")
+WORDS = {3: "Three", 9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve"}
+L.append("**Family A, the framing claim.** %s comparisons, Holm across the %s.\n"
+         % (WORDS.get(len(FAMILY_A), len(FAMILY_A)),
+            WORDS.get(len(FAMILY_A), len(FAMILY_A)).lower()
+            if len(FAMILY_A) in WORDS else len(FAMILY_A)))
+L.append("| test | difference | 95% CI | exact p | Holm |")
+L.append("|---|--:|:--:|--:|--:|")
+L += [_row(k, hA) for k in FAMILY_A]
+L.append("\nNulls are reported as bounds, not as demonstrated absence: any Egypt language "
+         "effect is within %.3f, and any Japanese-neutral displacement from the Japanese "
+         "mean is within %.3f.\n"
+         % (_bound("T1 Egypt: EN-framed vs AR-framed"),
+            _bound("T3 JA-neutral vs Japan anchor")))
+L.append("**Family B, the language claim.** One comparison per language, asking whether "
+         "that language's unframed condition departs from the panel's English default. "
+         "Holm across the three. T5 and T6 sit in both families; the double membership is "
+         "disclosed rather than removed by re-cutting family A, and every conclusion holds "
+         "under either cut.\n")
+L.append("| test | difference | 95% CI | exact p | Holm | models moving up |")
+L.append("|---|--:|:--:|--:|--:|--:|")
+L += [_row(k, hB, with_signs=True) for k in FAMILY_B]
+_t5u, _t5d, _n = _up("T5 FA-neutral vs EN-neutral")
+_t11u, _t11d, _ = _up("T11 JA-neutral vs EN-neutral")
+L.append("\nArabic is the only language whose interval excludes zero, and no model moves "
+         "against it. Farsi splits %d up to %d down and Japanese %d up to %d down. As "
+         "bounds: any Farsi departure from the English default is within %.3f, and any "
+         "Japanese departure is within %.3f.\n"
+         % (_t5u, _t5d, _t11u, _t11d,
+            _bound("T5 FA-neutral vs EN-neutral"),
+            _bound("T11 JA-neutral vs EN-neutral")))
+L.append("One further comparison is reported outside both families as a single "
+         "descriptive: the English default sits %+.3f from the Japanese human mean.\n"
+         % (sum(CONDS["en_neutral"].values()) / len(CONDS["en_neutral"]) - ANCH["Japan"]))
+
+_ja = _span(loo(CONDS["ja_neutral"]))
+_en_ir = _span([(m, v - ANCH["Iran"]) for m, v in loo(CONDS["EN_framed_Iran"])])
+_fa_ir = _span([(m, v - ANCH["Iran"]) for m, v in loo(CONDS["fa_framed_Iran"])])
+_t11 = _span(_t11_loo())
+_all_over = all(v > ANCH["Iran"] for v in CONDS["EN_framed_Iran"].values()) and \
+            all(v > ANCH["Iran"] for v in CONDS["fa_framed_Iran"].values())
+_IR = json.load(open(VDIR / "anchors_iran.json"))
+_s1, _s2 = _IR["samples"]["s1"]["n"], _IR["samples"]["s2"]["n"]
+_b1, _b2 = _IR["binding_1to5"]["s1"], _IR["binding_1to5"]["s2"]
+_pool = (_b1 * _s1 + _b2 * _s2) / (_s1 + _s2)
+_en_ir_mean = sum(CONDS["EN_framed_Iran"].values()) / len(CONDS["EN_framed_Iran"])
+_fa_ir_mean = sum(CONDS["fa_framed_Iran"].values()) / len(CONDS["fa_framed_Iran"])
+L.append("**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anchors are "
+         "Atari et al. (2023) Study 2. Iran is not in that set; its anchor is Hazrati, Nejat "
+         "and Daneshi (2025), a different paper with different collection conditions. That "
+         "sample is a Telegram and snowball convenience sample, n=%d, 68 to 71 percent "
+         "female, mean age 26 to 28, 57 to 59 percent educated to bachelor's or above, and "
+         "the anchor file records it as likely less binding-endorsing than the general "
+         "Iranian population - which would bias this overshoot upward. Collection began a "
+         "year after the Woman, Life, Freedom movement and the authors note possible period "
+         "effects. Iran is the only Farsi country, so it carries that group throughout.\n"
+         % _s2)
+_alts = [_b2, _b1, _pool]
+_rank = ("largest" if _b2 == max(_alts) else
+         "smallest" if _b2 == min(_alts) else "middle")
+_conseq = ("smallest" if _b2 == max(_alts) else
+           "largest" if _b2 == min(_alts) else "middle")
+L.append("Every anchor the source offers is shown. The one in use is the %s of the three, "
+         "so the overshoot reported throughout is the %s of the three:\n"
+         % (_rank, _conseq))
+L.append("| Iran anchor | binding | EN-framed overshoot | FA-framed overshoot |")
+L.append("|---|--:|--:|--:|")
+for lab, a in [("sample 2, n=%d (in use)" % _s2, _b2),
+               ("sample 1, n=%d" % _s1, _b1),
+               ("n-weighted pool of both", _pool)]:
+    L.append("| %s | %.3f | %+.3f | %+.3f |"
+             % (lab, a, _en_ir_mean - a, _fa_ir_mean - a))
+L.append("\nThe sign and the ordering of the Iran result do not depend on the choice. Its "
+         "magnitude does, by up to %.3f.\n" % (max(_b2, _b1, _pool) - min(_b2, _b1, _pool)))
+L.append("## B5. Robustness: leave-one-model-out\n")
+L.append("Japanese neutral panel mean with each model removed spans %.3f to %.3f around an "
+         "anchor of %.3f. English-framed Iran overshoot spans %+.3f to %+.3f; Farsi-framed "
+         "Iran overshoot spans %+.3f to %+.3f. %s T11, the Japanese language effect, spans "
+         "%+.3f to %+.3f under the same sweep.\n"
+         % (_ja[0], _ja[1], ANCH["Japan"], _en_ir[0], _en_ir[1], _fa_ir[0], _fa_ir[1],
+            "Every individual model overshoots both Iran conditions."
+            if _all_over else "Not every model overshoots both Iran conditions.",
+            _t11[0], _t11[1]))
+
+(VDIR / "results" / "appendix_b4_b5.md").write_text("\n".join(L) + "\n")
+print("\nwrote results/appendix_b4_b5.md")

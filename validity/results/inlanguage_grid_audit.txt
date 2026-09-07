@@ -8,13 +8,17 @@
   EN_framed_France     n_models=11  mean=2.725  between-model SD=0.172
   EN_framed_India      n_models=11  mean=4.439  between-model SD=0.177
   EN_framed_Iran       n_models=11  mean=4.577  between-model SD=0.170
+  EN_framed_Ireland    n_models=11  mean=3.094  between-model SD=0.252
   EN_framed_Japan      n_models=11  mean=3.668  between-model SD=0.330
+  EN_framed_Kenya      n_models=11  mean=4.432  between-model SD=0.119
   EN_framed_Mexico     n_models=11  mean=4.141  between-model SD=0.130
   EN_framed_Morocco    n_models=11  mean=4.570  between-model SD=0.143
+  EN_framed_New Zealand n_models=11  mean=2.878  between-model SD=0.107
   EN_framed_Nigeria    n_models=11  mean=4.515  between-model SD=0.154
   EN_framed_Peru       n_models=11  mean=4.133  between-model SD=0.191
   EN_framed_Russia     n_models=11  mean=4.117  between-model SD=0.238
   EN_framed_Saudi Arabia n_models=11  mean=4.733  between-model SD=0.127
+  EN_framed_South Africa n_models=11  mean=3.935  between-model SD=0.156
   EN_framed_Sweden     n_models=11  mean=2.282  between-model SD=0.145
   EN_framed_Switzerland n_models=11  mean=3.063  between-model SD=0.260
   EN_framed_United Arab Emirates n_models=11  mean=4.629  between-model SD=0.131
@@ -30,6 +34,7 @@
   es_framed_Chile      n_models=11  mean=3.576  between-model SD=0.169
   es_framed_Colombia   n_models=11  mean=3.996  between-model SD=0.155
   es_framed_Mexico     n_models=11  mean=3.947  between-model SD=0.165
+  es_framed_Morocco    n_models=11  mean=4.589  between-model SD=0.147
   es_framed_Peru       n_models=11  mean=4.038  between-model SD=0.200
   es_neutral           n_models=11  mean=2.780  between-model SD=0.327
   fa_framed_Iran       n_models=11  mean=4.314  between-model SD=0.279
@@ -61,6 +66,7 @@
     es_framed_Chile                ref 3.5758  recomputed 3.5758  OK
     es_framed_Colombia             ref 3.9960  recomputed 3.9960  OK
     es_framed_Mexico               ref 3.9475  recomputed 3.9475  OK
+    es_framed_Morocco              ref 4.5889  recomputed 4.5889  OK
     es_framed_Peru                 ref 4.0384  recomputed 4.0384  OK
     es_neutral                     ref 2.7798  recomputed 2.7798  OK
     fa_framed_Iran                 ref 4.3141  recomputed 4.3141  OK
@@ -168,7 +174,7 @@
       above measured Japanese Care 3.03 by +1.258 [+1.085,+1.452]  (prose says +1.26 [+1.09,+1.45])
 
   C3. Care span across all conditions run
-      42 conditions; Care spans 4.288 (ja_framed_Japan) to 4.894 (EN_framed_Mexico)
+      47 conditions; Care spans 4.288 (ja_framed_Japan) to 4.894 (EN_framed_Mexico)
       lowest CI floor across conditions: 4.067  (prose says every floor >= 4.11)
 
   C4. "disagreeing less about what an Egyptian is than about what they themselves are"

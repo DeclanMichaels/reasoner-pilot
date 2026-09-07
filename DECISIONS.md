@@ -46,3 +46,4 @@ not, it is a reconstruction error and the entry is wrong rather than the memory.
 | 11 | 2026-08-22 | active | [The English comparator is the matched cell, and the old one is kept as errata](docs/decisions/011-english-comparator-is-the-matched-cell.md) - the in-language contrasts |
 | 12 | 2026-08-24 | active | [Morocco is compared on the Spanish arm and grouped with Arabic](docs/decisions/012-morocco-split-across-two-arms.md) - two analyses that want different arms |
 | 13 | 2026-08-24 | active | [The fifteen-above, five-below shape is shown and not interpreted](docs/decisions/013-the-shape-stays-uninterpreted.md) - the report-scope rule, against three reviewers |
+| 14 | 2026-09-07 | active | [The validity outputs are pinned as committed, not as regenerated](docs/decisions/014-validity-outputs-pinned-as-committed.md) - the published record against a silent rewrite by a partial-data run |

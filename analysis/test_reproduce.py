@@ -6,6 +6,18 @@ to the published values recorded in reproduce_manifest.json (sha256). This PINS 
 pilot's numbers: any change to analysis code or data that alters a published output
 fails here. No API keys or network needed (pure stdlib analysis of the local runs).
 
+The manifest has two groups, which carry different guarantees:
+
+  regenerated     the 15 pilot outputs. Recomputed from the committed runs by the
+                  scripts below, then hashed. A mismatch means the numbers moved.
+  committed_only  the validity module's outputs. Derived from run data that is
+                  gitignored (item wording is not ours to redistribute), so they
+                  cannot be recomputed here or on a fresh clone. They are hashed as
+                  committed. A mismatch means something rewrote them - which is how
+                  audit_inlanguage.py silently reduced condition_means.json from 26
+                  conditions to 11 on 2026-09-05. Regenerate them deliberately, with
+                  the full grid present, and re-pin.
+
   python3 analysis/test_reproduce.py           # re-run all scripts, then verify
   python3 analysis/test_reproduce.py --check    # verify existing outputs only (fast)
 
@@ -36,11 +48,9 @@ def run_scripts():
             print(f"  ERROR running {s}:\n{r.stderr[-1500:]}")
             sys.exit(2)
 
-def verify():
-    with open(MANIFEST) as f:
-        manifest = json.load(f)
+def verify_group(entries, label, verb):
     ok = bad = missing = 0
-    for rel, expected in sorted(manifest.items()):
+    for rel, expected in sorted(entries.items()):
         p = ROOT / rel
         if not p.exists():
             print(f"  MISSING  {rel}"); missing += 1; continue
@@ -49,8 +59,16 @@ def verify():
             ok += 1
         else:
             print(f"  MISMATCH {rel}\n    expected {expected}\n    got      {got}"); bad += 1
-    print(f"\n{ok} reproduced, {bad} mismatched, {missing} missing (of {len(manifest)})")
+    print(f"  {label}: {ok} {verb}, {bad} mismatched, {missing} missing (of {len(entries)})")
     return bad == 0 and missing == 0
+
+def verify():
+    with open(MANIFEST) as f:
+        manifest = json.load(f)
+    print()
+    a = verify_group(manifest["regenerated"], "regenerated   ", "reproduced")
+    b = verify_group(manifest["committed_only"], "committed-only", "verified")
+    return a and b
 
 if __name__ == "__main__":
     check_only = "--check" in sys.argv
@@ -59,5 +77,5 @@ if __name__ == "__main__":
         run_scripts()
     print("verifying outputs against reproduce_manifest.json ...")
     ok = verify()
-    print("PASS: pilot outputs reproduce exactly." if ok else "FAIL: outputs drifted.")
+    print("PASS: pilot outputs reproduce, validity outputs unchanged." if ok else "FAIL: outputs drifted.")
     sys.exit(0 if ok else 1)
