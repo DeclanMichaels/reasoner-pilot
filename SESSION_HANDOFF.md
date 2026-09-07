@@ -7,8 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree at `fc1ccef` plus this handoff. The working tree is clean apart from one
-  untracked scratch file, `reasoner-pilot-directory-contents-Code`, an `ls` dump from 2026-08-21.
+- Local and remote agree. The working tree is clean. An untracked `ls` dump from 2026-08-21,
+  `reasoner-pilot-directory-contents-Code`, was deleted at close.
 - **The published record reproduces** as of 2026-09-05 (15 reproduced, 0 mismatched, 0 missing).
   Not re-run this session; nothing under `analysis/` or `results/` was touched.
 - **The completed in-language grid has two copies.** The working copy in `validity/` on the Silver
