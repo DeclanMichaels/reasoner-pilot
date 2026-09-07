@@ -7,95 +7,103 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree. The working tree is clean. An untracked `ls` dump from 2026-08-21,
-  `reasoner-pilot-directory-contents-Code`, was deleted at close.
-- **The published record reproduces** as of 2026-09-05 (15 reproduced, 0 mismatched, 0 missing).
-  Not re-run this session; nothing under `analysis/` or `results/` was touched.
-- **The completed in-language grid has two copies.** The working copy in `validity/` on the Silver
-  M5 Air, and `s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/`.
-  Counted on disk 2026-09-07 with the grid audit's own keying, read-only: 50 conditions, 11
-  models, 550 model-by-condition cells, every cell with exactly 5 reruns carrying ratings, 2,750
-  scored cells. 46 further files are retried parse failures with no ratings object.
-- Four issues are open on the tracker, numbered 1 to 4.
-- This session ran on the Silver M5 Air. The next one is planned for the Black M2 Air.
+- Local and remote agree at `303e79e`. The working tree is clean.
+- **The published record reproduces**, run 2026-09-07, no keys and no network: 15 regenerated
+  outputs reproduced, 17 committed-only outputs verified. The second group is new; decision 14 says
+  what it is and why its guarantee is weaker.
+- **This machine now holds the completed grid.** `runs/` 165, `runs_framed/` 1,267,
+  `runs_framed_lang/` 1,246, `instruments/` 15, byte-identical to the 2026-09-05 S3 archive.
+- **The in-language appendix generates end to end.** B3, B3a, B4, B5 and B6 come from
+  `results/appendix_tables.md` and `results/appendix_b4_b5.md`, spliced verbatim. A number in the
+  document that disagrees with its artifact is a splice that was not re-run.
+- Five issues are open, numbered 1 to 5. Three carry state that is no longer true; see below.
+- `DECISIONS.md` holds 14 entries.
+- This is the Black M2 Air.
 
 ## What changed outside the repository
 
-2026-09-07, from the M5 Air: 2,692 objects, 7.8 MB, written to the dated S3 prefix above, storage
-class STANDARD. Contents are the 2,690 gitignored data files (`runs/` 165, `runs_framed/` 1,267,
-`runs_framed_lang/` 1,246, `instruments/` 12) plus `ARCHIVE_MANIFEST.sha256` and
-`ARCHIVE_NOTE.txt`. No tracked file is in it. Restored into a scratch directory and verified: all
-2,690 checksums match, file list identical, the three run directories byte-identical to the working
-copy. The 2026-08-21 objects at the prefix root were listed and not touched: 929 objects, Arabic,
-Farsi and Japanese only, all written 07:46 on 2026-08-21, tracked files mixed in.
+**The restore test issue 4 was open for was run and passed.** The 2026-09-05 archive was synced
+into a scratch directory on this machine, which had never held the grid: 2,690 files, all 2,690
+manifest checksums match. The archive restores standalone.
 
-Nothing under `validity/` was run or written. No model calls. Nothing spent beyond the S3 writes.
+**The working copy in `validity/` was replaced with the grid.** Before the replace, every local file
+was classified against the archive: 122 identical, 0 differing, 783 present only locally. Of those
+783, 780 were byte-identical to files already tracked under `validity/archive-2026-07/` and 3 were
+the tracked empty scaffolds. Nothing on this machine was unique, so nothing was lost. The July
+collection stands unchanged in git where it always was.
 
-Also on the M5 Air, outside any repository: `~/.claude/CLAUDE.md` was created as the symlink to
-`~/Code/claude-continuity/CLAUDE.md`, and that clone was fast-forwarded two commits.
+`reasoner-study` received decision 27 and was pushed (`ff05433`, private). It supersedes decision
+1's consequences clause only; that entry's decision stands in force.
 
-## Next session, on the Black M2 Air
+The Atari et al. preprint was downloaded to the session scratchpad, outside any repository, and is
+not committed.
 
-The one thing #4 still needs is a restore test on a machine that does not hold the data. The M2
-Air holds only the 2026-08-21 three-language restore in `validity/`, so it is the right machine.
-The recipe is in `validity/README.md` under "Where the run data lives": sync the dated prefix into
-a scratch directory, `shasum -c` the manifest, then rsync the four directories into `validity/`
-and check `git status` before anything else. Expect 2,690 data files. Do not sync the prefix root.
+No model calls, nothing written to S3, nothing spent.
 
-After that restore, the M2 Air holds the full grid and #1 stops being `blocked-on-phase` on
-machine grounds. Whether it is worked is a separate decision.
+## The tracker is stale
+
+- **#1, regenerate the in-language appendix**, still labelled `blocked-on-phase`. It is done, in
+  `303e79e`. Close it.
+- **#4, "the completed grid is single-copy on one laptop"**, still `ready-for-human`. It has been
+  two-copy since 2026-09-07 and the restore test passed today on a machine without the data. Close
+  it.
+- **#2, reconcile the paper against the appendix**, `ready-for-human`. Still open and now actually
+  workable, since the appendix it waits on exists.
+- **#3** and **#5** are unchanged.
 
 ## Open items
 
-- **#4, the completed grid is two-copy**, `ready-for-human`. Open for the M2 Air restore test and
-  closing. Result comment posted 2026-09-07.
-- **#3, syncing the 2026-08-21 archive root into `validity/` reverts tracked code**,
-  `ready-for-agent`. The README now documents a path that cannot, via the dated prefix; the old
-  command and the old snapshot still exist.
-- **#1, the appendix regeneration**, `blocked-on-phase`. `papers/inlanguage-mfq2-appendix-DRAFT.md`
-  still describes eleven models, 20 conditions and 1,100 cells against a paper describing fifty
-  conditions and 2,750 cells.
-- **#2, reconciling the paper against the regenerated appendix**, `ready-for-human`, waiting on #1.
+- **#2 has one concrete discrepancy already found.** `papers/inlanguage-mfq2-DRAFT.md:143` says Care
+  runs 4.29 to 4.88 across all fifty conditions. The computed span is 4.29 to 4.89. The rest of the
+  paper has not been read against the regenerated appendix.
+- `validity/results/viewer_data.json` embeds a generation timestamp, so regenerating it always
+  changes the file. Its pin therefore detects "someone re-ran the script", not "a number moved". The
+  15 pilot outputs do not have this problem.
+- The appendix uses `[*]` for a caveat and `[d12]` for a decision pointer. The asymmetry is
+  undocumented and reads as arbitrary.
+- Whether every blocking finding in `reviews/viewer-cold-review-2026-08-22.md` is closed is still
+  unverified as a whole. Its blocking finding 1, the Iran disclosure, was checked against the viewer
+  today and is addressed there; the others were not looked at.
 - Sampling temperature is unset and unrecorded in the runners, so every collection here was made at
   five unrecorded provider defaults.
 - `LOCATIONS.md` carries three `TBD` entries: the Zenodo DOI, the OSF component links, and the final
   moral-os.com URLs. `CITATION.cff` has a commented `doi:` waiting on the first.
 - The in-language viewer's title and the paper's title differ.
-- Whether every blocking finding in `reviews/viewer-cold-review-2026-08-22.md` is closed has not
-  been re-verified against the review.
-- `validity/results/` outputs are not covered by `analysis/reproduce_manifest.json`, which pins the
-  15 pilot outputs only.
-- `runs_english_baseline/` (228 files) and `archive-2026-07/` (786 files) are tracked in git while
-  the other run directories are ignored. Noticed, not changed; whether that is intended is a
-  question for the licence position in decision 7.
+- **Nothing in `303e79e` has had independent adversarial review**, and it is public.
 
 ## Unresolved - needs a decision
 
-- **Iran's human anchor.** `validity/anchors_iran.json` uses Hazrati, Nejat and Daneshi (2025)
-  sample 2 at 3.333. The settled MFQ-2 source rule names Iran in its prohibition. Iran is the only
-  Farsi country so it carries that group everywhere, and the anchor file's own caveats say the
-  sample is likely less binding-endorsing than the general population, which biases the overshoot
-  toward the finding. Three coherent versions are set out in the review and the sensitivity is
-  computed.
+- **Iran's anchor is now disclosed, and the objection that blocked it was not what it appeared to
+  be.** The settled rule bars pooling independent validation means into the Atari reference file; it
+  does not bar a separately sourced, separately marked anchor, and the reference file here has never
+  contained Iran. What remains is a live choice: the appendix uses Hazrati sample 2 at 3.333 and
+  shows all three options, and sample 2 is the largest of the three, so the reported overshoot is
+  the smallest available. Moving to the pooled anchor would raise it.
 - Whether the in-language write-up gets a Zenodo DOI, and whether the paper and appendix are
   combined before it.
 - Whether the viewer title and the paper title are brought into line, and which one moves.
 
 ## Known-broken and known-strange
 
-Nothing in this repository's code is known broken. The findings that look like defects and are
-not, and the two restore traps, are in `docs/DEVELOPMENT_NOTES.md`.
+Nothing in this repository's code is known broken.
 
-Worth repeating because it makes a shortfall invisible: against the three-language restore,
-`audit_inlanguage.py` runs clean and reconciles, and it rewrites tracked outputs in
-`validity/results/` to match whatever it saw. A clean exit says nothing about whether the right data
-was present. Check `git status` after running anything under `validity/`.
+**The audit scripts write tracked outputs**, so a clean exit says nothing about whether the right
+data was present. Check `git status` after running anything under `validity/`. That trap and the two
+restore traps are in `docs/DEVELOPMENT_NOTES.md`.
+
+**Two claims were carried through most of this session before anyone read the source, and both were
+wrong when read.** The first was that Iran's anchor contradicts a settled decision: the review said
+so, the previous handoff repeated it, and the rule as written turned out to prohibit something else.
+The second was our own wording that the nineteen Atari country means are "not national means": the
+paper describes Study 2 as nationally stratified. Both were caught by being questioned, not by being
+checked. `verify_reviewer_external_facts` already covers this; it was not applied until prompted.
 
 ## Loose ends
 
-- `DECISIONS.md` was reconstructed rather than ported, from commit bodies, the README, the papers
-  and the framing library. Entries 3 and 5 carry rationale implied by those sources rather than
-  stated in them.
+- `DECISIONS.md` entries 3 and 5 carry rationale implied by their sources rather than stated in
+  them; the log was reconstructed on 2026-09-05, not ported.
 - The in-language write-up is still a draft that grew out of its results, so decisions recorded from
   it are expected to be revisited during review rather than treated as settled.
-- The 2026-09-05 archive has been verified only on the machine that produced it.
+- B6 lost the claim that Equality is the only foundation where the panel lands near a measured
+  value, and B5 lost the clause about T11 not changing sign. Both stopped being true when the tables
+  expanded. Neither was replaced, because a replacement reading would be ours rather than the data's.
