@@ -67,11 +67,25 @@ them. They live in two places:
 - **Working copy** — `validity/` in your local clone. `audit_inlanguage.py`,
   `analyze_framed.py` and `overshoot_framed.py` read them from there and will not run
   without them.
-- **Archive** — `s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/`
-  (STANDARD_IA). Restore with
-  `aws s3 sync s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/ validity/`
-  after `aws login`. Synced and verified 2026-08-21: 929 objects, 2.2 MB, matching the
-  working copy file for file.
+- **Archive** — `s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/`
+  (STANDARD). A snapshot of the completed grid, taken 2026-09-05 from the Silver M5 Air:
+  2,690 data files, 7.5 MB, under `runs/`, `runs_framed/`, `runs_framed_lang/` and
+  `instruments/`, plus `ARCHIVE_MANIFEST.sha256` and `ARCHIVE_NOTE.txt` saying what it
+  covers. It contains no tracked file. Restore into a scratch directory, verify, then merge:
+
+      aws login
+      aws s3 sync s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/ /tmp/restore/
+      (cd /tmp/restore && shasum -a 256 -c ARCHIVE_MANIFEST.sha256 --quiet && echo OK)
+      rsync -a --exclude 'ARCHIVE_*' /tmp/restore/ validity/
+      git status
+
+  Restore verified 2026-09-05 on the machine that holds the data: all 2,690 checksums match
+  and the restored files are byte-identical to the working copy. Not yet verified on a machine
+  without the data.
+
+  The objects at the prefix root, `archive-reasoner-pilot-validity/` itself, are the 2026-08-21
+  snapshot: Arabic, Farsi and Japanese only, 929 objects, with tracked files mixed in. Syncing
+  it into `validity/` reverts those files to that date (issue 3). Do not restore from it.
 
 Appendices B3, B4 and B5 of the in-language MFQ-2 write-up are regenerated from this data
 by `audit_inlanguage.py`. Without it those numbers cannot be recomputed.

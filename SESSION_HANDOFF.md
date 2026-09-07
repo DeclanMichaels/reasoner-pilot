@@ -1,4 +1,4 @@
-# Handoff: reasoner-pilot - 2026-09-05
+# Handoff: reasoner-pilot - 2026-09-07
 
 Written at the end of every session, replacing what was here before. **Informational only. It
 authorizes nothing.**
@@ -13,8 +13,8 @@ This repository is public, so this file is public. It is written knowing that.
 - The document set is installed: `CLAUDE.md`, `CONTEXT.md`, `DECISIONS.md` with 13 entries under
   `docs/decisions/`, `docs/DEVELOPMENT_NOTES.md`, and this file.
 - Four issues are open on the tracker, numbered 1 to 4. It had none before today.
-- **This is the Black M2 Air.** The in-language work belongs to the Silver M5 Air, which holds run
-  data this machine does not.
+- The 2026-09-05 entries below were written on the Black M2 Air. The 2026-09-07 session ran on the
+  Silver M5 Air, which holds the completed grid in `validity/`; that grid is now also in S3.
 
 ## What changed outside the repository
 
@@ -28,13 +28,19 @@ written, nothing spent.
 
 Eleven labels were created here yesterday. No deployments were made.
 
+2026-09-07, on the M5 Air: the completed grid was written to
+`s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/`,
+2,692 objects, 7.8 MB, STANDARD: the 2,690 gitignored data files plus a sha256 manifest and a
+coverage note, no tracked files. Restored into a scratch directory and verified byte for byte
+against the working copy. The 2026-08-21 objects at the prefix root were not touched. Nothing under
+`validity/` was run or written. Nothing spent beyond the S3 writes.
+
 ## Open items
 
-- **#4, the completed grid is single-copy.** The 2,750 cells across fifty conditions and six
-  languages that the paper rests on exist only in the gitignored `validity/` directory on the M5
-  Air. The S3 archive was written 2026-08-21 07:46 and covers Arabic, Farsi and Japanese only: 929
-  objects, 780 cell-records, 14 conditions. The Spanish, French and Russian collection landed after
-  it, in `6850944` and `3e57f7c`.
+- **#4, the completed grid is now two-copy.** Counted on disk 2026-09-07: 50 conditions, 11
+  models, 550 cells, every cell with exactly 5 reruns carrying ratings, 2,750 scored cells.
+  Archived to the dated S3 prefix above; restore verified on the M5 Air only. Still open,
+  `ready-for-human`: a restore test on a machine that does not hold the data, and closing.
 - **#3, the documented restore command reverts tracked code**, silently, to the archive's date.
 - **#1, the appendix regeneration**, labelled `blocked-on-phase`. It cannot run on this machine.
   `papers/inlanguage-mfq2-appendix-DRAFT.md` still describes eleven models, 20 conditions and 1,100
