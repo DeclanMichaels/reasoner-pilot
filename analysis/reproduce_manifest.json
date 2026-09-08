@@ -18,7 +18,7 @@
  },
  "committed_only": {
   "validity/results/aggregation_artifact.json": "ebcca2e3f4429791e98fc4c31c1c645ee52abd69f45490c82127136d634aca93",
-  "validity/results/appendix_tables.md": "44d2b8e2f1fbfd962eccdfce9afcb3a659d50c685041024c93c776ae65bd3eaf",
+  "validity/results/appendix_tables.md": "c126ade2f23c5ca5f4b9bf5ba7f494cf8300d69f28207e06ec1356892887064c",
   "validity/results/condition_means.json": "b923b7c8c72c6621ef0381d5b1dd560711c80b4347ed2612c7af17addb92a806",
   "validity/results/convergent_validity.json": "3fa05df250695d0d663187b2051260cac51a48211d8cc147d7fdd459f88ba671",
   "validity/results/convergent_validity.md": "a5c7a8686821e9447b30e70ae67584df2db7c36dc02935926b65fa7da8b3972f",

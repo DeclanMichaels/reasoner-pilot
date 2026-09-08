@@ -1,0 +1,7 @@
+foundation,published_R2_loadings,published_R2_intercepts,pct_noninvariant_loadings,pct_noninvariant_intercepts
+care,0.994,0.999,0.0,5.3
+equality,0.988,0.995,0.0,21.9
+proportionality,0.977,0.999,0.0,11.4
+loyalty,0.982,0.998,0.0,24.6
+authority,0.982,0.996,0.0,16.7
+purity,0.968,0.989,2.6,39.5

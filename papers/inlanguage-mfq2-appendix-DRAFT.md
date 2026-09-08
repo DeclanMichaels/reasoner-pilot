@@ -70,18 +70,18 @@ Foundation score: mean of its six items, scale 1 to 5. Binding composite: mean o
 
 ## B2a. Measurement invariance across the nineteen
 
-Comparing raw composite means across countries needs the instrument to behave the same way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 data; the check was recomputed on the same raw data in `reasoner-study` (`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), align.pow c(.25, .25), lavaan). The two figures are alignment diagnostics: loadings R-squared concerns loading (metric) invariance, intercepts R-squared concerns intercept (scalar) invariance, the one that bears on comparing means. Neither establishes exact invariance. Both are shown. This is a property of the nineteen human samples. It says nothing about whether a model's score and a person's score measure the same thing, and nothing in this appendix claims they do.
+Comparing raw composite means across countries needs the instrument to behave the same way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 data and report the result in their Table 6: a loadings R-squared and an intercepts R-squared per foundation, and the percentage of item parameters the alignment left non-invariant, against the 25 percent that Muthen and Asparouhov (2014) treat as acceptable. The R-squared values were recomputed on the same raw data in `reasoner-study` (`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), align.pow c(.25, .25), lavaan) and are shown beside the published ones; the percentages are the authors' and are transcribed, not recomputed. Loadings R-squared concerns loading (metric) invariance, intercepts R-squared concerns intercept (scalar) invariance, the one that bears on comparing means. Neither establishes exact invariance. This is a property of the nineteen human samples. It says nothing about whether a model's score and a person's score measure the same thing, and nothing in this appendix claims they do.
 
-| foundation | loadings R-squared | intercepts R-squared |
-|---|--:|--:|
-| Care | 0.9945 | 0.9994 |
-| Equality | 0.9873 | 0.9955 |
-| Proportionality | 0.9760 | 0.9986 |
-| Loyalty | 0.9816 | 0.9982 |
-| Authority | 0.9846 | 0.9962 |
-| Purity | 0.9646 | 0.9934 |
+| foundation | loadings R-squared, published / recomputed | intercepts R-squared, published / recomputed | non-invariant loadings | non-invariant intercepts |
+|---|:--:|:--:|--:|--:|
+| Care | 0.994 / 0.9945 | 0.999 / 0.9994 | 0.0% | 5.3% |
+| Equality | 0.988 / 0.9873 | 0.995 / 0.9955 | 0.0% | 21.9% |
+| Proportionality | 0.977 / 0.9760 | 0.999 / 0.9986 | 0.0% | 11.4% |
+| Loyalty | 0.982 / 0.9816 | 0.998 / 0.9982 | 0.0% | 24.6% |
+| Authority | 0.982 / 0.9846 | 0.996 / 0.9962 | 0.0% | 16.7% |
+| Purity | 0.968 / 0.9646 | 0.989 / 0.9934 | 2.6% | 39.5% |
 
-Purity is the weakest on intercepts at 0.9934. The item-level noninvariance behind each figure is not carried here; the script emits these six pairs only.
+Every recomputed R-squared is within 0.0044 of the published one; the recomputation used the authors' shared data and a current sirt, and the residual is not traced. Purity is the one foundation over the 25 percent line, at 39.5 percent of intercept parameters, and the authors write that caution should be practiced when comparing Purity group-level means; they trace most of it to unique intercepts in Argentina and Chile and to one item. Purity is one third of the binding composite and carries its largest framing shift, so every composite comparison in this appendix inherits that caution. B6 gives each foundation separately, and the paper reports the Loyalty and Authority shifts on their own.
 
 ## B3. Where the panel lands, by country
 

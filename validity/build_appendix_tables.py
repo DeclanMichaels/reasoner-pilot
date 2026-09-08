@@ -201,24 +201,43 @@ EN = cell("en_neutral")
 print("## B2a. Measurement invariance across the nineteen\n")
 print("Comparing raw composite means across countries needs the instrument to behave the same "
       "way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 "
-      "data; the check was recomputed on the same raw data in `reasoner-study` "
+      "data and report the result in their Table 6: a loadings R-squared and an intercepts "
+      "R-squared per foundation, and the percentage of item parameters the alignment left "
+      "non-invariant, against the 25 percent that Muthen and Asparouhov (2014) treat as "
+      "acceptable. The R-squared values were recomputed on the same raw data in `reasoner-study` "
       "(`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), "
-      "align.pow c(.25, .25), lavaan). The two figures are alignment diagnostics: loadings "
-      "R-squared concerns loading (metric) invariance, intercepts R-squared concerns intercept "
-      "(scalar) invariance, the one that bears on comparing means. Neither establishes exact "
-      "invariance. Both are shown. "
+      "align.pow c(.25, .25), lavaan) and are shown beside the published ones; the percentages "
+      "are the authors' and are transcribed, not recomputed. Loadings R-squared concerns loading "
+      "(metric) invariance, intercepts R-squared concerns intercept (scalar) invariance, the one "
+      "that bears on comparing means. Neither establishes exact invariance. "
       "This is a property of the nineteen human samples. It says nothing about whether a model's "
       "score and a person's score measure the same thing, and nothing in this appendix claims "
       "they do.\n")
-print("| foundation | loadings R-squared | intercepts R-squared |")
-print("|---|--:|--:|")
+print("| foundation | loadings R-squared, published / recomputed | intercepts R-squared, published / recomputed | non-invariant loadings | non-invariant intercepts |")
+print("|---|:--:|:--:|--:|--:|")
 with open(VDIR / "reference" / "mfq2_alignment_r2.csv") as fh:
-    _al = list(csv.DictReader(fh))
-for r in _al:
-    print("| %s | %.4f | %.4f |" % (r["foundation"].capitalize(), float(r["R2_loadings"]), float(r["R2_intercepts"])))
-_weak = min(_al, key=lambda r: float(r["R2_intercepts"]))
-print("\n%s is the weakest on intercepts at %.4f. The item-level noninvariance behind each "
-      "figure is not carried here; the script emits these six pairs only.\n" % (_weak["foundation"].capitalize(), float(_weak["R2_intercepts"])))
+    _al = {r["foundation"]: r for r in csv.DictReader(fh)}
+with open(VDIR / "reference" / "mfq2_alignment_table6_published.csv") as fh:
+    _pub = list(csv.DictReader(fh))
+_maxdiff = 0.0
+for r in _pub:
+    a = _al[r["foundation"]]
+    _maxdiff = max(_maxdiff, abs(float(a["R2_loadings"]) - float(r["published_R2_loadings"])),
+                   abs(float(a["R2_intercepts"]) - float(r["published_R2_intercepts"])))
+    print("| %s | %.3f / %.4f | %.3f / %.4f | %.1f%% | %.1f%% |" % (
+        r["foundation"].capitalize(), float(r["published_R2_loadings"]), float(a["R2_loadings"]),
+        float(r["published_R2_intercepts"]), float(a["R2_intercepts"]),
+        float(r["pct_noninvariant_loadings"]), float(r["pct_noninvariant_intercepts"])))
+_over = [r for r in _pub if float(r["pct_noninvariant_intercepts"]) > 25 or float(r["pct_noninvariant_loadings"]) > 25]
+assert [r["foundation"] for r in _over] == ["purity"], _over
+print("\nEvery recomputed R-squared is within %.4f of the published one; the recomputation used the "
+      "authors' shared data and a current sirt, and the residual is not traced. Purity is the one "
+      "foundation over the 25 percent line, at %.1f percent of intercept parameters, and the authors "
+      "write that caution should be practiced when comparing Purity group-level means; they trace "
+      "most of it to unique intercepts in Argentina and Chile and to one item. Purity is one third "
+      "of the binding composite and carries its largest framing shift, so every composite comparison "
+      "in this appendix inherits that caution. B6 gives each foundation separately, and the paper "
+      "reports the Loyalty and Authority shifts on their own.\n" % (_maxdiff, float(_over[0]["pct_noninvariant_intercepts"])))
 print("## B3. Where the panel lands, by country\n")
 print("Binding composite, panel mean over eleven models, each model's five iterations "
       "averaged first. The English unframed column is one condition and repeats down the "

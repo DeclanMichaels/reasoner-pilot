@@ -20,3 +20,12 @@ the published Table 2 means are reproduced as means of item means to 0.005. Bind
 sample SD over the authors' own composite columns, so their inclusion rule applies: sample 1
 n=376, sample 2 n=989. The
 builder needs pyreadstat and is not on the reproduce path; only its CSV is read by the appendix.
+
+mfq2_alignment_table6_published.csv is TRANSCRIBED HERE, 2026-09-08, from Table 6 of the accepted
+manuscript of Atari et al. (2023), "The Measurement Invariance Alignment Results (Study 2)":
+the authors' own loading and intercept R-squared and their percentage of non-invariant item
+parameters per foundation. The table's note gives the criterion: 25 percent non-invariance or less
+is acceptable (Muthen and Asparouhov, 2014). The text excepts Purity from the foundations meeting
+it and says caution should be practiced when comparing Purity group-level means. Not a
+computation; a record of what the source reports, read by B2a beside the recomputation in
+mfq2_alignment_r2.csv.
