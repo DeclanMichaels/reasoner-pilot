@@ -1,16 +1,16 @@
 # Statistical Appendix
 
-Companion to the in-language MFQ-2 report. The model-side numbers regenerate from the raw runs with standard-library scripts, pinned by `analysis/test_reproduce.py`. The human reference means, standard deviations and alignment diagnostics are built separately from Atari et al.'s and Hazrati et al.'s shared data by builders that need R or `pyreadstat`, and are read here as committed CSVs; B9 names both paths.
+Companion to the in-language MFQ-2 report. The model-side numbers regenerate from the raw runs with standard-library scripts, pinned by `analysis/test_reproduce.py`. The human reference means, standard deviations and alignment diagnostics are built separately from Atari et al.'s and Hazrati et al.'s shared data by builders that need R or `pyreadstat`, and are read here as committed CSVs under `validity/reference/`; B9 names the builders.
 
 ## B1. Sample and data
 
 Eleven models, 50 conditions, five iterations each: **2,750 scored cells**, collected 2026-08-21 to 2026-08-23 in a single window under a single protocol.
 
-All fifty are reported in B3a and B6. Five of them are English unframed, because the English comparator changed during the study: `official_nosystem` is the matched cell used as the baseline, `en_neutral_ours` is the comparator it replaced, and `ours_nosystem`, `ours_selfreport` and `official_selfreport` are the variants collected to measure that change. The contrasts in B4 draw on the conditions each names.
+All fifty are reported in B3a and B6. Five of them are English unframed, because the English comparator changed during the study, and B3a and B6 list them under these keys. `en_neutral` is the matched cell used as the baseline: the official English instrument, no system prompt. `en_neutral_ours` is the comparator it replaced: our own transcription of the instrument, with a self-report system prompt (decision 11). `en_baseline_ours_nosystem`, `en_baseline_ours_selfreport` and `en_baseline_official_selfreport` are the variants collected to measure that change, each named for its instrument and its system prompt. The contrasts in B4 draw on the conditions each names.
 
 - **In-language**, 22 conditions, 1,210 cells. Arabic framed as Egypt, Morocco, Saudi Arabia and the United Arab Emirates; Spanish framed as Argentina, Chile, Colombia, Mexico, Morocco and Peru; French framed as Belgium, France and Switzerland; Japanese framed as Japan; Farsi framed as Iran; Russian framed as Russia; and one unframed condition per language. The unframed conditions name no country, so there is one of each, six in all.
 - **English framed**, 23 conditions, 1,265 cells: every country named above plus India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden and the United States.
-- **English unframed**, 5 conditions, 275 cells: the matched comparator `official_nosystem`, the retained `en_neutral_ours`, and the three variants named above.
+- **English unframed**, 5 conditions, 275 cells: the matched comparator `en_neutral`, the retained `en_neutral_ours`, and the three variants named above.
 
 Instruments are the official MFQ-2 translations from the validation materials. Framing instructions in Arabic, Spanish, French, Japanese, Farsi and Russian are ours, built from one template per language that varies only the country name and the demonym, and each cell records the instruction it was sent verbatim.
 
@@ -137,6 +137,7 @@ The same table as distance from that country's reference-sample mean. Positive i
 | New Zealand | -0.325 | - | -0.216 | - |
 | Nigeria | -1.269 | - | +0.477 | - |
 | South Africa | -0.980 | - | +0.186 | - |
+
 Each of those nineteen means rests on 205 to 207 respondents for its country, 3,902 in all, collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within each nation on age, gender and political orientation. Education was not a stratification variable, and the authors state their results rest on "a subset of these populations who were educated enough to complete the surveys online", noting that people from traditional, small-scale communities are absent. Every overshoot in this appendix is a distance from those samples' means.
 
 The human SE column is SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen: a standard error under an independent-respondent approximation. The stratified recruitment does not by itself justify a design-based population SE. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran's comes from the authors' shared respondent-level files, sample 2, 989 respondents, over their own composite scores, binding SD 0.802.
@@ -147,10 +148,9 @@ The human SE column is SD over root n from the per-country dispersion file, 0.03
 
 Human anchors, treated as constants, binding as the mean of loyalty, authority and purity: Egypt 4.267 (Atari 2023 Study 2), Morocco 4.014 (Atari 2023 Study 2), Saudi Arabia 4.083 (Atari 2023 Study 2), United Arab Emirates 3.892 (Atari 2023 Study 2), Argentina 3.283 (Atari 2023 Study 2), Chile 3.220 (Atari 2023 Study 2), Colombia 3.497 (Atari 2023 Study 2), Mexico 3.512 (Atari 2023 Study 2), Peru 3.514 (Atari 2023 Study 2), Belgium 3.444 (Atari 2023 Study 2), France 3.610 (Atari 2023 Study 2), Switzerland 3.349 (Atari 2023 Study 2), Japan 2.652 (Atari 2023 Study 2), Iran 3.333 (Hazrati 2025 sample 2), Russia 3.599 (Atari 2023 Study 2), Ireland 3.096 (Atari 2023 Study 2), Kenya 3.867 (Atari 2023 Study 2), New Zealand 3.094 (Atari 2023 Study 2), Nigeria 4.038 (Atari 2023 Study 2), South Africa 3.749 (Atari 2023 Study 2). India, Sweden and the United States are not in the MFQ-2 nineteen-nation set, so no overshoot is computable for them. Iran's sample was administered on a 0-4 scale and shifted linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the detail and the caveats.
 
-
 ### The four Arabic-speaking countries
 
-One instrument, one language, four populations with published means. The human means span 0.375, from Egypt at 4.267 down to the United Arab Emirates at 3.892. Framed in Arabic, the panel spans 0.175, and its ordering of the four is uncorrelated with the human ordering (Spearman +0.00). Framed in English the picture is the same: panel spread 0.164, Spearman +0.00.
+One instrument, one language, four reference samples with published means. The human means span 0.375, from Egypt at 4.267 down to the United Arab Emirates at 3.892. Framed in Arabic, the panel spans 0.175, and its ordering of the four is uncorrelated with the human ordering (Spearman +0.00). Framed in English the picture is the same: panel spread 0.164, Spearman +0.00.
 
 | | human order | panel order |
 |---|---|---|
@@ -159,7 +159,7 @@ One instrument, one language, four populations with published means. The human m
 
 Framed in Arabic, 2 of 11 models have a positive rank correlation with the human order; framed in English, 6 of 11. No model in either arm reproduces the human order exactly.
 
-The unframed Arabic condition sits at 3.104, below all four populations, between 0.788 and 1.163 under them.
+The unframed Arabic condition sits at 3.104, below all four reference-sample means, between 0.788 and 1.163 under them.
 
 ## B3a. Every condition, with intervals
 
@@ -491,7 +491,7 @@ The between-model spread in B3a is on the binding composite. This section takes 
 
 Endpoint use, the share of item ratings at 1 or 5, panel mean and then the median over conditions: 0.234 unframed, 0.267 framed. Item-level between-model spread, the same statistic on each of the 36 items and then the median: 0.425 unframed, 0.299 framed.
 
-Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones. A between-model spread of five-run means carries run noise of roughly that over root five, 0.083 and 0.051, so run noise contributes less to the framed between-model spread, not more. Sampling temperature is fixed per model across conditions and cannot produce a difference between them.
+Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones, and 0.129 over all 550 model-by-condition cells; the between-model spread has a median of 0.188 over all 50 conditions. A between-model spread of five-run means carries run noise of roughly that over root five, 0.083 and 0.051, so run noise contributes less to the framed between-model spread, not more. Whatever default sampling temperature each provider applied, the same default is assumed to have applied to a model's framed and unframed conditions, which were collected in one window.
 
 Restricting the framed set by its distance from the top of the scale, against the same 7 unframed conditions, whose binding means run 2.68 to 3.10:
 
@@ -530,6 +530,8 @@ Orders **are** shared within every multi-country translated group. The in-langua
 `validity/audit_inlanguage.py` emits B1a, B4, B5 and B7 as `results/appendix_b4_b5.md`, and reconciles first against an independent recomputation from the raw cells: the plain mean of the eighteen binding items against the average of three foundation means. Those agree only if each binding foundation carries the same number of items, so the gate verifies the counts it depends on. It writes `results/condition_means.json`, and `validity/audit_inlanguage_grid.py` reconciles against that file rather than against constants. `validity/build_appendix_tables.py` emits B2a, B3, B3a, B6 and B6a as `results/appendix_tables.md`. Both are spliced into this document verbatim, so a number here that disagrees with its artifact is a splice that was not re-run.
 
 The July 2026 collection is preserved unchanged at `validity/archive-2026-07/`.
+
+**The human side.** `validity/reference/` holds four committed CSVs and a README recording each one's provenance. `mfq2_country_means.csv` and `mfq2_country_dispersion.csv` carry the nineteen countries' foundation means and respondent-level standard deviations, computed from Atari et al.'s Study 2 raw data with their own scoring; `mfq2_alignment_r2.csv` carries the B2a diagnostics from `compute_alignment_r2.R`. Those three are copies from the companion repository `reasoner-study`, which is not public, so the R script is not in this repository; the CSVs are what the appendix reads. `mfq2_iran_dispersion.csv` is built here by `validity/reference/build_iran_dispersion.py`, which needs `pyreadstat`, from Hazrati et al.'s shared respondent-level files; those stay in the gitignored `_raw/`. `validity/anchors_iran.json` carries Iran's three anchors and the caveats B4 reports.
 
 ---
 

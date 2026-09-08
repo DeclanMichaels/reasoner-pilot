@@ -272,7 +272,7 @@ for country, lang, code in ROWS:
 ARTICLE = {"United States": "the United States"}
 UNANCHORED = [ARTICLE.get(c, c) for c, _, _ in ROWS if c not in ANCH]
 _ns = sorted(ANCH_N.values())
-print("Each of those nineteen means rests on %d to %d respondents for its country, %s in all, "
+print("\nEach of those nineteen means rests on %d to %d respondents for its country, %s in all, "
       "collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within "
       "each nation on age, gender and political orientation. Education was not a "
       "stratification variable, and the authors state their results rest on \"a subset of "
@@ -382,11 +382,17 @@ print("\nEndpoint use, the share of item ratings at 1 or 5, panel mean and then 
       "on each of the 36 items and then the median: %.3f unframed, %.3f framed.\n" % (_eu, _ef, _iu, _if))
 _wu = median([psd(v) for k in UNF for v in RUNS[k].values() if len(v) > 1])
 _wf = median([psd(v) for k in FRM for v in RUNS[k].values() if len(v) > 1])
+assert set(C) <= set(RUNS), sorted(set(C) - set(RUNS))
+_wa = median([psd(v) for k in C for v in RUNS[k].values() if len(v) > 1])
+_na = sum(len(RUNS[k]) for k in C)
+_ba = median([sd(k) for k in C])
 print("Within a model, the five-run spread of the binding composite has a median of %.3f in the "
-      "unframed conditions and %.3f in the framed ones. A between-model spread of five-run means "
+      "unframed conditions and %.3f in the framed ones, and %.3f over all %d model-by-condition cells; "
+      "the between-model spread has a median of %.3f over all %d conditions. A between-model spread of five-run means "
       "carries run noise of roughly that over root five, %.3f and %.3f, so run noise contributes "
-      "less to the framed between-model spread, not more. Sampling temperature is fixed per model "
-      "across conditions and cannot produce a difference between them.\n" % (_wu, _wf, _wu / 5 ** 0.5, _wf / 5 ** 0.5))
+      "less to the framed between-model spread, not more. Whatever default sampling temperature each "
+      "provider applied, the same default is assumed to have applied to a model's framed and unframed "
+      "conditions, which were collected in one window.\n" % (_wu, _wf, _wa, _na, _ba, len(C), _wu / 5 ** 0.5, _wf / 5 ** 0.5))
 print("Restricting the framed set by its distance from the top of the scale, against the same "
       "%d unframed conditions, whose binding means run %.2f to %.2f:\n"
       % (len(UNF), min(cell(k) for k in UNF), max(cell(k) for k in UNF)))

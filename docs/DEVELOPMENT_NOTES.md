@@ -57,7 +57,7 @@ with a message directing to a dedicated endpoint. Verify against the live API ra
 from the error text, and give the replacement its own roster key rather than reusing the old one.
 
 Parse and rate-limit failures are expected at low rates and are retried inside the collection
-window. In the in-language collection, 12 of 1,112 attempted calls returned no ratings object, all
+window. In the in-language collection, 46 of 2,796 attempted calls returned no ratings object, all
 retried to success, so no condition rests on fewer than five reruns.
 
 API keys live in `~/.config/ccas/keys.env`, mode 600. A non-interactive shell does not have them:
@@ -160,9 +160,10 @@ lower bound at or above 3.66. Older drafts say "three to four times", which was 
 reading presented as the estimate, and "five models", which is simply wrong. Both are corrected in
 the paper and the appendix; if either phrasing turns up anywhere, it is stale.
 
-**The in-language grid is fifty conditions and 2,750 cells.** `papers/inlanguage-mfq2-appendix-DRAFT.md`
-still says eleven models, 20 conditions and 1,100 cells, which describes the earlier and smaller
-collection it was written against. The appendix has not been regenerated since the grid completed.
+**The in-language grid is fifty conditions and 2,750 cells.** An earlier draft of the appendix
+described the smaller collection it was written against, eleven models, 20 conditions and 1,100
+cells; every data section is now generated from the completed grid, so those figures are stale
+anywhere they appear.
 
 **Human-to-model comparisons run on the baseline twelve**, the scenarios carrying
 `has_human_baseline`. The other 36 are model-side only. A figure computed on all 48 and reported as

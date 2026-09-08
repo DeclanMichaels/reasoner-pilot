@@ -67,6 +67,7 @@ The same table as distance from that country's reference-sample mean. Positive i
 | New Zealand | -0.325 | - | -0.216 | - |
 | Nigeria | -1.269 | - | +0.477 | - |
 | South Africa | -0.980 | - | +0.186 | - |
+
 Each of those nineteen means rests on 205 to 207 respondents for its country, 3,902 in all, collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within each nation on age, gender and political orientation. Education was not a stratification variable, and the authors state their results rest on "a subset of these populations who were educated enough to complete the surveys online", noting that people from traditional, small-scale communities are absent. Every overshoot in this appendix is a distance from those samples' means.
 
 The human SE column is SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen: a standard error under an independent-respondent approximation. The stratified recruitment does not by itself justify a design-based population SE. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran's comes from the authors' shared respondent-level files, sample 2, 989 respondents, over their own composite scores, binding SD 0.802.
@@ -225,7 +226,7 @@ The between-model spread in B3a is on the binding composite. This section takes 
 
 Endpoint use, the share of item ratings at 1 or 5, panel mean and then the median over conditions: 0.234 unframed, 0.267 framed. Item-level between-model spread, the same statistic on each of the 36 items and then the median: 0.425 unframed, 0.299 framed.
 
-Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones. A between-model spread of five-run means carries run noise of roughly that over root five, 0.083 and 0.051, so run noise contributes less to the framed between-model spread, not more. Sampling temperature is fixed per model across conditions and cannot produce a difference between them.
+Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones, and 0.129 over all 550 model-by-condition cells; the between-model spread has a median of 0.188 over all 50 conditions. A between-model spread of five-run means carries run noise of roughly that over root five, 0.083 and 0.051, so run noise contributes less to the framed between-model spread, not more. Whatever default sampling temperature each provider applied, the same default is assumed to have applied to a model's framed and unframed conditions, which were collected in one window.
 
 Restricting the framed set by its distance from the top of the scale, against the same 7 unframed conditions, whose binding means run 2.68 to 3.10:
 
