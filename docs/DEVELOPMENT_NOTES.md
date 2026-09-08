@@ -103,6 +103,31 @@ because it reconciles whatever it can see. Committed, that output would have rep
 against itself. **Check `git status` after running anything under `validity/`, and treat a clean
 exit as saying nothing about whether the right data was present.**
 
+## The in-language appendix is generated, and the splice map is fixed
+
+`papers/inlanguage-mfq2-appendix-DRAFT.md` is spliced verbatim from two artifacts. `build_appendix_tables.py`
+emits B2a, B3, B3a, B6 and B6a; `audit_inlanguage.py` emits B1a, B4, B5, B7 and B10. B1, B2, B8,
+B9, the Arabic-four subsection inside B3 and the Care sentence after B6 are hand-written. A number
+in the document that disagrees with its artifact is a splice that was not re-run; re-splice, do not
+edit. `test_reproduce.py` pins the artifacts (decision 14), not the document.
+
+`audit_inlanguage.py` loads every English-framed country since 2026-09-08. Before that it loaded
+Egypt, Japan and Iran only, so `condition_means.json` carried 27 of 47 conditions and looked
+complete.
+
+**B1a quotes the prompts from the runner source.** The unframed system prompt is read from
+`run_validity.py`'s `SYSTEM` literal and the framing template from `run_framed.frame_system`'s
+AST. Change either runner and the appendix changes, or the emitter fails. A hand-copied version
+was tried and failed its own assertion: the f-string is split across literals, and the copy had
+swapped the em-dash the models actually receive.
+
+**Copy the audit's stdout to `results/inlanguage_audit.txt` only from a run that printed
+`wrote results/appendix_b4_b5.md`.** A run that fails partway leaves a truncated trail that
+`test_reproduce.py` will happily re-pin.
+
+A `%` inside a string that is later `%`-formatted raises `unsupported format character`; the
+"95% model-resampling interval" header needs `%%` in the template.
+
 ## Human data
 
 `human-responses/` is published under `DATA-LICENSE.md`. The `_server` block holding hashes of IP

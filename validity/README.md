@@ -96,7 +96,8 @@ them. They live in two places:
 
   The objects at the prefix root, `archive-reasoner-pilot-validity/` itself, are the 2026-08-21
   snapshot: Arabic, Farsi and Japanese only, 929 objects, with tracked files mixed in. Syncing
-  it into `validity/` reverts those files to that date (issue 3). Do not restore from it.
+  it into `validity/` reverts those files to that date (issue 3). Never sync it into `validity/`; if it is ever needed, sync it
+  into a scratch directory and run `reconcile.py` against it.
 
 Appendices B3, B4 and B5 of the in-language MFQ-2 write-up are regenerated from this data
 by `audit_inlanguage.py`. Without it those numbers cannot be recomputed.

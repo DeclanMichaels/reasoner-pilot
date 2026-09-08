@@ -125,6 +125,22 @@ In the in-language work, a framing crossed with an administration language. Fift
 Whether a condition instructs the model to answer as a person from a named country. The two are not
 comparable on dispersion: naming a country roughly halves between-model spread by construction.
 
+**Model-resampling interval**:
+The 95 percent percentile bootstrap over the eleven models, 100,000 draws, seeded per quantity. It
+shows how far a panel figure moves when models like these are resampled.
+_Avoid_: confidence interval, bound, "within". It bounds nothing and establishes no equivalence.
+
+**Contrast set**:
+Appendix B4 since decision 15: for every country with both languages, framing in English,
+framing in the local language, language under framing, and their interaction, each within-model
+first, reported as difference, model-resampling interval, sign count and leave-one-out range.
+_Avoid_: test family, Family A, Family B, T1 to T11, which are the withdrawn declared family (B10).
+
+**Reference-sample mean**:
+A country's published human mean, from Atari et al. (2023) Study 2 for nineteen countries and
+Hazrati et al. (2025) for Iran. A mean of a particular sample, collected at a particular time.
+_Avoid_: population, real population, the population's mean.
+
 ## Provenance and status
 
 **The pilot**:
