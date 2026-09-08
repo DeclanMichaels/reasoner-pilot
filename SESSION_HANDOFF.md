@@ -7,8 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. `aa7b7f7`, the cold-review round, is committed locally and **not yet pushed**;
-  the push is waiting on Declan. Before it, local and remote agreed at `2457833`.
+- Local and remote agree at `d399768`; working tree clean. `aa7b7f7` is the cold-review round,
+  pushed 2026-09-08 on Declan's word.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 17 committed-only outputs verified.
 - **Seven review rounds on the in-language paper and appendix are adjudicated and worked
@@ -48,9 +48,9 @@ Nothing is queued for an agent. Declan is sending the current state for further 
 
 1. **Review.** Five model families have read across six rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
-   and the documents state each where the reader meets it. Unread by any external reviewer: the retitle, the viewer's title and wording, Kimi's six
-   fixes, and the twelve fixes in `aa7b7f7`. Declan's next step is to push and send both documents
-   out again.
+   and the documents state each where the reader meets it. Unread by any external reviewer: the
+   retitle, the viewer's title and wording, Kimi's six fixes, and the twelve fixes in `aa7b7f7`.
+   Declan is sending both documents out again.
 2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three
    `TBD`s and `CITATION.cff` a commented `doi:`. Under decision 17 nothing here is published
    until that is done.
