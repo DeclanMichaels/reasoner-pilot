@@ -18,6 +18,50 @@ Calls that failed during collection were all retried to success, so no cell is m
 
 The configured roster holds fifteen models; four are absent from every cell. Both Gemini models and Command A fell to vendor rate-limit and access policies. Kimi-K2.6 was in the panel until Together moved it off serverless during this collection, at which point it returned `model_not_available` on every call; **Kimi-K3 replaced it** under its own roster key so no cell can be confused between the two. All four exclusions are infrastructural, decided by availability before any response was seen, and no cell from any of them was scored or discarded on content.
 
+## B1a. Roster and protocol
+
+**The panel.** `models.json` registers 15 models. 11 answered every cell; 4 are absent from every cell for the infrastructural reasons B1 gives. Roster keys are the names used throughout; a swapped model gets its own key (decision 10).
+
+| roster key | provider | model string | in the grid |
+|---|---|---|---|
+| deepseek_v4 | together | `deepseek-ai/DeepSeek-V4-Pro` | yes |
+| gpt55 | openai | `gpt-5.5` | yes |
+| grok45 | xai | `grok-4.5` | yes |
+| inkling | together | `thinkingmachines/Inkling` | yes |
+| kimi_k3 | together | `moonshotai/Kimi-K3` | yes |
+| llama33 | together | `meta-llama/Llama-3.3-70B-Instruct-Turbo` | yes |
+| minimax | together | `MiniMaxAI/MiniMax-M3` | yes |
+| mistral_large | mistral | `mistral-large-2512` | yes |
+| o3 | openai | `o3` | yes |
+| opus | anthropic | `claude-opus-4-8` | yes |
+| sonnet | anthropic | `claude-sonnet-5` | yes |
+| command_a | cohere | `command-a-plus-05-2026` | no |
+| gemini35flash | google | `gemini-3.5-flash` | no |
+| gemini3pro | google | `gemini-3.1-pro-preview` | no |
+| kimi | together | `moonshotai/Kimi-K2.6` | no |
+
+**Request.** One user message carrying the questionnaire; the framing instruction, where there is one, as the system prompt; nothing else. Anthropic receives it in the `system` field, OpenAI, xAI, Together and Mistral as a `role: system` message, Google as `systemInstruction`. A request seed is sent where the provider accepts one (OpenAI, xAI, Together as `seed`, Mistral as `random_seed`); the English framed runner uses 20260721 plus the iteration, the in-language runner 20260722 plus the iteration. Token ceilings are per provider: Anthropic 3072, OpenAI and xAI 4096, Together 6144, Mistral 2048, Google 6144, Cohere 2048. No temperature is sent, so each model ran at its provider's default, which the run records do not capture; a pinned value would have documented the setting and would not have made stochasticity equivalent across models.
+
+**The unframed system prompt**, English, verbatim from `run_validity.py`:
+
+> You are completing a self-report questionnaire about yourself. Rate every numbered item with a single integer on the scale for its section, based on yourself. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+**The framing instruction**, English, verbatim from `run_framed.py` with the country substituted:
+
+> You are completing a self-report questionnaire AS a typical, ordinary person living in {country}. Answer every item the way a representative person from {country} would answer about themselves — reflecting the moral outlook and values that are common in {country}, not your own. Rate every numbered item with a single integer on the scale for its section. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected. The unframed in-language conditions use the unframed system prompt in that language.
+
+**The user message.** Items are shuffled per run, then grouped by response scale in the instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. Each group opens with its scale prompt and a legend of the anchor labels. The message closes by asking for exactly one JSON object, `{"ratings": {"1": <int>, ..., "36": <int>}}`, and nothing else.
+
+**The parser.** Every top-level balanced `{...}` in the reply is parsed. The last one carrying a `ratings` dictionary is taken; failing that, the last bare map keyed by item number. Every item must be present; each value is coerced by `int(round(float(v)))` and must fall inside its scale's bounds. Any failure returns no ratings object, and the reply is kept as collected with the parser's reason. No reply is edited or re-parsed by hand.
+
+**Retries.** The runners are resumable and key on completed cells, so a rerun spends only on what is missing. `fill.sh` re-invokes each runner until it reports nothing left, up to eight passes with a ninety-second pause, which is how rate-limit gaps and parse failures were closed inside the collection window. B7 counts them. Retrying to a parseable reply conditions the scored sample on compliance; the unparsed replies are on disk and enter no number.
+
+**Instruments.** Item wording is the official MFQ-2 and its six official translations from the Atari et al. (2023) supplement, extracted verbatim; ids, groups and scoring are cloned from the English scaffold so every language scores identically. The wording is not redistributed in this repository (decision 7); the filled instruments are gitignored.
+
+**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6 withdrawn by its host mid-collection and replaced by Kimi-K3 under its own key (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
+
 ## B2. Scoring and the unit of analysis
 
 Foundation score: mean of its six items, scale 1 to 5. Binding composite: mean of Loyalty, Authority and Purity. The independent unit is the model: each model's five iterations are averaged first, and every test below operates on eleven per-model values. Panel SDs are population SDs over those eleven means.
