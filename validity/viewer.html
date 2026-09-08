@@ -405,9 +405,9 @@ function panelOvershoot(){
       official Persian MFQ-2, which matches the language of our Farsi arm. Three differences travel
       with it. They administered on a 0 to 4 scale and we apply a +1 shift for comparability.
       Their sample is an online convenience sample, younger, majority
-      female and more educated than the country, and the authors state it is likely less
-      binding-endorsing than the general Iranian population, which would make the gap we report
-      larger than a nationally stratified sample would give.
+      female and more educated than the country, and we read it as likely less
+      binding-endorsing than the general Iranian population, our inference rather than the authors'
+      statement, which would make the gap we report larger than a nationally stratified sample would give.
       And the choice of sample moves the number: ${alt.map(a =>
         `on their ${esc(a.label)} the in-language gap is ${fmtS(a.fa_framed_overshoot,2)}`
         ).join(" and ")}, against the ${fmtS(used.fa_framed_overshoot,2)} shown here. The anchor in
@@ -683,8 +683,8 @@ function panelFoundations(){
       b += `<p class="note">The caret on this chart is Hazrati, Nejat and Daneshi (2025)
         ${esc(D.meta.iran_anchor.in_use)}, n=${D.meta.iran_anchor.alternatives.find(
           a => a.label === D.meta.iran_anchor.in_use).n}, not Atari et al. Same instrument and same
-        language, different study, and an online convenience sample their authors describe as likely
-        less binding-endorsing than the country. See the note on the first tab.</p>`;
+        language, different study, and an online convenience sample we read as likely less
+        binding-endorsing than the country, our inference. See the note on the first tab.</p>`;
   }
 
   // ---- the table

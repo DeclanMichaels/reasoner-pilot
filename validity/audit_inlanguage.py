@@ -430,9 +430,9 @@ L.append("**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anc
          "and Daneshi (2025), a different paper with different collection conditions, using "
          "Atari's Persian translation with minor linguistic edits. That sample is a Telegram "
          "and snowball convenience sample, n=%d, 68 to 71 percent female, mean age 26 to 28, "
-         "57 to 59 percent educated to bachelor's or above, and the anchor file records it as "
-         "likely less binding-endorsing than the general Iranian population - which would bias "
-         "this overshoot upward. Collection began a year after the Woman, Life, Freedom movement "
+         "57 to 59 percent educated to bachelor's or above, and we read it as "
+         "likely less binding-endorsing than the general Iranian population, our inference and not the "
+         "authors' statement - which would bias this overshoot upward. Collection began a year after the Woman, Life, Freedom movement "
          "and the authors note possible period effects. Iran is the only Farsi country, so it "
          "carries that group throughout. Respondent-level data for both samples are shared by the "
          "authors on OSF.\n" % _s2)
