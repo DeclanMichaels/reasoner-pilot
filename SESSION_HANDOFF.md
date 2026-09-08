@@ -7,14 +7,15 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree, and the working tree is clean apart from this file. The session's work
-  is 40 commits since `303e79e`.
+- Working tree clean. `aa7b7f7`, the cold-review round, is committed locally and **not yet pushed**;
+  the push is waiting on Declan. Before it, local and remote agreed at `2457833`.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 17 committed-only outputs verified.
-- **Six adversarial rounds on the in-language paper and appendix are adjudicated and worked
+- **Seven review rounds on the in-language paper and appendix are adjudicated and worked
   through**, all in `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second
-  (eight), DeepSeek's (folded into those eight), Gemini's (three) and Kimi's (six). Thirty-nine
-  issues have existed; none is open.
+  (eight), DeepSeek's (folded into those eight), Gemini's (three), Kimi's (six) and Claude's cold
+  review of 2026-09-08 (twelve, #40 to #51; every number in both documents recomputed and found
+  correct, the fixes prose and structure). Fifty-one issues have existed; none is open.
 - **The paper is titled** "Adding a country-role instruction shifts responses more than
   translating the questionnaire", Kimi's proposal, taken 2026-09-08. The viewer's title and
   heading match it, and its wording says reference sample where the paper does.
@@ -38,7 +39,7 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-Empty. #1 to #39 are closed, each with its disposition on the ticket. Where a ticket was closed
+Empty. #1 to #51 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
@@ -47,17 +48,18 @@ Nothing is queued for an agent. Declan is sending the current state for further 
 
 1. **Review.** Five model families have read across six rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
-   and the documents state each where the reader meets it. Unread by anyone: the retitle, the
-   viewer's title and wording, the four appendix lines fixed at close, and Kimi's six fixes.
+   and the documents state each where the reader meets it. Unread by any external reviewer: the retitle, the viewer's title and wording, Kimi's six
+   fixes, and the twelve fixes in `aa7b7f7`. Declan's next step is to push and send both documents
+   out again.
 2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three
    `TBD`s and `CITATION.cff` a commented `doi:`. Under decision 17 nothing here is published
    until that is done.
 
 Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
-(the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker
-asymmetry; `viewer_data.json`'s generation timestamp, which makes its pin detect re-runs rather
-than data changes and stamps the viewer with the 7th; the appendix's hand-written Arabic-four
-subsection still says "populations" where the generated sections say reference sample.
+(the script that did it for #2 lives only in the scratchpad; #49 moved the paper's two five-run
+medians into a pinned artifact, and the d table is the paper table still without one); the `[*]`
+versus `[d12]` marker asymmetry; `viewer_data.json`'s generation timestamp, which makes its pin
+detect re-runs rather than data changes and stamps the viewer with the 7th.
 
 ## Open items
 
