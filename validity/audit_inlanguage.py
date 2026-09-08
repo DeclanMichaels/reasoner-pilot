@@ -83,6 +83,9 @@ enfr = permodel(str(VDIR/"runs_framed"/"*_mfq2_*.json"),
 # en_neutral_ours so the errata can cite what was published before.
 ennu = permodel(str(VDIR/"runs_english_baseline"/"*.json"),
                 lambda d: "en_neutral" if d.get("condition")=="official_nosystem" else None)
+# The four English unframed variants, kept apart from CONDS so condition_means.json is
+# untouched. B1a and B4 use them for the instrument and system-prompt controls.
+enbase = permodel(str(VDIR/"runs_english_baseline"/"*.json"), lambda d: d.get("condition"))
 enold = permodel(str(VDIR/"runs"/"*mfq2*.json"),
                  lambda d: "en_neutral_ours" if d.get("instrument")=="mfq2" else None)
 
@@ -372,7 +375,7 @@ L.append("Every country with both languages, and every language with both framin
          "is computed within a model first and then averaged across the %d, so the interval, the "
          "sign count and the leave-one-out range all describe the same per-model differences. The "
          "interval is a percentile bootstrap resampling the %d models, 100,000 draws, seeded per "
-         "quantity: it shows how far the difference moves when models like these are resampled, and "
+         "quantity: it reweights the observed eleven and shows how far the difference moves under that reweighting, and "
          "it bounds nothing. An interval that includes both positive and negative values is reported "
          "as such; it does not establish equivalence. The sign count and the leave-one-out range "
          "describe the same eleven per-model differences and carry no test; across the %d contrasts "
@@ -408,7 +411,29 @@ for code in LANG_ORDER:
         L.append(row("interaction", C[("interaction", code, country)]))
         L.append("")
 
-# the 1.04 and its weighting
+# ---- the English framing contrasts and the instrument version
+def _ctr(vals_by_model, key):
+    vals = list(vals_by_model.values()); lo, hi = boot_ci(vals, key)
+    loo_v = [mu for _, mu in loo(vals_by_model)]
+    return {"diff": sum(vals) / len(vals), "lo": lo, "hi": hi, "up": sum(1 for v in vals if v > 0),
+            "dn": sum(1 for v in vals if v < 0), "n": len(vals), "loo_lo": min(loo_v), "loo_hi": max(loo_v)}
+_ms = sorted(set(enbase["ours_nosystem"]) & set(CONDS["en_neutral"]))
+assert len(_ms) == N, _ms
+_inst = _ctr({m: enbase["ours_nosystem"][m] - CONDS["en_neutral"][m] for m in _ms}, "C|instrument|ours_nosystem-official_nosystem")
+L.append("**The English framing contrasts and the instrument.** Every English-framed cell was administered "
+         "on our transcription of the MFQ-2 (`mfq2`) and the English unframed comparator on the official "
+         "instrument (`mfq2_en`); the two differ in the scale prompt, in one Proportionality item and in "
+         "punctuation on three more (B1a). So each framing-in-English row above changes the instrument as "
+         "well as adding the system prompt, and the local-language rows do not. The instrument's own effect, "
+         "unframed, is `en_baseline_ours_nosystem` minus `en_neutral`, our transcription against the official "
+         "one with no system prompt in either:\n")
+L.append(HEAD % N); L.append(SEP); L.append(row("our transcription minus official, unframed", _inst)); L.append("")
+L.append("Against `en_baseline_ours_nosystem` instead, the same transcription unframed, each framing-in-English "
+         "difference above changes by the negative of that model's instrument difference, %+.3f at the panel "
+         "level. The changed item is not in the binding composite. An English framed arm on the official "
+         "instrument was not run.\n" % (-_inst["diff"]))
+
+# the framing average and its weighting
 _grp = {c: [k for cc, k in PAIRS if cc == c and not (c == "ar" and k == "Morocco")] for c in LANG_ORDER}
 _per_lang = {c: sum(C[("framing_local", c, k)]["diff"] for k in _grp[c]) / len(_grp[c]) for c in LANG_ORDER}
 _eq_lang = sum(_per_lang.values()) / len(_per_lang)
@@ -422,6 +447,45 @@ L.append("**The average framing shift, and how it is weighted.** The paper's %.2
          "same %d pairs, and %.3f over all %d including Arabic Morocco.\n" % (
          _eq_lang, ", ".join("%s %+.3f" % (LANG_NAME[c], _per_lang[c]) for c in LANG_ORDER),
          _eq_pair, len(_no_esmor), _all_pairs, len(PAIRS)))
+
+# model-level summaries for the three averages the paper quotes
+_prov = {k: v["provider"] for k, v in json.load(open(VDIR.parent / "models.json"))["models"].items()}
+_pm_frame = {c: {k: per_model("framing_local", c, k) for k in _grp[c]} for c in LANG_ORDER}
+_pm_lang = {c: per_model("lang_unframed", c, None) for c in LANG_ORDER}
+_models = sorted(set.intersection(*[set(d) for c in LANG_ORDER for d in _pm_frame[c].values()], *[set(_pm_lang[c]) for c in LANG_ORDER]))
+def _frame_avg(ms):
+    return sum(sum(sum(_pm_frame[c][k][m] for m in ms) / len(ms) for k in _grp[c]) / len(_grp[c]) for c in LANG_ORDER) / len(LANG_ORDER)
+def _lang_signed(ms):
+    return sum(sum(_pm_lang[c][m] for m in ms) / len(ms) for c in LANG_ORDER) / len(LANG_ORDER)
+def _lang_abs(ms):
+    return sum(abs(sum(_pm_lang[c][m] for m in ms) / len(ms)) for c in LANG_ORDER) / len(LANG_ORDER)
+def _summ(fn, per_model_vals, key):
+    out = {"diff": fn(_models)}
+    if per_model_vals is not None:
+        vals = [per_model_vals[m] for m in _models]
+        out["lo"], out["hi"] = boot_ci(vals, key)
+        out["up"] = sum(1 for v in vals if v > 0); out["dn"] = sum(1 for v in vals if v < 0)
+    loo_v = [fn([x for x in _models if x != m]) for m in _models]
+    provs = sorted(set(_prov[m] for m in _models))
+    pov = [fn([x for x in _models if _prov[x] != p]) for p in provs]
+    out.update(loo_lo=min(loo_v), loo_hi=max(loo_v), pov_lo=min(pov), pov_hi=max(pov))
+    return out
+_fa = _summ(_frame_avg, {m: _frame_avg([m]) for m in _models}, "C|aggregate|framing_six_language")
+_ls = _summ(_lang_signed, {m: _lang_signed([m]) for m in _models}, "C|aggregate|language_signed")
+_la = _summ(_lang_abs, None, "C|aggregate|language_abs")
+_pc = {}
+for m in _models: _pc[_prov[m]] = _pc.get(_prov[m], 0) + 1
+L.append("The same model-level summaries as the rows above, for the three averages the paper quotes. "
+         "The six-language framing average, %+.3f: %d of %d models positive, model-resampling interval "
+         "[%+.3f, %+.3f], leave-one-model-out %+.3f to %+.3f, leave-one-provider-out %+.3f to %+.3f. "
+         "The signed language average, %+.3f: %d up, %d down, interval [%+.3f, %+.3f], leave-one-model-out "
+         "%+.3f to %+.3f, leave-one-provider-out %+.3f to %+.3f. The absolute language average, %.3f, is a "
+         "mean of six panel-level magnitudes and has no per-model version; leave-one-model-out %.3f to %.3f, "
+         "leave-one-provider-out %.3f to %.3f. The providers and how many of the eleven each serves: %s.\n" % (
+         _fa["diff"], _fa["up"], len(_models), _fa["lo"], _fa["hi"], _fa["loo_lo"], _fa["loo_hi"], _fa["pov_lo"], _fa["pov_hi"],
+         _ls["diff"], _ls["up"], _ls["dn"], _ls["lo"], _ls["hi"], _ls["loo_lo"], _ls["loo_hi"], _ls["pov_lo"], _ls["pov_hi"],
+         _la["diff"], _la["loo_lo"], _la["loo_hi"], _la["pov_lo"], _la["pov_hi"],
+         ", ".join("%s %d" % (p, n) for p, n in sorted(_pc.items(), key=lambda x: (-x[1], x[0])))))
 
 # ---- Iran anchor: caveat and sensitivity, unchanged in substance
 _IR = json.load(open(VDIR / "anchors_iran.json"))
@@ -437,9 +501,9 @@ L.append("**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anc
          "same anchor words as the 1-to-5 scale, from does not describe me at all to describes me "
          "extremely well, so the +1 shift maps label to label. That sample is a Telegram "
          "and snowball convenience sample, n=%d, 68 to 71 percent female, mean age 26 to 28, "
-         "57 to 59 percent educated to bachelor's or above, and we read it as "
-         "likely less binding-endorsing than the general Iranian population, our inference and not the "
-         "authors' statement - which would bias this overshoot upward. Collection began a year after the Woman, Life, Freedom movement "
+         "57 to 59 percent educated to bachelor's or above; the authors' limitations discuss that "
+         "composition and restricted variation in religiosity and political orientation. Collection "
+         "began a year after the Woman, Life, Freedom movement "
          "and the authors note possible period effects. Iran is the only Farsi country, so it "
          "carries that group throughout. Respondent-level data for both samples are shared by the "
          "authors on OSF.\n" % _s2)
@@ -571,17 +635,24 @@ M.append("The in-language framing instructions are our translations of that temp
          "demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` "
          "field, and the runner asserts at start-up that the Arabic template still reproduces the "
          "Egypt prompt byte for byte as first collected.\n")
+_sr_ours = _ctr({m: enbase["ours_selfreport"][m] - enbase["ours_nosystem"][m] for m in _ms}, "C|selfreport|ours")
+_sr_off = _ctr({m: enbase["official_selfreport"][m] - enbase["official_nosystem"][m] for m in _ms}, "C|selfreport|official")
 M.append("**The unframed conditions send no system prompt.** The matched English baseline and all six "
          "translated unframed conditions were run with `NEUTRAL_SYSTEM = \"\"`; every one of their "
          "saved runs records an empty system prompt. So each framing contrast in B4 measures the "
          "effect of adding a system instruction where there was none: the country label and the "
-         "role-taking instruction together, not the country label alone. The nearest measurement of "
-         "the instruction on its own is the English baseline pair in `results/english_baseline_audit.txt`, "
-         "where a self-report system prompt naming no country lowered the composite by 0.026 against "
-         "none, model-resampling interval [-0.090, +0.042], eight of eleven models lower with the "
-         "prompt. That prompt is not the framing template, so it brackets the role-taking component "
-         "rather than isolating it; a country-neutral arm with the framing template itself would, "
-         "and was not run.\n")
+         "role-taking instruction together, not the country label alone. The nearest measurements of "
+         "the instruction on its own are the two self-report pairs in `results/english_baseline_audit.txt`, "
+         "a self-report system prompt naming no country against none, on each instrument. On our "
+         "transcription the prompt moved the composite by %+.3f, model-resampling interval [%+.3f, %+.3f], "
+         "%d of %d models lower with the prompt; on the official instrument by %+.3f, interval [%+.3f, "
+         "%+.3f], %d of %d lower. Neither prompt is the framing template, so the pairs are a different, "
+         "imperfect control rather than a bound on the role-taking component; a country-neutral arm with "
+         "the framing template itself was not run. The English-framed cells were also administered on our "
+         "transcription while the matched comparator is the official instrument, so the English framing "
+         "contrasts add the instrument change to the system prompt; B4 measures that change unframed.\n"
+         % (_sr_ours["diff"], _sr_ours["lo"], _sr_ours["hi"], _sr_ours["dn"], _sr_ours["n"],
+            _sr_off["diff"], _sr_off["lo"], _sr_off["hi"], _sr_off["dn"], _sr_off["n"]))
 M.append("**The user message.** Items are shuffled per run, then grouped by response scale in the "
          "instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. "
          "Each group opens with its scale prompt and a legend of the anchor labels. The message "
@@ -600,9 +671,13 @@ M.append("**Retries.** The runners are resumable and key on completed cells, so 
          "were closed inside the collection window. B7 counts them. Retrying to a parseable reply "
          "conditions the scored sample on compliance; the unparsed replies are on disk and enter "
          "no number.\n")
-M.append("**Instruments.** Item wording is the official MFQ-2 and its six official translations from "
-         "the Atari et al. (2023) supplement, extracted verbatim; ids, groups and scoring are cloned "
-         "from the English scaffold so every language scores identically. The wording is not "
+M.append("**Instruments.** Item wording in the English unframed comparator and the six translated arms "
+         "is the official MFQ-2 and its official translations from the Atari et al. (2023) supplement, "
+         "extracted verbatim. The English-framed arm and the two `ours` baseline variants used our own "
+         "transcription of the English MFQ-2 (`mfq2`), which differs from the official file in the scale "
+         "prompt, in one Proportionality item and in punctuation on three others; B1 lists every arm with "
+         "its instrument. Ids, groups and scoring are cloned from the English scaffold so every instrument "
+         "scores identically. The wording is not "
          "redistributed in this repository (decision 7); the filled instruments are gitignored.\n")
 M.append("**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered "
          "unframed and framed as six countries in English, the collection now archived unchanged "

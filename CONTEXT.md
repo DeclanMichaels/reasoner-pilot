@@ -127,7 +127,7 @@ comparable on dispersion: naming a country roughly halves between-model spread b
 
 **Model-resampling interval**:
 The 95 percent percentile bootstrap over the eleven models, 100,000 draws, seeded per quantity. It
-shows how far a panel figure moves when models like these are resampled.
+shows how far a panel figure moves when the observed eleven are reweighted by resampling.
 _Avoid_: confidence interval, bound, "within". It bounds nothing and establishes no equivalence.
 
 **Contrast set**:

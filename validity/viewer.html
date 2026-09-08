@@ -390,8 +390,8 @@ function panelOvershoot(){
       enter no comparison against the human mean. Rows marked <span class="partial">§</span> were also
       framed in another language. Belgium and
       Switzerland are worth naming too: both were administered in French on both sides, so the
-      comparison is like for like, but French is a first language for roughly 36 percent of Belgians
-      and 23 percent of Swiss residents, so these rows describe French-answering respondents rather
+      comparison is like for like, but French is one of Belgium's three national languages and the main
+      language of 23 percent of Swiss residents (Federal Statistical Office, 2023 data), so these rows describe French-answering respondents rather
       than a typical resident of either country.</p>
     ${(() => { const IA = D.meta.iran_anchor; if (!IA) return "";
       const used = IA.alternatives.find(a => a.label === IA.in_use);
@@ -1096,7 +1096,7 @@ function boot(d){
     `Produced by <span class="mono">${esc(d.meta.produced_by)}</span> from
      <span class="mono">${esc(d.meta.reads)}</span>.
      ${esc(d.meta.unit_of_analysis)}. ${esc(d.meta.intervals)}. Intervals are descriptive: they show
-     how far a panel figure moves when models like these are resampled. The eleven are not a
+     how far a panel figure moves when the observed eleven are reweighted by resampling. The eleven are not a
      probability sample from any population of models, so an interval here is not a confidence
      interval for models in general.
      Human anchors: Atari et al. 2023 Study 2, except Iran (Hazrati et al. 2025, sample 2).
