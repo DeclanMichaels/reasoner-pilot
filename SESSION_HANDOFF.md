@@ -7,9 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Remote is at `be5f64e`. The commits since are local and **not yet pushed**: Kimi's second round
-  worked through, decision 20 and the merge into one document, the cold read. The push waits on
-  Declan; the document then goes out for review again.
+- Local and remote agree; working tree clean. Kimi's second round, decision 20, the merge into
+  one document and the cold read were pushed 2026-09-08 on Declan's word. The document is going
+  out for review again.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
   from the committed ratings dataset, and every generated section of the document matches its
