@@ -7,17 +7,22 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. Astra's third round, decisions 18 and 19, the
-  retitle and the ratings dataset were pushed 2026-09-08 on Declan's word. Both documents are
-  going out for review again.
+- Remote is at `be5f64e`. The commits since are local and **not yet pushed**: Kimi's second round
+  worked through, decision 20 and the merge into one document, the cold read. The push waits on
+  Declan; the document then goes out for review again.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
-  outputs reproduced, 18 committed-only outputs verified, and the 47 pinned condition means
-  rebuild from the committed ratings dataset.
-- **Eight review rounds on the in-language paper and appendix are adjudicated and worked
-  through**, all in `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second
-  (eight), DeepSeek's (folded into those eight), Gemini's (three), Kimi's (six), Claude's cold
-  review (twelve, #40 to #51) and Astra's third (twenty, #52 to #71). Seventy-one issues have
-  existed; #71 is open, the follow-on that moves the emitters onto the ratings dataset.
+  outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
+  from the committed ratings dataset, and every generated section of the document matches its
+  artifact (`validity/splice_appendix.py --check`).
+- **Nine review rounds on the in-language document are adjudicated and worked through**, all in
+  `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second (eight), DeepSeek's
+  (folded into those eight), Gemini's (three), Kimi's first (six), Claude's cold review (twelve,
+  #40 to #51), Astra's third (twenty, #52 to #71) and Kimi's second (eleven, #72 to #82).
+  Eighty-two issues have existed; #71 is open, the follow-on that moves the emitters onto the
+  ratings dataset.
+- **The report and its appendix are one document**, `papers/inlanguage-mfq2-DRAFT.md`, 823 lines,
+  decision 20; the appendix file is gone. `validity/splice_appendix.py` splices the nine generated
+  sections and the harness runs its `--check`.
 - **The paper is titled** "Eleven language models take the MFQ-2 in English and six
   translations, with and without a country to answer as", Declan's, taken 2026-09-08 in place of
   the result-stating title from Kimi's round. The viewer's title and heading match it.
@@ -26,8 +31,9 @@ This repository is public, so this file is public. It is written knowing that.
   is in `docs/DEVELOPMENT_NOTES.md`. B4 is a 70-contrast set over the full grid with intervals,
   sign counts and leave-one-out ranges, no p-values (decision 15). There is no errata section
   (decision 17).
-- `DECISIONS.md` holds 19 entries; 12 is superseded by 18 (Morocco reported under Spanish)
-  and 19 publishes the integer ratings as `validity/results/mfq2_ratings.csv`. This is the Black M2 Air; `validity/` holds the completed
+- `DECISIONS.md` holds 20 entries; 12 is superseded by 18 (Morocco reported under Spanish),
+  19 publishes the integer ratings as `validity/results/mfq2_ratings.csv`, 20 makes the report and
+  appendix one document. This is the Black M2 Air; `validity/` holds the completed
   grid and `validity/reconcile.py` reports it identical to the 2026-09-05 archive.
 
 ## What changed outside the repository
@@ -43,18 +49,21 @@ No model calls, nothing written to S3, nothing spent.
 ## The tracker
 
 One open: #71, move the emitters onto the ratings dataset (analysis, ready-for-agent). #1 to #70
-are closed, each with its disposition on the ticket. Where a ticket was closed
+and #72 to #82 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
 Queued for an agent: #71. Declan is sending the current state for further external review.
 
-1. **Review.** Five model families have read across eight rounds. Every family raised the same
+1. **Review.** Five model families have read across nine rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
-   and the documents state each where the reader meets it. Unread by any external reviewer:
-   everything since `6f39952`: the retitle, Morocco under Spanish and the 1.06, the instrument
-   disclosure and B1's design table, B2a's Table 6, the ratings dataset.
+   and the document states each where the reader meets it. Unread by any external reviewer:
+   everything since `be5f64e`: the re-led Summary, the framing-by-language table with the
+   Loyalty-Authority column, the Arabic item table, the one-document form.
+   **Not run, Declan's decision to make:** the country-neutral arm with the framing template,
+   asked for by Gemini and twice by Kimi. Roughly 55 calls per language for the English template
+   alone, 385 across all seven; the missing control on the framing contrast's two components.
 2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three
    `TBD`s and `CITATION.cff` a commented `doi:`. Under decision 17 nothing here is published
    until that is done.
