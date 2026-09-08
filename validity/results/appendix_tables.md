@@ -1,6 +1,6 @@
 ## B2a. Measurement invariance across the nineteen
 
-Comparing raw composite means across countries needs the instrument to behave the same way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 data; the check was recomputed on the same raw data in `reasoner-study` (`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), align.pow c(.25, .25), lavaan). Loadings R-squared is metric invariance; intercepts R-squared is scalar invariance, the one that bears on comparing means. Both are shown. This is a property of the nineteen human samples. It says nothing about whether a model's score and a person's score measure the same thing, and nothing in this appendix claims they do.
+Comparing raw composite means across countries needs the instrument to behave the same way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 data; the check was recomputed on the same raw data in `reasoner-study` (`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), align.pow c(.25, .25), lavaan). The two figures are alignment diagnostics: loadings R-squared concerns loading (metric) invariance, intercepts R-squared concerns intercept (scalar) invariance, the one that bears on comparing means. Neither establishes exact invariance. Both are shown. This is a property of the nineteen human samples. It says nothing about whether a model's score and a person's score measure the same thing, and nothing in this appendix claims they do.
 
 | foundation | loadings R-squared | intercepts R-squared |
 |---|--:|--:|
@@ -11,7 +11,7 @@ Comparing raw composite means across countries needs the instrument to behave th
 | Authority | 0.9846 | 0.9962 |
 | Purity | 0.9646 | 0.9934 |
 
-Purity is the weakest on intercepts at 0.9934, and the item-level noninvariance behind each figure is in the owner's script output, not here.
+Purity is the weakest on intercepts at 0.9934. The item-level noninvariance behind each figure is not carried here; the script emits these six pairs only.
 
 ## B3. Where the panel lands, by country
 
@@ -69,7 +69,7 @@ The same table as distance from that country's measured human mean. Positive is 
 | South Africa | -0.980 | - | +0.186 | - |
 Each of those nineteen means rests on 205 to 207 respondents for its country, 3,902 in all, collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within each nation on age, gender and political orientation. Education was not a stratification variable, and the authors state their results rest on "a subset of these populations who were educated enough to complete the surveys online", noting that people from traditional, small-scale communities are absent. Every overshoot in this appendix is a distance from those samples' means.
 
-The human SE column is the reference sample's own sampling uncertainty in its binding mean, SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran's comes from the authors' shared respondent-level files, sample 2, 989 respondents, over their own composite scores, binding SD 0.802.
+The human SE column is SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen: a standard error under an independent-respondent approximation. The stratified recruitment does not by itself justify a design-based population SE. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran's comes from the authors' shared respondent-level files, sample 2, 989 respondents, over their own composite scores, binding SD 0.802.
 
 [*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 carries the source, the sample's own caveats and the sensitivity across every anchor that source offers.
 
@@ -224,6 +224,8 @@ The between-model spread in B3a is on the binding composite. This section takes 
 | Purity | 0.449 | 0.203 | 0.45 | 32 of 39 |
 
 Endpoint use, the share of item ratings at 1 or 5, panel mean and then the median over conditions: 0.234 unframed, 0.267 framed. Item-level between-model spread, the same statistic on each of the 36 items and then the median: 0.425 unframed, 0.299 framed.
+
+Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones. A between-model spread of five-run means carries run noise of roughly that over root five, 0.083 and 0.051, so run noise contributes less to the framed between-model spread, not more. Sampling temperature is fixed per model across conditions and cannot produce a difference between them.
 
 Restricting the framed set by its distance from the top of the scale, against the same 7 unframed conditions, whose binding means run 2.68 to 3.10:
 

@@ -98,6 +98,7 @@ def load_items():
     B6a reads these; nothing else does."""
     end = defaultdict(lambda: defaultdict(list))
     items = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+    runsd = defaultdict(lambda: defaultdict(list))   # per condition, per model: binding per run
     for pat, keyf in SOURCES:
         for f in glob.glob(str(pat)):
             d = json.load(open(f))
@@ -107,11 +108,15 @@ def load_items():
             if k is None:
                 continue
             r = d["ratings"]
+            b = binding(r)
+            if b is not None:
+                runsd[k][d["model"]].append(b)
             end[k][d["model"]].append(sum(1 for v in r.values() if v in (1, 5)) / len(r))
             for iid, v in r.items():
                 items[k][d["model"]][iid].append(v)
     return ({k: {m: mean(v) for m, v in md.items()} for k, md in end.items()},
-            {k: {m: {i: mean(v) for i, v in mi.items()} for m, mi in md.items()} for k, md in items.items()})
+            {k: {m: {i: mean(v) for i, v in mi.items()} for m, mi in md.items()} for k, md in items.items()},
+            {k: {m: v for m, v in md.items()} for k, md in runsd.items()})
 
 
 def load(what):
@@ -198,8 +203,10 @@ print("Comparing raw composite means across countries needs the instrument to be
       "way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 "
       "data; the check was recomputed on the same raw data in `reasoner-study` "
       "(`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), "
-      "align.pow c(.25, .25), lavaan). Loadings R-squared is metric invariance; intercepts "
-      "R-squared is scalar invariance, the one that bears on comparing means. Both are shown. "
+      "align.pow c(.25, .25), lavaan). The two figures are alignment diagnostics: loadings "
+      "R-squared concerns loading (metric) invariance, intercepts R-squared concerns intercept "
+      "(scalar) invariance, the one that bears on comparing means. Neither establishes exact "
+      "invariance. Both are shown. "
       "This is a property of the nineteen human samples. It says nothing about whether a model's "
       "score and a person's score measure the same thing, and nothing in this appendix claims "
       "they do.\n")
@@ -210,8 +217,8 @@ with open(VDIR / "reference" / "mfq2_alignment_r2.csv") as fh:
 for r in _al:
     print("| %s | %.4f | %.4f |" % (r["foundation"].capitalize(), float(r["R2_loadings"]), float(r["R2_intercepts"])))
 _weak = min(_al, key=lambda r: float(r["R2_intercepts"]))
-print("\n%s is the weakest on intercepts at %.4f, and the item-level noninvariance behind each "
-      "figure is in the owner's script output, not here.\n" % (_weak["foundation"].capitalize(), float(_weak["R2_intercepts"])))
+print("\n%s is the weakest on intercepts at %.4f. The item-level noninvariance behind each "
+      "figure is not carried here; the script emits these six pairs only.\n" % (_weak["foundation"].capitalize(), float(_weak["R2_intercepts"])))
 print("## B3. Where the panel lands, by country\n")
 print("Binding composite, panel mean over eleven models, each model's five iterations "
       "averaged first. The English unframed column is one condition and repeats down the "
@@ -273,9 +280,10 @@ print("Each of those nineteen means rests on %d to %d respondents for its countr
       "this appendix is a distance from those samples' means.\n"
       % (_ns[0], _ns[-1], format(sum(_ns), ",")))
 _ses = sorted(v for c, v in ANCH_SE.items() if c != "Iran")
-print("The human SE column is the reference sample's own sampling uncertainty in its binding "
-      "mean, SD over root n from the per-country dispersion file, %.3f to %.3f across the "
-      "nineteen. It is a different quantity from the model-resampling interval in B3a, which "
+print("The human SE column is SD over root n from the per-country dispersion file, %.3f to %.3f "
+      "across the nineteen: a standard error under an independent-respondent approximation. The "
+      "stratified recruitment does not by itself justify a design-based population SE. It is a "
+      "different quantity from the model-resampling interval in B3a, which "
       "describes panel composition, and neither one removes selection in who was sampled. Iran's "
       "comes from the authors' shared respondent-level files, sample 2, %d respondents, over "
       "their own composite scores, binding SD %.3f.\n" % (_ses[0], _ses[-1],
@@ -335,7 +343,7 @@ for country, _, _ in ROWS:
 
 
 # ---- B6a: the dispersion finding taken apart, by foundation and against the ceiling
-END, ITEMS = load_items()
+END, ITEMS, RUNS = load_items()
 UNF = ["en_neutral"] + [c + "_neutral" for c in ["ar", "es", "fr", "ja", "fa", "ru"]]
 FRM = sorted(k for k in C if "_framed_" in k)
 
@@ -371,6 +379,13 @@ _iu = median([_isd(k) for k in UNF]); _if = median([_isd(k) for k in FRM])
 print("\nEndpoint use, the share of item ratings at 1 or 5, panel mean and then the median over "
       "conditions: %.3f unframed, %.3f framed. Item-level between-model spread, the same statistic "
       "on each of the 36 items and then the median: %.3f unframed, %.3f framed.\n" % (_eu, _ef, _iu, _if))
+_wu = median([psd(v) for k in UNF for v in RUNS[k].values() if len(v) > 1])
+_wf = median([psd(v) for k in FRM for v in RUNS[k].values() if len(v) > 1])
+print("Within a model, the five-run spread of the binding composite has a median of %.3f in the "
+      "unframed conditions and %.3f in the framed ones. A between-model spread of five-run means "
+      "carries run noise of roughly that over root five, %.3f and %.3f, so run noise contributes "
+      "less to the framed between-model spread, not more. Sampling temperature is fixed per model "
+      "across conditions and cannot produce a difference between them.\n" % (_wu, _wf, _wu / 5 ** 0.5, _wf / 5 ** 0.5))
 print("Restricting the framed set by its distance from the top of the scale, against the same "
       "%d unframed conditions, whose binding means run %.2f to %.2f:\n"
       % (len(UNF), min(cell(k) for k in UNF), max(cell(k) for k in UNF)))
