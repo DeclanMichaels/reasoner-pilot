@@ -125,6 +125,13 @@ swapped the em-dash the models actually receive.
 `wrote results/appendix_b4_b5.md`.** A run that fails partway leaves a truncated trail that
 `test_reproduce.py` will happily re-pin.
 
+**Multi-file edit scripts assert every anchor before writing any file.** A script that writes each
+file as it goes and aborts on a later anchor leaves the earlier files changed and the later ones
+not, and a commit that follows describes a change that half happened. That is how `695e173`
+re-attributed the Iran caveat in the paper and nowhere else. The emitter's blocks are ordered
+B7, B1a, then the write call; cut a block by its own two markers, never from a marker to the
+write call.
+
 A `%` inside a string that is later `%`-formatted raises `unsupported format character`; the
 "95% model-resampling interval" header needs `%%` in the template.
 

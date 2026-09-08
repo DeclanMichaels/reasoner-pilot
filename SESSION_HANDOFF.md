@@ -8,17 +8,18 @@ This repository is public, so this file is public. It is written knowing that.
 ## Current state
 
 - Local and remote agree, and the working tree is clean apart from this file. The session's work
-  is twenty commits, `8336de4` to `cf072f9`.
+  is 30 commits since `303e79e`, `8336de4` to `9d0d099`.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 17 committed-only outputs verified.
-- **Two adversarial rounds on the in-language paper and appendix are adjudicated and worked
-  through**, both in `reviews/`. Astra's produced sixteen tickets, all closed. Grok's, read after
-  Astra's was worked through, produced one, closed. Twenty-two issues have existed; none is open.
+- **Four adversarial rounds on the in-language paper and appendix are adjudicated and worked
+  through**, all in `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second
+  (eight) and DeepSeek's (folded into those eight). Thirty issues have existed; none is open.
 - **The paper is retitled** and every number in it recomputes from the cells. **Every data
   section of the appendix is generated**; the splice map is in `docs/DEVELOPMENT_NOTES.md`. B4 is
   a contrast set over the full grid with intervals, sign counts and leave-one-out ranges and no
   p-values (decision 15); B10 is the errata for the withdrawn family.
-- `DECISIONS.md` holds 16 entries. Entry 16 records Iran's anchor, settled on 2026-09-07.
+- `DECISIONS.md` holds 17 entries. Entry 16 records Iran's anchor, settled on 2026-09-07; entry 17
+  defines published as a DOI plus moral-os.com and strikes the errata section from the appendix.
 - This is the Black M2 Air. `validity/` holds the completed grid: `runs/` 165, `runs_framed/`
   1,267, `runs_framed_lang/` 1,246, `instruments/` 15. `validity/reconcile.py` reports it identical
   to the 2026-09-05 archive.
@@ -45,9 +46,10 @@ ruling that the authors' shared respondent-level data may be used; #22 was Grok'
 
 Nothing is queued for an agent. What remains is yours:
 
-1. **Review.** Grok is one model family and read the state at `579c343` or after. The practice is
-   several families, because agreement and disagreement are both signal. Unread by anyone: the
-   Iran SD work (`de89d35`, corrected in `afb185d`), decision 16, and Grok's own fix.
+1. **Review.** Three families have now read the state after the first Astra round; their
+   findings were verified and worked. Unread by anyone: the state after those fixes, from
+   `695e173` to `9d0d099`, which includes the corrected unframed protocol in B1a, the re-attributed
+   Iran caveat, the rewritten opening, and decision 17's strike of B10.
 2. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
    responses more than questionnaire language in an eleven-model panel"; the viewer still says
    "In-language society framing - MFQ-2 binding composite".
@@ -89,10 +91,13 @@ a failed run leaves a truncated trail that the harness will re-pin.
 `run_validity.py` and renders the framing template from `run_framed.frame_system`'s AST. A change
 to either runner changes the appendix or fails the emitter, on purpose.
 
-**Two things this workflow got wrong on 2026-09-08 and corrected on the record.** The first Iran SD build
-used a more permissive inclusion rule than the authors' and its commit message disagreed with its
-own CSV on n; `afb185d` is the correction. And Iran's anchor, settled on the 7th, was carried as an
-open choice through two handoffs and three reports until the 8th; decision 16 records it.
+**Things this workflow got wrong on 2026-09-08 and corrected on the record.** The first Iran SD
+build used a more permissive inclusion rule than the authors' (`afb185d` corrects it). Iran's
+anchor, settled on the 7th, was carried as open until the 8th (decision 16). B1a said the unframed
+conditions carried a self-report system prompt when they carried none, and the Iran caveat was
+credited to the authors when it was ours; both were the 7th's writing and Astra's second round found
+them (#23, #25). Striking B10 broke the emitter for one commit (`0cb58e0` fixes it), and the Iran
+re-attribution reached only the paper on the first pass (`8ef77a0`). Each is in its commit message.
 
 ## Loose ends
 
