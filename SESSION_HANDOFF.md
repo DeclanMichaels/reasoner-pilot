@@ -7,7 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree at `303e79e`. The working tree is clean.
+- Local and remote agree, and the working tree is clean apart from this file. The session's work
+  is `303e79e`.
 - **The published record reproduces**, run 2026-09-07, no keys and no network: 15 regenerated
   outputs reproduced, 17 committed-only outputs verified. The second group is new; decision 14 says
   what it is and why its guarantee is weaker.
@@ -16,7 +17,7 @@ This repository is public, so this file is public. It is written knowing that.
 - **The in-language appendix generates end to end.** B3, B3a, B4, B5 and B6 come from
   `results/appendix_tables.md` and `results/appendix_b4_b5.md`, spliced verbatim. A number in the
   document that disagrees with its artifact is a splice that was not re-run.
-- Five issues are open, numbered 1 to 5. Three carry state that is no longer true; see below.
+- Three issues are open: #2, #3 and #5.
 - `DECISIONS.md` holds 14 entries.
 - This is the Black M2 Air.
 
@@ -40,16 +41,16 @@ not committed.
 
 No model calls, nothing written to S3, nothing spent.
 
-## The tracker is stale
+## The tracker
 
-- **#1, regenerate the in-language appendix**, still labelled `blocked-on-phase`. It is done, in
-  `303e79e`. Close it.
-- **#4, "the completed grid is single-copy on one laptop"**, still `ready-for-human`. It has been
-  two-copy since 2026-09-07 and the restore test passed today on a machine without the data. Close
-  it.
-- **#2, reconcile the paper against the appendix**, `ready-for-human`. Still open and now actually
-  workable, since the appendix it waits on exists.
-- **#3** and **#5** are unchanged.
+Three issues are open. Two were closed on 2026-09-08 with their dispositions.
+
+- **#2, reconcile the paper against the appendix**, `paper`, `ready-for-human`. The one that blocks
+  publication, and now workable since the appendix it waits on exists.
+- **#5, add `validity/reconcile.py`**, `infrastructure`, `ready-for-agent`.
+- **#3, fix the documented restore command**, `infrastructure`, `ready-for-agent`.
+- Closed: **#1**, the appendix regeneration, done in `303e79e`. **#4**, the single-copy grid,
+  resolved by the 2026-09-07 restore test on a machine that did not hold the data.
 
 ## Open items
 
@@ -63,7 +64,7 @@ No model calls, nothing written to S3, nothing spent.
   undocumented and reads as arbitrary.
 - Whether every blocking finding in `reviews/viewer-cold-review-2026-08-22.md` is closed is still
   unverified as a whole. Its blocking finding 1, the Iran disclosure, was checked against the viewer
-  today and is addressed there; the others were not looked at.
+  on 2026-09-07 and is addressed there; the others were not looked at.
 - Sampling temperature is unset and unrecorded in the runners, so every collection here was made at
   five unrecorded provider defaults.
 - `LOCATIONS.md` carries three `TBD` entries: the Zenodo DOI, the OSF component links, and the final
