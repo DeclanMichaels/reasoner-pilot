@@ -488,5 +488,101 @@ L.append("%s of %s attempted calls returned no ratings object, from provider rat
          "{:,}".format(_nfail), "{:,}".format(_scored + _nfail), "{:,}".format(_scored),
          ", ".join("%s %d" % (m, n) for m, n in _by), _nfail))
 
+# ---- B1a: roster and protocol, generated so the manifest cannot drift from the code
+import ast, re
+_reg = json.load(open(VDIR.parent / "models.json"))["models"]
+_present = set(ROSTER)
+_rv = (VDIR / "run_validity.py").read_text()
+_m = re.search(r"^SYSTEM = \((.*?)\)\n", _rv, re.S | re.M)
+_unframed_system = ast.literal_eval("(" + _m.group(1) + ")") if _m else None
+assert _unframed_system, "run_validity.SYSTEM not found"
+_rf = (VDIR / "run_framed.py").read_text()
+
+
+def _frame_template():
+    """The framing instruction exactly as run_framed.frame_system builds it, with {country}
+    left in place: read from the function's AST, so the appendix cannot drift from the runner."""
+    tree = ast.parse(_rf)
+    fn = next(n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef) and n.name == "frame_system")
+    ret = next(n for n in ast.walk(fn) if isinstance(n, ast.Return)).value
+    parts = ret.values if isinstance(ret, ast.JoinedStr) else [ret]
+    out = []
+    for p in parts:
+        if isinstance(p, ast.Constant):
+            out.append(str(p.value))
+        elif isinstance(p, ast.FormattedValue) and isinstance(p.value, ast.Name):
+            out.append("{" + p.value.id + "}")
+        else:
+            raise SystemExit("frame_system has a part the appendix emitter cannot render")
+    return "".join(out)
+
+
+_FRAME = _frame_template()
+assert "{country}" in _FRAME and "questionnaire" in _FRAME, "frame_system template not recovered"
+M = []
+M.append("## B1a. Roster and protocol\n")
+M.append("**The panel.** `models.json` registers %d models. %d answered every cell; %d are absent "
+         "from every cell for the infrastructural reasons B1 gives. Roster keys are the names used "
+         "throughout; a swapped model gets its own key (decision 10).\n" % (len(_reg), len(_present), len(_reg) - len(_present)))
+M.append("| roster key | provider | model string | in the grid |")
+M.append("|---|---|---|---|")
+for k in sorted(_reg, key=lambda x: (x not in _present, x)):
+    M.append("| %s | %s | `%s` | %s |" % (k, _reg[k]["provider"], _reg[k]["model_id"], "yes" if k in _present else "no"))
+M.append("\n**Request.** One user message carrying the questionnaire; the framing instruction, where "
+         "there is one, as the system prompt; nothing else. Anthropic receives it in the `system` "
+         "field, OpenAI, xAI, Together and Mistral as a `role: system` message, Google as "
+         "`systemInstruction`. A request seed is sent where the provider accepts one (OpenAI, xAI, "
+         "Together as `seed`, Mistral as `random_seed`); the English framed runner uses 20260721 "
+         "plus the iteration, the in-language runner 20260722 plus the iteration. Token ceilings are "
+         "per provider: Anthropic 3072, OpenAI and xAI 4096, Together 6144, Mistral 2048, Google "
+         "6144, Cohere 2048. No temperature is sent, so each model ran at its provider's default, "
+         "which the run records do not capture; a pinned value would have documented the setting "
+         "and would not have made stochasticity equivalent across models.\n")
+M.append("**The unframed system prompt**, English, verbatim from `run_validity.py`:\n")
+M.append("> " + _unframed_system + "\n")
+M.append("**The framing instruction**, English, verbatim from `run_framed.py` with the country "
+         "substituted:\n")
+M.append("> " + _FRAME + "\n")
+M.append("The in-language framing instructions are our translations of that template, one per "
+         "language, AI-assisted and disclosed as such, varying only the country name and the "
+         "demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` "
+         "field, and the runner asserts at start-up that the Arabic template still reproduces the "
+         "Egypt prompt byte for byte as first collected. The unframed in-language conditions use "
+         "the unframed system prompt in that language.\n")
+M.append("**The user message.** Items are shuffled per run, then grouped by response scale in the "
+         "instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. "
+         "Each group opens with its scale prompt and a legend of the anchor labels. The message "
+         "closes by asking for exactly one JSON object, `{\"ratings\": {\"1\": <int>, ..., \"36\": "
+         "<int>}}`, and nothing else.\n")
+M.append("**The parser.** Every top-level balanced `{...}` in the reply is parsed. The last one "
+         "carrying a `ratings` dictionary is taken; failing that, the last bare map keyed by item "
+         "number. Every item must be present; each value is coerced by `int(round(float(v)))` and "
+         "must fall inside its scale's bounds. Any failure returns no ratings object, and the reply "
+         "is kept as collected with the parser's reason. No reply is edited or re-parsed by hand.\n")
+M.append("**Retries.** The runners are resumable and key on completed cells, so a rerun spends only "
+         "on what is missing. `fill.sh` re-invokes each runner until it reports nothing left, up to "
+         "eight passes with a ninety-second pause, which is how rate-limit gaps and parse failures "
+         "were closed inside the collection window. B7 counts them. Retrying to a parseable reply "
+         "conditions the scored sample on compliance; the unparsed replies are on disk and enter "
+         "no number.\n")
+M.append("**Instruments.** Item wording is the official MFQ-2 and its six official translations from "
+         "the Atari et al. (2023) supplement, extracted verbatim; ids, groups and scoring are cloned "
+         "from the English scaffold so every language scores identically. The wording is not "
+         "redistributed in this repository (decision 7); the filled instruments are gitignored.\n")
+M.append("**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered "
+         "unframed and framed as six countries in English, the collection now archived unchanged "
+         "under `validity/archive-2026-07/`; its interim result is what led to the in-language "
+         "design, and none of its cells enters any number here. 2026-07-23: the in-language "
+         "machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells "
+         "keyed on country; Kimi-K2.6 withdrawn by its host mid-collection and replaced by Kimi-K3 "
+         "under its own key (decision 10); Spanish, French and Russian added, nine more countries. "
+         "2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the "
+         "English comparator changed to the matched cell, the old one kept as errata (decision 11); "
+         "Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with "
+         "Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). "
+         "2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set "
+         "rebuilt on the full grid without p-values (decision 15). Binding became the focal "
+         "quantity on 2026-07-20, before any in-language cell existed; every choice after that "
+         "was made with results in view.\n")
 (VDIR / "results" / "appendix_b4_b5.md").write_text("\n".join(M + L) + "\n")
 print("\nwrote results/appendix_b4_b5.md")
