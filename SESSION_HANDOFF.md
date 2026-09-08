@@ -7,9 +7,10 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Remote is at `dc665fa`. One commit is local and **not yet pushed**: `42fdeba`, the September
-  wave. Its run files are tracked there, which is the day-one persistence for that data until
-  the S3 archive follows; **the AWS session on this Air is expired and only Declan can renew it.**
+- Local and remote agree; working tree clean. The September wave (`42fdeba`) and its two Summary
+  sentences were pushed 2026-09-08 on Declan's word. Its run files are tracked in git, which is the
+  day-one persistence for that data until the S3 archive follows; **the AWS session on this Air is
+  expired and only Declan can renew it.**
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
   from the committed ratings dataset, and every generated section of the document matches its
@@ -40,9 +41,9 @@ This repository is public, so this file is public. It is written knowing that.
   August and is absent. B4a: the template alone lifts the composite +0.652 [+0.459, +0.876], ten
   of ten models up, 36 percent of the Egypt framing shift on those ten; naming the country adds
   +1.141. Drift on identical item orders is +0.023 unframed and -0.017 framed. Between-model
-  spread under the template is 0.13 against 0.30 unframed and 0.20 framed. **The Summary does not
-  yet mention the wave; Declan decides the sentence.** No provider returned a temperature; none was
-  sent, on purpose (decision 21). This is the Black M2 Air; `validity/` holds the completed
+  spread under the template is 0.13 against 0.30 unframed and 0.20 framed. The Summary carries two
+  sentences on it, Declan's wording confirmed. No provider returned a temperature; none was sent,
+  on purpose (decision 21). This is the Black M2 Air; `validity/` holds the completed
   grid and `validity/reconcile.py` reports it identical to the 2026-09-05 archive.
 
 ## What changed outside the repository
@@ -63,8 +64,8 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Queued for an agent: #71. Waiting on Declan: the Summary's sentence on the September wave, the
-push, and `aws login` so the wave's run files can be archived beside the grid.
+Queued for an agent: #71. Waiting on Declan: `aws login`, so the wave's run files can be archived
+beside the grid. The document goes out for review again with the wave in it.
 
 1. **Review.** Five model families have read across nine rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
