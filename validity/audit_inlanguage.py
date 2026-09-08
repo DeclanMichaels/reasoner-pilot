@@ -375,8 +375,7 @@ L.append("Every country with both languages, and every language with both framin
          "quantity: it shows how far the difference moves when models like these are resampled, and "
          "it bounds nothing. An interval that includes zero says the panel did not resolve a "
          "direction; it does not establish equivalence. No p-values are reported; decision 15 "
-         "says why, and the exact sign-flip enumeration the earlier appendix carried remains in the "
-         "audit's verification output.\n" % (N, N))
+         "says why; the exact sign-flip enumeration remains in the audit's verification output.\n" % (N, N))
 L.append("**Language without framing.** The translated questionnaire against the English one, "
          "neither naming a country. One row per language.\n")
 L.append(HEAD % N); L.append(SEP)

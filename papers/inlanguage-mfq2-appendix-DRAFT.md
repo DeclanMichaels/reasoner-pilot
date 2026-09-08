@@ -216,7 +216,7 @@ The unframed Arabic condition sits at 3.104, below all four populations, between
 
 ## B4. The contrasts
 
-Every country with both languages, and every language with both framings. Each contrast is computed within a model first and then averaged across the 11, so the interval, the sign count and the leave-one-out range all describe the same per-model differences. The interval is a percentile bootstrap resampling the 11 models, 100,000 draws, seeded per quantity: it shows how far the difference moves when models like these are resampled, and it bounds nothing. An interval that includes zero says the panel did not resolve a direction; it does not establish equivalence. No p-values are reported; decision 15 says why, and the exact sign-flip enumeration the earlier appendix carried remains in the audit's verification output.
+Every country with both languages, and every language with both framings. Each contrast is computed within a model first and then averaged across the 11, so the interval, the sign count and the leave-one-out range all describe the same per-model differences. The interval is a percentile bootstrap resampling the 11 models, 100,000 draws, seeded per quantity: it shows how far the difference moves when models like these are resampled, and it bounds nothing. An interval that includes zero says the panel did not resolve a direction; it does not establish equivalence. No p-values are reported; decision 15 says why; the exact sign-flip enumeration remains in the audit's verification output.
 
 **Language without framing.** The translated questionnaire against the English one, neither naming a country. One row per language.
 
