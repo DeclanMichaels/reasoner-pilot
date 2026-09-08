@@ -240,3 +240,9 @@ Restricting the framed set by its distance from the top of the scale, against th
 
 | language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding |
 |---|--:|--:|--:|--:|--:|--:|--:|
+| Arabic | +0.02 | +0.33 | +0.06 | +0.23 | +0.20 | +0.58 | +0.34 |
+| Spanish | -0.14 | +0.01 | -0.11 | -0.12 | +0.06 | +0.09 | +0.01 |
+| French | -0.28 | +0.24 | -0.21 | -0.12 | -0.12 | +0.26 | +0.01 |
+| Japanese | -0.10 | +0.12 | -0.18 | -0.26 | -0.08 | +0.06 | -0.09 |
+| Farsi | -0.04 | +0.22 | -0.01 | -0.10 | -0.07 | +0.29 | +0.04 |
+| Russian | +0.00 | +0.11 | +0.03 | -0.03 | +0.01 | +0.08 | +0.02 |

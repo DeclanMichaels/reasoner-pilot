@@ -403,6 +403,6 @@ print("| language | Care | Equality | Proportionality | Loyalty | Authority | Pu
 print("|---|--:|--:|--:|--:|--:|--:|--:|")
 for code in ["ar", "es", "fr", "ja", "fa", "ru"]:
     k = code + "_neutral"
-    d = {g: pf(k, g) - pf("en_neutral", g) for g in FOUND}
+    d = {g: mean([F[k][m][g] for m in F[k]]) - mean([F["en_neutral"][m][g] for m in F["en_neutral"]]) for g in FOUND}
     print("| %s | %s | %+.2f |" % (LANG_NAME[code], " | ".join("%+.2f" % d[g] for g in FOUND),
                                    sum(d[g] for g in BIND) / 3))

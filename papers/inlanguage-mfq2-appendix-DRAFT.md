@@ -218,7 +218,7 @@ The unframed Arabic condition sits at 3.104, below all four populations, between
 
 ## B4. The contrasts
 
-Every country with both languages, and every language with both framings. Each contrast is computed within a model first and then averaged across the 11, so the interval, the sign count and the leave-one-out range all describe the same per-model differences. The interval is a percentile bootstrap resampling the 11 models, 100,000 draws, seeded per quantity: it shows how far the difference moves when models like these are resampled, and it bounds nothing. An interval that includes both positive and negative values is reported as such; it does not establish equivalence. No p-values are reported; decision 15 says why; the exact sign-flip enumeration remains in the audit's verification output.
+Every country with both languages, and every language with both framings. Each contrast is computed within a model first and then averaged across the 11, so the interval, the sign count and the leave-one-out range all describe the same per-model differences. The interval is a percentile bootstrap resampling the 11 models, 100,000 draws, seeded per quantity: it shows how far the difference moves when models like these are resampled, and it bounds nothing. An interval that includes both positive and negative values is reported as such; it does not establish equivalence. The sign count and the leave-one-out range describe the same eleven per-model differences and carry no test; across the 70 contrasts reported here no family-wise claim is made, and none should be read in. Language under framing changes the questionnaire and the instruction together, since the in-language framing instruction is a translation; the unframed rows change the questionnaire alone. No p-values are reported; decision 15 says why; the exact sign-flip enumeration remains in the audit's verification output.
 
 **Language without framing.** The translated questionnaire against the English one, neither naming a country. One row per language.
 
@@ -506,6 +506,12 @@ Restricting the framed set by its distance from the top of the scale, against th
 
 | language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding |
 |---|--:|--:|--:|--:|--:|--:|--:|
+| Arabic | +0.02 | +0.33 | +0.06 | +0.23 | +0.20 | +0.58 | +0.34 |
+| Spanish | -0.14 | +0.01 | -0.11 | -0.12 | +0.06 | +0.09 | +0.01 |
+| French | -0.28 | +0.24 | -0.21 | -0.12 | -0.12 | +0.26 | +0.01 |
+| Japanese | -0.10 | +0.12 | -0.18 | -0.26 | -0.08 | +0.06 | -0.09 |
+| Farsi | -0.04 | +0.22 | -0.01 | -0.10 | -0.07 | +0.29 | +0.04 |
+| Russian | +0.00 | +0.11 | +0.03 | -0.03 | +0.01 | +0.08 | +0.02 |
 
 ## B7. Failed calls
 

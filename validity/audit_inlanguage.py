@@ -379,7 +379,7 @@ L.append("Every country with both languages, and every language with both framin
          "reported here no family-wise claim is made, and none should be read in. Language under "
          "framing changes the questionnaire and the instruction together, since the in-language "
          "framing instruction is a translation; the unframed rows change the questionnaire alone. "
-         "No p-values are reported; decision 15 
+         "No p-values are reported; decision 15 "
          "says why; the exact sign-flip enumeration remains in the audit's verification output.\n" % (N, N, 4 * len(PAIRS) + len(LANG_ORDER)))
 L.append("**Language without framing.** The translated questionnaire against the English one, "
          "neither naming a country. One row per language.\n")
