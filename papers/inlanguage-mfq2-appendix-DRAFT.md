@@ -85,7 +85,7 @@ Purity is the weakest on intercepts at 0.9934. The item-level noninvariance behi
 
 ## B3. Where the panel lands, by country
 
-Binding composite, panel mean over eleven models, each model's five iterations averaged first. The English unframed column is one condition and repeats down the table; the unframed in-language column is one condition per language and repeats across the countries that share a language, because neither condition names a country. Dashes mark arms not run.
+Binding composite, panel mean over eleven models, each model's five iterations averaged first. The English unframed column is one condition and repeats down the table; the unframed in-language column is one condition per language and repeats across the countries that share a language, because neither condition names a country. Dashes mark arms not run. Morocco's local cells show the Arabic arm here and the Spanish arm in the distance table, per decision 12.
 
 | country | language | human | human SE | EN unframed | local unframed | EN framed | local framed |
 |---|---|--:|--:|--:|--:|--:|--:|
@@ -501,6 +501,11 @@ Restricting the framed set by its distance from the top of the scale, against th
 | 4.5 | 28 | 26 | 0.183 |
 | 4.0 | 19 | 18 | 0.172 |
 | 3.5 | 13 | 13 | 0.180 |
+
+**The unframed language contrasts by foundation.** Each translated unframed condition minus the English unframed one, panel means, so the composite rows of B4 can be read in their parts.
+
+| language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding |
+|---|--:|--:|--:|--:|--:|--:|--:|
 
 ## B7. Failed calls
 

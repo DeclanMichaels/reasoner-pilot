@@ -224,7 +224,8 @@ print("Binding composite, panel mean over eleven models, each model's five itera
       "averaged first. The English unframed column is one condition and repeats down the "
       "table; the unframed in-language column is one condition per language and repeats "
       "across the countries that share a language, because neither condition names a "
-      "country. Dashes mark arms not run.\n")
+      "country. Dashes mark arms not run. Morocco's local cells show the Arabic arm here and the "
+      "Spanish arm in the distance table, per decision 12.\n")
 print("| country | language | human | human SE | EN unframed | local unframed | EN framed | local framed |")
 print("|---|---|--:|--:|--:|--:|--:|--:|")
 
@@ -395,3 +396,13 @@ _minu = min(sd(k) for k in UNF)
 for thr in [5.0, 4.5, 4.0, 3.5]:
     sub_ = [k for k in FRM if cell(k) < thr]
     print("| %.1f | %d | %d | %.3f |" % (thr, len(sub_), sum(sd(k) < _minu for k in sub_), median([sd(k) for k in sub_])))
+
+print("\n**The unframed language contrasts by foundation.** Each translated unframed condition minus "
+      "the English unframed one, panel means, so the composite rows of B4 can be read in their parts.\n")
+print("| language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding |")
+print("|---|--:|--:|--:|--:|--:|--:|--:|")
+for code in ["ar", "es", "fr", "ja", "fa", "ru"]:
+    k = code + "_neutral"
+    d = {g: pf(k, g) - pf("en_neutral", g) for g in FOUND}
+    print("| %s | %s | %+.2f |" % (LANG_NAME[code], " | ".join("%+.2f" % d[g] for g in FOUND),
+                                   sum(d[g] for g in BIND) / 3))

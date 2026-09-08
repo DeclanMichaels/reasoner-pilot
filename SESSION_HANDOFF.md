@@ -104,7 +104,9 @@ them (#23, #25). Striking B10 broke the emitter for one commit (`0cb58e0` fixes 
 re-attribution reached only the paper on the first pass (`8ef77a0`). The #21 correction put a
 d-table row into the language table by replacing the first line beginning `| Farsi |`, and two
 reviewers who flagged it were told it was well-formed after the wrong table was checked; Kimi's
-round caught it. The E2 sign was quoted backwards for one commit. Each is in its commit message.
+round caught it. The E2 sign was quoted backwards for one commit. `6610467` closed six tickets while its edit
+script had aborted halfway: the paper changes landed, the four appendix changes did not, and the
+emitter was committed broken; `ed3fc6b` repairs it. Each is in its commit message.
 
 ## Loose ends
 
