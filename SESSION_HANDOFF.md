@@ -106,7 +106,10 @@ d-table row into the language table by replacing the first line beginning `| Far
 reviewers who flagged it were told it was well-formed after the wrong table was checked; Kimi's
 round caught it. The E2 sign was quoted backwards for one commit. `6610467` closed six tickets while its edit
 script had aborted halfway: the paper changes landed, the four appendix changes did not, and the
-emitter was committed broken; `ed3fc6b` repairs it. Each is in its commit message.
+emitter was committed broken. `19e35cf` claimed to repair it and did not: it left the emitter
+unterminated and pinned a table artifact truncated by its own crash, and its handoff line named a
+hash that an amend had already replaced. `6c72418` is the repair, gated at every step. Each is in
+its commit message.
 
 ## Loose ends
 

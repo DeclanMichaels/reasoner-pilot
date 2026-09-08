@@ -132,6 +132,11 @@ re-attributed the Iran caveat in the paper and nowhere else. The emitter's block
 B7, B1a, then the write call; cut a block by its own two markers, never from a marker to the
 write call.
 
+**Never redirect a generator straight into its tracked output.** `python3 gen.py > results/x.md`
+truncates the file at the point of a crash, and the splice, the pin and the harness all accept the
+truncated file as the new truth; `19e35cf` pinned one. Write to a temp file, check the exit code and
+the expected strings, then move it.
+
 Replace a table row by its exact text, never by "the first line starting with". The paper has
 three tables with a `| Farsi |` row; the #21 correction took the first and put a d-table row into
 the language table, and two reviews that flagged it were refuted after the wrong table was checked.
