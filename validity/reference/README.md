@@ -8,5 +8,6 @@ the means file. The binding composite's SD is not recoverable from the means fil
 covariances among the three foundations), and the paper's distances-in-human-SDs table rests on it.
 Same rule: do not edit here; re-copy when the owner changes.
 
-Not copied: mfq2_alignment_r2.csv, which the paper's alignment sentence cites (intercept R-squared
-0.9934 Purity to 0.9994 Care). It is read from the owner when needed.
+mfq2_alignment_r2.csv is a COPY of the same owner's file, taken 2026-09-08: per-foundation
+Muthen-Asparouhov alignment R-squared across the nineteen, loadings and intercepts, from
+compute_alignment_r2.R (sirt 3.13-228). Appendix B2a is generated from it. Same rule.

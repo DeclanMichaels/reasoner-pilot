@@ -31,10 +31,15 @@ REF_NAME = {"Columbia": "Colombia", "UAE": "United Arab Emirates"}
 
 
 ANCH_N = {}
+ANCH_SE = {}   # reference-sample standard error of the binding mean, SD / sqrt(n)
 
 
 def anchors():
     a, src = {}, {}
+    with open(VDIR / "reference" / "mfq2_country_dispersion.csv") as fh:
+        for r in csv.DictReader(fh):
+            c = REF_NAME.get(r["country"], r["country"])
+            ANCH_SE[c] = float(r["binding_sd"]) / int(r["n"]) ** 0.5
     with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
         for r in csv.DictReader(fh):
             c = REF_NAME.get(r["country"], r["country"])
@@ -164,24 +169,53 @@ def sd(k):
 
 EN = cell("en_neutral")
 
+print("## B2a. Measurement invariance across the nineteen\n")
+print("Comparing raw composite means across countries needs the instrument to behave the same "
+      "way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 "
+      "data; the check was recomputed on the same raw data in `reasoner-study` "
+      "(`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), "
+      "align.pow c(.25, .25), lavaan). Loadings R-squared is metric invariance; intercepts "
+      "R-squared is scalar invariance, the one that bears on comparing means. Both are shown. "
+      "This is a property of the nineteen human samples. It says nothing about whether a model's "
+      "score and a person's score measure the same thing, and nothing in this appendix claims "
+      "they do.\n")
+print("| foundation | loadings R-squared | intercepts R-squared |")
+print("|---|--:|--:|")
+with open(VDIR / "reference" / "mfq2_alignment_r2.csv") as fh:
+    _al = list(csv.DictReader(fh))
+for r in _al:
+    print("| %s | %.4f | %.4f |" % (r["foundation"].capitalize(), float(r["R2_loadings"]), float(r["R2_intercepts"])))
+_weak = min(_al, key=lambda r: float(r["R2_intercepts"]))
+print("\n%s is the weakest on intercepts at %.4f, and the item-level noninvariance behind each "
+      "figure is in the owner's script output, not here.\n" % (_weak["foundation"].capitalize(), float(_weak["R2_intercepts"])))
 print("## B3. Where the panel lands, by country\n")
 print("Binding composite, panel mean over eleven models, each model's five iterations "
       "averaged first. The English unframed column is one condition and repeats down the "
       "table; the unframed in-language column is one condition per language and repeats "
       "across the countries that share a language, because neither condition names a "
       "country. Dashes mark arms not run.\n")
-print("| country | language | human | EN unframed | local unframed | EN framed | local framed |")
-print("|---|---|--:|--:|--:|--:|--:|")
+print("| country | language | human | human SE | EN unframed | local unframed | EN framed | local framed |")
+print("|---|---|--:|--:|--:|--:|--:|--:|")
+
+
+def arm(country, code, value):
+    """Label the local-arm cell where a country has two arms (decision 12)."""
+    if value is None:
+        return "-"
+    return "%.3f%s" % (value, " (%s arm)" % LANG_NAME[code] if country in ANCHOR_ARM else "")
+
+
 for country, lang, code in ROWS:
     h = "%.3f" % ANCH[country] if country in ANCH else "n/a"
+    se = "%.3f" % ANCH_SE[country] if country in ANCH_SE else "n/a"
     ln = cell(code + "_neutral") if code else None
     lf = cell(code + "_framed_" + country) if code else None
     ef = cell("EN_framed_" + country)
-    print("| %s | %s | %s | %.3f | %s | %s | %s |" % (
-        country + MARK.get(country, ""), lang or "n/a", h, EN,
-        "%.3f" % ln if ln is not None else "-",
+    print("| %s | %s | %s | %s | %.3f | %s | %s | %s |" % (
+        country + MARK.get(country, ""), lang or "n/a", h, se, EN,
+        arm(country, code, ln),
         "%.3f" % ef if ef is not None else "-",
-        "%.3f" % lf if lf is not None else "-"))
+        arm(country, code, lf)))
 
 print("\nThe same table as distance from that country's measured human mean. Positive is "
       "above the population.\n")
@@ -195,11 +229,13 @@ for country, lang, code in ROWS:
     ln = cell(code + "_neutral") if code else None
     lf = cell(code + "_framed_" + country) if code else None
     ef = cell("EN_framed_" + country)
+    def darm(v):
+        if v is None:
+            return "-"
+        return "%+.3f%s" % (v - a, " (%s arm)" % LANG_NAME[code] if country in ANCHOR_ARM else "")
     print("| %s | %+.3f | %s | %s | %s |" % (
-        country + MARK.get(country, ""), EN - a,
-        "%+.3f" % (ln - a) if ln is not None else "-",
-        "%+.3f" % (ef - a) if ef is not None else "-",
-        "%+.3f" % (lf - a) if lf is not None else "-"))
+        country + MARK.get(country, ""), EN - a, darm(ln),
+        "%+.3f" % (ef - a) if ef is not None else "-", darm(lf)))
 
 ARTICLE = {"United States": "the United States"}
 UNANCHORED = [ARTICLE.get(c, c) for c, _, _ in ROWS if c not in ANCH]
@@ -212,6 +248,12 @@ print("Each of those nineteen means rests on %d to %d respondents for its countr
       "that people from traditional, small-scale communities are absent. Every overshoot in "
       "this appendix is a distance from those samples' means.\n"
       % (_ns[0], _ns[-1], format(sum(_ns), ",")))
+_ses = sorted(ANCH_SE.values())
+print("The human SE column is the reference sample's own sampling uncertainty in its binding "
+      "mean, SD over root n from the per-country dispersion file, %.3f to %.3f across the "
+      "nineteen. It is a different quantity from the model-resampling interval in B3a, which "
+      "describes panel composition, and neither one removes selection in who was sampled. Iran "
+      "has none until a respondent-level SD is computed from its shared data.\n" % (_ses[0], _ses[-1]))
 print("[*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 "
       "carries the source, the sample's own caveats and the sensitivity across every anchor "
       "that source offers.\n")

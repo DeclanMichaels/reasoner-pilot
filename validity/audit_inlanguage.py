@@ -465,6 +465,30 @@ L.append("Every contrast in B4 carries its own leave-one-out range. The anchor c
             "Every individual model overshoots both Iran conditions."
             if _all_over else "Not every model overshoots both Iran conditions."))
 
+# ---- B7: failed calls, counted from the files rather than typed
+_fail = defaultdict(int); _nfail = 0; _scored = 0
+for _d in ("runs_framed", "runs_framed_lang", "runs_english_baseline"):
+    for _f in glob.glob(str(VDIR / _d / "*.json")):
+        _r = json.load(open(_f))
+        if _r.get("ratings"):
+            _scored += 1
+        else:
+            _fail[_r["model"]] += 1; _nfail += 1
+# the fiftieth condition, en_neutral_ours, lives in runs/ and had no failures
+_scored += sum(1 for _f in glob.glob(str(VDIR / "runs" / "*mfq2*.json"))
+               if json.load(open(_f)).get("instrument") == "mfq2" and json.load(open(_f)).get("ratings"))
+_by = sorted(_fail.items(), key=lambda x: (-x[1], x[0]))
+L.append("## B7. Failed calls\n")
+L.append("%s of %s attempted calls returned no ratings object, from provider rate limits on the "
+         "Together-hosted models and from replies that carried no parseable object. All were "
+         "retried to success within the same collection window, so every one of the %s scored "
+         "cells is present and no condition rests on fewer than five iterations. By model: %s. "
+         "Retrying to a parseable reply conditions the scored sample on compliance; the %s "
+         "unparsed replies are kept as collected and are not scored. This collection contains "
+         "no refusal.\n" % (
+         "{:,}".format(_nfail), "{:,}".format(_scored + _nfail), "{:,}".format(_scored),
+         ", ".join("%s %d" % (m, n) for m, n in _by), _nfail))
+
 # ---- errata: the declared family this replaces
 L.append("## B10. Errata: the declared test family\n")
 L.append("From 2026-08-21 to 2026-09-08 this appendix reported a declared family of ten "

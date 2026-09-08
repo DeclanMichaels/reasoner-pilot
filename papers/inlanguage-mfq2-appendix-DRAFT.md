@@ -22,42 +22,57 @@ The configured roster holds fifteen models; four are absent from every cell. Bot
 
 Foundation score: mean of its six items, scale 1 to 5. Binding composite: mean of Loyalty, Authority and Purity. The independent unit is the model: each model's five iterations are averaged first, and every test below operates on eleven per-model values. Panel SDs are population SDs over those eleven means.
 
+## B2a. Measurement invariance across the nineteen
+
+Comparing raw composite means across countries needs the instrument to behave the same way in each. Atari et al. checked this with Muthen-Asparouhov alignment on their Study 2 data; the check was recomputed on the same raw data in `reasoner-study` (`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), align.pow c(.25, .25), lavaan). Loadings R-squared is metric invariance; intercepts R-squared is scalar invariance, the one that bears on comparing means. Both are shown. This is a property of the nineteen human samples. It says nothing about whether a model's score and a person's score measure the same thing, and nothing in this appendix claims they do.
+
+| foundation | loadings R-squared | intercepts R-squared |
+|---|--:|--:|
+| Care | 0.9945 | 0.9994 |
+| Equality | 0.9873 | 0.9955 |
+| Proportionality | 0.9760 | 0.9986 |
+| Loyalty | 0.9816 | 0.9982 |
+| Authority | 0.9846 | 0.9962 |
+| Purity | 0.9646 | 0.9934 |
+
+Purity is the weakest on intercepts at 0.9934, and the item-level noninvariance behind each figure is in the owner's script output, not here.
+
 ## B3. Where the panel lands, by country
 
 Binding composite, panel mean over eleven models, each model's five iterations averaged first. The English unframed column is one condition and repeats down the table; the unframed in-language column is one condition per language and repeats across the countries that share a language, because neither condition names a country. Dashes mark arms not run.
 
-| country | language | human | EN unframed | local unframed | EN framed | local framed |
-|---|---|--:|--:|--:|--:|--:|
-| Egypt | Arabic | 4.267 | 2.769 | 3.104 | 4.605 | 4.604 |
-| Morocco [d12] | Arabic | 4.014 | 2.769 | 3.104 | 4.570 | 4.582 |
-| Saudi Arabia | Arabic | 4.083 | 2.769 | 3.104 | 4.733 | 4.757 |
-| United Arab Emirates | Arabic | 3.892 | 2.769 | 3.104 | 4.629 | 4.726 |
-| Argentina | Spanish | 3.283 | 2.769 | 2.780 | 3.437 | 3.349 |
-| Chile | Spanish | 3.220 | 2.769 | 2.780 | 3.654 | 3.576 |
-| Colombia | Spanish | 3.497 | 2.769 | 2.780 | 4.100 | 3.996 |
-| Mexico | Spanish | 3.512 | 2.769 | 2.780 | 4.141 | 3.947 |
-| Peru | Spanish | 3.514 | 2.769 | 2.780 | 4.133 | 4.038 |
-| Belgium | French | 3.444 | 2.769 | 2.777 | 2.622 | 2.797 |
-| France | French | 3.610 | 2.769 | 2.777 | 2.725 | 2.834 |
-| Switzerland | French | 3.349 | 2.769 | 2.777 | 3.063 | 3.076 |
-| Japan | Japanese | 2.652 | 2.769 | 2.676 | 3.668 | 3.434 |
-| Iran [*] | Farsi | 3.333 | 2.769 | 2.809 | 4.577 | 4.314 |
-| Russia | Russian | 3.599 | 2.769 | 2.788 | 4.117 | 4.047 |
-| India | n/a | n/a | 2.769 | - | 4.439 | - |
-| Ireland | n/a | 3.096 | 2.769 | - | 3.094 | - |
-| Kenya | n/a | 3.867 | 2.769 | - | 4.432 | - |
-| New Zealand | n/a | 3.094 | 2.769 | - | 2.878 | - |
-| Nigeria | n/a | 4.038 | 2.769 | - | 4.515 | - |
-| South Africa | n/a | 3.749 | 2.769 | - | 3.935 | - |
-| Sweden | n/a | n/a | 2.769 | - | 2.282 | - |
-| United States | n/a | n/a | 2.769 | - | 3.331 | - |
+| country | language | human | human SE | EN unframed | local unframed | EN framed | local framed |
+|---|---|--:|--:|--:|--:|--:|--:|
+| Egypt | Arabic | 4.267 | 0.040 | 2.769 | 3.104 | 4.605 | 4.604 |
+| Morocco [d12] | Arabic | 4.014 | 0.049 | 2.769 | 3.104 (Arabic arm) | 4.570 | 4.582 (Arabic arm) |
+| Saudi Arabia | Arabic | 4.083 | 0.045 | 2.769 | 3.104 | 4.733 | 4.757 |
+| United Arab Emirates | Arabic | 3.892 | 0.057 | 2.769 | 3.104 | 4.629 | 4.726 |
+| Argentina | Spanish | 3.283 | 0.046 | 2.769 | 2.780 | 3.437 | 3.349 |
+| Chile | Spanish | 3.220 | 0.052 | 2.769 | 2.780 | 3.654 | 3.576 |
+| Colombia | Spanish | 3.497 | 0.046 | 2.769 | 2.780 | 4.100 | 3.996 |
+| Mexico | Spanish | 3.512 | 0.043 | 2.769 | 2.780 | 4.141 | 3.947 |
+| Peru | Spanish | 3.514 | 0.045 | 2.769 | 2.780 | 4.133 | 4.038 |
+| Belgium | French | 3.444 | 0.040 | 2.769 | 2.777 | 2.622 | 2.797 |
+| France | French | 3.610 | 0.039 | 2.769 | 2.777 | 2.725 | 2.834 |
+| Switzerland | French | 3.349 | 0.050 | 2.769 | 2.777 | 3.063 | 3.076 |
+| Japan | Japanese | 2.652 | 0.044 | 2.769 | 2.676 | 3.668 | 3.434 |
+| Iran [*] | Farsi | 3.333 | n/a | 2.769 | 2.809 | 4.577 | 4.314 |
+| Russia | Russian | 3.599 | 0.049 | 2.769 | 2.788 | 4.117 | 4.047 |
+| India | n/a | n/a | n/a | 2.769 | - | 4.439 | - |
+| Ireland | n/a | 3.096 | 0.057 | 2.769 | - | 3.094 | - |
+| Kenya | n/a | 3.867 | 0.052 | 2.769 | - | 4.432 | - |
+| New Zealand | n/a | 3.094 | 0.059 | 2.769 | - | 2.878 | - |
+| Nigeria | n/a | 4.038 | 0.043 | 2.769 | - | 4.515 | - |
+| South Africa | n/a | 3.749 | 0.051 | 2.769 | - | 3.935 | - |
+| Sweden | n/a | n/a | n/a | 2.769 | - | 2.282 | - |
+| United States | n/a | n/a | n/a | 2.769 | - | 3.331 | - |
 
 The same table as distance from that country's measured human mean. Positive is above the population.
 
 | country | EN unframed | local unframed | EN framed | local framed |
 |---|--:|--:|--:|--:|
 | Egypt | -1.498 | -1.163 | +0.338 | +0.337 |
-| Morocco [d12] | -1.245 | -1.234 | +0.556 | +0.575 |
+| Morocco [d12] | -1.245 | -1.234 (Spanish arm) | +0.556 | +0.575 (Spanish arm) |
 | Saudi Arabia | -1.314 | -0.979 | +0.650 | +0.674 |
 | United Arab Emirates | -1.123 | -0.788 | +0.737 | +0.834 |
 | Argentina | -0.514 | -0.503 | +0.154 | +0.066 |
@@ -78,6 +93,8 @@ The same table as distance from that country's measured human mean. Positive is 
 | South Africa | -0.980 | - | +0.186 | - |
 Each of those nineteen means rests on 205 to 207 respondents for its country, 3,902 in all, collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within each nation on age, gender and political orientation. Education was not a stratification variable, and the authors state their results rest on "a subset of these populations who were educated enough to complete the surveys online", noting that people from traditional, small-scale communities are absent. Every overshoot in this appendix is a distance from those samples' means.
 
+The human SE column is the reference sample's own sampling uncertainty in its binding mean, SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran has none until a respondent-level SD is computed from its shared data.
+
 [*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 carries the source, the sample's own caveats and the sensitivity across every anchor that source offers.
 
 [d12] Morocco: grouped with Arabic above, compared against its human mean on the Spanish arm, because Atari et al. administered Morocco's sample in Spanish. Both runs are carried in the data.
@@ -94,7 +111,7 @@ One instrument, one language, four populations with published means. The human m
 | Arabic framed | Egypt > Saudi Arabia > Morocco > UAE | Saudi Arabia > UAE > Egypt > Morocco |
 | English framed | Egypt > Saudi Arabia > Morocco > UAE | Saudi Arabia > UAE > Egypt > Morocco |
 
-Framed in Arabic, 2 of 11 models order the four the way the populations do; framed in English, 6 of 11.
+Framed in Arabic, 2 of 11 models have a positive rank correlation with the human order; framed in English, 6 of 11. No model in either arm reproduces the human order exactly.
 
 The unframed Arabic condition sits at 3.104, below all four populations, between 0.788 and 1.163 under them.
 
@@ -415,7 +432,7 @@ Care sits between 4.29 and 4.89 in every one of the fifty conditions. The lowest
 
 ## B7. Failed calls
 
-Forty-six of 2,796 attempted calls returned no ratings object, from provider rate limits on the Together-hosted models and from replies that carried no parseable object. All forty-six were retried to success within the same collection window, so every one of the 2,750 scored cells is present and no condition rests on fewer than five iterations. The failures concentrate in three models - minimax 21, o3 16 and inkling 6 - with one each from deepseek_v4 and kimi_k3. This collection contains no refusal.
+46 of 2,796 attempted calls returned no ratings object, from provider rate limits on the Together-hosted models and from replies that carried no parseable object. All were retried to success within the same collection window, so every one of the 2,750 scored cells is present and no condition rests on fewer than five iterations. By model: minimax 21, o3 16, inkling 6, kimi_k3 2, deepseek_v4 1. Retrying to a parseable reply conditions the scored sample on compliance; the 46 unparsed replies are kept as collected and are not scored. This collection contains no refusal.
 
 ## B8. Presentation-order audit
 
