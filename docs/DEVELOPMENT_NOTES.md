@@ -44,7 +44,9 @@ Every collection in this repository was therefore made at five different unrecor
 defaults, so run-to-run variance across models is not on a common footing and any figure computed
 from it is partly measuring an unlogged parameter. A reviewer asked for the decoding parameters and
 the honest answer was that we do not have them. Set it explicitly and write it into the run record
-before any further collection.
+before any further collection. The one exception is deliberate: the September wave (decision 21) kept
+the provider defaults so that temperature and window did not enter the same contrast; it recorded
+that none of the five providers returns a temperature in its response body.
 
 **Preflight a handful of calls for across-rerun variance before paying for a multi-rerun run.** A
 provider returning byte-identical output across distinct seeds is invisible in the output until you
@@ -60,7 +62,9 @@ Parse and rate-limit failures are expected at low rates and are retried inside t
 window. In the in-language collection, 46 of 2,796 attempted calls returned no ratings object, all
 retried to success, so no condition rests on fewer than five reruns.
 
-API keys live in `~/.config/ccas/keys.env`, mode 600. A non-interactive shell does not have them:
+API keys are exported in the interactive shell's environment on the Black M2 Air, where no
+`~/.config/ccas/keys.env` exists (checked 2026-09-08); the file may be how another machine holds
+them. A non-interactive shell does not have them unless they are sourced first:
 
     set -a && source ~/.config/ccas/keys.env && set +a
 

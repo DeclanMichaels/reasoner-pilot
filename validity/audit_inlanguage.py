@@ -88,12 +88,18 @@ ennu = permodel(str(VDIR/"runs_english_baseline"/"*.json"),
 enbase = permodel(str(VDIR/"runs_english_baseline"/"*.json"), lambda d: d.get("condition"))
 enold = permodel(str(VDIR/"runs"/"*mfq2*.json"),
                  lambda d: "en_neutral_ours" if d.get("instrument")=="mfq2" else None)
+# The September wave (decision 21): ten models, three English conditions, its own section B4a.
+SEPT_KEY = {"neutral_template": "en_neutral_template", "official_nosystem_sept": "en_neutral_sept",
+            "framed_egypt_sept": "EN_framed_Egypt_sept"}
+sept = permodel(str(VDIR/"runs_neutral_template"/"*.json"), lambda d: SEPT_KEY.get(d.get("condition")))
 
 CONDS = {**{f"{c[0]}_{c[1]}": v for c,v in lang.items()},
          **{f"EN_framed_{k}": v for k,v in enfr.items()},
          **({"en_neutral": ennu["en_neutral"]} if "en_neutral" in ennu else {}),
          **({"en_neutral_ours": enold["en_neutral_ours"]}
             if "en_neutral_ours" in enold else {})}
+# sept stays out of CONDS: audit_inlanguage_grid.py reconciles every key of condition_means.json
+# against its own load and would fail on keys it does not have. B4a carries the wave's means.
 
 print("=== VERIFICATION: per-model binding by condition (n models, panel mean) ===")
 ROSTER = sorted(set(m for v in CONDS.values() for m in v))
@@ -520,6 +526,56 @@ for lab, a in [("sample 2, n=%d (in use)" % _s2, _b2), ("sample 1, n=%d" % _s1, 
 L.append("\nThe sign and the ordering of the Iran result do not depend on the choice. Its "
          "magnitude does, by up to %.3f.\n" % (max(_alts) - min(_alts)))
 
+# ---- B4a: the September wave, decision 21
+import run_neutral_template as rnt
+_sm = sorted(set(sept["en_neutral_template"]) & set(sept["en_neutral_sept"]) & set(sept["EN_framed_Egypt_sept"]))
+_ten = [m for m in _sm if m in CONDS["en_neutral"] and m in CONDS["EN_framed_Egypt"]]
+assert len(_ten) == 10 and "deepseek_v4" not in _ten, _ten
+def _sub(a, b):
+    return {m: a[m] - b[m] for m in _ten}
+_T = sept["en_neutral_template"]; _U9 = sept["en_neutral_sept"]; _F9 = sept["EN_framed_Egypt_sept"]
+_U8 = CONDS["en_neutral"]; _F8 = CONDS["EN_framed_Egypt"]
+_rows = [("template minus unframed English, August comparator", _ctr(_sub(_T, _U8), "C|sept|template-unframed_aug")),
+         ("template minus unframed English, September rerun", _ctr(_sub(_T, _U9), "C|sept|template-unframed_sept")),
+         ("framed Egypt, August, minus template", _ctr(_sub(_F8, _T), "C|sept|framed_aug-template")),
+         ("framed Egypt, September rerun, minus template", _ctr(_sub(_F9, _T), "C|sept|framed_sept-template")),
+         ("framing in English, Egypt, on these ten, August", _ctr(_sub(_F8, _U8), "C|sept|framing_egypt_aug_ten")),
+         ("framing in English, Egypt, on these ten, September", _ctr(_sub(_F9, _U9), "C|sept|framing_egypt_sept_ten")),
+         ("drift, unframed English: September minus August", _ctr(_sub(_U9, _U8), "C|sept|drift_unframed")),
+         ("drift, framed Egypt: September minus August", _ctr(_sub(_F9, _F8), "C|sept|drift_framed"))]
+def _pm(d): v = [d[m] for m in _ten]; return sum(v) / len(v)
+def _psd(d):
+    v = [d[m] for m in _ten]; mu = sum(v) / len(v); return (sum((x - mu) ** 2 for x in v) / len(v)) ** 0.5
+L.append("## B4a. The September wave: the framing template without a country\n")
+L.append("Every framing contrast above adds a system instruction where there was none, and that instruction "
+         "carries two things: a country and an instruction to answer as a typical person. A second, small "
+         "collection on 2026-09-08 separates them (decision 21): the framing template with its three country "
+         "slots deleted and nothing added, on the official English instrument, ten models, five iterations, "
+         "no temperature sent; and, as a drift check against the August grid, the unframed English comparator "
+         "and English-framed Egypt rerun the same day with item-identical orders. DeepSeek-V4-Pro left "
+         "Together's serverless tier between the two collections and is absent from the wave, so every "
+         "contrast here is on the ten models present in both, and the August cells are restricted to the same "
+         "ten. The template is quoted in B1a. Contrasts are within-model first, as in B4; %d models.\n" % len(_ten))
+L.append("| condition | panel mean, ten models | 95% model-resampling interval | between-model SD |")
+L.append("|---|--:|:--:|--:|")
+for lab, d in (("en_neutral (August)", _U8), ("en_neutral_sept", _U9), ("en_neutral_template", _T), ("EN_framed_Egypt (August)", _F8), ("EN_framed_Egypt_sept", _F9)):
+    v = [d[m] for m in _ten]; lo, hi = boot_ci(v, "C|sept|mean|" + lab)
+    L.append("| %s | %.3f | [%.3f, %.3f] | %.2f |" % (lab, _pm(d), lo, hi, _psd(d)))
+L.append("")
+L.append(HEAD % len(_ten)); L.append(SEP)
+for lab, c in _rows:
+    L.append(row(lab, c))
+L.append("")
+_share = _rows[1][1]["diff"] / _rows[5][1]["diff"] if _rows[5][1]["diff"] else float("nan")
+L.append("Within the September window, the template without a country accounts for %.0f percent of the Egypt "
+         "framing shift on these ten models (%+.3f of %+.3f); naming the country accounts for the rest, %+.3f, "
+         "with the transcription difference between the two instruments riding inside it (B4, -0.009 unframed). "
+         "The two drift rows price the window: the unframed comparator moved %+.3f and framed Egypt %+.3f "
+         "between August and September on the same item orders. Between-model spread under the template, %.2f, "
+         "sits against %.2f unframed and %.2f framed in the same window.\n" % (
+         100 * _share, _rows[1][1]["diff"], _rows[5][1]["diff"], _rows[3][1]["diff"],
+         _rows[6][1]["diff"], _rows[7][1]["diff"], _psd(_T), _psd(_U9), _psd(_F9)))
+
 # ---- B5
 _ja = [mu for _, mu in loo(CONDS["ja_neutral"])]
 _en_ir = [mu - ANCH["Iran"] for _, mu in loo(CONDS["EN_framed_Iran"])]
@@ -637,6 +693,10 @@ M.append("The in-language framing instructions are our translations of that temp
          "Egypt prompt byte for byte as first collected.\n")
 _sr_ours = _ctr({m: enbase["ours_selfreport"][m] - enbase["ours_nosystem"][m] for m in _ms}, "C|selfreport|ours")
 _sr_off = _ctr({m: enbase["official_selfreport"][m] - enbase["official_nosystem"][m] for m in _ms}, "C|selfreport|official")
+M.append("**The framing template without a country**, the September wave's system prompt (decision 21), "
+         "verbatim from `run_neutral_template.py`, which derives it from the framing template by deleting "
+         "the three country slots and asserts the result:\n")
+M.append("> " + rnt.NEUTRAL_TEMPLATE + "\n")
 M.append("**The unframed conditions send no system prompt.** The matched English baseline and all six "
          "translated unframed conditions were run with `NEUTRAL_SYSTEM = \"\"`; every one of their "
          "saved runs records an empty system prompt. So each framing contrast in B4 measures the "
@@ -692,7 +752,8 @@ M.append("**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 a
          "Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). "
          "2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set "
          "rebuilt on the full grid without p-values (decision 15), and Morocco reported under Spanish "
-         "throughout, superseding the 2026-08-24 grouping (decision 18). Binding became the focal "
+         "throughout, superseding the 2026-08-24 grouping (decision 18); the September wave collected, "
+         "three English conditions on ten models (decision 21). Binding became the focal "
          "quantity on 2026-07-20, before any in-language cell existed; every choice after that "
          "was made with results in view.\n")
 (VDIR / "results" / "appendix_b4_b5.md").write_text("\n".join(M + L) + "\n")

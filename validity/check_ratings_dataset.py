@@ -19,13 +19,15 @@ with open(VDIR / "results" / "mfq2_ratings.csv") as fh:
     for r in csv.DictReader(fh):
         runs[(r["condition"], r["model"], int(r["iteration"]))].append((r["item_id"], int(r["rating"])))
 
+SEPT = {"en_neutral_template", "en_neutral_sept", "EN_framed_Egypt_sept"}   # ten models, decision 21
 bad = []
-if len(runs) != 2750: bad.append("expected 2750 cells, found %d" % len(runs))
+if len(runs) != 2750 + 150: bad.append("expected 2900 cells, found %d" % len(runs))
 conds = sorted({k[0] for k in runs})
-if len(conds) != 50: bad.append("expected 50 conditions, found %d" % len(conds))
+if len(conds) != 53: bad.append("expected 53 conditions, found %d" % len(conds))
 for cond in conds:
     ms = {k[1] for k in runs if k[0] == cond}
-    if len(ms) != 11: bad.append("%s has %d models" % (cond, len(ms)))
+    want = 10 if cond in SEPT else 11
+    if len(ms) != want: bad.append("%s has %d models, expected %d" % (cond, len(ms), want))
 for k, items in runs.items():
     if len(items) != 36: bad.append("%s has %d items" % (k, len(items)))
 

@@ -53,3 +53,4 @@ not, it is a reconstruction error and the entry is wrong rather than the memory.
 | 18 | 2026-09-08 | active | [Morocco is reported under Spanish throughout; the Arabic arm is data, not a comparison](docs/decisions/018-morocco-reported-under-spanish.md) - a language mismatch every review round raised |
 | 19 | 2026-09-08 | active | [The integer ratings are published as a dataset; the run files and item wording are not](docs/decisions/019-integer-ratings-published-as-a-dataset.md) - a reproducibility claim a clone could not honour |
 | 20 | 2026-09-08 | active | [The in-language report and its statistical appendix are one document](docs/decisions/020-one-document.md) - the seam two files kept showing reviewers |
+| 21 | 2026-09-08 | active | [The September wave: the framing template without a country, matched to the August grid](docs/decisions/021-september-wave-neutral-template.md) - the framing shift's two components, and a window the grid did not have |

@@ -6,7 +6,7 @@
 
 The document is papers/inlanguage-mfq2-DRAFT.md. Its generated sections come verbatim from two
 pinned artifacts: results/appendix_tables.md (B2a, B3 up to the hand-written Arabic subsection,
-B3a, B6 up to the hand-written Care sentence, B6a) and results/appendix_b4_b5.md (B1a, B4, B5, B7).
+B3a, B6 up to the hand-written Care sentence, B6a) and results/appendix_b4_b5.md (B1a, B4, B4a, B5, B7).
 B1, B2, B8, B9, the Arabic subsection and the Care sentence are hand-written and untouched.
 Every header and hand-written boundary is asserted before anything is written; a renamed header
 fails here rather than leaving stale text in place.
@@ -25,7 +25,8 @@ PLAN = [
     (TABLES, "## B2a. ", "## B3. ",                                 "## B3. "),
     (TABLES, "## B3. ",  "### The three Arabic-speaking countries", "## B3a. "),
     (TABLES, "## B3a. ", "## B4. ",                                 "## B6. "),
-    (B4B5,   "## B4. ",  "## B5. ",                                 "## B5. "),
+    (B4B5,   "## B4. ",  "## B4a. ",                                "## B4a. "),
+    (B4B5,   "## B4a. ", "## B5. ",                                 "## B5. "),
     (B4B5,   "## B5. ",  "## B6. ",                                 "## B7. "),
     (TABLES, "## B6. ",  "Care sits between",                       "## B6a. "),
     (TABLES, "## B6a. ", "## B7. ",                                 None),

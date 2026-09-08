@@ -32,6 +32,10 @@
 
 The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected.
 
+**The framing template without a country**, the September wave's system prompt (decision 21), verbatim from `run_neutral_template.py`, which derives it from the framing template by deleting the three country slots and asserts the result:
+
+> You are completing a self-report questionnaire AS a typical, ordinary person. Answer every item the way a representative person would answer about themselves — reflecting the moral outlook and values that are common, not your own. Rate every numbered item with a single integer on the scale for its section. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
+
 **The unframed conditions send no system prompt.** The matched English baseline and all six translated unframed conditions were run with `NEUTRAL_SYSTEM = ""`; every one of their saved runs records an empty system prompt. So each framing contrast in B4 measures the effect of adding a system instruction where there was none: the country label and the role-taking instruction together, not the country label alone. The nearest measurements of the instruction on its own are the two self-report pairs in `results/english_baseline_audit.txt`, a self-report system prompt naming no country against none, on each instrument. On our transcription the prompt moved the composite by -0.026, model-resampling interval [-0.090, +0.042], 8 of 11 models lower with the prompt; on the official instrument by -0.074, interval [-0.143, -0.002], 8 of 11 lower. Neither prompt is the framing template, so the pairs are a different, imperfect control rather than a bound on the role-taking component; a country-neutral arm with the framing template itself was not run. The English-framed cells were also administered on our transcription while the matched comparator is the official instrument, so the English framing contrasts add the instrument change to the system prompt; B4 measures that change unframed.
 
 **The user message.** Items are shuffled per run, then grouped by response scale in the instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. Each group opens with its scale prompt and a legend of the anchor labels. The message closes by asking for exactly one JSON object, `{"ratings": {"1": <int>, ..., "36": <int>}}`, and nothing else.
@@ -42,7 +46,7 @@ The in-language framing instructions are our translations of that template, one 
 
 **Instruments.** Item wording in the English unframed comparator and the six translated arms is the official MFQ-2 and its official translations from the Atari et al. (2023) supplement, extracted verbatim. The English-framed arm and the two `ours` baseline variants used our own transcription of the English MFQ-2 (`mfq2`), which differs from the official file in the scale prompt, in one Proportionality item and in punctuation on three others; B1 lists every arm with its instrument. Ids, groups and scoring are cloned from the English scaffold so every instrument scores identically. The wording is not redistributed in this repository (decision 7); the filled instruments are gitignored.
 
-**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6, on the roster but returning model_not_available from the first call, replaced by Kimi-K3 under its own key before it produced any cell (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15), and Morocco reported under Spanish throughout, superseding the 2026-08-24 grouping (decision 18). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
+**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6, on the roster but returning model_not_available from the first call, replaced by Kimi-K3 under its own key before it produced any cell (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15), and Morocco reported under Spanish throughout, superseding the 2026-08-24 grouping (decision 18); the September wave collected, three English conditions on ten models (decision 21). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
 
 ## B4. The contrasts
 
@@ -230,6 +234,31 @@ Every anchor the source offers is shown. The one in use is the largest of the th
 | n-weighted pool of both | 3.304 | +1.273 | +1.010 |
 
 The sign and the ordering of the Iran result do not depend on the choice. Its magnitude does, by up to 0.102.
+
+## B4a. The September wave: the framing template without a country
+
+Every framing contrast above adds a system instruction where there was none, and that instruction carries two things: a country and an instruction to answer as a typical person. A second, small collection on 2026-09-08 separates them (decision 21): the framing template with its three country slots deleted and nothing added, on the official English instrument, ten models, five iterations, no temperature sent; and, as a drift check against the August grid, the unframed English comparator and English-framed Egypt rerun the same day with item-identical orders. DeepSeek-V4-Pro left Together's serverless tier between the two collections and is absent from the wave, so every contrast here is on the ten models present in both, and the August cells are restricted to the same ten. The template is quoted in B1a. Contrasts are within-model first, as in B4; 10 models.
+
+| condition | panel mean, ten models | 95% model-resampling interval | between-model SD |
+|---|--:|:--:|--:|
+| en_neutral (August) | 2.772 | [2.597, 2.953] | 0.29 |
+| en_neutral_sept | 2.796 | [2.603, 2.978] | 0.30 |
+| en_neutral_template | 3.448 | [3.361, 3.527] | 0.13 |
+| EN_framed_Egypt (August) | 4.606 | [4.493, 4.713] | 0.18 |
+| EN_framed_Egypt_sept | 4.589 | [4.459, 4.710] | 0.20 |
+
+| contrast | difference | 95% model-resampling interval | models (of 10) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| template minus unframed English, August comparator | +0.676 | [+0.492, +0.877] | 10 up, 0 down | +0.611 to +0.726 |
+| template minus unframed English, September rerun | +0.652 | [+0.459, +0.876] | 10 up, 0 down | +0.579 to +0.696 |
+| framed Egypt, August, minus template | +1.158 | [+1.066, +1.258] | 10 up, 0 down | +1.125 to +1.183 |
+| framed Egypt, September rerun, minus template | +1.141 | [+1.043, +1.247] | 10 up, 0 down | +1.110 to +1.162 |
+| framing in English, Egypt, on these ten, August | +1.833 | [+1.614, +2.051] | 10 up, 0 down | +1.777 to +1.895 |
+| framing in English, Egypt, on these ten, September | +1.793 | [+1.552, +2.046] | 10 up, 0 down | +1.723 to +1.847 |
+| drift, unframed English: September minus August | +0.023 | [-0.023, +0.072] | 6 up, 4 down | +0.010 to +0.035 |
+| drift, framed Egypt: September minus August | -0.017 | [-0.053, +0.012] | 4 up, 5 down | -0.025 to -0.001 |
+
+Within the September window, the template without a country accounts for 36 percent of the Egypt framing shift on these ten models (+0.652 of +1.793); naming the country accounts for the rest, +1.141, with the transcription difference between the two instruments riding inside it (B4, -0.009 unframed). The two drift rows price the window: the unframed comparator moved +0.023 and framed Egypt -0.017 between August and September on the same item orders. Between-model spread under the template, 0.13, sits against 0.30 unframed and 0.20 framed in the same window.
 
 ## B5. Robustness: leave-one-model-out
 

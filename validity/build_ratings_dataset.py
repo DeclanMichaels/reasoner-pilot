@@ -23,8 +23,13 @@ def _base(d):
     return "en_neutral" if d["condition"] == "official_nosystem" else "en_baseline_" + d["condition"]
 def _old(d):
     return "en_neutral_ours"
+SEPT = {"neutral_template": "en_neutral_template", "official_nosystem_sept": "en_neutral_sept",
+        "framed_egypt_sept": "EN_framed_Egypt_sept"}
+def _sept(d):
+    return SEPT[d["condition"]]
 SOURCES = [("runs_framed_lang/*.json", _lang), ("runs_framed/*_mfq2_*.json", _enfr),
-           ("runs_english_baseline/*.json", _base), ("runs/*mfq2*.json", _old)]
+           ("runs_english_baseline/*.json", _base), ("runs/*mfq2*.json", _old),
+           ("runs_neutral_template/*.json", _sept)]        # the September wave, decision 21
 
 rows = []
 for pat, keyf in SOURCES:
@@ -42,10 +47,13 @@ for pat, keyf in SOURCES:
 rows.sort(key=lambda r: (r[0], r[1], r[2], r[6]))
 cells = {(r[0], r[1], r[2]) for r in rows}
 conds = {r[0] for r in rows}
-assert len(conds) == 50, len(conds)
-assert len(cells) == 2750, len(cells)
-assert all(sum(1 for c in cells if c[0] == k) == 55 for k in conds), "a condition without 11 x 5 cells"
-assert len(rows) == 99000, len(rows)
+sept = set(SEPT.values())
+assert len(conds) == 53, len(conds)
+assert len(cells) == 2750 + 150, len(cells)
+for k in conds:
+    want = 50 if k in sept else 55          # the September wave has ten models (decision 21)
+    assert sum(1 for c in cells if c[0] == k) == want, "%s: not %d cells" % (k, want)
+assert len(rows) == (2750 + 150) * 36, len(rows)
 
 w = csv.writer(sys.stdout, lineterminator="\n")
 w.writerow(["condition", "model", "iteration", "instrument", "seed", "item_id", "position", "rating"])

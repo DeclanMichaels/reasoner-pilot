@@ -219,8 +219,8 @@ them).
 
 **`validity/results/mfq2_ratings.csv`** — every scored rating in the in-language MFQ-2
 grid: `condition`, `model`, `iteration`, `instrument`, `seed`, `item_id`, `position` in that
-run's shuffled order, `rating` (1 to 5). 99,000 rows, 2,750 cells, 50 conditions. No item
-wording; item ids follow the official MFQ-2 key. `validity/check_ratings_dataset.py` rebuilds
+run's shuffled order, `rating` (1 to 5). 104,400 rows, 2,900 cells, 53 conditions: the fifty-condition
+August grid and the three-condition September wave (decision 21). No item wording; item ids follow the official MFQ-2 key. `validity/check_ratings_dataset.py` rebuilds
 the condition means from it.
 
 ---
