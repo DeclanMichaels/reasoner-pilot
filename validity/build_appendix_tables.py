@@ -249,8 +249,8 @@ for country, lang, code in ROWS:
         "%.3f" % ef if ef is not None else "-",
         arm(country, code, lf)))
 
-print("\nThe same table as distance from that country's measured human mean. Positive is "
-      "above the population.\n")
+print("\nThe same table as distance from that country's reference-sample mean. Positive is "
+      "above it.\n")
 print("| country | EN unframed | local unframed | EN framed | local framed |")
 print("|---|--:|--:|--:|--:|")
 for country, lang, code in ROWS:
@@ -327,7 +327,7 @@ def measured():
 
 print("\n## B6. Per-foundation panel means\n")
 print("All fifty conditions, then the measured human mean for each of the twenty anchored "
-      "countries, in the country order of B3. The measured rows are populations, not "
+      "countries, in the country order of B3. The measured rows are reference samples, not "
       "conditions; they are here to be read against the panel rows above.\n")
 print("| condition | Care | Equality | Proportionality | Loyalty | Authority | Purity |")
 print("|---|--:|--:|--:|--:|--:|--:|")

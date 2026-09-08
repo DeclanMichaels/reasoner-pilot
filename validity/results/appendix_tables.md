@@ -43,7 +43,7 @@ Binding composite, panel mean over eleven models, each model's five iterations a
 | Sweden | n/a | n/a | n/a | 2.769 | - | 2.282 | - |
 | United States | n/a | n/a | n/a | 2.769 | - | 3.331 | - |
 
-The same table as distance from that country's measured human mean. Positive is above the population.
+The same table as distance from that country's reference-sample mean. Positive is above it.
 
 | country | EN unframed | local unframed | EN framed | local framed |
 |---|--:|--:|--:|--:|
@@ -135,7 +135,7 @@ Human anchors, treated as constants, binding as the mean of loyalty, authority a
 
 ## B6. Per-foundation panel means
 
-All fifty conditions, then the measured human mean for each of the twenty anchored countries, in the country order of B3. The measured rows are populations, not conditions; they are here to be read against the panel rows above.
+All fifty conditions, then the measured human mean for each of the twenty anchored countries, in the country order of B3. The measured rows are reference samples, not conditions; they are here to be read against the panel rows above.
 
 | condition | Care | Equality | Proportionality | Loyalty | Authority | Purity |
 |---|--:|--:|--:|--:|--:|--:|

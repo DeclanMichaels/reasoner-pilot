@@ -62,7 +62,7 @@ The in-language framing instructions are our translations of that template, one 
 
 **Instruments.** Item wording is the official MFQ-2 and its six official translations from the Atari et al. (2023) supplement, extracted verbatim; ids, groups and scoring are cloned from the English scaffold so every language scores identically. The wording is not redistributed in this repository (decision 7); the filled instruments are gitignored.
 
-**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6 withdrawn by its host mid-collection and replaced by Kimi-K3 under its own key (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
+**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6, on the roster but returning model_not_available from the first call, replaced by Kimi-K3 under its own key before it produced any cell (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
 
 ## B2. Scoring and the unit of analysis
 
@@ -113,7 +113,7 @@ Binding composite, panel mean over eleven models, each model's five iterations a
 | Sweden | n/a | n/a | n/a | 2.769 | - | 2.282 | - |
 | United States | n/a | n/a | n/a | 2.769 | - | 3.331 | - |
 
-The same table as distance from that country's measured human mean. Positive is above the population.
+The same table as distance from that country's reference-sample mean. Positive is above it.
 
 | country | EN unframed | local unframed | EN framed | local framed |
 |---|--:|--:|--:|--:|
@@ -399,7 +399,7 @@ Every contrast in B4 carries its own leave-one-out range. The anchor comparisons
 
 ## B6. Per-foundation panel means
 
-All fifty conditions, then the measured human mean for each of the twenty anchored countries, in the country order of B3. The measured rows are populations, not conditions; they are here to be read against the panel rows above.
+All fifty conditions, then the measured human mean for each of the twenty anchored countries, in the country order of B3. The measured rows are reference samples, not conditions; they are here to be read against the panel rows above.
 
 | condition | Care | Equality | Proportionality | Loyalty | Authority | Purity |
 |---|--:|--:|--:|--:|--:|--:|
@@ -527,12 +527,12 @@ Orders **are** shared within every multi-country translated group. The in-langua
 
 `validity/build_lang_instruments.py` rebuilds the per-language instruments from the official translation files; item wording is not redistributed and the filled instruments are git-ignored. `validity/run_framed_lang.py`, `validity/run_framed.py` and `validity/run_validity.py` produced the cells; all are resumable, and every cell records its seed, presentation order, raw text and the framing instruction it was sent. `validity/fill.sh` re-invokes each runner until nothing remains, which is how the rate-limit gaps were closed.
 
-`validity/audit_inlanguage.py` emits B1a, B4, B5 and B7 as `results/appendix_b4_b5.md`, and reconciles first against an independent recomputation from the raw cells: the plain mean of the eighteen binding items against the average of three foundation means. Those agree only if each binding foundation carries the same number of items, so the gate verifies the counts it depends on. It writes `results/condition_means.json`, and `validity/audit_inlanguage_grid.py` reconciles against that file rather than against constants. `validity/build_appendix_tables.py` emits B3, B3a and B6 as `results/appendix_tables.md`. Both are spliced into this document verbatim, so a number here that disagrees with its artifact is a splice that was not re-run.
+`validity/audit_inlanguage.py` emits B1a, B4, B5 and B7 as `results/appendix_b4_b5.md`, and reconciles first against an independent recomputation from the raw cells: the plain mean of the eighteen binding items against the average of three foundation means. Those agree only if each binding foundation carries the same number of items, so the gate verifies the counts it depends on. It writes `results/condition_means.json`, and `validity/audit_inlanguage_grid.py` reconciles against that file rather than against constants. `validity/build_appendix_tables.py` emits B2a, B3, B3a, B6 and B6a as `results/appendix_tables.md`. Both are spliced into this document verbatim, so a number here that disagrees with its artifact is a splice that was not re-run.
 
 The July 2026 collection is preserved unchanged at `validity/archive-2026-07/`.
 
 ---
 
-Analysis is stdlib-reproducible from the raw runs. Responsibility for the work, and for any errors in it, is mine alone. Methodology was AI-assisted and that assistance is disclosed.
+The model-side analysis is stdlib-reproducible from the raw runs; the human reference figures are built from the sources' shared data as B9 describes. Responsibility for the work, and for any errors in it, is mine alone. Methodology was AI-assisted and that assistance is disclosed.
 
 Declan Michaels | Cross-Cultural Alignment Study | moral-os.com
