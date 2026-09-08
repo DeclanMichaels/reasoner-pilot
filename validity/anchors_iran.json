@@ -14,7 +14,7 @@
     }
   },
   "caveats": [
-    "convenience online samples (Telegram/snowball), ~68-71% female, mean age ~26-28, ~57-59% bachelor's+ -- our inference, not the authors' statement: likely less binding-endorsing than the general Iranian population",
+    "convenience online samples (Telegram/snowball), ~68-71% female, mean age ~26-28, ~57-59% bachelor's+",
     "different collection conditions than Atari et al. Table 7 anchors (cross-paper comparison)",
     "foundation and binding SDs derived 2026-09-08 from the authors' shared respondent-level files at their view-only OSF link (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed); see person_level_sd",
     "collection began one year after the Woman, Life, Freedom movement; authors note possible period effects"

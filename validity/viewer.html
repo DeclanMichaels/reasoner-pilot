@@ -7,7 +7,7 @@
      These results are exploratory and none of it was preregistered, so it should not
      turn up in a search before it has been reviewed. Remove this line to publish. -->
 <meta name="robots" content="noindex, nofollow">
-<title>Adding a country-role instruction shifts responses more than translating the questionnaire</title>
+<title>Eleven language models take the MFQ-2 in English and six translations, with and without a country to answer as</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -160,7 +160,7 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);
 
 <header class="hdr">
   <div class="eyebrow mono">CCAS &middot; reasoner-pilot &middot; validity</div>
-  <h1>Adding a country-role instruction shifts responses more than translating the questionnaire</h1>
+  <h1>Eleven language models take the MFQ-2 in English and six translations, with and without a country to answer as</h1>
   <p class="sub" id="story">Loading&hellip;</p>
   <div class="prov mono" id="prov"></div>
   <div id="banner"></div>
@@ -536,12 +536,12 @@ function panelOrder(){
           o.spearman === 0 ? " - exactly no relationship." :
           o.spearman < 0 ? " - the panel's order runs against the human one." :
           o.spearman >= 0.8 ? " - the panel tracks the human order closely." : ""}
-        The countries span <span class="mono">${fmt(o.human_spread,2)}</span> scale points in people and
+        The countries span <span class="mono">${fmt(o.human_spread,2)}</span> scale points across the reference samples and
         <span class="mono">${fmt(o.panel_spread,2)}</span> in the panel - ${
           spreadRatio < 1
             ? `the panel compresses the differences between these countries to <strong>${
-                Math.round(spreadRatio*100)}%</strong> of their real size`
-            : `the panel exaggerates the differences to <strong>${Math.round(spreadRatio*100)}%</strong> of their real size`
+                Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
+            : `the panel exaggerates the differences to <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
         }. With ${n} countries a rank correlation can take only a handful of values and carries
         almost no precision; read it as direction, not strength.${
           Math.abs(spreadRatio - 1) < 0.15
