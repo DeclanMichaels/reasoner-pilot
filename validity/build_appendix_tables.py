@@ -236,8 +236,8 @@ print("\nEvery recomputed R-squared is within %.4f of the published one; the rec
       "write that caution should be practiced when comparing Purity group-level means; they trace "
       "most of it to unique intercepts in Argentina and Chile and to one item. Purity is one third "
       "of the binding composite and carries its largest framing shift, so every composite comparison "
-      "in this appendix inherits that caution. B6 gives each foundation separately, and the paper "
-      "reports the Loyalty and Authority shifts on their own.\n" % (_maxdiff, float(_over[0]["pct_noninvariant_intercepts"])))
+      "in this appendix inherits that caution. B6 gives each foundation separately, and the report "
+      "gives the Loyalty and Authority shifts on their own.\n" % (_maxdiff, float(_over[0]["pct_noninvariant_intercepts"])))
 print("## B3. Where the panel lands, by country\n")
 print("Binding composite, panel mean over eleven models, each model's five iterations "
       "averaged first. The English unframed column is one condition and repeats down the "
@@ -305,7 +305,7 @@ print("The human SE column is SD over root n from the per-country dispersion fil
       "stratified recruitment does not by itself justify a design-based population SE. It is a "
       "different quantity from the model-resampling interval in B3a, which "
       "describes panel composition, and neither one removes selection in who was sampled. Iran's "
-      "comes from the authors' shared respondent-level files, sample 2, %d respondents, over "
+      "comes from Hazrati et al.'s shared respondent-level files, sample 2, %d respondents, over "
       "their own composite scores, binding SD %.3f.\n" % (_ses[0], _ses[-1],
       json.load(open(VDIR / "anchors_iran.json"))["person_level_sd"]["n_binding"]["s2"],
       json.load(open(VDIR / "anchors_iran.json"))["person_level_sd"]["binding"]["s2"]))

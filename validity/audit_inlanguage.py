@@ -440,7 +440,7 @@ _eq_lang = sum(_per_lang.values()) / len(_per_lang)
 _all_pairs = sum(C[("framing_local", c, k)]["diff"] for c, k in PAIRS) / len(PAIRS)
 _no_esmor = [(c, k) for c, k in PAIRS if not (c == "ar" and k == "Morocco")]
 _eq_pair = sum(C[("framing_local", c, k)]["diff"] for c, k in _no_esmor) / len(_no_esmor)
-L.append("**The average framing shift, and how it is weighted.** The paper's %.2f is the local "
+L.append("**The average framing shift, and how it is weighted.** The report's %.2f is the local "
          "framing effect averaged within each language over its countries, with Morocco counted "
          "under Spanish and not Arabic (decision 18), and then averaged across the six languages with equal "
          "weight: %s. Weighting every (language, country) pair equally instead gives %.3f over the "
@@ -475,7 +475,7 @@ _ls = _summ(_lang_signed, {m: _lang_signed([m]) for m in _models}, "C|aggregate|
 _la = _summ(_lang_abs, None, "C|aggregate|language_abs")
 _pc = {}
 for m in _models: _pc[_prov[m]] = _pc.get(_prov[m], 0) + 1
-L.append("The same model-level summaries as the rows above, for the three averages the paper quotes. "
+L.append("The same model-level summaries as the rows above, for the three averages the report quotes. "
          "The six-language framing average, %+.3f: %d of %d models positive, model-resampling interval "
          "[%+.3f, %+.3f], leave-one-model-out %+.3f to %+.3f, leave-one-provider-out %+.3f to %+.3f. "
          "The signed language average, %+.3f: %d up, %d down, interval [%+.3f, %+.3f], leave-one-model-out "
@@ -505,8 +505,8 @@ L.append("**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anc
          "composition and restricted variation in religiosity and political orientation. Collection "
          "began a year after the Woman, Life, Freedom movement "
          "and the authors note possible period effects. Iran is the only Farsi country, so it "
-         "carries that group throughout. Respondent-level data for both samples are shared by the "
-         "authors on OSF.\n" % _s2)
+         "carries that group throughout. Respondent-level data for both samples are shared by "
+         "Hazrati et al. on OSF.\n" % _s2)
 _alts = [_b2, _b1, _pool]
 _rank = ("largest" if _b2 == max(_alts) else "smallest" if _b2 == min(_alts) else "middle")
 _conseq = ("smallest" if _b2 == max(_alts) else "largest" if _b2 == min(_alts) else "middle")
