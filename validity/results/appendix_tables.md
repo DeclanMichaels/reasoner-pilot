@@ -247,3 +247,63 @@ Restricting the framed set by its distance from the top of the scale, against th
 | Japanese | -0.10 | +0.12 | -0.18 | -0.26 | -0.08 | +0.06 | -0.09 | 0.26 |
 | Farsi | -0.04 | +0.22 | -0.01 | -0.10 | -0.07 | +0.29 | +0.04 | 0.22 |
 | Russian | +0.00 | +0.11 | +0.03 | -0.03 | +0.01 | +0.08 | +0.02 | 0.11 |
+
+**A system prompt without a country.** The four English unframed variants separate the presence of a system prompt from its country content. Between-model SD is 0.28 with no system prompt and 0.28 with a self-report prompt on the official file, 0.37 and 0.31 on our transcription, against a median of 0.171 across the 39 framed conditions. A country-free prompt moves the spread by at most 0.06; the framing conditions sit 0.16 below the unframed median.
+
+A floor would work the other way. Unframed English Purity sits at 1.97 on a scale that starts at 1 and Purity has the largest unframed between-model spread of any foundation, a median of 0.449, so a floor compressing it would shrink the unframed spread, which is the larger one, not the framed.
+
+**Framing by language, on the binding composite and on Loyalty and Authority alone.** In-language framed minus in-language unframed, panel means, averaged over the language's countries with Morocco under Spanish (decision 18); the last row averages the six languages with equal weight. The Loyalty-Authority column leaves out Purity, the foundation whose intercepts Atari et al. flag (B2a).
+
+| language | countries | binding | Loyalty-Authority |
+|---|--:|--:|--:|
+| Arabic | 3 | +1.592 | +1.448 |
+| Spanish | 6 | +1.136 | +1.072 |
+| French | 3 | +0.126 | +0.142 |
+| Japanese | 1 | +0.759 | +0.682 |
+| Farsi | 1 | +1.505 | +1.312 |
+| Russian | 1 | +1.260 | +1.235 |
+| six languages, equal weight | 15 | +1.063 | +0.982 |
+
+**The Arabic unframed shift, item by item.** Arabic unframed minus English unframed, panel mean per item, with the number of the eleven models whose own mean moved up. Items are named by foundation and position in the official key; wording is not reproduced (decision 7).
+
+| item | shift | models up (of 11) |
+|---|--:|--:|
+| care_1 | +0.04 | 3 |
+| care_2 | +0.02 | 3 |
+| care_3 | +0.04 | 3 |
+| care_4 | +0.02 | 3 |
+| care_5 | +0.02 | 3 |
+| care_6 | -0.02 | 4 |
+| equality_1 | +0.45 | 9 |
+| equality_2 | +0.47 | 8 |
+| equality_3 | +0.42 | 9 |
+| equality_4 | +0.22 | 6 |
+| equality_5 | +0.18 | 8 |
+| equality_6 | +0.24 | 7 |
+| proportionality_1 | +0.20 | 7 |
+| proportionality_2 | +0.05 | 5 |
+| proportionality_3 | +0.00 | 3 |
+| proportionality_4 | -0.11 | 3 |
+| proportionality_5 | +0.09 | 4 |
+| proportionality_6 | +0.13 | 6 |
+| loyalty_1 | +0.36 | 8 |
+| loyalty_2 | +0.07 | 6 |
+| loyalty_3 | +0.40 | 9 |
+| loyalty_4 | +0.18 | 4 |
+| loyalty_5 | +0.22 | 8 |
+| loyalty_6 | +0.13 | 6 |
+| authority_1 | +0.13 | 5 |
+| authority_2 | +0.11 | 4 |
+| authority_3 | +0.40 | 9 |
+| authority_4 | +0.11 | 4 |
+| authority_5 | +0.27 | 7 |
+| authority_6 | +0.18 | 6 |
+| purity_1 | +0.40 | 7 |
+| purity_2 | +0.82 | 10 |
+| purity_3 | +0.67 | 11 |
+| purity_4 | +0.38 | 9 |
+| purity_5 | +0.71 | 10 |
+| purity_6 | +0.49 | 9 |
+
+13 of 36 items move by more than 0.25 and 3 by more than 0.5 (purity_2, purity_3, purity_5); 18 of the 18 binding items move up, and so do all six Equality items, by +0.18 to +0.47; the six Care items sit within 0.04 of their English values.
+

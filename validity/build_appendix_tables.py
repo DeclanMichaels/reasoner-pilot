@@ -451,3 +451,68 @@ for code in ["ar", "es", "fr", "ja", "fa", "ru"]:
     _wabs = mean([abs(mean(RUNS[k][m]) - mean(RUNS["en_neutral"][m])) for m in RUNS[k]])
     print("| %s | %s | %+.2f | %.2f |" % (LANG_NAME[code], " | ".join("%+.2f" % d[g] for g in FOUND),
                                           sum(d[g] for g in BIND) / 3, _wabs))
+
+# ---- a system prompt without a country, and the spread (#73)
+_sp = {k: sd(k) for k in ("en_neutral", "en_baseline_official_selfreport",
+                          "en_baseline_ours_nosystem", "en_baseline_ours_selfreport")}
+_fmed = median([sd(k) for k in FRM]); _umed = median([sd(k) for k in UNF])
+_spdrop = max(_sp["en_neutral"] - _sp["en_baseline_official_selfreport"],
+              _sp["en_baseline_ours_nosystem"] - _sp["en_baseline_ours_selfreport"])
+print("\n**A system prompt without a country.** The four English unframed variants separate the presence "
+      "of a system prompt from its country content. Between-model SD is %.2f with no system prompt and "
+      "%.2f with a self-report prompt on the official file, %.2f and %.2f on our transcription, against a "
+      "median of %.3f across the 39 framed conditions. A country-free prompt moves the spread by at most "
+      "%.2f; the framing conditions sit %.2f below the unframed median.\n" % (
+      _sp["en_neutral"], _sp["en_baseline_official_selfreport"], _sp["en_baseline_ours_nosystem"],
+      _sp["en_baseline_ours_selfreport"], _fmed, _spdrop, _umed - _fmed))
+
+# ---- floor (#78)
+_pur_en = mean([F["en_neutral"][m]["purity"] for m in F["en_neutral"]])
+_pur_usd = median([fsd(k, "purity") for k in UNF])
+print("A floor would work the other way. Unframed English Purity sits at %.2f on a scale that starts at 1 "
+      "and Purity has the largest unframed between-model spread of any foundation, a median of %.3f, so "
+      "a floor compressing it would shrink the unframed spread, which is the larger one, not the framed.\n"
+      % (_pur_en, _pur_usd))
+
+# ---- framing by language, binding and Loyalty-Authority (#79)
+_groups = {}
+for _country, _lang, _code in ROWS:
+    if _code and (_code + "_framed_" + _country) in C:
+        _groups.setdefault(_code, []).append(_country)
+def _pf(k, gs):
+    return mean([mean([F[k][m][g] for g in gs]) for m in F[k]])
+print("**Framing by language, on the binding composite and on Loyalty and Authority alone.** "
+      "In-language framed minus in-language unframed, panel means, averaged over the language's "
+      "countries with Morocco under Spanish (decision 18); the last row averages the six languages "
+      "with equal weight. The Loyalty-Authority column leaves out Purity, the foundation whose "
+      "intercepts Atari et al. flag (B2a).\n")
+print("| language | countries | binding | Loyalty-Authority |")
+print("|---|--:|--:|--:|")
+_rb, _rla = [], []
+for code in ["ar", "es", "fr", "ja", "fa", "ru"]:
+    cs = _groups[code]; nk = code + "_neutral"
+    b = mean([cell(code + "_framed_" + c) - cell(nk) for c in cs])
+    la = mean([_pf(code + "_framed_" + c, ["loyalty", "authority"]) - _pf(nk, ["loyalty", "authority"]) for c in cs])
+    _rb.append(b); _rla.append(la)
+    print("| %s | %d | %+.3f | %+.3f |" % (LANG_NAME[code], len(cs), b, la))
+print("| six languages, equal weight | %d | %+.3f | %+.3f |" % (sum(len(_groups[c]) for c in _groups), mean(_rb), mean(_rla)))
+
+# ---- the Arabic unframed shift, item by item (#80)
+_ia, _ie = ITEMS["ar_neutral"], ITEMS["en_neutral"]
+_ms = sorted(set(_ia) & set(_ie))
+_iids = sorted(next(iter(_ia.values())), key=lambda i: (FOUND.index(i.rsplit("_", 1)[0]), int(i.rsplit("_", 1)[1])))
+_shift = {i: mean([_ia[m][i] for m in _ms]) - mean([_ie[m][i] for m in _ms]) for i in _iids}
+_up = {i: sum(1 for m in _ms if _ia[m][i] > _ie[m][i]) for i in _iids}
+print("\n**The Arabic unframed shift, item by item.** Arabic unframed minus English unframed, panel mean "
+      "per item, with the number of the eleven models whose own mean moved up. Items are named by "
+      "foundation and position in the official key; wording is not reproduced (decision 7).\n")
+print("| item | shift | models up (of %d) |" % len(_ms))
+print("|---|--:|--:|")
+for i in _iids:
+    print("| %s | %+.2f | %d |" % (i, _shift[i], _up[i]))
+_n25 = sum(1 for v in _shift.values() if abs(v) > 0.25); _n50 = [i for i, v in _shift.items() if abs(v) > 0.5]
+_bind_up = sum(1 for i in _iids if i.rsplit("_", 1)[0] in BIND and _shift[i] > 0)
+_eq = [_shift[i] for i in _iids if i.startswith("equality_")]; _care = max(abs(_shift[i]) for i in _iids if i.startswith("care_"))
+print("\n%d of 36 items move by more than 0.25 and %d by more than 0.5 (%s); %d of the 18 binding items "
+      "move up, and so do all six Equality items, by %+.2f to %+.2f; the six Care items sit within %.2f "
+      "of their English values.\n" % (_n25, len(_n50), ", ".join(_n50), _bind_up, min(_eq), max(_eq), _care))

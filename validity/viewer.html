@@ -531,19 +531,21 @@ function panelOrder(){
         <strong>partial panel</strong> - as few as ${minN} of ${MAXN} models have landed in these
         cells. Models differ from one another more than these countries do, so the order can still change
         as the rest arrive. Treat it as provisional.</p>` : ""}
-      <p class="note">Rank correlation with the human ordering:
+      <p class="note">${n > 3 ? `Rank correlation with the human ordering:
         <strong class="mono">&rho; = ${o.spearman.toFixed(2)}</strong>${
           o.spearman === 0 ? " - exactly no relationship." :
           o.spearman < 0 ? " - the panel's order runs against the human one." :
-          o.spearman >= 0.8 ? " - the panel tracks the human order closely." : ""}
+          o.spearman >= 0.8 ? " - the panel tracks the human order closely." : ""}` :
+        `With three countries a rank correlation can take only four values, so none is shown. The panel's
+        order is ${o.panel_order.map(esc).join(", ")}; the reference samples' order is ${o.human_order.map(esc).join(", ")}.`}
         The countries span <span class="mono">${fmt(o.human_spread,2)}</span> scale points across the reference samples and
         <span class="mono">${fmt(o.panel_spread,2)}</span> in the panel - ${
           spreadRatio < 1
             ? `the panel compresses the differences between these countries to <strong>${
                 Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
             : `the panel exaggerates the differences to <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
-        }. With ${n} countries a rank correlation can take only a handful of values and carries
-        almost no precision; read it as direction, not strength.${
+        }.${n > 3 ? ` With ${n} countries a rank correlation can take only a handful of values and carries
+        little precision; read it as direction, not strength.` : ""}${
           Math.abs(spreadRatio - 1) < 0.15
             ? ` The two spreads are within ${Math.round(Math.abs(spreadRatio-1)*100)}% of each other,
                 which is not a difference this design resolves.` : ""}</p>`;
