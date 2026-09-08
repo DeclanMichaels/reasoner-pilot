@@ -51,12 +51,10 @@ Nothing is queued for an agent and nothing is open. What remains is yours:
 1. **Review.** Everything pushed since `303e79e` on 2026-09-07 - the regenerated appendix, the
    paper corrections, the rebuilt contrast set, decision 15 - has had no independent adversarial
    review. Astra reviewed the state at `8336de4`; the state now is materially different.
-2. **The Iran anchor.** Sample 2 (3.333, in use, the largest of the three, so the reported
-   overshoot is the smallest) against the n-weighted pool (3.304). B4 shows all three.
-3. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
+2. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
    responses more than questionnaire language in an eleven-model panel"; the viewer still says
    "In-language society framing - MFQ-2 binding composite".
-4. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
+3. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
 
 Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
 (the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker
@@ -76,7 +74,11 @@ generation timestamp, which makes its pin detect re-runs rather than data change
 
 ## Unresolved - needs a decision
 
-Items 2 to 4 under Next session.
+Items 2 and 3 under Next session. **Iran's anchor is settled**, Declan 2026-09-07: Hazrati sample 2
+at 3.333, kept, marked `[*]` wherever it enters, disclosed in B4 with the sensitivity across all
+three anchors the source offers. It was listed here as open through 2026-09-08 by mistake; the
+reference-file rule that appeared to bar it turned out to bar pooling into the reference file, which
+was never done.
 
 ## Known-broken and known-strange
 
