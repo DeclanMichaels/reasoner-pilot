@@ -40,7 +40,7 @@ if _ref.exists():
         _c = _CSV_NAME.get(_r["country"].strip(), _r["country"].strip())
         ANCH_FOUND.setdefault(_c, {f: round(float(_r[f]), 4) for f in FOUND})
         ANCH_N.setdefault(_c, int(_r["n"]))
-        ANCH.setdefault(_c, round(sum(float(_r[b]) for b in BIND) / 3, 3))
+        ANCH.setdefault(_c, sum(float(_r[b]) for b in BIND) / 3)   # full precision; rounded for display only
         ANCH_SRC.setdefault(_c, "Atari et al. 2023, Study 2")
 else:
     sys.exit(f"missing {_ref}; copy it from reasoner-study/instruments/MFQ-PVQ/mfq/reference/")

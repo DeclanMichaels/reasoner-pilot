@@ -48,25 +48,25 @@ The same table as distance from that country's reference-sample mean. Positive i
 | country | EN unframed | local unframed | EN framed | local framed |
 |---|--:|--:|--:|--:|
 | Egypt | -1.498 | -1.163 | +0.338 | +0.337 |
-| Saudi Arabia | -1.314 | -0.979 | +0.650 | +0.674 |
-| United Arab Emirates | -1.123 | -0.788 | +0.737 | +0.834 |
-| Argentina | -0.514 | -0.503 | +0.154 | +0.066 |
-| Chile | -0.451 | -0.440 | +0.434 | +0.356 |
+| Saudi Arabia | -1.315 | -0.979 | +0.650 | +0.673 |
+| United Arab Emirates | -1.123 | -0.788 | +0.738 | +0.835 |
+| Argentina | -0.515 | -0.504 | +0.154 | +0.066 |
+| Chile | -0.451 | -0.440 | +0.433 | +0.356 |
 | Colombia | -0.728 | -0.717 | +0.603 | +0.499 |
 | Mexico | -0.743 | -0.732 | +0.629 | +0.435 |
 | Morocco [d18] | -1.245 | -1.234 (Spanish arm) | +0.556 | +0.575 (Spanish arm) |
 | Peru | -0.745 | -0.734 | +0.619 | +0.524 |
 | Belgium | -0.675 | -0.667 | -0.822 | -0.647 |
-| France | -0.841 | -0.833 | -0.885 | -0.776 |
+| France | -0.841 | -0.833 | -0.885 | -0.775 |
 | Switzerland | -0.580 | -0.572 | -0.286 | -0.273 |
 | Japan | +0.117 | +0.024 | +1.016 | +0.782 |
 | Iran [*] | -0.564 | -0.524 | +1.244 | +0.981 |
-| Russia | -0.830 | -0.811 | +0.518 | +0.448 |
+| Russia | -0.830 | -0.811 | +0.519 | +0.449 |
 | Ireland | -0.327 | - | -0.002 | - |
-| Kenya | -1.098 | - | +0.565 | - |
-| New Zealand | -0.325 | - | -0.216 | - |
-| Nigeria | -1.269 | - | +0.477 | - |
-| South Africa | -0.980 | - | +0.186 | - |
+| Kenya | -1.099 | - | +0.565 | - |
+| New Zealand | -0.326 | - | -0.217 | - |
+| Nigeria | -1.270 | - | +0.477 | - |
+| South Africa | -0.980 | - | +0.187 | - |
 
 Each of those nineteen means rests on 205 to 207 respondents for its country, 3,902 in all, collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within each nation on age, gender and political orientation. Education was not a stratification variable, and the authors state their results rest on "a subset of these populations who were educated enough to complete the surveys online", noting that people from traditional, small-scale communities are absent. Every overshoot in this appendix is a distance from those samples' means.
 
@@ -226,7 +226,7 @@ The between-model spread in B3a is on the binding composite. This section takes 
 
 Endpoint use, the share of item ratings at 1 or 5, panel mean and then the median over conditions: 0.234 unframed, 0.267 framed. Item-level between-model spread, the same statistic on each of the 36 items and then the median: 0.425 unframed, 0.299 framed.
 
-Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones, and 0.129 over all 550 model-by-condition cells; the between-model spread has a median of 0.188 over all 50 conditions. A between-model spread of five-run means carries run noise of roughly that over root five, 0.083 and 0.051, so run noise contributes less to the framed between-model spread, not more. Whatever default sampling temperature each provider applied, the same default is assumed to have applied to a model's framed and unframed conditions, which were collected in one window.
+Within a model, the five-run spread of the binding composite has a median of 0.185 in the unframed conditions and 0.114 in the framed ones, and 0.129 over all 550 model-by-condition cells; the between-model spread has a median of 0.188 over all 50 conditions. Taking run noise out condition by condition, under independence of a model's runs, by subtracting the mean within-model variance over five from the between-model variance of the five-run means: the noise-corrected between-model SD has a median of 0.312 in the unframed conditions and 0.158 in the framed ones, run noise is a median 12 and 15 percent of the between-model variance, and 37 of 39 framed conditions sit below every unframed one on the corrected SD as well. Whatever default sampling temperature each provider applied, the same default is assumed to have applied to a model's framed and unframed conditions, which were collected in one window.
 
 Restricting the framed set by its distance from the top of the scale, against the same 7 unframed conditions, whose binding means run 2.68 to 3.10:
 
@@ -237,13 +237,13 @@ Restricting the framed set by its distance from the top of the scale, against th
 | 4.0 | 19 | 18 | 0.172 |
 | 3.5 | 13 | 13 | 0.180 |
 
-**The unframed language contrasts by foundation.** Each translated unframed condition minus the English unframed one, panel means, so the composite rows of B4 can be read in their parts.
+**The unframed language contrasts by foundation.** Each translated unframed condition minus the English unframed one, panel means, so the composite rows of B4 can be read in their parts. The last column is the mean over models of the absolute within-model change in the binding composite, the movement a panel-level shift near zero can hide.
 
-| language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding |
-|---|--:|--:|--:|--:|--:|--:|--:|
-| Arabic | +0.02 | +0.33 | +0.06 | +0.23 | +0.20 | +0.58 | +0.34 |
-| Spanish | -0.14 | +0.01 | -0.11 | -0.12 | +0.06 | +0.09 | +0.01 |
-| French | -0.28 | +0.24 | -0.21 | -0.12 | -0.12 | +0.26 | +0.01 |
-| Japanese | -0.10 | +0.12 | -0.18 | -0.26 | -0.08 | +0.06 | -0.09 |
-| Farsi | -0.04 | +0.22 | -0.01 | -0.10 | -0.07 | +0.29 | +0.04 |
-| Russian | +0.00 | +0.11 | +0.03 | -0.03 | +0.01 | +0.08 | +0.02 |
+| language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding | mean abs. within-model binding change |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|
+| Arabic | +0.02 | +0.33 | +0.06 | +0.23 | +0.20 | +0.58 | +0.34 | 0.34 |
+| Spanish | -0.14 | +0.01 | -0.11 | -0.12 | +0.06 | +0.09 | +0.01 | 0.16 |
+| French | -0.28 | +0.24 | -0.21 | -0.12 | -0.12 | +0.26 | +0.01 | 0.08 |
+| Japanese | -0.10 | +0.12 | -0.18 | -0.26 | -0.08 | +0.06 | -0.09 | 0.26 |
+| Farsi | -0.04 | +0.22 | -0.01 | -0.10 | -0.07 | +0.29 | +0.04 | 0.22 |
+| Russian | +0.00 | +0.11 | +0.03 | -0.03 | +0.01 | +0.08 | +0.02 | 0.11 |

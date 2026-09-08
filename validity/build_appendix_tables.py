@@ -43,7 +43,7 @@ def anchors():
     with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
         for r in csv.DictReader(fh):
             c = REF_NAME.get(r["country"], r["country"])
-            a[c] = round(sum(float(r[g]) for g in BIND) / 3, 3)
+            a[c] = sum(float(r[g]) for g in BIND) / 3   # full precision; rounded for display only
             src[c] = "Atari 2023 Study 2"
             ANCH_N[c] = int(r["n"])
     ir = json.load(open(VDIR / "anchors_iran.json"))
@@ -405,13 +405,30 @@ assert set(C) <= set(RUNS), sorted(set(C) - set(RUNS))
 _wa = median([psd(v) for k in C for v in RUNS[k].values() if len(v) > 1])
 _na = sum(len(RUNS[k]) for k in C)
 _ba = median([sd(k) for k in C])
+def _svar(v):
+    m = mean(v)
+    return sum((x - m) ** 2 for x in v) / (len(v) - 1)
+def _decomp(k):
+    """between-model variance of the five-run means, the run-noise share of it (mean within-model
+    variance over five, assuming independent runs), and the noise-corrected between-model SD."""
+    vb = sd(k) ** 2
+    vw = mean([_svar(v) for v in RUNS[k].values() if len(v) > 1]) / 5
+    return vb, vw, max(vb - vw, 0.0) ** 0.5
+_du = [_decomp(k) for k in UNF]; _df = [_decomp(k) for k in FRM]
+_minc = min(x[2] for x in _du)
 print("Within a model, the five-run spread of the binding composite has a median of %.3f in the "
       "unframed conditions and %.3f in the framed ones, and %.3f over all %d model-by-condition cells; "
-      "the between-model spread has a median of %.3f over all %d conditions. A between-model spread of five-run means "
-      "carries run noise of roughly that over root five, %.3f and %.3f, so run noise contributes "
-      "less to the framed between-model spread, not more. Whatever default sampling temperature each "
-      "provider applied, the same default is assumed to have applied to a model's framed and unframed "
-      "conditions, which were collected in one window.\n" % (_wu, _wf, _wa, _na, _ba, len(C), _wu / 5 ** 0.5, _wf / 5 ** 0.5))
+      "the between-model spread has a median of %.3f over all %d conditions. Taking run noise out "
+      "condition by condition, under independence of a model's runs, by subtracting the mean within-model "
+      "variance over five from the between-model variance of the five-run means: the noise-corrected "
+      "between-model SD has a median of %.3f in the unframed conditions and %.3f in the framed ones, run "
+      "noise is a median %.0f and %.0f percent of the between-model variance, and %d of %d framed "
+      "conditions sit below every unframed one on the corrected SD as well. Whatever default sampling "
+      "temperature each provider applied, the same default is assumed to have applied to a model's "
+      "framed and unframed conditions, which were collected in one window.\n" % (
+      _wu, _wf, _wa, _na, _ba, len(C), median([x[2] for x in _du]), median([x[2] for x in _df]),
+      100 * median([x[1] / x[0] for x in _du]), 100 * median([x[1] / x[0] for x in _df]),
+      sum(1 for x in _df if x[2] < _minc), len(FRM)))
 print("Restricting the framed set by its distance from the top of the scale, against the same "
       "%d unframed conditions, whose binding means run %.2f to %.2f:\n"
       % (len(UNF), min(cell(k) for k in UNF), max(cell(k) for k in UNF)))
@@ -423,11 +440,14 @@ for thr in [5.0, 4.5, 4.0, 3.5]:
     print("| %.1f | %d | %d | %.3f |" % (thr, len(sub_), sum(sd(k) < _minu for k in sub_), median([sd(k) for k in sub_])))
 
 print("\n**The unframed language contrasts by foundation.** Each translated unframed condition minus "
-      "the English unframed one, panel means, so the composite rows of B4 can be read in their parts.\n")
-print("| language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding |")
-print("|---|--:|--:|--:|--:|--:|--:|--:|")
+      "the English unframed one, panel means, so the composite rows of B4 can be read in their parts. "
+      "The last column is the mean over models of the absolute within-model change in the binding "
+      "composite, the movement a panel-level shift near zero can hide.\n")
+print("| language | Care | Equality | Proportionality | Loyalty | Authority | Purity | binding | mean abs. within-model binding change |")
+print("|---|--:|--:|--:|--:|--:|--:|--:|--:|")
 for code in ["ar", "es", "fr", "ja", "fa", "ru"]:
     k = code + "_neutral"
     d = {g: mean([F[k][m][g] for m in F[k]]) - mean([F["en_neutral"][m][g] for m in F["en_neutral"]]) for g in FOUND}
-    print("| %s | %s | %+.2f |" % (LANG_NAME[code], " | ".join("%+.2f" % d[g] for g in FOUND),
-                                   sum(d[g] for g in BIND) / 3))
+    _wabs = mean([abs(mean(RUNS[k][m]) - mean(RUNS["en_neutral"][m])) for m in RUNS[k]])
+    print("| %s | %s | %+.2f | %.2f |" % (LANG_NAME[code], " | ".join("%+.2f" % d[g] for g in FOUND),
+                                          sum(d[g] for g in BIND) / 3, _wabs))

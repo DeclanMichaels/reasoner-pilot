@@ -4,7 +4,7 @@
 
 ## Summary
 
-Tell this panel of eleven models to answer a moral questionnaire as a typical person living in Egypt and its binding composite rises by 1.84 points. Hand it the same questionnaire in Arabic with no instruction about who to be and it rises 0.34, all eleven models moving the same way; that is the largest of the language shifts, and the other five move the panel by less than a tenth of a point. Across the six languages, country framing raised the composite by 1.06 points on average, each language weighted equally over its countries; unframed translation moved it 0.05 on average, and 0.08 as the mean of the six languages' absolute panel-level shifts. The two interact: French moves the Belgian-framed panel by 0.18 and the unframed panel by 0.01, so a language effect depends on whether a country is named. Under framing, though, both the questionnaire and the instruction change language together, so that 0.18 is not the questionnaire's translation alone; only the unframed contrasts isolate it. For scale, the measured country means span 1.62 points, so the average framing shift is about 66 percent as large as the entire observed range between reference samples. The language shift is about 3 percent of that range as a signed mean, or 5 percent ignoring direction.
+Tell this panel of eleven models to answer a moral questionnaire as a typical person living in Egypt and its binding composite rises by 1.84 points. Hand it the same questionnaire in Arabic with no instruction about who to be and it rises 0.34, all eleven models moving the same way; that is the largest of the language shifts, and the other five move the panel by less than a tenth of a point. Across the six languages, country framing raised the composite by 1.06 points on average, each language weighted equally over its countries; unframed translation moved it 0.05 on average, and 0.08 as the mean of the six languages' absolute panel-level shifts; within models the mean absolute shift runs from 0.09 in French to 0.34 in Arabic (appendix B6a). The two interact: French moves the Belgian-framed panel by 0.18 and the unframed panel by 0.01, so a language effect depends on whether a country is named. Under framing, though, both the questionnaire and the instruction change language together, so that 0.18 is not the questionnaire's translation alone; only the unframed contrasts isolate it. For scale, the measured country means span 1.62 points, so the average framing shift is about 66 percent as large as the entire observed range between reference samples. The language shift is about 3 percent of that range as a signed mean, or 5 percent ignoring direction.
 
 Being told who to be also brings the eleven models' answers closer together. Across conditions the eleven spread about half as widely under a country framing as they do without one, and thirty-seven of the thirty-nine framed conditions are tighter than every unframed condition.
 
@@ -73,21 +73,21 @@ Distance from each country's measured mean, English framing, which every country
 | France | 3.610 | 2.725 | -0.885 |
 | Belgium | 3.444 | 2.622 | -0.822 |
 | Switzerland | 3.349 | 3.063 | -0.286 |
-| New Zealand | 3.094 | 2.878 | -0.216 |
+| New Zealand | 3.094 | 2.878 | -0.217 |
 | Ireland | 3.096 | 3.094 | -0.002 |
 | Argentina | 3.283 | 3.437 | +0.154 |
-| South Africa | 3.749 | 3.935 | +0.186 |
+| South Africa | 3.749 | 3.935 | +0.187 |
 | Egypt | 4.267 | 4.605 | +0.338 |
-| Chile | 3.220 | 3.654 | +0.434 |
+| Chile | 3.220 | 3.654 | +0.433 |
 | Nigeria | 4.038 | 4.515 | +0.477 |
-| Russia | 3.599 | 4.117 | +0.518 |
+| Russia | 3.599 | 4.117 | +0.519 |
 | Morocco | 4.014 | 4.570 | +0.556 |
 | Kenya | 3.867 | 4.432 | +0.565 |
 | Colombia | 3.497 | 4.100 | +0.603 |
 | Peru | 3.514 | 4.133 | +0.619 |
 | Mexico | 3.512 | 4.141 | +0.629 |
 | Saudi Arabia | 4.083 | 4.733 | +0.650 |
-| United Arab Emirates | 3.892 | 4.629 | +0.737 |
+| United Arab Emirates | 3.892 | 4.629 | +0.738 |
 | Japan | 2.652 | 3.668 | +1.016 |
 | Iran † | 3.333 | 4.577 | +1.244 |
 
