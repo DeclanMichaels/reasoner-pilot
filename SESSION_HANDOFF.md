@@ -11,10 +11,10 @@ This repository is public, so this file is public. It is written knowing that.
   is 30 commits since `303e79e`, `8336de4` to `9d0d099`.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 17 committed-only outputs verified.
-- **Five adversarial rounds on the in-language paper and appendix are adjudicated and worked
+- **Six adversarial rounds on the in-language paper and appendix are adjudicated and worked
   through**, all in `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second
-  (eight), DeepSeek's (folded into those eight) and Gemini's (three). Thirty-three issues have
-  existed; none is open.
+  (eight), DeepSeek's (folded into those eight), Gemini's (three) and Kimi's (six). Thirty-nine
+  issues have existed; none is open.
 - **The paper is retitled** and every number in it recomputes from the cells. **Every data
   section of the appendix is generated**; the splice map is in `docs/DEVELOPMENT_NOTES.md`. B4 is
   a contrast set over the full grid with intervals, sign counts and leave-one-out ranges and no
@@ -47,14 +47,17 @@ ruling that the authors' shared respondent-level data may be used; #22 was Grok'
 
 Nothing is queued for an agent. What remains is yours:
 
-1. **Review.** Four families have read; Gemini read the state after Astra's second round was
-   worked. Every family raised the same four things - panel composition, temperature, five runs,
-   the framing prompt's two components - and the documents now state each. What remains unread is
-   the state after Gemini's three fixes.
-2. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
+1. **Review.** Five families have read; Kimi read the state after Gemini's round was worked.
+   Every family raised the same four things - panel composition, temperature, five runs, the
+   framing prompt's two components - and the documents now state each. What remains unread is
+   the state after Kimi's six fixes.
+2. **The title.** Kimi proposes "adding a country-role instruction shifts responses more than
+   translating the questionnaire", on the ground that framing is an added instruction where there
+   was none. The methods and B1a now say that; whether the title follows is yours.
+3. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
    responses more than questionnaire language in an eleven-model panel"; the viewer still says
    "In-language society framing - MFQ-2 binding composite".
-3. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
+4. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
 
 Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
 (the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker
@@ -98,7 +101,10 @@ anchor, settled on the 7th, was carried as open until the 8th (decision 16). B1a
 conditions carried a self-report system prompt when they carried none, and the Iran caveat was
 credited to the authors when it was ours; both were the 7th's writing and Astra's second round found
 them (#23, #25). Striking B10 broke the emitter for one commit (`0cb58e0` fixes it), and the Iran
-re-attribution reached only the paper on the first pass (`8ef77a0`). Each is in its commit message.
+re-attribution reached only the paper on the first pass (`8ef77a0`). The #21 correction put a
+d-table row into the language table by replacing the first line beginning `| Farsi |`, and two
+reviewers who flagged it were told it was well-formed after the wrong table was checked; Kimi's
+round caught it. The E2 sign was quoted backwards for one commit. Each is in its commit message.
 
 ## Loose ends
 

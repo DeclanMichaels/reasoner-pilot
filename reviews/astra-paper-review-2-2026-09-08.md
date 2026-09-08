@@ -21,7 +21,7 @@ their counts, and the endpoint and item-level summaries, which corroborates #20.
 | 3 | "Nineteen versus one" elevates interval exclusion to a finding; "did not resolve a direction" is a decision rule; SD over root n is unqualified | Verified. Summary reports signed distances; interval sentence describes what was calculated; SE named as an independent-respondent approximation | #30 |
 | 4 | B2a promises item-level noninvariance in the R script's output; R-squared called metric and scalar invariance | Verified: the script prints six pairs only. Promise removed; figures described as alignment diagnostics | #26 |
 | 5 | The paper credits Hazrati et al. with stating their sample is likely less binding-endorsing | **Verified, this workflow's error.** The sentence is our inference in `anchors_iran.json`; the preprint discusses composition and restricted variation. Re-attributed in the paper, B4, the viewer and the anchor file | #25 |
-| 6 | Farsi row malformed | **Refuted.** `\| Farsi \| +1.22 \| Iran only \|` mirrors the Japanese row; the third column is the country range | none |
+| 6 | Farsi row malformed | **Verified, and wrongly refuted here on 2026-09-08.** The malformed row is in the language table, not the d table that was checked; #21's correction had replaced the first `\| Farsi \|` line in the file. Kimi's round caught it | #34 |
 | 6 | "A pinned temperature would remove that" contradicts B1a | Verified; reworded | #30 |
 | 6 | Stale "test families", "every test below", "independent unit" | Verified; reworded | #30 |
 | 6 | B8 names only Arabic for shared orders | Verified: Spanish and French groups share too, 55 of 55 each. Precision claim made conditional | #27 |
@@ -31,7 +31,7 @@ their counts, and the endpoint and item-level summaries, which corroborates #20.
 
 ## Not taken
 
-Nothing. Every item was verified or refuted.
+Nothing. Every item was verified; the one called refuted at first adjudication was wrongly so, see item 6.
 
 ## Review as received
 

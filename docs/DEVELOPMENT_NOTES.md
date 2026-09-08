@@ -132,6 +132,10 @@ re-attributed the Iran caveat in the paper and nowhere else. The emitter's block
 B7, B1a, then the write call; cut a block by its own two markers, never from a marker to the
 write call.
 
+Replace a table row by its exact text, never by "the first line starting with". The paper has
+three tables with a `| Farsi |` row; the #21 correction took the first and put a d-table row into
+the language table, and two reviews that flagged it were refuted after the wrong table was checked.
+
 A `%` inside a string that is later `%`-formatted raises `unsupported format character`; the
 "95% model-resampling interval" header needs `%%` in the template.
 

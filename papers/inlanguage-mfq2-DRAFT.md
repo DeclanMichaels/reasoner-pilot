@@ -4,7 +4,7 @@
 
 ## Summary
 
-Tell one of these eleven models to answer a moral questionnaire as a typical person living in Egypt and its binding composite rises by 1.84 points. Hand it the same questionnaire in Arabic with no instruction about who to be and it rises 0.34, all eleven models moving the same way; that is the largest of the language shifts, and the other five move the panel by less than a tenth of a point. Across the six languages, country framing raised the composite by 1.04 points on average, each language weighted equally over its countries; unframed translation moved it 0.05 on average, 0.08 ignoring direction. The two interact: French moves the Belgian-framed panel by 0.18 and the unframed panel by 0.01, so a language effect depends on whether a country is named. For scale, the measured country means span 1.62 points, so the average framing shift is about 64 percent as large as the entire observed range between populations. The language shift is about 3 percent of that range as a signed mean, or 5 percent ignoring direction.
+Tell one of these eleven models to answer a moral questionnaire as a typical person living in Egypt and its binding composite rises by 1.84 points. Hand it the same questionnaire in Arabic with no instruction about who to be and it rises 0.34, all eleven models moving the same way; that is the largest of the language shifts, and the other five move the panel by less than a tenth of a point. Across the six languages, country framing raised the composite by 1.04 points on average, each language weighted equally over its countries; unframed translation moved it 0.05 on average, 0.08 ignoring direction. The two interact: French moves the Belgian-framed panel by 0.18 and the unframed panel by 0.01, so a language effect depends on whether a country is named. Under framing, though, both the questionnaire and the instruction change language together, so that 0.18 is not the questionnaire's translation alone; only the unframed contrasts isolate it. For scale, the measured country means span 1.62 points, so the average framing shift is about 64 percent as large as the entire observed range between populations. The language shift is about 3 percent of that range as a signed mean, or 5 percent ignoring direction.
 
 Being told who to be also brings the eleven models' answers closer together. Across conditions the eleven spread about half as widely under a country framing as they do without one, and thirty-seven of the thirty-nine framed conditions are tighter than every unframed condition.
 
@@ -36,7 +36,7 @@ Which language each country was administered in, and whether a human mean exists
 | Spanish | Argentina, Chile, Colombia, Mexico, Morocco, Peru |
 | French | Belgium, France, Switzerland |
 | Japanese | Japan |
-| Farsi | +1.22 | Iran only |
+| Farsi | Iran |
 | Russian | Russia |
 | no in-language arm | India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden, United States |
 
@@ -60,9 +60,9 @@ Unframed, the panel answers at nearly the same place whatever language you hand 
 | Farsi | 2.809 | +0.040 |
 | **Arabic** | **3.104** | **+0.335** |
 
-Five of the six sit within a tenth of the English default. Arabic departs, and all eleven models move the same direction.
+Five of the six sit within a tenth of the English default. Arabic departs, and all eleven models move the same direction; its shift sits in Purity, +0.58 over English, with Loyalty +0.23 and Authority +0.20, and Care moves 0.02 (appendix B6a).
 
-Framing moves it far more. Averaged over the six languages, telling the panel to answer as a local lifts the binding composite by 1.04 points. Language alone moves it 0.05 as a signed mean and 0.08 ignoring direction, since Japanese moves down where Arabic moves up. The framing effect ranges from +0.13 in French to +1.56 in Arabic; the largest language effect is Arabic's 0.34.
+Framing moves it far more. Averaged over the six languages, telling the panel to answer as a local lifts the binding composite by 1.04 points. Language alone moves it 0.05 as a signed mean and 0.08 ignoring direction, since Japanese moves down where Arabic moves up. The framing effect ranges from +0.13 in French to +1.56 in Arabic; the largest language effect is Arabic's 0.34. The ordering holds on average and not uniformly: Arabic's language effect exceeds the French framing effect, and framing Belgium in English lowers the composite by 0.15.
 
 ## Where the panel lands against the reference samples
 
@@ -93,7 +93,7 @@ Distance from each country's measured mean, English framing, which every country
 
 † Iran's mean is from Hazrati, Nejat and Daneshi (2025), not the questionnaire authors' set. See Limits.
 
-Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154.
+Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154. Unframed, the English panel sits at 2.769, below every reference-sample mean but Japan's; the appendix's distance table carries that column.
 
 The direction does not appear to be explained by how highly the reference sample itself scores. Japan has the lowest measured mean in the set and receives the second largest positive difference, and across all twenty the rank correlation between a country's human mean and the panel's distance from it is 0.16.
 
@@ -159,7 +159,7 @@ That study also ran a cross-linguistic replication: a short form of the MFQ-2 tr
 
 **Nothing was preregistered.** The design grew from a validation exercise, and no threshold was fixed before the data existed. Quantities are reported as intervals.
 
-**Iran's anchor comes from a different study.** Every other population is from the questionnaire authors' own validation set. Iran is not in that set, so it is anchored to an independent Iranian validation that used the authors' official Persian translation with minor linguistic edits, n=989. That study administered on a 0-to-4 scale whose anchor labels are the same words as the 1-to-5 scale, so we shifted by one, its sample is younger, more educated and majority female relative to the country, and and we read that composition as likely less binding-endorsing than the general population, which would make the gap we report larger than a nationally stratified sample would give. That is our inference, not the authors' statement; their limitations discuss composition and restricted variation in religiosity and political orientation. Their other sample gives 3.23 rather than 3.33, moving Iran's English-framed difference from +1.24 to +1.35.
+**Iran's anchor comes from a different study.** Every other population is from the questionnaire authors' own validation set. Iran is not in that set, so it is anchored to an independent Iranian validation that used the authors' official Persian translation with minor linguistic edits, n=989. That study administered on a 0-to-4 scale whose anchor labels are the same words as the 1-to-5 scale, so we shifted by one, its sample is younger, more educated and majority female relative to the country, and we read that composition as likely less binding-endorsing than the general population, which would make the gap we report larger than a nationally stratified sample would give. That is our inference, not the authors' statement; their limitations discuss composition and restricted variation in religiosity and political orientation. Their other sample gives 3.23 rather than 3.33, moving Iran's English-framed difference from +1.24 to +1.35.
 
 **Morocco's human sample answered in Spanish.** The authors' table records an administration language per country. It matches our in-language arm everywhere except Morocco, whose sample they collected in Spanish while we frame it in Arabic. We ran a Spanish-framed Moroccan arm as well: it lands at 4.589 against the Arabic arm's 4.582, a difference of 0.007. The mismatch does not move Morocco.
 

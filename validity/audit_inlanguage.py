@@ -374,7 +374,12 @@ L.append("Every country with both languages, and every language with both framin
          "interval is a percentile bootstrap resampling the %d models, 100,000 draws, seeded per "
          "quantity: it shows how far the difference moves when models like these are resampled, and "
          "it bounds nothing. An interval that includes both positive and negative values is reported "
-         "as such; it does not establish equivalence. No p-values are reported; decision 15 "
+         "as such; it does not establish equivalence. The sign count and the leave-one-out range "
+         "describe the same eleven per-model differences and carry no test; across the %d contrasts "
+         "reported here no family-wise claim is made, and none should be read in. Language under "
+         "framing changes the questionnaire and the instruction together, since the in-language "
+         "framing instruction is a translation; the unframed rows change the questionnaire alone. "
+         "No p-values are reported; decision 15 
          "says why; the exact sign-flip enumeration remains in the audit's verification output.\n" % (N, N))
 L.append("**Language without framing.** The translated questionnaire against the English one, "
          "neither naming a country. One row per language.\n")
