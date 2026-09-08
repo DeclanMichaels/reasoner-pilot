@@ -8,7 +8,7 @@ This repository is public, so this file is public. It is written knowing that.
 ## Current state
 
 - Local and remote agree, and the working tree is clean apart from this file. The session's work
-  is nine commits, `8336de4` to `519773d`.
+  is thirteen commits, `8336de4` to `afb185d`.
 - **The published record reproduces**, full run 2026-09-08, no keys and no network: 15
   regenerated outputs reproduced, 17 committed-only outputs verified.
 - **The in-language paper and appendix have been through one adversarial round and its tickets
@@ -104,3 +104,8 @@ review file.
   they left in `8e85b78`.
 - `validity/README.md` carries thirteen em-dashes in text that predates the register rules. Not
   restyled, since nothing in it was otherwise touched.
+- `de89d35`'s commit message states the wrong sample-2 n and inclusion rule for the Iran SD;
+  `afb185d` is the correction and says so. The figures in the repository are the corrected ones.
+- The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design; only
+  `validity/reference/mfq2_iran_dispersion.csv` is read, and the builder's two gates are the
+  record that it was computed the authors' way.
