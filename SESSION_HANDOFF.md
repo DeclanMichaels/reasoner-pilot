@@ -51,13 +51,10 @@ Nothing is queued for an agent. What remains is yours:
    Every family raised the same four things - panel composition, temperature, five runs, the
    framing prompt's two components - and the documents now state each. What remains unread is
    the state after Kimi's six fixes.
-2. **The title.** Kimi proposes "adding a country-role instruction shifts responses more than
-   translating the questionnaire", on the ground that framing is an added instruction where there
-   was none. The methods and B1a now say that; whether the title follows is yours.
-3. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
-   responses more than questionnaire language in an eleven-model panel"; the viewer still says
-   "In-language society framing - MFQ-2 binding composite".
-4. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
+2. **The viewer's title against the paper's.** The paper is now "Adding a country-role instruction
+   shifts responses more than translating the questionnaire", Kimi's proposal, taken by Declan on
+   2026-09-08; the viewer still says "In-language society framing - MFQ-2 binding composite".
+3. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
 
 Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
 (the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker

@@ -25,7 +25,7 @@ not re-argued. Item 1, retitling to "adding a country-framing instruction", is n
 | 3 | Arabic unframed anomaly never probed | Verified: Purity +0.58 over English, Loyalty +0.23, Authority +0.20, Care +0.02. A language-by-foundation table of unframed contrasts is added to B6a and one sentence to the paper. Whether it is a translation artifact is mechanism; not taken | #37 |
 | 6 | Sign counts function as a sign test; multiplicity unstated | Verified as a reading the text invites. B4's lead now says the counts and ranges carry no test and that no family-wise claim is made across the 70 contrasts. Enumeration stays out: decision 15 | #38 |
 | minor | Unframed baseline gap unremarked; Morocco arms; Spanish caveat | Verified: unframed English sits at 2.769, below every reference mean but Japan's; one sentence. B3's caption names Morocco's arms. The Spanish caveat already sits with its only mention | #39 |
-| 1 | Retitle to "adding a country-role instruction shifts responses more than translating the questionnaire" | Fair reading of the design, now stated in the methods and B1a. The title is Declan's decision | none |
+| 1 | Retitle to "adding a country-role instruction shifts responses more than translating the questionnaire" | Fair reading of the design, now stated in the methods and B1a. Taken: Declan, 2026-09-08 | none |
 | 4 | Stereotype convergence | Declined: decision 13, fourth request; scope rule | none |
 | refs | Hazrati article number unconfirmed | Confirmed: the DOI resolves to `collabra/article/11/1/140952` | none |
 

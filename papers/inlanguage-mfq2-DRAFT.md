@@ -1,4 +1,4 @@
-# Country framing shifts MFQ-2 responses more than questionnaire language in an eleven-model panel
+# Adding a country-role instruction shifts responses more than translating the questionnaire
 
 *Exploratory. Nothing here was preregistered. The focal quantity was chosen on the July collection, before any translated cell existed; every choice after that was made with the final data in view.*
 
