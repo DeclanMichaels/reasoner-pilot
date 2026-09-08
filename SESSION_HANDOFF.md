@@ -19,7 +19,7 @@ This repository is public, so this file is public. It is written knowing that.
 - **The declared test family is withdrawn.** B4 is a contrast set over the full grid, reported as
   intervals, sign counts and leave-one-out ranges, no p-values. Decision 15 says why; B10 carries
   the errata.
-- No issue is open. `DECISIONS.md` holds 15 entries.
+- No issue is open. `DECISIONS.md` holds 16 entries.
 - This is the Black M2 Air. `validity/` holds the completed grid, and `validity/reconcile.py`
   reports it identical to the 2026-09-05 archive.
 
@@ -76,7 +76,7 @@ generation timestamp, which makes its pin detect re-runs rather than data change
 
 Items 2 and 3 under Next session. **Iran's anchor is settled**, Declan 2026-09-07: Hazrati sample 2
 at 3.333, kept, marked `[*]` wherever it enters, disclosed in B4 with the sensitivity across all
-three anchors the source offers. It was listed here as open through 2026-09-08 by mistake; the
+three anchors the source offers; decision 16. It was listed here as open through 2026-09-08 by mistake; the
 reference-file rule that appeared to bar it turned out to bar pooling into the reference file, which
 was never done.
 
