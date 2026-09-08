@@ -89,7 +89,7 @@ a failed run leaves a truncated trail that the harness will re-pin.
 `run_validity.py` and renders the framing template from `run_framed.frame_system`'s AST. A change
 to either runner changes the appendix or fails the emitter, on purpose.
 
-**Two things this workflow got wrong today and corrected on the record.** The first Iran SD build
+**Two things this workflow got wrong on 2026-09-08 and corrected on the record.** The first Iran SD build
 used a more permissive inclusion rule than the authors' and its commit message disagreed with its
 own CSV on n; `afb185d` is the correction. And Iran's anchor, settled on the 7th, was carried as an
 open choice through two handoffs and three reports until the 8th; decision 16 records it.
