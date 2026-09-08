@@ -48,9 +48,9 @@ No model calls, nothing written to S3, nothing spent.
 
 Nothing is queued for an agent and nothing is open. What remains is yours:
 
-1. **Review.** Everything pushed since `303e79e` on 2026-09-07 - the regenerated appendix, the
-   paper corrections, the rebuilt contrast set, decision 15 - has had no independent adversarial
-   review. Astra reviewed the state at `8336de4`; the state now is materially different.
+1. **Review.** Grok read the post-Astra state on 2026-09-08 and found one register item, fixed;
+   its round is in `reviews/`. That is one model family. The practice is several, since agreement
+   and disagreement are both signal, and the Iran SD work and decision 16 landed after Grok's read.
 2. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
    responses more than questionnaire language in an eleven-model panel"; the viewer still says
    "In-language society framing - MFQ-2 binding composite".
