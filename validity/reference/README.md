@@ -11,3 +11,11 @@ Same rule: do not edit here; re-copy when the owner changes.
 mfq2_alignment_r2.csv is a COPY of the same owner's file, taken 2026-09-08: per-foundation
 Muthen-Asparouhov alignment R-squared across the nineteen, loadings and intercepts, from
 compute_alignment_r2.R (sirt 3.13-228). Appendix B2a is generated from it. Same rule.
+
+mfq2_iran_dispersion.csv is BUILT HERE, 2026-09-08, by build_iran_dispersion.py from the two
+respondent-level SPSS files Hazrati, Nejat and Daneshi (2025) share on their view-only OSF project
+(zt3u2, the link in anchors_iran.json). The files stay in the gitignored _raw/. Scoring follows
+the authors' own composites, verified against their precomputed foundation columns to 0.0000;
+the published Table 2 means are reproduced as means of item means to 0.005. Binding SD is the
+sample SD over respondents with complete binding items: sample 1 n=376, sample 2 n=988. The
+builder needs pyreadstat and is not on the reproduce path; only its CSV is read by the appendix.

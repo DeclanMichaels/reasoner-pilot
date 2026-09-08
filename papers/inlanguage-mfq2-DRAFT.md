@@ -104,12 +104,13 @@ The same distances in human standard deviations, computed per country: the panel
 | language | mean d | range across countries |
 |---|--:|---|
 | Japanese | +1.22 | Japan only |
+| Farsi | +1.22 | Iran only |
 | French | -0.97 | -0.38 Switzerland to -1.40 France |
 | Arabic | +0.86 | +0.59 Egypt to +1.03 Saudi Arabia |
 | Russian | +0.64 | Russia only |
 | Spanish | +0.57 | +0.10 Argentina to +0.81 Peru |
 
-Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. Farsi is absent because we have not computed a respondent-level standard deviation for Iran. The authors share both samples at the respondent level (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed); an earlier draft said the data did not exist, and that was wrong.
+Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. Iran's standard deviation is computed from the respondent-level data the authors share (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed), sample 2, 988 respondents with complete binding items, using their scoring; an earlier draft said the data did not exist, and that was wrong.
 
 ## Which foundations move
 

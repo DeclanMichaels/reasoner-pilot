@@ -49,6 +49,7 @@ def anchors():
     ir = json.load(open(VDIR / "anchors_iran.json"))
     a["Iran"] = ir["binding_1to5"]["s2"]
     src["Iran"] = "Hazrati 2025 sample 2"
+    ANCH_SE["Iran"] = ir["person_level_sd"]["binding"]["s2"] / ir["person_level_sd"]["n_binding"]["s2"] ** 0.5
     return a, src
 
 
@@ -271,12 +272,15 @@ print("Each of those nineteen means rests on %d to %d respondents for its countr
       "that people from traditional, small-scale communities are absent. Every overshoot in "
       "this appendix is a distance from those samples' means.\n"
       % (_ns[0], _ns[-1], format(sum(_ns), ",")))
-_ses = sorted(ANCH_SE.values())
+_ses = sorted(v for c, v in ANCH_SE.items() if c != "Iran")
 print("The human SE column is the reference sample's own sampling uncertainty in its binding "
       "mean, SD over root n from the per-country dispersion file, %.3f to %.3f across the "
       "nineteen. It is a different quantity from the model-resampling interval in B3a, which "
-      "describes panel composition, and neither one removes selection in who was sampled. Iran "
-      "has none until a respondent-level SD is computed from its shared data.\n" % (_ses[0], _ses[-1]))
+      "describes panel composition, and neither one removes selection in who was sampled. Iran's "
+      "comes from the authors' shared respondent-level files, sample 2, %d respondents with "
+      "complete binding items, binding SD %.3f.\n" % (_ses[0], _ses[-1],
+      json.load(open(VDIR / "anchors_iran.json"))["person_level_sd"]["n_binding"]["s2"],
+      json.load(open(VDIR / "anchors_iran.json"))["person_level_sd"]["binding"]["s2"]))
 print("[*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 "
       "carries the source, the sample's own caveats and the sensitivity across every anchor "
       "that source offers.\n")

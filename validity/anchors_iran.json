@@ -16,7 +16,7 @@
   "caveats": [
     "convenience online samples (Telegram/snowball), ~68-71% female, mean age ~26-28, ~57-59% bachelor's+ -- likely less binding-endorsing than the general Iranian population",
     "different collection conditions than Atari et al. Table 7 anchors (cross-paper comparison)",
-    "foundation SDs not derivable from item table; raw data at their view-only OSF link if exact SDs needed: https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed",
+    "foundation and binding SDs derived 2026-09-08 from the authors' shared respondent-level files at their view-only OSF link (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed); see person_level_sd",
     "collection began one year after the Woman, Life, Freedom movement; authors note possible period effects"
   ],
   "means_1to5": {
@@ -48,5 +48,16 @@
   "binding_1to5": {
     "s1": 3.231,
     "s2": 3.333
+  },
+  "person_level_sd": {
+    "source": "validity/reference/mfq2_iran_dispersion.csv, built 2026-09-08 by build_iran_dispersion.py from the authors' shared MFQ2_Sample1.sav and MFQ2_Sample2.sav (OSF zt3u2); respondents with complete binding items; sample SD",
+    "binding": {
+      "s1": 0.7983,
+      "s2": 0.8016
+    },
+    "n_binding": {
+      "s1": 384,
+      "s2": 989
+    }
   }
 }

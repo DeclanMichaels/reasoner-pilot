@@ -31,3 +31,4 @@ validity/runs_framed/
 *.smbdelete*
 validity/instruments/mfq2_translations_extracted.json
 validity/runs_framed_lang/
+validity/reference/_raw/

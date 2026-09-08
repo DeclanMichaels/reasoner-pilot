@@ -32,7 +32,7 @@ Binding composite, panel mean over eleven models, each model's five iterations a
 | France | French | 3.610 | 0.039 | 2.769 | 2.777 | 2.725 | 2.834 |
 | Switzerland | French | 3.349 | 0.050 | 2.769 | 2.777 | 3.063 | 3.076 |
 | Japan | Japanese | 2.652 | 0.044 | 2.769 | 2.676 | 3.668 | 3.434 |
-| Iran [*] | Farsi | 3.333 | n/a | 2.769 | 2.809 | 4.577 | 4.314 |
+| Iran [*] | Farsi | 3.333 | 0.025 | 2.769 | 2.809 | 4.577 | 4.314 |
 | Russia | Russian | 3.599 | 0.049 | 2.769 | 2.788 | 4.117 | 4.047 |
 | India | n/a | n/a | n/a | 2.769 | - | 4.439 | - |
 | Ireland | n/a | 3.096 | 0.057 | 2.769 | - | 3.094 | - |
@@ -69,7 +69,7 @@ The same table as distance from that country's measured human mean. Positive is 
 | South Africa | -0.980 | - | +0.186 | - |
 Each of those nineteen means rests on 205 to 207 respondents for its country, 3,902 in all, collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within each nation on age, gender and political orientation. Education was not a stratification variable, and the authors state their results rest on "a subset of these populations who were educated enough to complete the surveys online", noting that people from traditional, small-scale communities are absent. Every overshoot in this appendix is a distance from those samples' means.
 
-The human SE column is the reference sample's own sampling uncertainty in its binding mean, SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran has none until a respondent-level SD is computed from its shared data.
+The human SE column is the reference sample's own sampling uncertainty in its binding mean, SD over root n from the per-country dispersion file, 0.039 to 0.059 across the nineteen. It is a different quantity from the model-resampling interval in B3a, which describes panel composition, and neither one removes selection in who was sampled. Iran's comes from the authors' shared respondent-level files, sample 2, 989 respondents with complete binding items, binding SD 0.802.
 
 [*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 carries the source, the sample's own caveats and the sensitivity across every anchor that source offers.
 
