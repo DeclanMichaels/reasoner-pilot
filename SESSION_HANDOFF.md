@@ -51,12 +51,10 @@ Nothing is queued for an agent. What remains is yours:
    Every family raised the same four things - panel composition, temperature, five runs, the
    framing prompt's two components - and the documents now state each. What remains unread is
    the state after Kimi's six fixes.
-2. **The viewer's title against the paper's.** The paper is now "Adding a country-role instruction
-   shifts responses more than translating the questionnaire", Kimi's proposal, taken by Declan on
-   2026-09-08; the viewer still says "In-language society framing - MFQ-2 binding composite".
-3. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
+2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
 
-Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
+Candidates for tickets, not filed: the viewer's lede still says "the population" where the paper
+now says reference sample, and its chips carry the 2026-09-07 generation stamp; a tracked claim-check that recomputes every number in the paper
 (the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker
 asymmetry, footnoted in B3 and named in decision 16; `viewer_data.json`'s generation timestamp,
 which makes its pin detect re-runs rather than data changes.
@@ -74,7 +72,7 @@ which makes its pin detect re-runs rather than data changes.
 
 ## Unresolved - needs a decision
 
-Items 2 and 3 under Next session. **Iran's anchor is settled**, decision 16: Hazrati sample 2 at
+Item 2 under Next session. The viewer's title now matches the paper's, Declan 2026-09-08. **Iran's anchor is settled**, decision 16: Hazrati sample 2 at
 3.333, kept, marked `[*]` wherever it enters, disclosed in B4 with the sensitivity across all
 three anchors the source offers. Its person-level SD now comes from the authors' own composite
 columns, sample 2, n=989, SD 0.802.
