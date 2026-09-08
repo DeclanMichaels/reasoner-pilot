@@ -8,49 +8,46 @@ This repository is public, so this file is public. It is written knowing that.
 ## Current state
 
 - Local and remote agree, and the working tree is clean apart from this file. The session's work
-  is thirteen commits, `8336de4` to `afb185d`.
-- **The published record reproduces**, full run 2026-09-08, no keys and no network: 15
-  regenerated outputs reproduced, 17 committed-only outputs verified.
-- **The in-language paper and appendix have been through one adversarial round and its tickets
-  are closed.** Sixteen tickets from Astra's review of 2026-09-08 were filed, worked and closed the
-  same day; the adjudication and the review as received are `reviews/astra-paper-review-2026-09-08.md`.
-  The paper is retitled. Every data section of the appendix is generated; the splice map is in
-  `docs/DEVELOPMENT_NOTES.md`.
-- **The declared test family is withdrawn.** B4 is a contrast set over the full grid, reported as
-  intervals, sign counts and leave-one-out ranges, no p-values. Decision 15 says why; B10 carries
-  the errata.
-- No issue is open. `DECISIONS.md` holds 16 entries.
-- This is the Black M2 Air. `validity/` holds the completed grid, and `validity/reconcile.py`
-  reports it identical to the 2026-09-05 archive.
+  is twenty commits, `8336de4` to `cf072f9`.
+- **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
+  outputs reproduced, 17 committed-only outputs verified.
+- **Two adversarial rounds on the in-language paper and appendix are adjudicated and worked
+  through**, both in `reviews/`. Astra's produced sixteen tickets, all closed. Grok's, read after
+  Astra's was worked through, produced one, closed. Twenty-two issues have existed; none is open.
+- **The paper is retitled** and every number in it recomputes from the cells. **Every data
+  section of the appendix is generated**; the splice map is in `docs/DEVELOPMENT_NOTES.md`. B4 is
+  a contrast set over the full grid with intervals, sign counts and leave-one-out ranges and no
+  p-values (decision 15); B10 is the errata for the withdrawn family.
+- `DECISIONS.md` holds 16 entries. Entry 16 records Iran's anchor, settled on 2026-09-07.
+- This is the Black M2 Air. `validity/` holds the completed grid: `runs/` 165, `runs_framed/`
+  1,267, `runs_framed_lang/` 1,246, `instruments/` 15. `validity/reconcile.py` reports it identical
+  to the 2026-09-05 archive.
 
 ## What changed outside the repository
 
 `reasoner-study` received decision 27 (`ff05433`) and a pointer to it in its reference README
-(`53bc0dc`), both pushed, private. Two of its reference files were copied into
-`validity/reference/` here as documented copies.
+(`53bc0dc`), both pushed, private. Two of its reference files are documented copies here.
 
-Three primary sources were read for the review: the Atari et al. (2023) preprint (OSF `q6c9r`),
-the Hazrati et al. (2025) preprint v3 (OSF `43t5s`) with its OSF project file listing, and the
-Zewail et al. (2026) PMC full text. The PDFs and a `pypdf` virtualenv are in the session
-scratchpad, outside any repository. The viewer was rendered locally to verify its relabelled
-intervals.
+Hazrati et al.'s two respondent-level SPSS files were downloaded from their view-only OSF project
+into `validity/reference/_raw/`, which is gitignored, and read with `pyreadstat` in a scratchpad
+virtualenv. Only the aggregate `mfq2_iran_dispersion.csv` is committed. The Atari and Hazrati
+preprints and the Zewail PMC text were read for the Astra round; the PDFs are in the scratchpad.
+The viewer was rendered locally to verify its relabelled intervals.
 
 No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-- Nothing is open. #21 closed on 2026-09-08: Declan ruled the authors' shared respondent-level
-  files may be used; `validity/reference/build_iran_dispersion.py` derives the SDs off the
-  reproduce path and the appendix reads only its CSV. #1 to #21 are closed with their
-  dispositions on the tickets.
+Empty. #1 to #22 are closed, each with its disposition on the ticket. #21 closed on Declan's
+ruling that the authors' shared respondent-level data may be used; #22 was Grok's one item.
 
 ## Next session
 
-Nothing is queued for an agent and nothing is open. What remains is yours:
+Nothing is queued for an agent. What remains is yours:
 
-1. **Review.** Grok read the post-Astra state on 2026-09-08 and found one register item, fixed;
-   its round is in `reviews/`. That is one model family. The practice is several, since agreement
-   and disagreement are both signal, and the Iran SD work and decision 16 landed after Grok's read.
+1. **Review.** Grok is one model family and read the state at `579c343` or after. The practice is
+   several families, because agreement and disagreement are both signal. Unread by anyone: the
+   Iran SD work (`de89d35`, corrected in `afb185d`), decision 16, and Grok's own fix.
 2. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
    responses more than questionnaire language in an eleven-model panel"; the viewer still says
    "In-language society framing - MFQ-2 binding composite".
@@ -58,27 +55,26 @@ Nothing is queued for an agent and nothing is open. What remains is yours:
 
 Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
 (the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker
-asymmetry, now footnoted in both B3 tables but still two conventions; `viewer_data.json`'s
-generation timestamp, which makes its pin detect re-runs rather than data changes.
+asymmetry, footnoted in B3 and named in decision 16; `viewer_data.json`'s generation timestamp,
+which makes its pin detect re-runs rather than data changes.
 
 ## Open items
 
-- Sampling temperature is unset and unrecorded in the runners; B1a now states this and that a
-  pinned value would not have equalised stochasticity across models.
+- Sampling temperature is unset and unrecorded in the runners; B1a states this and that a pinned
+  value would not have equalised stochasticity across models. Grok's next steps, a larger panel
+  with pinned temperature, a direct estimate-versus-answer-as comparison, and preregistered
+  contrasts on held-out countries, are recorded as not taken here: each needs new collection.
 - Whether every blocking finding in `reviews/viewer-cold-review-2026-08-22.md` is closed is still
   unverified as a whole; only finding 1 was checked, on 2026-09-07.
 - The paper's Zewail paragraph calls their respondents "populations"; that is their term for their
   eleven samples and was left.
-- Two of Astra's items were not taken: the 64 percent comparison being secondary, and the
-  temperature caveat's caveat. Recorded in the review file.
 
 ## Unresolved - needs a decision
 
-Items 2 and 3 under Next session. **Iran's anchor is settled**, Declan 2026-09-07: Hazrati sample 2
-at 3.333, kept, marked `[*]` wherever it enters, disclosed in B4 with the sensitivity across all
-three anchors the source offers; decision 16. It was listed here as open through 2026-09-08 by mistake; the
-reference-file rule that appeared to bar it turned out to bar pooling into the reference file, which
-was never done.
+Items 2 and 3 under Next session. **Iran's anchor is settled**, decision 16: Hazrati sample 2 at
+3.333, kept, marked `[*]` wherever it enters, disclosed in B4 with the sensitivity across all
+three anchors the source offers. Its person-level SD now comes from the authors' own composite
+columns, sample 2, n=989, SD 0.802.
 
 ## Known-broken and known-strange
 
@@ -93,21 +89,19 @@ a failed run leaves a truncated trail that the harness will re-pin.
 `run_validity.py` and renders the framing template from `run_framed.frame_system`'s AST. A change
 to either runner changes the appendix or fails the emitter, on purpose.
 
-**Two of the definite errors Astra found were this workflow's own**, from 2026-09-07: a
-miscounted B7 and the B4 bound sentences carried forward verbatim. A third, the Farsi data
-sentence, was a review-round-two acceptance that was wrong when accepted. All three are in the
-review file.
+**Two things this workflow got wrong today and corrected on the record.** The first Iran SD build
+used a more permissive inclusion rule than the authors' and its commit message disagreed with its
+own CSV on n; `afb185d` is the correction. And Iran's anchor, settled on the 7th, was carried as an
+open choice through two handoffs and three reports until the 8th; decision 16 records it.
 
 ## Loose ends
 
 - `DECISIONS.md` entries 3 and 5 carry rationale implied by their sources rather than stated in
   them; the log was reconstructed on 2026-09-05, not ported.
-- B10 names `d441f7c` as the last commit carrying the declared family's p-values. That is correct:
-  they left in `8e85b78`.
+- B10 names `d441f7c` as the last commit carrying the declared family's p-values; they left in
+  `8e85b78`.
 - `validity/README.md` carries thirteen em-dashes in text that predates the register rules. Not
   restyled, since nothing in it was otherwise touched.
-- `de89d35`'s commit message states the wrong sample-2 n and inclusion rule for the Iran SD;
-  `afb185d` is the correction and says so. The figures in the repository are the corrected ones.
-- The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design; only
-  `validity/reference/mfq2_iran_dispersion.csv` is read, and the builder's two gates are the
-  record that it was computed the authors' way.
+- The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design; the
+  builder's two gates, the authors' own composite columns to 0.0000 and their published means to
+  0.005, are the record that it was computed their way.
