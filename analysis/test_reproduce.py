@@ -16,7 +16,10 @@ The manifest has two groups, which carry different guarantees:
                   committed. A mismatch means something rewrote them - which is how
                   audit_inlanguage.py silently reduced condition_means.json from 26
                   conditions to 11 on 2026-09-05. Regenerate them deliberately, with
-                  the full grid present, and re-pin.
+                  the full grid present, and re-pin. One of them, mfq2_ratings.csv, is
+                  the integer ratings themselves (decision 19); validity/
+                  check_ratings_dataset.py rebuilds every pinned condition mean from it
+                  and runs here in both modes, so a clone does regenerate that much.
 
   python3 analysis/test_reproduce.py           # re-run all scripts, then verify
   python3 analysis/test_reproduce.py --check    # verify existing outputs only (fast)
@@ -77,5 +80,8 @@ if __name__ == "__main__":
         run_scripts()
     print("verifying outputs against reproduce_manifest.json ...")
     ok = verify()
+    print("rebuilding the condition means from the ratings dataset ...")
+    r = subprocess.run([sys.executable, str(ROOT / "validity" / "check_ratings_dataset.py")], capture_output=True, text=True)
+    print(r.stdout.rstrip()); ok = ok and r.returncode == 0
     print("PASS: pilot outputs reproduce, validity outputs unchanged." if ok else "FAIL: outputs drifted.")
     sys.exit(0 if ok else 1)

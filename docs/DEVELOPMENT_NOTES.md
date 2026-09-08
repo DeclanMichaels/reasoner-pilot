@@ -71,9 +71,9 @@ Never echo a value or write one into a script, a log or the repository. `.gitign
 
 The convergent-validity module's filled instruments and raw per-cell run files are gitignored
 because the item wording is not ours to redistribute. `validity/README.md` names the working copy
-and the S3 archive prefix with the restore command. **Consequence:** the in-language appendix
-numbers do not regenerate from a fresh clone until that data is restored, and
-`analysis/test_reproduce.py` does not cover them.
+and the S3 archive prefix with the restore command. **Consequence:** the per-run tables do not
+regenerate from a fresh clone until that data is restored; the condition means do, from
+`validity/results/mfq2_ratings.csv` (decision 19), and `analysis/test_reproduce.py` runs that check.
 
 `.gitignore` also excludes `*.smbdelete*`, residue from the retired SMB share. If those appear,
 something is reading from dead infrastructure.

@@ -56,6 +56,8 @@ reasoner-pilot/
   results/                    GENERATED OUTPUTS: appendix_stats.json, viewer_data.json, CSV bundle, figures
   papers/                     pilot report + statistical appendix (.md and .pdf)
   shared/styles/              viewer styling
+  validity/                   convergent-validity and in-language MFQ-2 module (see validity/README.md);
+                              validity/results/mfq2_ratings.csv is every scored in-language rating
 ```
 
 ---
@@ -213,6 +215,12 @@ them).
 **`results/viewer_data.json`** — the payload the interactive viewer reads.
 **`results/csv/`** — tidy CSV exports; humans are anonymized to sequential ids
 (h01…).
+
+**`validity/results/mfq2_ratings.csv`** — every scored rating in the in-language MFQ-2
+grid: `condition`, `model`, `iteration`, `instrument`, `seed`, `item_id`, `position` in that
+run's shuffled order, `rating` (1 to 5). 99,000 rows, 2,750 cells, 50 conditions. No item
+wording; item ids follow the official MFQ-2 key. `validity/check_ratings_dataset.py` rebuilds
+the condition means from it.
 
 ---
 

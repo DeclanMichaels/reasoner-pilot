@@ -111,6 +111,8 @@ python3 validity/run_validity.py --count       # print the call count, no spend
 python3 validity/run_validity.py               # administer MFQ-30 + PVQ-40 to the panel (resumable)
 python3 validity/score_validity.py             # -> results/instrument_scores.json
 python3 validity/convergent_validity.py        # -> results/convergent_validity.{md,json}
+python3 validity/build_ratings_dataset.py > validity/results/mfq2_ratings.csv   # every scored in-language rating, no wording (decision 19)
+python3 validity/check_ratings_dataset.py      # rebuilds the pinned condition means from that CSV; test_reproduce runs it
 ```
 
 ## Call count
