@@ -50,13 +50,13 @@
     "s2": 3.333
   },
   "person_level_sd": {
-    "source": "validity/reference/mfq2_iran_dispersion.csv, built 2026-09-08 by build_iran_dispersion.py from the authors' shared MFQ2_Sample1.sav and MFQ2_Sample2.sav (OSF zt3u2); respondents with complete binding items; sample SD",
+    "source": "validity/reference/mfq2_iran_dispersion.csv, built 2026-09-08 by build_iran_dispersion.py from the authors' shared MFQ2_Sample1.sav and MFQ2_Sample2.sav (OSF zt3u2), over the authors' own composite columns; sample SD",
     "binding": {
-      "s1": 0.7983,
+      "s1": 0.7971,
       "s2": 0.8016
     },
     "n_binding": {
-      "s1": 384,
+      "s1": 376,
       "s2": 989
     }
   }

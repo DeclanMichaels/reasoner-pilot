@@ -7,8 +7,8 @@ git (validity/reference/_raw/, view-only OSF project zt3u2, the authors' data-av
 link). Its aggregate output, mfq2_iran_dispersion.csv, is committed and read with stdlib.
 
 Scoring: six items per foundation in the files' canonical order, mean per respondent, binding
-the mean of loyalty, authority and purity; respondents with any missing binding item are
-dropped for the binding SD and reported. Administered 0-4; +1 is applied so means match the
+the mean of loyalty, authority and purity; the SDs are taken over the authors' own composite
+columns, so their inclusion rule applies: a respondent with any missing item has no composite. Administered 0-4; +1 is applied so means match the
 1-5 figures in anchors_iran.json. SD is the sample SD (n-1), as in the Atari file.
 
 Gate: the shifted means of item means must reproduce anchors_iran.json's means_1to5 (the
@@ -62,12 +62,17 @@ for s, (fname, prefix, filt) in FILES.items():
             mx = max(abs(a - b) for a, b in pairs)
             if mx > 0.001:
                 sys.exit("gate failed: %s %s differs from the authors' column by %.4f" % (s, g, mx))
-    full = [x for x in per if all(x[g] is not None for g in BIND)]
-    binding = [sum(x[g] for g in BIND) / 3 for x in full]
+    # The SDs use the authors' OWN composite columns, so their inclusion rule is theirs: a
+    # respondent with any missing item has no composite in their file and is not in the SD.
+    # (A mean over available items would keep 8 more respondents in sample 1; the authors
+    # did not, and this is their statistic.) The recomputation above is the gate, not the source.
+    theirs = {g: [data[prefix + g.capitalize()][i] for i in keep] for g in FOUND}
+    full = [i for i in range(len(keep)) if all(theirs[g][i] is not None for g in BIND)]
+    binding = [sum(theirs[g][i] for g in BIND) / 3 for i in full]
     row = {"sample": s, "n_file": n_all, "n_kept": len(keep), "n_binding": len(full),
            "binding_mean_1to5": round(st.mean(binding) + 1, 4), "binding_sd": round(st.stdev(binding), 4)}
     for g in FOUND:
-        row[g + "_sd"] = round(st.stdev([x[g] for x in per if x[g] is not None]), 4)
+        row[g + "_sd"] = round(st.stdev([v for v in theirs[g] if v is not None]), 4)
     rows.append(row)
     print("  %s kept %d of %d, binding on %d; binding mean %.3f (published %.3f), SD %.4f" % (
         s, len(keep), n_all, len(full), row["binding_mean_1to5"], pub["binding_1to5"][s], row["binding_sd"]), file=sys.stderr)

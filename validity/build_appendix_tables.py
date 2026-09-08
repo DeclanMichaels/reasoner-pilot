@@ -277,8 +277,8 @@ print("The human SE column is the reference sample's own sampling uncertainty in
       "mean, SD over root n from the per-country dispersion file, %.3f to %.3f across the "
       "nineteen. It is a different quantity from the model-resampling interval in B3a, which "
       "describes panel composition, and neither one removes selection in who was sampled. Iran's "
-      "comes from the authors' shared respondent-level files, sample 2, %d respondents with "
-      "complete binding items, binding SD %.3f.\n" % (_ses[0], _ses[-1],
+      "comes from the authors' shared respondent-level files, sample 2, %d respondents, over "
+      "their own composite scores, binding SD %.3f.\n" % (_ses[0], _ses[-1],
       json.load(open(VDIR / "anchors_iran.json"))["person_level_sd"]["n_binding"]["s2"],
       json.load(open(VDIR / "anchors_iran.json"))["person_level_sd"]["binding"]["s2"]))
 print("[*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 "

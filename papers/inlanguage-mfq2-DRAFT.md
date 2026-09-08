@@ -36,7 +36,7 @@ Which language each country was administered in, and whether a human mean exists
 | Spanish | Argentina, Chile, Colombia, Mexico, Morocco, Peru |
 | French | Belgium, France, Switzerland |
 | Japanese | Japan |
-| Farsi | Iran |
+| Farsi | +1.22 | Iran only |
 | Russian | Russia |
 | no in-language arm | India, Ireland, Kenya, New Zealand, Nigeria, South Africa, Sweden, United States |
 
@@ -110,7 +110,7 @@ The same distances in human standard deviations, computed per country: the panel
 | Russian | +0.64 | Russia only |
 | Spanish | +0.57 | +0.10 Argentina to +0.81 Peru |
 
-Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. Iran's standard deviation is computed from the respondent-level data the authors share (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed), sample 2, 988 respondents with complete binding items, using their scoring; an earlier draft said the data did not exist, and that was wrong.
+Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. Iran's standard deviation is computed from the respondent-level data the authors share (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed), sample 2, 989 respondents, over the authors' own composite scores; an earlier draft said the data did not exist, and that was wrong.
 
 ## Which foundations move
 
