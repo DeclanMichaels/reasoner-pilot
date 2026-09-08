@@ -105,11 +105,15 @@ exit as saying nothing about whether the right data was present.**
 
 ## The in-language appendix is generated, and the splice map is fixed
 
-`papers/inlanguage-mfq2-appendix-DRAFT.md` is spliced verbatim from two artifacts. `build_appendix_tables.py`
-emits B2a, B3, B3a, B6 and B6a; `audit_inlanguage.py` emits B1a, B4, B5 and B7. B1, B2, B8,
-B9, the Arabic-four subsection inside B3 and the Care sentence after B6 are hand-written. A number
-in the document that disagrees with its artifact is a splice that was not re-run; re-splice, do not
-edit. `test_reproduce.py` pins the artifacts (decision 14), not the document.
+The report and its appendix are one document, `papers/inlanguage-mfq2-DRAFT.md` (decision 20); the
+appendix sections sit under `# Appendix` and keep their `## B` headers. The generated ones are
+spliced verbatim from two artifacts by `validity/splice_appendix.py`: `build_appendix_tables.py`
+emits B2a, B3, B3a, B6 and B6a; `audit_inlanguage.py` emits B1a, B4, B5 and B7. B1, B2, B8, B9, the
+Arabic subsection inside B3 and the Care sentence after B6 are hand-written. After regenerating an
+artifact, run the splice script; `test_reproduce.py` runs `splice_appendix.py --check` and fails when
+a generated section in the document differs from its artifact, so a splice that was not re-run no
+longer survives the harness. The script asserts every header and hand-written boundary before it
+writes.
 
 `audit_inlanguage.py` loads every English-framed country since 2026-09-08. Before that it loaded
 Egypt, Japan and Iran only, so `condition_means.json` carried 27 of 47 conditions and looked

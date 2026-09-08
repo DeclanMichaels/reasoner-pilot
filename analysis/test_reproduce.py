@@ -83,5 +83,8 @@ if __name__ == "__main__":
     print("rebuilding the condition means from the ratings dataset ...")
     r = subprocess.run([sys.executable, str(ROOT / "validity" / "check_ratings_dataset.py")], capture_output=True, text=True)
     print(r.stdout.rstrip()); ok = ok and r.returncode == 0
+    print("checking the document's generated sections against the artifacts ...")
+    r = subprocess.run([sys.executable, str(ROOT / "validity" / "splice_appendix.py"), "--check"], capture_output=True, text=True)
+    print((r.stdout + r.stderr).rstrip()); ok = ok and r.returncode == 0
     print("PASS: pilot outputs reproduce, validity outputs unchanged." if ok else "FAIL: outputs drifted.")
     sys.exit(0 if ok else 1)

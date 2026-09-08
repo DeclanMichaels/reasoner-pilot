@@ -54,7 +54,8 @@ reasoner-pilot/
   human-responses/responses/  68 human responses (anonymous; see "Human data" below)
   analysis/                   analysis + build scripts (stdlib only) and figure templates
   results/                    GENERATED OUTPUTS: appendix_stats.json, viewer_data.json, CSV bundle, figures
-  papers/                     pilot report + statistical appendix (.md and .pdf)
+  papers/                     pilot report + statistical appendix (.md and .pdf); the in-language
+                              MFQ-2 report with its appendix in one file (inlanguage-mfq2-DRAFT.md)
   shared/styles/              viewer styling
   validity/                   convergent-validity and in-language MFQ-2 module (see validity/README.md);
                               validity/results/mfq2_ratings.csv is every scored in-language rating
