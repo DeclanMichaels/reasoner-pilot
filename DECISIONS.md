@@ -52,3 +52,4 @@ not, it is a reconstruction error and the entry is wrong rather than the memory.
 | 17 | 2026-09-08 | active | [Published means a DOI and moral-os.com, and drafts do not cite earlier drafts](docs/decisions/017-published-means-a-doi-and-the-site.md) - what the never-changes-silently rule protects, in a public repository |
 | 18 | 2026-09-08 | active | [Morocco is reported under Spanish throughout; the Arabic arm is data, not a comparison](docs/decisions/018-morocco-reported-under-spanish.md) - a language mismatch every review round raised |
 | 19 | 2026-09-08 | active | [The integer ratings are published as a dataset; the run files and item wording are not](docs/decisions/019-integer-ratings-published-as-a-dataset.md) - a reproducibility claim a clone could not honour |
+| 20 | 2026-09-08 | active | [The in-language report and its statistical appendix are one document](docs/decisions/020-one-document.md) - the seam two files kept showing reviewers |
