@@ -66,3 +66,9 @@ this write-up and is stated where the reader meets it; the register rule is that
 plainly, and not narrated as a virtue.
 
 Issue #18 carries the work.
+
+## Supersedes / amends
+
+Amended by #17 (2026-09-08): the clause keeping the old B4 as an errata section is superseded; drafts
+do not describe earlier drafts. The contrast set, the withdrawal of p-values and the rest of this
+entry stand in force.

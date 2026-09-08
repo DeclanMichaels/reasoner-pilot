@@ -98,8 +98,6 @@ open choice through two handoffs and three reports until the 8th; decision 16 re
 
 - `DECISIONS.md` entries 3 and 5 carry rationale implied by their sources rather than stated in
   them; the log was reconstructed on 2026-09-05, not ported.
-- B10 names `d441f7c` as the last commit carrying the declared family's p-values; they left in
-  `8e85b78`.
 - `validity/README.md` carries thirteen em-dashes in text that predates the register rules. Not
   restyled, since nothing in it was otherwise touched.
 - The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design; the

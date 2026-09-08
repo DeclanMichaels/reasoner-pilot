@@ -143,6 +143,11 @@ _Avoid_: population, real population, the population's mean.
 
 ## Provenance and status
 
+**Published**:
+Having a DOI and being on moral-os.com. A document in this repository is a draft until both are
+true, however public the repository. Drafts do not refer to earlier drafts (decision 17).
+_Avoid_: published for anything merely pushed; "an earlier draft said".
+
 **The pilot**:
 This repository. Exploratory throughout, published, and kept as-is. Its findings inform the
 confirmatory study's design and underwrite no registered claim there.

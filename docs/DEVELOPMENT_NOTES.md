@@ -106,7 +106,7 @@ exit as saying nothing about whether the right data was present.**
 ## The in-language appendix is generated, and the splice map is fixed
 
 `papers/inlanguage-mfq2-appendix-DRAFT.md` is spliced verbatim from two artifacts. `build_appendix_tables.py`
-emits B2a, B3, B3a, B6 and B6a; `audit_inlanguage.py` emits B1a, B4, B5, B7 and B10. B1, B2, B8,
+emits B2a, B3, B3a, B6 and B6a; `audit_inlanguage.py` emits B1a, B4, B5 and B7. B1, B2, B8,
 B9, the Arabic-four subsection inside B3 and the Care sentence after B6 are hand-written. A number
 in the document that disagrees with its artifact is a splice that was not re-run; re-splice, do not
 edit. `test_reproduce.py` pins the artifacts (decision 14), not the document.
