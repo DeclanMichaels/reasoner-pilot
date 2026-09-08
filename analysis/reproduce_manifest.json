@@ -18,7 +18,7 @@
  },
  "committed_only": {
   "validity/results/aggregation_artifact.json": "ebcca2e3f4429791e98fc4c31c1c645ee52abd69f45490c82127136d634aca93",
-  "validity/results/appendix_tables.md": "c126ade2f23c5ca5f4b9bf5ba7f494cf8300d69f28207e06ec1356892887064c",
+  "validity/results/appendix_tables.md": "9820922bb1e0503aa99e68c6c386f2116e577b1b817ef9167f038e5cd160a0ae",
   "validity/results/condition_means.json": "b923b7c8c72c6621ef0381d5b1dd560711c80b4347ed2612c7af17addb92a806",
   "validity/results/convergent_validity.json": "3fa05df250695d0d663187b2051260cac51a48211d8cc147d7fdd459f88ba671",
   "validity/results/convergent_validity.md": "a5c7a8686821e9447b30e70ae67584df2db7c36dc02935926b65fa7da8b3972f",
@@ -32,7 +32,7 @@
   "validity/results/model_vs_human_profiles.md": "efaa89ad17bac268dfda470e97626cd8ab3032b73a2d86e1e423afe3f8e8394e",
   "validity/results/reasoning_cost.txt": "88bcb97d11bb7d783202e09127c9cffd7364e4bc8ff74b1a6f07d810741b9483",
   "validity/results/society_framing_mfq2.md": "85d2993685e7bc010da82e927c58e6cf6b10cc41bfce7e5e5416e5bb9b7aaf7c",
-  "validity/results/viewer_data.json": "1ec7645486af26281d015176a3247baad5c492fb5f775c1ebae589977a9eee96",
-  "validity/results/appendix_b4_b5.md": "15f4a9ce18234da9958ed97e4d9461a788da25bd0e3077f60ef9baf22300caee"
+  "validity/results/viewer_data.json": "a0e1412e85d0a900ceec36ca47efd090859265a1a145b0588e6f3f22af4641b8",
+  "validity/results/appendix_b4_b5.md": "9e5beb86598808fd2e0d12331c02c6f715b440ae93dc7b9474fab579c37599f7"
  }
 }

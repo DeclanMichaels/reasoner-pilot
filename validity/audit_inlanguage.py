@@ -400,7 +400,7 @@ for code in LANG_ORDER:
     for cc, country in PAIRS:
         if cc != code: continue
         L.append("*%s, framed as %s%s*\n" % (LANG_NAME[code], country,
-                 " (the Spanish arm, decision 12)" if (code, country) == ("es", "Morocco") else ""))
+                 " (the Arabic arm: data, compared against no human mean, decision 18)" if (code, country) == ("ar", "Morocco") else ""))
         L.append(HEAD % N); L.append(SEP)
         L.append(row("framing in English", C[("framing_en", code, country)]))
         L.append(row("framing in " + LANG_NAME[code], C[("framing_local", code, country)]))
@@ -409,17 +409,17 @@ for code in LANG_ORDER:
         L.append("")
 
 # the 1.04 and its weighting
-_grp = {c: [k for cc, k in PAIRS if cc == c and not (c == "es" and k == "Morocco")] for c in LANG_ORDER}
+_grp = {c: [k for cc, k in PAIRS if cc == c and not (c == "ar" and k == "Morocco")] for c in LANG_ORDER}
 _per_lang = {c: sum(C[("framing_local", c, k)]["diff"] for k in _grp[c]) / len(_grp[c]) for c in LANG_ORDER}
 _eq_lang = sum(_per_lang.values()) / len(_per_lang)
 _all_pairs = sum(C[("framing_local", c, k)]["diff"] for c, k in PAIRS) / len(PAIRS)
-_no_esmor = [(c, k) for c, k in PAIRS if not (c == "es" and k == "Morocco")]
+_no_esmor = [(c, k) for c, k in PAIRS if not (c == "ar" and k == "Morocco")]
 _eq_pair = sum(C[("framing_local", c, k)]["diff"] for c, k in _no_esmor) / len(_no_esmor)
 L.append("**The average framing shift, and how it is weighted.** The paper's %.2f is the local "
          "framing effect averaged within each language over its countries, with Morocco counted "
-         "under Arabic and not Spanish, and then averaged across the six languages with equal "
+         "under Spanish and not Arabic (decision 18), and then averaged across the six languages with equal "
          "weight: %s. Weighting every (language, country) pair equally instead gives %.3f over the "
-         "same %d pairs, and %.3f over all %d including Spanish Morocco.\n" % (
+         "same %d pairs, and %.3f over all %d including Arabic Morocco.\n" % (
          _eq_lang, ", ".join("%s %+.3f" % (LANG_NAME[c], _per_lang[c]) for c in LANG_ORDER),
          _eq_pair, len(_no_esmor), _all_pairs, len(PAIRS)))
 
@@ -616,7 +616,8 @@ M.append("**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 a
          "Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with "
          "Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). "
          "2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set "
-         "rebuilt on the full grid without p-values (decision 15). Binding became the focal "
+         "rebuilt on the full grid without p-values (decision 15), and Morocco reported under Spanish "
+         "throughout, superseding the 2026-08-24 grouping (decision 18). Binding became the focal "
          "quantity on 2026-07-20, before any in-language cell existed; every choice after that "
          "was made with results in view.\n")
 (VDIR / "results" / "appendix_b4_b5.md").write_text("\n".join(M + L) + "\n")

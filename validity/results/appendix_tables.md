@@ -15,18 +15,18 @@ Every recomputed R-squared is within 0.0044 of the published one; the recomputat
 
 ## B3. Where the panel lands, by country
 
-Binding composite, panel mean over eleven models, each model's five iterations averaged first. The English unframed column is one condition and repeats down the table; the unframed in-language column is one condition per language and repeats across the countries that share a language, because neither condition names a country. Dashes mark arms not run. Morocco's local cells show the Arabic arm here and the Spanish arm in the distance table, per decision 12.
+Binding composite, panel mean over eleven models, each model's five iterations averaged first. The English unframed column is one condition and repeats down the table; the unframed in-language column is one condition per language and repeats across the countries that share a language, because neither condition names a country. Dashes mark arms not run. Morocco's local cells are the Spanish arm in both tables, decision 18; its Arabic-framed cells appear in B3a, B6 and B4.
 
 | country | language | human | human SE | EN unframed | local unframed | EN framed | local framed |
 |---|---|--:|--:|--:|--:|--:|--:|
 | Egypt | Arabic | 4.267 | 0.040 | 2.769 | 3.104 | 4.605 | 4.604 |
-| Morocco [d12] | Arabic | 4.014 | 0.049 | 2.769 | 3.104 (Arabic arm) | 4.570 | 4.582 (Arabic arm) |
 | Saudi Arabia | Arabic | 4.083 | 0.045 | 2.769 | 3.104 | 4.733 | 4.757 |
 | United Arab Emirates | Arabic | 3.892 | 0.057 | 2.769 | 3.104 | 4.629 | 4.726 |
 | Argentina | Spanish | 3.283 | 0.046 | 2.769 | 2.780 | 3.437 | 3.349 |
 | Chile | Spanish | 3.220 | 0.052 | 2.769 | 2.780 | 3.654 | 3.576 |
 | Colombia | Spanish | 3.497 | 0.046 | 2.769 | 2.780 | 4.100 | 3.996 |
 | Mexico | Spanish | 3.512 | 0.043 | 2.769 | 2.780 | 4.141 | 3.947 |
+| Morocco [d18] | Spanish | 4.014 | 0.049 | 2.769 | 2.780 (Spanish arm) | 4.570 | 4.589 (Spanish arm) |
 | Peru | Spanish | 3.514 | 0.045 | 2.769 | 2.780 | 4.133 | 4.038 |
 | Belgium | French | 3.444 | 0.040 | 2.769 | 2.777 | 2.622 | 2.797 |
 | France | French | 3.610 | 0.039 | 2.769 | 2.777 | 2.725 | 2.834 |
@@ -48,13 +48,13 @@ The same table as distance from that country's reference-sample mean. Positive i
 | country | EN unframed | local unframed | EN framed | local framed |
 |---|--:|--:|--:|--:|
 | Egypt | -1.498 | -1.163 | +0.338 | +0.337 |
-| Morocco [d12] | -1.245 | -1.234 (Spanish arm) | +0.556 | +0.575 (Spanish arm) |
 | Saudi Arabia | -1.314 | -0.979 | +0.650 | +0.674 |
 | United Arab Emirates | -1.123 | -0.788 | +0.737 | +0.834 |
 | Argentina | -0.514 | -0.503 | +0.154 | +0.066 |
 | Chile | -0.451 | -0.440 | +0.434 | +0.356 |
 | Colombia | -0.728 | -0.717 | +0.603 | +0.499 |
 | Mexico | -0.743 | -0.732 | +0.629 | +0.435 |
+| Morocco [d18] | -1.245 | -1.234 (Spanish arm) | +0.556 | +0.575 (Spanish arm) |
 | Peru | -0.745 | -0.734 | +0.619 | +0.524 |
 | Belgium | -0.675 | -0.667 | -0.822 | -0.647 |
 | France | -0.841 | -0.833 | -0.885 | -0.776 |
@@ -74,9 +74,9 @@ The human SE column is SD over root n from the per-country dispersion file, 0.03
 
 [*] Iran's anchor is the only one not drawn from Atari et al. (2023) Study 2. B4 carries the source, the sample's own caveats and the sensitivity across every anchor that source offers.
 
-[d12] Morocco: grouped with Arabic above, compared against its human mean on the Spanish arm, because Atari et al. administered Morocco's sample in Spanish. Both runs are carried in the data.
+[d18] Morocco: reported under Spanish, the language Atari et al. administered its sample in, and compared on the Spanish arm. An Arabic-framed arm was also run; its cells are in B3a, B6 and B4 and enter no comparison against the human mean.
 
-Human anchors, treated as constants, binding as the mean of loyalty, authority and purity: Egypt 4.267 (Atari 2023 Study 2), Morocco 4.014 (Atari 2023 Study 2), Saudi Arabia 4.083 (Atari 2023 Study 2), United Arab Emirates 3.892 (Atari 2023 Study 2), Argentina 3.283 (Atari 2023 Study 2), Chile 3.220 (Atari 2023 Study 2), Colombia 3.497 (Atari 2023 Study 2), Mexico 3.512 (Atari 2023 Study 2), Peru 3.514 (Atari 2023 Study 2), Belgium 3.444 (Atari 2023 Study 2), France 3.610 (Atari 2023 Study 2), Switzerland 3.349 (Atari 2023 Study 2), Japan 2.652 (Atari 2023 Study 2), Iran 3.333 (Hazrati 2025 sample 2), Russia 3.599 (Atari 2023 Study 2), Ireland 3.096 (Atari 2023 Study 2), Kenya 3.867 (Atari 2023 Study 2), New Zealand 3.094 (Atari 2023 Study 2), Nigeria 4.038 (Atari 2023 Study 2), South Africa 3.749 (Atari 2023 Study 2). India, Sweden and the United States are not in the MFQ-2 nineteen-nation set, so no overshoot is computable for them. Iran's sample was administered on a 0-4 scale and shifted linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the detail and the caveats.
+Human anchors, treated as constants, binding as the mean of loyalty, authority and purity: Egypt 4.267 (Atari 2023 Study 2), Saudi Arabia 4.083 (Atari 2023 Study 2), United Arab Emirates 3.892 (Atari 2023 Study 2), Argentina 3.283 (Atari 2023 Study 2), Chile 3.220 (Atari 2023 Study 2), Colombia 3.497 (Atari 2023 Study 2), Mexico 3.512 (Atari 2023 Study 2), Morocco 4.014 (Atari 2023 Study 2), Peru 3.514 (Atari 2023 Study 2), Belgium 3.444 (Atari 2023 Study 2), France 3.610 (Atari 2023 Study 2), Switzerland 3.349 (Atari 2023 Study 2), Japan 2.652 (Atari 2023 Study 2), Iran 3.333 (Hazrati 2025 sample 2), Russia 3.599 (Atari 2023 Study 2), Ireland 3.096 (Atari 2023 Study 2), Kenya 3.867 (Atari 2023 Study 2), New Zealand 3.094 (Atari 2023 Study 2), Nigeria 4.038 (Atari 2023 Study 2), South Africa 3.749 (Atari 2023 Study 2). India, Sweden and the United States are not in the MFQ-2 nineteen-nation set, so no overshoot is computable for them. Iran's sample was administered on a 0-4 scale and shifted linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the detail and the caveats.
 
 
 ## B3a. Every condition, with intervals
@@ -191,13 +191,13 @@ All fifty conditions, then the measured human mean for each of the twenty anchor
 | ru_framed_Russia | 4.54 | 2.57 | 4.32 | 4.38 | 4.41 | 3.35 |
 | ru_neutral | 4.71 | 2.10 | 4.21 | 3.16 | 3.16 | 2.05 |
 | **Egypt, measured** | 4.38 | 3.56 | 4.37 | 4.42 | 4.18 | 4.19 |
-| **Morocco, measured** [d12] | 4.21 | 3.36 | 4.18 | 4.16 | 3.95 | 3.93 |
 | **Saudi Arabia, measured** | 4.24 | 3.32 | 4.18 | 4.20 | 4.07 | 3.98 |
 | **United Arab Emirates, measured** | 4.01 | 3.28 | 3.96 | 4.02 | 3.91 | 3.74 |
 | **Argentina, measured** | 3.84 | 2.81 | 3.91 | 3.58 | 3.67 | 2.60 |
 | **Chile, measured** | 3.77 | 2.77 | 3.70 | 3.45 | 3.67 | 2.54 |
 | **Colombia, measured** | 3.83 | 2.91 | 3.69 | 3.67 | 3.84 | 2.98 |
 | **Mexico, measured** | 3.77 | 2.87 | 3.80 | 3.78 | 3.94 | 2.81 |
+| **Morocco, measured** [d18] | 4.21 | 3.36 | 4.18 | 4.16 | 3.95 | 3.93 |
 | **Peru, measured** | 3.62 | 2.63 | 3.75 | 3.73 | 3.81 | 3.00 |
 | **Belgium, measured** | 3.91 | 3.20 | 3.91 | 3.62 | 3.70 | 3.01 |
 | **France, measured** | 4.08 | 3.23 | 4.12 | 3.86 | 3.88 | 3.09 |

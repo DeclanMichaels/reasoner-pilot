@@ -42,7 +42,7 @@ The in-language framing instructions are our translations of that template, one 
 
 **Instruments.** Item wording is the official MFQ-2 and its six official translations from the Atari et al. (2023) supplement, extracted verbatim; ids, groups and scoring are cloned from the English scaffold so every language scores identically. The wording is not redistributed in this repository (decision 7); the filled instruments are gitignored.
 
-**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6, on the roster but returning model_not_available from the first call, replaced by Kimi-K3 under its own key before it produced any cell (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
+**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered unframed and framed as six countries in English, the collection now archived unchanged under `validity/archive-2026-07/`; its interim result is what led to the in-language design, and none of its cells enters any number here. 2026-07-23: the in-language machinery, per-language instruments and runner. 2026-08-21: three Arabic framed cells keyed on country; Kimi-K2.6, on the roster but returning model_not_available from the first call, replaced by Kimi-K3 under its own key before it produced any cell (decision 10); Spanish, French and Russian added, nine more countries. 2026-08-21 to 2026-08-23: the collection reported here, in one window. 2026-08-22: the English comparator changed to the matched cell, the old one kept as errata (decision 11); Spanish Morocco added. 2026-08-24: Morocco compared on the Spanish arm and grouped with Arabic (decision 12); the fifteen-above shape left uninterpreted (decision 13). 2026-09-07: the appendix regenerated on the completed grid. 2026-09-08: the contrast set rebuilt on the full grid without p-values (decision 15), and Morocco reported under Spanish throughout, superseding the 2026-08-24 grouping (decision 18). Binding became the focal quantity on 2026-07-20, before any in-language cell existed; every choice after that was made with results in view.
 
 ## B4. The contrasts
 
@@ -72,7 +72,7 @@ The interval excludes zero for Arabic only.
 | language under framing | -0.001 | [-0.048, +0.054] | 4 up, 7 down | -0.020 to +0.010 |
 | interaction | -0.336 | [-0.506, -0.174] | 2 up, 9 down | -0.388 to -0.277 |
 
-*Arabic, framed as Morocco*
+*Arabic, framed as Morocco (the Arabic arm: data, compared against no human mean, decision 18)*
 
 | contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
 |---|--:|:--:|--:|:--:|
@@ -135,7 +135,7 @@ The interval excludes zero for Arabic only.
 | language under framing | -0.194 | [-0.262, -0.130] | 0 up, 11 down | -0.207 to -0.173 |
 | interaction | -0.205 | [-0.320, -0.098] | 2 up, 9 down | -0.229 to -0.167 |
 
-*Spanish, framed as Morocco (the Spanish arm, decision 12)*
+*Spanish, framed as Morocco*
 
 | contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
 |---|--:|:--:|--:|:--:|
@@ -207,7 +207,7 @@ The interval excludes zero for Arabic only.
 | language under framing | -0.070 | [-0.165, +0.026] | 3 up, 7 down | -0.101 to -0.041 |
 | interaction | -0.089 | [-0.247, +0.057] | 5 up, 6 down | -0.139 to -0.028 |
 
-**The average framing shift, and how it is weighted.** The paper's 1.04 is the local framing effect averaged within each language over its countries, with Morocco counted under Arabic and not Spanish, and then averaged across the six languages with equal weight: Arabic +1.563, Spanish +1.002, French +0.126, Japanese +0.759, Farsi +1.505, Russian +1.260. Weighting every (language, country) pair equally instead gives 1.011 over the same 15 pairs, and 1.061 over all 16 including Spanish Morocco.
+**The average framing shift, and how it is weighted.** The paper's 1.06 is the local framing effect averaged within each language over its countries, with Morocco counted under Spanish and not Arabic (decision 18), and then averaged across the six languages with equal weight: Arabic +1.592, Spanish +1.136, French +0.126, Japanese +0.759, Farsi +1.505, Russian +1.260. Weighting every (language, country) pair equally instead gives 1.033 over the same 15 pairs, and 1.061 over all 16 including Arabic Morocco.
 
 **[*] The Iran anchor, and what it costs.** Nineteen of the twenty anchors are Atari et al. (2023) Study 2. Iran is not in that set; its anchor is Hazrati, Nejat and Daneshi (2025), a different paper with different collection conditions, using Atari's Persian translation with minor linguistic edits, administered 0 to 4 with the same anchor words as the 1-to-5 scale, from does not describe me at all to describes me extremely well, so the +1 shift maps label to label. That sample is a Telegram and snowball convenience sample, n=989, 68 to 71 percent female, mean age 26 to 28, 57 to 59 percent educated to bachelor's or above, and we read it as likely less binding-endorsing than the general Iranian population, our inference and not the authors' statement - which would bias this overshoot upward. Collection began a year after the Woman, Life, Freedom movement and the authors note possible period effects. Iran is the only Farsi country, so it carries that group throughout. Respondent-level data for both samples are shared by the authors on OSF.
 

@@ -148,19 +148,22 @@ def cond(k):
 
 
 # ---- which country goes with which language, discovered from the data
+# Decision 18. Atari et al. administered Morocco's human sample in Spanish (their Table 3), so
+# Morocco is reported under Spanish in every view and compared on the Spanish arm. Its
+# Arabic-framed arm is carried as data beside it and enters no comparison. A country with two
+# in-language arms and no entry here is an error, not a default.
+GROUP_CODE = {"Morocco": "es"}
+ANCHOR_CODE = {"Morocco": "es"}
+
 pairs = {}
 for k in C:
     if "_framed_" in k and not k.startswith("EN_"):
         code, country = k.split("_framed_", 1)
+        if country in pairs and pairs[country] != code:
+            if country not in GROUP_CODE:
+                raise SystemExit("%s has two in-language arms and no GROUP_CODE entry" % country)
+            code = GROUP_CODE[country]
         pairs[country] = code
-
-# Morocco was administered to HUMANS in Spanish (Atari et al. 2023, Table 3) while its own
-# majority language is Arabic. The two analyses want different arms. Comparing the panel to
-# Morocco's human anchor wants the Spanish arm, because that is the like-for-like match. The
-# ordering and foundation-shift analyses ask what administering in ARABIC does, and
-# Morocco-in-Arabic is a real observation of that, so the language group keeps the Arabic run.
-# Both arms are carried; neither is discarded.
-ANCHOR_CODE = {"Morocco": "es"}
 
 countries = []
 for country in sorted(set(list(pairs) + [c.split("EN_framed_", 1)[1]
@@ -182,13 +185,12 @@ for country in sorted(set(list(pairs) + [c.split("EN_framed_", 1)[1]
                             if code else None,
         },
     }
-    # where the two differ, carry the group's own arm beside the anchor-matched one so the
-    # page can show both rather than implying only one run exists
-    ac = ANCHOR_CODE.get(country)
-    if ac and code and ac != code:
-        row["anchor_lang"] = LANGS.get(ac)
-        row["group_lang"] = LANGS.get(code)
-        row["group_framed"] = cond(code + "_framed_" + country)
+    # a second in-language arm is carried beside the reported one so the page can say it
+    # exists, without comparing it to anything
+    other = [c for c in LANGS if c != code and (c + "_framed_" + country) in C]
+    if other:
+        row["other_arm_lang"] = LANGS[other[0]]
+        row["other_arm_framed"] = cond(other[0] + "_framed_" + country)
     h = row["human"]
     row["deviation"] = {kk: (round(v["mean"] - h, 4) if (v and h is not None) else None)
                         for kk, v in row["conditions"].items()}
