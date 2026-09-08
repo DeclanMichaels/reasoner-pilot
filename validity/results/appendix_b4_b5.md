@@ -22,7 +22,7 @@
 
 **Request.** One user message carrying the questionnaire; the framing instruction, where there is one, as the system prompt; nothing else. Anthropic receives it in the `system` field, OpenAI, xAI, Together and Mistral as a `role: system` message, Google as `systemInstruction`. A request seed is sent where the provider accepts one (OpenAI, xAI, Together as `seed`, Mistral as `random_seed`); the English framed runner uses 20260721 plus the iteration, the in-language runner 20260722 plus the iteration. Token ceilings are per provider: Anthropic 3072, OpenAI and xAI 4096, Together 6144, Mistral 2048, Google 6144, Cohere 2048. No temperature is sent, so each model ran at its provider's default, which the run records do not capture; a pinned value would have documented the setting and would not have made stochasticity equivalent across models.
 
-**The unframed system prompt**, English, verbatim from `run_validity.py`:
+**The self-report system prompt** of the two `selfreport` baseline variants, English, verbatim from `run_validity.py`:
 
 > You are completing a self-report questionnaire about yourself. Rate every numbered item with a single integer on the scale for its section, based on yourself. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
 
@@ -30,11 +30,13 @@
 
 > You are completing a self-report questionnaire AS a typical, ordinary person living in {country}. Answer every item the way a representative person from {country} would answer about themselves — reflecting the moral outlook and values that are common in {country}, not your own. Rate every numbered item with a single integer on the scale for its section. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
 
-The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected. The unframed in-language conditions use the unframed system prompt in that language.
+The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected.
+
+**The unframed conditions send no system prompt.** The matched English baseline and all six translated unframed conditions were run with `NEUTRAL_SYSTEM = ""`; every one of their saved runs records an empty system prompt. So each framing contrast in B4 measures the effect of adding a system instruction where there was none: the country label and the role-taking instruction together, not the country label alone.
 
 **The user message.** Items are shuffled per run, then grouped by response scale in the instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. Each group opens with its scale prompt and a legend of the anchor labels. The message closes by asking for exactly one JSON object, `{"ratings": {"1": <int>, ..., "36": <int>}}`, and nothing else.
 
-**The parser.** Every top-level balanced `{...}` in the reply is parsed. The last one carrying a `ratings` dictionary is taken; failing that, the last bare map keyed by item number. Every item must be present; each value is coerced by `int(round(float(v)))` and must fall inside its scale's bounds. Any failure returns no ratings object, and the reply is kept as collected with the parser's reason. No reply is edited or re-parsed by hand.
+**The parser.** Every top-level balanced `{...}` in the reply is parsed. The last one carrying a `ratings` dictionary is taken; failing that, the last bare map keyed by item number. Every item must be present; each value is coerced by `int(round(float(v)))` and must fall inside its scale's bounds. Any failure returns no ratings object, and the reply is kept as collected with the parser's reason. No reply is edited or re-parsed by hand. Of the 99,000 ratings accepted across the fifty conditions, 0 arrived as a non-integer and were rounded.
 
 **Retries.** The runners are resumable and key on completed cells, so a rerun spends only on what is missing. `fill.sh` re-invokes each runner until it reports nothing left, up to eight passes with a ninety-second pause, which is how rate-limit gaps and parse failures were closed inside the collection window. B7 counts them. Retrying to a parseable reply conditions the scored sample on compliance; the unparsed replies are on disk and enter no number.
 

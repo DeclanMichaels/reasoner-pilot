@@ -518,6 +518,20 @@ def _frame_template():
 
 
 _FRAME = _frame_template()
+# parser rounding audit: how many accepted ratings were non-integers in the raw reply
+_nrat = _nround = 0
+for _d in ("runs_framed", "runs_framed_lang", "runs_english_baseline", "runs"):
+    for _f in glob.glob(str(VDIR / _d / "*.json")):
+        _r = json.load(open(_f))
+        if not _r.get("ratings") or (_d == "runs" and _r.get("instrument") != "mfq2"):
+            continue
+        _m = re.search(r'"ratings"\s*:\s*\{[^}]*\}', _r.get("raw_text") or "")
+        if not _m:
+            continue
+        for _k, _v in re.findall(r'"(\d+)"\s*:\s*([-\d.]+)', _m.group(0)):
+            _nrat += 1
+            if "." in _v and float(_v) != int(float(_v)):
+                _nround += 1
 assert "{country}" in _FRAME and "questionnaire" in _FRAME, "frame_system template not recovered"
 M = []
 M.append("## B1a. Roster and protocol\n")
@@ -538,7 +552,7 @@ M.append("\n**Request.** One user message carrying the questionnaire; the framin
          "6144, Cohere 2048. No temperature is sent, so each model ran at its provider's default, "
          "which the run records do not capture; a pinned value would have documented the setting "
          "and would not have made stochasticity equivalent across models.\n")
-M.append("**The unframed system prompt**, English, verbatim from `run_validity.py`:\n")
+M.append("**The self-report system prompt** of the two `selfreport` baseline variants, English, verbatim from `run_validity.py`:\n")
 M.append("> " + _unframed_system + "\n")
 M.append("**The framing instruction**, English, verbatim from `run_framed.py` with the country "
          "substituted:\n")
@@ -547,8 +561,12 @@ M.append("The in-language framing instructions are our translations of that temp
          "language, AI-assisted and disclosed as such, varying only the country name and the "
          "demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` "
          "field, and the runner asserts at start-up that the Arabic template still reproduces the "
-         "Egypt prompt byte for byte as first collected. The unframed in-language conditions use "
-         "the unframed system prompt in that language.\n")
+         "Egypt prompt byte for byte as first collected.\n")
+M.append("**The unframed conditions send no system prompt.** The matched English baseline and all six "
+         "translated unframed conditions were run with `NEUTRAL_SYSTEM = \"\"`; every one of their "
+         "saved runs records an empty system prompt. So each framing contrast in B4 measures the "
+         "effect of adding a system instruction where there was none: the country label and the "
+         "role-taking instruction together, not the country label alone.\n")
 M.append("**The user message.** Items are shuffled per run, then grouped by response scale in the "
          "instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. "
          "Each group opens with its scale prompt and a legend of the anchor labels. The message "
@@ -558,7 +576,9 @@ M.append("**The parser.** Every top-level balanced `{...}` in the reply is parse
          "carrying a `ratings` dictionary is taken; failing that, the last bare map keyed by item "
          "number. Every item must be present; each value is coerced by `int(round(float(v)))` and "
          "must fall inside its scale's bounds. Any failure returns no ratings object, and the reply "
-         "is kept as collected with the parser's reason. No reply is edited or re-parsed by hand.\n")
+         "is kept as collected with the parser's reason. No reply is edited or re-parsed by hand. Of "
+         "the %s ratings accepted across the fifty conditions, %d arrived as a non-integer and were "
+         "rounded.\n" % ("{:,}".format(_nrat), _nround))
 M.append("**Retries.** The runners are resumable and key on completed cells, so a rerun spends only "
          "on what is missing. `fill.sh` re-invokes each runner until it reports nothing left, up to "
          "eight passes with a ninety-second pause, which is how rate-limit gaps and parse failures "
