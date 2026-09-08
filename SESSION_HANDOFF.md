@@ -19,7 +19,7 @@ This repository is public, so this file is public. It is written knowing that.
 - **The declared test family is withdrawn.** B4 is a contrast set over the full grid, reported as
   intervals, sign counts and leave-one-out ranges, no p-values. Decision 15 says why; B10 carries
   the errata.
-- One issue is open, #21, and it is `ready-for-human`. `DECISIONS.md` holds 15 entries.
+- No issue is open. `DECISIONS.md` holds 15 entries.
 - This is the Black M2 Air. `validity/` holds the completed grid, and `validity/reconcile.py`
   reports it identical to the 2026-09-05 archive.
 
@@ -39,13 +39,14 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-- **#21, compute the Farsi human SD from Hazrati's shared data**, `analysis`, `ready-for-human`.
-  The files exist on a view-only OSF link; whether they may be used for a published statistic is
-  the question. Everything else from #1 to #20 is closed with its disposition on the ticket.
+- Nothing is open. #21 closed on 2026-09-08: Declan ruled the authors' shared respondent-level
+  files may be used; `validity/reference/build_iran_dispersion.py` derives the SDs off the
+  reproduce path and the appendix reads only its CSV. #1 to #21 are closed with their
+  dispositions on the tickets.
 
 ## Next session
 
-Nothing is queued for an agent. What remains is yours:
+Nothing is queued for an agent and nothing is open. What remains is yours:
 
 1. **Review.** Everything pushed since `303e79e` on 2026-09-07 - the regenerated appendix, the
    paper corrections, the rebuilt contrast set, decision 15 - has had no independent adversarial
