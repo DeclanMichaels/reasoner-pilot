@@ -84,7 +84,8 @@ contains. Run on 2026-09-05 it reverted five of them to their 2026-08-21 state, 
 `audit_inlanguage.py`, which lost 162 lines and the matched English-baseline change that is
 decision 11. The sync reports success and the tree looks restored. Check `git status` immediately
 after any sync into `validity/` and `git checkout --` anything tracked that it touched. Tracked by
-issue 3.
+issue 3; `validity/reconcile.py` classifies a working copy against an archive before and after any
+sync, and the documented recipe runs it.
 
 **The 2026-08-21 archive does not cover the completed grid; the 2026-09-05 one does.** The prefix
 root holds the 2026-08-21 snapshot: Arabic, Farsi and Japanese only, 929 objects, 14 conditions,

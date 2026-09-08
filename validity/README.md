@@ -73,15 +73,26 @@ them. They live in two places:
   `instruments/`, plus `ARCHIVE_MANIFEST.sha256` and `ARCHIVE_NOTE.txt` saying what it
   covers. It contains no tracked file. Restore into a scratch directory, verify, then merge:
 
-      aws login
+      aws sso login
       aws s3 sync s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-05/ /tmp/restore/
       (cd /tmp/restore && shasum -a 256 -c ARCHIVE_MANIFEST.sha256 --quiet && echo OK)
-      rsync -a --exclude 'ARCHIVE_*' /tmp/restore/ validity/
-      git status
+      python3 validity/reconcile.py --archive /tmp/restore        # classify BEFORE touching validity/
+      for d in runs runs_framed runs_framed_lang; do rsync -a --delete /tmp/restore/$d/ validity/$d/; done
+      rsync -a /tmp/restore/instruments/ validity/instruments/    # no --delete: the tracked scaffolds live here
+      python3 validity/reconcile.py --archive /tmp/restore        # must print RECONCILED
+      git status                                                  # must be clean
 
-  Restore verified 2026-09-05 on the machine that holds the data: all 2,690 checksums match
-  and the restored files are byte-identical to the working copy. Not yet verified on a machine
-  without the data.
+  `reconcile.py` is read-only and stdlib. It puts every local file in one of four buckets -
+  identical to the archive, differs, recoverable from git, or nowhere else - and exits non-zero
+  on the last two. Run it before the replace so nothing unique is overwritten, and after so the
+  working copy is known to be the archive. The three run directories are replaced rather than
+  merged: an older collection left in place shares their names, and the audit scripts glob whole
+  directories.
+
+  Verified 2026-09-07 on the Black M2 Air, which had never held the grid: 2,690 files restored,
+  all 2,690 checksums match. The working copy there was then classified and replaced: 122 files
+  identical, 0 differing, 783 present only locally, of which 780 were byte-identical to files
+  tracked under `archive-2026-07/` and 3 were the tracked scaffolds.
 
   The objects at the prefix root, `archive-reasoner-pilot-validity/` itself, are the 2026-08-21
   snapshot: Arabic, Farsi and Japanese only, 929 objects, with tracked files mixed in. Syncing
