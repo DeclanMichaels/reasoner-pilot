@@ -572,9 +572,9 @@ M.append("**The unframed conditions send no system prompt.** The matched English
          "effect of adding a system instruction where there was none: the country label and the "
          "role-taking instruction together, not the country label alone. The nearest measurement of "
          "the instruction on its own is the English baseline pair in `results/english_baseline_audit.txt`, "
-         "where a self-report system prompt naming no country, against none, moved the composite by "
-         "+0.026 with a model-resampling interval of [-0.042, +0.090], eight models up and three "
-         "down. That prompt is not the framing template, so it brackets the role-taking component "
+         "where a self-report system prompt naming no country lowered the composite by 0.026 against "
+         "none, model-resampling interval [-0.090, +0.042], eight of eleven models lower with the "
+         "prompt. That prompt is not the framing template, so it brackets the role-taking component "
          "rather than isolating it; a country-neutral arm with the framing template itself would, "
          "and was not run.\n")
 M.append("**The user message.** Items are shuffled per run, then grouped by response scale in the "
