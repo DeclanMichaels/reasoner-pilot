@@ -230,7 +230,7 @@ print("Human anchors, treated as constants, binding as the mean of loyalty, auth
          "it" if len(UNANCHORED) == 1 else "them"))
 
 print("\n## B3a. Every condition, with intervals\n")
-print("| condition | panel mean | 95% CI | between-model SD |")
+print("| condition | panel mean | 95% model-resampling interval | between-model SD |")
 print("|---|--:|:--:|--:|")
 for k in sorted(C):
     lo, hi = boot(list(C[k].values()), k)

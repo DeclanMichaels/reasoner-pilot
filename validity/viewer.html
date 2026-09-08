@@ -859,7 +859,7 @@ function panelModels(){
         <text class="m" x="${x(v)+13}" y="${y+5}" fill="var(--text-dim)" font-size="15">${fmt(v,2)}</text>`;
     });
     strip += `<text x="${L}" y="${H-10}" fill="var(--text-dim)" font-size="15">panel mean
-      ${fmt(c.mean)} &middot; 95% CI [${fmt(c.ci[0])}, ${fmt(c.ci[1])}] &middot; between-model SD
+      ${fmt(c.mean)} &middot; 95% model-resampling interval [${fmt(c.ci[0])}, ${fmt(c.ci[1])}] &middot; between-model SD
       ${fmt(c.sd,2)} &middot; n = ${c.n_models}</text></svg>`;
   }
 
@@ -1001,7 +1001,7 @@ function wireTips(){
     const row = D.countries.find(r => r.country === c);
     const v = row.conditions[k];
     hook(g, `<strong>${esc(c)} - ${esc(CK[k].label)}</strong>
-      <span class="mono">${fmt(v.mean)}</span> &nbsp;95% CI [<span class="mono">${fmt(v.ci[0])}, ${fmt(v.ci[1])}</span>]<br>
+      <span class="mono">${fmt(v.mean)}</span> &nbsp;95% model-resampling interval [<span class="mono">${fmt(v.ci[0])}, ${fmt(v.ci[1])}</span>]<br>
       human <span class="mono">${fmt(row.human)}</span>,
       difference <span class="mono">${fmtS(row.deviation[k])}</span><br>
       <span style="color:var(--text-dim)">${v.n_models} of ${MAXN} models${

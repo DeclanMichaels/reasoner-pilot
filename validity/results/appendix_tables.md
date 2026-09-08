@@ -63,7 +63,7 @@ Human anchors, treated as constants, binding as the mean of loyalty, authority a
 
 ## B3a. Every condition, with intervals
 
-| condition | panel mean | 95% CI | between-model SD |
+| condition | panel mean | 95% model-resampling interval | between-model SD |
 |---|--:|:--:|--:|
 | EN_framed_Argentina | 3.437 | [3.316, 3.557] | 0.20 |
 | EN_framed_Belgium | 2.622 | [2.523, 2.742] | 0.19 |

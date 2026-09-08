@@ -1,37 +1,169 @@
-## B4. The test families
+## B4. The contrasts
 
-Two families, one per headline claim, both post hoc and both exploratory. Paired tests use per-model differences; anchor tests subtract the constant from each model's mean. Exact sign-flip permutation: with eleven models the minimum attainable two-sided p is 2/2048, reported as 0.001. Nothing was pre-registered.
+Every country with both languages, and every language with both framings. Each contrast is computed within a model first and then averaged across the 11, so the interval, the sign count and the leave-one-out range all describe the same per-model differences. The interval is a percentile bootstrap resampling the 11 models, 100,000 draws, seeded per quantity: it shows how far the difference moves when models like these are resampled, and it bounds nothing. An interval that includes zero says the panel did not resolve a direction; it does not establish equivalence. No p-values are reported; decision 15 says why, and the exact sign-flip enumeration the earlier appendix carried remains in the audit's verification output.
 
-**Family A, the framing claim.** Ten comparisons, Holm across the ten.
+**Language without framing.** The translated questionnaire against the English one, neither naming a country. One row per language.
 
-| test | difference | 95% CI | exact p | Holm |
-|---|--:|:--:|--:|--:|
-| T1 Egypt: EN-framed vs AR-framed | +0.001 | [-0.054, +0.048] | 1.0000 | 1.0000 |
-| T2 Japan: EN-framed vs JA-framed | +0.233 | [+0.098, +0.384] | 0.0059 | 0.0234 |
-| T3 JA-neutral vs Japan anchor | +0.024 | [-0.155, +0.233] | 0.8330 | 1.0000 |
-| T4 FA-framed vs Iran anchor [*] | +0.981 | [+0.815, +1.144] | 0.0010 | 0.0098 |
-| T5 FA-neutral vs EN-neutral | +0.040 | [-0.117, +0.184] | 0.6357 | 1.0000 |
-| T6 AR-neutral vs EN-neutral | +0.335 | [+0.201, +0.483] | 0.0010 | 0.0098 |
-| T7 AR-framed vs Egypt anchor | +0.337 | [+0.218, +0.450] | 0.0020 | 0.0117 |
-| T8 Japan: framed vs neutral (in-lang) | +0.759 | [+0.592, +0.921] | 0.0010 | 0.0098 |
-| T9 EN-framed Iran vs Iran anchor [*] | +1.244 | [+1.137, +1.338] | 0.0010 | 0.0098 |
-| T10 Iran: EN-framed vs FA-framed | +0.263 | [+0.148, +0.380] | 0.0029 | 0.0146 |
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| Arabic unframed minus English unframed | +0.335 | [+0.201, +0.483] | 11 up, 0 down | +0.286 to +0.368 |
+| Spanish unframed minus English unframed | +0.011 | [-0.113, +0.123] | 7 up, 4 down | -0.016 to +0.056 |
+| French unframed minus English unframed | +0.008 | [-0.064, +0.069] | 6 up, 5 down | -0.007 to +0.037 |
+| Japanese unframed minus English unframed | -0.093 | [-0.299, +0.111] | 3 up, 8 down | -0.162 to -0.020 |
+| Farsi unframed minus English unframed | +0.040 | [-0.117, +0.184] | 7 up, 4 down | +0.008 to +0.097 |
+| Russian unframed minus English unframed | +0.019 | [-0.066, +0.111] | 5 up, 6 down | -0.013 to +0.043 |
 
-Nulls are reported as bounds, not as demonstrated absence: any Egypt language effect is within 0.054, and any Japanese-neutral displacement from the Japanese mean is within 0.233.
+The interval excludes zero for Arabic only.
 
-**Family B, the language claim.** One comparison per language, asking whether that language's unframed condition departs from the panel's English default. Holm across the three. T5 and T6 sit in both families; the double membership is disclosed rather than removed by re-cutting family A, and every conclusion holds under either cut.
+**Framing, and language under framing, per country.** Framing in English is the English-framed condition minus the English unframed one. Framing in the local language is the local-framed condition minus the local unframed one. Language under framing is the local-framed condition minus the English-framed one. The interaction is the local framing effect minus the English framing effect: positive where naming the country moves the panel further in the local language than in English.
 
-| test | difference | 95% CI | exact p | Holm | models moving up |
-|---|--:|:--:|--:|--:|--:|
-| T5 FA-neutral vs EN-neutral | +0.040 | [-0.117, +0.184] | 0.6357 | 0.8613 | 7 of 11 |
-| T6 AR-neutral vs EN-neutral | +0.335 | [+0.201, +0.483] | 0.0010 | 0.0029 | 11 of 11, none down |
-| T11 JA-neutral vs EN-neutral | -0.093 | [-0.299, +0.111] | 0.4307 | 0.8613 | 3 of 11 |
+*Arabic, framed as Egypt*
 
-Arabic is the only language whose interval excludes zero, and no model moves against it. Farsi splits 7 up to 4 down and Japanese 3 up to 8 down. As bounds: any Farsi departure from the English default is within 0.184, and any Japanese departure is within 0.299.
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.836 | [+1.633, +2.035] | 11 up, 0 down | +1.786 to +1.892 |
+| framing in Arabic | +1.500 | [+1.201, +1.800] | 11 up, 0 down | +1.431 to +1.580 |
+| language under framing | -0.001 | [-0.048, +0.054] | 4 up, 7 down | -0.020 to +0.010 |
+| interaction | -0.336 | [-0.506, -0.174] | 2 up, 9 down | -0.388 to -0.277 |
 
-One further comparison is reported outside both families as a single descriptive: the English default sits +0.117 from the Japanese human mean.
+*Arabic, framed as Morocco*
 
-**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anchors are Atari et al. (2023) Study 2. Iran is not in that set; its anchor is Hazrati, Nejat and Daneshi (2025), a different paper with different collection conditions. That sample is a Telegram and snowball convenience sample, n=989, 68 to 71 percent female, mean age 26 to 28, 57 to 59 percent educated to bachelor's or above, and the anchor file records it as likely less binding-endorsing than the general Iranian population - which would bias this overshoot upward. Collection began a year after the Woman, Life, Freedom movement and the authors note possible period effects. Iran is the only Farsi country, so it carries that group throughout.
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.801 | [+1.607, +1.988] | 11 up, 0 down | +1.754 to +1.849 |
+| framing in Arabic | +1.478 | [+1.200, +1.762] | 11 up, 0 down | +1.408 to +1.551 |
+| language under framing | +0.012 | [-0.047, +0.066] | 7 up, 4 down | -0.001 to +0.033 |
+| interaction | -0.323 | [-0.491, -0.164] | 2 up, 9 down | -0.367 to -0.267 |
+
+*Arabic, framed as Saudi Arabia*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.965 | [+1.794, +2.134] | 11 up, 0 down | +1.922 to +2.004 |
+| framing in Arabic | +1.653 | [+1.370, +1.938] | 11 up, 0 down | +1.571 to +1.720 |
+| language under framing | +0.023 | [-0.027, +0.082] | 5 up, 5 down | +0.004 to +0.036 |
+| interaction | -0.312 | [-0.483, -0.149] | 2 up, 9 down | -0.357 to -0.258 |
+
+*Arabic, framed as United Arab Emirates*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.861 | [+1.665, +2.046] | 11 up, 0 down | +1.818 to +1.913 |
+| framing in Arabic | +1.622 | [+1.341, +1.900] | 11 up, 0 down | +1.548 to +1.694 |
+| language under framing | +0.097 | [+0.049, +0.146] | 9 up, 2 down | +0.081 to +0.110 |
+| interaction | -0.238 | [-0.397, -0.101] | 2 up, 9 down | -0.273 to -0.178 |
+
+*Spanish, framed as Argentina*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +0.669 | [+0.558, +0.785] | 11 up, 0 down | +0.631 to +0.698 |
+| framing in Spanish | +0.570 | [+0.444, +0.694] | 11 up, 0 down | +0.536 to +0.611 |
+| language under framing | -0.088 | [-0.184, +0.002] | 2 up, 9 down | -0.111 to -0.060 |
+| interaction | -0.099 | [-0.174, -0.031] | 2 up, 8 down | -0.116 to -0.071 |
+
+*Spanish, framed as Chile*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +0.885 | [+0.775, +0.998] | 11 up, 0 down | +0.849 to +0.914 |
+| framing in Spanish | +0.796 | [+0.668, +0.941] | 11 up, 0 down | +0.753 to +0.820 |
+| language under framing | -0.078 | [-0.155, -0.002] | 4 up, 7 down | -0.101 to -0.053 |
+| interaction | -0.089 | [-0.184, +0.013] | 2 up, 9 down | -0.126 to -0.064 |
+
+*Spanish, framed as Colombia*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.331 | [+1.216, +1.452] | 11 up, 0 down | +1.298 to +1.358 |
+| framing in Spanish | +1.216 | [+1.028, +1.414] | 11 up, 0 down | +1.166 to +1.258 |
+| language under framing | -0.104 | [-0.189, -0.029] | 3 up, 8 down | -0.118 to -0.080 |
+| interaction | -0.115 | [-0.216, +0.001] | 2 up, 9 down | -0.157 to -0.092 |
+
+*Spanish, framed as Mexico*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.373 | [+1.234, +1.510] | 11 up, 0 down | +1.338 to +1.413 |
+| framing in Spanish | +1.168 | [+0.999, +1.352] | 11 up, 0 down | +1.110 to +1.203 |
+| language under framing | -0.194 | [-0.262, -0.130] | 0 up, 11 down | -0.207 to -0.173 |
+| interaction | -0.205 | [-0.320, -0.098] | 2 up, 9 down | -0.229 to -0.167 |
+
+*Spanish, framed as Morocco (the Spanish arm, decision 12)*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.801 | [+1.608, +1.989] | 11 up, 0 down | +1.754 to +1.849 |
+| framing in Spanish | +1.809 | [+1.596, +2.029] | 11 up, 0 down | +1.753 to +1.856 |
+| language under framing | +0.019 | [-0.047, +0.081] | 7 up, 4 down | +0.001 to +0.043 |
+| interaction | +0.008 | [-0.091, +0.124] | 3 up, 8 down | -0.037 to +0.033 |
+
+*Spanish, framed as Peru*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.365 | [+1.199, +1.537] | 11 up, 0 down | +1.313 to +1.403 |
+| framing in Spanish | +1.259 | [+1.044, +1.481] | 11 up, 0 down | +1.202 to +1.306 |
+| language under framing | -0.095 | [-0.148, -0.038] | 2 up, 9 down | -0.111 to -0.080 |
+| interaction | -0.106 | [-0.224, +0.028] | 3 up, 8 down | -0.152 to -0.079 |
+
+*French, framed as Belgium*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | -0.146 | [-0.287, -0.005] | 3 up, 8 down | -0.192 to -0.109 |
+| framing in French | +0.020 | [-0.114, +0.154] | 7 up, 4 down | -0.017 to +0.056 |
+| language under framing | +0.175 | [+0.111, +0.236] | 11 up, 0 down | +0.160 to +0.190 |
+| interaction | +0.167 | [+0.071, +0.263] | 9 up, 2 down | +0.136 to +0.197 |
+
+*French, framed as France*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | -0.043 | [-0.171, +0.080] | 5 up, 6 down | -0.074 to -0.009 |
+| framing in French | +0.058 | [-0.092, +0.203] | 7 up, 4 down | +0.026 to +0.094 |
+| language under framing | +0.109 | [+0.036, +0.187] | 9 up, 2 down | +0.081 to +0.132 |
+| interaction | +0.101 | [+0.006, +0.184] | 10 up, 1 down | +0.076 to +0.139 |
+
+*French, framed as Switzerland*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +0.294 | [+0.173, +0.421] | 10 up, 1 down | +0.252 to +0.326 |
+| framing in French | +0.299 | [+0.114, +0.492] | 8 up, 3 down | +0.243 to +0.340 |
+| language under framing | +0.013 | [-0.066, +0.091] | 6 up, 5 down | -0.010 to +0.040 |
+| interaction | +0.005 | [-0.115, +0.127] | 7 up, 4 down | -0.039 to +0.047 |
+
+*Japanese, framed as Japan*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +0.899 | [+0.783, +1.019] | 11 up, 0 down | +0.864 to +0.929 |
+| framing in Japanese | +0.759 | [+0.592, +0.921] | 11 up, 0 down | +0.720 to +0.806 |
+| language under framing | -0.233 | [-0.384, -0.098] | 1 up, 10 down | -0.264 to -0.182 |
+| interaction | -0.140 | [-0.347, +0.029] | 5 up, 6 down | -0.174 to -0.059 |
+
+*Farsi, framed as Iran*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.808 | [+1.649, +1.970] | 11 up, 0 down | +1.766 to +1.839 |
+| framing in Farsi | +1.505 | [+1.223, +1.797] | 11 up, 0 down | +1.420 to +1.568 |
+| language under framing | -0.263 | [-0.380, -0.148] | 1 up, 10 down | -0.292 to -0.226 |
+| interaction | -0.303 | [-0.480, -0.124] | 2 up, 9 down | -0.354 to -0.249 |
+
+*Russian, framed as Russia*
+
+| contrast | difference | 95% model-resampling interval | models (of 11) | leave-one-out range |
+|---|--:|:--:|--:|:--:|
+| framing in English | +1.348 | [+1.227, +1.472] | 11 up, 0 down | +1.311 to +1.379 |
+| framing in Russian | +1.260 | [+1.020, +1.490] | 11 up, 0 down | +1.193 to +1.342 |
+| language under framing | -0.070 | [-0.165, +0.026] | 3 up, 7 down | -0.101 to -0.041 |
+| interaction | -0.089 | [-0.247, +0.057] | 5 up, 6 down | -0.139 to -0.028 |
+
+**The average framing shift, and how it is weighted.** The paper's 1.04 is the local framing effect averaged within each language over its countries, with Morocco counted under Arabic and not Spanish, and then averaged across the six languages with equal weight: Arabic +1.563, Spanish +1.002, French +0.126, Japanese +0.759, Farsi +1.505, Russian +1.260. Weighting every (language, country) pair equally instead gives 1.011 over the same 15 pairs, and 1.061 over all 16 including Spanish Morocco.
+
+**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anchors are Atari et al. (2023) Study 2. Iran is not in that set; its anchor is Hazrati, Nejat and Daneshi (2025), a different paper with different collection conditions, using Atari's Persian translation with minor linguistic edits. That sample is a Telegram and snowball convenience sample, n=989, 68 to 71 percent female, mean age 26 to 28, 57 to 59 percent educated to bachelor's or above, and the anchor file records it as likely less binding-endorsing than the general Iranian population - which would bias this overshoot upward. Collection began a year after the Woman, Life, Freedom movement and the authors note possible period effects. Iran is the only Farsi country, so it carries that group throughout. Respondent-level data for both samples are shared by the authors on OSF.
 
 Every anchor the source offers is shown. The one in use is the largest of the three, so the overshoot reported throughout is the smallest of the three:
 
@@ -45,5 +177,9 @@ The sign and the ordering of the Iran result do not depend on the choice. Its ma
 
 ## B5. Robustness: leave-one-model-out
 
-Japanese neutral panel mean with each model removed spans 2.603 to 2.714 around an anchor of 2.652. English-framed Iran overshoot spans +1.220 to +1.284; Farsi-framed Iran overshoot spans +0.933 to +1.030. Every individual model overshoots both Iran conditions. T11, the Japanese language effect, spans -0.162 to -0.020 under the same sweep.
+Every contrast in B4 carries its own leave-one-out range. The anchor comparisons, which are distances from a constant, are swept here. Japanese neutral panel mean with each model removed spans 2.603 to 2.714 around an anchor of 2.652. English-framed Iran overshoot spans +1.220 to +1.284; Farsi-framed Iran overshoot spans +0.933 to +1.030. Every individual model overshoots both Iran conditions.
+
+## B10. Errata: the declared test family
+
+From 2026-08-21 to 2026-09-08 this appendix reported a declared family of ten sign-flip tests, T1 to T10, and a three-test language family, each with an exact two-sided p and a Holm correction. Both are withdrawn under decision 15: the language family covered three of six languages, the intervals were read as bounds, and the test's null needs an exchangeability among the eleven models that the panel has not been shown to have. The quantities themselves survive. Where a contrast in B4 is the same quantity as a withdrawn test, its interval was drawn from the same seeded stream and carries over to the digit, with the sign reversed where the direction of subtraction changed: T1 and T2 are the Egypt and Japan rows for language under framing; T5, T6 and T11 are the Farsi, Arabic and Japanese rows for language without framing; T8 is Japan's framing in Japanese; T10 is Iran's language under framing. T3, T4, T7 and T9 were distances from an anchor and are B3's distance table with B3a's intervals. The last appendix carrying the family is at commit d441f7c.
 

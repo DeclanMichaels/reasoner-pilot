@@ -1,7 +1,27 @@
 === VERIFICATION: per-model binding by condition (n models, panel mean) ===
+  EN_framed_Argentina n=11  mean=3.437  models=True
+  EN_framed_Belgium  n=11  mean=2.622  models=True
+  EN_framed_Chile    n=11  mean=3.654  models=True
+  EN_framed_Colombia n=11  mean=4.100  models=True
   EN_framed_Egypt    n=11  mean=4.605  models=True
+  EN_framed_France   n=11  mean=2.725  models=True
+  EN_framed_India    n=11  mean=4.439  models=True
   EN_framed_Iran     n=11  mean=4.577  models=True
+  EN_framed_Ireland  n=11  mean=3.094  models=True
   EN_framed_Japan    n=11  mean=3.668  models=True
+  EN_framed_Kenya    n=11  mean=4.432  models=True
+  EN_framed_Mexico   n=11  mean=4.141  models=True
+  EN_framed_Morocco  n=11  mean=4.570  models=True
+  EN_framed_New Zealand n=11  mean=2.878  models=True
+  EN_framed_Nigeria  n=11  mean=4.515  models=True
+  EN_framed_Peru     n=11  mean=4.133  models=True
+  EN_framed_Russia   n=11  mean=4.117  models=True
+  EN_framed_Saudi Arabia n=11  mean=4.733  models=True
+  EN_framed_South Africa n=11  mean=3.935  models=True
+  EN_framed_Sweden   n=11  mean=2.282  models=True
+  EN_framed_Switzerland n=11  mean=3.063  models=True
+  EN_framed_United Arab Emirates n=11  mean=4.629  models=True
+  EN_framed_United States n=11  mean=3.331  models=True
   ar_framed_Egypt    n=11  mean=4.604  models=True
   ar_framed_Morocco  n=11  mean=4.582  models=True
   ar_framed_Saudi Arabia n=11  mean=4.757  models=True
@@ -27,9 +47,29 @@
   ru_framed_Russia   n=11  mean=4.047  models=True
   ru_neutral         n=11  mean=2.788  models=True
   reconcile against an independent recomputation from the raw cells:
+    EN_framed_Argentina            foundation-route 3.4374  item-route 3.4374  OK
+    EN_framed_Belgium              foundation-route 2.6222  item-route 2.6222  OK
+    EN_framed_Chile                foundation-route 3.6535  item-route 3.6535  OK
+    EN_framed_Colombia             foundation-route 4.1000  item-route 4.1000  OK
     EN_framed_Egypt                foundation-route 4.6051  item-route 4.6051  OK
+    EN_framed_France               foundation-route 2.7253  item-route 2.7253  OK
+    EN_framed_India                foundation-route 4.4394  item-route 4.4394  OK
     EN_framed_Iran                 foundation-route 4.5768  item-route 4.5768  OK
+    EN_framed_Ireland              foundation-route 3.0939  item-route 3.0939  OK
     EN_framed_Japan                foundation-route 3.6677  item-route 3.6677  OK
+    EN_framed_Kenya                foundation-route 4.4323  item-route 4.4323  OK
+    EN_framed_Mexico               foundation-route 4.1414  item-route 4.1414  OK
+    EN_framed_Morocco              foundation-route 4.5697  item-route 4.5697  OK
+    EN_framed_New Zealand          foundation-route 2.8778  item-route 2.8778  OK
+    EN_framed_Nigeria              foundation-route 4.5152  item-route 4.5152  OK
+    EN_framed_Peru                 foundation-route 4.1333  item-route 4.1333  OK
+    EN_framed_Russia               foundation-route 4.1172  item-route 4.1172  OK
+    EN_framed_Saudi Arabia         foundation-route 4.7333  item-route 4.7333  OK
+    EN_framed_South Africa         foundation-route 3.9354  item-route 3.9354  OK
+    EN_framed_Sweden               foundation-route 2.2818  item-route 2.2818  OK
+    EN_framed_Switzerland          foundation-route 3.0626  item-route 3.0626  OK
+    EN_framed_United Arab Emirates foundation-route 4.6293  item-route 4.6293  OK
+    EN_framed_United States        foundation-route 3.3313  item-route 3.3313  OK
     ar_framed_Egypt                foundation-route 4.6040  item-route 4.6040  OK
     ar_framed_Morocco              foundation-route 4.5818  item-route 4.5818  OK
     ar_framed_Saudi Arabia         foundation-route 4.7566  item-route 4.7566  OK
@@ -57,9 +97,29 @@
   RECONCILED
 
 === bootstrap 95% CIs on panel means (cluster = model, 100k) ===
+  EN_framed_Argentina mean=3.437  CI[3.316,3.557]
+  EN_framed_Belgium  mean=2.622  CI[2.523,2.742]
+  EN_framed_Chile    mean=3.654  CI[3.534,3.788]
+  EN_framed_Colombia mean=4.100  CI[3.981,4.220]
   EN_framed_Egypt    mean=4.605  CI[4.502,4.703]
+  EN_framed_France   mean=2.725  CI[2.637,2.838]
+  EN_framed_India    mean=4.439  CI[4.335,4.543]
   EN_framed_Iran     mean=4.577  CI[4.470,4.671]
+  EN_framed_Ireland  mean=3.094  CI[2.957,3.252]
   EN_framed_Japan    mean=3.668  CI[3.479,3.869]
+  EN_framed_Kenya    mean=4.432  CI[4.365,4.504]
+  EN_framed_Mexico   mean=4.141  CI[4.071,4.223]
+  EN_framed_Morocco  mean=4.570  CI[4.482,4.648]
+  EN_framed_New Zealand mean=2.878  CI[2.816,2.943]
+  EN_framed_Nigeria  mean=4.515  CI[4.425,4.606]
+  EN_framed_Peru     mean=4.133  CI[4.017,4.242]
+  EN_framed_Russia   mean=4.117  CI[3.982,4.262]
+  EN_framed_Saudi Arabia mean=4.733  CI[4.654,4.803]
+  EN_framed_South Africa mean=3.935  CI[3.841,4.024]
+  EN_framed_Sweden   mean=2.282  CI[2.194,2.365]
+  EN_framed_Switzerland mean=3.063  CI[2.913,3.219]
+  EN_framed_United Arab Emirates mean=4.629  CI[4.551,4.704]
+  EN_framed_United States mean=3.331  CI[3.193,3.456]
   ar_framed_Egypt    mean=4.604  CI[4.486,4.718]
   ar_framed_Morocco  mean=4.582  CI[4.473,4.682]
   ar_framed_Saudi Arabia mean=4.757  CI[4.682,4.822]
@@ -162,5 +222,77 @@
     -o3             -0.1044
     -opus           -0.0956
     -sonnet         -0.0900
+
+=== CONTRASTS on the full grid (decision 15): diff, model-resampling 95%, signs, LOO ===
+  Arabic unframed vs English         +0.335 [+0.201,+0.483] up 11/11 dn 0  LOO +0.286..+0.368
+  Spanish unframed vs English        +0.011 [-0.113,+0.123] up 7/11 dn 4  LOO -0.016..+0.056
+  French unframed vs English         +0.008 [-0.064,+0.069] up 6/11 dn 5  LOO -0.007..+0.037
+  Japanese unframed vs English       -0.093 [-0.299,+0.111] up 3/11 dn 8  LOO -0.162..-0.020
+  Farsi unframed vs English          +0.040 [-0.117,+0.184] up 7/11 dn 4  LOO +0.008..+0.097
+  Russian unframed vs English        +0.019 [-0.066,+0.111] up 5/11 dn 6  LOO -0.013..+0.043
+  Arabic/Egypt framing_en            +1.836 [+1.633,+2.035] up 11/11 dn 0  LOO +1.786..+1.892
+  Arabic/Egypt framing_local         +1.500 [+1.201,+1.800] up 11/11 dn 0  LOO +1.431..+1.580
+  Arabic/Egypt lang_framed           -0.001 [-0.048,+0.054] up 4/11 dn 7  LOO -0.020..+0.010
+  Arabic/Egypt interaction           -0.336 [-0.506,-0.174] up 2/11 dn 9  LOO -0.388..-0.277
+  Arabic/Morocco framing_en          +1.801 [+1.607,+1.988] up 11/11 dn 0  LOO +1.754..+1.849
+  Arabic/Morocco framing_local       +1.478 [+1.200,+1.762] up 11/11 dn 0  LOO +1.408..+1.551
+  Arabic/Morocco lang_framed         +0.012 [-0.047,+0.066] up 7/11 dn 4  LOO -0.001..+0.033
+  Arabic/Morocco interaction         -0.323 [-0.491,-0.164] up 2/11 dn 9  LOO -0.367..-0.267
+  Arabic/Saudi Arabia framing_en     +1.965 [+1.794,+2.134] up 11/11 dn 0  LOO +1.922..+2.004
+  Arabic/Saudi Arabia framing_local  +1.653 [+1.370,+1.938] up 11/11 dn 0  LOO +1.571..+1.720
+  Arabic/Saudi Arabia lang_framed    +0.023 [-0.027,+0.082] up 5/11 dn 5  LOO +0.004..+0.036
+  Arabic/Saudi Arabia interaction    -0.312 [-0.483,-0.149] up 2/11 dn 9  LOO -0.357..-0.258
+  Arabic/United Arab Emirates framing_en +1.861 [+1.665,+2.046] up 11/11 dn 0  LOO +1.818..+1.913
+  Arabic/United Arab Emirates framing_local +1.622 [+1.341,+1.900] up 11/11 dn 0  LOO +1.548..+1.694
+  Arabic/United Arab Emirates lang_framed +0.097 [+0.049,+0.146] up 9/11 dn 2  LOO +0.081..+0.110
+  Arabic/United Arab Emirates interaction -0.238 [-0.397,-0.101] up 2/11 dn 9  LOO -0.273..-0.178
+  Spanish/Argentina framing_en       +0.669 [+0.558,+0.785] up 11/11 dn 0  LOO +0.631..+0.698
+  Spanish/Argentina framing_local    +0.570 [+0.444,+0.694] up 11/11 dn 0  LOO +0.536..+0.611
+  Spanish/Argentina lang_framed      -0.088 [-0.184,+0.002] up 2/11 dn 9  LOO -0.111..-0.060
+  Spanish/Argentina interaction      -0.099 [-0.174,-0.031] up 2/11 dn 8  LOO -0.116..-0.071
+  Spanish/Chile framing_en           +0.885 [+0.775,+0.998] up 11/11 dn 0  LOO +0.849..+0.914
+  Spanish/Chile framing_local        +0.796 [+0.668,+0.941] up 11/11 dn 0  LOO +0.753..+0.820
+  Spanish/Chile lang_framed          -0.078 [-0.155,-0.002] up 4/11 dn 7  LOO -0.101..-0.053
+  Spanish/Chile interaction          -0.089 [-0.184,+0.013] up 2/11 dn 9  LOO -0.126..-0.064
+  Spanish/Colombia framing_en        +1.331 [+1.216,+1.452] up 11/11 dn 0  LOO +1.298..+1.358
+  Spanish/Colombia framing_local     +1.216 [+1.028,+1.414] up 11/11 dn 0  LOO +1.166..+1.258
+  Spanish/Colombia lang_framed       -0.104 [-0.189,-0.029] up 3/11 dn 8  LOO -0.118..-0.080
+  Spanish/Colombia interaction       -0.115 [-0.216,+0.001] up 2/11 dn 9  LOO -0.157..-0.092
+  Spanish/Mexico framing_en          +1.373 [+1.234,+1.510] up 11/11 dn 0  LOO +1.338..+1.413
+  Spanish/Mexico framing_local       +1.168 [+0.999,+1.352] up 11/11 dn 0  LOO +1.110..+1.203
+  Spanish/Mexico lang_framed         -0.194 [-0.262,-0.130] up 0/11 dn 11  LOO -0.207..-0.173
+  Spanish/Mexico interaction         -0.205 [-0.320,-0.098] up 2/11 dn 9  LOO -0.229..-0.167
+  Spanish/Morocco framing_en         +1.801 [+1.608,+1.989] up 11/11 dn 0  LOO +1.754..+1.849
+  Spanish/Morocco framing_local      +1.809 [+1.596,+2.029] up 11/11 dn 0  LOO +1.753..+1.856
+  Spanish/Morocco lang_framed        +0.019 [-0.047,+0.081] up 7/11 dn 4  LOO +0.001..+0.043
+  Spanish/Morocco interaction        +0.008 [-0.091,+0.124] up 3/11 dn 8  LOO -0.037..+0.033
+  Spanish/Peru framing_en            +1.365 [+1.199,+1.537] up 11/11 dn 0  LOO +1.313..+1.403
+  Spanish/Peru framing_local         +1.259 [+1.044,+1.481] up 11/11 dn 0  LOO +1.202..+1.306
+  Spanish/Peru lang_framed           -0.095 [-0.148,-0.038] up 2/11 dn 9  LOO -0.111..-0.080
+  Spanish/Peru interaction           -0.106 [-0.224,+0.028] up 3/11 dn 8  LOO -0.152..-0.079
+  French/Belgium framing_en          -0.146 [-0.287,-0.005] up 3/11 dn 8  LOO -0.192..-0.109
+  French/Belgium framing_local       +0.020 [-0.114,+0.154] up 7/11 dn 4  LOO -0.017..+0.056
+  French/Belgium lang_framed         +0.175 [+0.111,+0.236] up 11/11 dn 0  LOO +0.160..+0.190
+  French/Belgium interaction         +0.167 [+0.071,+0.263] up 9/11 dn 2  LOO +0.136..+0.197
+  French/France framing_en           -0.043 [-0.171,+0.080] up 5/11 dn 6  LOO -0.074..-0.009
+  French/France framing_local        +0.058 [-0.092,+0.203] up 7/11 dn 4  LOO +0.026..+0.094
+  French/France lang_framed          +0.109 [+0.036,+0.187] up 9/11 dn 2  LOO +0.081..+0.132
+  French/France interaction          +0.101 [+0.006,+0.184] up 10/11 dn 1  LOO +0.076..+0.139
+  French/Switzerland framing_en      +0.294 [+0.173,+0.421] up 10/11 dn 1  LOO +0.252..+0.326
+  French/Switzerland framing_local   +0.299 [+0.114,+0.492] up 8/11 dn 3  LOO +0.243..+0.340
+  French/Switzerland lang_framed     +0.013 [-0.066,+0.091] up 6/11 dn 5  LOO -0.010..+0.040
+  French/Switzerland interaction     +0.005 [-0.115,+0.127] up 7/11 dn 4  LOO -0.039..+0.047
+  Japanese/Japan framing_en          +0.899 [+0.783,+1.019] up 11/11 dn 0  LOO +0.864..+0.929
+  Japanese/Japan framing_local       +0.759 [+0.592,+0.921] up 11/11 dn 0  LOO +0.720..+0.806
+  Japanese/Japan lang_framed         -0.233 [-0.384,-0.098] up 1/11 dn 10  LOO -0.264..-0.182
+  Japanese/Japan interaction         -0.140 [-0.347,+0.029] up 5/11 dn 6  LOO -0.174..-0.059
+  Farsi/Iran framing_en              +1.808 [+1.649,+1.970] up 11/11 dn 0  LOO +1.766..+1.839
+  Farsi/Iran framing_local           +1.505 [+1.223,+1.797] up 11/11 dn 0  LOO +1.420..+1.568
+  Farsi/Iran lang_framed             -0.263 [-0.380,-0.148] up 1/11 dn 10  LOO -0.292..-0.226
+  Farsi/Iran interaction             -0.303 [-0.480,-0.124] up 2/11 dn 9  LOO -0.354..-0.249
+  Russian/Russia framing_en          +1.348 [+1.227,+1.472] up 11/11 dn 0  LOO +1.311..+1.379
+  Russian/Russia framing_local       +1.260 [+1.020,+1.490] up 11/11 dn 0  LOO +1.193..+1.342
+  Russian/Russia lang_framed         -0.070 [-0.165,+0.026] up 3/11 dn 7  LOO -0.101..-0.041
+  Russian/Russia interaction         -0.089 [-0.247,+0.057] up 5/11 dn 6  LOO -0.139..-0.028
 
 wrote results/appendix_b4_b5.md
