@@ -1,7 +1,7 @@
 # 012 - Morocco is compared on the Spanish arm and grouped with Arabic
 
 **Date:** 2026-08-24
-**Status:** active
+**Status:** superseded by #18
 
 ## The decision
 
@@ -23,3 +23,7 @@ Discarding either run.
 ## Consequences and gotchas
 
 The Arabic rank correlation still rests on four countries.
+
+---
+
+**Superseded by #18 (2026-09-08).** Morocco moves to the Spanish group in every view; the anchor clause carries forward.
