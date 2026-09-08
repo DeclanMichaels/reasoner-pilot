@@ -7,24 +7,27 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree at `d399768`; working tree clean. `aa7b7f7` is the cold-review round,
-  pushed 2026-09-08 on Declan's word.
+- Remote is at `6f39952`. Eleven commits since are local and **not yet pushed**: Astra's third
+  round worked through, decisions 18 and 19, the retitle, the ratings dataset. The push waits on
+  Declan; both documents then go out for review again.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
-  outputs reproduced, 17 committed-only outputs verified.
-- **Seven review rounds on the in-language paper and appendix are adjudicated and worked
+  outputs reproduced, 18 committed-only outputs verified, and the 47 pinned condition means
+  rebuild from the committed ratings dataset.
+- **Eight review rounds on the in-language paper and appendix are adjudicated and worked
   through**, all in `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second
-  (eight), DeepSeek's (folded into those eight), Gemini's (three), Kimi's (six) and Claude's cold
-  review of 2026-09-08 (twelve, #40 to #51; every number in both documents recomputed and found
-  correct, the fixes prose and structure). Fifty-one issues have existed; none is open.
-- **The paper is titled** "Adding a country-role instruction shifts responses more than
-  translating the questionnaire", Kimi's proposal, taken 2026-09-08. The viewer's title and
-  heading match it, and its wording says reference sample where the paper does.
+  (eight), DeepSeek's (folded into those eight), Gemini's (three), Kimi's (six), Claude's cold
+  review (twelve, #40 to #51) and Astra's third (twenty, #52 to #71). Seventy-one issues have
+  existed; #71 is open, the follow-on that moves the emitters onto the ratings dataset.
+- **The paper is titled** "Eleven language models take the MFQ-2 in English and six
+  translations, with and without a country to answer as", Declan's, taken 2026-09-08 in place of
+  the result-stating title from Kimi's round. The viewer's title and heading match it.
 - **Every data section of the appendix is generated**: B1a, B4, B5 and B7 by
   `audit_inlanguage.py`; B2a, B3, B3a, B6 and B6a by `build_appendix_tables.py`. The splice map
   is in `docs/DEVELOPMENT_NOTES.md`. B4 is a 70-contrast set over the full grid with intervals,
   sign counts and leave-one-out ranges, no p-values (decision 15). There is no errata section
   (decision 17).
-- `DECISIONS.md` holds 17 entries. This is the Black M2 Air; `validity/` holds the completed
+- `DECISIONS.md` holds 19 entries; 12 is superseded by 18 (Morocco reported under Spanish)
+  and 19 publishes the integer ratings as `validity/results/mfq2_ratings.csv`. This is the Black M2 Air; `validity/` holds the completed
   grid and `validity/reconcile.py` reports it identical to the 2026-09-05 archive.
 
 ## What changed outside the repository
@@ -39,27 +42,30 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-Empty. #1 to #51 are closed, each with its disposition on the ticket. Where a ticket was closed
+One open: #71, move the emitters onto the ratings dataset (analysis, ready-for-agent). #1 to #70
+are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Nothing is queued for an agent. Declan is sending the current state for further external review.
+Queued for an agent: #71. Declan is sending the current state for further external review once
+the eleven local commits are pushed.
 
-1. **Review.** Five model families have read across six rounds. Every family raised the same
+1. **Review.** Five model families have read across eight rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
-   and the documents state each where the reader meets it. Unread by any external reviewer: the
-   retitle, the viewer's title and wording, Kimi's six fixes, and the twelve fixes in `aa7b7f7`.
-   Declan is sending both documents out again.
+   and the documents state each where the reader meets it. Unread by any external reviewer:
+   everything since `6f39952`: the retitle, Morocco under Spanish and the 1.06, the instrument
+   disclosure and B1's design table, B2a's Table 6, the ratings dataset.
 2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three
    `TBD`s and `CITATION.cff` a commented `doi:`. Under decision 17 nothing here is published
    until that is done.
 
 Candidates for tickets, not filed: a tracked claim-check that recomputes every number in the paper
-(the script that did it for #2 lives only in the scratchpad; #49 moved the paper's two five-run
-medians into a pinned artifact, and the d table is the paper table still without one); the `[*]`
-versus `[d12]` marker asymmetry; `viewer_data.json`'s generation timestamp, which makes its pin
-detect re-runs rather than data changes and stamps the viewer with the 7th.
+(the d table and the Ordering and foundation-shift tables are the paper tables still without a
+pinned artifact; the ratings dataset makes such a check runnable from a clone); the `[*]` versus
+`[d18]` marker asymmetry; `viewer_data.json`'s generation timestamp, which makes its pin detect
+re-runs rather than data changes; the viewer's language-groups note and Ordering text, which were
+edited by hand today and should be re-read against the paper as a whole.
 
 ## Open items
 
@@ -97,6 +103,14 @@ the language table's Farsi row, which two reviewers flagged and were told was we
 the wrong table was checked (#34); and two consecutive commits, `6610467` and `19e35cf`, that
 claimed appendix work their edit scripts had not done, one of them pinning a truncated artifact,
 repaired in `6c72418`.
+
+**In the second session of 2026-09-08:** a generator edit swapped two format arguments and
+printed "50.000 over all 0 conditions", caught by the scratch-file check before anything tracked
+moved; and a later chain crashed the tables generator on a generator expression, copied the
+truncated artifact into place, spliced from it and re-pinned it, caught only by reading the diff
+output, nothing committed, the three files restored from HEAD (`3ebb7f0` records it). The rule
+that follows: **check the generator's exit code before the copy, not after**; a `set -e` chain
+does not do it for a command inside `( ... && ... )`.
 
 ## Loose ends
 
