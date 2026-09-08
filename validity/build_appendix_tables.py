@@ -80,6 +80,39 @@ def binding(r):
     return None if any(g not in f for g in FOUND) else sum(f[g] for g in BIND) / 3
 
 
+SOURCES = [(VDIR / "runs_framed_lang" / "*.json",
+            lambda d: "%s_%s" % (d["instrument"].split("_")[1],
+                                 d["condition"] if d["condition"] != "framed"
+                                 else "framed_" + d["country"])),
+           (VDIR / "runs_framed" / "*_mfq2_*.json",
+            lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
+           (VDIR / "runs_english_baseline" / "*.json",
+            lambda d: "en_neutral" if d["condition"] == "official_nosystem"
+            else "en_baseline_" + d["condition"]),
+           (VDIR / "runs" / "*_mfq2_*.json", lambda d: "en_neutral_ours")]
+
+
+def load_items():
+    """Per condition, per model: mean endpoint share (ratings at 1 or 5) and per-item means.
+    B6a reads these; nothing else does."""
+    end = defaultdict(lambda: defaultdict(list))
+    items = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+    for pat, keyf in SOURCES:
+        for f in glob.glob(str(pat)):
+            d = json.load(open(f))
+            if not d.get("ratings"):
+                continue
+            k = keyf(d)
+            if k is None:
+                continue
+            r = d["ratings"]
+            end[k][d["model"]].append(sum(1 for v in r.values() if v in (1, 5)) / len(r))
+            for iid, v in r.items():
+                items[k][d["model"]][iid].append(v)
+    return ({k: {m: mean(v) for m, v in md.items()} for k, md in end.items()},
+            {k: {m: {i: mean(v) for i, v in mi.items()} for m, mi in md.items()} for k, md in items.items()})
+
+
 def load(what):
     acc = defaultdict(lambda: defaultdict(list))
     # ENGLISH UNFRAMED, changed 2026-08-22. This used to be our own transcription of the
@@ -90,17 +123,7 @@ def load(what):
     # system prompt +0.026 p=.49, neither distinguishable from zero. The official no-system
     # cell is the baseline now because it is the matched one. The old cell is kept under
     # en_neutral_ours so the errata can cite what was published before.
-    src = [(VDIR / "runs_framed_lang" / "*.json",
-            lambda d: "%s_%s" % (d["instrument"].split("_")[1],
-                                 d["condition"] if d["condition"] != "framed"
-                                 else "framed_" + d["country"])),
-           (VDIR / "runs_framed" / "*_mfq2_*.json",
-            lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
-           (VDIR / "runs_english_baseline" / "*.json",
-            lambda d: "en_neutral" if d["condition"] == "official_nosystem"
-            else "en_baseline_" + d["condition"]),
-           (VDIR / "runs" / "*_mfq2_*.json", lambda d: "en_neutral_ours")]
-    for pat, keyf in src:
+    for pat, keyf in SOURCES:
         for f in glob.glob(str(pat)):
             d = json.load(open(f))
             if not d.get("ratings"):
@@ -305,3 +328,51 @@ for country, _, _ in ROWS:
     print("| **%s, measured**%s | %s |" % (
         country, MARK.get(country, ""),
         " | ".join("%.2f" % REF[country][g] for g in FOUND)))
+
+
+# ---- B6a: the dispersion finding taken apart, by foundation and against the ceiling
+END, ITEMS = load_items()
+UNF = ["en_neutral"] + [c + "_neutral" for c in ["ar", "es", "fr", "ja", "fa", "ru"]]
+FRM = sorted(k for k in C if "_framed_" in k)
+
+
+def psd(vals):
+    m = mean(vals)
+    return (sum((x - m) ** 2 for x in vals) / len(vals)) ** 0.5
+
+
+def fsd(k, g):
+    return psd([F[k][m][g] for m in F[k]])
+
+
+def median(v):
+    v = sorted(v); n = len(v)
+    return v[n // 2] if n % 2 else (v[n // 2 - 1] + v[n // 2]) / 2
+
+
+print("\n## B6a. The dispersion finding, by foundation and against the ceiling\n")
+print("The between-model spread in B3a is on the binding composite. This section takes it apart. "
+      "Spread is the population standard deviation of the %d model means, the median over the %d "
+      "unframed conditions against the median over the %d framed ones, per foundation; the last "
+      "column counts framed conditions whose spread is below every unframed condition's.\n"
+      % (len(C["en_neutral"]), len(UNF), len(FRM)))
+print("| foundation | unframed | framed | framed / unframed | framed tighter than every unframed |")
+print("|---|--:|--:|--:|--:|")
+for g in FOUND:
+    u = median([fsd(k, g) for k in UNF]); f = median([fsd(k, g) for k in FRM]); mu = min(fsd(k, g) for k in UNF)
+    print("| %s | %.3f | %.3f | %.2f | %d of %d |" % (g.capitalize(), u, f, f / u, sum(fsd(k, g) < mu for k in FRM), len(FRM)))
+_eu = median([mean(END[k].values()) for k in UNF]); _ef = median([mean(END[k].values()) for k in FRM])
+_isd = lambda k: median([psd([ITEMS[k][m][i] for m in ITEMS[k]]) for i in next(iter(ITEMS[k].values()))])
+_iu = median([_isd(k) for k in UNF]); _if = median([_isd(k) for k in FRM])
+print("\nEndpoint use, the share of item ratings at 1 or 5, panel mean and then the median over "
+      "conditions: %.3f unframed, %.3f framed. Item-level between-model spread, the same statistic "
+      "on each of the 36 items and then the median: %.3f unframed, %.3f framed.\n" % (_eu, _ef, _iu, _if))
+print("Restricting the framed set by its distance from the top of the scale, against the same "
+      "%d unframed conditions, whose binding means run %.2f to %.2f:\n"
+      % (len(UNF), min(cell(k) for k in UNF), max(cell(k) for k in UNF)))
+print("| framed conditions with binding mean below | conditions | tighter than every unframed | median spread |")
+print("|---|--:|--:|--:|")
+_minu = min(sd(k) for k in UNF)
+for thr in [5.0, 4.5, 4.0, 3.5]:
+    sub_ = [k for k in FRM if cell(k) < thr]
+    print("| %.1f | %d | %d | %.3f |" % (thr, len(sub_), sum(sd(k) < _minu for k in sub_), median([sd(k) for k in sub_])))

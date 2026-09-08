@@ -430,6 +430,30 @@ All fifty conditions, then the measured human mean for each of the twenty anchor
 
 Care sits between 4.29 and 4.89 in every one of the fifty conditions. The lowest measured Care among the twenty anchored countries is Japan at 3.03.
 
+## B6a. The dispersion finding, by foundation and against the ceiling
+
+The between-model spread in B3a is on the binding composite. This section takes it apart. Spread is the population standard deviation of the 11 model means, the median over the 7 unframed conditions against the median over the 39 framed ones, per foundation; the last column counts framed conditions whose spread is below every unframed condition's.
+
+| foundation | unframed | framed | framed / unframed | framed tighter than every unframed |
+|---|--:|--:|--:|--:|
+| Care | 0.370 | 0.272 | 0.73 | 27 of 39 |
+| Equality | 0.391 | 0.271 | 0.69 | 34 of 39 |
+| Proportionality | 0.349 | 0.216 | 0.62 | 38 of 39 |
+| Loyalty | 0.396 | 0.223 | 0.56 | 37 of 39 |
+| Authority | 0.319 | 0.171 | 0.53 | 34 of 39 |
+| Purity | 0.449 | 0.203 | 0.45 | 32 of 39 |
+
+Endpoint use, the share of item ratings at 1 or 5, panel mean and then the median over conditions: 0.234 unframed, 0.267 framed. Item-level between-model spread, the same statistic on each of the 36 items and then the median: 0.425 unframed, 0.299 framed.
+
+Restricting the framed set by its distance from the top of the scale, against the same 7 unframed conditions, whose binding means run 2.68 to 3.10:
+
+| framed conditions with binding mean below | conditions | tighter than every unframed | median spread |
+|---|--:|--:|--:|
+| 5.0 | 39 | 37 | 0.171 |
+| 4.5 | 28 | 26 | 0.183 |
+| 4.0 | 19 | 18 | 0.172 |
+| 3.5 | 13 | 13 | 0.180 |
+
 ## B7. Failed calls
 
 46 of 2,796 attempted calls returned no ratings object, from provider rate limits on the Together-hosted models and from replies that carried no parseable object. All were retried to success within the same collection window, so every one of the 2,750 scored cells is present and no condition rests on fewer than five iterations. By model: minimax 21, o3 16, inkling 6, kimi_k3 2, deepseek_v4 1. Retrying to a parseable reply conditions the scored sample on compliance; the 46 unparsed replies are kept as collected and are not scored. This collection contains no refusal.
