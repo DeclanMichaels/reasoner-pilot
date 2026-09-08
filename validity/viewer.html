@@ -296,7 +296,7 @@ function panelOvershoot(){
 
   let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="ov-t ov-d">
     <title id="ov-t">Binding composite by country</title>
-    <desc id="ov-d">For each country, the measured human population mean and the model panel's
+    <desc id="ov-d">For each country, the reference-sample mean and the model panel's
       mean when framed as a person from that country, in English and in the local language.
       The same numbers are in the table below this chart.</desc>`;
 
@@ -367,7 +367,7 @@ function panelOvershoot(){
 
   let html = `
   <div class="cbox">
-    <h2>Every country, against its own population</h2>
+    <h2>Every country, against its reference sample</h2>
     <p class="lede">One row per country, grouped by language and sorted by the
       <strong>measured human mean</strong> inside each group. The human mark is the white caret. The orange
       marks are the panel of ${D.meta.models} models <strong>told to answer as a typical person from that
@@ -400,7 +400,7 @@ function panelOvershoot(){
       const used = IA.alternatives.find(a => a.label === IA.in_use);
       const alt  = IA.alternatives.filter(a => a.label !== IA.in_use);
       return `<p class="note"><strong>Iran's anchor is not from the same study as the others.</strong>
-      Every other population here comes from Atari et al. 2023 Study 2. Iran is not in that set, so
+      Every other reference sample here comes from Atari et al. 2023 Study 2. Iran is not in that set, so
       it is anchored to Hazrati, Nejat and Daneshi (2025), n=${used.n}, who administered Atari's
       official Persian MFQ-2, which matches the language of our Farsi arm. Three differences travel
       with it. They administered on a 0 to 4 scale and we apply a +1 shift for comparability.
@@ -444,7 +444,7 @@ function legendHTML(){
     <div class="ref">
       <svg width="18" height="20" aria-hidden="true"><line x1="9" y1="3" x2="9" y2="17"
         stroke="var(--human)" stroke-width="2.5"/><path d="M4,3 L14,3 L9,9 Z" fill="var(--human)"/></svg>
-      the measured human population mean - the reference, drawn in plain ink and never given a hue.
+      the reference-sample mean, drawn in plain ink and never given a hue.
       <span style="display:inline-block;margin-left:14px">
       <svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" fill="none"
         stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="2 2.6"/></svg>
@@ -495,7 +495,7 @@ function panelOrder(){
     <h2>Does the panel rank countries the way people do?</h2>
     <p class="lede">Within each language, countries ordered by their <strong>measured human mean</strong> on the
     left and by the <strong>panel's mean when framed</strong> on the right. A line that runs flat is a country the
-    panel placed where the population is. Crossing lines are disagreement.</p>`;
+    panel placed where the reference sample is. Crossing lines are disagreement.</p>`;
 
   for (const g of D.language_groups){
     const o = g.local_framed || g.en_framed;
@@ -722,7 +722,7 @@ function panelFoundations(){
     <h2>Where that leaves the panel</h2>
     <p class="lede">The same shifts on the questionnaire's own 1 to 5 scale. The blue disc
       is unframed, the orange disc is framed, and the bar between them is the move. The white
-      caret is the measured population: for a single country its own profile, and for a group of
+      caret is the reference sample: for a single country its own profile, and for a group of
       countries the sample-size-weighted mean of them, with a thin white bar above it spanning
       the highest and lowest country in the group.</p>
     ${b}
@@ -768,9 +768,9 @@ function panelMatrix(){
   cap = Math.max(cap, 0.4);
 
   let h = `<div class="cbox">
-    <h2>Distance from the population, every cell</h2>
+    <h2>Distance from the reference sample, every cell</h2>
     <p class="lede">How far each <strong>framed</strong> condition sits from that country's measured human
-    mean, ordered by the English-framed distance, which every country received. Warm is <strong>above</strong> the population, cool is
+    mean, ordered by the English-framed distance, which every country received. Warm is <strong>above</strong> the reference sample, cool is
     <strong>below</strong>. Position is not available in a grid, so colour carries the magnitude here, and
     every cell prints its number, so the colour is never the only thing saying it. The two unframed
     conditions are not here: each is a single measurement that names no country, and repeating it down a
@@ -791,7 +791,7 @@ function panelMatrix(){
   h += `</tbody></table>
     <p class="note">Scale runs to &plusmn;${cap.toFixed(2)} scale points. Every cell carries the full
       panel of ${D.meta.models} models. Positive means the models report <em>more</em> binding morality
-      (loyalty, authority, purity) than the population they were asked to speak for.</p></div>`;
+      (loyalty, authority, purity) than the reference sample for the country they were asked to speak for.</p></div>`;
   return h;
 }
 
@@ -953,7 +953,7 @@ function panelModels(){
    shell
    ============================================================ */
 const TABS = [
-  {id:"overshoot", label:"Against the population", fn:panelOvershoot},
+  {id:"overshoot", label:"Against the reference sample", fn:panelOvershoot},
   {id:"order",     label:"Ordering",               fn:panelOrder},
   {id:"found",     label:"Which foundations move", fn:panelFoundations},
   {id:"matrix",    label:"Every cell",             fn:panelMatrix},
@@ -1034,7 +1034,7 @@ function boot(d){
     `A panel of ${d.meta.models} large language models was asked to answer a moral-foundations questionnaire
      <strong>as a typical person living in a named country</strong>, in English and in that country's language.
      Across the ${withH.length} countries with a published human mean, the panel lands
-     <strong>above</strong> the population on binding morality in ${over.length} of them, by
+     <strong>above</strong> the reference-sample mean on binding morality in ${over.length} of them, by
      <strong>${fmtS(avg,2)}</strong> scale points on average. ${
        under.length
          ? (oneLang

@@ -53,8 +53,7 @@ Nothing is queued for an agent. What remains is yours:
    the state after Kimi's six fixes.
 2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three `TBD`s.
 
-Candidates for tickets, not filed: the viewer's lede still says "the population" where the paper
-now says reference sample, and its chips carry the 2026-09-07 generation stamp; a tracked claim-check that recomputes every number in the paper
+Candidates for tickets, not filed: the viewer's chips carry the 2026-09-07 generation stamp; a tracked claim-check that recomputes every number in the paper
 (the script that did it for #2 lives only in the scratchpad); the `[*]` versus `[d12]` marker
 asymmetry, footnoted in B3 and named in decision 16; `viewer_data.json`'s generation timestamp,
 which makes its pin detect re-runs rather than data changes.
