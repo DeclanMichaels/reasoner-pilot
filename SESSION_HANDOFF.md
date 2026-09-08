@@ -7,9 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Remote is at `6f39952`. Eleven commits since are local and **not yet pushed**: Astra's third
-  round worked through, decisions 18 and 19, the retitle, the ratings dataset. The push waits on
-  Declan; both documents then go out for review again.
+- Local and remote agree; working tree clean. Astra's third round, decisions 18 and 19, the
+  retitle and the ratings dataset were pushed 2026-09-08 on Declan's word. Both documents are
+  going out for review again.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 18 committed-only outputs verified, and the 47 pinned condition means
   rebuild from the committed ratings dataset.
@@ -48,8 +48,7 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Queued for an agent: #71. Declan is sending the current state for further external review once
-the eleven local commits are pushed.
+Queued for an agent: #71. Declan is sending the current state for further external review.
 
 1. **Review.** Five model families have read across eight rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
