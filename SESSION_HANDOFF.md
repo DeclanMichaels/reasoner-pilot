@@ -7,9 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. Kimi's second round, decision 20, the merge into
-  one document and the cold read were pushed 2026-09-08 on Declan's word. The document is going
-  out for review again.
+- Remote is at `dc665fa`. One commit is local and **not yet pushed**: `42fdeba`, the September
+  wave. Its run files are tracked there, which is the day-one persistence for that data until
+  the S3 archive follows; **the AWS session on this Air is expired and only Declan can renew it.**
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
   from the committed ratings dataset, and every generated section of the document matches its
@@ -31,9 +31,18 @@ This repository is public, so this file is public. It is written knowing that.
   is in `docs/DEVELOPMENT_NOTES.md`. B4 is a 70-contrast set over the full grid with intervals,
   sign counts and leave-one-out ranges, no p-values (decision 15). There is no errata section
   (decision 17).
-- `DECISIONS.md` holds 20 entries; 12 is superseded by 18 (Morocco reported under Spanish),
+- `DECISIONS.md` holds 21 entries; 12 is superseded by 18 (Morocco reported under Spanish),
   19 publishes the integer ratings as `validity/results/mfq2_ratings.csv`, 20 makes the report and
-  appendix one document. This is the Black M2 Air; `validity/` holds the completed
+  appendix one document, 21 is the September wave.
+- **The September wave is collected and reported** (decision 21, #83, `42fdeba`): the framing
+  template with its country slots deleted, on ten models, with reruns of the unframed comparator
+  and English-framed Egypt as a drift check. DeepSeek-V4-Pro left Together's serverless tier after
+  August and is absent. B4a: the template alone lifts the composite +0.652 [+0.459, +0.876], ten
+  of ten models up, 36 percent of the Egypt framing shift on those ten; naming the country adds
+  +1.141. Drift on identical item orders is +0.023 unframed and -0.017 framed. Between-model
+  spread under the template is 0.13 against 0.30 unframed and 0.20 framed. **The Summary does not
+  yet mention the wave; Declan decides the sentence.** No provider returned a temperature; none was
+  sent, on purpose (decision 21). This is the Black M2 Air; `validity/` holds the completed
   grid and `validity/reconcile.py` reports it identical to the 2026-09-05 archive.
 
 ## What changed outside the repository
@@ -54,16 +63,16 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Queued for an agent: #71. Declan is sending the current state for further external review.
+Queued for an agent: #71. Waiting on Declan: the Summary's sentence on the September wave, the
+push, and `aws login` so the wave's run files can be archived beside the grid.
 
 1. **Review.** Five model families have read across nine rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
    and the document states each where the reader meets it. Unread by any external reviewer:
    everything since `be5f64e`: the re-led Summary, the framing-by-language table with the
    Loyalty-Authority column, the Arabic item table, the one-document form.
-   **Not run, Declan's decision to make:** the country-neutral arm with the framing template,
-   asked for by Gemini and twice by Kimi. Roughly 55 calls per language for the English template
-   alone, 385 across all seven; the missing control on the framing contrast's two components.
+   The country-neutral arm asked for by Gemini and twice by Kimi is now run in English (B4a);
+   the six translated templates are not, and would need country-neutral translations first.
 2. **Zenodo**, and whether paper and appendix are combined first. `LOCATIONS.md` has three
    `TBD`s and `CITATION.cff` a commented `doi:`. Under decision 17 nothing here is published
    until that is done.
