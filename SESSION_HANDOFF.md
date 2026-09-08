@@ -52,6 +52,28 @@ Three issues are open. Two were closed on 2026-09-08 with their dispositions.
 - Closed: **#1**, the appendix regeneration, done in `303e79e`. **#4**, the single-copy grid,
   resolved by the 2026-09-07 restore test on a machine that did not hold the data.
 
+## Next session
+
+Three issues, in this order. **#2 is `ready-for-human` by design** and its own body says why:
+resolving a disagreement between two published-track documents is a judgment call about which is
+correct. An agent can produce the list and the evidence; it does not decide which document wins.
+
+1. **#2, reconcile the paper against the appendix.** The appendix now regenerates and the paper was
+   rewritten on the completed grid, so where they disagree the paper is the more likely to be right,
+   but not always. One disagreement is already found and is the shape of the rest: the paper says
+   Care runs 4.29 to 4.88 across all fifty conditions, the computed span is 4.29 to 4.89. The
+   deliverable is every numeric disagreement listed with both values, a decision on each with its
+   reason, and any correction recorded visibly rather than edited into agreement.
+2. **#5, add `validity/reconcile.py`.** The classification done by hand on 2026-09-07 before the
+   working copy was replaced, made repeatable and read-only. Its four buckets and the stop
+   conditions are in the issue.
+3. **#3, fix the documented restore command.** Same area as #5 and cheaper after it exists: the
+   dated prefix is already documented in `validity/README.md`, and what remains is that the old
+   command and the 2026-08-21 snapshot both still exist and still revert tracked code.
+
+Read `docs/DEVELOPMENT_NOTES.md` before touching anything under `validity/`. The audit scripts write
+tracked outputs, and a clean exit says nothing about whether the right data was present.
+
 ## Open items
 
 - **#2 has one concrete discrepancy already found.** `papers/inlanguage-mfq2-DRAFT.md:143` says Care
