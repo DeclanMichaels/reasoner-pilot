@@ -11,9 +11,10 @@ This repository is public, so this file is public. It is written knowing that.
   is 30 commits since `303e79e`, `8336de4` to `9d0d099`.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 17 committed-only outputs verified.
-- **Four adversarial rounds on the in-language paper and appendix are adjudicated and worked
+- **Five adversarial rounds on the in-language paper and appendix are adjudicated and worked
   through**, all in `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second
-  (eight) and DeepSeek's (folded into those eight). Thirty issues have existed; none is open.
+  (eight), DeepSeek's (folded into those eight) and Gemini's (three). Thirty-three issues have
+  existed; none is open.
 - **The paper is retitled** and every number in it recomputes from the cells. **Every data
   section of the appendix is generated**; the splice map is in `docs/DEVELOPMENT_NOTES.md`. B4 is
   a contrast set over the full grid with intervals, sign counts and leave-one-out ranges and no
@@ -46,10 +47,10 @@ ruling that the authors' shared respondent-level data may be used; #22 was Grok'
 
 Nothing is queued for an agent. What remains is yours:
 
-1. **Review.** Three families have now read the state after the first Astra round; their
-   findings were verified and worked. Unread by anyone: the state after those fixes, from
-   `695e173` to `9d0d099`, which includes the corrected unframed protocol in B1a, the re-attributed
-   Iran caveat, the rewritten opening, and decision 17's strike of B10.
+1. **Review.** Four families have read; Gemini read the state after Astra's second round was
+   worked. Every family raised the same four things - panel composition, temperature, five runs,
+   the framing prompt's two components - and the documents now state each. What remains unread is
+   the state after Gemini's three fixes.
 2. **The viewer's title against the paper's.** The paper is now "Country framing shifts MFQ-2
    responses more than questionnaire language in an eleven-model panel"; the viewer still says
    "In-language society framing - MFQ-2 binding composite".

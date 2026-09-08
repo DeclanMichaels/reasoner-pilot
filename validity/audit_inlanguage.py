@@ -553,7 +553,9 @@ M.append("\n**Request.** One user message carrying the questionnaire; the framin
          "per provider: Anthropic 3072, OpenAI and xAI 4096, Together 6144, Mistral 2048, Google "
          "6144, Cohere 2048. No temperature is sent, so each model ran at its provider's default, "
          "which the run records do not capture; a pinned value would have documented the setting "
-         "and would not have made stochasticity equivalent across models.\n")
+         "and would not have made stochasticity equivalent across models. The defaults are not "
+         "reconstructed from provider documentation, which is not dated to the collection window "
+         "and changes.\n")
 M.append("**The self-report system prompt** of the two `selfreport` baseline variants, English, verbatim from `run_validity.py`:\n")
 M.append("> " + _unframed_system + "\n")
 M.append("**The framing instruction**, English, verbatim from `run_framed.py` with the country "
@@ -568,7 +570,13 @@ M.append("**The unframed conditions send no system prompt.** The matched English
          "translated unframed conditions were run with `NEUTRAL_SYSTEM = \"\"`; every one of their "
          "saved runs records an empty system prompt. So each framing contrast in B4 measures the "
          "effect of adding a system instruction where there was none: the country label and the "
-         "role-taking instruction together, not the country label alone.\n")
+         "role-taking instruction together, not the country label alone. The nearest measurement of "
+         "the instruction on its own is the English baseline pair in `results/english_baseline_audit.txt`, "
+         "where a self-report system prompt naming no country, against none, moved the composite by "
+         "+0.026 with a model-resampling interval of [-0.042, +0.090], eight models up and three "
+         "down. That prompt is not the framing template, so it brackets the role-taking component "
+         "rather than isolating it; a country-neutral arm with the framing template itself would, "
+         "and was not run.\n")
 M.append("**The user message.** Items are shuffled per run, then grouped by response scale in the "
          "instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. "
          "Each group opens with its scale prompt and a legend of the anchor labels. The message "
