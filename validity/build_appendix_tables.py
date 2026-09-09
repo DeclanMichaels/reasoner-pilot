@@ -218,7 +218,7 @@ for r in _pub:
         float(r["pct_noninvariant_loadings"]), float(r["pct_noninvariant_intercepts"])))
 _over = [r for r in _pub if float(r["pct_noninvariant_intercepts"]) > 25 or float(r["pct_noninvariant_loadings"]) > 25]
 assert [r["foundation"] for r in _over] == ["purity"], _over
-print("\nEvery recomputed R-squared is within %.4f of the published one; the recomputation used Atari et al.'s shared data and a current sirt, and the residual is not traced. Purity is the one "
+print("\nEvery recomputed R-squared is within %.4f of the published one; the recomputation used Atari et al.'s shared data and the pinned sirt 3.13-228, and the residual is not traced. Purity is the one "
       "foundation over the 25 percent line, at %.1f percent of intercept parameters, and Atari et al. write that caution should be practiced when comparing Purity group-level means; they trace "
       "most of it to unique intercepts in Argentina and Chile and to one item. Purity is one third "
       "of the binding composite and carries its largest framing shift, so every composite comparison "
@@ -397,18 +397,15 @@ def _decomp(k):
     """between-model variance of the five-run means, the run-noise share of it (mean within-model
     variance over five, assuming independent runs), and the noise-corrected between-model SD."""
     vb = sd(k) ** 2
-    vw = mean([_svar(v) for v in RUNS[k].values() if len(v) > 1]) / 5
+    n = len(RUNS[k])
+    vw = (n - 1) / n * mean([_svar(v) for v in RUNS[k].values() if len(v) > 1]) / 5   # noise share of a population variance over n means
     return vb, vw, max(vb - vw, 0.0) ** 0.5
 _du = [_decomp(k) for k in UNF]; _df = [_decomp(k) for k in FRM]
 _minc = min(x[2] for x in _du)
 print("Within a model, the five-run spread of the binding composite has a median of %.3f in the "
       "unframed conditions and %.3f in the framed ones, and %.3f over all %d model-by-condition cells; "
       "the between-model spread has a median of %.3f over all %d conditions. Taking run noise out "
-      "condition by condition, under independence of a model's runs, by subtracting the mean within-model "
-      "variance over five from the between-model variance of the five-run means: the noise-corrected "
-      "between-model SD has a median of %.3f in the unframed conditions and %.3f in the framed ones, run "
-      "noise is a median %.0f and %.0f percent of the between-model variance, and %d of %d framed "
-      "conditions sit below every unframed one on the corrected SD as well. Whatever default sampling "
+      "condition by condition, under independence of a model's runs, by subtracting the mean within-model variance over five, scaled by (n-1)/n for a population variance over n model means, from the between-model variance of the five-run means: the estimated noise-adjusted between-model SD, truncated at zero, has a median of %.3f in the unframed conditions and %.3f in the framed ones, run noise is a median %.0f and %.0f percent of the between-model variance, and %d of %d framed conditions sit below every unframed one on the adjusted SD as well. Whatever default sampling "
       "temperature each provider applied, we assume the same default applied to a model's framed and unframed conditions, collected in one window.\n" % (
       _wu, _wf, _wa, _na, _ba, len(C), median([x[2] for x in _du]), median([x[2] for x in _df]),
       100 * median([x[1] / x[0] for x in _du]), 100 * median([x[1] / x[0] for x in _df]),
@@ -442,11 +439,7 @@ _sp = {k: sd(k) for k in ("en_neutral", "en_baseline_official_selfreport",
 _fmed = median([sd(k) for k in FRM]); _umed = median([sd(k) for k in UNF])
 _spdrop = max(_sp["en_neutral"] - _sp["en_baseline_official_selfreport"],
               _sp["en_baseline_ours_nosystem"] - _sp["en_baseline_ours_selfreport"])
-print("\n**A system prompt without a country.** The four English unframed variants separate the presence "
-      "of a system prompt from its country content. Between-model SD is %.2f with no system prompt and "
-      "%.2f with a self-report prompt on the official file, %.2f and %.2f on our transcription, against a "
-      "median of %.3f across the 39 framed conditions. A country-free prompt moves the spread by at most "
-      "%.2f; the framing conditions sit %.2f below the unframed median.\n" % (
+print("\n**A self-report system prompt without a country.** The four English unframed variants, none of which names a country, separate the presence of a self-report system prompt from its absence, across the two questionnaire files. Between-model SD is %.2f with no system prompt and %.2f with the self-report prompt on the official file, %.2f and %.2f on our transcription, against a median of %.3f across the 39 framed conditions. The self-report prompt moves the spread by at most %.2f, while the framing conditions sit %.2f below the unframed median; the country-free framing template in B4a moves it by about 0.17 in the September check, so the content of a country-free instruction, not the presence of one, is what separates the two.\n" % (
       _sp["en_neutral"], _sp["en_baseline_official_selfreport"], _sp["en_baseline_ours_nosystem"],
       _sp["en_baseline_ours_selfreport"], _fmed, _spdrop, _umed - _fmed))
 

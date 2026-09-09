@@ -502,8 +502,8 @@ L.append("\nThe sign and the ordering of the Iran result do not depend on the ch
          "magnitude does, by up to %.3f.\n" % (max(_alts) - min(_alts)))
 
 # ---- B4a: the September wave, decision 21
-def psd_c(k):
-    v = list(CONDS[k].values()); mu = sum(v) / len(v); return (sum((x - mu) ** 2 for x in v) / len(v)) ** 0.5
+def psd_c(k, models=None):
+    v = [CONDS[k][m] for m in (models or CONDS[k])]; mu = sum(v) / len(v); return (sum((x - mu) ** 2 for x in v) / len(v)) ** 0.5
 _sr_ours = _ctr({m: enbase["ours_selfreport"][m] - enbase["ours_nosystem"][m] for m in _ms}, "C|selfreport|ours")
 _sr_off = _ctr({m: enbase["official_selfreport"][m] - enbase["official_nosystem"][m] for m in _ms}, "C|selfreport|official")
 import run_neutral_template as rnt
@@ -514,7 +514,7 @@ def _sub(a, b):
     return {m: a[m] - b[m] for m in _ten}
 _T = sept["en_neutral_template"]; _U9 = sept["en_neutral_sept"]; _F9 = sept["EN_framed_Egypt_sept"]
 _U8 = CONDS["en_neutral"]; _F8 = CONDS["EN_framed_Egypt"]
-_fsd_all = sorted(psd_c(k) for k in CONDS if "_framed_" in k)
+_fsd_all = sorted(psd_c(k, _ten) for k in CONDS if "_framed_" in k)   # August framed SDs on the same ten models
 _fmed_aug = _fsd_all[len(_fsd_all) // 2] if len(_fsd_all) % 2 else (_fsd_all[len(_fsd_all) // 2 - 1] + _fsd_all[len(_fsd_all) // 2]) / 2
 _fsd_aug = _fsd_all[:4]
 _rows = [("template minus unframed English, August comparator", _ctr(_sub(_T, _U8), "C|sept|template-unframed_aug")),
@@ -548,14 +548,22 @@ for lab, c in _rows:
     L.append(row(lab, c))
 L.append("")
 _share = _rows[1][1]["diff"] / _rows[5][1]["diff"] if _rows[5][1]["diff"] else float("nan")
-L.append("Within the September window, the template without a country accounts for %.0f percent of the Egypt "
-         "framing shift on these ten models (%+.3f of %+.3f); naming the country accounts for the rest, %+.3f, "
-         "with the transcription difference between the two instruments riding inside it (B4, -0.009 unframed). "
-         "The two drift rows price the window: the unframed comparator moved %+.3f and framed Egypt %+.3f "
-         "between August and September on the same item orders. Between-model spread under the template, %.2f, "
-         "sits against %.2f unframed and %.2f framed in the same window. Against the August grid it sits "
-         "below the framed median of %.2f and above the four tightest framed conditions, at %.2f to %.2f; "
-         "that comparison crosses windows, and the drift rows price the window for means, not for spread. "
+_d1 = _sub(_T, _U9); _d2 = _sub(_F9, _U9); _rng = random.Random("%d|C|sept|share" % SEED); _n10 = len(_ten)
+_shares = sorted((lambda idx: sum(_d1[_ten[i]] for i in idx) / sum(_d2[_ten[i]] for i in idx))([_rng.randrange(_n10) for _ in range(_n10)]) for _ in range(B))
+_share_lo, _share_hi = _shares[int(0.025 * B)], _shares[int(0.975 * B)]
+L.append("Within the September window, two increments: the template without a country raised the official-English "
+         "composite by %+.3f over unframed, and the Egypt-framed condition scored a further %+.3f higher, a comparison "
+         "that also changes the questionnaire file (Egypt on our transcription, the template on the official file; B4 "
+         "measures that difference unframed at -0.009 and does not identify it under either template). The first "
+         "increment is %.0f percent of the observed unframed-to-Egypt difference of %+.3f on these ten models, "
+         "model-resampling sensitivity %.0f to %.0f percent; that is how far the share moves when the ten are "
+         "reweighted, not a causal allocation. The two drift rows measure the change between windows: the unframed "
+         "comparator moved %+.3f and framed Egypt %+.3f between August and September on the same item orders. "
+         "Between-model spread under the template, %.2f, sits against %.2f unframed and %.2f framed in the same "
+         "window, so a country name was not necessary for lower dispersion in this English check, and naming Egypt "
+         "widened the panel rather than narrowing it further. Against the August grid on the same ten models, the "
+         "template sits below the framed median of %.2f and above the four tightest framed conditions, at %.2f to %.2f; "
+         "that comparison crosses windows, and the drift rows measure the change for means, not for spread. "
          "The split is measured for one country in one language, and whether it holds elsewhere is untested: "
          "the instruction's part could be near-constant while the country's part varies, and for Belgium "
          "the English framing effect is negative (B4). Read with B1a's self-report pairs, the two controls "
@@ -563,7 +571,7 @@ L.append("Within the September window, the template without a country accounts f
          "prompt where there was none, and the template moves the composite %+.3f while the self-report "
          "prompts move it %+.3f and %+.3f, so the content of the instruction carries the shift, not the "
          "presence of a system prompt.\n" % (
-         100 * _share, _rows[1][1]["diff"], _rows[5][1]["diff"], _rows[3][1]["diff"],
+         _rows[1][1]["diff"], _rows[3][1]["diff"], 100 * _share, _rows[5][1]["diff"], 100 * _share_lo, 100 * _share_hi,
          _rows[6][1]["diff"], _rows[7][1]["diff"], _psd(_T), _psd(_U9), _psd(_F9),
          _fmed_aug, _fsd_aug[0], _fsd_aug[3], _rows[1][1]["diff"], _sr_ours["diff"], _sr_off["diff"]))
 
