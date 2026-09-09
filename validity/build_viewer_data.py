@@ -303,7 +303,8 @@ _sept_models = sorted(set.intersection(*[set(CELLS_ALL[k]) for k in SEPT]))
 _sept_bind = {k: {m: mean([sum(fmeans(c["ratings"])[g] for g in BIND) / 3 for c in CELLS_ALL[k][m]]) for m in _sept_models} for k in SEPT}
 september = {
     "models": _sept_models,
-    "collected": RECORD["collected"].get("september_wave"),
+    "collected": (lambda d: d["first"][:4] + "-" + d["first"][4:6] + "-" + d["first"][6:] if d and d["first"] == d["last"]
+                  else None)(RECORD["collected"].get("september_wave")),
     "conditions": {**{k: _ten_stats(_sept_bind[k], _sept_models, "sept|" + k) for k in SEPT},
                    "en_neutral_august_ten": _ten_stats(C["en_neutral"], _sept_models, "sept|en_neutral_august_ten"),
                    "EN_framed_Egypt_august_ten": _ten_stats(C["EN_framed_Egypt"], _sept_models, "sept|EN_framed_Egypt_august_ten")},

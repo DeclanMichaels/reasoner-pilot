@@ -400,27 +400,26 @@ function panelOvershoot(){
       return `<p class="note"><strong>Iran's anchor is not from the same study as the others.</strong>
       Every other reference sample here comes from Atari et al. 2023 Study 2. Iran is not in that set, so
       it is anchored to Hazrati, Nejat and Daneshi (2025), n=${used.n}, who administered Atari's
-      official Persian MFQ-2, which matches the language of our Farsi arm. Three differences travel
+      official Persian MFQ-2 with minor linguistic edits, which matches the language of our Farsi arm. Three differences travel
       with it. They administered on a 0 to 4 scale and we apply a +1 shift for comparability.
       Their sample is an online convenience sample, younger, majority
-      female and more educated than the country, and we read it as likely less
-      binding-endorsing than the general Iranian population, our inference rather than the authors'
-      statement, which would make the gap we report larger than a nationally stratified sample would give.
+      female and more educated than the country; Hazrati et al.'s limitations discuss that composition
+      and restricted variation in religiosity and political orientation.
       And the choice of sample moves the number: ${alt.map(a =>
         `on their ${esc(a.label)} the in-language gap is ${fmtS(a.fa_framed_overshoot,2)}`
         ).join(" and ")}, against the ${fmtS(used.fa_framed_overshoot,2)} shown here. The anchor in
       use is the ${esc(IA.in_use_is)} of the ${["zero","one","two","three","four"][IA.alternatives.length]
       || IA.alternatives.length}, so the gap shown is the smallest the source supports. Iran is the widest gap in this collection, and it rests on the
-      least comparable anchor in it.</p>`; })()}
+      one anchor from a different study.</p>`; })()}
     ${orphans.length ? `<p class="note"><strong>Not charted:</strong>
-      ${orphans.map(o=>esc(o.country)).join(", ")} - not in the questionnaire authors'
-      validation set, so there is no published human mean to measure the panel against. Their panel values are in
+      ${orphans.map(o=>esc(o.country)).join(", ")} - not in Atari et al.'s
+      validation set, so no anchor is used for them in this study. Their panel values are in
       the table below.</p>` : ""}
   </div>
   <div class="cbox">
     <h2>The numbers</h2>
     <p class="lede">Panel means, each model's iterations averaged before the model enters the average.
-      Bracketed figures are 95% bootstrap intervals over models.</p>
+      Bracketed figures are 95% model-resampling intervals: a percentile bootstrap over models that reweights the observed eleven and bounds nothing.</p>
     ${tableHTML()}
   </div>`;
   return html;
@@ -481,8 +480,8 @@ function tableHTML(){
     neither prompt names a country. Only the two framed columns vary country by country. The last column
     uses the in-language framed arm where one was collected and the English framed arm, marked
     <span style="color:var(--text-dim)">EN</span>, where it was not. A row marked
-    <span class="partial">§</span> is compared on an arm other than its group's language, because the
-    human sample for that country was collected in the other language; hover the mark for which.</p>`;
+    <span class="partial">§</span> was also framed in another language; those cells are in the appendix
+    and enter no comparison.</p>`;
 }
 
 /* ============================================================
@@ -683,8 +682,8 @@ function panelFoundations(){
       b += `<p class="note">The caret on this chart is Hazrati, Nejat and Daneshi (2025)
         ${esc(D.meta.iran_anchor.in_use)}, n=${D.meta.iran_anchor.alternatives.find(
           a => a.label === D.meta.iran_anchor.in_use).n}, not Atari et al. Same instrument and same
-        language, different study, and an online convenience sample we read as likely less
-        binding-endorsing than the country, our inference. See the note on the first tab.</p>`;
+        language, different study, and an online convenience sample, younger, majority female and more
+        educated than the country. See the note on the first tab.</p>`;
   }
 
   // ---- the table
@@ -707,14 +706,14 @@ function panelFoundations(){
       how far the panel moves when it is told to answer as a local, in that language,
       against the same panel answering the same questionnaire in the same language with no
       framing at all. Positive is upward. The shaded rows are the three that make up the
-      binding composite. The bar is the 95% bootstrap interval over models; a bar that
-      crosses the zero line is a shift this panel does not resolve.</p>
+      binding composite. The bar is the 95% model-resampling interval; a bar that
+      crosses the zero line includes both signs and establishes nothing either way.</p>
     ${a}
     <p class="note"><strong>The change is lopsided, not a general lift.</strong> In five of the
       six languages the three binding foundations rise by about half a scale point to nearly two;
       in French they do not, with authority flat and purity almost so. Purity moves most wherever
       anything moves. Equality rises too, by about a third as much on average, and it is not part
-      of the composite. Proportionality barely moves. Care does not rise significantly anywhere,
+      of the composite. Proportionality barely moves. Care does not rise beyond its interval anywhere,
       and in Japanese and Russian it falls. So the composite is not standing in for every answer
       going up.</p>
   </div>
@@ -735,7 +734,7 @@ function panelFoundations(){
     <h2>Every shift</h2>
     <p class="lede">Scale points, framed minus unframed, model as the unit, with the 95%
       bootstrap interval under each. <strong>Mean</strong> is the unweighted average of the six
-      languages, which counts a one-country language the same as a five-country one.</p>
+      languages, which counts a one-country language the same as a six-country one.</p>
     ${t}
   </div>`;
 }
@@ -916,13 +915,14 @@ function panelModels(){
       ${uKeys.length} unframed conditions and <span class="mono">${med(fSD).toFixed(3)}</span>
       across the ${fSD.length} framed ones. <strong>${tighter} of the ${fSD.length}</strong> framed
       conditions are tighter than every unframed condition. Why that happens is not something this
-      collection can say.</p>
+      collection can say; the Control tab shows that a country name was not necessary for the
+      narrowing in the September English check.</p>
   </div>
   <div class="cbox">
     <h2>Where each model sits</h2>
     <p class="lede">The model is the unit of analysis: every model's iterations are averaged before it enters
       a panel mean, so one talkative model cannot outvote the rest. The orange line is the panel mean and the
-      band around it the 95% bootstrap interval over models. Where the condition names a country, the white
+      band around it the 95% model-resampling interval. Where the condition names a country, the white
       caret is that country's measured human mean.</p>
     <div class="controls">
       <label for="mcond" style="font-size:15px;color:var(--text-dim)">Condition</label>
@@ -985,7 +985,7 @@ function panelControl(){
     <h2>What the framing instruction does without a country</h2>
     <p class="lede">Every framing contrast on the other tabs adds a system instruction where there was none, and that
       instruction carries two things: a country, and an instruction to answer as <strong>a typical person</strong>.
-      A second, small collection on ${esc(S.collected || "2026-09-08")} separates them: the framing template with its
+      A second, small collection on ${esc(D.meta.collected.september_wave)} separates them: the framing template with its
       country slots deleted and nothing added, on the official English questionnaire, plus reruns of the unframed
       English comparator and of English-framed Egypt the same day with item-identical orders, so that the change
       between collection windows is measured rather than assumed. Ten models; DeepSeek-V4-Pro had left its provider's
@@ -1092,13 +1092,13 @@ function boot(d){
     `A panel of ${d.meta.models} large language models was asked to answer a moral-foundations questionnaire
      <strong>as a typical person living in a named country</strong>, in English and in that country's language.
      Across the ${withH.length} countries with a published human mean, the panel lands
-     <strong>above</strong> the reference-sample mean on binding morality in ${over.length} of them, by
+     <strong>above</strong> the reference-sample mean on the binding composite in ${over.length} of them, by
      <strong>${fmtS(avg,2)}</strong> scale points on average. ${
        under.length
          ? (oneLang
              ? `All ${under.length} it puts <strong>below</strong> are the countries we
                 administered in ${underLangs[0]}.`
-             : `It lands <strong>below</strong> in ${under.length}: ${under.map(c=>esc(c.country)).join(", ")}.`)
+             : `It lands at or <strong>below</strong> in ${under.length}: ${under.map(c=>esc(c.country)).join(", ")}.`)
          : ""}${
        nulls.length ? ` In ${nulls.map(g=>esc(g.language)).join(" and ")} the observed rank
        correlation with the human ordering is <strong>zero</strong>.` : ""}${

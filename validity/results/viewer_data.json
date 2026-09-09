@@ -12,10 +12,7 @@
    "opus",
    "sonnet"
   ],
-  "collected": {
-   "first": "20260908",
-   "last": "20260908"
-  },
+  "collected": "2026-09-08",
   "conditions": {
    "en_neutral_sept": {
     "mean": 2.7956,
