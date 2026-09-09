@@ -25,8 +25,13 @@ This repository is public, so this file is public. It is written knowing that.
   `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second (eight), DeepSeek's
   (folded into those eight), Gemini's (three), Kimi's first (six), Claude's cold review (twelve,
   #40 to #51), Astra's third (twenty, #52 to #71), Kimi's second (eleven, #72 to #82) and Kimi's third
-  (three, #84 to #86, all wording). Eighty-six issues have existed; #71 is open, the follow-on that moves the emitters onto the
-  ratings dataset.
+  (three, #84 to #86, all wording). Eighty-seven issues have existed; #87 is open for Declan (regenerate the in-language artifacts
+  in the harness, superseding decision 14).
+- **Both appendix emitters read the ratings dataset and `results/collection_record.json`, not the
+  run files** (#71, 2026-09-09), so a clone regenerates every table and interval; verified from a
+  fresh clone without the run directories, all four artifacts byte-identical. The switch exposed
+  that the B3a intervals had taken their model order from the filesystem: 35 of 50 moved by up to
+  0.003, listed in `d4d2b83`; no mean or contrast moved.
 - **The report and its appendix are one document**, `papers/inlanguage-mfq2-DRAFT.md`, 823 lines,
   decision 20; the appendix file is gone. `validity/splice_appendix.py` splices the nine generated
   sections and the harness runs its `--check`.
@@ -64,13 +69,14 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-One open: #71, move the emitters onto the ratings dataset (analysis, ready-for-agent). #1 to #70
-and #72 to #82 are closed, each with its disposition on the ticket. Where a ticket was closed
+One open: #87, regenerate the in-language artifacts in the harness (analysis, ready-for-human,
+Declan's decision). #1 to #86 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Queued for an agent: #71. The document goes out for review again with the wave in it. One
+Nothing queued for an agent. Waiting on Declan: #87, the push of #71, Zenodo. The document goes out
+for review again with the wave in it. One
 sentence pushed on the 8th was wrong and was corrected on the record (`385a4f8`): the template's
 spread sits below the framed median, not below every country.
 
