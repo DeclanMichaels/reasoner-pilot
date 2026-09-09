@@ -281,7 +281,7 @@ The configured roster holds fifteen models; four are absent from every cell. Bot
 
 The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected.
 
-**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; each is quoted as sent, from the first framed cell of its language in the run files.
+**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; each is quoted as sent, from the first framed cell of its language, via the collection record.
 
 Arabic, framed as Egypt:
 
@@ -424,56 +424,56 @@ The unframed Arabic condition sits at 3.104, below all three reference-sample me
 
 | condition | panel mean | 95% model-resampling interval | between-model SD |
 |---|--:|:--:|--:|
-| EN_framed_Argentina | 3.437 | [3.316, 3.557] | 0.20 |
-| EN_framed_Belgium | 2.622 | [2.523, 2.742] | 0.19 |
-| EN_framed_Chile | 3.654 | [3.534, 3.788] | 0.21 |
-| EN_framed_Colombia | 4.100 | [3.981, 4.220] | 0.20 |
+| EN_framed_Argentina | 3.437 | [3.317, 3.556] | 0.20 |
+| EN_framed_Belgium | 2.622 | [2.523, 2.741] | 0.19 |
+| EN_framed_Chile | 3.654 | [3.533, 3.786] | 0.21 |
+| EN_framed_Colombia | 4.100 | [3.982, 4.220] | 0.20 |
 | EN_framed_Egypt | 4.605 | [4.502, 4.703] | 0.17 |
-| EN_framed_France | 2.725 | [2.637, 2.838] | 0.17 |
-| EN_framed_India | 4.439 | [4.335, 4.543] | 0.18 |
+| EN_framed_France | 2.725 | [2.636, 2.837] | 0.17 |
+| EN_framed_India | 4.439 | [4.336, 4.543] | 0.18 |
 | EN_framed_Iran | 4.577 | [4.470, 4.671] | 0.17 |
-| EN_framed_Ireland | 3.094 | [2.957, 3.252] | 0.25 |
-| EN_framed_Japan | 3.668 | [3.479, 3.869] | 0.33 |
+| EN_framed_Ireland | 3.094 | [2.956, 3.253] | 0.25 |
+| EN_framed_Japan | 3.668 | [3.478, 3.871] | 0.33 |
 | EN_framed_Kenya | 4.432 | [4.365, 4.504] | 0.12 |
 | EN_framed_Mexico | 4.141 | [4.071, 4.223] | 0.13 |
 | EN_framed_Morocco | 4.570 | [4.482, 4.648] | 0.14 |
 | EN_framed_New Zealand | 2.878 | [2.816, 2.943] | 0.11 |
-| EN_framed_Nigeria | 4.515 | [4.425, 4.606] | 0.15 |
-| EN_framed_Peru | 4.133 | [4.017, 4.242] | 0.19 |
-| EN_framed_Russia | 4.117 | [3.982, 4.262] | 0.24 |
-| EN_framed_Saudi Arabia | 4.733 | [4.654, 4.803] | 0.13 |
+| EN_framed_Nigeria | 4.515 | [4.425, 4.607] | 0.15 |
+| EN_framed_Peru | 4.133 | [4.019, 4.243] | 0.19 |
+| EN_framed_Russia | 4.117 | [3.983, 4.261] | 0.24 |
+| EN_framed_Saudi Arabia | 4.733 | [4.653, 4.803] | 0.13 |
 | EN_framed_South Africa | 3.935 | [3.841, 4.024] | 0.16 |
 | EN_framed_Sweden | 2.282 | [2.194, 2.365] | 0.14 |
-| EN_framed_Switzerland | 3.063 | [2.913, 3.219] | 0.26 |
-| EN_framed_United Arab Emirates | 4.629 | [4.551, 4.704] | 0.13 |
+| EN_framed_Switzerland | 3.063 | [2.913, 3.220] | 0.26 |
+| EN_framed_United Arab Emirates | 4.629 | [4.549, 4.704] | 0.13 |
 | EN_framed_United States | 3.331 | [3.193, 3.456] | 0.22 |
-| ar_framed_Egypt | 4.604 | [4.486, 4.718] | 0.20 |
-| ar_framed_Morocco | 4.582 | [4.473, 4.682] | 0.18 |
+| ar_framed_Egypt | 4.604 | [4.485, 4.717] | 0.20 |
+| ar_framed_Morocco | 4.582 | [4.474, 4.682] | 0.18 |
 | ar_framed_Saudi Arabia | 4.757 | [4.682, 4.822] | 0.12 |
 | ar_framed_United Arab Emirates | 4.726 | [4.658, 4.791] | 0.11 |
-| ar_neutral | 3.104 | [2.840, 3.374] | 0.45 |
-| en_baseline_official_selfreport | 2.695 | [2.526, 2.860] | 0.28 |
-| en_baseline_ours_nosystem | 2.760 | [2.548, 2.983] | 0.37 |
-| en_baseline_ours_selfreport | 2.733 | [2.560, 2.924] | 0.31 |
-| en_neutral | 2.769 | [2.608, 2.934] | 0.28 |
-| en_neutral_ours | 2.713 | [2.541, 2.897] | 0.30 |
+| ar_neutral | 3.104 | [2.843, 3.374] | 0.45 |
+| en_baseline_official_selfreport | 2.695 | [2.526, 2.861] | 0.28 |
+| en_baseline_ours_nosystem | 2.760 | [2.547, 2.982] | 0.37 |
+| en_baseline_ours_selfreport | 2.733 | [2.560, 2.923] | 0.31 |
+| en_neutral | 2.769 | [2.608, 2.933] | 0.28 |
+| en_neutral_ours | 2.713 | [2.540, 2.898] | 0.30 |
 | es_framed_Argentina | 3.349 | [3.236, 3.475] | 0.20 |
-| es_framed_Chile | 3.576 | [3.478, 3.677] | 0.17 |
-| es_framed_Colombia | 3.996 | [3.909, 4.091] | 0.16 |
-| es_framed_Mexico | 3.947 | [3.849, 4.045] | 0.17 |
-| es_framed_Morocco | 4.589 | [4.496, 4.669] | 0.15 |
-| es_framed_Peru | 4.038 | [3.920, 4.157] | 0.20 |
+| es_framed_Chile | 3.576 | [3.478, 3.678] | 0.17 |
+| es_framed_Colombia | 3.996 | [3.908, 4.092] | 0.16 |
+| es_framed_Mexico | 3.947 | [3.849, 4.044] | 0.17 |
+| es_framed_Morocco | 4.589 | [4.497, 4.669] | 0.15 |
+| es_framed_Peru | 4.038 | [3.920, 4.156] | 0.20 |
 | es_neutral | 2.780 | [2.582, 2.967] | 0.33 |
-| fa_framed_Iran | 4.314 | [4.148, 4.476] | 0.28 |
-| fa_neutral | 2.809 | [2.565, 3.066] | 0.43 |
-| fr_framed_Belgium | 2.797 | [2.713, 2.893] | 0.15 |
+| fa_framed_Iran | 4.314 | [4.147, 4.478] | 0.28 |
+| fa_neutral | 2.809 | [2.565, 3.067] | 0.43 |
+| fr_framed_Belgium | 2.797 | [2.713, 2.892] | 0.15 |
 | fr_framed_France | 2.834 | [2.755, 2.921] | 0.14 |
-| fr_framed_Switzerland | 3.076 | [2.972, 3.185] | 0.18 |
-| fr_neutral | 2.777 | [2.590, 2.977] | 0.33 |
+| fr_framed_Switzerland | 3.076 | [2.971, 3.185] | 0.18 |
+| fr_neutral | 2.777 | [2.591, 2.977] | 0.33 |
 | ja_framed_Japan | 3.434 | [3.353, 3.514] | 0.14 |
-| ja_neutral | 2.676 | [2.494, 2.885] | 0.33 |
-| ru_framed_Russia | 4.047 | [3.908, 4.189] | 0.24 |
-| ru_neutral | 2.788 | [2.582, 3.004] | 0.36 |
+| ja_neutral | 2.676 | [2.496, 2.884] | 0.33 |
+| ru_framed_Russia | 4.047 | [3.907, 4.190] | 0.24 |
+| ru_neutral | 2.788 | [2.585, 3.003] | 0.36 |
 
 ## B4. The contrasts
 
@@ -880,19 +880,20 @@ Orders **are** shared within every multi-country translated group. The in-langua
 
 `validity/build_lang_instruments.py` rebuilds the per-language instruments from the official translation files; item wording is not redistributed and the filled instruments are git-ignored. `validity/run_framed_lang.py`, `validity/run_framed.py`, `validity/run_english_baseline.py` and `validity/run_validity.py` produced the grid's cells, and `validity/run_neutral_template.py` the September wave's, which are tracked under `validity/runs_neutral_template/` because they carry no item wording; all are resumable, and every cell records its seed, presentation order, raw text and the framing instruction it was sent. `validity/fill.sh` re-invokes each runner until nothing remains, which is how we closed the rate-limit gaps.
 
-`validity/audit_inlanguage.py` emits B1a, B4, B5 and B7 as `results/appendix_b4_b5.md`, and reconciles first against an independent recomputation from the raw cells: the plain mean of the eighteen binding items against the average of three foundation means. Those agree only if each binding foundation carries the same number of items, so the gate verifies the counts it depends on. It writes `results/condition_means.json`, and `validity/audit_inlanguage_grid.py` reconciles against that file rather than against constants. `validity/build_appendix_tables.py` emits B2a, B3, B3a, B6 and B6a as `results/appendix_tables.md`. `validity/splice_appendix.py` splices both into this document verbatim, and `analysis/test_reproduce.py` runs its check, so a generated section that disagrees with its artifact fails the harness.
+`validity/audit_inlanguage.py` emits B1a, B4, B4a, B5 and B7 as `results/appendix_b4_b5.md`, and reconciles first against an independent recomputation from the same cells: the plain mean of the eighteen binding items against the average of three foundation means. Those agree only if each binding foundation carries the same number of items, so the gate verifies the counts it depends on. It writes `results/condition_means.json`, and `validity/audit_inlanguage_grid.py` reconciles against that file rather than against constants. `validity/build_appendix_tables.py` emits B2a, B3, B3a, B6 and B6a as `results/appendix_tables.md`. `validity/splice_appendix.py` splices both into this document verbatim, and `analysis/test_reproduce.py` runs its check, so a generated section that disagrees with its artifact fails the harness.
 
 We preserve the July 2026 collection unchanged at `validity/archive-2026-07/`.
 
-**What a clone has.** The run files under `validity/runs_framed`, `validity/runs_framed_lang` and `validity/runs` are gitignored; the English baseline runs under `validity/runs_english_baseline` and the September wave's under `validity/runs_neutral_template` are tracked. We archived the full grid, and the wave beside it, with sha256 manifests at the prefixes named in `validity/README.md`, which also gives the restore recipe, and `validity/reconcile.py` classifies a working copy against that archive. `analysis/test_reproduce.py` hashes `results/appendix_tables.md`, `results/appendix_b4_b5.md`, `results/condition_means.json`, `results/inlanguage_audit.txt` and `results/viewer_data.json` as committed. The exception is the ratings dataset: `validity/build_ratings_dataset.py` writes every scored rating, the grid's and the wave's, to `results/mfq2_ratings.csv`, one row per condition, model, iteration and item with the instrument file, the request seed, the item's position in that run's shuffled order and the rating, 104,400 rows, and `validity/check_ratings_dataset.py` rebuilds the 47 pinned condition means from it to 1e-9 and checks the wave's shape. Every model-side number in this appendix is a function of those ratings; the emitters still read the run files, and moving them to the dataset is a separate ticket. Local recomputation from the archived runs, the hash check a clone can run, and public regeneration are three different things; the first two hold, and the third holds for the condition means through the dataset. What a clone can and cannot rebuild:
+**What a clone has.** The run files under `validity/runs_framed`, `validity/runs_framed_lang` and `validity/runs` are gitignored; the English baseline runs under `validity/runs_english_baseline` and the September wave's under `validity/runs_neutral_template` are tracked. We archived the full grid, and the wave beside it, with sha256 manifests at the prefixes named in `validity/README.md`, which also gives the restore recipe, and `validity/reconcile.py` classifies a working copy against that archive. `analysis/test_reproduce.py` hashes `results/appendix_tables.md`, `results/appendix_b4_b5.md`, `results/condition_means.json`, `results/inlanguage_audit.txt` and `results/viewer_data.json` as committed. The exception is the ratings dataset: `validity/build_ratings_dataset.py` writes every scored rating, the grid's and the wave's, to `results/mfq2_ratings.csv`, one row per condition, model, iteration and item with the instrument file, the request seed, the item's position in that run's shuffled order and the rating, 104,400 rows, and `validity/check_ratings_dataset.py` rebuilds the 47 pinned condition means from it to 1e-9 and checks the wave's shape. Every model-side number in this appendix is a function of those ratings, and since 2026-09-09 both emitters read the dataset rather than the run files, together with `results/collection_record.json`, which the dataset builder writes from the run files: the failed-call counts B7 reports, the parser's rounding audit, and the six translated instructions as sent. A clone regenerates every table and interval from what it has; only the builder itself needs the runs. Local recomputation from the archived runs, the hash check a clone can run, and public regeneration are three different things, and all three now hold for every model-side number; the dataset and the collection record are the only artifacts that need the runs. What a clone can and cannot rebuild:
 
 | from a fresh clone | rebuilds | needs |
 |---|---|---|
 | the pilot's fifteen outputs | yes, byte for byte | python3 |
 | the in-language condition means, all 47 | yes, from `results/mfq2_ratings.csv` | python3 |
 | the hash check on every pinned artifact | yes | python3 |
-| B3a, B4, B4a, B6 and B6a tables and intervals | not yet; the emitters read the run files (#71) | the archived runs, or #71 |
-| B1a's prompt quotations and B7's failed-call counts | no | the run files and the runner source |
+| B3a, B4, B4a, B6 and B6a tables and intervals | yes, from the dataset | python3 |
+| B1a's prompt quotations and B7's failed-call counts | yes, from the runner source and `results/collection_record.json` | python3 |
+| the dataset and the collection record themselves | no | the archived run files |
 | the human reference CSVs | no | R and `pyreadstat`, and the sources' shared data |
 
 **The human side.** `validity/reference/` holds four committed CSVs and a README recording each one's provenance. `mfq2_country_means.csv` and `mfq2_country_dispersion.csv` carry the nineteen countries' foundation means and respondent-level standard deviations, computed from Atari et al.'s Study 2 raw data with their own scoring; `mfq2_alignment_r2.csv` carries the B2a diagnostics from `compute_alignment_r2.R`. Those three are copies from the companion repository `reasoner-study`, which is not public, so the R script is not in this repository; the CSVs are what the appendix reads. We build `mfq2_iran_dispersion.csv` here with `validity/reference/build_iran_dispersion.py`, which needs `pyreadstat`, from Hazrati et al.'s shared respondent-level files; those stay in the gitignored `_raw/`. `validity/anchors_iran.json` carries Iran's three anchors and the caveats B4 reports.

@@ -81,16 +81,20 @@ def binding(r):
     return None if any(g not in f for g in FOUND) else sum(f[g] for g in BIND) / 3
 
 
-SOURCES = [(VDIR / "runs_framed_lang" / "*.json",
-            lambda d: "%s_%s" % (d["instrument"].split("_")[1],
-                                 d["condition"] if d["condition"] != "framed"
-                                 else "framed_" + d["country"])),
-           (VDIR / "runs_framed" / "*_mfq2_*.json",
-            lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
-           (VDIR / "runs_english_baseline" / "*.json",
-            lambda d: "en_neutral" if d["condition"] == "official_nosystem"
-            else "en_baseline_" + d["condition"]),
-           (VDIR / "runs" / "*_mfq2_*.json", lambda d: "en_neutral_ours")]
+import sys as _sys
+_sys.path.insert(0, str(VDIR))
+from ratings_dataset import load_cells
+# The published ratings dataset (decision 19) is the only ratings source (#71). The September
+# wave's three conditions are B4a's and stay out of the grid tables.
+_SEPT = {"en_neutral_template", "en_neutral_sept", "EN_framed_Egypt_sept"}
+CELLS = {k: v for k, v in load_cells().items() if k not in _SEPT}
+
+
+def _cells():
+    for k, md in CELLS.items():
+        for m, cells in md.items():
+            for c in cells:
+                yield k, m, c["ratings"]
 
 
 def load_items():
@@ -99,21 +103,13 @@ def load_items():
     end = defaultdict(lambda: defaultdict(list))
     items = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
     runsd = defaultdict(lambda: defaultdict(list))   # per condition, per model: binding per run
-    for pat, keyf in SOURCES:
-        for f in glob.glob(str(pat)):
-            d = json.load(open(f))
-            if not d.get("ratings"):
-                continue
-            k = keyf(d)
-            if k is None:
-                continue
-            r = d["ratings"]
+    for k, m, r in _cells():
             b = binding(r)
             if b is not None:
-                runsd[k][d["model"]].append(b)
-            end[k][d["model"]].append(sum(1 for v in r.values() if v in (1, 5)) / len(r))
+                runsd[k][m].append(b)
+            end[k][m].append(sum(1 for v in r.values() if v in (1, 5)) / len(r))
             for iid, v in r.items():
-                items[k][d["model"]][iid].append(v)
+                items[k][m][iid].append(v)
     return ({k: {m: mean(v) for m, v in md.items()} for k, md in end.items()},
             {k: {m: {i: mean(v) for i, v in mi.items()} for m, mi in md.items()} for k, md in items.items()},
             {k: {m: v for m, v in md.items()} for k, md in runsd.items()})
@@ -129,22 +125,15 @@ def load(what):
     # system prompt +0.026 p=.49, neither distinguishable from zero. The official no-system
     # cell is the baseline now because it is the matched one. The old cell is kept under
     # en_neutral_ours so the errata can cite what was published before.
-    for pat, keyf in SOURCES:
-        for f in glob.glob(str(pat)):
-            d = json.load(open(f))
-            if not d.get("ratings"):
-                continue
-            k = keyf(d)
-            if k is None:
-                continue
+    for k, m, r in _cells():
             if what == "binding":
-                b = binding(d["ratings"])
+                b = binding(r)
                 if b is not None:
-                    acc[k][d["model"]].append(b)
+                    acc[k][m].append(b)
             else:
-                fm = fmeans(d["ratings"])
+                fm = fmeans(r)
                 if not any(g not in fm for g in FOUND):
-                    acc[k][d["model"]].append(fm)
+                    acc[k][m].append(fm)
     if what == "binding":
         return {k: {m: sum(v) / len(v) for m, v in md.items()} for k, md in acc.items()}
     return {k: {m: {g: sum(x[g] for x in v) / len(v) for g in FOUND} for m, v in md.items()}

@@ -18,14 +18,14 @@
  },
  "committed_only": {
   "validity/results/aggregation_artifact.json": "ebcca2e3f4429791e98fc4c31c1c645ee52abd69f45490c82127136d634aca93",
-  "validity/results/appendix_tables.md": "a5fb4a3b392449d9fc0cd8f1cde07ea492cb56286b435f2b9b1c9420a32405c4",
+  "validity/results/appendix_tables.md": "87579f890960629681964f528a079faa96ca7646db887dd9582afeab3d9ad0da",
   "validity/results/condition_means.json": "b923b7c8c72c6621ef0381d5b1dd560711c80b4347ed2612c7af17addb92a806",
   "validity/results/convergent_validity.json": "3fa05df250695d0d663187b2051260cac51a48211d8cc147d7fdd459f88ba671",
   "validity/results/convergent_validity.md": "a5c7a8686821e9447b30e70ae67584df2db7c36dc02935926b65fa7da8b3972f",
   "validity/results/convergent_validity_interpretation.md": "3e7ad902be367c1e9d93a34a51488737cefd4a4bc868863f22ffccecf620d8ac",
   "validity/results/domain_scenario_audit.md": "a11977971dcd9d30e28c4bcd6e05efa6d567aade05b5b597f0652a2534e88290",
   "validity/results/english_baseline_audit.txt": "d68d724a09a5817aa095aeb975ff60a19765e77fa2956fd4ec617b7506d374eb",
-  "validity/results/inlanguage_audit.txt": "d0b8ee14d0fcdab9c27c02cc03c594b92e50b296b6960ec893c79448dd9241a2",
+  "validity/results/inlanguage_audit.txt": "297c3f9ffbd3e84bcd004eb8af470fe16d23b92a554ca6bb462c2de224b440b0",
   "validity/results/inlanguage_grid_audit.txt": "ae3773acb0bc007138868ecefb4b564e90cc4f696104fd28ead55a435b33985a",
   "validity/results/inlanguage_mfq2.md": "2758208a39365da7fa4c85da3c39f06a12931083bcfa1f0ee6ee8593625de0ed",
   "validity/results/instrument_scores.json": "ede823f3bafcf42c9273754f60f28a27757ef876370e5d8f40344f190b84d671",
@@ -33,7 +33,8 @@
   "validity/results/reasoning_cost.txt": "88bcb97d11bb7d783202e09127c9cffd7364e4bc8ff74b1a6f07d810741b9483",
   "validity/results/society_framing_mfq2.md": "85d2993685e7bc010da82e927c58e6cf6b10cc41bfce7e5e5416e5bb9b7aaf7c",
   "validity/results/viewer_data.json": "d549f26c10d34d1e4f6cd528735196db9d5605d5d1c4a6843464bb35e5e6b38a",
-  "validity/results/appendix_b4_b5.md": "655b7034ddcdb58fffadb5bfbee951efe63b62cc3ab69e0b1a4b3068dcc02317",
-  "validity/results/mfq2_ratings.csv": "c4538967fbd8d5a4954edee6f9499ff72de52d8f5a7eefb8477cc6800d0f9048"
+  "validity/results/appendix_b4_b5.md": "56c5ee1ab2b9af90396c960ff404754140670a72a81e1b9efded43d0402411a1",
+  "validity/results/mfq2_ratings.csv": "c4538967fbd8d5a4954edee6f9499ff72de52d8f5a7eefb8477cc6800d0f9048",
+  "validity/results/collection_record.json": "8332a010cd7d6d10f9eb8d97355c5a86395f334eccce053fbb9904ac0b5de918"
  }
 }

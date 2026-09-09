@@ -75,9 +75,18 @@ Never echo a value or write one into a script, a log or the repository. `.gitign
 
 The convergent-validity module's filled instruments and raw per-cell run files are gitignored
 because the item wording is not ours to redistribute. `validity/README.md` names the working copy
-and the S3 archive prefix with the restore command. **Consequence:** the per-run tables do not
-regenerate from a fresh clone until that data is restored; the condition means do, from
-`validity/results/mfq2_ratings.csv` (decision 19), and `analysis/test_reproduce.py` runs that check.
+and the S3 archive prefix with the restore command. **Consequence:** since 2026-09-09 (#71) both
+appendix emitters read `validity/results/mfq2_ratings.csv` and `validity/results/collection_record.json`
+(decision 19), so every table and interval regenerates from a fresh clone; only
+`validity/build_ratings_dataset.py`, which writes those two files, needs the run files.
+
+**Bootstrap intervals depend on the order of the per-model values.** Until #71 the B3a intervals
+and the audit's per-condition trail took their model order from the filesystem's listing of the
+run files, so the pinned figures were not reproducible on another filesystem in general. The
+dataset loader sorts models, and the switch moved 35 of the 50 B3a intervals by up to 0.003
+(Ireland [2.957, 3.252] became [2.956, 3.253]; the report's rounded [2.96, 3.25] did not move).
+Recorded in the commit that made the switch. Any future bootstrap over a dict of values sorts its
+keys first.
 
 `.gitignore` also excludes `*.smbdelete*`, residue from the retired SMB share. If those appear,
 something is reading from dead infrastructure.

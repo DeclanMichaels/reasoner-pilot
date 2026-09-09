@@ -32,7 +32,7 @@
 
 The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected.
 
-**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; each is quoted as sent, from the first framed cell of its language in the run files.
+**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; each is quoted as sent, from the first framed cell of its language, via the collection record.
 
 Arabic, framed as Egypt:
 

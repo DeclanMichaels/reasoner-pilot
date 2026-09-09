@@ -119,6 +119,9 @@ python3 validity/score_validity.py             # -> results/instrument_scores.js
 python3 validity/convergent_validity.py        # -> results/convergent_validity.{md,json}
 python3 validity/build_ratings_dataset.py > validity/results/mfq2_ratings.csv   # every scored in-language rating, no wording (decision 19)
 python3 validity/check_ratings_dataset.py      # rebuilds the pinned condition means from that CSV; test_reproduce runs it
+# build_ratings_dataset.py also writes results/collection_record.json (failed calls, the rounding audit,
+# the translated instructions as sent); build_appendix_tables.py and audit_inlanguage.py read the CSV and
+# the record, not the run files, since #71.
 ```
 
 ## Call count

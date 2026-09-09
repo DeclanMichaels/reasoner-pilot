@@ -83,56 +83,56 @@ Human anchors, treated as constants, binding as the mean of loyalty, authority a
 
 | condition | panel mean | 95% model-resampling interval | between-model SD |
 |---|--:|:--:|--:|
-| EN_framed_Argentina | 3.437 | [3.316, 3.557] | 0.20 |
-| EN_framed_Belgium | 2.622 | [2.523, 2.742] | 0.19 |
-| EN_framed_Chile | 3.654 | [3.534, 3.788] | 0.21 |
-| EN_framed_Colombia | 4.100 | [3.981, 4.220] | 0.20 |
+| EN_framed_Argentina | 3.437 | [3.317, 3.556] | 0.20 |
+| EN_framed_Belgium | 2.622 | [2.523, 2.741] | 0.19 |
+| EN_framed_Chile | 3.654 | [3.533, 3.786] | 0.21 |
+| EN_framed_Colombia | 4.100 | [3.982, 4.220] | 0.20 |
 | EN_framed_Egypt | 4.605 | [4.502, 4.703] | 0.17 |
-| EN_framed_France | 2.725 | [2.637, 2.838] | 0.17 |
-| EN_framed_India | 4.439 | [4.335, 4.543] | 0.18 |
+| EN_framed_France | 2.725 | [2.636, 2.837] | 0.17 |
+| EN_framed_India | 4.439 | [4.336, 4.543] | 0.18 |
 | EN_framed_Iran | 4.577 | [4.470, 4.671] | 0.17 |
-| EN_framed_Ireland | 3.094 | [2.957, 3.252] | 0.25 |
-| EN_framed_Japan | 3.668 | [3.479, 3.869] | 0.33 |
+| EN_framed_Ireland | 3.094 | [2.956, 3.253] | 0.25 |
+| EN_framed_Japan | 3.668 | [3.478, 3.871] | 0.33 |
 | EN_framed_Kenya | 4.432 | [4.365, 4.504] | 0.12 |
 | EN_framed_Mexico | 4.141 | [4.071, 4.223] | 0.13 |
 | EN_framed_Morocco | 4.570 | [4.482, 4.648] | 0.14 |
 | EN_framed_New Zealand | 2.878 | [2.816, 2.943] | 0.11 |
-| EN_framed_Nigeria | 4.515 | [4.425, 4.606] | 0.15 |
-| EN_framed_Peru | 4.133 | [4.017, 4.242] | 0.19 |
-| EN_framed_Russia | 4.117 | [3.982, 4.262] | 0.24 |
-| EN_framed_Saudi Arabia | 4.733 | [4.654, 4.803] | 0.13 |
+| EN_framed_Nigeria | 4.515 | [4.425, 4.607] | 0.15 |
+| EN_framed_Peru | 4.133 | [4.019, 4.243] | 0.19 |
+| EN_framed_Russia | 4.117 | [3.983, 4.261] | 0.24 |
+| EN_framed_Saudi Arabia | 4.733 | [4.653, 4.803] | 0.13 |
 | EN_framed_South Africa | 3.935 | [3.841, 4.024] | 0.16 |
 | EN_framed_Sweden | 2.282 | [2.194, 2.365] | 0.14 |
-| EN_framed_Switzerland | 3.063 | [2.913, 3.219] | 0.26 |
-| EN_framed_United Arab Emirates | 4.629 | [4.551, 4.704] | 0.13 |
+| EN_framed_Switzerland | 3.063 | [2.913, 3.220] | 0.26 |
+| EN_framed_United Arab Emirates | 4.629 | [4.549, 4.704] | 0.13 |
 | EN_framed_United States | 3.331 | [3.193, 3.456] | 0.22 |
-| ar_framed_Egypt | 4.604 | [4.486, 4.718] | 0.20 |
-| ar_framed_Morocco | 4.582 | [4.473, 4.682] | 0.18 |
+| ar_framed_Egypt | 4.604 | [4.485, 4.717] | 0.20 |
+| ar_framed_Morocco | 4.582 | [4.474, 4.682] | 0.18 |
 | ar_framed_Saudi Arabia | 4.757 | [4.682, 4.822] | 0.12 |
 | ar_framed_United Arab Emirates | 4.726 | [4.658, 4.791] | 0.11 |
-| ar_neutral | 3.104 | [2.840, 3.374] | 0.45 |
-| en_baseline_official_selfreport | 2.695 | [2.526, 2.860] | 0.28 |
-| en_baseline_ours_nosystem | 2.760 | [2.548, 2.983] | 0.37 |
-| en_baseline_ours_selfreport | 2.733 | [2.560, 2.924] | 0.31 |
-| en_neutral | 2.769 | [2.608, 2.934] | 0.28 |
-| en_neutral_ours | 2.713 | [2.541, 2.897] | 0.30 |
+| ar_neutral | 3.104 | [2.843, 3.374] | 0.45 |
+| en_baseline_official_selfreport | 2.695 | [2.526, 2.861] | 0.28 |
+| en_baseline_ours_nosystem | 2.760 | [2.547, 2.982] | 0.37 |
+| en_baseline_ours_selfreport | 2.733 | [2.560, 2.923] | 0.31 |
+| en_neutral | 2.769 | [2.608, 2.933] | 0.28 |
+| en_neutral_ours | 2.713 | [2.540, 2.898] | 0.30 |
 | es_framed_Argentina | 3.349 | [3.236, 3.475] | 0.20 |
-| es_framed_Chile | 3.576 | [3.478, 3.677] | 0.17 |
-| es_framed_Colombia | 3.996 | [3.909, 4.091] | 0.16 |
-| es_framed_Mexico | 3.947 | [3.849, 4.045] | 0.17 |
-| es_framed_Morocco | 4.589 | [4.496, 4.669] | 0.15 |
-| es_framed_Peru | 4.038 | [3.920, 4.157] | 0.20 |
+| es_framed_Chile | 3.576 | [3.478, 3.678] | 0.17 |
+| es_framed_Colombia | 3.996 | [3.908, 4.092] | 0.16 |
+| es_framed_Mexico | 3.947 | [3.849, 4.044] | 0.17 |
+| es_framed_Morocco | 4.589 | [4.497, 4.669] | 0.15 |
+| es_framed_Peru | 4.038 | [3.920, 4.156] | 0.20 |
 | es_neutral | 2.780 | [2.582, 2.967] | 0.33 |
-| fa_framed_Iran | 4.314 | [4.148, 4.476] | 0.28 |
-| fa_neutral | 2.809 | [2.565, 3.066] | 0.43 |
-| fr_framed_Belgium | 2.797 | [2.713, 2.893] | 0.15 |
+| fa_framed_Iran | 4.314 | [4.147, 4.478] | 0.28 |
+| fa_neutral | 2.809 | [2.565, 3.067] | 0.43 |
+| fr_framed_Belgium | 2.797 | [2.713, 2.892] | 0.15 |
 | fr_framed_France | 2.834 | [2.755, 2.921] | 0.14 |
-| fr_framed_Switzerland | 3.076 | [2.972, 3.185] | 0.18 |
-| fr_neutral | 2.777 | [2.590, 2.977] | 0.33 |
+| fr_framed_Switzerland | 3.076 | [2.971, 3.185] | 0.18 |
+| fr_neutral | 2.777 | [2.591, 2.977] | 0.33 |
 | ja_framed_Japan | 3.434 | [3.353, 3.514] | 0.14 |
-| ja_neutral | 2.676 | [2.494, 2.885] | 0.33 |
-| ru_framed_Russia | 4.047 | [3.908, 4.189] | 0.24 |
-| ru_neutral | 2.788 | [2.582, 3.004] | 0.36 |
+| ja_neutral | 2.676 | [2.496, 2.884] | 0.33 |
+| ru_framed_Russia | 4.047 | [3.907, 4.190] | 0.24 |
+| ru_neutral | 2.788 | [2.585, 3.003] | 0.36 |
 
 ## B6. Per-foundation panel means
 

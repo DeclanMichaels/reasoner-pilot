@@ -48,31 +48,29 @@ def binding(ratings):
     if any(g not in fm for g in FOUND): return None
     return sum(fm[g] for g in BIND)/3
 
-def permodel(pattern, keyfn):
-    acc = defaultdict(lambda: defaultdict(list))
-    for f in glob.glob(pattern):
-        d = json.load(open(f))
-        if not d.get("ratings"): continue
-        k = keyfn(d)
-        if k is None: continue
-        b = binding(d["ratings"])
-        if b is None: continue
-        acc[k][d["model"]].append(b)
-    return {k: {m: sum(v)/len(v) for m,v in md.items()} for k,md in acc.items()}
+from ratings_dataset import load_cells, load_record
+CELLS = load_cells()        # the published ratings dataset (decision 19), the emitters' only ratings source (#71)
+RECORD = load_record()
 
-# ---- load all three sources
-# Framed in-language cells are keyed BY COUNTRY. Without the country every Arabic
-# framed country pools into a single "ar_framed" bucket and silently moves the published
-# Egypt number; that happened for real on 2026-08-21 with three test cells.
-lang = permodel(str(VDIR/"runs_framed_lang"/"*.json"),
-                lambda d: (d["instrument"].split("_")[1],
-                           d["condition"] if d["condition"] != "framed"
-                           else "framed_" + d["country"]))
+
+def permodel(keys):
+    """{condition: {model: mean binding over its runs}} for the dataset conditions named, keyed as given."""
+    out = {}
+    for src, dst in keys.items():
+        if src not in CELLS:
+            continue
+        out[dst] = {m: sum(binding(c["ratings"]) for c in cells) / len(cells) for m, cells in CELLS[src].items()}
+    return out
+
+# Framed in-language cells are keyed BY COUNTRY. Without the country every Arabic framed
+# country pools into a single "ar_framed" bucket and silently moves the published Egypt
+# number; that happened for real on 2026-08-21 with three test cells. The dataset's condition
+# keys carry the country, and this dictionary keeps them.
+lang = permodel({k: k for k in CELLS if not k.startswith("EN_") and not k.startswith("en_")})
 # Every English-framed country, since 2026-09-08. Until then this loaded only Egypt, Japan
 # and Iran, the three the first collection needed, so condition_means.json carried 27 of the
 # 47 conditions and the contrast set could not be built on the full grid (decision 15).
-enfr = permodel(str(VDIR/"runs_framed"/"*_mfq2_*.json"),
-                lambda d: d.get("country") if d.get("country") else None)
+enfr = permodel({k: k for k in CELLS if k.startswith("EN_framed_") and not k.endswith("_sept")})
 # ENGLISH UNFRAMED, changed 2026-08-22. This used to be our own transcription of the
 # MFQ-2 administered with run_validity.py's self-report system prompt, while every
 # in-language unframed arm used the official Atari et al. translation with NO system
@@ -81,20 +79,17 @@ enfr = permodel(str(VDIR/"runs_framed"/"*_mfq2_*.json"),
 # system prompt +0.026 p=.49, neither distinguishable from zero. The official no-system
 # cell is the baseline now because it is the matched one. The old cell is kept under
 # en_neutral_ours so the errata can cite what was published before.
-ennu = permodel(str(VDIR/"runs_english_baseline"/"*.json"),
-                lambda d: "en_neutral" if d.get("condition")=="official_nosystem" else None)
+ennu = permodel({"en_neutral": "en_neutral"})
 # The four English unframed variants, kept apart from CONDS so condition_means.json is
 # untouched. B1a and B4 use them for the instrument and system-prompt controls.
-enbase = permodel(str(VDIR/"runs_english_baseline"/"*.json"), lambda d: d.get("condition"))
-enold = permodel(str(VDIR/"runs"/"*mfq2*.json"),
-                 lambda d: "en_neutral_ours" if d.get("instrument")=="mfq2" else None)
+enbase = permodel({"en_neutral": "official_nosystem", "en_baseline_ours_nosystem": "ours_nosystem",
+                   "en_baseline_ours_selfreport": "ours_selfreport", "en_baseline_official_selfreport": "official_selfreport"})
+enold = permodel({"en_neutral_ours": "en_neutral_ours"})
 # The September wave (decision 21): ten models, three English conditions, its own section B4a.
-SEPT_KEY = {"neutral_template": "en_neutral_template", "official_nosystem_sept": "en_neutral_sept",
-            "framed_egypt_sept": "EN_framed_Egypt_sept"}
-sept = permodel(str(VDIR/"runs_neutral_template"/"*.json"), lambda d: SEPT_KEY.get(d.get("condition")))
+sept = permodel({"en_neutral_template": "en_neutral_template", "en_neutral_sept": "en_neutral_sept",
+                 "EN_framed_Egypt_sept": "EN_framed_Egypt_sept"})
 
-CONDS = {**{f"{c[0]}_{c[1]}": v for c,v in lang.items()},
-         **{f"EN_framed_{k}": v for k,v in enfr.items()},
+CONDS = {**lang, **enfr,
          **({"en_neutral": ennu["en_neutral"]} if "en_neutral" in ennu else {}),
          **({"en_neutral_ours": enold["en_neutral_ours"]}
             if "en_neutral_ours" in enold else {})}
@@ -119,26 +114,10 @@ def direct_binding(ratings):
     return (sum(vals) / len(vals)) if vals else None
 
 alt = defaultdict(lambda: defaultdict(list))
-for pattern, keyfn in ((str(VDIR/"runs_framed_lang"/"*.json"),
-                        lambda d: "%s_%s" % (d["instrument"].split("_")[1],
-                                             d["condition"] if d["condition"] != "framed"
-                                             else "framed_" + d["country"])),
-                       (str(VDIR/"runs_framed"/"*_mfq2_*.json"),
-                        lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
-                       (str(VDIR/"runs_english_baseline"/"*.json"),
-                        lambda d: "en_neutral" if d.get("condition") == "official_nosystem"
-                        else None),
-                       (str(VDIR/"runs"/"*mfq2*.json"),
-                        lambda d: "en_neutral_ours" if d.get("instrument") == "mfq2" else None)):
-    import glob as _g
-    for f in _g.glob(pattern):
-        d = json.load(open(f))
-        if not d.get("ratings"): continue
-        k = keyfn(d)
-        if k is None: continue
-        b = direct_binding(d["ratings"])
-        if b is None: continue
-        alt[k][d["model"]].append(b)
+for k in CONDS:
+    for m, cells in CELLS[k].items():
+        for c in cells:
+            alt[k][m].append(direct_binding(c["ratings"]))
 ALT = {k: sum(sum(v)/len(v) for v in md.values())/len(md) for k, md in alt.items()}
 
 print("  reconcile against an independent recomputation from the raw cells:")
@@ -602,18 +581,9 @@ L.append("Every contrast in B4 carries its own leave-one-out range. This section
             "Every individual model overshoots both Iran conditions."
             if _all_over else "Not every model overshoots both Iran conditions."))
 
-# ---- B7: failed calls, counted from the files rather than typed
-_fail = defaultdict(int); _nfail = 0; _scored = 0
-for _d in ("runs_framed", "runs_framed_lang", "runs_english_baseline"):
-    for _f in glob.glob(str(VDIR / _d / "*.json")):
-        _r = json.load(open(_f))
-        if _r.get("ratings"):
-            _scored += 1
-        else:
-            _fail[_r["model"]] += 1; _nfail += 1
-# the fiftieth condition, en_neutral_ours, lives in runs/ and had no failures
-_scored += sum(1 for _f in glob.glob(str(VDIR / "runs" / "*mfq2*.json"))
-               if json.load(open(_f)).get("instrument") == "mfq2" and json.load(open(_f)).get("ratings"))
+# ---- B7: failed calls, from the collection record the dataset builder writes from the files
+_fc = RECORD["failed_calls"]["grid"]
+_fail = {m: n for m, n in _fc["by_model"].items()}; _nfail = _fc["unparsed"]; _scored = _fc["scored"]
 _by = sorted(_fail.items(), key=lambda x: (-x[1], x[0]))
 L.append("## B7. Failed calls\n")
 L.append("%s of %s attempted calls returned no ratings object, from provider rate limits on the "
@@ -654,20 +624,8 @@ def _frame_template():
 
 
 _FRAME = _frame_template()
-# parser rounding audit: how many accepted ratings were non-integers in the raw reply
-_nrat = _nround = 0
-for _d in ("runs_framed", "runs_framed_lang", "runs_english_baseline", "runs"):
-    for _f in glob.glob(str(VDIR / _d / "*.json")):
-        _r = json.load(open(_f))
-        if not _r.get("ratings") or (_d == "runs" and _r.get("instrument") != "mfq2"):
-            continue
-        _m = re.search(r'"ratings"\s*:\s*\{[^}]*\}', _r.get("raw_text") or "")
-        if not _m:
-            continue
-        for _k, _v in re.findall(r'"(\d+)"\s*:\s*([-\d.]+)', _m.group(0)):
-            _nrat += 1
-            if "." in _v and float(_v) != int(float(_v)):
-                _nround += 1
+# parser rounding audit, from the collection record: accepted ratings that were non-integers in the raw reply
+_nrat = RECORD["parser_rounding"]["grid"]["accepted"]; _nround = RECORD["parser_rounding"]["grid"]["rounded"]
 assert "{country}" in _FRAME and "questionnaire" in _FRAME, "frame_system template not recovered"
 M = []
 M.append("## B1a. Roster and protocol\n")
@@ -699,15 +657,11 @@ M.append("The in-language framing instructions are our translations of that temp
          "field, and the runner asserts at start-up that the Arabic template still reproduces the "
          "Egypt prompt byte for byte as first collected.\n")
 # the six translated framing instructions, quoted as sent from one cell per language
-_sent = {}
-for _f in sorted(glob.glob(str(VDIR / "runs_framed_lang" / "*.json"))):
-    _d = json.load(open(_f))
-    if _d.get("condition") == "framed" and _d["instrument"] not in _sent:
-        _sent[_d["instrument"]] = (_d["country"], _d["system_prompt"])
+_sent = {k: (v["country"], v["text"]) for k, v in RECORD["translated_instructions_as_sent"].items()}
 assert len(_sent) == 6, sorted(_sent)
 M.append("**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per "
          "language with only the country name and the demonym varying; each is quoted as sent, from "
-         "the first framed cell of its language in the run files.\n")
+         "the first framed cell of its language, via the collection record.\n")
 for _code in LANG_ORDER:
     _c, _s = _sent["mfq2_" + _code]
     M.append("%s, framed as %s:\n\n> %s\n" % (LANG_NAME[_code], _c, _s.replace("\n", " ")))

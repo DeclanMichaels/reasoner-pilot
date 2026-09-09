@@ -97,63 +97,63 @@
   RECONCILED
 
 === bootstrap 95% CIs on panel means (cluster = model, 100k) ===
-  EN_framed_Argentina mean=3.437  CI[3.316,3.557]
-  EN_framed_Belgium  mean=2.622  CI[2.523,2.742]
-  EN_framed_Chile    mean=3.654  CI[3.534,3.788]
-  EN_framed_Colombia mean=4.100  CI[3.981,4.220]
+  EN_framed_Argentina mean=3.437  CI[3.317,3.556]
+  EN_framed_Belgium  mean=2.622  CI[2.523,2.741]
+  EN_framed_Chile    mean=3.654  CI[3.533,3.786]
+  EN_framed_Colombia mean=4.100  CI[3.982,4.220]
   EN_framed_Egypt    mean=4.605  CI[4.502,4.703]
-  EN_framed_France   mean=2.725  CI[2.637,2.838]
-  EN_framed_India    mean=4.439  CI[4.335,4.543]
+  EN_framed_France   mean=2.725  CI[2.636,2.837]
+  EN_framed_India    mean=4.439  CI[4.336,4.543]
   EN_framed_Iran     mean=4.577  CI[4.470,4.671]
-  EN_framed_Ireland  mean=3.094  CI[2.957,3.252]
-  EN_framed_Japan    mean=3.668  CI[3.479,3.869]
+  EN_framed_Ireland  mean=3.094  CI[2.956,3.253]
+  EN_framed_Japan    mean=3.668  CI[3.478,3.871]
   EN_framed_Kenya    mean=4.432  CI[4.365,4.504]
   EN_framed_Mexico   mean=4.141  CI[4.071,4.223]
   EN_framed_Morocco  mean=4.570  CI[4.482,4.648]
   EN_framed_New Zealand mean=2.878  CI[2.816,2.943]
-  EN_framed_Nigeria  mean=4.515  CI[4.425,4.606]
-  EN_framed_Peru     mean=4.133  CI[4.017,4.242]
-  EN_framed_Russia   mean=4.117  CI[3.982,4.262]
-  EN_framed_Saudi Arabia mean=4.733  CI[4.654,4.803]
+  EN_framed_Nigeria  mean=4.515  CI[4.425,4.607]
+  EN_framed_Peru     mean=4.133  CI[4.019,4.243]
+  EN_framed_Russia   mean=4.117  CI[3.983,4.261]
+  EN_framed_Saudi Arabia mean=4.733  CI[4.653,4.803]
   EN_framed_South Africa mean=3.935  CI[3.841,4.024]
   EN_framed_Sweden   mean=2.282  CI[2.194,2.365]
-  EN_framed_Switzerland mean=3.063  CI[2.913,3.219]
-  EN_framed_United Arab Emirates mean=4.629  CI[4.551,4.704]
+  EN_framed_Switzerland mean=3.063  CI[2.913,3.220]
+  EN_framed_United Arab Emirates mean=4.629  CI[4.549,4.704]
   EN_framed_United States mean=3.331  CI[3.193,3.456]
-  ar_framed_Egypt    mean=4.604  CI[4.486,4.718]
-  ar_framed_Morocco  mean=4.582  CI[4.473,4.682]
+  ar_framed_Egypt    mean=4.604  CI[4.485,4.717]
+  ar_framed_Morocco  mean=4.582  CI[4.474,4.682]
   ar_framed_Saudi Arabia mean=4.757  CI[4.682,4.822]
   ar_framed_United Arab Emirates mean=4.726  CI[4.658,4.791]
-  ar_neutral         mean=3.104  CI[2.840,3.374]
-  en_neutral         mean=2.769  CI[2.608,2.934]
-  en_neutral_ours    mean=2.713  CI[2.541,2.897]
+  ar_neutral         mean=3.104  CI[2.843,3.374]
+  en_neutral         mean=2.769  CI[2.608,2.933]
+  en_neutral_ours    mean=2.713  CI[2.540,2.898]
   es_framed_Argentina mean=3.349  CI[3.236,3.475]
-  es_framed_Chile    mean=3.576  CI[3.478,3.677]
-  es_framed_Colombia mean=3.996  CI[3.909,4.091]
-  es_framed_Mexico   mean=3.947  CI[3.849,4.045]
-  es_framed_Morocco  mean=4.589  CI[4.496,4.669]
-  es_framed_Peru     mean=4.038  CI[3.920,4.157]
+  es_framed_Chile    mean=3.576  CI[3.478,3.678]
+  es_framed_Colombia mean=3.996  CI[3.908,4.092]
+  es_framed_Mexico   mean=3.947  CI[3.849,4.044]
+  es_framed_Morocco  mean=4.589  CI[4.497,4.669]
+  es_framed_Peru     mean=4.038  CI[3.920,4.156]
   es_neutral         mean=2.780  CI[2.582,2.967]
-  fa_framed_Iran     mean=4.314  CI[4.148,4.476]
-  fa_neutral         mean=2.809  CI[2.565,3.066]
-  fr_framed_Belgium  mean=2.797  CI[2.713,2.893]
+  fa_framed_Iran     mean=4.314  CI[4.147,4.478]
+  fa_neutral         mean=2.809  CI[2.565,3.067]
+  fr_framed_Belgium  mean=2.797  CI[2.713,2.892]
   fr_framed_France   mean=2.834  CI[2.755,2.921]
-  fr_framed_Switzerland mean=3.076  CI[2.972,3.185]
-  fr_neutral         mean=2.777  CI[2.590,2.977]
+  fr_framed_Switzerland mean=3.076  CI[2.971,3.185]
+  fr_neutral         mean=2.777  CI[2.591,2.977]
   ja_framed_Japan    mean=3.434  CI[3.353,3.514]
-  ja_neutral         mean=2.676  CI[2.494,2.885]
-  ru_framed_Russia   mean=4.047  CI[3.908,4.189]
-  ru_neutral         mean=2.788  CI[2.582,3.004]
+  ja_neutral         mean=2.676  CI[2.496,2.884]
+  ru_framed_Russia   mean=4.047  CI[3.907,4.190]
+  ru_neutral         mean=2.788  CI[2.585,3.003]
 
 === FAMILY A, the framing claim (post hoc, exploratory): exact sign-flip tests ===
     Ten tests, Holm across the ten. Unchanged from appendix B4.
   T1 Egypt: EN-framed vs AR-framed         diff=+0.001 CI[-0.054,+0.048]  p=1.0000  holm=1.0000  n=11
   T2 Japan: EN-framed vs JA-framed         diff=+0.233 CI[+0.098,+0.384]  p=0.0059  holm=0.0234  n=11
   T3 JA-neutral vs Japan anchor            diff=+0.024 CI[-0.155,+0.233]  p=0.8330  holm=1.0000  n=11
-  T4 FA-framed vs Iran anchor              diff=+0.981 CI[+0.815,+1.144]  p=0.0010  holm=0.0098  n=11
+  T4 FA-framed vs Iran anchor              diff=+0.981 CI[+0.814,+1.144]  p=0.0010  holm=0.0098  n=11
   T5 FA-neutral vs EN-neutral              diff=+0.040 CI[-0.117,+0.184]  p=0.6357  holm=1.0000  n=11
   T6 AR-neutral vs EN-neutral              diff=+0.335 CI[+0.201,+0.483]  p=0.0010  holm=0.0098  n=11
-  T7 AR-framed vs Egypt anchor             diff=+0.337 CI[+0.218,+0.450]  p=0.0020  holm=0.0117  n=11
+  T7 AR-framed vs Egypt anchor             diff=+0.337 CI[+0.220,+0.450]  p=0.0020  holm=0.0117  n=11
   T8 Japan: framed vs neutral (in-lang)    diff=+0.759 CI[+0.592,+0.921]  p=0.0010  holm=0.0098  n=11
   T9 EN-framed Iran vs Iran anchor         diff=+1.244 CI[+1.137,+1.338]  p=0.0010  holm=0.0098  n=11
   T10 Iran: EN-framed vs FA-framed         diff=+0.263 CI[+0.148,+0.380]  p=0.0029  holm=0.0146  n=11

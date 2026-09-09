@@ -1,0 +1,59 @@
+{
+  "produced_by": "validity/build_ratings_dataset.py",
+  "failed_calls": {
+    "grid": {
+      "unparsed": 46,
+      "by_model": {
+        "deepseek_v4": 1,
+        "inkling": 6,
+        "kimi_k3": 2,
+        "minimax": 21,
+        "o3": 16
+      },
+      "scored": 2750
+    },
+    "september_wave": {
+      "unparsed": 2,
+      "by_model": {
+        "minimax": 2
+      },
+      "scored": 150
+    }
+  },
+  "parser_rounding": {
+    "grid": {
+      "accepted": 99000,
+      "rounded": 0
+    },
+    "september_wave": {
+      "accepted": 5400,
+      "rounded": 0
+    }
+  },
+  "translated_instructions_as_sent": {
+    "mfq2_ar": {
+      "country": "Egypt",
+      "text": "أنت تُكمل استبيانًا للتقييم الذاتي بصفتك شخصًا عاديًا نموذجيًا يعيش في مصر. أجب عن كل بند كما يجيب شخص مصري نموذجي عن نفسه، بما يعكس النظرة الأخلاقية والقيم الشائعة في مصر، لا آراءك أنت. قيِّم كل بند مرقّم بعدد صحيح واحد على المقياس الخاص به. أجب عن جميع البنود. Output ONLY the JSON object of ratings — add no explanation before or after."
+    },
+    "mfq2_es": {
+      "country": "Argentina",
+      "text": "Estás completando un cuestionario de autoevaluación como una persona corriente y típica que vive en Argentina. Responde a cada ítem como respondería sobre sí misma una persona argentina representativa, reflejando la perspectiva moral y los valores comunes en Argentina, no tus propias opiniones. Califica cada ítem numerado con un solo número entero en la escala de su sección. Responde a todos los ítems. Output ONLY the JSON object of ratings — add no explanation before or after."
+    },
+    "mfq2_fa": {
+      "country": "Iran",
+      "text": "شما در حال تکمیل یک پرسشنامه خودگزارشی به عنوان یک فرد عادی و معمولی ساکن ایران هستید. به هر عبارت همان‌طور پاسخ دهید که یک فرد معمولی و نماینده از ایران درباره خودش پاسخ می‌دهد، به گونه‌ای که نگرش اخلاقی و ارزش‌های رایج در ایران را بازتاب دهد، نه نظرات شخصی شما را. هر عبارت شماره‌دار را با یک عدد صحیح روی مقیاس مربوط ارزیابی کنید. به همه عبارت‌ها پاسخ دهید. Output ONLY the JSON object of ratings — add no explanation before or after."
+    },
+    "mfq2_fr": {
+      "country": "Belgium",
+      "text": "Vous remplissez un questionnaire d'auto-évaluation en tant que personne ordinaire et typique vivant en Belgique. Répondez à chaque item comme y répondrait à son sujet une personne belge représentative, en reflétant la perspective morale et les valeurs courantes en Belgique, et non vos propres opinions. Évaluez chaque item numéroté par un seul nombre entier sur l'échelle de sa section. Répondez à tous les items. Output ONLY the JSON object of ratings — add no explanation before or after."
+    },
+    "mfq2_ja": {
+      "country": "Japan",
+      "text": "あなたは日本に住むごく普通の典型的な人として自己報告式の質問票に回答しています。各項目に、日本の代表的な人が自分自身について答えるように回答してください。あなた自身の意見ではなく、日本で一般的な道徳観や価値観を反映させてください。番号付きの各項目を、その尺度上の整数1つで評価してください。すべての項目に回答してください。Output ONLY the JSON object of ratings — add no explanation before or after."
+    },
+    "mfq2_ru": {
+      "country": "Russia",
+      "text": "Вы заполняете опросник самоотчёта как обычный, типичный человек, живущий в России. Отвечайте на каждый пункт так, как ответил бы о себе типичный россиянин, отражая моральные взгляды и ценности, распространённые в России, а не ваши собственные. Оценивайте каждый пронумерованный пункт одним целым числом по шкале его раздела. Ответьте на все пункты. Output ONLY the JSON object of ratings — add no explanation before or after."
+    }
+  }
+}

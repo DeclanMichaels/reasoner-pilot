@@ -223,6 +223,10 @@ run's shuffled order, `rating` (1 to 5). 104,400 rows, 2,900 cells, 53 condition
 August grid and the three-condition September wave (decision 21). No item wording; item ids follow the official MFQ-2 key. `validity/check_ratings_dataset.py` rebuilds
 the condition means from it.
 
+**`validity/results/collection_record.json`** — what the appendix emitters need beyond the
+ratings: failed-call counts by model, the parser's rounding audit, and the six translated
+framing instructions as sent. Both emitters read this file and the ratings CSV, not the run files.
+
 ---
 
 ## Human data

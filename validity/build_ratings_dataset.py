@@ -55,6 +55,46 @@ for k in conds:
     assert sum(1 for c in cells if c[0] == k) == want, "%s: not %d cells" % (k, want)
 assert len(rows) == (2750 + 150) * 36, len(rows)
 
+# ---- collection_record.json: what the emitters need beyond the ratings (#71)
+import re
+def _scan(pattern, keep):
+    fails, scored, nrat, nround = {}, 0, 0, 0
+    for f in sorted(glob.glob(str(VDIR / pattern))):
+        d = json.load(open(f))
+        if not keep(d):
+            continue
+        if not d.get("ratings"):
+            fails[d["model"]] = fails.get(d["model"], 0) + 1
+            continue
+        scored += 1
+        m = re.search(r'"ratings"\s*:\s*\{[^}]*\}', d.get("raw_text") or "")
+        if m:
+            for _k, v in re.findall(r'"(\d+)"\s*:\s*([-\d.]+)', m.group(0)):
+                nrat += 1
+                if "." in v and float(v) != int(float(v)):
+                    nround += 1
+    return fails, scored, nrat, nround
+_grid_dirs = [("runs_framed/*.json", lambda d: True), ("runs_framed_lang/*.json", lambda d: True),
+              ("runs_english_baseline/*.json", lambda d: True), ("runs/*mfq2*.json", lambda d: d.get("instrument") == "mfq2")]
+_gf, _gs, _gr, _grd = {}, 0, 0, 0
+for pat, keep in _grid_dirs:
+    fails, scored, nrat, nround = _scan(pat, keep)
+    for k, v in fails.items(): _gf[k] = _gf.get(k, 0) + v
+    _gs += scored; _gr += nrat; _grd += nround
+_wf, _ws, _wr, _wrd = _scan("runs_neutral_template/*.json", lambda d: True)
+_sent = {}
+for f in sorted(glob.glob(str(VDIR / "runs_framed_lang" / "*.json"))):
+    d = json.load(open(f))
+    if d.get("condition") == "framed" and d["instrument"] not in _sent:
+        _sent[d["instrument"]] = {"country": d["country"], "text": d["system_prompt"]}
+record = {"produced_by": "validity/build_ratings_dataset.py",
+          "failed_calls": {"grid": {"unparsed": sum(_gf.values()), "by_model": dict(sorted(_gf.items())), "scored": _gs},
+                           "september_wave": {"unparsed": sum(_wf.values()), "by_model": dict(sorted(_wf.items())), "scored": _ws}},
+          "parser_rounding": {"grid": {"accepted": _gr, "rounded": _grd}, "september_wave": {"accepted": _wr, "rounded": _wrd}},
+          "translated_instructions_as_sent": dict(sorted(_sent.items()))}
+(VDIR / "results" / "collection_record.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
+print("wrote results/collection_record.json", file=sys.stderr)
+
 w = csv.writer(sys.stdout, lineterminator="\n")
 w.writerow(["condition", "model", "iteration", "instrument", "seed", "item_id", "position", "rating"])
 w.writerows(rows)
