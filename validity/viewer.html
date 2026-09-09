@@ -1052,7 +1052,7 @@ function boot(d){
     `${d.meta.models} models`,
     `${d.countries.length} countries`,
     `${d.meta.conditions} conditions`,
-    `generated ${esc(d.meta.generated.replace("T"," "))}`,
+    `collected ${esc(d.meta.collected.grid)}`,
   ].map(t=>`<span>${t}</span>`).join("");
 
   const partial = [];

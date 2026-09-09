@@ -85,50 +85,27 @@ def boot(vals, key):
     return s[int(0.025 * B)], s[int(0.975 * B)]
 
 
-# ---- load: per condition, per model, the binding value and the six foundations
+# ---- load: per condition, per model, the binding value and the six foundations, from the
+# published ratings dataset and the collection record (decision 19, #92); no run file is read.
+sys.path.insert(0, str(VDIR))
+from ratings_dataset import load_cells, load_record
+CELLS_ALL = load_cells()
+RECORD = load_record()
+SEPT = ["en_neutral_sept", "en_neutral_template", "EN_framed_Egypt_sept"]   # the September wave, B4a
+CELLS = {k: v for k, v in CELLS_ALL.items() if k not in SEPT}
 bind_acc = defaultdict(lambda: defaultdict(list))
 found_acc = defaultdict(lambda: defaultdict(list))
-usage = defaultdict(lambda: {"reasoning": 0, "output": 0, "input": 0, "n": 0})
 cells = 0
-
-# ENGLISH UNFRAMED, changed 2026-08-22. This used to be our own transcription of the
-# MFQ-2 administered with run_validity.py's self-report system prompt, while every
-# in-language unframed arm used the official Atari et al. translation with NO system
-# prompt: the comparator differed from what it was compared against in two ways at once.
-# Both were measured (results/english_baseline_audit.txt): instrument -0.038 p=.47,
-# system prompt +0.026 p=.49, neither distinguishable from zero. The official no-system
-# cell is the baseline now because it is the matched one. The old cell is kept under
-# en_neutral_ours so the errata can cite what was published before.
-SRC = [(VDIR / "runs_framed_lang" / "*.json",
-        lambda d: "%s_%s" % (d["instrument"].split("_")[1],
-                             d["condition"] if d["condition"] != "framed"
-                             else "framed_" + d["country"])),
-       (VDIR / "runs_framed" / "*_mfq2_*.json",
-        lambda d: ("EN_framed_" + d["country"]) if d.get("country") else None),
-       (VDIR / "runs_english_baseline" / "*.json",
-        lambda d: "en_neutral" if d["condition"] == "official_nosystem"
-        else "en_baseline_" + d["condition"]),
-       (VDIR / "runs" / "*_mfq2_*.json", lambda d: "en_neutral_ours")]
-
-for pat, keyf in SRC:
-    for f in glob.glob(str(pat)):
-        d = json.load(open(f))
-        if not d.get("ratings"):
-            continue
-        k = keyf(d)
-        if k is None:
-            continue
-        fm = fmeans(d["ratings"])
-        if any(g not in fm for g in FOUND):
-            continue
-        cells += 1
-        m = d["model"]
-        bind_acc[k][m].append(sum(fm[g] for g in BIND) / 3)
-        found_acc[k][m].append(fm)
-        u = d.get("usage") or {}
-        for fld in ("reasoning", "output", "input"):
-            usage[m][fld] += int(u.get(fld) or 0)
-        usage[m]["n"] += 1
+for k, md in CELLS.items():
+    for m, runs in md.items():
+        for c in runs:
+            fm = fmeans(c["ratings"])
+            if any(g not in fm for g in FOUND):
+                continue
+            cells += 1
+            bind_acc[k][m].append(sum(fm[g] for g in BIND) / 3)
+            found_acc[k][m].append(fm)
+usage = {m: dict(u) for m, u in RECORD["token_usage"]["grid"].items()}
 
 C = {k: {m: mean(v) for m, v in md.items()} for k, md in bind_acc.items()}
 F = {k: {m: {g: mean([x[g] for x in v]) for g in FOUND} for m, v in md.items()}
@@ -318,11 +295,32 @@ def iran_anchor():
     }
 
 
+def _ten_stats(md, models, key):
+    vals = [mean(md[m]) if isinstance(md[m], list) else md[m] for m in models]
+    lo, hi = boot(vals, key)
+    return {"mean": round(mean(vals), 4), "ci": [round(lo, 4), round(hi, 4)], "sd": round(sd(vals), 4), "n_models": len(vals)}
+_sept_models = sorted(set.intersection(*[set(CELLS_ALL[k]) for k in SEPT]))
+_sept_bind = {k: {m: mean([sum(fmeans(c["ratings"])[g] for g in BIND) / 3 for c in CELLS_ALL[k][m]]) for m in _sept_models} for k in SEPT}
+september = {
+    "models": _sept_models,
+    "collected": RECORD["collected"].get("september_wave"),
+    "conditions": {**{k: _ten_stats(_sept_bind[k], _sept_models, "sept|" + k) for k in SEPT},
+                   "en_neutral_august_ten": _ten_stats(C["en_neutral"], _sept_models, "sept|en_neutral_august_ten"),
+                   "EN_framed_Egypt_august_ten": _ten_stats(C["EN_framed_Egypt"], _sept_models, "sept|EN_framed_Egypt_august_ten")},
+    "increments": {"template_minus_unframed": round(mean([_sept_bind["en_neutral_template"][m] - _sept_bind["en_neutral_sept"][m] for m in _sept_models]), 4),
+                   "egypt_minus_template": round(mean([_sept_bind["EN_framed_Egypt_sept"][m] - _sept_bind["en_neutral_template"][m] for m in _sept_models]), 4),
+                   "drift_unframed": round(mean([_sept_bind["en_neutral_sept"][m] - C["en_neutral"][m] for m in _sept_models]), 4),
+                   "drift_framed_egypt": round(mean([_sept_bind["EN_framed_Egypt_sept"][m] - C["EN_framed_Egypt"][m] for m in _sept_models]), 4)},
+}
+
 out = {
+    "september": september,
     "meta": {
-        "generated": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "collected": {g: "%s to %s" % (d["first"][:4] + "-" + d["first"][4:6] + "-" + d["first"][6:], d["last"][:4] + "-" + d["last"][4:6] + "-" + d["last"][6:])
+                      if d["first"] != d["last"] else d["first"][:4] + "-" + d["first"][4:6] + "-" + d["first"][6:]
+                      for g, d in RECORD["collected"].items()},
         "produced_by": "validity/build_viewer_data.py",
-        "reads": "validity/runs_framed_lang, validity/runs_framed, validity/runs",
+        "reads": "validity/results/mfq2_ratings.csv, validity/results/collection_record.json",
         "scored_cells": cells,
         "conditions": len(C),
         "models": len(ROSTER),

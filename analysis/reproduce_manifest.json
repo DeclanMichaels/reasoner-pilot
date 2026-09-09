@@ -18,7 +18,8 @@
   "validity/results/appendix_tables.md": "9da9b5c96fb8a276a643acd8536a436adfaa1abca9e062bc9b476b395741b893",
   "validity/results/appendix_b4_b5.md": "aeb4873f0c17fa3606b98595fdbcf5fcb170e4bf740216d5dc4eeb16eb79aa64",
   "validity/results/condition_means.json": "b923b7c8c72c6621ef0381d5b1dd560711c80b4347ed2612c7af17addb92a806",
-  "validity/results/inlanguage_audit.txt": "297c3f9ffbd3e84bcd004eb8af470fe16d23b92a554ca6bb462c2de224b440b0"
+  "validity/results/inlanguage_audit.txt": "297c3f9ffbd3e84bcd004eb8af470fe16d23b92a554ca6bb462c2de224b440b0",
+  "validity/results/viewer_data.json": "cf2a355e9638ddd0ddb6aaa1245d8ab82945aaf6b8d6c3d0f41d6d4d36d27ca6"
  },
  "committed_only": {
   "validity/results/aggregation_artifact.json": "ebcca2e3f4429791e98fc4c31c1c645ee52abd69f45490c82127136d634aca93",
@@ -33,8 +34,7 @@
   "validity/results/model_vs_human_profiles.md": "efaa89ad17bac268dfda470e97626cd8ab3032b73a2d86e1e423afe3f8e8394e",
   "validity/results/reasoning_cost.txt": "88bcb97d11bb7d783202e09127c9cffd7364e4bc8ff74b1a6f07d810741b9483",
   "validity/results/society_framing_mfq2.md": "85d2993685e7bc010da82e927c58e6cf6b10cc41bfce7e5e5416e5bb9b7aaf7c",
-  "validity/results/viewer_data.json": "d549f26c10d34d1e4f6cd528735196db9d5605d5d1c4a6843464bb35e5e6b38a",
   "validity/results/mfq2_ratings.csv": "c4538967fbd8d5a4954edee6f9499ff72de52d8f5a7eefb8477cc6800d0f9048",
-  "validity/results/collection_record.json": "8332a010cd7d6d10f9eb8d97355c5a86395f334eccce053fbb9904ac0b5de918"
+  "validity/results/collection_record.json": "cfbe214c5cc99a5ced0f5de46a61498b5a896abd90f42ff33c67e7d09ff7efe8"
  }
 }

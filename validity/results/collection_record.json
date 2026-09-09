@@ -55,5 +55,147 @@
       "country": "Russia",
       "text": "Вы заполняете опросник самоотчёта как обычный, типичный человек, живущий в России. Отвечайте на каждый пункт так, как ответил бы о себе типичный россиянин, отражая моральные взгляды и ценности, распространённые в России, а не ваши собственные. Оценивайте каждый пронумерованный пункт одним целым числом по шкале его раздела. Ответьте на все пункты. Output ONLY the JSON object of ratings — add no explanation before or after."
     }
+  },
+  "token_usage": {
+    "grid": {
+      "deepseek_v4": {
+        "reasoning": 436121,
+        "output": 492402,
+        "input": 231725,
+        "n": 250
+      },
+      "gpt55": {
+        "reasoning": 104236,
+        "output": 143364,
+        "input": 221425,
+        "n": 250
+      },
+      "grok45": {
+        "reasoning": 313522,
+        "output": 54750,
+        "input": 340885,
+        "n": 250
+      },
+      "inkling": {
+        "reasoning": 562762,
+        "output": 619012,
+        "input": 223465,
+        "n": 250
+      },
+      "kimi_k3": {
+        "reasoning": 339902,
+        "output": 397908,
+        "input": 282235,
+        "n": 250
+      },
+      "llama33": {
+        "reasoning": 0,
+        "output": 55000,
+        "input": 242065,
+        "n": 250
+      },
+      "minimax": {
+        "reasoning": 293445,
+        "output": 349241,
+        "input": 263710,
+        "n": 250
+      },
+      "mistral_large": {
+        "reasoning": 0,
+        "output": 73250,
+        "input": 228735,
+        "n": 250
+      },
+      "o3": {
+        "reasoning": 240320,
+        "output": 297631,
+        "input": 221424,
+        "n": 250
+      },
+      "opus": {
+        "reasoning": 0,
+        "output": 56500,
+        "input": 348955,
+        "n": 250
+      },
+      "sonnet": {
+        "reasoning": 0,
+        "output": 59507,
+        "input": 348955,
+        "n": 250
+      }
+    },
+    "september_wave": {
+      "gpt55": {
+        "reasoning": 6253,
+        "output": 8593,
+        "input": 11535,
+        "n": 15
+      },
+      "grok45": {
+        "reasoning": 15621,
+        "output": 3285,
+        "input": 18910,
+        "n": 15
+      },
+      "inkling": {
+        "reasoning": 28850,
+        "output": 32225,
+        "input": 11660,
+        "n": 15
+      },
+      "kimi_k3": {
+        "reasoning": 18430,
+        "output": 21910,
+        "input": 12870,
+        "n": 15
+      },
+      "llama33": {
+        "reasoning": 0,
+        "output": 3300,
+        "input": 11960,
+        "n": 15
+      },
+      "minimax": {
+        "reasoning": 19221,
+        "output": 22566,
+        "input": 13985,
+        "n": 15
+      },
+      "mistral_large": {
+        "reasoning": 0,
+        "output": 4395,
+        "input": 12045,
+        "n": 15
+      },
+      "o3": {
+        "reasoning": 13248,
+        "output": 16731,
+        "input": 11535,
+        "n": 15
+      },
+      "opus": {
+        "reasoning": 0,
+        "output": 3390,
+        "input": 16115,
+        "n": 15
+      },
+      "sonnet": {
+        "reasoning": 0,
+        "output": 3427,
+        "input": 16115,
+        "n": 15
+      }
+    }
+  },
+  "collected": {
+    "grid": {
+      "first": "20260821",
+      "last": "20260823"
+    },
+    "september_wave": {
+      "first": "20260908",
+      "last": "20260908"
+    }
   }
 }

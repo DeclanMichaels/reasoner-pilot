@@ -57,16 +57,26 @@ assert len(rows) == (2750 + 150) * 36, len(rows)
 
 # ---- collection_record.json: what the emitters need beyond the ratings (#71)
 import re
-def _scan(pattern, keep):
+_usage = {"grid": {}, "september_wave": {}}
+_dates = {"grid": [], "september_wave": []}
+def _scan(pattern, keep, group="grid"):
     fails, scored, nrat, nround = {}, 0, 0, 0
     for f in sorted(glob.glob(str(VDIR / pattern))):
         d = json.load(open(f))
         if not keep(d):
             continue
+        m = re.search(r"_(\d{8})T\d{6}\.json$", f)
+        if m:
+            _dates[group].append(m.group(1))
         if not d.get("ratings"):
             fails[d["model"]] = fails.get(d["model"], 0) + 1
             continue
         scored += 1
+        u = d.get("usage") or {}
+        acc = _usage[group].setdefault(d["model"], {"reasoning": 0, "output": 0, "input": 0, "n": 0})
+        for fld in ("reasoning", "output", "input"):
+            acc[fld] += int(u.get(fld) or 0)
+        acc["n"] += 1
         m = re.search(r'"ratings"\s*:\s*\{[^}]*\}', d.get("raw_text") or "")
         if m:
             for _k, v in re.findall(r'"(\d+)"\s*:\s*([-\d.]+)', m.group(0)):
@@ -81,7 +91,7 @@ for pat, keep in _grid_dirs:
     fails, scored, nrat, nround = _scan(pat, keep)
     for k, v in fails.items(): _gf[k] = _gf.get(k, 0) + v
     _gs += scored; _gr += nrat; _grd += nround
-_wf, _ws, _wr, _wrd = _scan("runs_neutral_template/*.json", lambda d: True)
+_wf, _ws, _wr, _wrd = _scan("runs_neutral_template/*.json", lambda d: True, "september_wave")
 _sent = {}
 for f in sorted(glob.glob(str(VDIR / "runs_framed_lang" / "*.json"))):
     d = json.load(open(f))
@@ -91,7 +101,9 @@ record = {"produced_by": "validity/build_ratings_dataset.py",
           "failed_calls": {"grid": {"unparsed": sum(_gf.values()), "by_model": dict(sorted(_gf.items())), "scored": _gs},
                            "september_wave": {"unparsed": sum(_wf.values()), "by_model": dict(sorted(_wf.items())), "scored": _ws}},
           "parser_rounding": {"grid": {"accepted": _gr, "rounded": _grd}, "september_wave": {"accepted": _wr, "rounded": _wrd}},
-          "translated_instructions_as_sent": dict(sorted(_sent.items()))}
+          "translated_instructions_as_sent": dict(sorted(_sent.items())),
+          "token_usage": {g: dict(sorted(v.items())) for g, v in _usage.items()},
+          "collected": {g: {"first": min(v), "last": max(v)} for g, v in _dates.items() if v}}
 (VDIR / "results" / "collection_record.json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
 print("wrote results/collection_record.json", file=sys.stderr)
 
