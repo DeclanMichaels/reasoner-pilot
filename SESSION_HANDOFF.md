@@ -7,8 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. #94 (the viewer's chart labels), #92, #87, #71 and
-  Astra's fourth round were pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
+- Remote is at `0a00252`. Local and **not yet pushed**: #93, the viewer's Control tab. #94, #92, #87,
+  #71 and Astra's fourth round were pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
   2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
@@ -38,8 +38,9 @@ This repository is public, so this file is public. It is written knowing that.
   sections and the harness runs its `--check`.
 - **The in-language viewer** (`validity/viewer.html`, payload `validity/results/viewer_data.json`)
   is built from the dataset and the collection record since #92, regenerated in the harness, and
-  shows the collection window where it showed a generation time; its intervals now match B3a. It
-  does not yet show the September check (#93); its chart labels say reference sample since #94.
+  shows the collection window where it showed a generation time; its intervals now match B3a. Its
+  Control tab shows the September check, the table, the increments and the explanation (#93), and
+  its chart labels say reference sample (#94).
 - **The paper is titled** "Eleven language models take the MFQ-2 in English and six
   translations, with and without a country to answer as", Declan's, taken 2026-09-08 in place of
   the result-stating title from Kimi's round. The viewer's title and heading match it.
@@ -75,14 +76,12 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-One open: #93, the September check in the viewer, a sentence and a small chart, ready for an agent
-once Declan has looked at the served viewer. #1 to #92 and #94 are closed, each with its disposition on the ticket. Where a ticket was closed
+Empty. #1 to #94 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Queued for an agent: #93, as a Control tab with the September table and an explanation, Declan's
-shape. Waiting on Declan: Zenodo. The MFQ-2 viewer is
+Nothing queued for an agent. Waiting on Declan: the push of #93, and Zenodo. The MFQ-2 viewer is
 `validity/viewer.html`, served from `validity/` (it fetches its payload); the root `viewer.html` is
 the Reasoner pilot's. The document goes out
 for review again with the wave in it. One
