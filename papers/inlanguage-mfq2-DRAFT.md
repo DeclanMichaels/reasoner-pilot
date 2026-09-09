@@ -117,11 +117,9 @@ Distance from each country's measured mean, English framing, which every country
 | Japan | 2.652 | 3.668 | +1.016 |
 | Iran † | 3.333 | 4.577 | +1.244 |
 
-† Iran's mean is from Hazrati, Nejat and Daneshi (2025), not the questionnaire authors' set. See Limits.
+† Iran's mean is from Hazrati, Nejat and Daneshi (2025), not Atari et al.'s set. See Limits.
 
-Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154. Unframed, the English panel sits at 2.769, below every reference-sample mean but Japan's; the appendix's distance table carries that column.
-
-Japan has the lowest measured mean in the set and receives the second largest positive difference.
+Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154. Unframed, the English panel sits at 2.769, below every reference-sample mean but Japan's; appendix B3 carries that column. Japan has the lowest measured mean in the set and receives the second largest positive difference.
 
 Ireland is the only country whose reference-sample mean, 3.096 with a standard error of 0.057 under an independent-respondent approximation, falls inside the panel's model-resampling interval, [2.96, 3.25]. For the other nineteen it falls outside. The two uncertainties are different things: one is about who was sampled, the other about which models were resampled, and neither removes selection in either set. A composite that matches can also conceal offsets in its parts. Ireland's English-framed Loyalty is 3.67 against a measured 3.29, Authority 3.27 against 3.49, Purity 2.34 against 2.51; the composite agrees because the first cancels the other two.
 
@@ -136,7 +134,7 @@ Distance in human standard deviations, on the in-language framed condition this 
 | Russian | +0.64 | Russia only |
 | Spanish | +0.61 | +0.10 Argentina to +0.82 Morocco |
 
-Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. Iran's standard deviation is computed from the respondent-level data Hazrati et al. share (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed), sample 2, 989 respondents, over the authors' own composite scores.
+Per country rather than pooled, because pooling respondents across the countries in a language group folds the differences between those countries into the standard deviation. We compute Iran's standard deviation from the respondent-level data Hazrati et al. share (https://osf.io/zt3u2/?view_only=af1e31ca8e22424ab17a9603f50b67ed), sample 2, 989 respondents, over Hazrati et al.'s own composite scores.
 
 ## Which foundations move
 
