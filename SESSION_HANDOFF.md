@@ -7,8 +7,13 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. The September wave (`42fdeba`) and its two Summary
-  sentences were pushed 2026-09-08 on Declan's word. Its run files are tracked in git, which is the
+- Local and remote agree; working tree clean. On 2026-09-09 Declan and Claude read the report
+  section by section (the Summary rewritten to five short paragraphs with the composite defined at
+  first use; What we did in active voice with the Administration wall split into four blocks and
+  the framing template quoted; every section touched) and Claude swept the appendix prose for
+  active voice, named authors and anything the wave made stale, in the emitters where generated.
+  Pushed on Declan's word. The September wave (`42fdeba`) and its two Summary sentences were pushed
+  2026-09-08. Its run files are tracked in git, which is the
   day-one persistence for that data, and the S3 archive followed on 2026-09-09:
   `archive-reasoner-pilot-validity/2026-09-08-september-wave/`, restore-tested the same day.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
@@ -64,8 +69,9 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Queued for an agent: #71. Declan and Claude are reading the prose together before the document
-goes out for review again with the wave in it.
+Queued for an agent: #71. The document goes out for review again with the wave in it. One
+sentence pushed on the 8th was wrong and was corrected on the record (`385a4f8`): the template's
+spread sits below the framed median, not below every country.
 
 1. **Review.** Five model families have read across nine rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -
