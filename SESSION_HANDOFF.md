@@ -7,9 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. #87 (the harness regenerating the four in-language
-  artifacts, `b562dba`, decision 22), #71 and Astra's fourth round were pushed 2026-09-09 on
-  Declan's word. Kimi's third round was worked through and pushed
+- Remote is at `4a8625e`. Local and **not yet pushed**: #92 (`555189f`), the viewer builder on the
+  dataset and in the harness. #87, #71 and Astra's fourth round were pushed 2026-09-09 on Declan's
+  word. Kimi's third round was worked through and pushed
   2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
@@ -20,8 +20,8 @@ This repository is public, so this file is public. It is written knowing that.
   day-one persistence for that data, and the S3 archive followed on 2026-09-09:
   `archive-reasoner-pilot-validity/2026-09-08-september-wave/`, restore-tested the same day.
 - **The published record reproduces**, run 2026-09-09 here and in a fresh clone without the run
-  files: 19 regenerated outputs reproduced (the pilot's 15 and the four in-language artifacts, from
-  the committed dataset, decision 22), 15 committed-only verified, the 47 pinned condition means
+  files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language artifacts and the
+  viewer payload, from the committed dataset, decision 22 and #92), 14 committed-only verified, the 47 pinned condition means
   rebuild from the dataset, and every generated section of the document matches its artifact.
 - **Eleven review rounds on the in-language document are adjudicated and worked through**, all in
   `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second (eight), DeepSeek's
@@ -37,6 +37,10 @@ This repository is public, so this file is public. It is written knowing that.
 - **The report and its appendix are one document**, `papers/inlanguage-mfq2-DRAFT.md`, 823 lines,
   decision 20; the appendix file is gone. `validity/splice_appendix.py` splices the nine generated
   sections and the harness runs its `--check`.
+- **The in-language viewer** (`validity/viewer.html`, payload `validity/results/viewer_data.json`)
+  is built from the dataset and the collection record since #92, regenerated in the harness, and
+  shows the collection window where it showed a generation time; its intervals now match B3a. It
+  does not yet show the September check (#93) and its chart labels still say "people" (#94).
 - **The paper is titled** "Eleven language models take the MFQ-2 in English and six
   translations, with and without a country to answer as", Declan's, taken 2026-09-08 in place of
   the result-stating title from Kimi's round. The viewer's title and heading match it.
@@ -72,12 +76,13 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-Empty. #1 to #91 are closed, each with its disposition on the ticket. Where a ticket was closed
+Two open, both viewer, ready for an agent: #93 (the September check in the viewer, a sentence and
+a small chart) and #94 (chart labels to reference-sample wording). #1 to #92 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Nothing queued for an agent. Waiting on Declan: Zenodo. The document goes out
+Queued for an agent: #93 and #94. Waiting on Declan: the push of #92, and Zenodo. The document goes out
 for review again with the wave in it. One
 sentence pushed on the 8th was wrong and was corrected on the record (`385a4f8`): the template's
 spread sits below the framed median, not below every country.
