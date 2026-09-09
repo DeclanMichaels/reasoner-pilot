@@ -138,7 +138,7 @@ Per country rather than pooled, because pooling respondents across the countries
 
 ## Which foundations move
 
-The binding composite averages three of six foundations, so a shift in it says nothing about the other three. Mean shift under framing, across the six languages:
+The binding composite averages three of six foundations, so a shift in it says nothing about the other three. Mean shift under framing, in-language framed minus in-language unframed, averaged within each language and then across the six:
 
 | foundation | mean shift | in the composite |
 |---|--:|---|
@@ -159,11 +159,11 @@ Within a language group, framed in that language, does the panel rank countries 
 
 | language | countries | rank correlation | human range | panel range |
 |---|--:|--:|--:|--:|
-| Arabic | 3 | not reported (n=3) | 0.375 | 0.153 (41%) |
+| Arabic | 3 | not reported | 0.375 | 0.153 (41%) |
 | Spanish | 6 | +0.89 | 0.794 | 1.239 (156%) |
-| French | 3 | not reported (n=3) | 0.261 | 0.279 (107%) |
+| French | 3 | not reported | 0.261 | 0.279 (107%) |
 
-In Arabic the panel's order runs against the reference order, Saudi Arabia, United Arab Emirates, Egypt against Egypt, Saudi Arabia, United Arab Emirates, and its range across the three countries is 41 percent of theirs. In French the panel puts Switzerland first where the reference samples put it last. In Spanish the order is close, rho +0.89 over six countries, and the range is 156 percent of theirs. With three countries a rank correlation can take only four values, so none is reported for Arabic or French; the Spanish one carries little precision and reads as direction.
+In Arabic the panel's order runs against the reference order: panel Saudi Arabia, United Arab Emirates, Egypt; reference Egypt, Saudi Arabia, United Arab Emirates. Its range across the three countries is 41 percent of theirs. In French the panel puts Switzerland first where the reference samples put it last. In Spanish the order is close, rho +0.89 over six countries, and the range is 156 percent of theirs. With three countries a rank correlation can take only four values, so none is reported for Arabic or French; the Spanish one carries little precision and reads as direction.
 
 ## What the panel is not doing
 
