@@ -7,7 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. On 2026-09-09 Declan and Claude read the report
+- Local and remote agree; working tree clean. Kimi's third round was worked through and pushed
+  2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
   the framing template quoted; every section touched) and Claude swept the appendix prose for
@@ -20,11 +21,11 @@ This repository is public, so this file is public. It is written knowing that.
   outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
   from the committed ratings dataset, and every generated section of the document matches its
   artifact (`validity/splice_appendix.py --check`).
-- **Nine review rounds on the in-language document are adjudicated and worked through**, all in
+- **Ten review rounds on the in-language document are adjudicated and worked through**, all in
   `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second (eight), DeepSeek's
   (folded into those eight), Gemini's (three), Kimi's first (six), Claude's cold review (twelve,
-  #40 to #51), Astra's third (twenty, #52 to #71) and Kimi's second (eleven, #72 to #82).
-  Eighty-two issues have existed; #71 is open, the follow-on that moves the emitters onto the
+  #40 to #51), Astra's third (twenty, #52 to #71), Kimi's second (eleven, #72 to #82) and Kimi's third
+  (three, #84 to #86, all wording). Eighty-six issues have existed; #71 is open, the follow-on that moves the emitters onto the
   ratings dataset.
 - **The report and its appendix are one document**, `papers/inlanguage-mfq2-DRAFT.md`, 823 lines,
   decision 20; the appendix file is gone. `validity/splice_appendix.py` splices the nine generated
