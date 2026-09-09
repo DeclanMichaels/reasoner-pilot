@@ -523,6 +523,10 @@ L.append("\nThe sign and the ordering of the Iran result do not depend on the ch
          "magnitude does, by up to %.3f.\n" % (max(_alts) - min(_alts)))
 
 # ---- B4a: the September wave, decision 21
+def psd_c(k):
+    v = list(CONDS[k].values()); mu = sum(v) / len(v); return (sum((x - mu) ** 2 for x in v) / len(v)) ** 0.5
+_sr_ours = _ctr({m: enbase["ours_selfreport"][m] - enbase["ours_nosystem"][m] for m in _ms}, "C|selfreport|ours")
+_sr_off = _ctr({m: enbase["official_selfreport"][m] - enbase["official_nosystem"][m] for m in _ms}, "C|selfreport|official")
 import run_neutral_template as rnt
 _sm = sorted(set(sept["en_neutral_template"]) & set(sept["en_neutral_sept"]) & set(sept["EN_framed_Egypt_sept"]))
 _ten = [m for m in _sm if m in CONDS["en_neutral"] and m in CONDS["EN_framed_Egypt"]]
@@ -531,6 +535,9 @@ def _sub(a, b):
     return {m: a[m] - b[m] for m in _ten}
 _T = sept["en_neutral_template"]; _U9 = sept["en_neutral_sept"]; _F9 = sept["EN_framed_Egypt_sept"]
 _U8 = CONDS["en_neutral"]; _F8 = CONDS["EN_framed_Egypt"]
+_fsd_all = sorted(psd_c(k) for k in CONDS if "_framed_" in k)
+_fmed_aug = _fsd_all[len(_fsd_all) // 2] if len(_fsd_all) % 2 else (_fsd_all[len(_fsd_all) // 2 - 1] + _fsd_all[len(_fsd_all) // 2]) / 2
+_fsd_aug = _fsd_all[:4]
 _rows = [("template minus unframed English, August comparator", _ctr(_sub(_T, _U8), "C|sept|template-unframed_aug")),
          ("template minus unframed English, September rerun", _ctr(_sub(_T, _U9), "C|sept|template-unframed_sept")),
          ("framed Egypt, August, minus template", _ctr(_sub(_F8, _T), "C|sept|framed_aug-template")),
@@ -567,9 +574,19 @@ L.append("Within the September window, the template without a country accounts f
          "with the transcription difference between the two instruments riding inside it (B4, -0.009 unframed). "
          "The two drift rows price the window: the unframed comparator moved %+.3f and framed Egypt %+.3f "
          "between August and September on the same item orders. Between-model spread under the template, %.2f, "
-         "sits against %.2f unframed and %.2f framed in the same window.\n" % (
+         "sits against %.2f unframed and %.2f framed in the same window. Against the August grid it sits "
+         "below the framed median of %.2f and above the four tightest framed conditions, at %.2f to %.2f; "
+         "that comparison crosses windows, and the drift rows price the window for means, not for spread. "
+         "The split is measured for one country in one language, and whether it holds elsewhere is untested: "
+         "the instruction's part could be near-constant while the country's part varies, and for Belgium "
+         "the English framing effect is negative (B4). Read with B1a's self-report pairs, the two controls "
+         "say the same thing from opposite sides: the template and the self-report prompts each add a system "
+         "prompt where there was none, and the template moves the composite %+.3f while the self-report "
+         "prompts move it %+.3f and %+.3f, so the content of the instruction carries the shift, not the "
+         "presence of a system prompt.\n" % (
          100 * _share, _rows[1][1]["diff"], _rows[5][1]["diff"], _rows[3][1]["diff"],
-         _rows[6][1]["diff"], _rows[7][1]["diff"], _psd(_T), _psd(_U9), _psd(_F9)))
+         _rows[6][1]["diff"], _rows[7][1]["diff"], _psd(_T), _psd(_U9), _psd(_F9),
+         _fmed_aug, _fsd_aug[0], _fsd_aug[3], _rows[1][1]["diff"], _sr_ours["diff"], _sr_off["diff"]))
 
 # ---- B5
 _ja = [mu for _, mu in loo(CONDS["ja_neutral"])]
@@ -663,8 +680,7 @@ for k in sorted(_reg, key=lambda x: (x not in _present, x)):
     M.append("| %s | %s | `%s` | %s |" % (k, _reg[k]["provider"], _reg[k]["model_id"], "yes" if k in _present else "no"))
 M.append("\n**Request.** One user message carrying the questionnaire; the framing instruction, where "
          "there is one, as the system prompt; nothing else. Anthropic receives it in the `system` "
-         "field, OpenAI, xAI, Together and Mistral as a `role: system` message, Google as "
-         "`systemInstruction`. We send a request seed where the provider accepts one (OpenAI, xAI, "
+         "field, OpenAI, xAI, Together and Mistral as a `role: system` message, Google as `systemInstruction`; Google and Cohere are configured and served no cell here. We send a request seed where the provider accepts one (OpenAI, xAI, "
          "Together as `seed`, Mistral as `random_seed`); the English framed runner uses 20260721 "
          "plus the iteration, the in-language runner 20260722 plus the iteration. Token ceilings are "
          "per provider: Anthropic 3072, OpenAI and xAI 4096, Together 6144, Mistral 2048, Google "
@@ -682,8 +698,6 @@ M.append("The in-language framing instructions are our translations of that temp
          "demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` "
          "field, and the runner asserts at start-up that the Arabic template still reproduces the "
          "Egypt prompt byte for byte as first collected.\n")
-_sr_ours = _ctr({m: enbase["ours_selfreport"][m] - enbase["ours_nosystem"][m] for m in _ms}, "C|selfreport|ours")
-_sr_off = _ctr({m: enbase["official_selfreport"][m] - enbase["official_nosystem"][m] for m in _ms}, "C|selfreport|official")
 # the six translated framing instructions, quoted as sent from one cell per language
 _sent = {}
 for _f in sorted(glob.glob(str(VDIR / "runs_framed_lang" / "*.json"))):
@@ -720,8 +734,8 @@ M.append("**The user message.** The runner shuffles the items per run, groups th
          "<int>}}`, and nothing else.\n")
 M.append("**The parser.** The parser reads every top-level balanced `{...}` in the reply and takes the last one carrying a `ratings` dictionary; failing that, the last bare map keyed by item "
          "number. Every item must be present; the parser coerces each value by `int(round(float(v)))` and requires it inside its scale's bounds. Any failure returns no ratings object, and the reply stays as collected with the parser's reason. We edit no reply and re-parse none by hand. Of "
-         "the %s ratings accepted across the fifty conditions, %d arrived as a non-integer and were "
-         "rounded.\n" % ("{:,}".format(_nrat), _nround))
+         "the %s ratings accepted across the fifty conditions, %d arrived as a non-integer, so the "
+         "coercion rounded nothing.\n" % ("{:,}".format(_nrat), _nround))
 M.append("**Retries.** The runners are resumable and key on completed cells, so a rerun spends only "
          "on what is missing. `fill.sh` re-invokes each runner until it reports nothing left, up to "
          "eight passes with a ninety-second pause, which is how rate-limit gaps and parse failures "
