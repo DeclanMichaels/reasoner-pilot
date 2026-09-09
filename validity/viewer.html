@@ -235,7 +235,7 @@ function hook(el, html){
 }
 
 /* ---------- mark shapes: hue = framing, fill = language ----------
-   A solid disc is the in-language arm; a hollow ring is English.
+   The in-language arm is the disc; the English arm is the ring.
    The ring is not "lighter" - it is a different shape, so the
    distinction survives a greyscale print and CVD. */
 function markSVG(c, x, y, r=6.5){
@@ -370,13 +370,13 @@ function panelOvershoot(){
   <div class="cbox">
     <h2>Every country, against its reference sample</h2>
     <p class="lede">One row per country, grouped by language and sorted by the
-      <strong>measured human mean</strong> inside each group. The human mark is the white caret. The orange
-      marks are the panel of ${D.meta.models} models <strong>told to answer as a typical person from that
-      country</strong>, in English (ring) and in the local language (disc); the bar between caret and disc is
-      the distance between them. The blue rules are the two unframed conditions: each is a
+      <strong>measured human mean</strong> inside each group. The reference-sample mean is the caret. The
+      panel of ${D.meta.models} models <strong>told to answer as a typical person from that country</strong>
+      is the ring when asked in English and the disc when asked in the local language; the bar from the
+      caret to the disc is the distance between them. The two unframed conditions are the rules: each is a
       <strong>single measurement</strong> that does not name a country, so it is drawn as one line rather
-      than repeated as a dot on every row. Read down the human column and it descends; read down the orange
-      marks and it mostly does not.</p>
+      than repeated as a dot on every row. Read down the reference-sample means and they descend; read down
+      the framed panel and it mostly does not.</p>
     ${legendHTML()}
     <p class="axcap">MFQ-2 binding composite - the mean of Loyalty, Authority and Purity, on the
       questionnaire's 1&ndash;5 scale. The axis is cropped to the range the data occupies. Countries are
@@ -431,17 +431,17 @@ function legendHTML(){
     <tr><th></th><th>English</th><th>In the local language</th></tr>
     <tr><th>Unframed</th>
       <td><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8"
-        stroke="var(--unframed)" stroke-width="2" stroke-dasharray="2 5"/></svg>one dashed rule</td>
+        stroke="var(--unframed)" stroke-width="2" stroke-dasharray="2 5"/></svg>the panel on the English questionnaire, one condition for every country</td>
       <td><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8"
-        stroke="var(--unframed)" stroke-width="2.5"/></svg>one rule per language</td></tr>
+        stroke="var(--unframed)" stroke-width="2.5"/></svg>the panel on the translated questionnaire, one condition per language</td></tr>
     <tr><th>Framed as a local</th>
-      <td>${swatch(CK.en_framed)}hollow ring</td>
-      <td>${swatch(CK.local_framed)}solid disc</td></tr>
+      <td>${swatch(CK.en_framed)}the panel told to be a local, asked in English</td>
+      <td>${swatch(CK.local_framed)}the panel told to be a local, asked in its language</td></tr>
     </table>
     <div class="ref">
       <svg width="18" height="20" aria-hidden="true"><line x1="9" y1="3" x2="9" y2="17"
         stroke="var(--human)" stroke-width="2.5"/><path d="M4,3 L14,3 L9,9 Z" fill="var(--human)"/></svg>
-      the reference-sample mean, drawn in plain ink and never given a hue.
+      the reference-sample mean for the country.
       <span style="display:inline-block;margin-left:14px">
       <svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7.5" fill="none"
         stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="2 2.6"/></svg>
@@ -719,11 +719,11 @@ function panelFoundations(){
   </div>
   <div class="cbox">
     <h2>Where that leaves the panel</h2>
-    <p class="lede">The same shifts on the questionnaire's own 1 to 5 scale. The blue disc
-      is unframed, the orange disc is framed, and the bar between them is the move. The white
-      caret is the reference sample: for a single country its own profile, and for a group of
-      countries the sample-size-weighted mean of them, with a thin white bar above it spanning
-      the highest and lowest country in the group.</p>
+    <p class="lede">The same shifts on the questionnaire's own 1 to 5 scale. The panel unframed
+      (blue disc) and framed (orange disc), with the bar between them the move. The reference sample
+      (white caret): for a single country its own profile, and for a group of countries the
+      sample-size-weighted mean of them, with a thin bar above it spanning the highest and lowest
+      country in the group.</p>
     ${b}
     <p class="note">Unframed, the panel already sits near the ceiling on Care (about 4.7)
       and near the floor on Purity (about 2.0). Most of the room to move is in the
@@ -773,7 +773,7 @@ function panelMatrix(){
     <strong>below</strong>. Position is not available in a grid, so colour carries the magnitude here, and
     every cell prints its number, so the colour is never the only thing saying it. The two unframed
     conditions are not here: each is a single measurement that names no country, and repeating it down a
-    column of countries would make one number look like twenty. They are the blue rules on the first tab.</p>
+    column of countries would make one number look like twenty. They are the unframed rules on the first tab.</p>
     <table class="data"><thead><tr><th>Country</th><th>Language</th><th>Human</th>
     ${MCOND.map(c=>`<th>${esc(c.label)}</th>`).join("")}</tr></thead><tbody>`;
   for (const r of rows){
@@ -921,9 +921,9 @@ function panelModels(){
   <div class="cbox">
     <h2>Where each model sits</h2>
     <p class="lede">The model is the unit of analysis: every model's iterations are averaged before it enters
-      a panel mean, so one talkative model cannot outvote the rest. The orange line is the panel mean and the
-      band around it the 95% model-resampling interval. Where the condition names a country, the white
-      caret is that country's measured human mean.</p>
+      a panel mean, so one talkative model cannot outvote the rest. The panel mean (orange line) sits inside
+      its 95% model-resampling interval (the band). Where the condition names a country, that country's
+      reference-sample mean is the caret.</p>
     <div class="controls">
       <label for="mcond" style="font-size:15px;color:var(--text-dim)">Condition</label>
       <select id="mcond" onchange="render()">
