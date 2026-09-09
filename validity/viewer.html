@@ -313,9 +313,9 @@ function panelOvershoot(){
           <text class="m" x="${x(enU.mean)}" y="${H-6}" fill="var(--unframed)" font-size="15"
             text-anchor="middle">English, unframed &middot; ${fmt(enU.mean,2)}</text>`;
   }
-  s += `<text x="${W-R+14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15">vs human</text>
+  s += `<text x="${W-R+14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15">vs reference sample</text>
         <text x="${L-14}" y="${TOP-22}" fill="var(--text-dim)" font-size="15"
-          text-anchor="end">people</text>`;
+          text-anchor="end">reference sample</text>`;
 
   let yc = TOP;
   for (const g of groups){
@@ -489,7 +489,7 @@ function tableHTML(){
    ============================================================ */
 function panelOrder(){
   let out = `<div class="cbox">
-    <h2>Does the panel rank countries the way people do?</h2>
+    <h2>Does the panel rank countries the way the reference samples do?</h2>
     <p class="lede">Within each language, countries ordered by their <strong>measured human mean</strong> on the
     left and by the <strong>panel's mean when framed</strong> on the right. A line that runs flat is a country the
     panel placed where the reference sample is. Crossing lines are disagreement.</p>`;
@@ -501,7 +501,7 @@ function panelOrder(){
     const W = 900, RH = 44, TOP = 34, H = TOP + n*RH + 26;
     const xl = 300, xr = 600;
     let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Ordering for ${esc(g.language)}">
-      <text x="${xl}" y="16" fill="var(--text-dim)" font-size="15" text-anchor="end">people</text>
+      <text x="${xl}" y="16" fill="var(--text-dim)" font-size="15" text-anchor="end">reference samples</text>
       <text x="${xr}" y="16" fill="var(--text-dim)" font-size="15" text-anchor="start">the panel, framed</text>`;
     const rp = Object.fromEntries(o.panel_order.map((c,i)=>[c,i]));
     o.human_order.forEach((c,i) => {
@@ -554,7 +554,7 @@ function panelOrder(){
   return out + (solo.length ? `<p class="note">${solo.join(", ")} are not here: each covers one
     country, and one country has no ordering to correlate.</p>` : "")
   + `<p class="note"><strong>Reading this honestly:</strong> the panel is
-    ${D.meta.models} models, not a sample of people, and these countries were chosen because a
+    ${D.meta.models} models, not a sample of models, and these countries were chosen because a
     published human mean exists for them. Nothing here was preregistered.</p></div>`;
 }
 
@@ -849,7 +849,7 @@ function panelModels(){
       strip += `<line x1="${hx}" y1="${TOP-10}" x2="${hx}" y2="${H-58}" stroke="var(--human)" stroke-width="2.5"/>
         <path d="M${hx-6},${TOP-10} L${hx+6},${TOP-10} L${hx},${TOP-2} Z" fill="var(--human)"/>
         <text class="m" x="${hx}" y="${H-40}" fill="var(--human)" font-size="15"
-          text-anchor="middle">people ${fmt(anch.human,2)}</text>`;
+          text-anchor="middle">reference sample ${fmt(anch.human,2)}</text>`;
     }
     entries.forEach(([m,v],i) => {
       const y = TOP + i*RH + RH/2;
