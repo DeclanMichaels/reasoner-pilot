@@ -174,6 +174,7 @@ footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);
   <div class="panel" id="p-matrix"    role="tabpanel" aria-hidden="true"></div>
   <div class="panel" id="p-found"     role="tabpanel" aria-hidden="true"></div>
   <div class="panel" id="p-models"    role="tabpanel" aria-hidden="true"></div>
+  <div class="panel" id="p-control"   role="tabpanel" aria-hidden="true"></div>
 </main>
 
 <footer id="foot"></footer>
@@ -951,12 +952,70 @@ function panelModels(){
 /* ============================================================
    shell
    ============================================================ */
+function panelControl(){
+  const S = D.september;
+  if (!S) return `<div class="cbox"><h2>Control</h2><p class="lede">No September check in this payload.</p></div>`;
+  const C = S.conditions, I = S.increments;
+  const rows = [
+    ["Unframed English, August grid", C.en_neutral_august_ten],
+    ["Unframed English, September rerun", C.en_neutral_sept],
+    ["The framing template with no country named, September", C.en_neutral_template],
+    ["Framed as Egypt, August grid", C.EN_framed_Egypt_august_ten],
+    ["Framed as Egypt, September rerun", C.EN_framed_Egypt_sept],
+  ];
+  let tbl = `<table class="data"><thead><tr><th>Condition, ${S.models.length} models</th><th>Binding composite</th>
+    <th>Model-resampling interval</th><th>Between-model spread</th></tr></thead><tbody>`;
+  for (const [label, c] of rows)
+    tbl += `<tr><td>${label}</td><td class="num">${fmt(c.mean,3)}</td>
+      <td class="num">[${fmt(c.ci[0],3)}, ${fmt(c.ci[1],3)}]</td><td class="num">${fmt(c.sd,2)}</td></tr>`;
+  tbl += `</tbody></table>`;
+  const inc = [
+    ["Template minus unframed, both September", I.template_minus_unframed, "the instruction to answer as a typical person, with no country named"],
+    ["Egypt minus template, both September", I.egypt_minus_template, "naming Egypt, on a questionnaire file that also changed"],
+    ["Unframed: September minus August", I.drift_unframed, "the change between collection windows, identical item orders"],
+    ["Framed as Egypt: September minus August", I.drift_framed_egypt, "the change between collection windows, identical item orders"],
+  ];
+  let itb = `<table class="data"><thead><tr><th>Increment</th><th>Difference</th><th>What it contains</th></tr></thead><tbody>`;
+  for (const [label, v, what] of inc)
+    itb += `<tr><td>${label}</td><td class="num">${v > 0 ? "+" : ""}${fmt(v,3)}</td><td>${what}</td></tr>`;
+  itb += `</tbody></table>`;
+  const total = I.template_minus_unframed + I.egypt_minus_template;
+  const share = Math.round(100 * I.template_minus_unframed / total);
+  return `<div class="cbox">
+    <h2>What the framing instruction does without a country</h2>
+    <p class="lede">Every framing contrast on the other tabs adds a system instruction where there was none, and that
+      instruction carries two things: a country, and an instruction to answer as <strong>a typical person</strong>.
+      A second, small collection on ${esc(S.collected || "2026-09-08")} separates them: the framing template with its
+      country slots deleted and nothing added, on the official English questionnaire, plus reruns of the unframed
+      English comparator and of English-framed Egypt the same day with item-identical orders, so that the change
+      between collection windows is measured rather than assumed. Ten models; DeepSeek-V4-Pro had left its provider's
+      serverless tier and is absent, so the August cells here are restricted to the same ten.</p>
+    ${tbl}
+    <p class="note" style="margin-top:18px"><strong>Two increments.</strong> Read down the table: the template with no
+      country named lifts the composite <span class="mono">${I.template_minus_unframed > 0 ? "+" : ""}${fmt(I.template_minus_unframed,2)}</span>
+      over unframed, about <strong>${share}%</strong> of the whole unframed-to-Egypt difference, and naming Egypt lifts it
+      a further <span class="mono">+${fmt(I.egypt_minus_template,2)}</span>. The second step also changes the
+      questionnaire file (the Egypt cells use our transcription, the template and the unframed cells the official file),
+      so it is country wording and questionnaire version together, not the country alone. The split is measured for
+      Egypt in English and is untested elsewhere.</p>
+    ${itb}
+    <p class="note" style="margin-top:18px"><strong>Dispersion.</strong> Under the template the ${S.models.length} models
+      spread <span class="mono">${fmt(C.en_neutral_template.sd,2)}</span>, against
+      <span class="mono">${fmt(C.en_neutral_sept.sd,2)}</span> unframed and
+      <span class="mono">${fmt(C.EN_framed_Egypt_sept.sd,2)}</span> framed as Egyptians in the same window: a country
+      name was not necessary for the narrowing in this English check, and naming Egypt widened the panel rather than
+      narrowing it further. The intervals reweight the ten observed models and bound nothing; no temperature was sent,
+      to match the grid, and no provider reported one. Appendix B4a carries the same numbers with sign counts and
+      leave-one-out ranges.</p></div>`;
+}
+
 const TABS = [
   {id:"overshoot", label:"Against the reference sample", fn:panelOvershoot},
   {id:"order",     label:"Ordering",               fn:panelOrder},
   {id:"found",     label:"Which foundations move", fn:panelFoundations},
   {id:"matrix",    label:"Every cell",             fn:panelMatrix},
   {id:"models",    label:"Models",                 fn:panelModels},
+  {id:"control",   label:"Control",                fn:panelControl},
 ];
 let active = "overshoot";
 
