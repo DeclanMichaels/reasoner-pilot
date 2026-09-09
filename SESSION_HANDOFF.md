@@ -7,7 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. The viewer's legends and mark descriptions reworded
+- Local and remote agree; working tree clean. Claude's cold review of the viewer (four tickets, #95 to
+  #98: the header's mixed-arm average cut, literal range ratios, p-values out of the payload, link
+  targets) was worked through and pushed 2026-09-09 on Declan's word, after the legends were reworded
   to say what each mark represents, the viewer's prose aligned with the document (fifteen
   passages, the Iran inference cut there too), #93, #94, #92, #87, #71 and Astra's fourth round were
   pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
@@ -78,12 +80,13 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-Empty. #1 to #94 are closed, each with its disposition on the ticket. Where a ticket was closed
+Empty. #1 to #98 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Nothing queued for an agent. Waiting on Declan: Zenodo, and Astra's review of the viewer when credits allow. The MFQ-2 viewer is
+Nothing queued for an agent. Waiting on Declan: Zenodo, and Astra's review of the viewer when credits allow; every number the
+viewer shows was checked against the payload, the record, the appendix or the document on the 9th. The MFQ-2 viewer is
 `validity/viewer.html`, served from `validity/` (it fetches its payload); the root `viewer.html` is
 the Reasoner pilot's. The document goes out
 for review again with the wave in it. One
