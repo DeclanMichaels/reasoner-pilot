@@ -204,10 +204,9 @@ print("Comparing raw composite means across countries needs the instrument to be
       "data and report the result in their Table 6: a loadings R-squared and an intercepts "
       "R-squared per foundation, and the percentage of item parameters the alignment left "
       "non-invariant, against the 25 percent that Muthen and Asparouhov (2014) treat as "
-      "acceptable. The R-squared values were recomputed on the same raw data in `reasoner-study` "
+      "acceptable. We recomputed the R-squared values on the same raw data in `reasoner-study` "
       "(`compute_alignment_r2.R`: sirt 3.13-228, `invariance.alignment`, align.scale c(.2, .4), "
-      "align.pow c(.25, .25), lavaan) and are shown beside the published ones; the percentages "
-      "are the authors' and are transcribed, not recomputed. Loadings R-squared concerns loading "
+      "align.pow c(.25, .25), lavaan) and show them beside the published ones; the percentages are Atari et al.'s, transcribed and not recomputed. Loadings R-squared concerns loading "
       "(metric) invariance, intercepts R-squared concerns intercept (scalar) invariance, the one "
       "that bears on comparing means. Neither establishes exact invariance. "
       "This is a property of the nineteen human samples. It says nothing about whether a model's "
@@ -230,10 +229,8 @@ for r in _pub:
         float(r["pct_noninvariant_loadings"]), float(r["pct_noninvariant_intercepts"])))
 _over = [r for r in _pub if float(r["pct_noninvariant_intercepts"]) > 25 or float(r["pct_noninvariant_loadings"]) > 25]
 assert [r["foundation"] for r in _over] == ["purity"], _over
-print("\nEvery recomputed R-squared is within %.4f of the published one; the recomputation used the "
-      "authors' shared data and a current sirt, and the residual is not traced. Purity is the one "
-      "foundation over the 25 percent line, at %.1f percent of intercept parameters, and the authors "
-      "write that caution should be practiced when comparing Purity group-level means; they trace "
+print("\nEvery recomputed R-squared is within %.4f of the published one; the recomputation used Atari et al.'s shared data and a current sirt, and the residual is not traced. Purity is the one "
+      "foundation over the 25 percent line, at %.1f percent of intercept parameters, and Atari et al. write that caution should be practiced when comparing Purity group-level means; they trace "
       "most of it to unique intercepts in Argentina and Chile and to one item. Purity is one third "
       "of the binding composite and carries its largest framing shift, so every composite comparison "
       "in this appendix inherits that caution. B6 gives each foundation separately, and the report "
@@ -294,7 +291,7 @@ _ns = sorted(ANCH_N.values())
 print("\nEach of those nineteen means rests on %d to %d respondents for its country, %s in all, "
       "collected by Atari et al. in May 2021 through Qualtrics Panels and stratified within "
       "each nation on age, gender and political orientation. Education was not a "
-      "stratification variable, and the authors state their results rest on \"a subset of "
+      "stratification variable, and Atari et al. state their results rest on \"a subset of "
       "these populations who were educated enough to complete the surveys online\", noting "
       "that people from traditional, small-scale communities are absent. Every overshoot in "
       "this appendix is a distance from those samples' means.\n"
@@ -313,12 +310,11 @@ print("[*] Iran's anchor is the only one not drawn from Atari et al. (2023) Stud
       "carries the source, the sample's own caveats and the sensitivity across every anchor "
       "that source offers.\n")
 print("[d18] Morocco: reported under Spanish, the language Atari et al. administered its sample "
-      "in, and compared on the Spanish arm. An Arabic-framed arm was also run; its cells are in "
+      "in, and compared on the Spanish arm. We also ran an Arabic-framed arm; its cells are in "
       "B3a, B6 and B4 and enter no comparison against the human mean.\n")
 print("Human anchors, treated as constants, binding as the mean of loyalty, authority and "
       "purity: %s. %s %s not in the MFQ-2 nineteen-nation set, so no overshoot is "
-      "computable for %s. Iran's sample was administered on a 0-4 scale and shifted "
-      "linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the "
+      "computable for %s. Hazrati et al. administered Iran's sample on a 0-4 scale and we shift it linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the "
       "detail and the caveats.\n"
       % (", ".join("%s %.3f (%s)" % (c, ANCH[c], ANCH_SRC[c])
                    for c, _, _ in ROWS if c in ANCH),
@@ -424,8 +420,7 @@ print("Within a model, the five-run spread of the binding composite has a median
       "between-model SD has a median of %.3f in the unframed conditions and %.3f in the framed ones, run "
       "noise is a median %.0f and %.0f percent of the between-model variance, and %d of %d framed "
       "conditions sit below every unframed one on the corrected SD as well. Whatever default sampling "
-      "temperature each provider applied, the same default is assumed to have applied to a model's "
-      "framed and unframed conditions, which were collected in one window.\n" % (
+      "temperature each provider applied, we assume the same default applied to a model's framed and unframed conditions, collected in one window.\n" % (
       _wu, _wf, _wa, _na, _ba, len(C), median([x[2] for x in _du]), median([x[2] for x in _df]),
       100 * median([x[1] / x[0] for x in _du]), 100 * median([x[1] / x[0] for x in _df]),
       sum(1 for x in _df if x[2] < _minc), len(FRM)))
@@ -504,8 +499,7 @@ _iids = sorted(next(iter(_ia.values())), key=lambda i: (FOUND.index(i.rsplit("_"
 _shift = {i: mean([_ia[m][i] for m in _ms]) - mean([_ie[m][i] for m in _ms]) for i in _iids}
 _up = {i: sum(1 for m in _ms if _ia[m][i] > _ie[m][i]) for i in _iids}
 print("\n**The Arabic unframed shift, item by item.** Arabic unframed minus English unframed, panel mean "
-      "per item, with the number of the eleven models whose own mean moved up. Items are named by "
-      "foundation and position in the official key; wording is not reproduced (decision 7).\n")
+      "per item, with the number of the eleven models whose own mean moved up. Item names give foundation and position in the official key; we do not reproduce wording (decision 7).\n")
 print("| item | shift | models up (of %d) |" % len(_ms))
 print("|---|--:|--:|")
 for i in _iids:

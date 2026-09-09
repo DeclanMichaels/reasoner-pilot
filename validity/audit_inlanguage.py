@@ -377,18 +377,17 @@ for code, country in PAIRS:
 
 L = []
 L.append("## B4. The contrasts\n")
-L.append("Every country with both languages, and every language with both framings. Each contrast "
-         "is computed within a model first and then averaged across the %d, so the interval, the "
+L.append("Every country with both languages, and every language with both framings. We compute each contrast within a model first and then average across the %d, so the interval, the "
          "sign count and the leave-one-out range all describe the same per-model differences. The "
          "interval is a percentile bootstrap resampling the %d models, 100,000 draws, seeded per "
          "quantity: it reweights the observed eleven and shows how far the difference moves under that reweighting, and "
          "it bounds nothing. An interval that includes both positive and negative values is reported "
          "as such; it does not establish equivalence. The sign count and the leave-one-out range "
          "describe the same eleven per-model differences and carry no test; across the %d contrasts "
-         "reported here no family-wise claim is made, and none should be read in. Language under "
+         "reported here we make no family-wise claim, and none should be read in. Language under "
          "framing changes the questionnaire and the instruction together, since the in-language "
          "framing instruction is a translation; the unframed rows change the questionnaire alone. "
-         "No p-values are reported; decision 15 "
+         "We report no p-values; decision 15 "
          "says why; the exact sign-flip enumeration remains in the audit's verification output.\n" % (N, N, 4 * len(PAIRS) + len(LANG_ORDER)))
 L.append("**Language without framing.** The translated questionnaire against the English one, "
          "neither naming a country. One row per language.\n")
@@ -426,8 +425,7 @@ def _ctr(vals_by_model, key):
 _ms = sorted(set(enbase["ours_nosystem"]) & set(CONDS["en_neutral"]))
 assert len(_ms) == N, _ms
 _inst = _ctr({m: enbase["ours_nosystem"][m] - CONDS["en_neutral"][m] for m in _ms}, "C|instrument|ours_nosystem-official_nosystem")
-L.append("**The English framing contrasts and the instrument.** Every English-framed cell was administered "
-         "on our transcription of the MFQ-2 (`mfq2`) and the English unframed comparator on the official "
+L.append("**The English framing contrasts and the instrument.** We administered every English-framed cell on our transcription of the MFQ-2 (`mfq2`) and the English unframed comparator on the official "
          "instrument (`mfq2_en`); the two differ in the scale prompt, in one Proportionality item and in "
          "punctuation on three more (B1a). So each framing-in-English row above changes the instrument as "
          "well as adding the system prompt, and the local-language rows do not. The instrument's own effect, "
@@ -436,8 +434,7 @@ L.append("**The English framing contrasts and the instrument.** Every English-fr
 L.append(HEAD % N); L.append(SEP); L.append(row("our transcription minus official, unframed", _inst)); L.append("")
 L.append("Against `en_baseline_ours_nosystem` instead, the same transcription unframed, each framing-in-English "
          "difference above changes by the negative of that model's instrument difference, %+.3f at the panel "
-         "level. The changed item is not in the binding composite. An English framed arm on the official "
-         "instrument was not run.\n" % (-_inst["diff"]))
+         "level. The changed item is not in the binding composite. We did not run an English framed arm on the official instrument.\n" % (-_inst["diff"]))
 
 # the framing average and its weighting
 _grp = {c: [k for cc, k in PAIRS if cc == c and not (c == "ar" and k == "Morocco")] for c in LANG_ORDER}
@@ -510,13 +507,12 @@ L.append("**[*] The Iran anchor, and what it costs.** Nineteen of the twenty anc
          "57 to 59 percent educated to bachelor's or above; the authors' limitations discuss that "
          "composition and restricted variation in religiosity and political orientation. Collection "
          "began a year after the Woman, Life, Freedom movement "
-         "and the authors note possible period effects. Iran is the only Farsi country, so it "
-         "carries that group throughout. Respondent-level data for both samples are shared by "
-         "Hazrati et al. on OSF.\n" % _s2)
+         "and Hazrati et al. note possible period effects. Iran is the only Farsi country, so it "
+         "carries that group throughout. Hazrati et al. share respondent-level data for both samples on OSF.\n" % _s2)
 _alts = [_b2, _b1, _pool]
 _rank = ("largest" if _b2 == max(_alts) else "smallest" if _b2 == min(_alts) else "middle")
 _conseq = ("smallest" if _b2 == max(_alts) else "largest" if _b2 == min(_alts) else "middle")
-L.append("Every anchor the source offers is shown. The one in use is the %s of the three, "
+L.append("We show every anchor the source offers. The one in use is the %s of the three, "
          "so the overshoot reported throughout is the %s of the three:\n" % (_rank, _conseq))
 L.append("| Iran anchor | binding | EN-framed overshoot | FA-framed overshoot |")
 L.append("|---|--:|--:|--:|")
@@ -554,8 +550,7 @@ L.append("Every framing contrast above adds a system instruction where there was
          "no temperature sent; and, as a drift check against the August grid, the unframed English comparator "
          "and English-framed Egypt rerun the same day with item-identical orders. DeepSeek-V4-Pro left "
          "Together's serverless tier between the two collections and is absent from the wave, so every "
-         "contrast here is on the ten models present in both, and the August cells are restricted to the same "
-         "ten. The template is quoted in B1a. Contrasts are within-model first, as in B4; %d models.\n" % len(_ten))
+         "contrast here is on the ten models present in both, and we restrict the August cells to the same ten. B1a quotes the template. Contrasts are within-model first, as in B4; %d models.\n" % len(_ten))
 L.append("| condition | panel mean, ten models | 95% model-resampling interval | between-model SD |")
 L.append("|---|--:|:--:|--:|")
 for lab, d in (("en_neutral (August)", _U8), ("en_neutral_sept", _U9), ("en_neutral_template", _T), ("EN_framed_Egypt (August)", _F8), ("EN_framed_Egypt_sept", _F9)):
@@ -583,8 +578,7 @@ _fa_ir = [mu - ANCH["Iran"] for _, mu in loo(CONDS["fa_framed_Iran"])]
 _all_over = all(v > ANCH["Iran"] for v in CONDS["EN_framed_Iran"].values()) and \
             all(v > ANCH["Iran"] for v in CONDS["fa_framed_Iran"].values())
 L.append("## B5. Robustness: leave-one-model-out\n")
-L.append("Every contrast in B4 carries its own leave-one-out range. The anchor comparisons, which "
-         "are distances from a constant, are swept here. Japanese neutral panel mean with each "
+L.append("Every contrast in B4 carries its own leave-one-out range. This section sweeps the anchor comparisons, which are distances from a constant. Japanese neutral panel mean with each "
          "model removed spans %.3f to %.3f around an anchor of %.3f. English-framed Iran overshoot "
          "spans %+.3f to %+.3f; Farsi-framed Iran overshoot spans %+.3f to %+.3f. %s\n"
          % (min(_ja), max(_ja), ANCH["Japan"], min(_en_ir), max(_en_ir), min(_fa_ir), max(_fa_ir),
@@ -606,11 +600,9 @@ _scored += sum(1 for _f in glob.glob(str(VDIR / "runs" / "*mfq2*.json"))
 _by = sorted(_fail.items(), key=lambda x: (-x[1], x[0]))
 L.append("## B7. Failed calls\n")
 L.append("%s of %s attempted calls returned no ratings object, from provider rate limits on the "
-         "Together-hosted models and from replies that carried no parseable object. All were "
-         "retried to success within the same collection window, so every one of the %s scored "
+         "Together-hosted models and from replies that carried no parseable object. We retried all to success within the same collection window, so every one of the %s scored "
          "cells is present and no condition rests on fewer than five iterations. By model: %s. "
-         "Retrying to a parseable reply conditions the scored sample on compliance; the %s "
-         "unparsed replies are kept as collected and are not scored. This collection contains "
+         "Retrying to a parseable reply conditions the scored sample on compliance; we keep the %s unparsed replies as collected and score none. This collection contains "
          "no refusal.\n" % (
          "{:,}".format(_nfail), "{:,}".format(_scored + _nfail), "{:,}".format(_scored),
          ", ".join("%s %d" % (m, n) for m, n in _by), _nfail))
@@ -672,14 +664,13 @@ for k in sorted(_reg, key=lambda x: (x not in _present, x)):
 M.append("\n**Request.** One user message carrying the questionnaire; the framing instruction, where "
          "there is one, as the system prompt; nothing else. Anthropic receives it in the `system` "
          "field, OpenAI, xAI, Together and Mistral as a `role: system` message, Google as "
-         "`systemInstruction`. A request seed is sent where the provider accepts one (OpenAI, xAI, "
+         "`systemInstruction`. We send a request seed where the provider accepts one (OpenAI, xAI, "
          "Together as `seed`, Mistral as `random_seed`); the English framed runner uses 20260721 "
          "plus the iteration, the in-language runner 20260722 plus the iteration. Token ceilings are "
          "per provider: Anthropic 3072, OpenAI and xAI 4096, Together 6144, Mistral 2048, Google "
-         "6144, Cohere 2048. No temperature is sent, so each model ran at its provider's default, "
+         "6144, Cohere 2048. We send no temperature, so each model ran at its provider's default, "
          "which the run records do not capture; a pinned value would have documented the setting "
-         "and would not have made stochasticity equivalent across models. The defaults are not "
-         "reconstructed from provider documentation, which is not dated to the collection window "
+         "and would not have made stochasticity equivalent across models. We do not reconstruct the defaults from provider documentation, which is not dated to the collection window "
          "and changes.\n")
 M.append("**The self-report system prompt** of the two `selfreport` baseline variants, English, verbatim from `run_validity.py`:\n")
 M.append("> " + _unframed_system + "\n")
@@ -710,8 +701,7 @@ M.append("**The framing template without a country**, the September wave's syste
          "verbatim from `run_neutral_template.py`, which derives it from the framing template by deleting "
          "the three country slots and asserts the result:\n")
 M.append("> " + rnt.NEUTRAL_TEMPLATE + "\n")
-M.append("**The unframed conditions send no system prompt.** The matched English baseline and all six "
-         "translated unframed conditions were run with `NEUTRAL_SYSTEM = \"\"`; every one of their "
+M.append("**The unframed conditions send no system prompt.** We ran the matched English baseline and all six translated unframed conditions with `NEUTRAL_SYSTEM = \"\"`; every one of their "
          "saved runs records an empty system prompt. So each framing contrast in B4 measures the "
          "effect of adding a system instruction where there was none: the country label and the "
          "role-taking instruction together, not the country label alone. The nearest measurements of "
@@ -720,22 +710,16 @@ M.append("**The unframed conditions send no system prompt.** The matched English
          "transcription the prompt moved the composite by %+.3f, model-resampling interval [%+.3f, %+.3f], "
          "%d of %d models lower with the prompt; on the official instrument by %+.3f, interval [%+.3f, "
          "%+.3f], %d of %d lower. Neither prompt is the framing template, so the pairs are a different, "
-         "imperfect control rather than a bound on the role-taking component; a country-neutral arm with "
-         "the framing template itself was not run. The English-framed cells were also administered on our "
-         "transcription while the matched comparator is the official instrument, so the English framing "
+         "imperfect control rather than a bound on the role-taking component; the framing template with no country named we ran in September, in English, and B4a reports it. We also administered the English-framed cells on our transcription while the matched comparator is the official instrument, so the English framing "
          "contrasts add the instrument change to the system prompt; B4 measures that change unframed.\n"
          % (_sr_ours["diff"], _sr_ours["lo"], _sr_ours["hi"], _sr_ours["dn"], _sr_ours["n"],
             _sr_off["diff"], _sr_off["lo"], _sr_off["hi"], _sr_off["dn"], _sr_off["n"]))
-M.append("**The user message.** Items are shuffled per run, then grouped by response scale in the "
-         "instrument's fixed scale order and numbered 1 to 36 in shuffled order within each group. "
+M.append("**The user message.** The runner shuffles the items per run, groups them by response scale in the instrument's fixed scale order and numbers them 1 to 36 in shuffled order within each group. "
          "Each group opens with its scale prompt and a legend of the anchor labels. The message "
          "closes by asking for exactly one JSON object, `{\"ratings\": {\"1\": <int>, ..., \"36\": "
          "<int>}}`, and nothing else.\n")
-M.append("**The parser.** Every top-level balanced `{...}` in the reply is parsed. The last one "
-         "carrying a `ratings` dictionary is taken; failing that, the last bare map keyed by item "
-         "number. Every item must be present; each value is coerced by `int(round(float(v)))` and "
-         "must fall inside its scale's bounds. Any failure returns no ratings object, and the reply "
-         "is kept as collected with the parser's reason. No reply is edited or re-parsed by hand. Of "
+M.append("**The parser.** The parser reads every top-level balanced `{...}` in the reply and takes the last one carrying a `ratings` dictionary; failing that, the last bare map keyed by item "
+         "number. Every item must be present; the parser coerces each value by `int(round(float(v)))` and requires it inside its scale's bounds. Any failure returns no ratings object, and the reply stays as collected with the parser's reason. We edit no reply and re-parse none by hand. Of "
          "the %s ratings accepted across the fifty conditions, %d arrived as a non-integer and were "
          "rounded.\n" % ("{:,}".format(_nrat), _nround))
 M.append("**Retries.** The runners are resumable and key on completed cells, so a rerun spends only "
@@ -749,7 +733,7 @@ M.append("**Instruments.** Item wording in the English unframed comparator and t
          "extracted verbatim. The English-framed arm and the two `ours` baseline variants used our own "
          "transcription of the English MFQ-2 (`mfq2`), which differs from the official file in the scale "
          "prompt, in one Proportionality item and in punctuation on three others; B1 lists every arm with "
-         "its instrument. Ids, groups and scoring are cloned from the English scaffold so every instrument "
+         "its instrument. We clone ids, groups and scoring from the English scaffold so every instrument "
          "scores identically. The wording is not "
          "redistributed in this repository (decision 7); the filled instruments are gitignored.\n")
 M.append("**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 administered "
@@ -767,7 +751,6 @@ M.append("**Dated design history**, from the commit log. 2026-07-20: the MFQ-2 a
          "rebuilt on the full grid without p-values (decision 15), and Morocco reported under Spanish "
          "throughout, superseding the 2026-08-24 grouping (decision 18); the September wave collected, "
          "three English conditions on ten models (decision 21). Binding became the focal "
-         "quantity on 2026-07-20, before any in-language cell existed; every choice after that "
-         "was made with results in view.\n")
+         "quantity on 2026-07-20, before any in-language cell existed; we made every choice after that with results in view.\n")
 (VDIR / "results" / "appendix_b4_b5.md").write_text("\n".join(M + L) + "\n")
 print("\nwrote results/appendix_b4_b5.md")
