@@ -7,9 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Remote is at `168085f`. Local and **not yet pushed**: the viewer's prose aligned with the document
-  (fifteen passages, the Iran inference cut there too). #93, #94, #92, #87, #71 and Astra's fourth
-  round were pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
+- Local and remote agree; working tree clean. The viewer's prose aligned with the document (fifteen
+  passages, the Iran inference cut there too), #93, #94, #92, #87, #71 and Astra's fourth round were
+  pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
   2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
@@ -82,7 +82,7 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Nothing queued for an agent. Waiting on Declan: the push, and Zenodo. The MFQ-2 viewer is
+Nothing queued for an agent. Waiting on Declan: Zenodo. The MFQ-2 viewer is
 `validity/viewer.html`, served from `validity/` (it fetches its payload); the root `viewer.html` is
 the Reasoner pilot's. The document goes out
 for review again with the wave in it. One
