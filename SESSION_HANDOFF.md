@@ -7,9 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Remote is at `4a8625e`. Local and **not yet pushed**: #92 (`555189f`), the viewer builder on the
-  dataset and in the harness. #87, #71 and Astra's fourth round were pushed 2026-09-09 on Declan's
-  word. Kimi's third round was worked through and pushed
+- Local and remote agree; working tree clean. #92 (`555189f`, the viewer builder on the dataset and
+  in the harness), #87, #71 and Astra's fourth round were pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
   2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
@@ -82,7 +81,9 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Queued for an agent: #93 and #94. Waiting on Declan: the push of #92, and Zenodo. The document goes out
+Queued for an agent: #93 and #94. Waiting on Declan: Zenodo. The MFQ-2 viewer is
+`validity/viewer.html`, served from `validity/` (it fetches its payload); the root `viewer.html` is
+the Reasoner pilot's. The document goes out
 for review again with the wave in it. One
 sentence pushed on the 8th was wrong and was corrected on the record (`385a4f8`): the template's
 spread sits below the framed median, not below every country.
