@@ -7,7 +7,7 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree at `1ad80b8`; working tree clean. This is the Black M2 Air. Two sessions
+- Local and remote agree; the last substantive commit is `b9afdbb` (the viewer review) and everything after it is this handoff. Working tree clean. This is the Black M2 Air. Two sessions
   since the last handoff, 2026-09-08 (second) and 2026-09-09, 60 commits.
 - **The published record reproduces**, run 2026-09-09 here and in a fresh clone that had no run
   files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
