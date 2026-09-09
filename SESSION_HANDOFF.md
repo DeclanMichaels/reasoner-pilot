@@ -7,8 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. #71 (the emitters on the dataset, `d4d2b83`) and
-  Astra's fourth round (`f6b7128`) were pushed 2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
+- Remote is at `9fa0cb2`. Local and **not yet pushed**: #87, the harness regenerating the four
+  in-language artifacts (`b562dba`, decision 22). #71 and Astra's fourth round were pushed
+  2026-09-09 on Declan's word. Kimi's third round was worked through and pushed
   2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
@@ -18,10 +19,10 @@ This repository is public, so this file is public. It is written knowing that.
   2026-09-08. Its run files are tracked in git, which is the
   day-one persistence for that data, and the S3 archive followed on 2026-09-09:
   `archive-reasoner-pilot-validity/2026-09-08-september-wave/`, restore-tested the same day.
-- **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
-  outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
-  from the committed ratings dataset, and every generated section of the document matches its
-  artifact (`validity/splice_appendix.py --check`).
+- **The published record reproduces**, run 2026-09-09 here and in a fresh clone without the run
+  files: 19 regenerated outputs reproduced (the pilot's 15 and the four in-language artifacts, from
+  the committed dataset, decision 22), 15 committed-only verified, the 47 pinned condition means
+  rebuild from the dataset, and every generated section of the document matches its artifact.
 - **Eleven review rounds on the in-language document are adjudicated and worked through**, all in
   `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second (eight), DeepSeek's
   (folded into those eight), Gemini's (three), Kimi's first (six), Claude's cold review (twelve,
@@ -44,9 +45,10 @@ This repository is public, so this file is public. It is written knowing that.
   is in `docs/DEVELOPMENT_NOTES.md`. B4 is a 70-contrast set over the full grid with intervals,
   sign counts and leave-one-out ranges, no p-values (decision 15). There is no errata section
   (decision 17).
-- `DECISIONS.md` holds 21 entries; 12 is superseded by 18 (Morocco reported under Spanish),
-  19 publishes the integer ratings as `validity/results/mfq2_ratings.csv`, 20 makes the report and
-  appendix one document, 21 is the September wave.
+- `DECISIONS.md` holds 22 entries; 12 is superseded by 18 (Morocco reported under Spanish),
+  14 by 22 for the four emitter outputs, 19 publishes the integer ratings as
+  `validity/results/mfq2_ratings.csv`, 20 makes the report and appendix one document, 21 is the
+  September wave, 22 regenerates the in-language artifacts in the harness.
 - **The September wave is collected and reported** (decision 21, #83, `42fdeba`): the framing
   template with its country slots deleted, on ten models, with reruns of the unframed comparator
   and English-framed Egypt as a drift check. DeepSeek-V4-Pro left Together's serverless tier after
@@ -70,13 +72,12 @@ No model calls, nothing written to S3, nothing spent.
 
 ## The tracker
 
-One open: #87, regenerate the in-language artifacts in the harness (analysis, ready-for-human,
-Declan's decision). #1 to #86 and #88 to #91 are closed, each with its disposition on the ticket. Where a ticket was closed
+Empty. #1 to #91 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Nothing queued for an agent. Waiting on Declan: #87 (harness regeneration, a decision) and Zenodo. The document goes out
+Nothing queued for an agent. Waiting on Declan: the push of #87, and Zenodo. The document goes out
 for review again with the wave in it. One
 sentence pushed on the 8th was wrong and was corrected on the record (`385a4f8`): the template's
 spread sits below the framed median, not below every country.
