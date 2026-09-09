@@ -7,8 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; the last substantive commit is `b9afdbb` (the viewer review) and everything after it is this handoff. Working tree clean. This is the Black M2 Air. Two sessions
-  since the last handoff, 2026-09-08 (second) and 2026-09-09, 60 commits.
+- Local and remote agree; working tree clean. This is the Black M2 Air. The last substantive
+  commit is the Grok viewer round's record; everything after it is this handoff. Three sessions
+  since the last full handoff, 2026-09-08 (second) and two on 2026-09-09.
 - **The published record reproduces**, run 2026-09-09 here and in a fresh clone that had no run
   files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
   artifacts and the viewer payload, all from the committed ratings dataset), 14 committed-only
@@ -19,9 +20,10 @@ This repository is public, so this file is public. It is written knowing that.
   country to answer as" (decision 20; the title is Declan's, 2026-09-08). The appendix file is
   gone. `validity/splice_appendix.py` splices the ten generated sections and the harness runs its
   check.
-- **Eleven review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
-  fourth, Grok's, DeepSeek's, Gemini's, Kimi's first to third, and Claude's cold read of
-  2026-09-08. Ninety-eight issues have existed; none is open.
+- **Twelve review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
+  fourth, Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's cold read of
+  2026-09-08, and Grok's viewer round of 2026-09-09 (two passes, every number verified against
+  the payload and the document, no change). Ninety-eight issues have existed; none is open.
 - **The September wave is collected, archived and reported** (decision 21, #83): the framing
   template with its country slots deleted, on ten models, with same-day reruns of the unframed
   comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
@@ -51,7 +53,9 @@ This repository is public, so this file is public. It is written knowing that.
 The Atari et al. accepted manuscript, the Zewail et al. PMC full text and the Swiss Federal
 Statistical Office's 2025 languages publication were read to verify reviewer facts. The AWS
 session was renewed by Declan on 2026-09-09 and the wave archived. Model API calls: 2 preflight,
-10 availability checks, 150 for the wave, all 2026-09-08; nothing else spent.
+10 availability checks, 150 for the wave, all 2026-09-08; nothing else spent. On 2026-09-09 Astra
+was asked to review the viewer and exhausted Declan's usage window without returning a response;
+a free Grok instance did the round instead.
 
 ## The tracker
 
@@ -61,18 +65,21 @@ Empty. #1 to #98 are closed, each with its disposition on the ticket.
 
 Nothing is queued for an agent.
 
-1. **Astra's review of the viewer**, when Declan's credits allow. Diff it against Claude's viewer
-   review first (#95 to #98 and this file) and against the eleven document rounds; the viewer
-   restates B4a, B3a, B6 and B6a and adds nothing the document does not carry except the
-   per-model token table.
-2. **Zenodo**, the gate on calling any of this published (decision 17). `LOCATIONS.md` carries
+1. **Zenodo**, the gate on calling any of this published (decision 17). `LOCATIONS.md` carries
    three `TBD`s and `CITATION.cff` a commented `doi:`. One document now, so one deposit.
+
+The viewer's external round is done (Grok, 2026-09-09, `reviews/grok-viewer-review-2026-09-09.md`).
+The viewer restates B4a, B3a, B6 and B6a and adds nothing the document does not carry except the
+per-model token table; Declan declined the one optional addition, the unframed instrument
+difference on the Control tab.
 
 **Declan's read at close, 2026-09-09:** the MFQ-2 document is one external round and a day of
 release mechanics from ready, not a rewrite away. Before a DOI: one external read of the final
-state (Astra's fourth-round fixes, the appendix sweep and the Control tab are unread), the
-viewer's round, a PDF of the document with its tables and the non-Latin instructions in B1a
-checked by eye, and pinned artifacts for the two hand-written tables (d and Ordering). The
+state (Astra's fourth-round fixes, the appendix sweep and the Control tab are unread by any
+external reviewer; Grok's viewer round read the document at `3acd2cd` but as the viewer's
+reference, not as a review of it), a PDF of the document with its tables and the non-Latin
+instructions in B1a checked by eye, and pinned artifacts for the two hand-written tables (d and
+Ordering). The
 Reasoner pilot paper and appendix have had no prose pass and predate the register rules; they
 get their own editing session before anything is called complete, and moral-os.com's card
 follows them. The site's repository is not cloned on this Air and is not set up with
@@ -100,7 +107,7 @@ September column, by design.
 
 ## Unresolved - needs a decision
 
-Zenodo, item 2 above. Everything else settled.
+Zenodo, item 1 above. Everything else settled.
 
 ## Known-broken and known-strange
 
