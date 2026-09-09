@@ -16,7 +16,7 @@ The eleven are a panel we chose, not a sample of models, and nothing here was pr
 
 ## Where this came from
 
-We built an instrument called the Reasoner, and before trusting a model panel on it we put that panel on a questionnaire that already has published human norms. So we administered the MFQ-2 to eleven large language models. The first results were interesting enough to keep going. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it now because we have run every condition we intended to run, not because it tested a hypothesis we started with.
+We built an instrument called the Reasoner, and before trusting a model panel on it we put that panel on a questionnaire that already has published human norms. So we administered the MFQ-2 to eleven large language models. The first results led to the rest. We added the questionnaire's official translations, then the rest of the countries its authors had normed, and finished with the full published set. The design grew that way rather than being specified in advance, which is why there is no preregistration and why every number here is exploratory. We report it now because we have run every condition we intended to run and the one control the reviewers asked for, not because it tested a hypothesis we started with.
 
 ## What we did
 
