@@ -7,7 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. Kimi's third round was worked through and pushed
+- Remote is at `2d9a82f`. Local and **not yet pushed**: #71 (the emitters on the dataset, `d4d2b83`)
+  and Astra's fourth round (`f6b7128`). Kimi's third round was worked through and pushed
   2026-09-09. Earlier that day Declan and Claude read the report
   section by section (the Summary rewritten to five short paragraphs with the composite defined at
   first use; What we did in active voice with the Administration wall split into four blocks and
@@ -21,11 +22,11 @@ This repository is public, so this file is public. It is written knowing that.
   outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
   from the committed ratings dataset, and every generated section of the document matches its
   artifact (`validity/splice_appendix.py --check`).
-- **Ten review rounds on the in-language document are adjudicated and worked through**, all in
+- **Eleven review rounds on the in-language document are adjudicated and worked through**, all in
   `reviews/`: Astra's first (sixteen tickets), Grok's (one), Astra's second (eight), DeepSeek's
   (folded into those eight), Gemini's (three), Kimi's first (six), Claude's cold review (twelve,
-  #40 to #51), Astra's third (twenty, #52 to #71), Kimi's second (eleven, #72 to #82) and Kimi's third
-  (three, #84 to #86, all wording). Eighty-seven issues have existed; #87 is open for Declan (regenerate the in-language artifacts
+  #40 to #51), Astra's third (twenty, #52 to #71), Kimi's second (eleven, #72 to #82), Kimi's third
+  (three, #84 to #86, all wording) and Astra's fourth (four, #88 to #91). Ninety-one issues have existed; #87 is open for Declan (regenerate the in-language artifacts
   in the harness, superseding decision 14).
 - **Both appendix emitters read the ratings dataset and `results/collection_record.json`, not the
   run files** (#71, 2026-09-09), so a clone regenerates every table and interval; verified from a
@@ -70,12 +71,13 @@ No model calls, nothing written to S3, nothing spent.
 ## The tracker
 
 One open: #87, regenerate the in-language artifacts in the harness (analysis, ready-for-human,
-Declan's decision). #1 to #86 are closed, each with its disposition on the ticket. Where a ticket was closed
+Declan's decision). #1 to #86 and #88 to #91 are closed, each with its disposition on the ticket. Where a ticket was closed
 before its work had landed, the ticket carries the correction and the hash that did it.
 
 ## Next session
 
-Nothing queued for an agent. Waiting on Declan: #87, the push of #71, Zenodo. The document goes out
+Nothing queued for an agent. Waiting on Declan: #87 (harness regeneration, a decision), the push
+of #71 and Astra's fourth round, Zenodo. The document goes out
 for review again with the wave in it. One
 sentence pushed on the 8th was wrong and was corrected on the record (`385a4f8`): the template's
 spread sits below the framed median, not below every country.
