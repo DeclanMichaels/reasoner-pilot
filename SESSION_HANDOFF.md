@@ -68,6 +68,17 @@ Nothing is queued for an agent.
 2. **Zenodo**, the gate on calling any of this published (decision 17). `LOCATIONS.md` carries
    three `TBD`s and `CITATION.cff` a commented `doi:`. One document now, so one deposit.
 
+**Declan's read at close, 2026-09-09:** the MFQ-2 document is one external round and a day of
+release mechanics from ready, not a rewrite away. Before a DOI: one external read of the final
+state (Astra's fourth-round fixes, the appendix sweep and the Control tab are unread), the
+viewer's round, a PDF of the document with its tables and the non-Latin instructions in B1a
+checked by eye, and pinned artifacts for the two hand-written tables (d and Ordering). The
+Reasoner pilot paper and appendix have had no prose pass and predate the register rules; they
+get their own editing session before anything is called complete, and moral-os.com's card
+follows them. The site's repository is not cloned on this Air and is not set up with
+research-kit; that is a separate session too. Chrome with the Claude extension works from here
+under this account and reaches Declan's Zenodo login; nothing was deposited.
+
 Left as disclosure, Declan's decision: the English-framed arm on the official questionnaire
 (#53 states the confound; a rerun would be ten models in a second window). Not run: the six
 translated country-free templates (decision 21 explains; they need translations first).
