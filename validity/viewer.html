@@ -129,6 +129,7 @@ table.data td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tab
 table.data tbody tr:hover{background:var(--surface-2)}
 .partial{color:var(--warn)}
 
+.note a,.lede a,.cbox a{display:inline-block;padding:10px 0;line-height:24px}
 .note{border-left:3px solid var(--framed);background:var(--surface-2);padding:14px 18px;
   border-radius:0 7px 7px 0;font-size:16px;color:var(--text);margin-top:20px;max-width:82ch}
 .note strong{color:var(--text-bright)}
@@ -541,9 +542,8 @@ function panelOrder(){
         The countries span <span class="mono">${fmt(o.human_spread,2)}</span> scale points across the reference samples and
         <span class="mono">${fmt(o.panel_spread,2)}</span> in the panel - ${
           spreadRatio < 1
-            ? `the panel compresses the differences between these countries to <strong>${
-                Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
-            : `the panel exaggerates the differences to <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
+            ? `the panel's range is <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
+            : `the panel's range is <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
         }.${n > 3 ? ` With ${n} countries a rank correlation can take only a handful of values and carries
         little precision; read it as direction, not strength.` : ""}${
           Math.abs(spreadRatio - 1) < 0.15
@@ -1080,7 +1080,6 @@ function boot(d){
   const withH = anchored.filter(c => (leadArm(c) || {}).n_models === MAXN);
   const heldBack = anchored.length - withH.length;
   const over  = withH.filter(c => lead(c) > 0);
-  const avg   = withH.reduce((s,c)=>s+lead(c),0)/withH.length;
   const nulls = d.language_groups.filter(g => (g.local_framed||{}).spearman === 0);
   const under = withH.filter(c => lead(c) < 0);
   const underLangs = [...new Set(under.map(c => c.language).filter(Boolean))];
@@ -1092,8 +1091,7 @@ function boot(d){
     `A panel of ${d.meta.models} large language models was asked to answer a moral-foundations questionnaire
      <strong>as a typical person living in a named country</strong>, in English and in that country's language.
      Across the ${withH.length} countries with a published human mean, the panel lands
-     <strong>above</strong> the reference-sample mean on the binding composite in ${over.length} of them, by
-     <strong>${fmtS(avg,2)}</strong> scale points on average. ${
+     <strong>above</strong> the reference-sample mean on the binding composite in ${over.length} of them. ${
        under.length
          ? (oneLang
              ? `All ${under.length} it puts <strong>below</strong> are the countries we

@@ -205,15 +205,7 @@ for code, name in LANGS.items():
 # The binding composite is three of the six foundations averaged, so a shift in it says
 # nothing about whether the other three moved. This computes, per model, the mean over a
 # language's countries of (in-language framed minus in-language unframed) for each
-# foundation separately, and tests each with the same exact sign-flip used elsewhere.
-def signflip(d):
-    n = len(d)
-    obs = abs(mean(d))
-    hits = sum(1 for s in itertools.product((1, -1), repeat=n)
-               if abs(mean([a * b for a, b in zip(s, d)])) >= obs - 1e-12)
-    return hits / 2 ** n
-
-
+# foundation separately, with a model-resampling interval; no test (decision 15).
 shifts = []
 for g in groups + [{"lang_code": c, "language": LANGS[c],
                     "countries": [r["country"] for r in countries if r["lang_code"] == c]}
@@ -231,8 +223,7 @@ for g in groups + [{"lang_code": c, "language": LANGS[c],
         lo, hi = boot(d, "shift|%s|%s" % (code, fo))
         row["foundations"][fo] = {
             "shift": round(mean(d), 4), "ci": [round(lo, 4), round(hi, 4)],
-            "p": round(signflip(d), 4),
-            "up": sum(1 for x in d if x > 0), "down": sum(1 for x in d if x < 0),
+                        "up": sum(1 for x in d if x > 0), "down": sum(1 for x in d if x < 0),
             "unframed": round(mean([F[nk][m][fo] for m in ms]), 4),
             "framed": round(mean([mean([F[code + "_framed_" + c][m][fo] for c in cs])
                                   for m in ms]), 4)}
