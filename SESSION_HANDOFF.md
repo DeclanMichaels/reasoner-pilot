@@ -9,8 +9,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 - Local and remote agree; working tree clean. The September wave (`42fdeba`) and its two Summary
   sentences were pushed 2026-09-08 on Declan's word. Its run files are tracked in git, which is the
-  day-one persistence for that data until the S3 archive follows; **the AWS session on this Air is
-  expired and only Declan can renew it.**
+  day-one persistence for that data, and the S3 archive followed on 2026-09-09:
+  `archive-reasoner-pilot-validity/2026-09-08-september-wave/`, restore-tested the same day.
 - **The published record reproduces**, run 2026-09-08, no keys and no network: 15 regenerated
   outputs reproduced, 18 committed-only outputs verified, the 47 pinned condition means rebuild
   from the committed ratings dataset, and every generated section of the document matches its
@@ -64,8 +64,8 @@ before its work had landed, the ticket carries the correction and the hash that 
 
 ## Next session
 
-Queued for an agent: #71. Waiting on Declan: `aws login`, so the wave's run files can be archived
-beside the grid. The document goes out for review again with the wave in it.
+Queued for an agent: #71. Declan and Claude are reading the prose together before the document
+goes out for review again with the wave in it.
 
 1. **Review.** Five model families have read across nine rounds. Every family raised the same
    four things - panel composition, temperature, five runs, the framing prompt's two components -

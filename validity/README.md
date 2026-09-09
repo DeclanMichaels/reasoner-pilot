@@ -94,6 +94,12 @@ them. They live in two places:
   identical, 0 differing, 783 present only locally, of which 780 were byte-identical to files
   tracked under `archive-2026-07/` and 3 were the tracked scaffolds.
 
+- **Archive, the September wave** — `s3://model-training-artifacts-727165268164-us-east-1-an/archive-reasoner-pilot-validity/2026-09-08-september-wave/`
+  (STANDARD). `runs_neutral_template/`,      152 files, 608K, taken 2026-09-09 from the Black M2 Air, with
+  its own `ARCHIVE_MANIFEST.sha256` and `ARCHIVE_NOTE.txt`. These files are also tracked in git
+  (they carry no item wording), so this is the second copy; restored to a scratch directory and
+  verified the same day, all checksums matching and the restore byte-identical to the working copy.
+
   The objects at the prefix root, `archive-reasoner-pilot-validity/` itself, are the 2026-08-21
   snapshot: Arabic, Farsi and Japanese only, 929 objects, with tracked files mixed in. Syncing
   it into `validity/` reverts those files to that date (issue 3). Never sync it into `validity/`; if it is ever needed, sync it
