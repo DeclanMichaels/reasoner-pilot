@@ -693,6 +693,19 @@ M.append("The in-language framing instructions are our translations of that temp
          "Egypt prompt byte for byte as first collected.\n")
 _sr_ours = _ctr({m: enbase["ours_selfreport"][m] - enbase["ours_nosystem"][m] for m in _ms}, "C|selfreport|ours")
 _sr_off = _ctr({m: enbase["official_selfreport"][m] - enbase["official_nosystem"][m] for m in _ms}, "C|selfreport|official")
+# the six translated framing instructions, quoted as sent from one cell per language
+_sent = {}
+for _f in sorted(glob.glob(str(VDIR / "runs_framed_lang" / "*.json"))):
+    _d = json.load(open(_f))
+    if _d.get("condition") == "framed" and _d["instrument"] not in _sent:
+        _sent[_d["instrument"]] = (_d["country"], _d["system_prompt"])
+assert len(_sent) == 6, sorted(_sent)
+M.append("**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per "
+         "language with only the country name and the demonym varying; each is quoted as sent, from "
+         "the first framed cell of its language in the run files.\n")
+for _code in LANG_ORDER:
+    _c, _s = _sent["mfq2_" + _code]
+    M.append("%s, framed as %s:\n\n> %s\n" % (LANG_NAME[_code], _c, _s.replace("\n", " ")))
 M.append("**The framing template without a country**, the September wave's system prompt (decision 21), "
          "verbatim from `run_neutral_template.py`, which derives it from the framing template by deleting "
          "the three country slots and asserts the result:\n")

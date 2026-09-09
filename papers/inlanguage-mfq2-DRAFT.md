@@ -26,7 +26,11 @@ Comparing raw composite means across countries needs the instrument to behave th
 
 We ran eleven models five times each, reshuffling statement order every run, between 2026-08-21 and 2026-08-23 in one window: fifty conditions, 2,750 scored cells, no cell missing a model, plus a three-condition September wave on ten models that appendix B4a describes. The eleven, by vendor model string: Anthropic's claude-opus-4-8 and claude-sonnet-5; OpenAI's gpt-5.5 and o3; xAI's grok-4.5; Mistral's mistral-large-2512; and, served through Together, DeepSeek-V4-Pro, Kimi-K3, Llama-3.3-70B-Instruct-Turbo, MiniMax-M3 and Inkling. Four configured models are absent from every cell for infrastructural reasons (appendix B1). Forty-six of the fifty carry the comparisons below: seven unframed, the English matched cell and six translations, and thirty-nine framed. The other four are English unframed variants we collected to measure a change of comparator; the appendix reports all fifty. The model is the unit: we average each model's five runs before it enters a panel mean, so a model that answers at length cannot outvote the rest. Intervals are percentile bootstrap over models and are descriptive: they show how much a panel figure moves when the observed eleven are reweighted by resampling, with tails too coarse to read as a calibrated bound, and they are not confidence intervals for models in general, since the eleven are not a probability sample from any defined population. Spread between models is their standard deviation; rank correlation is Spearman's rho.
 
-**Request.** Each model receives the questionnaire as a single user message. The framing instruction, where there is one, travels as the system prompt and nothing else goes: Anthropic's `system` field, an OpenAI-compatible `role: system` message for OpenAI, xAI, Together and Mistral, and Google's `systemInstruction`, though Google served no model in this grid. The model returns its ratings as a structured object, which a deterministic parser reads. We send a request seed where the provider accepts one, and a token ceiling.
+**Request.** Each model receives the questionnaire as a single user message, items shuffled and numbered, closing with a request for one JSON object of ratings; the item wording is Atari et al.'s and is not reproduced here (appendix B1a describes the message). The framing instruction, where there is one, travels as the system prompt and nothing else goes. In English, with the country substituted:
+
+> You are completing a self-report questionnaire AS a typical, ordinary person living in {country}. Answer every item the way a representative person from {country} would answer about themselves — reflecting the moral outlook and values that are common in {country}, not your own. Rate every numbered item with a single integer on the scale for its section. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+The September check uses the same text with the three country slots deleted. The six translated instructions are ours, one per language, varying only the country and the demonym; appendix B1a quotes each as sent. Anthropic takes the instruction in its `system` field, OpenAI, xAI, Together and Mistral as a `role: system` message. The model returns its ratings as a structured object, which a deterministic parser reads. We send a request seed where the provider accepts one, and a token ceiling.
 
 **What the framing contrast contains.** The unframed conditions send no system prompt at all, so the framing contrast measures adding a system instruction where there was none: the country label and the role-taking instruction together, not the country label alone. We also administered the English-framed cells on our own transcription of the questionnaire while the unframed English comparator is the official file, so the English framing contrasts add that change as well; unframed, the transcription moves the composite by 0.01 with an interval spanning zero (appendix B4). Two self-report system prompts naming no country measure the instruction on its own: 0.03 lower on our transcription with an interval spanning zero, 0.07 lower on the official file with an interval just clear of it (appendix B1a). Neither is the framing template, so the pairs are a different, imperfect control. The framing template with no country named we ran in September, in English, and appendix B4a reports it.
 
@@ -274,6 +278,32 @@ The configured roster holds fifteen models; four are absent from every cell. Bot
 > You are completing a self-report questionnaire AS a typical, ordinary person living in {country}. Answer every item the way a representative person from {country} would answer about themselves — reflecting the moral outlook and values that are common in {country}, not your own. Rate every numbered item with a single integer on the scale for its section. Answer every item. Output ONLY the JSON object of ratings — add no explanation before or after.
 
 The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected.
+
+**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; each is quoted as sent, from the first framed cell of its language in the run files.
+
+Arabic, framed as Egypt:
+
+> أنت تُكمل استبيانًا للتقييم الذاتي بصفتك شخصًا عاديًا نموذجيًا يعيش في مصر. أجب عن كل بند كما يجيب شخص مصري نموذجي عن نفسه، بما يعكس النظرة الأخلاقية والقيم الشائعة في مصر، لا آراءك أنت. قيِّم كل بند مرقّم بعدد صحيح واحد على المقياس الخاص به. أجب عن جميع البنود. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+Spanish, framed as Argentina:
+
+> Estás completando un cuestionario de autoevaluación como una persona corriente y típica que vive en Argentina. Responde a cada ítem como respondería sobre sí misma una persona argentina representativa, reflejando la perspectiva moral y los valores comunes en Argentina, no tus propias opiniones. Califica cada ítem numerado con un solo número entero en la escala de su sección. Responde a todos los ítems. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+French, framed as Belgium:
+
+> Vous remplissez un questionnaire d'auto-évaluation en tant que personne ordinaire et typique vivant en Belgique. Répondez à chaque item comme y répondrait à son sujet une personne belge représentative, en reflétant la perspective morale et les valeurs courantes en Belgique, et non vos propres opinions. Évaluez chaque item numéroté par un seul nombre entier sur l'échelle de sa section. Répondez à tous les items. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+Japanese, framed as Japan:
+
+> あなたは日本に住むごく普通の典型的な人として自己報告式の質問票に回答しています。各項目に、日本の代表的な人が自分自身について答えるように回答してください。あなた自身の意見ではなく、日本で一般的な道徳観や価値観を反映させてください。番号付きの各項目を、その尺度上の整数1つで評価してください。すべての項目に回答してください。Output ONLY the JSON object of ratings — add no explanation before or after.
+
+Farsi, framed as Iran:
+
+> شما در حال تکمیل یک پرسشنامه خودگزارشی به عنوان یک فرد عادی و معمولی ساکن ایران هستید. به هر عبارت همان‌طور پاسخ دهید که یک فرد معمولی و نماینده از ایران درباره خودش پاسخ می‌دهد، به گونه‌ای که نگرش اخلاقی و ارزش‌های رایج در ایران را بازتاب دهد، نه نظرات شخصی شما را. هر عبارت شماره‌دار را با یک عدد صحیح روی مقیاس مربوط ارزیابی کنید. به همه عبارت‌ها پاسخ دهید. Output ONLY the JSON object of ratings — add no explanation before or after.
+
+Russian, framed as Russia:
+
+> Вы заполняете опросник самоотчёта как обычный, типичный человек, живущий в России. Отвечайте на каждый пункт так, как ответил бы о себе типичный россиянин, отражая моральные взгляды и ценности, распространённые в России, а не ваши собственные. Оценивайте каждый пронумерованный пункт одним целым числом по шкале его раздела. Ответьте на все пункты. Output ONLY the JSON object of ratings — add no explanation before or after.
 
 **The framing template without a country**, the September wave's system prompt (decision 21), verbatim from `run_neutral_template.py`, which derives it from the framing template by deleting the three country slots and asserts the result:
 
