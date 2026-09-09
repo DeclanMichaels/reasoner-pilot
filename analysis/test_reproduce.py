@@ -8,8 +8,12 @@ fails here. No API keys or network needed (pure stdlib analysis of the local run
 
 The manifest has two groups, which carry different guarantees:
 
-  regenerated     the 15 pilot outputs. Recomputed from the committed runs by the
-                  scripts below, then hashed. A mismatch means the numbers moved.
+  regenerated     the 15 pilot outputs, recomputed from the committed runs by the
+                  analysis scripts, and the 4 in-language emitter outputs, recomputed
+                  from the committed ratings dataset by validity/build_appendix_tables.py
+                  and validity/audit_inlanguage.py (decision 22). Each emitter's stdout
+                  is captured to a temporary file and its exit checked before anything
+                  tracked is written. A mismatch means the numbers moved.
   committed_only  the validity module's outputs. Derived from run data that is
                   gitignored (item wording is not ours to redistribute), so they
                   cannot be recomputed here or on a fresh clone. They are hashed as
@@ -50,6 +54,19 @@ def run_scripts():
         if r.returncode != 0:
             print(f"  ERROR running {s}:\n{r.stderr[-1500:]}")
             sys.exit(2)
+    # the in-language emitters (decision 22): stdout to a temporary file, exit checked, then moved
+    import tempfile, shutil
+    vdir = ROOT / "validity"
+    for s, out, must in (("build_appendix_tables.py", vdir / "results" / "appendix_tables.md", "## B6a. "),
+                         ("audit_inlanguage.py", vdir / "results" / "inlanguage_audit.txt", "wrote results/appendix_b4_b5.md")):
+        print(f"  running validity/{s} ...", flush=True)
+        with tempfile.NamedTemporaryFile("w", delete=False, dir=str(vdir / "results"), suffix=".tmp") as tf:
+            r = subprocess.run([sys.executable, str(vdir / s)], stdout=tf, stderr=subprocess.PIPE, text=True, cwd=str(vdir))
+        if r.returncode != 0 or must not in open(tf.name).read():
+            os.unlink(tf.name)
+            print(f"  ERROR running validity/{s}:\n{r.stderr[-1500:]}")
+            sys.exit(2)
+        shutil.move(tf.name, out)
 
 def verify_group(entries, label, verb):
     ok = bad = missing = 0

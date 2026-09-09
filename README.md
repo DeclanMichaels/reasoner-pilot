@@ -82,7 +82,7 @@ idempotent. `build_appendix.py` and `build_viewer_data.py` regenerate the exact
 values shipped in the papers and the viewer. The runners each raise on a
 duplicate complete cell, so a stray extra run can never silently change a number.
 
-To verify reproduction in one command: `python3 analysis/test_reproduce.py` re-runs every analysis script and checks all 15 published outputs byte-for-byte against `analysis/reproduce_manifest.json` (no API keys, no network).
+To verify reproduction in one command: `python3 analysis/test_reproduce.py` re-runs every analysis script, and the two in-language appendix emitters from the committed ratings dataset, and checks 19 regenerated outputs byte-for-byte against `analysis/reproduce_manifest.json`, with 15 more validity outputs hashed as committed (no API keys, no network).
 Set `REASONER_ROOT` to point the scripts at a copy of the tree that lives
 elsewhere.
 

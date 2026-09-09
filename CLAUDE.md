@@ -94,8 +94,9 @@ gets satisfied by the looser copy.
 - **Every ticket exists on the tracker before the work starts**, and carries one category label and
   one state label. An issue with no state label is not workable.
 - **Every published number is pinned.** `python3 analysis/test_reproduce.py` re-runs every analysis
-  script and checks all 15 published outputs byte-for-byte against
-  `analysis/reproduce_manifest.json`. It needs no keys and no network. Run it before and after
+  script and the two in-language appendix emitters and checks 19 regenerated outputs
+  byte-for-byte against `analysis/reproduce_manifest.json`, plus 15 validity outputs hashed as
+  committed (decision 22). It needs no keys and no network. Run it before and after
   touching anything under `analysis/`, and never commit a change that moves an output without
   saying so.
 - **Commit after each discrete change**, remembering that each one publishes. Pull with `--rebase`

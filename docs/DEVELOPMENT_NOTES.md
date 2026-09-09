@@ -14,9 +14,11 @@ rules about how to work (`CLAUDE.md`).
 **This repository is public. Every commit publishes.** There is no staging step and nothing here is
 revocable once pushed, because other documents cite the URL.
 
-Reproduction: `python3 analysis/test_reproduce.py` re-runs every analysis script and checks all 15
-published outputs byte for byte against `analysis/reproduce_manifest.json`. No API keys, no
-network. Run it before and after touching anything under `analysis/`. Set `REASONER_ROOT` to point
+Reproduction: `python3 analysis/test_reproduce.py` re-runs every analysis script and, since decision 22,
+the two in-language appendix emitters from the committed ratings dataset, and checks 19 regenerated
+outputs byte for byte against `analysis/reproduce_manifest.json`; 15 more validity outputs are hashed
+as committed. No API keys, no network. Run it before and after touching anything under `analysis/`
+or either emitter. Set `REASONER_ROOT` to point
 the scripts at a copy of the tree living elsewhere.
 
 The analysis path is Python standard library only and reads the committed runs. Only the collection

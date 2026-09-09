@@ -1,7 +1,7 @@
 # 014 - The validity outputs are pinned as committed, not as regenerated
 
 **Date:** 2026-09-07
-**Status:** active
+**Status:** superseded by #22 for the four emitter outputs
 
 ## The decision
 
@@ -64,3 +64,7 @@ way to make the check agree with whatever is on disk would defeat the entry.
 The harness verifies the second group on a machine that does not hold the grid, including a fresh
 clone, because it only reads committed files. It says nothing about whether the right run data was
 present when those files were last generated. Issue #5 covers that question.
+
+---
+
+**Superseded by #22 (2026-09-09)** for `appendix_tables.md`, `appendix_b4_b5.md`, `condition_means.json` and `inlanguage_audit.txt`, which the harness now regenerates from the committed dataset; stands for everything else.
