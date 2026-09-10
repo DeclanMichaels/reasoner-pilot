@@ -7,8 +7,9 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commits are #113 and #114,
-  the follow-ups to Astra's fifth document round; everything after them is this handoff. Five
+- Working tree clean, local and origin agree. This is the Black M2 Air. The last substantive
+  commits are #113 and #114, the follow-ups to Astra's fifth document round, pushed 2026-09-10;
+  everything after them is this handoff. Five
   sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and two on
   2026-09-10. Every repository under `~/Code/` is now cloned on this Air, `reasoner-study` and
   the site's included.
@@ -79,8 +80,8 @@ a free Grok instance did a round that day, and Astra's completed review arrived 
 ratings CSV. For #113, Atari et al.'s Study 2 respondent file was downloaded from OSF (9dwzt,
 546 KB) into the gitignored `_raw/` of both this repository and `reasoner-study`, and a scratch
 `venv/` with `pyreadstat` was created here for the Iran builder. `reasoner-study` gained the
-Loyalty-Authority columns in its dispersion builder and CSV (its #1, commit `4f65f14`, local,
-not pushed unless Declan says). No model API calls on 2026-09-10; nothing spent.
+Loyalty-Authority columns in its dispersion builder and CSV (its #1, commit `4f65f14`, pushed
+on Declan's word the same day). No model API calls on 2026-09-10; nothing spent.
 
 ## The tracker
 
