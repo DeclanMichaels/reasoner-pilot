@@ -62,10 +62,12 @@ reason in row 4.
 
 ## Left over
 
-The rendered check of the changed tabs at 375 pixels was not done in this session: the Browser
-pane went hidden partway through the pass, and only the new table was captured. DOM checks and the
-console passed on every change. The Every shift table on the Foundations tab prints its intervals
-at 14 px, below the 15 px floor; it predates this round and is a candidate ticket, not fixed here.
+The changed tabs were screenshotted at 375 pixels after the fixes: no horizontal body scroll, wide
+tables scrolling in their own containers, the story, the note, the intervals and the "not
+reported" cells all legible. The pass caught one thing in the round's own work, footer links that
+broke onto their own lines; they are now plain inline links with a padded hit box. The Every shift
+table on the Foundations tab prints its intervals at 14 px, below the 15 px floor; it predates this
+round and is a candidate ticket, not fixed here.
 
 ## Review as received
 

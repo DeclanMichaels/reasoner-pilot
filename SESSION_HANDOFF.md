@@ -52,8 +52,9 @@ This repository is public, so this file is public. It is written knowing that.
   opens with a language-against-framing table on the composite, built from a new
   `language_contrasts` block in the payload whose twelve figures match the document's two tables;
   the matrix tab is "Every framed cell"; the footer links the document and the dataset. The
-  changed tabs were DOM-checked and console-clean but not screenshotted at 375 pixels (the Browser
-  pane went hidden mid-pass). The root `viewer.html` is the Reasoner pilot's and is unrelated.
+  changed tabs were screenshotted at 375 pixels on 2026-09-10 and are clean: no horizontal body
+  scroll, wide tables scrolling in their own containers. The root `viewer.html` is the Reasoner
+  pilot's and is unrelated.
 - `DECISIONS.md` holds 22 entries. 12 is superseded by 18 (Morocco reported under Spanish), 14
   by 22 for the emitter outputs. 17 (published means a DOI and the site) still gates everything.
 
@@ -106,7 +107,7 @@ Candidates for tickets, not filed: a tracked claim-check for the paper's hand-wr
 d table and the Ordering table are still not emitted; the dataset makes such a check runnable
 from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every framed cell tab has
 no September column, by design; the Every shift table on the Foundations tab prints its intervals
-at 14 px, below the 15 px floor; a screenshot pass of the changed tabs at 375 pixels.
+at 14 px, below the 15 px floor.
 
 ## Open items
 
