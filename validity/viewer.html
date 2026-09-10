@@ -544,11 +544,7 @@ function panelOrder(){
           spreadRatio < 1
             ? `the panel's range is <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
             : `the panel's range is <strong>${Math.round(spreadRatio*100)}%</strong> of the reference samples' range`
-        }.${n > 3 ? ` With ${n} countries a rank correlation can take only a handful of values and carries
-        little precision; read it as direction, not strength.` : ""}${
-          Math.abs(spreadRatio - 1) < 0.15
-            ? ` The two spreads are within ${Math.round(Math.abs(spreadRatio-1)*100)}% of each other,
-                which is not a difference this design resolves.` : ""}</p>`;
+        }.</p>`;
   }
   const solo = D.foundation_shifts.filter(r => r.countries.length === 1).map(r => r.language);
   return out + (solo.length ? `<p class="note">${solo.join(", ")} are not here: each covers one
@@ -707,7 +703,7 @@ function panelFoundations(){
       against the same panel answering the same questionnaire in the same language with no
       framing at all. Positive is upward. The shaded rows are the three that make up the
       binding composite. The bar is the 95% model-resampling interval; a bar that
-      crosses the zero line includes both signs and establishes nothing either way.</p>
+      crosses the zero line includes both signs.</p>
     ${a}
     <p class="note"><strong>The change is lopsided, not a general lift.</strong> In five of the
       six languages the three binding foundations rise by about half a scale point to nearly two;
