@@ -10,7 +10,8 @@ What this copy adds, for the in-language MFQ-2 document:
     sentence kept as one left-to-right run (WeasyPrint ignores dir="auto");
   - quoted prompts are verbatim text: upright, unjustified, never hyphenated, kept on the page
     with the label above them;
-  - table cells are never hyphenated, and a header row is never left alone at a page foot.
+  - table cells are never hyphenated, a header row is never left alone at a page foot, and a
+    table's last two rows are never left alone at a page head.
 """
 
 import sys
@@ -56,17 +57,23 @@ def md_to_html(md_text):
 
 
 def keep_short_tables_whole(html_body):
-    """A table of a dozen rows or fewer is never split across pages, and a paragraph that
-    ends in a colon directly before a table stays on the page with it. Longer tables keep the
-    header-row rule only, so a table taller than a page still breaks."""
+    """A table of five data rows or fewer is never split across pages, and a short paragraph (160
+    characters or fewer) that ends in a colon directly before a table or a list stays on the
+    page with it. A long one is left alone, or the break lands inside it. Longer tables keep the
+    header-row rule only and split with a repeated header; kept whole, a mid-sized table with
+    tall cells leaves a half-empty page behind it."""
     def table_rule(m):
         table = m.group(0)
-        if table.count("<tr") <= 12:
+        if table.count("<tr") <= 6:
             return table.replace("<table>", '<table style="page-break-inside: avoid;">', 1)
         return table
     html_body = re.sub(r"<table>.*?</table>", table_rule, html_body, flags=re.S)
-    return re.sub(r"<p>([^<]*:)</p>(\s*<table)",
-                  r'<p style="page-break-after: avoid;">\1</p>\2', html_body)
+    def leadin_rule(m):
+        text = re.sub(r"<[^>]+>", "", m.group(1))
+        if len(text) <= 160:
+            return '<p style="page-break-after: avoid;">' + m.group(1) + "</p>" + m.group(2)
+        return m.group(0)
+    return re.sub(r"<p>([^\n]*?:)</p>(\s*<(?:table|ul|ol))", leadin_rule, html_body)
 
 
 def mark_rtl_paragraphs(html_body):
@@ -108,6 +115,7 @@ th, td { border: 1px solid #999; padding: 4px 8px; text-align: left; hyphens: ma
 th { background-color: #f0f0f0; font-weight: bold; }
 thead { display: table-header-group; }
 thead tr, tbody tr:nth-child(-n+2) { page-break-after: avoid; }
+tbody tr:nth-last-child(-n+2) { page-break-before: avoid; }
 tr { page-break-inside: avoid; }
 code { font-family: "Courier New", monospace; font-size: 9pt; background-color: #f5f5f5; padding: 1px 3px; }
 pre { background-color: #f5f5f5; padding: 8px; border: 1px solid #ddd; font-size: 8.5pt; white-space: pre-wrap; }
