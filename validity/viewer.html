@@ -1094,8 +1094,11 @@ function boot(d){
   MAXN = d.meta.models;
 
   // headline sentence, computed rather than typed, so it cannot go stale
-  const lead  = c => c.deviation.local_framed ?? c.deviation.en_framed;
-  const leadArm = c => c.conditions.local_framed || c.conditions.en_framed;
+  // The headline is the English-framed arm, which every country received; it is the arm the
+  // document's fifteen-five table uses. The chart below adds the translated arm where there is one.
+  const lead  = c => c.deviation.en_framed;
+  const leadArm = c => c.conditions.en_framed;
+  const nLocal = d.countries.filter(c => c.conditions.local_framed).length;
   // A partial cell's mean rests on a different roster, so it does not enter the headline count.
   // A sentence built on cells that are still filling is a sentence that has to be written twice.
   const anchored = d.countries.filter(c => c.human !== null && lead(c) !== null && lead(c) !== undefined);
@@ -1103,7 +1106,7 @@ function boot(d){
   const heldBack = anchored.length - withH.length;
   const over  = withH.filter(c => lead(c) > 0);
   const nulls = d.language_groups.filter(g => (g.local_framed||{}).spearman === 0);
-  const under = withH.filter(c => lead(c) < 0);
+  const under = withH.filter(c => lead(c) <= 0);
   const underLangs = [...new Set(under.map(c => c.language).filter(Boolean))];
   // if every country that lands low shares one language, say so: a uniform-overshoot
   // sentence would be the wrong summary of this grid.
@@ -1111,15 +1114,16 @@ function boot(d){
     d.countries.filter(c => c.language === underLangs[0] && c.human !== null).length === under.length;
   document.getElementById("story").innerHTML =
     `A panel of ${d.meta.models} large language models was asked to answer a moral-foundations questionnaire
-     <strong>as a typical person living in a named country</strong>, in English and in that country's language.
-     Across the ${withH.length} countries with a published human mean, the panel lands
-     <strong>above</strong> the reference-sample mean on the binding composite in ${over.length} of them. ${
+     <strong>as a typical person living in a named country</strong>, in English for every country and in a
+     translation for ${nLocal} of them. Across the ${withH.length} countries with a published human mean,
+     <strong>framed in English</strong>, the panel lands <strong>above</strong> the reference-sample mean on
+     the binding composite in ${over.length} of them. ${
        under.length
          ? (oneLang
-             ? `All ${under.length} it puts <strong>below</strong> are the countries we
-                administered in ${underLangs[0]}.`
+             ? `All ${under.length} it puts at or <strong>below</strong> are the countries whose reference
+                samples answered in ${underLangs[0]}.`
              : `It lands at or <strong>below</strong> in ${under.length}: ${under.map(c=>esc(c.country)).join(", ")}.`)
-         : ""}${
+         : ""} The chart below adds the translated arm where there is one.${
        nulls.length ? ` In ${nulls.map(g=>esc(g.language)).join(" and ")} the observed rank
        correlation with the human ordering is <strong>zero</strong>.` : ""}${
        heldBack ? ` A further ${heldBack} anchored ${heldBack>1?"countries are":"country is"} left out of
