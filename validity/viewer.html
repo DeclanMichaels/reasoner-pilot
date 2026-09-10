@@ -711,8 +711,8 @@ function panelFoundations(){
   let lc = "";
   if (LC){
     const rows = LC.languages.slice().sort((a,b) => b.framing.shift - a.framing.shift);
-    const cell = v => `${fmtS(v.shift)}<br><span style="color:var(--text-dim)">[${fmtS(v.ci[0])}, ${fmtS(v.ci[1])}]
-        &middot; ${v.up} up, ${v.down} down</span>`;
+    const cell = v => `${fmtS(v.shift)}<br><span style="color:var(--text-dim);white-space:nowrap">[${fmtS(v.ci[0])}, ${fmtS(v.ci[1])}]</span>
+        <span style="color:var(--text-dim);white-space:nowrap">&middot; ${v.up} up, ${v.down} down</span>`;
     const langMax = rows.reduce((m,r) => Math.abs(r.unframed_vs_english.shift) > Math.abs(m.unframed_vs_english.shift) ? r : m, rows[0]);
     const frMin  = rows[rows.length-1];
     lc = `<div class="cbox">
