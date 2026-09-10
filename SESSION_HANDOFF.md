@@ -8,8 +8,7 @@ This repository is public, so this file is public. It is written knowing that.
 ## Current state
 
 - Working tree clean. This is the Black M2 Air. The last substantive commits are #115 to #118,
-  Astra's sixth document round; everything after them is this handoff. Local is ahead of origin
-  by the round until Declan says push. Five
+  Astra's sixth document round; everything after them is this handoff. Pushed 2026-09-10; local and origin agree. Five
   sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and two on
   2026-09-10. Every repository under `~/Code/` is now cloned on this Air, `reasoner-study` and
   the site's included.
