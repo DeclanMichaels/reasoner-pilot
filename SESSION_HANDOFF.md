@@ -7,10 +7,10 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is `e85e112`, the
-  end of Astra's viewer round (#99 to #104); everything after it is records and this handoff.
-  Four sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and one on
-  2026-09-10.
+- Working tree clean. This is the Black M2 Air. The last substantive commit is `c074ac9`, the
+  end of Astra's viewer round and its follow-ups (#99 to #105); everything after it is this
+  handoff. Four sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and
+  one on 2026-09-10.
 - **The published record reproduces**, run 2026-09-10 here after #103 moved the viewer payload's
   pin, and on 2026-09-09 in a fresh clone that had no run files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
   artifacts and the viewer payload, all from the committed ratings dataset), 14 committed-only
@@ -24,8 +24,8 @@ This repository is public, so this file is public. It is written knowing that.
 - **Thirteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
   fourth on the document, Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
   cold read of 2026-09-08, Grok's viewer round of 2026-09-09 (no change) and Astra's viewer round
-  of 2026-09-10 (six findings, six tickets, #99 to #104, all closed the same day). One hundred and
-  four issues have existed; none is open.
+  of 2026-09-10 (six findings, six tickets, #99 to #104, all closed the same day, plus #105 from
+  the record's leftovers). One hundred and five issues have existed; none is open.
 - **The September wave is collected, archived and reported** (decision 21, #83): the framing
   template with its country slots deleted, on ten models, with same-day reruns of the unframed
   comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
@@ -53,8 +53,9 @@ This repository is public, so this file is public. It is written knowing that.
   `language_contrasts` block in the payload whose twelve figures match the document's two tables;
   the matrix tab is "Every framed cell"; the footer links the document and the dataset. The
   changed tabs were screenshotted at 375 pixels on 2026-09-10 and are clean: no horizontal body
-  scroll, wide tables scrolling in their own containers. The root `viewer.html` is the Reasoner
-  pilot's and is unrelated.
+  scroll, wide tables scrolling in their own containers, footer links inline with padded hit
+  boxes. #105 removed the one text under the 15 px floor; a computed sweep of the rendered page
+  puts the minimum at 15. The root `viewer.html` is the Reasoner pilot's and is unrelated.
 - `DECISIONS.md` holds 22 entries. 12 is superseded by 18 (Morocco reported under Spanish), 14
   by 22 for the emitter outputs. 17 (published means a DOI and the site) still gates everything.
 
@@ -65,8 +66,9 @@ Statistical Office's 2025 languages publication were read to verify reviewer fac
 session was renewed by Declan on 2026-09-09 and the wave archived. Model API calls: 2 preflight,
 10 availability checks, 150 for the wave, all 2026-09-08; nothing else spent. On 2026-09-09 Astra
 was asked to review the viewer and exhausted Declan's usage window without returning a response;
-a free Grok instance did a round that day, and Astra's completed review arrived on 2026-09-10 and
-was worked through.
+a free Grok instance did a round that day, and Astra's completed review arrived on 2026-09-10 at
+`~/Documents/Codex/2026-09-10/tw/outputs/viewer-review.md` and was worked through. No model API
+calls on 2026-09-10; nothing spent.
 
 ## The tracker
 
@@ -84,7 +86,7 @@ findings fixed (`reviews/astra-viewer-review-2026-09-10.md`). The viewer restate
 B6a, now with the document's lead language-against-framing contrast, and adds nothing the
 document does not carry except the per-model token table. Declan declined the unframed
 instrument difference on the Control tab and the Loyalty-and-Authority table. The viewer as it
-stands after #99 to #104 has not been read externally.
+stands after #99 to #105 has not been read externally.
 
 **Declan's read at close, 2026-09-09:** the MFQ-2 document is one external round and a day of
 release mechanics from ready, not a rewrite away. Before a DOI: one external read of the final
@@ -92,8 +94,8 @@ state (Astra's fourth-round fixes, the appendix sweep and the Control tab are un
 external reviewer; Grok's viewer round read the document at `3acd2cd` but as the viewer's
 reference, not as a review of it), a PDF of the document with its tables and the non-Latin
 instructions in B1a checked by eye, and pinned artifacts for the two hand-written tables (d and
-Ordering). The
-Reasoner pilot paper and appendix have had no prose pass and predate the register rules; they
+Ordering). The Reasoner pilot paper and appendix have had no prose pass and predate the register
+rules; they
 get their own editing session before anything is called complete, and moral-os.com's card
 follows them. The site's repository is not cloned on this Air and is not set up with
 research-kit; that is a separate session too. Chrome with the Claude extension works from here
@@ -133,7 +135,11 @@ draws from (the B3a and viewer intervals had taken their order from the filesyst
 up to 0.003 when sorted, `d4d2b83` and `555189f`); never redirect a generator into its tracked
 output; assert every anchor before writing any file.
 
-**Corrected on the record this session:** a Summary sentence pushed on the 8th said the template's
+**Corrected on the record, 2026-09-10:** the viewer's Models tab drew Morocco's human marker on
+the Arabic-framed arm, a comparison decision 18 excludes (#99, `4649a42`); its headline story
+summarised the translated arm where the document's table is English framing (#101, `59bb943`).
+
+**Corrected on the record, 2026-09-08 and 2026-09-09:** a Summary sentence pushed on the 8th said the template's
 spread was tighter than under any country when four framed conditions were tighter (`385a4f8`);
 the rewrite of the 9th attached "two thirds of the range" to the Arabic figure (Astra 4, #84);
 the same rewrite called Egypt the largest contrast when Saudi Arabia and the Emirates exceed it
