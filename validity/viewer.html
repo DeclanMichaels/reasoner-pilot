@@ -706,7 +706,41 @@ function panelFoundations(){
   }
   t += `</tbody></table>`;
 
-  return `<div class="cbox">
+  // ---- language against framing, the document's lead contrast, on the composite
+  const LC = D.language_contrasts;
+  let lc = "";
+  if (LC){
+    const rows = LC.languages.slice().sort((a,b) => b.framing.shift - a.framing.shift);
+    const cell = v => `${fmtS(v.shift)}<br><span style="color:var(--text-dim)">[${fmtS(v.ci[0])}, ${fmtS(v.ci[1])}]
+        &middot; ${v.up} up, ${v.down} down</span>`;
+    const langMax = rows.reduce((m,r) => Math.abs(r.unframed_vs_english.shift) > Math.abs(m.unframed_vs_english.shift) ? r : m, rows[0]);
+    const frMin  = rows[rows.length-1];
+    lc = `<div class="cbox">
+    <h2>Language against framing, on the binding composite</h2>
+    <p class="lede">Two contrasts per language, model as the unit. <strong>Translation minus English</strong>:
+      the same questionnaire handed to the panel in that language with no framing, against the panel
+      unframed in English, which sits at <span class="mono">${fmt(LC.english_unframed)}</span>.
+      <strong>Framed minus unframed</strong>: the panel told to answer as a local, in that language,
+      against the same panel unframed in that language, averaged over the language's countries. Under
+      each figure, the 95% model-resampling interval and how many of the ${D.meta.models} models moved
+      each way. Sorted by the framing shift.</p>
+    <table class="data"><thead><tr><th>Language</th><th>Countries</th><th>Unframed panel</th>
+      <th>Translation &minus; English</th><th>Framed &minus; unframed</th></tr></thead><tbody>
+      ${rows.map(r => `<tr><td>${esc(r.language)}</td><td class="num">${r.countries}</td>
+        <td class="num">${fmt(r.unframed_mean)}</td>
+        <td class="num">${cell(r.unframed_vs_english)}</td><td class="num">${cell(r.framing)}</td></tr>`).join("")}
+      <tr><td>${rows.length} languages, equal weight</td><td class="num">${LC.countries_total}</td>
+        <td class="num">&ndash;</td><td class="num">&ndash;</td><td class="num">${fmtS(LC.framing_equal_weight)}</td></tr>
+    </tbody></table>
+    <p class="note">The equal-weight average counts a one-country language the same as a six-country
+      one, with Morocco under Spanish. The largest translation shift is ${esc(langMax.language)}'s,
+      ${fmtS(langMax.unframed_vs_english.shift,2)}, with ${langMax.unframed_vs_english.up} of ${langMax.n_models} models
+      moving that way; the smallest framing shift is ${esc(frMin.language)}'s, ${fmtS(frMin.framing.shift,2)}.
+      Framing exceeds language on average and not in every row.</p>
+  </div>`;
+  }
+
+  return `${lc}<div class="cbox">
     <h2>Which foundations move</h2>
     <p class="lede">The binding composite is three of the six foundations averaged, so a
       shift in it says nothing about the other three. This is each foundation on its own:

@@ -229,6 +229,34 @@ for g in groups + [{"lang_code": c, "language": LANGS[c],
                                   for m in ms]), 4)}
     shifts.append(row)
 
+# ---- language against framing, on the binding composite: the document's lead contrast.
+# Unframed: the translation minus English unframed, per model. Framing: in-language framed
+# minus in-language unframed, per model, averaged over the language's countries with Morocco
+# under Spanish (decision 18), the same country sets as the foundation shifts above. Model-
+# resampling intervals, seeded per quantity; no test (decision 15).
+def _signed(d, key):
+    lo, hi = boot(d, key)
+    return {"shift": round(mean(d), 4), "ci": [round(lo, 4), round(hi, 4)],
+            "up": sum(1 for x in d if x > 0), "down": sum(1 for x in d if x < 0)}
+contrasts = []
+for row in shifts:
+    code, cs = row["lang_code"], row["countries"]
+    nk = code + "_neutral"
+    ms = sorted(set(C[nk]) & set(C["en_neutral"])
+                & set.intersection(*[set(C[code + "_framed_" + c]) for c in cs]))
+    contrasts.append({
+        "lang_code": code, "language": row["language"], "countries": len(cs), "n_models": len(ms),
+        "unframed_mean": round(mean([C[nk][m] for m in ms]), 4),
+        "unframed_vs_english": _signed([C[nk][m] - C["en_neutral"][m] for m in ms],
+                                       "lang_unframed|%s" % code),
+        "framing": _signed([mean([C[code + "_framed_" + c][m] for c in cs]) - C[nk][m] for m in ms],
+                           "lang_framing|%s" % code)})
+language_contrasts = {
+    "english_unframed": round(mean([C["en_neutral"][m] for m in ROSTER]), 4),
+    "languages": contrasts,
+    "framing_equal_weight": round(mean([e["framing"]["shift"] for e in contrasts]), 4),
+    "countries_total": sum(e["countries"] for e in contrasts)}
+
 # ---- reasoning cost, per model
 gap = defaultdict(list)
 for k in C:
@@ -328,6 +356,7 @@ out = {
     "language_groups": groups,
     "models": models,
     "foundation_shifts": shifts,
+    "language_contrasts": language_contrasts,
     "conditions_raw": {k: cond(k) for k in sorted(C)},
 }
 json.dump(out, sys.stdout, indent=1, sort_keys=False)

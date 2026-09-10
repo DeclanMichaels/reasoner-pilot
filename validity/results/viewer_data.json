@@ -3707,6 +3707,163 @@
    }
   }
  ],
+ "language_contrasts": {
+  "english_unframed": 2.7687,
+  "languages": [
+   {
+    "lang_code": "ar",
+    "language": "Arabic",
+    "countries": 3,
+    "n_models": 11,
+    "unframed_mean": 3.104,
+    "unframed_vs_english": {
+     "shift": 0.3354,
+     "ci": [
+      0.202,
+      0.4838
+     ],
+     "up": 11,
+     "down": 0
+    },
+    "framing": {
+     "shift": 1.5916,
+     "ci": [
+      1.3064,
+      1.8781
+     ],
+     "up": 11,
+     "down": 0
+    }
+   },
+   {
+    "lang_code": "es",
+    "language": "Spanish",
+    "countries": 6,
+    "n_models": 11,
+    "unframed_mean": 2.7798,
+    "unframed_vs_english": {
+     "shift": 0.0111,
+     "ci": [
+      -0.1121,
+      0.1222
+     ],
+     "up": 7,
+     "down": 4
+    },
+    "framing": {
+     "shift": 1.1362,
+     "ci": [
+      0.9712,
+      1.312
+     ],
+     "up": 11,
+     "down": 0
+    }
+   },
+   {
+    "lang_code": "fr",
+    "language": "French",
+    "countries": 3,
+    "n_models": 11,
+    "unframed_mean": 2.7768,
+    "unframed_vs_english": {
+     "shift": 0.0081,
+     "ci": [
+      -0.0636,
+      0.0677
+     ],
+     "up": 6,
+     "down": 5
+    },
+    "framing": {
+     "shift": 0.1256,
+     "ci": [
+      -0.0239,
+      0.2721
+     ],
+     "up": 7,
+     "down": 4
+    }
+   },
+   {
+    "lang_code": "ja",
+    "language": "Japanese",
+    "countries": 1,
+    "n_models": 11,
+    "unframed_mean": 2.6758,
+    "unframed_vs_english": {
+     "shift": -0.0929,
+     "ci": [
+      -0.299,
+      0.1111
+     ],
+     "up": 3,
+     "down": 8
+    },
+    "framing": {
+     "shift": 0.7586,
+     "ci": [
+      0.5929,
+      0.9212
+     ],
+     "up": 11,
+     "down": 0
+    }
+   },
+   {
+    "lang_code": "fa",
+    "language": "Farsi",
+    "countries": 1,
+    "n_models": 11,
+    "unframed_mean": 2.8091,
+    "unframed_vs_english": {
+     "shift": 0.0404,
+     "ci": [
+      -0.1182,
+      0.1838
+     ],
+     "up": 7,
+     "down": 4
+    },
+    "framing": {
+     "shift": 1.5051,
+     "ci": [
+      1.2253,
+      1.798
+     ],
+     "up": 11,
+     "down": 0
+    }
+   },
+   {
+    "lang_code": "ru",
+    "language": "Russian",
+    "countries": 1,
+    "n_models": 11,
+    "unframed_mean": 2.7879,
+    "unframed_vs_english": {
+     "shift": 0.0192,
+     "ci": [
+      -0.0657,
+      0.1111
+     ],
+     "up": 5,
+     "down": 6
+    },
+    "framing": {
+     "shift": 1.2596,
+     "ci": [
+      1.0202,
+      1.4899
+     ],
+     "up": 11,
+     "down": 0
+    }
+   }
+  ],
+  "framing_equal_weight": 1.0628,
+  "countries_total": 15
+ },
  "conditions_raw": {
   "EN_framed_Argentina": {
    "mean": 3.4374,
