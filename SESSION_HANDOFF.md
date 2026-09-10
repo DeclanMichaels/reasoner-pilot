@@ -7,10 +7,10 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is `dc27c21`, the
-  pilot viewer's three prose lines aligned to the revised paper and `viewer.html` re-pinned
-  (harness PASS); before it `595fbb7`, the pilot PDFs rendered with the recipe, and `5961507`,
-  the pilot writeup pass. Pushed
+- Working tree clean. This is the Black M2 Air. The last substantive commit is `edcf91c`, the MFQ-2
+  document re-rendered after #119 with the recipe's table rules settled on all three documents;
+  before it `99ca5df` (#119), `dc27c21` (pilot viewer text, `viewer.html` re-pinned, harness
+  PASS), `595fbb7` (pilot PDFs) and `5961507` (the pilot writeup pass). Pushed
   2026-09-10; local and origin agree. Every repository under `~/Code/` is cloned on this Air.
 - **The Reasoner pilot writeup has had its prose pass** (`5961507`). `papers/reasoner-pilot.md`
   and `papers/reasoner-appendix.md` were unchanged since 2026-07-20 and predated the register
@@ -31,12 +31,19 @@ This repository is public, so this file is public. It is written knowing that.
 - **The pilot PDFs are the recipe's** (`595fbb7`): `papers/reasoner-pilot.pdf` 5 pages,
   `papers/reasoner-appendix.pdf` 9 pages, rendered from the files at `5961507`. The recipe gained
   one rule in `papers/render_html_pdf.py`: a table of twelve rows or fewer is never split, and a
-  colon lead-in stays with its table. `papers/inlanguage-mfq2-DRAFT.pdf` was **not** re-rendered
-  after that rule and its page count against the rule is unchecked. **The PDFs are not checked by
+  colon lead-in stays with its table. `papers/inlanguage-mfq2-DRAFT.pdf`All three PDFs are now rendered under the same settled
+  rules (five-row keep-whole, short lead-ins kept, last two rows kept), checked page by page. **The PDFs are not checked by
   the harness**: after any change to a document, re-run the recipe and commit the render with it.
-- **The MFQ-2 document is unchanged this session**, at `1f9274c` as described in the previous
-  handoff: one document, 44-page PDF, fifteen external rounds adjudicated, review finished by
-  Declan's decision of 2026-09-10, 118 issues closed, none open.
+- **The MFQ-2 document changed once this session, #119** (`99ca5df`): Declan's own read found
+  the Methods sentence "tails too coarse to read as a calibrated bound" still in the document
+  after #110 and the round-six adjudication had both recorded it as not there. The finding is
+  reinstated, the sentence replaced (few distinct resampling values at eleven; a selected
+  panel, not a probability sample), and both review files carry an appended correction. The
+  same read scoped "all eleven models move the same direction" to Arabic in the Summary and
+  the framing section, verified from the dataset (eleven of eleven up under Arabic; three up,
+  eight down under Japanese). PDF re-rendered, 44 pages. Otherwise as the previous handoff:
+  fifteen external rounds adjudicated, review finished by Declan's decision, 119 issues
+  closed, none open.
 - **The published record reproduces** as of 2026-09-10 (previous handoff); nothing under
   `analysis/` or `validity/` changed this session and the harness was not re-run.
 - **The integer ratings dataset, the September wave, the MFQ-2 viewer** are as the previous
@@ -52,8 +59,8 @@ Nothing. No model API calls; nothing spent. Nothing deposited anywhere. The scra
 
 ## The tracker
 
-Empty. #1 to #118 are closed. Nothing was filed this session; the writeup pass ran on Declan's
-direction section by section rather than as tickets.
+Empty. #1 to #119 are closed. #119 was filed and closed this session; the pilot writeup pass
+ran on Declan's direction section by section rather than as tickets.
 
 ## Next session
 
@@ -138,5 +145,9 @@ viewer's Control tab rendered a date as "[object Object]" (fixed before push).
 - `validity/README.md` carries thirteen em-dashes in text that predates the register rules.
 - The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design.
 - The viewer's per-model token table has no counterpart in the document.
+- MFQ-2 PDF page 13 carries one list item and nothing else, in every render so far; cause not
+  traced.
+- A search that clears a reviewer's quoted phrase must be shown, not reported: #110 and the
+  round-six adjudication both cleared "tails too coarse" and it was on line 27 the whole time.
 - The pilot appendix's A10 names the build scripts without their `analysis/` directory; A1 now
   gives the full path for one of them.
