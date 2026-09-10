@@ -10,7 +10,7 @@ Translating the questionnaire barely moves the panel's composite. Five of the si
 
 Being told who to be also brings the models together. Under a country framing they spread about half as widely as they do unframed, and in the September check a country name was not needed for it: told to be a typical person with no country named, the ten models sat closer together than they did told to be Egyptians.
 
-Where the panel lands is a separate question from how far it moves. Against the twenty countries with a published mean, the framed panel sits above the human mean in fifteen and at or below it in five: France, Belgium, Switzerland, New Zealand and Ireland.
+Where the panel lands is a separate question from how far it moves. Against the twenty countries with a published mean, the panel framed in English sits above the human mean in fifteen and at or below it in five: France, Belgium, Switzerland, New Zealand and Ireland.
 
 The eleven are the panel we chose less four that availability removed, not a sample of models, and nothing here was preregistered.
 
@@ -20,7 +20,7 @@ We built an instrument called the Reasoner, and before trusting a model panel on
 
 ## What we did
 
-The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rated 1 to 5 for how well it describes the respondent, scored into six foundations. We track one number, the binding composite, the mean of Loyalty, Authority and Purity; it is a summary index we chose, not an established construct. We report the other three foundations separately below, and they behave differently.
+The MFQ-2 is a standard moral-psychology questionnaire: 36 statements, each rated 1 to 5 for how well it describes the respondent, scored into six foundations. We track one number, the binding composite, the mean of Loyalty, Authority and Purity; the grouping of those three is the theory's own; taking their mean as one index is our choice. We report the other three foundations separately below, and they behave differently.
 
 Atari et al. checked whether the questionnaire behaves the same way across their nineteen countries and flag one foundation: 39.5 percent of Purity's intercept parameters are noninvariant against the 25 percent they treat as acceptable, and they advise caution when comparing Purity means across groups. Purity is one third of the binding composite and carries its largest framing shift, so the composite comparisons below inherit that caution, and the per-foundation tables let a reader set Purity aside; appendix B2a has the diagnostics and our recomputation. Invariance among the human samples says nothing about whether a model's score and a person's score measure the same thing, and we claim nothing of the kind: we compare questionnaire response scores, scored as Atari et al. publish, six items per foundation.
 
@@ -32,7 +32,7 @@ We ran eleven models five times each, reshuffling statement order every run, bet
 
 The September check uses the same text with the three country slots deleted. The six translated instructions are ours, one per language, varying only the country and the demonym; each keeps its final sentence, the output instruction, in English, and the questionnaire message's closing request for the JSON object is English in every condition. Appendix B1a quotes each instruction as sent. Anthropic takes the instruction in its `system` field, OpenAI, xAI, Together and Mistral as a `role: system` message. The model returns its ratings as a structured object, which a deterministic parser reads. We send a request seed where the provider accepts one, and a token ceiling.
 
-**What the framing contrast contains.** The unframed conditions send no system prompt at all, so the framing contrast measures adding a system instruction where there was none: the country label and the role-taking instruction together, not the country label alone. We also administered the English-framed cells on our own transcription of the questionnaire while the unframed English comparator is the official file, so the English framing contrasts add that change as well; unframed, the transcription moves the composite by 0.01 with an interval spanning zero (appendix B4). Two self-report system prompts naming no country measure the instruction on its own: 0.03 lower on our transcription with an interval spanning zero, 0.07 lower on the official file with an interval just clear of it (appendix B1a). Neither is the framing template, so the pairs are a different, imperfect control. The framing template with no country named we ran in September, in English, and appendix B4a reports it.
+**What the framing contrast contains.** The unframed conditions send no system prompt at all, so their scores are the panel's responses to the questionnaire request with nothing before it, and the framing contrast measures adding a system instruction where there was none: the country label and the role-taking instruction together, not the country label alone. We also administered the English-framed cells on our own transcription of the questionnaire while the unframed English comparator is the official file, so the English framing contrasts add that change as well; unframed, the transcription lowers the composite by 0.01 with an interval spanning zero (appendix B4). Two self-report system prompts naming no country measure the instruction on its own: 0.03 lower on our transcription with an interval spanning zero, 0.07 lower on the official file with an interval just clear of it (appendix B1a). Neither is the framing template, so the pairs are a different, imperfect control. The framing template with no country named we ran in September, in English, and appendix B4a reports it.
 
 **Order and seeds.** We draw statement order fresh per run. The English runner seeds the shuffle from model, instrument, country and iteration; the in-language runner seeds it from model, instrument, condition and iteration, so the four Arabic-framed countries share an order for a given model and run (appendix B8).
 
@@ -88,7 +88,7 @@ The framing effect by language, on the binding composite and on Loyalty and Auth
 | Russian | 1 | +1.260 | +1.235 |
 | six languages, equal weight | 15 | +1.063 | +0.982 |
 
-The binding composite is the focal quantity, fixed before any translated cell existed; the Loyalty-Authority column shows the shift without the flagged foundation. Framing over language holds on average and not uniformly: Arabic's language effect exceeds the French framing effect, and framing Belgium in English lowers the composite by 0.15.
+The binding composite is the focal quantity, fixed before any translated cell existed; the Loyalty-Authority column shows the shift without the flagged foundation. Framing over language holds on average and not uniformly: Arabic's language effect exceeds the French framing effect, and framing Belgium in English lowers the composite by 0.15. Weighting the fifteen language-country pairs equally instead of the six languages gives 1.03 (appendix B4).
 
 ## Where the panel lands against the reference samples
 
@@ -163,7 +163,7 @@ Within a language group, framed in that language, does the panel rank countries 
 | Spanish | 6 | +0.89 | 0.794 | 1.239 (156%) |
 | French | 3 | not reported | 0.261 | 0.279 (107%) |
 
-In Arabic the panel's order runs against the reference order: panel Saudi Arabia, United Arab Emirates, Egypt; reference Egypt, Saudi Arabia, United Arab Emirates. Its range across the three countries is 41 percent of theirs. In French the panel puts Switzerland first where the reference samples put it last. In Spanish the order is close, rho +0.89 over six countries, and the range is 156 percent of theirs. With three countries a rank correlation can take only four values, so none is reported for Arabic or French; the Spanish one carries little precision and reads as direction.
+In Arabic the panel's order runs against the reference order: panel Saudi Arabia, United Arab Emirates, Egypt; reference Egypt, Saudi Arabia, United Arab Emirates. Its range across the three countries is 41 percent of theirs. In French the panel puts Switzerland first where the reference samples put it last. In Spanish the order is close, rho +0.89 over six countries, and the range is 156 percent of theirs. With three countries a rank correlation can take only four values, so none is reported for Arabic or French; the Spanish one carries little precision and reads as direction. The reference order is itself estimated: the Spanish six carry standard errors near 0.05 (appendix B3), and Peru and Mexico sit 0.002 apart.
 
 ## What the panel is not doing
 
@@ -193,11 +193,11 @@ That study also ran a cross-linguistic replication: a short form of the MFQ-2 tr
 
 **Our language groups are administration languages, not cohorts.** The grouping names the language we administered in. That matches Atari et al.'s administration language for Belgium and Switzerland, so the comparison is like for like, but French is one of Belgium's three national languages and, in Switzerland, the main language of 23 percent of residents in 2023 (Federal Statistical Office, 2025). Those rows describe respondents answering in French rather than typical residents of either country.
 
-**The English-framed arm used our transcription of the questionnaire.** Every framing-in-English number compares our transcription, framed, against the official English file, unframed. The two differ in the scale prompt, in one Proportionality item outside the binding composite, and in punctuation on three others. Unframed, the difference between the files is 0.01 with an interval spanning zero, six models one way and five the other (appendix B4). The in-language framing contrasts use one file throughout.
+**The English-framed arm used our transcription of the questionnaire.** Every framing-in-English number compares our transcription, framed, against the official English file, unframed. The two differ in the scale prompt, in one Proportionality item outside the binding composite, and in punctuation on three others. Unframed, our transcription scores 0.01 lower with an interval spanning zero, six models one way and five the other (appendix B4). The in-language framing contrasts use one file throughout.
 
 **Five runs per model is not a lot.** Within a model, the spread across its five runs has a median of 0.129 over the 550 model-by-condition cells, against a median between-model spread of 0.188 over the fifty conditions. Repeated-generation noise is therefore not small next to the differences between models. Averaging five runs reduces that contribution without removing it, which is why we average before any comparison, but the panel figures carry more run-to-run noise than a larger number of runs would leave.
 
-**One panel, one questionnaire, one time.** Eleven models is not a sample of models, twenty countries is not a sample of countries, and the countries are here because someone published a mean for them. The September check is three conditions on ten of the models in a second window, English only.
+**One panel, one questionnaire, one time.** Eleven models is not a sample of models, twenty countries is not a sample of countries, and the countries are here because someone published a mean for them. The September check is three conditions on ten of the models in a second window, English only. Atari et al. collected their samples in May 2021 and Hazrati et al. theirs between September 2023 and February 2024; the panel answered in August and September 2026. A difference from a reference mean is a difference between those dates as well as between a panel and a sample.
 
 ## Data and code
 
