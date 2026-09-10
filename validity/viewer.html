@@ -809,10 +809,24 @@ function condName(k){
 }
 /* Which human anchor, if any, this condition can be judged against. */
 function condAnchor(k){
-  const m = k.match(/^[A-Za-z]+_framed_(.+)$/);
+  const m = k.match(/^([A-Za-z]+)_framed_(.+)$/);
   if (!m) return null;
-  const row = D.countries.find(r => r.country === m[1]);
-  return row && row.human !== null ? row : null;
+  const row = D.countries.find(r => r.country === m[2]);
+  if (!row || row.human === null) return null;
+  // A country's reference sample answered in one language. The English arm is compared for
+  // every country; a translated arm is compared only when it is that language. Morocco's
+  // Arabic arm therefore gets no anchor: its sample answered in Spanish (decision 18).
+  return (m[1] === "EN" || m[1] === row.lang_code) ? row : null;
+}
+/* Why a framed condition has no anchor, when it names an anchored country. */
+function anchorNote(k){
+  const m = k.match(/^([A-Za-z]+)_framed_(.+)$/);
+  if (!m || m[1] === "EN") return "";
+  const row = D.countries.find(r => r.country === m[2]);
+  if (!row || row.human === null || m[1] === row.lang_code) return "";
+  return `<p class="note"><strong>No reference marker on this condition.</strong> ${esc(row.country)}'s human
+      sample answered in ${esc(row.language)}, so the ${esc(LANGNAME[m[1]] || m[1])}-framed cells are data
+      and enter no comparison against the human mean; the ${esc(row.language)} arm carries that comparison.</p>`;
 }
 
 /* The English-baseline arms measured an instrument-and-prompt confound. They are audit
@@ -924,6 +938,7 @@ function panelModels(){
       a panel mean, so one talkative model cannot outvote the rest. The panel mean (orange line) sits inside
       its 95% model-resampling interval (the band). Where the condition names a country, that country's
       reference-sample mean is the caret.</p>
+    ${anchorNote(sel)}
     <div class="controls">
       <label for="mcond" style="font-size:15px;color:var(--text-dim)">Condition</label>
       <select id="mcond" onchange="render()">
