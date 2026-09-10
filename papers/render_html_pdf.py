@@ -55,6 +55,20 @@ def md_to_html(md_text):
                              output_format="html5")
 
 
+def keep_short_tables_whole(html_body):
+    """A table of a dozen rows or fewer is never split across pages, and a paragraph that
+    ends in a colon directly before a table stays on the page with it. Longer tables keep the
+    header-row rule only, so a table taller than a page still breaks."""
+    def table_rule(m):
+        table = m.group(0)
+        if table.count("<tr") <= 12:
+            return table.replace("<table>", '<table style="page-break-inside: avoid;">', 1)
+        return table
+    html_body = re.sub(r"<table>.*?</table>", table_rule, html_body, flags=re.S)
+    return re.sub(r"<p>([^<]*:)</p>(\s*<table)",
+                  r'<p style="page-break-after: avoid;">\1</p>\2', html_body)
+
+
 def mark_rtl_paragraphs(html_body):
     """A paragraph opening in Arabic script runs right to left; its trailing English sentence
     is one left-to-right run so its full stop stays with it."""
@@ -138,6 +152,7 @@ if fn_match:
 print("Converting to HTML...")
 html_body = md_to_html(md_text)
 html_body = mark_rtl_paragraphs(html_body)
+html_body = keep_short_tables_whole(html_body)
 
 # Fix footnote anchors: colons in IDs break PDF internal links
 html_body = html_body.replace('id="fn:', 'id="fn-')
