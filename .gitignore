@@ -32,3 +32,6 @@ validity/runs_framed/
 validity/instruments/mfq2_translations_extracted.json
 validity/runs_framed_lang/
 validity/reference/_raw/
+
+# WeasyPrint render environment created by papers/render.sh
+papers/.render-venv/
