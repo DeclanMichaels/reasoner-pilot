@@ -1,12 +1,12 @@
 # Statistical Appendix
 
-Companion to "Frontier Language Models Converge in a Narrow Region of a Moral-Reasoning Space." Every number here regenerates from the raw runs with one stdlib script, `private/viz/build_appendix.py` (random seed 20260720). This appendix is deliberately terse and table-first; the readable account is in the main report.
+Companion to "Frontier Language Models Converge in a Narrow Region of a Moral-Reasoning Space." Every number here regenerates from the raw runs with one stdlib script, `analysis/build_appendix.py` (random seed 20260720). Tables first; the report carries the prose.
 
 ## A1. Sample and data
 
-Eleven models from nine labs (three Chinese: DeepSeek, MiniMax, Moonshot). Sixty-eight human respondents, a convenience sample recruited within one to two degrees of the author, demographically varied but concentrated in educational and professional background (almost all technology consultants and professionals), scored with the identical function. Forty-eight scenarios, twelve of which carry the human baseline (b12). Eight framings per scenario. Each (model, framing) cell is one complete run of 240 responses (48 scenarios times 5 iterations). Where a cell was run more than once, the newest run is canonical and the earlier runs are archived under `runs_v2/_superseded/`; the build scripts raise if a duplicate complete cell reappears.
+Eleven models from nine labs (three Chinese: DeepSeek, MiniMax, Moonshot). Sixty-eight human respondents, a convenience sample recruited within one to two degrees of the author, demographically varied but concentrated in educational and professional background (almost all technology consultants and professionals), scored with the identical function. Forty-eight scenarios, twelve of which carry the human baseline (b12). Eight framings per scenario. Each (model, framing) cell is one complete run of 240 responses (48 scenarios times 5 reruns). No cell was run more than once. The build scripts read `runs/` non-recursively and raise if a duplicate complete cell appears; a superseded run would be moved to `runs/_superseded/`, which they do not read.
 
-Two models with complete neutral runs were excluded from the pilot panel (Cohere Command A, Google Gemini 3 Pro); they appear only in the sensitivity analysis A8.
+Two models completed the unframed cell but not the framing grid, Cohere Command A (three of eight framings) and Google Gemini 3 Pro (one), and are outside the panel; they appear in A8 only.
 
 ## A2. The scoring function
 
@@ -33,7 +33,7 @@ Dispersion is population standard deviation; the model figures are each model's 
 | Moral Domain | 0.327 | 0.061 | 5.37x | [3.66, 11.65] | < 0.00001 |
 | Obligation Scope | 0.361 | 0.064 | 5.65x | [4.57, 8.41] | < 0.00001 |
 
-In 100,000 draws on each axis, not one human subsample matched the panel's tightness (p reported as < 0.00001). The lower bound of every ratio CI is at least 3.66, so even the conservative reading is a large compression. The human sample is a convenience sample concentrated among technology professionals (A1), which makes this a conservative comparison: a broader or cross-cultural human sample would widen the human SD and enlarge the ratio, not shrink it.
+In 100,000 draws on each axis, no human subsample was as tight as the panel (p reported as < 0.00001). The lower bound of every ratio CI is at least 3.66. The human sample is a convenience sample concentrated among technology professionals (A1).
 
 Where the two populations sit, for context (the compression claim is about spread, not location):
 
@@ -44,11 +44,11 @@ Where the two populations sit, for context (the compression claim is about sprea
 | Moral Domain | +0.37 | +0.43 | +0.29 |
 | Obligation Scope | +0.37 | +0.42 | +0.28 |
 
-Moral Agent is the one axis where the models do not merely compress but sit on the opposite side of the midpoint from the human center.
+On Moral Agent the model mean and the human center sit on opposite sides of the midpoint.
 
 ## A4. Run reliability (test-retest)
 
-Within-model dispersion is the standard deviation of a cell's axis score across its five iterations, reported as the median over the eleven models. Between-model dispersion is the panel SD from A3. The point of the table: the clustering is not an artifact of sampling noise, because the spread between models is roughly two to two-and-a-half times the spread a single model shows on rerun. This within-model dispersion is what the interactive viewer draws as its optional run-spread overlay.
+Within-model dispersion is the standard deviation of a cell's axis score across its five reruns, reported as the median over the eleven models. Between-model dispersion is the panel SD from A3. The spread between models is 1.9 to 2.5 times the spread a single model shows on rerun. This within-model dispersion is what the interactive viewer draws as its optional run-spread overlay. No sampling temperature was sent; each model ran at its provider's default, which the run records do not capture, so the within-model figures are not on a common footing across models.
 
 | Axis | Within-model run SD (median) | Between-model SD | Between / within |
 |---|---:|---:|---:|
@@ -67,7 +67,7 @@ Displacement is the mean absolute per-axis change from a model's own neutral pos
 | Nonsense (geometry, color) | 0.203 | [0.164, 0.243] |
 | Seasonal, non-moral (not a clean null) | 0.246 | [0.196, 0.298] |
 
-Nonsense moves the models 0.56 as far as a real culture (Cohen's d between the two pooled sets = 0.95, a large effect). Per framing:
+Nonsense moves the models 0.56 as far as the cultural framings (Cohen's d between the two pooled sets = 0.95). Per framing:
 
 | Framing | Mean displacement |
 |---|---:|
@@ -79,9 +79,9 @@ Nonsense moves the models 0.56 as far as a real culture (Cohen's d between the t
 | nonsense: geometry | 0.195 |
 | nonsense: color | 0.211 |
 
-The seasonal framing (labeled irrelevant in the data) was intended as a non-moral noise floor, but it is not a clean null: seasons carry real cultural weight, and its displacement (0.246) sits within the bootstrap spread of the nonsense framings rather than near zero. We report it as a mild non-moral framing, not a control. The pilot has no clean inert control; adding one is the first priority for the next round.
+The seasonal framing (labeled irrelevant in the data) was designed as a non-moral noise floor. Its displacement (0.246) is nearer the nonsense framings than zero, and its interval overlaps theirs and not the cultural framings'; it is reported as a non-moral framing, not a control.
 
-The competence claim rests on direction, not distance. For each cultural framing, the signed shift on the axis it should move, in the expected direction, and the count of models that moved the right way:
+The cultural result rests on direction, not distance. For each cultural framing, the signed shift on the axis it should move, in the expected direction, and the count of models that moved the expected way:
 
 | Framing | Target axis | Mean signed shift (expected direction) | Models correct |
 |---|---|---:|:---:|
@@ -90,7 +90,7 @@ The competence claim rests on direction, not distance. For each cultural framing
 | egalitarian | Authority (toward skeptical) | +0.16 | 11 / 11 |
 | hierarchical | Authority (toward deferential) | +0.62 | 11 / 11 |
 
-Nonsense produces movement without that contrastive structure. Both nonsense framings push every one of the eleven models the same way on Moral Agent (toward relational: geometry mean -0.25, color mean -0.24, 0 of 11 moving the other way) rather than splitting them the way a genuine cultural contrast would. A uniform pull is the signature of compliance, not of reading the scenario.
+Under both nonsense framings all eleven models move the same way on Moral Agent (toward relational: geometry mean -0.25, color mean -0.24, 0 of 11 moving the other way).
 
 Between-model dispersion. The compression in A3 is measured at neutral. Under framing the panel does not stay equally tight: the standard deviation across the eleven models, averaged over the four axes, rises two to five times above its neutral value under every framing, cultural or nonsense alike.
 
@@ -105,7 +105,7 @@ Between-model dispersion. The compression in A3 is measured at neutral. Under fr
 | nonsense: geometry | 0.145 | 2.4x | 0.097 | 2.9x |
 | nonsense: color | 0.142 | 2.4x | 0.109 | 3.3x |
 
-The scatter is not specific to real cultures; nonsense and the seasonal framing widen the panel about as much. What distinguishes cultural framing is the shared direction of the signed shifts above, not the amount of spread, so the models share a resting point and a direction of movement without sharing a destination.
+The nonsense and seasonal framings widen the panel about as much as the cultural ones. What differs under the cultural framings is the shared direction of the signed shifts above, not the spread.
 
 ## A6. Cross-lab clustering
 
@@ -127,7 +127,7 @@ Panel grain (deviation of the four axis positions, all 48 scenarios): no model's
 | opus | deepseek_v4 | 0.882 | no |
 | sonnet | minimax | 0.984 | no |
 
-Fine grain (deviation of the 48 per-scenario positions): ten of eleven nearest neighbors are cross-lab. The single exception is Opus, whose nearest neighbor is Sonnet at r = 0.137, narrowly ahead of two OpenAI models (gpt55 at 0.115, o3 at 0.104). Sonnet itself is not the mirror of that tie: its own nearest neighbor is MiniMax at r = 0.500, a much stronger and cross-lab pairing. We report this rather than suppress it: the substantive conclusion, that models do not sort by lab or by geography, holds at both grains, and the lone same-lab tie is weak and appears only at the finest resolution.
+Fine grain (deviation of the 48 per-scenario positions): ten of eleven nearest neighbors are cross-lab. The single exception is Opus, whose nearest neighbor is Sonnet at r = 0.137, narrowly ahead of two OpenAI models (gpt55 at 0.115, o3 at 0.104). Sonnet itself is not the mirror of that tie: its own nearest neighbor is MiniMax at r = 0.500, a much stronger and cross-lab pairing. The same-lab pairing appears at the scenario grain only.
 
 | Model | Nearest neighbor | r | Same lab |
 |---|---|---:|:---:|
@@ -163,9 +163,9 @@ Mean reasoning tokens per neutral scenario, with each model's Euclidean distance
 | opus | 0 | 0.042 |
 | sonnet | 0 | 0.079 |
 
-Spend runs from zero (four models emit no reasoning tokens) to 3,628. Across the eleven models it has no meaningful relationship with position. The correlation between token spend and distance from the panel center is -0.48, which at n = 11 is not significant and is negative, meaning if anything the heavier reasoners sit slightly closer to the middle rather than staking out distinctive ground. The correlation between token spend and position on each individual axis is small: Moral Agent -0.08, Authority -0.13, Moral Domain 0.04, Obligation Scope 0.12.
+Spend runs from zero (four models emit no reasoning tokens) to 3,628. The correlation between token spend and distance from the panel center is -0.48, not significant at n = 11 and negative: the heavier reasoners sit slightly closer to the center. The correlation between token spend and position on each individual axis is small: Moral Agent -0.08, Authority -0.13, Moral Domain 0.04, Obligation Scope 0.12.
 
-The single-model contrast in the report (Kimi at 3,628 tokens and Llama 3.3 70B at zero landing in the same place) is an illustration of this panel pattern, not the evidence for it. This is not a controlled test of whether reasoning improves answers in general; it shows only that, on this instrument, how much a model deliberates does not predict where it lands.
+The Kimi and Llama 3.3 70B contrast in the report is one pair of rows from this table. Reasoning-token spend does not predict position on this instrument; nothing here tests reasoning in any other setting.
 
 ## A8. Sensitivity analyses
 
@@ -190,15 +190,15 @@ Panel composition. Adding back the two excluded vendors (13 models) leaves the p
 
 ## A9. Validity
 
-This pilot does not fully validate the instrument; that is what the decisive study is for. But three results already bear on whether it measures structured moral reasoning rather than returning arbitrary numbers.
+Three results bear on validity.
 
-Known-groups. The human sample lands on the profile the cross-cultural literature predicts for a WEIRD group, autonomous, skeptical, narrow, universalist, with no tuning (A3). Because it is a convenience sample from the author's network (A1), this is consistent with the prediction rather than an independent test of it; but an instrument returning arbitrary numbers would not land on the predicted profile at all.
+Known-groups. The human sample lands on the profile reported for WEIRD samples, autonomous, skeptical, narrow, universalist (A3). The sample is a convenience sample from the author's network (A1), so this is consistent with the reported profile rather than a test of it.
 
-Response to manipulation. The models move under cultural framings in the theory-predicted direction, all eleven the right way on all four cultural framings (A5), and do not show that directional structure under nonsense. A response that tracks the direction of a cultural manipulation is evidence the axis relates to that manipulation.
+Response to manipulation. The models move under each cultural framing in the expected direction on its target axis, all eleven on all four (A5); under both nonsense framings all eleven move the same way on Moral Agent.
 
-Reliability. The scores are repeatable: within-model run-to-run SD is roughly half the between-model SD on every axis (A4), so positions are stable rather than sampling noise.
+Reliability. Within-model run-to-run SD is roughly half the between-model SD on every axis (A4).
 
-What this pilot does not establish, and does not claim to: convergent validity against an independent instrument (for example, whether the Moral Domain axis tracks an established measure of the same construct); measurement invariance across cultural groups, which is required before any cross-cultural comparison; and criterion validity against behavior, whether a position here predicts what a model does in open-ended use. The first two ride on collecting cross-cultural human samples on this instrument; the third needs a separate behavioral study.
+Not established: convergent validity against an independent instrument (for example, whether the Moral Domain axis tracks an established measure of the same construct); measurement invariance across cultural groups, which is required before any cross-cultural comparison; and criterion validity against behavior, whether a position here predicts what a model does in open-ended use. The first two need cross-cultural human samples on this instrument; the third needs a behavioral study.
 
 ## A10. Reproducibility
 
