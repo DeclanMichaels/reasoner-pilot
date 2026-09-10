@@ -702,7 +702,7 @@ function panelFoundations(){
     t += `<tr><td>${FLABEL[f]}${BIND.has(f)?" <span style='color:var(--text-dim)'>(binding)</span>":""}</td>
       ${S.map(r=>{const v=r.foundations[f];
         return `<td class="num">${fmtS(v.shift,2)}<br>
-          <span style="color:var(--text-dim);font-size:14px">[${fmtS(v.ci[0],2)}, ${fmtS(v.ci[1],2)}]</span></td>`;}).join("")}
+          <span style="color:var(--text-dim)">[${fmtS(v.ci[0],2)}, ${fmtS(v.ci[1],2)}]</span></td>`;}).join("")}
       <td class="num">${fmtS(vs.reduce((s,v)=>s+v,0)/vs.length,2)}</td></tr>`;
   }
   t += `</tbody></table>`;

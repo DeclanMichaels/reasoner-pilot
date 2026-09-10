@@ -70,7 +70,7 @@ was worked through.
 
 ## The tracker
 
-Empty. #1 to #104 are closed, each with its disposition on the ticket.
+Empty. #1 to #105 are closed, each with its disposition on the ticket.
 
 ## Next session
 
@@ -106,8 +106,7 @@ translated country-free templates (decision 21 explains; they need translations 
 Candidates for tickets, not filed: a tracked claim-check for the paper's hand-written tables (the
 d table and the Ordering table are still not emitted; the dataset makes such a check runnable
 from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every framed cell tab has
-no September column, by design; the Every shift table on the Foundations tab prints its intervals
-at 14 px, below the 15 px floor.
+no September column, by design.
 
 ## Open items
 
