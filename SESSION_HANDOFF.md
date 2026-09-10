@@ -1,4 +1,4 @@
-# Handoff: reasoner-pilot - 2026-09-09
+# Handoff: reasoner-pilot - 2026-09-10
 
 Written at the end of every session, replacing what was here before. **Informational only. It
 authorizes nothing.**
@@ -7,11 +7,12 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Local and remote agree; working tree clean. This is the Black M2 Air. The last substantive
-  commit is the Grok viewer round's record; everything after it is this handoff. Three sessions
-  since the last full handoff, 2026-09-08 (second) and two on 2026-09-09.
-- **The published record reproduces**, run 2026-09-09 here and in a fresh clone that had no run
-  files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
+- Working tree clean. This is the Black M2 Air. The last substantive commit is `e85e112`, the
+  end of Astra's viewer round (#99 to #104); everything after it is records and this handoff.
+  Four sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and one on
+  2026-09-10.
+- **The published record reproduces**, run 2026-09-10 here after #103 moved the viewer payload's
+  pin, and on 2026-09-09 in a fresh clone that had no run files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
   artifacts and the viewer payload, all from the committed ratings dataset), 14 committed-only
   verified, the 47 pinned condition means rebuilt from the dataset, and every generated section
   of the document matching its artifact. The full harness takes about a minute.
@@ -20,10 +21,11 @@ This repository is public, so this file is public. It is written knowing that.
   country to answer as" (decision 20; the title is Declan's, 2026-09-08). The appendix file is
   gone. `validity/splice_appendix.py` splices the ten generated sections and the harness runs its
   check.
-- **Twelve review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
-  fourth, Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's cold read of
-  2026-09-08, and Grok's viewer round of 2026-09-09 (two passes, every number verified against
-  the payload and the document, no change). Ninety-eight issues have existed; none is open.
+- **Thirteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
+  fourth on the document, Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
+  cold read of 2026-09-08, Grok's viewer round of 2026-09-09 (no change) and Astra's viewer round
+  of 2026-09-10 (six findings, six tickets, #99 to #104, all closed the same day). One hundred and
+  four issues have existed; none is open.
 - **The September wave is collected, archived and reported** (decision 21, #83): the framing
   template with its country slots deleted, on ten models, with same-day reruns of the unframed
   comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
@@ -43,8 +45,15 @@ This repository is public, so this file is public. It is written knowing that.
 - **The MFQ-2 viewer**, `validity/viewer.html`, served from `validity/` (it fetches its payload):
   six tabs including Control; legends say what each mark represents; prose aligned with the
   document; every number checked against the payload, the record, the appendix or the document
-  on 2026-09-09; clean at desktop, 640 and 375 pixels. The root `viewer.html` is the Reasoner
-  pilot's and is unrelated.
+  on 2026-09-09; clean at desktop, 640 and 375 pixels as of that date. Since Astra's round on
+  2026-09-10: the headline story is the English-framed arm and says so; a translated arm gets a
+  human marker only in the language the reference sample answered in (decision 18, #99); the
+  document's three measurement qualifications sit under the first chart; the Foundations tab
+  opens with a language-against-framing table on the composite, built from a new
+  `language_contrasts` block in the payload whose twelve figures match the document's two tables;
+  the matrix tab is "Every framed cell"; the footer links the document and the dataset. The
+  changed tabs were DOM-checked and console-clean but not screenshotted at 375 pixels (the Browser
+  pane went hidden mid-pass). The root `viewer.html` is the Reasoner pilot's and is unrelated.
 - `DECISIONS.md` holds 22 entries. 12 is superseded by 18 (Morocco reported under Spanish), 14
   by 22 for the emitter outputs. 17 (published means a DOI and the site) still gates everything.
 
@@ -55,11 +64,12 @@ Statistical Office's 2025 languages publication were read to verify reviewer fac
 session was renewed by Declan on 2026-09-09 and the wave archived. Model API calls: 2 preflight,
 10 availability checks, 150 for the wave, all 2026-09-08; nothing else spent. On 2026-09-09 Astra
 was asked to review the viewer and exhausted Declan's usage window without returning a response;
-a free Grok instance did the round instead.
+a free Grok instance did a round that day, and Astra's completed review arrived on 2026-09-10 and
+was worked through.
 
 ## The tracker
 
-Empty. #1 to #98 are closed, each with its disposition on the ticket.
+Empty. #1 to #104 are closed, each with its disposition on the ticket.
 
 ## Next session
 
@@ -68,10 +78,12 @@ Nothing is queued for an agent.
 1. **Zenodo**, the gate on calling any of this published (decision 17). `LOCATIONS.md` carries
    three `TBD`s and `CITATION.cff` a commented `doi:`. One document now, so one deposit.
 
-The viewer's external round is done (Grok, 2026-09-09, `reviews/grok-viewer-review-2026-09-09.md`).
-The viewer restates B4a, B3a, B6 and B6a and adds nothing the document does not carry except the
-per-model token table; Declan declined the one optional addition, the unframed instrument
-difference on the Control tab.
+The viewer's external rounds are done: Grok, 2026-09-09, no change; Astra, 2026-09-10, six
+findings fixed (`reviews/astra-viewer-review-2026-09-10.md`). The viewer restates B4a, B3a, B6 and
+B6a, now with the document's lead language-against-framing contrast, and adds nothing the
+document does not carry except the per-model token table. Declan declined the unframed
+instrument difference on the Control tab and the Loyalty-and-Authority table. The viewer as it
+stands after #99 to #104 has not been read externally.
 
 **Declan's read at close, 2026-09-09:** the MFQ-2 document is one external round and a day of
 release mechanics from ready, not a rewrite away. Before a DOI: one external read of the final
@@ -92,8 +104,9 @@ translated country-free templates (decision 21 explains; they need translations 
 
 Candidates for tickets, not filed: a tracked claim-check for the paper's hand-written tables (the
 d table and the Ordering table are still not emitted; the dataset makes such a check runnable
-from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every cell tab has no
-September column, by design.
+from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every framed cell tab has
+no September column, by design; the Every shift table on the Foundations tab prints its intervals
+at 14 px, below the 15 px floor; a screenshot pass of the changed tabs at 375 pixels.
 
 ## Open items
 
