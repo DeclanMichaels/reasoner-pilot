@@ -129,7 +129,7 @@ table.data td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tab
 table.data tbody tr:hover{background:var(--surface-2)}
 .partial{color:var(--warn)}
 
-.note a,.lede a,.cbox a{display:inline-block;padding:10px 0;line-height:24px}
+.note a,.lede a,.cbox a,footer a{display:inline-block;padding:10px 0;line-height:24px}
 .note{border-left:3px solid var(--framed);background:var(--surface-2);padding:14px 18px;
   border-radius:0 7px 7px 0;font-size:16px;color:var(--text);margin-top:20px;max-width:82ch}
 .note strong{color:var(--text-bright)}
@@ -385,8 +385,8 @@ function panelOvershoot(){
       speaks, and sorted by their human mean, highest first, inside each group.</p>
     ${s}
     <p class="note"><strong>What the language groups are.</strong> The heading is the language
-      <em>we</em> administered in, and for every country here it is also the language Atari et al.
-      administered the human sample in. <strong>Morocco</strong> sits under <strong>Spanish</strong>
+      <em>we</em> administered in, and for every country here it is also the language the human sample
+      was administered in, by Atari et al. except for Iran, whose sample is Hazrati et al.'s. <strong>Morocco</strong> sits under <strong>Spanish</strong>
       because that is the language its human sample answered in (their Table 3), though the country's
       majority language is Arabic; we also framed it in Arabic, and those cells are in the appendix and
       enter no comparison against the human mean. Rows marked <span class="partial">§</span> were also
@@ -419,8 +419,8 @@ function panelOvershoot(){
   </div>
   <div class="cbox">
     <h2>The numbers</h2>
-    <p class="lede">Panel means, each model's iterations averaged before the model enters the average.
-      Bracketed figures are 95% model-resampling intervals: a percentile bootstrap over models that reweights the observed eleven and bounds nothing.</p>
+    <p class="lede">Panel means, each model's iterations averaged before the model enters the average,
+      with the 95% model-resampling interval in brackets under each: a percentile bootstrap over models that reweights the observed eleven and bounds nothing.</p>
     ${tableHTML()}
   </div>`;
   return html;
@@ -468,6 +468,7 @@ function tableHTML(){
       const v = r.conditions[c.key];
       h += `<td class="num${v && v.n_models<MAXN ? " partial":""}">${v
         ? fmt(v.mean) + (v.n_models<MAXN ? ` <span class="partial" title="partial panel">n=${v.n_models}</span>` : "")
+          + `<br><span style="color:var(--text-dim)">[${fmt(v.ci[0])}, ${fmt(v.ci[1])}]</span>`
         : "–"}</td>`;
     }
     const lf = r.deviation.local_framed, ef = r.deviation.en_framed;
@@ -763,7 +764,7 @@ function panelMatrix(){
   cap = Math.max(cap, 0.4);
 
   let h = `<div class="cbox">
-    <h2>Distance from the reference sample, every cell</h2>
+    <h2>Distance from the reference sample, every framed cell</h2>
     <p class="lede">How far each <strong>framed</strong> condition sits from that country's measured human
     mean, ordered by the English-framed distance, which every country received. Warm is <strong>above</strong> the reference sample, cool is
     <strong>below</strong>. Position is not available in a grid, so colour carries the magnitude here, and
@@ -879,8 +880,8 @@ function panelModels(){
     </tr></thead><tbody>`;
   for (const m of ms)
     tbl += `<tr><td>${esc(m.model)}</td><td class="num">${m.cells}</td>
-      <td class="num">${m.reasoning_per_call.toFixed(0)}</td>
-      <td class="num">${(m.reasoning_share*100).toFixed(0)}%</td>
+      <td class="num">${m.reasoning_per_call > 0 ? m.reasoning_per_call.toFixed(0) : "not reported"}</td>
+      <td class="num">${m.reasoning_per_call > 0 ? (m.reasoning_share*100).toFixed(0) + "%" : "not reported"}</td>
       <td class="num">${fmt(m.gap_to_panel)}</td><td class="num">${fmt(m.own_spread)}</td></tr>`;
   tbl += `</tbody></table>`;
 
@@ -953,10 +954,10 @@ function panelModels(){
       five iterations. "Reasoning share" is reasoning tokens as a fraction of reasoning plus output
       tokens. "Distance from the rest of the panel" is the mean absolute gap between a model's value
       and the mean of the other models, over every condition. "Its own spread" is the average SD across that
-      model's five iterations within a condition. <strong>A zero in the reasoning column means the provider
+      model's five iterations within a condition. <strong>"Not reported" means the provider
       returned no reasoning-token count</strong> - for some of these models because they do not expose
       one, for others because they do not do separate reasoning at all. It is not evidence that no reasoning
-      happened, so read the zeros as "not reported" and compare only the models that do report.</p>
+      happened; compare only the models that do report.</p>
   </div>`;
 }
 
@@ -996,7 +997,7 @@ function panelControl(){
     <h2>What the framing instruction does without a country</h2>
     <p class="lede">Every framing contrast on the other tabs adds a system instruction where there was none, and that
       instruction carries two things: a country, and an instruction to answer as <strong>a typical person</strong>.
-      A second, small collection on ${esc(D.meta.collected.september_wave)} separates them: the framing template with its
+      A second, small collection on ${esc(D.meta.collected.september_wave)} estimates the two increments: the framing template with its
       country slots deleted and nothing added, on the official English questionnaire, plus reruns of the unframed
       English comparator and of English-framed Egypt the same day with item-identical orders, so that the change
       between collection windows is measured rather than assumed. Ten models; DeepSeek-V4-Pro had left its provider's
@@ -1024,7 +1025,7 @@ const TABS = [
   {id:"overshoot", label:"Against the reference sample", fn:panelOvershoot},
   {id:"order",     label:"Ordering",               fn:panelOrder},
   {id:"found",     label:"Which foundations move", fn:panelFoundations},
-  {id:"matrix",    label:"Every cell",             fn:panelMatrix},
+  {id:"matrix",    label:"Every framed cell",      fn:panelMatrix},
   {id:"models",    label:"Models",                 fn:panelModels},
   {id:"control",   label:"Control",                fn:panelControl},
 ];
@@ -1170,7 +1171,11 @@ function boot(d){
      probability sample from any population of models, so an interval here is not a confidence
      interval for models in general.
      Human anchors: Atari et al. 2023 Study 2, except Iran (Hazrati et al. 2025, sample 2).
-     Exploratory throughout - none of this was preregistered.`;
+     Exploratory throughout - none of this was preregistered.
+     The <a href="https://github.com/DeclanMichaels/reasoner-pilot/blob/main/papers/inlanguage-mfq2-DRAFT.md">document
+     this viewer accompanies</a>, with its method, sources and appendix, and the
+     <a href="https://github.com/DeclanMichaels/reasoner-pilot/blob/main/validity/results/mfq2_ratings.csv">ratings
+     dataset</a> every figure here is computed from.`;
 
   render();
 }
