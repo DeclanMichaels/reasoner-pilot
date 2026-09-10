@@ -7,14 +7,14 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean, local and origin agree. This is the Black M2 Air. The last substantive
-  commits are #113 and #114, the follow-ups to Astra's fifth document round, pushed 2026-09-10;
-  everything after them is this handoff. Five
+- Working tree clean. This is the Black M2 Air. The last substantive commits are #115 to #118,
+  Astra's sixth document round; everything after them is this handoff. Local is ahead of origin
+  by the round until Declan says push. Five
   sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and two on
   2026-09-10. Every repository under `~/Code/` is now cloned on this Air, `reasoner-study` and
   the site's included.
-- **The published record reproduces**, run 2026-09-10 here after #106 to #112 moved two
-  in-language artifacts on prose alone (`652c8ff` re-pins them) and earlier after #103 moved the
+- **The published record reproduces**, run 2026-09-10 here after #106 to #118 moved the
+  in-language artifacts on prose alone, re-pinned each time in a commit that says so, and earlier after #103 moved the
   viewer payload's pin, and on 2026-09-09 in a fresh clone that had no run files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
   artifacts and the viewer payload, all from the committed ratings dataset), 14 committed-only
   verified, the 47 pinned condition means rebuilt from the dataset, and every generated section
@@ -24,16 +24,20 @@ This repository is public, so this file is public. It is written knowing that.
   country to answer as" (decision 20; the title is Declan's, 2026-09-08). The appendix file is
   gone. `validity/splice_appendix.py` splices the ten generated sections and the harness runs its
   check.
-- **Fourteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
-  fifth on the document (the fifth on 2026-09-10, seven findings, seven tickets, #106 to #112,
-  closed the same day, then #113 and #114; heading now "Framing moves the binding composite",
+- **Fifteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
+  sixth on the document (the fifth on 2026-09-10, seven findings, seven tickets, #106 to #112,
+  closed the same day, then #113 and #114; the sixth the same day on the state after #114,
+  three findings and six small items, four tickets, #115 to #118, closed the same day: the Egypt
+  increment is the condition's score, the Summary opens on the five-of-six observation, the
+  Ireland paragraph leads with the cancellation, and Astra's read is "close to ready for release
+  as an exploratory report" after "a final precision edit"; heading now "Framing moves the binding composite",
   B3 gains the Loyalty-Authority comparison with distances in human SDs, sixteen above and four
   at or below with Ireland the only sign change, d from -1.28 to +1.97, and the human reference
   builders now ship in `validity/reference/`, Declan's decision of 2026-09-10 reversing #108's
   link-and-recipe wording), Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
   cold read of 2026-09-08, Grok's viewer round of 2026-09-09 (no change) and Astra's viewer round
   of 2026-09-10 (six findings, six tickets, #99 to #104, all closed the same day, plus #105 from
-  the record's leftovers). One hundred and fourteen issues have existed; none is open.
+  the record's leftovers). One hundred and eighteen issues have existed; none is open.
 - **The September wave is collected, archived and reported** (decision 21, #83): the framing
   template with its country slots deleted, on ten models, with same-day reruns of the unframed
   comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
@@ -81,11 +85,12 @@ ratings CSV. For #113, Atari et al.'s Study 2 respondent file was downloaded fro
 546 KB) into the gitignored `_raw/` of both this repository and `reasoner-study`, and a scratch
 `venv/` with `pyreadstat` was created here for the Iran builder. `reasoner-study` gained the
 Loyalty-Authority columns in its dispersion builder and CSV (its #1, commit `4f65f14`, pushed
-on Declan's word the same day). No model API calls on 2026-09-10; nothing spent.
+on Declan's word the same day). Astra's sixth round arrived after that push and ran the shipped
+builders itself. No model API calls on 2026-09-10; nothing spent.
 
 ## The tracker
 
-Empty. #1 to #114 are closed, each with its disposition on the ticket.
+Empty. #1 to #118 are closed, each with its disposition on the ticket.
 
 ## Next session
 
@@ -99,8 +104,9 @@ findings fixed (`reviews/astra-viewer-review-2026-09-10.md`). The viewer restate
 B6a, now with the document's lead language-against-framing contrast, and adds nothing the
 document does not carry except the per-model token table. Declan declined the unframed
 instrument difference on the Control tab and the Loyalty-and-Authority table. The viewer as it
-stands after #99 to #105 has not been read externally, and neither has the document after #106
-to #112.
+stands after #99 to #105 has not been read externally. Astra's sixth round read the document at
+`8d058ad`, after #114; the state after #115 to #118 is unread, and every change in it is a
+sentence Astra asked for.
 
 **Declan's read at close, 2026-09-09:** the MFQ-2 document is one external round and a day of
 release mechanics from ready, not a rewrite away. Before a DOI: one external read of the final
