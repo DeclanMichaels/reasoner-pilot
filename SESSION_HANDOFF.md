@@ -7,8 +7,8 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is the record of
-  Astra's fifth document round (#106 to #112); everything after it is this handoff. Five
+- Working tree clean. This is the Black M2 Air. The last substantive commits are #113 and #114,
+  the follow-ups to Astra's fifth document round; everything after them is this handoff. Five
   sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and two on
   2026-09-10. Every repository under `~/Code/` is now cloned on this Air, `reasoner-study` and
   the site's included.
@@ -25,12 +25,14 @@ This repository is public, so this file is public. It is written knowing that.
   check.
 - **Fourteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
   fifth on the document (the fifth on 2026-09-10, seven findings, seven tickets, #106 to #112,
-  closed the same day; heading now "Framing moves the binding composite", B9 links the human
-  sources and states the scoring, B3 gains the Loyalty-Authority comparison, sixteen above and
-  four at or below with Ireland the only sign change), Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
+  closed the same day, then #113 and #114; heading now "Framing moves the binding composite",
+  B3 gains the Loyalty-Authority comparison with distances in human SDs, sixteen above and four
+  at or below with Ireland the only sign change, d from -1.28 to +1.97, and the human reference
+  builders now ship in `validity/reference/`, Declan's decision of 2026-09-10 reversing #108's
+  link-and-recipe wording), Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
   cold read of 2026-09-08, Grok's viewer round of 2026-09-09 (no change) and Astra's viewer round
   of 2026-09-10 (six findings, six tickets, #99 to #104, all closed the same day, plus #105 from
-  the record's leftovers). One hundred and twelve issues have existed; none is open.
+  the record's leftovers). One hundred and fourteen issues have existed; none is open.
 - **The September wave is collected, archived and reported** (decision 21, #83): the framing
   template with its country slots deleted, on ten models, with same-day reruns of the unframed
   comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
@@ -74,11 +76,15 @@ was asked to review the viewer and exhausted Declan's usage window without retur
 a free Grok instance did a round that day, and Astra's completed review arrived on 2026-09-10 at
 `~/Documents/Codex/2026-09-10/tw/outputs/viewer-review.md` and was worked through. Later on
 2026-09-10 Declan pasted Astra's fifth document round, which had recomputed from the clone's
-ratings CSV. No model API calls on 2026-09-10; nothing spent.
+ratings CSV. For #113, Atari et al.'s Study 2 respondent file was downloaded from OSF (9dwzt,
+546 KB) into the gitignored `_raw/` of both this repository and `reasoner-study`, and a scratch
+`venv/` with `pyreadstat` was created here for the Iran builder. `reasoner-study` gained the
+Loyalty-Authority columns in its dispersion builder and CSV (its #1, commit `4f65f14`, local,
+not pushed unless Declan says). No model API calls on 2026-09-10; nothing spent.
 
 ## The tracker
 
-Empty. #1 to #112 are closed, each with its disposition on the ticket.
+Empty. #1 to #114 are closed, each with its disposition on the ticket.
 
 ## Next session
 
@@ -115,10 +121,7 @@ translated country-free templates (decision 21 explains; they need translations 
 Candidates for tickets, not filed: a tracked claim-check for the paper's hand-written tables (the
 d table and the Ordering table are still not emitted; the dataset makes such a check runnable
 from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every framed cell tab has
-no September column, by design; from Astra's fifth round, a respondent-level Loyalty-Authority
-SD per country so B3's new table can carry standardized distances (one column in
-`reasoner-study`'s `build_mfq2_dispersion.py` and a re-copy, but that clone has no `_raw/` and
-the Atari Study 2 file would have to be downloaded from OSF first, Declan's call); the
+no September column, by design; from Astra's fifth round, the
 same-instrument three-arm collection (unframed, template, Egypt template, one window, spending);
 and the caveat-consolidation sweep, deferred to the editing session.
 
