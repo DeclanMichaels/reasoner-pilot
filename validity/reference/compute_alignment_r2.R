@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 # Per-foundation measurement-invariance alignment R2 for the MFQ-2 across the 19 Study-2
-# countries, replicating Atari et al. (2023) Code_Study2.R (osf.io/vwrpn) EXACTLY: for each
+# countries, following the procedure of Atari et al. (2023) Code_Study2.R (osf.io/vwrpn); appendix B2a
+# reports the residual against their published figures. For each
 # foundation, fit a configural CFA per country and run Muthen-Asparouhov alignment
 # (sirt::invariance.alignment, align.scale=c(.2,.4), align.pow=c(.25,.25)), then read
 # es.invariance["R2",]: loadings = metric invariance, intercepts = scalar invariance.

@@ -3,7 +3,7 @@
 
 This does NOT ship Atari's microdata (its OSF licence governs the raw file; download it
 yourself, free). It reads the Study-2 raw CSV and computes per-country MFQ-2 foundation
-means, replicating the scoring in the authors' own Code_Study2.R EXACTLY:
+means, following the scoring in the authors' own Code_Study2.R:
 
   source project : osf.io/srtxn  ("Morality Beyond the WEIRD", Atari et al. 2023, JPSP)
   raw data       : Data/Study 2/Study_2_raw_dat.csv   (download: osf.io/9dwzt)

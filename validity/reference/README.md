@@ -6,7 +6,8 @@ decision 7); the aggregate CSVs are committed and are what the appendix reads.
 Provenance: build_mfq2_means.py, build_mfq2_dispersion.py and compute_alignment_r2.R were written
 in reasoner-study (instruments/MFQ-PVQ/mfq/reference/) and copied here on 2026-09-10 at its
 commit 4f65f14 so this repository stands alone (#114). The means builder's default input path was
-anchored to _raw/ in the copy; nothing else differs. Both repositories build the same CSVs.
+anchored to _raw/ in the copy and two header comments no longer say EXACTLY (#118); nothing else
+differs. Both repositories build the same CSVs.
 
 mfq2_country_means.csv: per-country foundation means and standard errors for Atari et al.'s
 (2023) Study 2 nineteen countries, n per country. Built by build_mfq2_means.py from
@@ -18,7 +19,9 @@ committed file.
 mfq2_country_dispersion.csv: per-country respondent-level SDs for the six foundations, the binding
 composite (mean of Loyalty, Authority and Purity) and, since 2026-09-10, the Loyalty-Authority
 composite (mean of the two), with each composite's mean; same respondents and scoring as the means
-file, composites per respondent over those with all their foundations. Built by
+file, composites per respondent over those with all six foundations complete. The means builder
+admits a respondent per complete foundation; every respondent the attention checks keep is
+complete on all six, so both builders count the same 3,902 (n per country agrees). Built by
 build_mfq2_dispersion.py. The composite SDs are not recoverable from the means file (they need
 the covariances among the foundations); the paper's distances in human SDs rest on them.
 
