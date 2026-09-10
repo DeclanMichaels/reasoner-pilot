@@ -7,8 +7,10 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is `595fbb7`, the
-  pilot PDFs rendered with the recipe; before it `5961507`, the pilot writeup pass. Pushed
+- Working tree clean. This is the Black M2 Air. The last substantive commit is `dc27c21`, the
+  pilot viewer's three prose lines aligned to the revised paper and `viewer.html` re-pinned
+  (harness PASS); before it `595fbb7`, the pilot PDFs rendered with the recipe, and `5961507`,
+  the pilot writeup pass. Pushed
   2026-09-10; local and origin agree. Every repository under `~/Code/` is cloned on this Air.
 - **The Reasoner pilot writeup has had its prose pass** (`5961507`). `papers/reasoner-pilot.md`
   and `papers/reasoner-appendix.md` were unchanged since 2026-07-20 and predated the register
@@ -138,5 +140,3 @@ viewer's Control tab rendered a date as "[object Object]" (fixed before push).
 - The viewer's per-model token table has no counterpart in the document.
 - The pilot appendix's A10 names the build scripts without their `analysis/` directory; A1 now
   gives the full path for one of them.
-- The root `viewer.html` (the pilot's) has not been read against the revised paper; its text
-  may still carry the old wordings.
