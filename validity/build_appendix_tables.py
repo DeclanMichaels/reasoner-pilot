@@ -311,6 +311,67 @@ print("Human anchors, treated as constants, binding as the mean of loyalty, auth
          "is" if len(UNANCHORED) == 1 else "are",
          "it" if len(UNANCHORED) == 1 else "them"))
 
+
+# ---- Loyalty and Authority alone, against the reference samples (#109)
+def _la_anchor():
+    """Reference-sample mean of Loyalty and Authority, from the same sources as ANCH."""
+    a = {}
+    with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
+        for r in csv.DictReader(fh):
+            a[REF_NAME.get(r["country"], r["country"])] = (float(r["loyalty"]) + float(r["authority"])) / 2
+    ir = json.load(open(VDIR / "anchors_iran.json"))["means_1to5"]
+    a["Iran"] = (ir["loyalty"]["s2"] + ir["authority"]["s2"]) / 2
+    return a
+
+
+def _la_cell(k):
+    return mean([(F[k][m]["loyalty"] + F[k][m]["authority"]) / 2 for m in sorted(F[k])])
+
+
+_LA = _la_anchor()
+_la_rows = sorted(((c, _LA[c], _la_cell("EN_framed_" + c)) for c, _, _ in ROWS if c in ANCH),
+                  key=lambda r: r[2] - r[1])
+_la_above = [c for c, h, pm in _la_rows if pm - h > 0]
+_bd_above = [c for c, _, _ in ROWS if c in ANCH and cell("EN_framed_" + c) - ANCH[c] > 0]
+_la_flip = sorted(set(_la_above) ^ set(_bd_above))
+print("**Loyalty and Authority alone.** The English-framed comparison again, leaving out Purity, "
+      "the foundation Atari et al. flag (B2a): the panel's mean of Loyalty and Authority against "
+      "each reference sample's, the human figure the mean of the two published foundation means, "
+      "Iran's from Hazrati et al. Ordered by difference. No distance in human standard deviations "
+      "is given, because the dispersion file carries no respondent-level SD for this two-foundation "
+      "composite.\n")
+print("| country | human | panel, EN framed | difference |")
+print("|---|--:|--:|--:|")
+for c, h, pm in _la_rows:
+    print("| %s | %.3f | %.3f | %+.3f |" % (c + MARK.get(c, ""), h, pm, pm - h))
+
+
+def _rho(a, b):
+    ra = {k: i for i, k in enumerate(sorted(a, key=a.get))}
+    rb = {k: i for i, k in enumerate(sorted(b, key=b.get))}
+    n = len(a)
+    return 1 - 6 * sum((ra[k] - rb[k]) ** 2 for k in a) / (n * (n * n - 1))
+
+
+_es = {c for c, _, code in ROWS if ANCHOR_ARM.get(c, code) == "es" and c in ANCH}
+_es_p = {c: _la_cell("es_framed_" + c) for c in sorted(_es)}
+_es_h = {c: _LA[c] for c in sorted(_es)}
+_ar = ["Egypt", "Saudi Arabia", "United Arab Emirates"]
+_ar_p = sorted(_ar, key=lambda c: -_la_cell("ar_framed_" + c))
+_ar_h = sorted(_ar, key=lambda c: -_LA[c])
+_fr = ["Belgium", "France", "Switzerland"]
+_fr_p = sorted(_fr, key=lambda c: -_la_cell("fr_framed_" + c))
+_fr_h = sorted(_fr, key=lambda c: -_LA[c])
+print("\nOn Loyalty and Authority the panel sits above the reference sample in %d countries and at "
+      "or below it in %d; against the composite, the sign changes for %s and for no other country. "
+      "Framed in the local language, the Spanish six rank with rho %+.2f against the reference "
+      "order, %+.2f on the composite; the Arabic panel order is %s against a reference order of "
+      "%s, and the French %s against %s.\n"
+      % (len(_la_above), len(_la_rows) - len(_la_above),
+         " and ".join(_la_flip) if _la_flip else "no country",
+         _rho(_es_p, _es_h), _rho({c: cell("es_framed_" + c) for c in _es}, {c: ANCH[c] for c in _es}),
+         ", ".join(_ar_p), ", ".join(_ar_h), ", ".join(_fr_p), ", ".join(_fr_h)))
+
 print("\n## B3a. Every condition, with intervals\n")
 print("| condition | panel mean | 95% model-resampling interval | between-model SD |")
 print("|---|--:|:--:|--:|")

@@ -119,7 +119,7 @@ Distance from each country's measured mean, English framing, which every country
 
 † Iran's mean is from Hazrati, Nejat and Daneshi (2025), not Atari et al.'s set. See Limits.
 
-Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154. Unframed, the English panel sits at 2.769, below every reference-sample mean but Japan's; appendix B3 carries that column. Japan has the lowest measured mean in the set and receives the second largest positive difference.
+Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154. On Loyalty and Authority alone it is four and sixteen: Ireland moves to +0.08 and no other country changes sign (appendix B3). Unframed, the English panel sits at 2.769, below every reference-sample mean but Japan's; appendix B3 carries that column. Japan has the lowest measured mean in the set and receives the second largest positive difference.
 
 Ireland's is the only reference-sample mean, 3.096 with a standard error of 0.057 under an independent-respondent approximation, falling within the panel's resampling range, [2.96, 3.25]; the other nineteen fall outside it. The two uncertainties are different things: one is about who was sampled, the other about which models were resampled, and neither removes selection in either set. A composite that matches can also conceal offsets in its parts. Ireland's English-framed Loyalty is 3.67 against a measured 3.29, Authority 3.27 against 3.49, Purity 2.34 against 2.51; the composite agrees because the first cancels the other two.
 
@@ -406,6 +406,33 @@ The human SE column is SD over root n from the per-country dispersion file, 0.03
 [d18] Morocco: reported under Spanish, the language Atari et al. administered its sample in, and compared on the Spanish arm. We also ran an Arabic-framed arm; its cells are in B3a, B6 and B4 and enter no comparison against the human mean.
 
 Human anchors, treated as constants, binding as the mean of loyalty, authority and purity: Egypt 4.267 (Atari 2023 Study 2), Saudi Arabia 4.083 (Atari 2023 Study 2), United Arab Emirates 3.892 (Atari 2023 Study 2), Argentina 3.283 (Atari 2023 Study 2), Chile 3.220 (Atari 2023 Study 2), Colombia 3.497 (Atari 2023 Study 2), Mexico 3.512 (Atari 2023 Study 2), Morocco 4.014 (Atari 2023 Study 2), Peru 3.514 (Atari 2023 Study 2), Belgium 3.444 (Atari 2023 Study 2), France 3.610 (Atari 2023 Study 2), Switzerland 3.349 (Atari 2023 Study 2), Japan 2.652 (Atari 2023 Study 2), Iran 3.333 (Hazrati 2025 sample 2), Russia 3.599 (Atari 2023 Study 2), Ireland 3.096 (Atari 2023 Study 2), Kenya 3.867 (Atari 2023 Study 2), New Zealand 3.094 (Atari 2023 Study 2), Nigeria 4.038 (Atari 2023 Study 2), South Africa 3.749 (Atari 2023 Study 2). India, Sweden and the United States are not in the MFQ-2 nineteen-nation set, so no overshoot is computable for them. Hazrati et al. administered Iran's sample on a 0-4 scale and we shift it linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the detail and the caveats.
+
+**Loyalty and Authority alone.** The English-framed comparison again, leaving out Purity, the foundation Atari et al. flag (B2a): the panel's mean of Loyalty and Authority against each reference sample's, the human figure the mean of the two published foundation means, Iran's from Hazrati et al. Ordered by difference. No distance in human standard deviations is given, because the dispersion file carries no respondent-level SD for this two-foundation composite.
+
+| country | human | panel, EN framed | difference |
+|---|--:|--:|--:|
+| France | 3.869 | 3.085 | -0.785 |
+| Belgium | 3.663 | 2.962 | -0.701 |
+| Switzerland | 3.547 | 3.417 | -0.130 |
+| New Zealand | 3.350 | 3.248 | -0.102 |
+| Ireland | 3.390 | 3.470 | +0.080 |
+| Argentina | 3.627 | 3.870 | +0.243 |
+| South Africa | 3.926 | 4.203 | +0.277 |
+| Chile | 3.559 | 3.989 | +0.431 |
+| Egypt | 4.303 | 4.762 | +0.459 |
+| Nigeria | 4.160 | 4.676 | +0.516 |
+| Mexico | 3.861 | 4.450 | +0.589 |
+| Kenya | 4.008 | 4.636 | +0.628 |
+| Peru | 3.772 | 4.409 | +0.638 |
+| Colombia | 3.755 | 4.411 | +0.656 |
+| Morocco [d18] | 4.054 | 4.730 | +0.676 |
+| Russia | 3.775 | 4.503 | +0.728 |
+| Saudi Arabia | 4.136 | 4.864 | +0.728 |
+| United Arab Emirates | 3.967 | 4.827 | +0.860 |
+| Japan | 2.664 | 4.017 | +1.353 |
+| Iran [*] | 3.340 | 4.705 | +1.365 |
+
+On Loyalty and Authority the panel sits above the reference sample in 16 countries and at or below it in 4; against the composite, the sign changes for Ireland and for no other country. Framed in the local language, the Spanish six rank with rho +0.77 against the reference order, +0.89 on the composite; the Arabic panel order is United Arab Emirates, Saudi Arabia, Egypt against a reference order of Egypt, Saudi Arabia, United Arab Emirates, and the French Switzerland, France, Belgium against France, Belgium, Switzerland.
 
 ### The three Arabic-speaking countries
 
