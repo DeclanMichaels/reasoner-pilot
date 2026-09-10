@@ -163,6 +163,16 @@ the language table, and two reviews that flagged it were refuted after the wrong
 A `%` inside a string that is later `%`-formatted raises `unsupported format character`; the
 "95% model-resampling interval" header needs `%%` in the template.
 
+## The PDFs are renders, and nothing checks them
+
+`papers/render.sh` renders a markdown paper to PDF through Python-Markdown and WeasyPrint, the
+recipe from `rcp-experiment/papers`, adapted in `papers/render_html_pdf.py`; its docstring lists
+the adaptations. The harness does not compare a PDF with its markdown, so a document edit that
+is not followed by a re-render leaves a PDF that looks current and is not. Re-run the recipe and
+commit the render with the edit. WeasyPrint ignores `dir="auto"`; a right-to-left paragraph
+needs an explicit `direction: rtl` rule, which the script applies to paragraphs opening in
+Arabic script. The two Reasoner pilot PDFs predate the recipe and were printed through Chromium.
+
 ## Human data
 
 `human-responses/` is published under `DATA-LICENSE.md`. The `_server` block holding hashes of IP
