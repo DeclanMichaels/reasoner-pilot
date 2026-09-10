@@ -7,12 +7,14 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is `c074ac9`, the
-  end of Astra's viewer round and its follow-ups (#99 to #105); everything after it is this
-  handoff. Four sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and
-  one on 2026-09-10.
-- **The published record reproduces**, run 2026-09-10 here after #103 moved the viewer payload's
-  pin, and on 2026-09-09 in a fresh clone that had no run files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
+- Working tree clean. This is the Black M2 Air. The last substantive commit is the record of
+  Astra's fifth document round (#106 to #112); everything after it is this handoff. Five
+  sessions since the last full handoff, 2026-09-08 (second), two on 2026-09-09 and two on
+  2026-09-10. Every repository under `~/Code/` is now cloned on this Air, `reasoner-study` and
+  the site's included.
+- **The published record reproduces**, run 2026-09-10 here after #106 to #112 moved two
+  in-language artifacts on prose alone (`652c8ff` re-pins them) and earlier after #103 moved the
+  viewer payload's pin, and on 2026-09-09 in a fresh clone that had no run files: 20 regenerated outputs reproduced (the pilot's 15, the four in-language appendix
   artifacts and the viewer payload, all from the committed ratings dataset), 14 committed-only
   verified, the 47 pinned condition means rebuilt from the dataset, and every generated section
   of the document matching its artifact. The full harness takes about a minute.
@@ -21,11 +23,14 @@ This repository is public, so this file is public. It is written knowing that.
   country to answer as" (decision 20; the title is Declan's, 2026-09-08). The appendix file is
   gone. `validity/splice_appendix.py` splices the ten generated sections and the harness runs its
   check.
-- **Thirteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
-  fourth on the document, Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
+- **Fourteen review rounds are adjudicated and worked through**, all in `reviews/`: Astra's first to
+  fifth on the document (the fifth on 2026-09-10, seven findings, seven tickets, #106 to #112,
+  closed the same day; heading now "Framing moves the binding composite", B9 links the human
+  sources and states the scoring, B3 gains the Loyalty-Authority comparison, sixteen above and
+  four at or below with Ireland the only sign change), Grok's paper round, DeepSeek's, Gemini's, Kimi's first to third, Claude's
   cold read of 2026-09-08, Grok's viewer round of 2026-09-09 (no change) and Astra's viewer round
   of 2026-09-10 (six findings, six tickets, #99 to #104, all closed the same day, plus #105 from
-  the record's leftovers). One hundred and five issues have existed; none is open.
+  the record's leftovers). One hundred and twelve issues have existed; none is open.
 - **The September wave is collected, archived and reported** (decision 21, #83): the framing
   template with its country slots deleted, on ten models, with same-day reruns of the unframed
   comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
@@ -67,12 +72,13 @@ session was renewed by Declan on 2026-09-09 and the wave archived. Model API cal
 10 availability checks, 150 for the wave, all 2026-09-08; nothing else spent. On 2026-09-09 Astra
 was asked to review the viewer and exhausted Declan's usage window without returning a response;
 a free Grok instance did a round that day, and Astra's completed review arrived on 2026-09-10 at
-`~/Documents/Codex/2026-09-10/tw/outputs/viewer-review.md` and was worked through. No model API
-calls on 2026-09-10; nothing spent.
+`~/Documents/Codex/2026-09-10/tw/outputs/viewer-review.md` and was worked through. Later on
+2026-09-10 Declan pasted Astra's fifth document round, which had recomputed from the clone's
+ratings CSV. No model API calls on 2026-09-10; nothing spent.
 
 ## The tracker
 
-Empty. #1 to #105 are closed, each with its disposition on the ticket.
+Empty. #1 to #112 are closed, each with its disposition on the ticket.
 
 ## Next session
 
@@ -86,7 +92,8 @@ findings fixed (`reviews/astra-viewer-review-2026-09-10.md`). The viewer restate
 B6a, now with the document's lead language-against-framing contrast, and adds nothing the
 document does not carry except the per-model token table. Declan declined the unframed
 instrument difference on the Control tab and the Loyalty-and-Authority table. The viewer as it
-stands after #99 to #105 has not been read externally.
+stands after #99 to #105 has not been read externally, and neither has the document after #106
+to #112.
 
 **Declan's read at close, 2026-09-09:** the MFQ-2 document is one external round and a day of
 release mechanics from ready, not a rewrite away. Before a DOI: one external read of the final
@@ -97,8 +104,8 @@ instructions in B1a checked by eye, and pinned artifacts for the two hand-writte
 Ordering). The Reasoner pilot paper and appendix have had no prose pass and predate the register
 rules; they
 get their own editing session before anything is called complete, and moral-os.com's card
-follows them. The site's repository is not cloned on this Air and is not set up with
-research-kit; that is a separate session too. Chrome with the Claude extension works from here
+follows them. The site's repository is now cloned on this Air (`~/Code/moral-os-website`) but is not set up
+with research-kit; that is a separate session too. Chrome with the Claude extension works from here
 under this account and reaches Declan's Zenodo login; nothing was deposited.
 
 Left as disclosure, Declan's decision: the English-framed arm on the official questionnaire
@@ -108,7 +115,12 @@ translated country-free templates (decision 21 explains; they need translations 
 Candidates for tickets, not filed: a tracked claim-check for the paper's hand-written tables (the
 d table and the Ordering table are still not emitted; the dataset makes such a check runnable
 from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every framed cell tab has
-no September column, by design.
+no September column, by design; from Astra's fifth round, a respondent-level Loyalty-Authority
+SD per country so B3's new table can carry standardized distances (one column in
+`reasoner-study`'s `build_mfq2_dispersion.py` and a re-copy, but that clone has no `_raw/` and
+the Atari Study 2 file would have to be downloaded from OSF first, Declan's call); the
+same-instrument three-arm collection (unframed, template, Egypt template, one window, spending);
+and the caveat-consolidation sweep, deferred to the editing session.
 
 ## Open items
 
