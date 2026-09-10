@@ -531,7 +531,7 @@ def _psd(d):
 L.append("## B4a. The September wave: the framing template without a country\n")
 L.append("Every framing contrast above adds a system instruction where there was none, and that instruction "
          "carries two things: a country and an instruction to answer as a typical person. A second, small "
-         "collection on 2026-09-08 separates them (decision 21): the framing template with its three country "
+         "collection on 2026-09-08 measures the instruction without the country (decision 21): the framing template with its three country "
          "slots deleted and nothing added, on the official English instrument, ten models, five iterations, "
          "no temperature sent; and, as a drift check against the August grid, the unframed English comparator "
          "and English-framed Egypt rerun the same day with item-identical orders. DeepSeek-V4-Pro left "
@@ -668,8 +668,10 @@ M.append("The in-language framing instructions are our translations of that temp
 _sent = {k: (v["country"], v["text"]) for k, v in RECORD["translated_instructions_as_sent"].items()}
 assert len(_sent) == 6, sorted(_sent)
 M.append("**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per "
-         "language with only the country name and the demonym varying; each is quoted as sent, from "
-         "the first framed cell of its language, via the collection record.\n")
+         "language with only the country name and the demonym varying; the closing output sentence "
+         "stays in English in all six, as does the questionnaire message's request for the JSON object "
+         "in every condition. Each is quoted as sent, from the first framed cell of its language, via "
+         "the collection record.\n")
 for _code in LANG_ORDER:
     _c, _s = _sent["mfq2_" + _code]
     M.append("%s, framed as %s:\n\n> %s\n" % (LANG_NAME[_code], _c, _s.replace("\n", " ")))

@@ -32,7 +32,7 @@
 
 The in-language framing instructions are our translations of that template, one per language, AI-assisted and disclosed as such, varying only the country name and the demonym. Each cell records the instruction it was sent verbatim in its `system_prompt` field, and the runner asserts at start-up that the Arabic template still reproduces the Egypt prompt byte for byte as first collected.
 
-**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; each is quoted as sent, from the first framed cell of its language, via the collection record.
+**The translated framing instructions**, ours, AI-assisted and disclosed as such, one per language with only the country name and the demonym varying; the closing output sentence stays in English in all six, as does the questionnaire message's request for the JSON object in every condition. Each is quoted as sent, from the first framed cell of its language, via the collection record.
 
 Arabic, framed as Egypt:
 
@@ -263,7 +263,7 @@ The sign and the ordering of the Iran result do not depend on the choice. Its ma
 
 ## B4a. The September wave: the framing template without a country
 
-Every framing contrast above adds a system instruction where there was none, and that instruction carries two things: a country and an instruction to answer as a typical person. A second, small collection on 2026-09-08 separates them (decision 21): the framing template with its three country slots deleted and nothing added, on the official English instrument, ten models, five iterations, no temperature sent; and, as a drift check against the August grid, the unframed English comparator and English-framed Egypt rerun the same day with item-identical orders. DeepSeek-V4-Pro left Together's serverless tier between the two collections and is absent from the wave, so every contrast here is on the ten models present in both, and we restrict the August cells to the same ten. B1a quotes the template. Contrasts are within-model first, as in B4; 10 models.
+Every framing contrast above adds a system instruction where there was none, and that instruction carries two things: a country and an instruction to answer as a typical person. A second, small collection on 2026-09-08 measures the instruction without the country (decision 21): the framing template with its three country slots deleted and nothing added, on the official English instrument, ten models, five iterations, no temperature sent; and, as a drift check against the August grid, the unframed English comparator and English-framed Egypt rerun the same day with item-identical orders. DeepSeek-V4-Pro left Together's serverless tier between the two collections and is absent from the wave, so every contrast here is on the ten models present in both, and we restrict the August cells to the same ten. B1a quotes the template. Contrasts are within-model first, as in B4; 10 models.
 
 | condition | panel mean, ten models | 95% model-resampling interval | between-model SD |
 |---|--:|:--:|--:|
