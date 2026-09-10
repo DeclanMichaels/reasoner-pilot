@@ -121,7 +121,7 @@ Distance from each country's measured mean, English framing, which every country
 
 Five countries sit at or below their reference-sample means and fifteen sit above, with nothing between -0.002 and +0.154. On Loyalty and Authority alone it is four and sixteen: Ireland moves to +0.08 and no other country changes sign (appendix B3). Unframed, the English panel sits at 2.769, below every reference-sample mean but Japan's; appendix B3 carries that column. Japan has the lowest measured mean in the set and receives the second largest positive difference.
 
-Ireland's is the only reference-sample mean, 3.096 with a standard error of 0.057 under an independent-respondent approximation, falling within the panel's resampling range, [2.96, 3.25]; the other nineteen fall outside it. The two uncertainties are different things: one is about who was sampled, the other about which models were resampled, and neither removes selection in either set. A composite that matches can also conceal offsets in its parts. Ireland's English-framed Loyalty is 3.67 against a measured 3.29, Authority 3.27 against 3.49, Purity 2.34 against 2.51; the composite agrees because the first cancels the other two.
+Ireland's is the only reference-sample mean, 3.096 with a standard error of 0.057 under an independent-respondent approximation, falling within the panel's resampling range, [2.96, 3.25]. The two uncertainties are different things: one is about who was sampled, the other about which models were resampled, and neither removes selection in either set. A composite that matches can also conceal offsets in its parts. Ireland's English-framed Loyalty is 3.67 against a measured 3.29, Authority 3.27 against 3.49, Purity 2.34 against 2.51; the composite agrees because the first cancels the other two.
 
 Distance in human standard deviations, on the in-language framed condition this time, computed per country: the panel's in-language framed mean for a country, minus that country's human mean, divided by that country's own respondent-level standard deviation. Averaged within a language, and with the country range beside it:
 
@@ -151,7 +151,7 @@ The binding composite averages three of six foundations, so a shift in it says n
 
 Unframed, the panel sits near the top of the scale on Care at 4.71 and near the bottom on Purity at 1.97 and Equality at 1.98. Part of the shape of the table is the scale rather than the framing.
 
-French is the exception on the binding three as well. There, Loyalty rises 0.29, Purity 0.09, and Authority does not move. The French framing average of +0.13 rests on three countries of which two, Belgium and France, have model-resampling intervals spanning zero; only Switzerland's clears it. The three French-administered countries also all sit below their reference-sample means on the composite, so the exception runs the same way in every country it covers rather than resting on one of them.
+French is the exception on the binding three as well. There, Loyalty rises 0.29, Purity 0.09, and Authority does not move. The French framing average of +0.13 rests on three countries of which two, Belgium and France, have model-resampling intervals spanning zero; Switzerland's does not. The three French-administered countries also all sit below their reference-sample means on the composite, so the exception runs the same way in every country it covers rather than resting on one of them.
 
 ## Ordering
 
