@@ -384,6 +384,16 @@ function panelOvershoot(){
       grouped by <strong>the language we administered in</strong>, not by the language the country
       speaks, and sorted by their human mean, highest first, inside each group.</p>
     ${s}
+    <p class="note"><strong>What the number is.</strong> The binding composite is the mean of Loyalty,
+      Authority and Purity, a summary index we chose, not an established construct; the
+      <em>Which foundations move</em> tab shows the three separately. Atari et al. flag Purity's
+      intercepts as non-invariant across their countries and advise caution when comparing Purity means
+      across groups. Purity is one third of the composite and carries its largest framing shift, so the
+      comparisons here inherit that caution; the document reports the framing effect on Loyalty and
+      Authority alone, without Purity. Invariance among the human samples says nothing about whether a
+      model's score and a person's score measure the same thing, and nothing here claims that they do:
+      the comparison is between questionnaire response scores, scored as Atari et al. publish, six items
+      per foundation.</p>
     <p class="note"><strong>What the language groups are.</strong> The heading is the language
       <em>we</em> administered in, and for every country here it is also the language the human sample
       was administered in, by Atari et al. except for Iran, whose sample is Hazrati et al.'s. <strong>Morocco</strong> sits under <strong>Spanish</strong>
@@ -786,8 +796,8 @@ function panelMatrix(){
   }
   h += `</tbody></table>
     <p class="note">Scale runs to &plusmn;${cap.toFixed(2)} scale points. Every cell carries the full
-      panel of ${D.meta.models} models. Positive means the models report <em>more</em> binding morality
-      (loyalty, authority, purity) than the reference sample for the country they were asked to speak for.</p></div>`;
+      panel of ${D.meta.models} models. Positive means the panel's mean rating on Loyalty, Authority and
+      Purity sits <em>above</em> the reference sample's for the country it was asked to speak for.</p></div>`;
   return h;
 }
 
