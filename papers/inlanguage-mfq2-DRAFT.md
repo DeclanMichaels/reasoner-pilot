@@ -6,7 +6,7 @@
 
 We gave eleven language models the MFQ-2, a moral-foundations questionnaire with published human means for twenty countries, in English and in six of its official translations, with and without an instruction to answer as a typical person from a named country. We track one number from it, the binding composite: the mean of the questionnaire's Loyalty, Authority and Purity scores on its 1-to-5 scale.
 
-Translating the questionnaire barely moves the panel's composite. Five of the six translations leave the composite within a tenth of a point of the English default; Arabic lifts it a third of a point, every model in the same direction. Telling the panel to answer as a typical person from a named country moves it far more: by about a point on average across the six languages, roughly two thirds of the whole range the human samples span, and by over a point and a half for the Arabic-speaking countries. A September check on ten models split the Egypt shift in English into two increments: the same instruction with no country named raised the composite 0.65, about a third of the whole, and naming Egypt raised it a further 1.14, a step that also changed the questionnaire file.
+Translating the questionnaire barely moves the panel's composite. Five of the six translations leave the composite within a tenth of a point of the English default; Arabic lifts it a third of a point, every model in the same direction. Those are panel averages, and a small one can sit over larger, opposing changes across models and foundations (appendix B6a). Telling the panel to answer as a typical person from a named country moves it far more: by about a point on average across the six languages, roughly two thirds of the whole range the human samples span, and by over a point and a half for the Arabic-speaking countries. A September check on ten models split the Egypt shift in English into two increments: the same instruction with no country named raised the composite 0.65, about a third of the whole, and naming Egypt raised it a further 1.14, a step that also changed the questionnaire file.
 
 Being told who to be also brings the models together. Under a country framing they spread about half as widely as they do unframed, and in the September check a country name was not needed for it: told to be a typical person with no country named, the ten models sat closer together than they did told to be Egyptians.
 
@@ -58,7 +58,7 @@ For fifteen of the twenty countries with a human anchor, our in-language conditi
 
 Two things vary. **Framing**: a framing prompt telling the model to answer as a typical person living in the named country, or no framing prompt at all. **Language**: the questionnaire in English, or in Atari et al.'s official translation, with the framing prompt written in that language. Their supplement carries seven official translations. We administered six: Arabic, Spanish, French, Japanese and Russian, each the language Atari et al. administered in at least one normed country, and Farsi, added for Iran's separate reference sample; Chinese matches no reference administration and was not run.
 
-## Framing moves the binding composite; language mostly does not
+## Framing moves the binding composite
 
 Unframed, the panel's binding composite lands at nearly the same place whatever language you hand it, though the foundations under it move by more (appendix B6a):
 
