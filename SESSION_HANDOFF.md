@@ -28,11 +28,13 @@ This repository is public, so this file is public. It is written knowing that.
   A1's dead paths fixed, and the "Why this matters" section cut. **No external round has read
   this version, or any version, of the pilot paper**; every file in `reviews/` is the MFQ-2
   document.
-- **The pilot PDFs are the recipe's** (`595fbb7`): `papers/reasoner-pilot.pdf` 5 pages,
-  `papers/reasoner-appendix.pdf` 9 pages, rendered from the files at `5961507`. The recipe gained
-  one rule in `papers/render_html_pdf.py`: a table of twelve rows or fewer is never split, and a
-  colon lead-in stays with its table. `papers/inlanguage-mfq2-DRAFT.pdf`All three PDFs are now rendered under the same settled
-  rules (five-row keep-whole, short lead-ins kept, last two rows kept), checked page by page. **The PDFs are not checked by
+- **All three PDFs are the recipe's.** `papers/reasoner-pilot.pdf` 5 pages and
+  `papers/reasoner-appendix.pdf` 8 pages (`595fbb7`, re-rendered `edcf91c`), from the files at
+  `5961507`; `papers/inlanguage-mfq2-DRAFT.pdf` 44 pages (`edcf91c`) from the document at
+  `99ca5df`. The recipe's table rules in `papers/render_html_pdf.py` were settled against all
+  three documents in `edcf91c`: a table of five data rows or fewer is never split; a short
+  lead-in ending in a colon stays with the table or list after it; a table's last two rows are
+  never left alone at a page head. Each was checked page by page. **The PDFs are not checked by
   the harness**: after any change to a document, re-run the recipe and commit the render with it.
 - **The MFQ-2 document changed once this session, #119** (`99ca5df`): Declan's own read found
   the Methods sentence "tails too coarse to read as a calibrated bound" still in the document
