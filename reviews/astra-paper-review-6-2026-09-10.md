@@ -94,3 +94,11 @@ A few smaller accuracy issues
 * The alignment script's comment says it replicates the authors' code "EXACTLY," while the paper reports unexplained numerical discrepancies. Distinguish following their procedure from reproducing their numerical results.
 
 I would not keep expanding the study to answer every possible methodological objection. The controls and sensitivity analyses now support a useful, bounded contribution. My recommendation is a final precision edit, followed by release as an explicitly exploratory report. Its strongest finding remains that these instructions substantially change this panel's composite responses and reduce dispersion, with a country-free instruction already producing both effects.
+
+
+## Correction, 2026-09-10 (#119)
+
+The adjudication above says "tails too coarse" is not in the document. It is, at line 27 of
+the Methods: "with tails too coarse to read as a calibrated bound". The search that cleared it
+failed and the finding was dismissed on that basis. Declan found the sentence on his own read
+before the re-render; the finding is reinstated and the sentence replaced under #119.

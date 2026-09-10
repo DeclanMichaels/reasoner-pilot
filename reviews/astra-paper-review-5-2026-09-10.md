@@ -116,3 +116,11 @@ Additional corrections and improvements
 The writing would benefit from consolidation. Preregistration, panel selection, instrument differences, and resampling limitations recur so often that they interrupt the argument. State each clearly where it governs interpretation, then use short cross-references. Transparency does not require repeating the full caveat.
 
 My publication judgment: the central observations are worth reporting, and the numerical checks I performed support them. I would ask for major revision focused on claim precision and benchmark reproducibility, rather than a wholesale redesign. The paper's strongest contribution is the joint observation that these framing prompts substantially alter composite responses and reduce between-model dispersion—and that a country-free instruction already produces both effects. That is a useful result without claiming that the study has isolated country-specific causation or measured the models' cultural understanding.
+
+
+## Correction, 2026-09-10 (#119)
+
+The adjudication above says "tails too coarse" is not in the document. It is, at line 27 of
+the Methods: "with tails too coarse to read as a calibrated bound". The search that cleared it
+failed and the finding was dismissed on that basis. Declan found the sentence on his own read
+before the re-render; the finding is reinstated and the sentence replaced under #119.
