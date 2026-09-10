@@ -1,4 +1,4 @@
-# Handoff: reasoner-pilot - 2026-09-10 (fifth)
+# Handoff: reasoner-pilot - 2026-09-10 (sixth)
 
 Written at the end of every session, replacing what was here before. **Informational only. It
 authorizes nothing.**
@@ -7,134 +7,127 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is `1f9274c`, the
-  MFQ-2 document rendered to PDF with its recipe; everything after it is this handoff. Pushed
-  2026-09-10; local and origin agree. Six sessions since the last full handoff, 2026-09-08
-  (second): two on 2026-09-09 and three on 2026-09-10 before this one. Every repository under
-  `~/Code/` is cloned on this Air.
-- **The document has a PDF**: `papers/inlanguage-mfq2-DRAFT.pdf`, 44 pages, Letter, the render of
-  `papers/inlanguage-mfq2-DRAFT.md` at `1f9274c`. It is built by `papers/render.sh`, the
-  Python-Markdown plus WeasyPrint recipe from `rcp-experiment/papers`, adapted in
-  `papers/render_html_pdf.py` for this document (right-to-left Arabic and Farsi quotes, verbatim
-  prompts unhyphenated and kept with their label, table headers kept with their rows, `<int>`
-  placeholders escaped). Checked by eye on the first page, the B1a page with the six translated
-  instructions, the B3a, B6 and B6a tables and the last page; a sweep found no text outside any
-  page and no heading stranded at a page foot. The document itself did not change. **The PDF is
-  not checked by the harness**: after any change to the document, re-run the recipe and commit the
-  new render with it, or the PDF is stale and looks current.
-- **The published record reproduces**, run 2026-09-10 after #106 to #118 moved the in-language
-  artifacts on prose alone, re-pinned each time in a commit that says so, and on 2026-09-09 in a
-  fresh clone that had no run files: 20 regenerated outputs reproduced (the pilot's 15, the four
-  in-language appendix artifacts and the viewer payload, all from the committed ratings dataset),
-  14 committed-only verified, the 47 pinned condition means rebuilt from the dataset, and every
-  generated section of the document matching its artifact. Not re-run this session; nothing under
-  `analysis/` or `validity/` changed.
-- **The report and its appendix are one document**, `papers/inlanguage-mfq2-DRAFT.md`, titled
-  "Eleven language models take the MFQ-2 in English and six translations, with and without a
-  country to answer as" (decision 20). `validity/splice_appendix.py` splices the ten generated
-  sections and the harness runs its check.
-- **External review of the document is finished, Declan's decision of 2026-09-10**: fifteen rounds
-  are adjudicated and worked through in `reviews/`, and the later rounds were returning nitpicks,
-  repeats and points already answered. Astra's sixth round read the document at `8d058ad`; the
-  state after #115 to #118, every change in it a sentence Astra asked for, has not been read
-  externally and will not be sent out. One hundred and eighteen issues have existed; none is open.
-- **The September wave is collected, archived and reported** (decision 21, #83): the framing
-  template with its country slots deleted, on ten models, with same-day reruns of the unframed
-  comparator and English-framed Egypt on identical item orders. B4a and the viewer's Control tab
-  carry it. Run files tracked under `validity/runs_neutral_template/` and archived at
-  `archive-reasoner-pilot-validity/2026-09-08-september-wave/`, restore-tested.
-- **The integer ratings are a published dataset** (decision 19): `validity/results/mfq2_ratings.csv`,
-  104,400 rows, 53 conditions, with `results/collection_record.json`. Both appendix emitters and
-  the viewer builder read those two files and nothing under `runs*/` (#71, #92); the harness
-  regenerates their outputs (decision 22). Only `build_ratings_dataset.py` needs the run files.
-- **The MFQ-2 viewer**, `validity/viewer.html`, served from `validity/`: six tabs including
-  Control; every number checked against the payload, the record, the appendix or the document on
-  2026-09-09; clean at desktop, 640 and 375 pixels; text floor 15 px after #105. Its external
-  rounds are done: Grok 2026-09-09 (no change), Astra 2026-09-10 (six findings, #99 to #104,
-  fixed). The root `viewer.html` is the Reasoner pilot's and is unrelated.
-- `DECISIONS.md` holds 22 entries. 12 is superseded by 18 (Morocco reported under Spanish), 14
-  by 22 for the emitter outputs. 17 (published means a DOI and the site) still gates everything.
+- Working tree clean. This is the Black M2 Air. The last substantive commit is `595fbb7`, the
+  pilot PDFs rendered with the recipe; before it `5961507`, the pilot writeup pass. Pushed
+  2026-09-10; local and origin agree. Every repository under `~/Code/` is cloned on this Air.
+- **The Reasoner pilot writeup has had its prose pass** (`5961507`). `papers/reasoner-pilot.md`
+  and `papers/reasoner-appendix.md` were unchanged since 2026-07-20 and predated the register
+  rules, decision 8 and the temperature rule. Declan directed each section in turn. Every number
+  in both files was checked against `results/appendix_stats.json` or recomputed from `runs/`
+  before the pass; the four unpinned figures (range coverage 4 to 8 percent, Kimi's 96 percent,
+  Sonnet's 0.27, DeepSeek/GPT-5.5/Grok's 0.72 to 0.73) recompute as stated. Five published
+  claims were wrong and are corrected on the record in the commit message: "near the relational
+  pole" for a mean of -0.05; the compression ratio stated as model over human; the seasonal
+  framing "within the bootstrap spread" of the nonsense framings (0.246 against an interval
+  ending at 0.244); "almost none of the models refused the premise" resting on a five-model
+  coding of a prior roster; and "What comes next" naming the successor study as using the same
+  instrument. Also: decision 8's limitations paragraph added (it had never landed), temperature
+  stated as unsent and unrecorded, the three model quotes restored verbatim from the run files,
+  A1's dead paths fixed, and the "Why this matters" section cut. **No external round has read
+  this version, or any version, of the pilot paper**; every file in `reviews/` is the MFQ-2
+  document.
+- **The pilot PDFs are the recipe's** (`595fbb7`): `papers/reasoner-pilot.pdf` 5 pages,
+  `papers/reasoner-appendix.pdf` 9 pages, rendered from the files at `5961507`. The recipe gained
+  one rule in `papers/render_html_pdf.py`: a table of twelve rows or fewer is never split, and a
+  colon lead-in stays with its table. `papers/inlanguage-mfq2-DRAFT.pdf` was **not** re-rendered
+  after that rule and its page count against the rule is unchecked. **The PDFs are not checked by
+  the harness**: after any change to a document, re-run the recipe and commit the render with it.
+- **The MFQ-2 document is unchanged this session**, at `1f9274c` as described in the previous
+  handoff: one document, 44-page PDF, fifteen external rounds adjudicated, review finished by
+  Declan's decision of 2026-09-10, 118 issues closed, none open.
+- **The published record reproduces** as of 2026-09-10 (previous handoff); nothing under
+  `analysis/` or `validity/` changed this session and the harness was not re-run.
+- **The integer ratings dataset, the September wave, the MFQ-2 viewer** are as the previous
+  handoff describes; none was touched.
+- `DECISIONS.md` holds 22 entries. 12 is superseded by 18, 14 by 22 for the emitter outputs. 17
+  (published means a DOI and the site) still gates everything. No decision was made or
+  superseded this session.
 
 ## What changed outside the repository
 
-The PDF recipe was found in `~/Code/claude-continuity/4_toolbox.md`, which points at
-`~/Code/rcp-experiment/papers/render.sh`; a Chrome-headless render built before that check was
-discarded. The scratch `venv/` here gained `markdown`, `weasyprint` and `pymupdf` (the last used
-only to rasterise pages for checking; there is no PDF rasteriser on this Air otherwise, and the
-desktop app's Browser pane treats a PDF as a download). `papers/.render-venv/` is the recipe's
-own environment, gitignored. Declan noted that the desktop app should be pointed at `~/Code/`,
-the root holding every repository, rather than at one project folder, so the sibling
-repositories and the toolbox are in reach. No model API calls; nothing spent. Nothing was
-deposited anywhere.
+Nothing. No model API calls; nothing spent. Nothing deposited anywhere. The scratch `venv/`
+(pymupdf) and `papers/.render-venv/` (the recipe) are as before.
 
 ## The tracker
 
-Empty. #1 to #118 are closed, each with its disposition on the ticket.
+Empty. #1 to #118 are closed. Nothing was filed this session; the writeup pass ran on Declan's
+direction section by section rather than as tickets.
 
 ## Next session
 
-Nothing is queued for an agent. Declan's plan at close, 2026-09-10:
+Nothing is queued for an agent. Open at close, 2026-09-10:
 
-1. **The Reasoner pilot writeup and collateral.** `papers/reasoner-pilot.md` and
-   `papers/reasoner-appendix.md` have had no prose pass and predate the register rules; their
-   PDFs were printed through Chromium on 2026-09-04 and should come from the recipe once the
-   prose is settled. moral-os.com's card follows them. The site's repository is cloned here
-   (`~/Code/moral-os-website`) and is not set up with research-kit; that is its own session.
-2. **Zenodo, held.** Declan held the DOI on 2026-09-10 until the pilot writeup is finished. Of the
-   three gates his 2026-09-09 read put before a DOI, the PDF is done, the external read of the
-   final state is waived by the decision above, and pinned artifacts for the two hand-written
-   tables (d and Ordering) are still not done. `LOCATIONS.md` carries three `TBD`s and
-   `CITATION.cff` a commented `doi:`. One document, so one deposit; what the deposit is, the
-   repository snapshot `LOCATIONS.md` describes or the document alone, is undecided.
+1. **External review of the pilot paper.** First version to have had a pass; no round has read
+   it. Before assessing any pasted review, diff it against `reviews/` (none exist for this paper)
+   and this file.
+2. **The five-model artifacts in `results/`.** `pilot_reanalysis_findings.md`,
+   `pilot_reanalysis_metrics.json`, `tightened_metrics.json`, `pilot_frame_shifts.json`,
+   `coding_results.json`, `nonsense_texts.json`, `coder_check_result.json`, `coder_prompt.md`,
+   `nonsense_coding_codebook.md` and `anchoring_metrics.json` describe an earlier collection on
+   a prior roster (gemini-flash, gpt4o, grok, llama70b, sonnet) whose run files are not in the
+   repository. None is in `analysis/reproduce_manifest.json`; the glossary defines everything
+   under `results/` as the published record and warns against the "five models" figures. The
+   paper now cites that coding with its scope. Whether the files stay, move or go is Declan's;
+   removing any is a change to the published record.
+3. **moral-os.com.** `papers/reasoner-pilot.html` on the site is a 2026-07-21 render of the old
+   text and the card follows the paper. The site repository is cloned here
+   (`~/Code/moral-os-website`) and is not set up with research-kit; its own session.
+4. **Zenodo, held** since 2026-09-10 until the pilot writeup is finished. The pinned artifacts
+   for the MFQ-2 document's two hand-written tables (d and Ordering) are still not done.
+   `LOCATIONS.md` carries three `TBD`s and `CITATION.cff` a commented `doi:`. What the deposit
+   is, snapshot or document, is undecided.
+
+Candidates for tickets, not filed: a claim-check for the pilot paper's prose numbers against
+`appendix_stats.json` (the harness pins the JSON, not the sentences that quote it); the MFQ-2
+claim-check for the d and Ordering tables; the `[*]` versus `[d18]` marker asymmetry; the
+same-instrument three-arm collection from Astra's fifth round (spending); the
+caveat-consolidation sweep.
 
 Left as disclosure, Declan's decision: the English-framed arm on the official questionnaire
-(#53 states the confound; a rerun would be ten models in a second window). Not run: the six
-translated country-free templates (decision 21 explains; they need translations first).
-
-Candidates for tickets, not filed: a tracked claim-check for the paper's hand-written tables (the
-d table and the Ordering table are still not emitted; the dataset makes such a check runnable
-from a clone); the `[*]` versus `[d18]` marker asymmetry; the viewer's Every framed cell tab has
-no September column, by design; from Astra's fifth round, the same-instrument three-arm
-collection (unframed, template, Egypt template, one window, spending); and the
-caveat-consolidation sweep, deferred to the editing session.
+(#53). Not run: the six translated country-free templates (decision 21).
 
 ## Open items
 
-- Sampling temperature is unset and unrecorded in the grid; the wave kept it that way on purpose
-  (decision 21) and recorded that no provider returns one. Any collection that is not matched to
-  the grid sets and records it.
+- Sampling temperature is unset and unrecorded in the pilot runs and the grid; both documents
+  now say so. Any collection not matched to them sets and records it.
+- The pilot paper's Limitations say a human sample with a wider spread would raise the ratio and
+  a narrower one lower it. Declan has not ruled on the sentence; flagged as arithmetic rather
+  than prediction, and it goes if it reads as hedging.
+- The pilot paper's nonsense-integration coding covers the prior five-model roster only; the
+  eleven-model texts are uncoded. Coding them is spending if a model codes them.
 - API keys on this Air are exported in the interactive shell; `~/.config/ccas/keys.env` does not
-  exist here (notes updated).
+  exist here.
 - Whether every blocking finding in `reviews/viewer-cold-review-2026-08-22.md` is closed is still
   unverified as a whole; only finding 1 was checked, on 2026-09-07.
 
 ## Unresolved - needs a decision
 
-What the Zenodo deposit is, item 2 above, when the DOI is unheld. Everything else settled.
+Items 2 and 4 above. Everything else settled.
 
 ## Known-broken and known-strange
 
 Nothing in this repository's code is known broken.
 
 **Rules learned by breaking them, all in `docs/DEVELOPMENT_NOTES.md`:** check a generator's exit
-code before copying its output, a `set -e` chain does not do it inside `( ... && ... )`; the
-builder's `mean` takes a list, not a generator (hit twice); sort the keys of any dict a bootstrap
-draws from (the B3a and viewer intervals had taken their order from the filesystem and moved by
-up to 0.003 when sorted, `d4d2b83` and `555189f`); never redirect a generator into its tracked
-output; assert every anchor before writing any file; re-render the PDF after every change to the
-document.
+code before copying its output; the builder's `mean` takes a list, not a generator; sort the keys
+of any dict a bootstrap draws from; never redirect a generator into its tracked output; assert
+every anchor before writing any file; re-render the PDF after every change to the document.
+Added this session, not yet in the notes: sweep a render for colon lead-ins and tables at a
+page foot, not only headings; the first pilot render had both and the heading sweep passed it.
 
-**Corrected on the record, 2026-09-10:** the viewer's Models tab drew Morocco's human marker on
-the Arabic-framed arm, a comparison decision 18 excludes (#99, `4649a42`); its headline story
-summarised the translated arm where the document's table is English framing (#101, `59bb943`).
+**Corrected on the record, 2026-09-10 (this session):** the five pilot-paper claims listed under
+Current state, in `5961507`.
 
-**Corrected on the record, 2026-09-08 and 2026-09-09:** a Summary sentence pushed on the 8th said
-the template's spread was tighter than under any country when four framed conditions were tighter
-(`385a4f8`); the rewrite of the 9th attached "two thirds of the range" to the Arabic figure
-(Astra 4, #84); the same rewrite called Egypt the largest contrast when Saudi Arabia and the
-Emirates exceed it (#90); a French run-noise sentence compared a single-model five-run SD with a
-six-country average (#90); the viewer's Control tab rendered a date as "[object Object]" (fixed
-before push).
+**Corrected on the record, 2026-09-10 (earlier):** the viewer's Models tab drew Morocco's human
+marker on the Arabic-framed arm (#99, `4649a42`); its headline story summarised the translated
+arm where the document's table is English framing (#101, `59bb943`).
+
+**Corrected on the record, 2026-09-08 and 2026-09-09:** a Summary sentence said the template's
+spread was tighter than under any country when four framed conditions were tighter (`385a4f8`);
+the rewrite attached "two thirds of the range" to the Arabic figure (#84); the same rewrite
+called Egypt the largest contrast when Saudi Arabia and the Emirates exceed it (#90); a French
+run-noise sentence compared a single-model five-run SD with a six-country average (#90); the
+viewer's Control tab rendered a date as "[object Object]" (fixed before push).
 
 ## Loose ends
 
@@ -143,5 +136,7 @@ before push).
 - `validity/README.md` carries thirteen em-dashes in text that predates the register rules.
 - The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design.
 - The viewer's per-model token table has no counterpart in the document.
-- The document carries its byline as a closing line; the pilot PDFs put author, affiliation and
-  year under the title. Left as the file has it.
+- The pilot appendix's A10 names the build scripts without their `analysis/` directory; A1 now
+  gives the full path for one of them.
+- The root `viewer.html` (the pilot's) has not been read against the revised paper; its text
+  may still carry the old wordings.
