@@ -407,30 +407,30 @@ The human SE column is SD over root n from the per-country dispersion file, 0.03
 
 Human anchors, treated as constants, binding as the mean of loyalty, authority and purity: Egypt 4.267 (Atari 2023 Study 2), Saudi Arabia 4.083 (Atari 2023 Study 2), United Arab Emirates 3.892 (Atari 2023 Study 2), Argentina 3.283 (Atari 2023 Study 2), Chile 3.220 (Atari 2023 Study 2), Colombia 3.497 (Atari 2023 Study 2), Mexico 3.512 (Atari 2023 Study 2), Morocco 4.014 (Atari 2023 Study 2), Peru 3.514 (Atari 2023 Study 2), Belgium 3.444 (Atari 2023 Study 2), France 3.610 (Atari 2023 Study 2), Switzerland 3.349 (Atari 2023 Study 2), Japan 2.652 (Atari 2023 Study 2), Iran 3.333 (Hazrati 2025 sample 2), Russia 3.599 (Atari 2023 Study 2), Ireland 3.096 (Atari 2023 Study 2), Kenya 3.867 (Atari 2023 Study 2), New Zealand 3.094 (Atari 2023 Study 2), Nigeria 4.038 (Atari 2023 Study 2), South Africa 3.749 (Atari 2023 Study 2). India, Sweden and the United States are not in the MFQ-2 nineteen-nation set, so no overshoot is computable for them. Hazrati et al. administered Iran's sample on a 0-4 scale and we shift it linearly by +1 for comparability with the 1-5 runs; anchors_iran.json carries the detail and the caveats.
 
-**Loyalty and Authority alone.** The English-framed comparison again, leaving out Purity, the foundation Atari et al. flag (B2a): the panel's mean of Loyalty and Authority against each reference sample's, the human figure the mean of the two published foundation means, Iran's from Hazrati et al. Ordered by difference. No distance in human standard deviations is given, because the dispersion file carries no respondent-level SD for this two-foundation composite.
+**Loyalty and Authority alone.** The English-framed comparison again, leaving out Purity, the foundation Atari et al. flag (B2a): the panel's mean of Loyalty and Authority against each reference sample's, the human figure the mean of the two published foundation means, Iran's from Hazrati et al. The last column divides the difference by that country's respondent-level standard deviation of the same two-foundation composite, computed over respondents the way the binding SD is (B9). Ordered by difference.
 
-| country | human | panel, EN framed | difference |
-|---|--:|--:|--:|
-| France | 3.869 | 3.085 | -0.785 |
-| Belgium | 3.663 | 2.962 | -0.701 |
-| Switzerland | 3.547 | 3.417 | -0.130 |
-| New Zealand | 3.350 | 3.248 | -0.102 |
-| Ireland | 3.390 | 3.470 | +0.080 |
-| Argentina | 3.627 | 3.870 | +0.243 |
-| South Africa | 3.926 | 4.203 | +0.277 |
-| Chile | 3.559 | 3.989 | +0.431 |
-| Egypt | 4.303 | 4.762 | +0.459 |
-| Nigeria | 4.160 | 4.676 | +0.516 |
-| Mexico | 3.861 | 4.450 | +0.589 |
-| Kenya | 4.008 | 4.636 | +0.628 |
-| Peru | 3.772 | 4.409 | +0.638 |
-| Colombia | 3.755 | 4.411 | +0.656 |
-| Morocco [d18] | 4.054 | 4.730 | +0.676 |
-| Russia | 3.775 | 4.503 | +0.728 |
-| Saudi Arabia | 4.136 | 4.864 | +0.728 |
-| United Arab Emirates | 3.967 | 4.827 | +0.860 |
-| Japan | 2.664 | 4.017 | +1.353 |
-| Iran [*] | 3.340 | 4.705 | +1.365 |
+| country | human | human SD | panel, EN framed | difference | d |
+|---|--:|--:|--:|--:|--:|
+| France | 3.869 | 0.614 | 3.085 | -0.785 | -1.28 |
+| Belgium | 3.663 | 0.635 | 2.962 | -0.701 | -1.10 |
+| Switzerland | 3.547 | 0.781 | 3.417 | -0.130 | -0.17 |
+| New Zealand | 3.350 | 0.884 | 3.248 | -0.102 | -0.12 |
+| Ireland | 3.390 | 0.883 | 3.470 | +0.080 | +0.09 |
+| Argentina | 3.627 | 0.699 | 3.870 | +0.243 | +0.35 |
+| South Africa | 3.926 | 0.737 | 4.203 | +0.277 | +0.38 |
+| Chile | 3.559 | 0.798 | 3.989 | +0.431 | +0.54 |
+| Egypt | 4.303 | 0.609 | 4.762 | +0.459 | +0.75 |
+| Nigeria | 4.160 | 0.621 | 4.676 | +0.516 | +0.83 |
+| Mexico | 3.861 | 0.658 | 4.450 | +0.589 | +0.89 |
+| Kenya | 4.008 | 0.797 | 4.636 | +0.628 | +0.79 |
+| Peru | 3.772 | 0.689 | 4.409 | +0.638 | +0.93 |
+| Colombia | 3.755 | 0.695 | 4.411 | +0.656 | +0.94 |
+| Morocco [d18] | 4.054 | 0.754 | 4.730 | +0.676 | +0.90 |
+| Russia | 3.775 | 0.747 | 4.503 | +0.728 | +0.97 |
+| Saudi Arabia | 4.136 | 0.705 | 4.864 | +0.728 | +1.03 |
+| United Arab Emirates | 3.967 | 0.862 | 4.827 | +0.860 | +1.00 |
+| Japan | 2.664 | 0.687 | 4.017 | +1.353 | +1.97 |
+| Iran [*] | 3.340 | 0.820 | 4.705 | +1.365 | +1.66 |
 
 On Loyalty and Authority the panel sits above the reference sample in 16 countries and at or below it in 4; against the composite, the sign changes for Ireland and for no other country. Framed in the local language, the Spanish six rank with rho +0.77 against the reference order, +0.89 on the composite; the Arabic panel order is United Arab Emirates, Saudi Arabia, Egypt against a reference order of Egypt, Saudi Arabia, United Arab Emirates, and the French Switzerland, France, Belgium against France, Belgium, Switzerland.
 

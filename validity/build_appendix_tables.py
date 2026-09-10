@@ -314,21 +314,29 @@ print("Human anchors, treated as constants, binding as the mean of loyalty, auth
 
 # ---- Loyalty and Authority alone, against the reference samples (#109)
 def _la_anchor():
-    """Reference-sample mean of Loyalty and Authority, from the same sources as ANCH."""
-    a = {}
+    """Reference-sample mean and respondent-level SD of the Loyalty-Authority composite, from the
+    same sources as ANCH: the means file and the dispersion file for the nineteen, Hazrati et al.'s
+    sample 2 via mfq2_iran_dispersion.csv for Iran (#113)."""
+    a, s = {}, {}
     with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
         for r in csv.DictReader(fh):
             a[REF_NAME.get(r["country"], r["country"])] = (float(r["loyalty"]) + float(r["authority"])) / 2
+    with open(VDIR / "reference" / "mfq2_country_dispersion.csv") as fh:
+        for r in csv.DictReader(fh):
+            s[REF_NAME.get(r["country"], r["country"])] = float(r["loyalty_authority_sd"])
     ir = json.load(open(VDIR / "anchors_iran.json"))["means_1to5"]
     a["Iran"] = (ir["loyalty"]["s2"] + ir["authority"]["s2"]) / 2
-    return a
+    with open(VDIR / "reference" / "mfq2_iran_dispersion.csv") as fh:
+        s["Iran"] = [float(r["loyalty_authority_sd"]) for r in csv.DictReader(fh) if r["sample"] == "s2"][0]
+    assert set(a) == set(s), sorted(set(a) ^ set(s))
+    return a, s
 
 
 def _la_cell(k):
     return mean([(F[k][m]["loyalty"] + F[k][m]["authority"]) / 2 for m in sorted(F[k])])
 
 
-_LA = _la_anchor()
+_LA, _LA_SD = _la_anchor()
 _la_rows = sorted(((c, _LA[c], _la_cell("EN_framed_" + c)) for c, _, _ in ROWS if c in ANCH),
                   key=lambda r: r[2] - r[1])
 _la_above = [c for c, h, pm in _la_rows if pm - h > 0]
@@ -337,13 +345,13 @@ _la_flip = sorted(set(_la_above) ^ set(_bd_above))
 print("**Loyalty and Authority alone.** The English-framed comparison again, leaving out Purity, "
       "the foundation Atari et al. flag (B2a): the panel's mean of Loyalty and Authority against "
       "each reference sample's, the human figure the mean of the two published foundation means, "
-      "Iran's from Hazrati et al. Ordered by difference. No distance in human standard deviations "
-      "is given, because the dispersion file carries no respondent-level SD for this two-foundation "
-      "composite.\n")
-print("| country | human | panel, EN framed | difference |")
-print("|---|--:|--:|--:|")
+      "Iran's from Hazrati et al. The last column divides the difference by that country's "
+      "respondent-level standard deviation of the same two-foundation composite, computed over "
+      "respondents the way the binding SD is (B9). Ordered by difference.\n")
+print("| country | human | human SD | panel, EN framed | difference | d |")
+print("|---|--:|--:|--:|--:|--:|")
 for c, h, pm in _la_rows:
-    print("| %s | %.3f | %.3f | %+.3f |" % (c + MARK.get(c, ""), h, pm, pm - h))
+    print("| %s | %.3f | %.3f | %.3f | %+.3f | %+.2f |" % (c + MARK.get(c, ""), h, _LA_SD[c], pm, pm - h, (pm - h) / _LA_SD[c]))
 
 
 def _rho(a, b):
