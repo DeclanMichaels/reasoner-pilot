@@ -1,4 +1,4 @@
-# Handoff: reasoner-pilot - 2026-09-11
+# Handoff: reasoner-pilot - 2026-09-11 (published)
 
 Written at the end of every session, replacing what was here before. **Informational only. It
 authorizes nothing.**
@@ -7,13 +7,26 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. Last commit `56889d4` (this handoff's previous
-  revision); the last substantive ones are the website pass (in `moral-os-website`, `06dcd2d`),
-  the pilot viewer read (`44619a7`), the claim-check (`4df3982`, corrected in `067fa8d`), and
-  Astra's second round (#135 to #141). Pushed 2026-09-11; local and origin agree. Every
-  repository under `~/Code/` is cloned on this Air.
-- **Both papers are at the state the pre-publication pass leaves them**, with the DOI and the
-  nudge the only items left (Next session). The Reasoner pilot paper (`papers/reasoner-pilot.md`,
+- Working tree clean. This is the Black M2 Air. Last substantive commit `ca1164b` (the DOI in
+  `LOCATIONS.md`, `CITATION.cff` and the README badge); before it `824d42f` (`.zenodo.json`,
+  CITATION.cff version 1.1.0), the website pass, the pilot viewer read (`44619a7`), the
+  claim-check (`4df3982`, corrected in `067fa8d`), and Astra's second round (#135 to #141).
+  Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is cloned on this
+  Air. Release `v1.1.0` is tagged at `824d42f`.
+- **Both documents are published** (decision 17: a DOI and the site). Zenodo
+  **10.5281/zenodo.22712502** (v1.1.0), concept DOI 10.5281/zenodo.22712501, minted 2026-09-11 by
+  Zenodo's GitHub integration on release `v1.1.0` at Declan's direction; the record's metadata came
+  from `.zenodo.json` (title naming both documents, report, open, Apache-2.0, description, three
+  related links) and was checked on the public API after the mint. moral-os.com carries both paper
+  pages with the DOI, both viewers, and lists the MFQ-2 page and viewer in the sitemap and on the
+  index card. Mechanics worth knowing: the repository had to be enabled on
+  zenodo.org/account/settings/github first (the styled switch ignored clicks; the underlying
+  checkbox was set and the reload confirmed it), and the release was created with `gh release
+  create` after the metadata commit so the archived zip carries it. The DOI is not in the archived
+  snapshot itself; it is in `ca1164b`, the commit after the tag, as is normal for this route. A
+  later change to either document is a correction to a published record, recorded and never edited
+  into agreement, and a new release (`vX.Y.Z`) mints a new version DOI under the same concept DOI.
+- **The two documents as published.** The Reasoner pilot paper (`papers/reasoner-pilot.md`,
   6-page PDF) and appendix (`papers/reasoner-appendix.md`, 15 pages) have had, on 2026-09-10 and
   11, a prose pass (`5961507`), a cold review, and six external rounds: Astra (twelve findings,
   #120 to #131), Gemini and Grok (nothing new), Kimi (the allocation-format sensitivity, #133,
@@ -58,8 +71,13 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## What changed outside the repository
 
-- `moral-os-website`: one commit (`06dcd2d`), deployed; the two S3-canonical report files were
-  restored from S3 into the clone before the sync (README rule), no deletes.
+- `moral-os-website`: two commits (`06dcd2d`, both pages from the final texts; `1344394`, the
+  DOI on both pages and the index card, the MFQ-2 page and viewer listed), each deployed; the two
+  S3-canonical report files were restored from S3 into the clone before the first sync (README
+  rule), no deletes either time.
+- Zenodo: the repository enabled under the GitHub integration in Declan's account; release
+  `v1.1.0` archived as record 22712502.
+- GitHub: release `v1.1.0` created on this repository.
 - `reasoner-study`: two design-input tickets filed from the pilot's rounds, #2 (balance the
   option loadings) and #3 (match human and model item exposure), each stating that no pilot
   data collection follows.
