@@ -236,10 +236,56 @@ for label,(jw,rw) in {"judgment_only":(1.0,0.0),"reasoning_only":(0.0,1.0),"comb
     pm={m:axis_scores(cells[(m,"neutral")]["responses"],BASE,jw,rw) for m in models}
     sens_jr_ratio[label]={a:{"human_sd":round(pstd(hum_by_w[label][a]),4),"model_sd":round(pstd([pm[m][a] for m in models]),4),
                              "ratio":round(pstd(hum_by_w[label][a])/pstd([pm[m][a] for m in models]),2)} for a in DIMS}
+# Allocation style (Kimi round one, finding 3): how points are spread across options, unframed b12,
+# models and humans on the same measure; and the compression ratio after collapsing every
+# allocation on both sides onto its largest option, which removes the spread-of-points component.
+SC_BY_ID={s_["id"]:s_ for s_ in BANK["scenarios"]}
+def _style(sid, jw, rw):
+    out={}
+    for q,w in (("judgment",jw),("reasoning",rw)):
+        poles=[o["pole"] for o in SC_BY_ID[sid][q]["options"]]; tot=sum(w) or 1.0; w=[x/tot for x in w]
+        out[q]={"neutral_share":sum(x for x,pp in zip(w,poles) if pp==0),"full_pole_share":sum(x for x,pp in zip(w,poles) if abs(pp)==1),
+                "entropy":-sum(x*math.log(x) for x in w if x>0)/math.log(len(w)),"max_share":max(w)}
+    return out
+def _style_mean(rows):
+    return {q:{k:round(mean(r[q][k] for r in rows),3) for k in ("neutral_share","full_pole_share","entropy","max_share")} for q in ("judgment","reasoning")}
+def _wta(w):
+    if not w or sum(w)==0: return w
+    i=max(range(len(w)),key=lambda k:w[k]); return [1.0 if k==i else 0.0 for k in range(len(w))]
+def _sharp(r): return {"scenario_id":r["scenario_id"],"judgment_weights":_wta(r["judgment_weights"]),"reasoning_weights":_wta(r["reasoning_weights"])}
+alloc={"per_model":{},"humans":None,"winner_take_all":{}}
+_hum_rows=[]; _humw={a:[] for a in DIMS}
+for f in glob.glob(str(HUMAN/"**"/"*.json"),recursive=True):  # unsorted, as above
+    d=json.load(open(f)); resp=[{"scenario_id":r["scenario_id"],"judgment_weights":r["judgment"]["weights"],"reasoning_weights":r["reasoning"]["weights"]} for r in d["responses"]]
+    _hum_rows+=[_style(r["scenario_id"],r["judgment_weights"],r["reasoning_weights"]) for r in resp]
+    seen={r["dimension"] for r in d["responses"]}; pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r) for r in resp],BANK)}
+    for a in DIMS:
+        if a in seen and pw.get(a) is not None: _humw[a].append(pw[a])
+alloc["humans"]={"n_responses":len(_hum_rows),**_style_mean(_hum_rows)}
+_mw={a:[] for a in DIMS}
+for m in models:
+    good=[r for r in cells[(m,"neutral")]["responses"] if r["scenario_id"] in BASE and not r.get("extraction_failed")]
+    alloc["per_model"][m]={"n_responses":len(good),**_style_mean([_style(r["scenario_id"],r["judgment_weights"],r["reasoning_weights"]) for r in good])}
+    pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r) for r in good],BANK)}
+    for a in DIMS: _mw[a].append(pw[a])
+for a in DIMS:
+    alloc["winner_take_all"][a]={"human_sd":round(pstd(_humw[a]),4),"model_sd":round(pstd(_mw[a]),4),"ratio":round(pstd(_humw[a])/pstd(_mw[a]),2),"ratio_as_published":comp[a]["ratio"]}
+# Exclusion sensitivity (Kimi finding 4): score the excluded responses with the runner's stored
+# fallback allocation and compare the b12 model SD; and Kimi's geometry displacement both ways.
+excl_sens={}
+for a in DIMS:
+    inc=[]
+    for m in models:
+        al=[r for r in cells[(m,"neutral")]["responses"] if r["scenario_id"] in BASE]
+        inc.append({s["dimension_id"]:s["combined"] for s in compute_dimensional_score(al,BANK)}[a])
+    excl_sens[a]={"model_sd_excluding":comp[a]["model_sd"],"model_sd_including_fallback":round(pstd(inc),4),
+                  "max_model_shift":round(max(abs(x-y) for x,y in zip([pos_b12[m][a] for m in models],inc)),3)}
+_kg_ex=axis_scores(cells[("kimi","nonsense_geometry")]["responses"],None); _kg_in={s["dimension_id"]:s["combined"] for s in compute_dimensional_score(cells[("kimi","nonsense_geometry")]["responses"],BANK)}
+excl_sens["kimi_geometry_displacement"]={"excluding":round(mean(abs(_kg_ex[a]-pos_all["kimi"][a]) for a in DIMS),3),"including_fallback":round(mean(abs(_kg_in[a]-pos_all["kimi"][a]) for a in DIMS),3)}
 MODELS_JSON=json.load(open(ROOT/"models.json"))["models"]
 model_ids={m:{"provider":MODELS_JSON[m]["provider"],"model_id":MODELS_JSON[m]["model_id"]} for m in allmodels if m in MODELS_JSON}
 out={"n_human":n_h,"n_models":len(models),"models":models,"labs":sorted(set(LAB[m] for m in models)),
-     "model_ids":model_ids,"human_exposure":exposure,"exclusions":exclusions,"range_coverage_all48":range_cov,
+     "model_ids":model_ids,"human_exposure":exposure,"exclusions":exclusions,"exclusion_sensitivity":excl_sens,"allocation_style":alloc,"range_coverage_all48":range_cov,
      "compression":comp,"frame_displacement":frame_disp,"direction":direction,"nonsense_direction":nons_dir,
      "clustering":{"axis_fingerprint":{"nearest_neighbors":nn_axis,"same_lab_nn_count":same_axis},
                    "scenario_fingerprint":{"n_scenarios":n_common,"nearest_neighbors":nn_scen,"same_lab_nn_count":same_scen}},

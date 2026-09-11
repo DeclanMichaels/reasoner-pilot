@@ -678,6 +678,242 @@
     "total_excluded": 205,
     "total_responses": 21120
   },
+  "exclusion_sensitivity": {
+    "moral_agent": {
+      "model_sd_excluding": 0.0609,
+      "model_sd_including_fallback": 0.0609,
+      "max_model_shift": 0.0
+    },
+    "authority": {
+      "model_sd_excluding": 0.0521,
+      "model_sd_including_fallback": 0.0522,
+      "max_model_shift": 0.002
+    },
+    "domain_boundary": {
+      "model_sd_excluding": 0.0609,
+      "model_sd_including_fallback": 0.0605,
+      "max_model_shift": 0.01
+    },
+    "scope": {
+      "model_sd_excluding": 0.0639,
+      "model_sd_including_fallback": 0.065,
+      "max_model_shift": 0.027
+    },
+    "kimi_geometry_displacement": {
+      "excluding": 0.223,
+      "including_fallback": 0.196
+    }
+  },
+  "allocation_style": {
+    "per_model": {
+      "deepseek_v4": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.222,
+          "full_pole_share": 0.498,
+          "entropy": 0.854,
+          "max_share": 0.549
+        },
+        "reasoning": {
+          "neutral_share": 0.193,
+          "full_pole_share": 0.533,
+          "entropy": 0.881,
+          "max_share": 0.49
+        }
+      },
+      "gpt55": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.211,
+          "full_pole_share": 0.506,
+          "entropy": 0.875,
+          "max_share": 0.539
+        },
+        "reasoning": {
+          "neutral_share": 0.193,
+          "full_pole_share": 0.535,
+          "entropy": 0.908,
+          "max_share": 0.468
+        }
+      },
+      "grok45": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.195,
+          "full_pole_share": 0.559,
+          "entropy": 0.909,
+          "max_share": 0.488
+        },
+        "reasoning": {
+          "neutral_share": 0.179,
+          "full_pole_share": 0.588,
+          "entropy": 0.938,
+          "max_share": 0.429
+        }
+      },
+      "inkling": {
+        "n_responses": 56,
+        "judgment": {
+          "neutral_share": 0.232,
+          "full_pole_share": 0.484,
+          "entropy": 0.871,
+          "max_share": 0.538
+        },
+        "reasoning": {
+          "neutral_share": 0.238,
+          "full_pole_share": 0.487,
+          "entropy": 0.885,
+          "max_share": 0.504
+        }
+      },
+      "kimi": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.21,
+          "full_pole_share": 0.508,
+          "entropy": 0.898,
+          "max_share": 0.504
+        },
+        "reasoning": {
+          "neutral_share": 0.185,
+          "full_pole_share": 0.548,
+          "entropy": 0.926,
+          "max_share": 0.449
+        }
+      },
+      "llama33": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.185,
+          "full_pole_share": 0.578,
+          "entropy": 0.936,
+          "max_share": 0.445
+        },
+        "reasoning": {
+          "neutral_share": 0.179,
+          "full_pole_share": 0.595,
+          "entropy": 0.95,
+          "max_share": 0.408
+        }
+      },
+      "minimax": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.215,
+          "full_pole_share": 0.527,
+          "entropy": 0.926,
+          "max_share": 0.488
+        },
+        "reasoning": {
+          "neutral_share": 0.206,
+          "full_pole_share": 0.54,
+          "entropy": 0.946,
+          "max_share": 0.434
+        }
+      },
+      "mistral_large": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.168,
+          "full_pole_share": 0.617,
+          "entropy": 0.928,
+          "max_share": 0.486
+        },
+        "reasoning": {
+          "neutral_share": 0.196,
+          "full_pole_share": 0.569,
+          "entropy": 0.921,
+          "max_share": 0.447
+        }
+      },
+      "o3": {
+        "n_responses": 59,
+        "judgment": {
+          "neutral_share": 0.195,
+          "full_pole_share": 0.54,
+          "entropy": 0.928,
+          "max_share": 0.479
+        },
+        "reasoning": {
+          "neutral_share": 0.197,
+          "full_pole_share": 0.549,
+          "entropy": 0.943,
+          "max_share": 0.435
+        }
+      },
+      "opus": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.235,
+          "full_pole_share": 0.488,
+          "entropy": 0.886,
+          "max_share": 0.523
+        },
+        "reasoning": {
+          "neutral_share": 0.174,
+          "full_pole_share": 0.583,
+          "entropy": 0.927,
+          "max_share": 0.439
+        }
+      },
+      "sonnet": {
+        "n_responses": 60,
+        "judgment": {
+          "neutral_share": 0.226,
+          "full_pole_share": 0.521,
+          "entropy": 0.917,
+          "max_share": 0.49
+        },
+        "reasoning": {
+          "neutral_share": 0.215,
+          "full_pole_share": 0.529,
+          "entropy": 0.947,
+          "max_share": 0.439
+        }
+      }
+    },
+    "humans": {
+      "n_responses": 352,
+      "judgment": {
+        "neutral_share": 0.151,
+        "full_pole_share": 0.56,
+        "entropy": 0.464,
+        "max_share": 0.657
+      },
+      "reasoning": {
+        "neutral_share": 0.196,
+        "full_pole_share": 0.529,
+        "entropy": 0.51,
+        "max_share": 0.608
+      }
+    },
+    "winner_take_all": {
+      "moral_agent": {
+        "human_sd": 0.6278,
+        "model_sd": 0.2668,
+        "ratio": 2.35,
+        "ratio_as_published": 6.78
+      },
+      "authority": {
+        "human_sd": 0.611,
+        "model_sd": 0.1593,
+        "ratio": 3.84,
+        "ratio_as_published": 7.69
+      },
+      "domain_boundary": {
+        "human_sd": 0.5098,
+        "model_sd": 0.1596,
+        "ratio": 3.19,
+        "ratio_as_published": 5.37
+      },
+      "scope": {
+        "human_sd": 0.4915,
+        "model_sd": 0.1219,
+        "ratio": 4.03,
+        "ratio_as_published": 5.65
+      }
+    }
+  },
   "range_coverage_all48": {
     "moral_agent": {
       "min": -0.0679,
