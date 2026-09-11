@@ -41,13 +41,28 @@ def axis_scores(resps, subset, jw=0.6, rw=0.4):
     good=[r for r in resps if (subset is None or r["scenario_id"] in subset) and not r.get("extraction_failed")]
     return {s["dimension_id"]:s["combined"] for s in compute_dimensional_score(good,BANK,judgment_weight=jw,reasoning_weight=rw)}
 hum={a:[] for a in DIMS}
-for f in glob.glob(str(HUMAN/"**"/"*.json"),recursive=True):
+hum12={a:[] for a in DIMS}            # the respondents who answered all twelve baseline scenarios
+hum_item={}                            # per-item human scores: scenario_id -> [score]
+hum_resp=[]                            # (respondent, n_items, instrument) for the exposure table
+hum_by_w={}                            # human axis scores under each question weighting, for A8
+SCEN_DIM={s_["id"]:s_["dimension_id"] for s_ in BANK["scenarios"]}
+for f in glob.glob(str(HUMAN/"**"/"*.json"),recursive=True):  # unsorted, as pinned: the A3 draws depend on this order
     d=json.load(open(f))
     resp=[{"scenario_id":r["scenario_id"],"judgment_weights":r["judgment"]["weights"],"reasoning_weights":r["reasoning"]["weights"]} for r in d["responses"]]
     seen={r["dimension"] for r in d["responses"]}
+    hum_resp.append((f, len(resp), d.get("instrument")))
     py={s["dimension_id"]:s["combined"] for s in compute_dimensional_score(resp,BANK)}
     for a in DIMS:
-        if a in seen and py.get(a) is not None: hum[a].append(py[a])
+        if a in seen and py.get(a) is not None:
+            hum[a].append(py[a])
+            if len(resp)==12: hum12[a].append(py[a])
+    for r in resp:
+        one={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([r],BANK)}
+        hum_item.setdefault(r["scenario_id"],[]).append(one[SCEN_DIM[r["scenario_id"]]])
+    for label,(jw,rw) in {"judgment_only":(1.0,0.0),"reasoning_only":(0.0,1.0),"combined":(0.6,0.4)}.items():
+        pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score(resp,BANK,judgment_weight=jw,reasoning_weight=rw)}
+        for a in DIMS:
+            if a in seen and pw.get(a) is not None: hum_by_w.setdefault(label,{a_:[] for a_ in DIMS})[a].append(pw[a])
 n_h=len(hum[DIMS[0]])
 pos_b12={m:axis_scores(cells[(m,"neutral")]["responses"],BASE) for m in models}
 pos_all={m:axis_scores(cells[(m,"neutral")]["responses"],None) for m in models}
@@ -74,19 +89,21 @@ for m in models:
         if fr=="neutral": continue
         p=axis_scores(cells[(m,fr)]["responses"],None)
         pf[fr].append(mean(abs(p[a]-neu[a]) for a in DIMS))
-def grp(frames): return [v for fr in frames for v in pf[fr]]
-def ci(vals,B=5000):
-    bs=[]
-    for _ in range(B):
-        s=[random.choice(vals) for _ in vals]; bs.append(mean(s))
-    bs.sort(); return round(mean(vals),3),[round(pctl(bs,0.025),3),round(pctl(bs,0.975),3)]
-cult_m,cult_ci=ci(grp(CULT)); nons_m,nons_ci=ci(grp(NONS)); plac_m,plac_ci=ci(grp(PLAC))
-cv=grp(CULT); nv=grp(NONS)
-sp=math.sqrt(((len(cv)-1)*statistics.variance(cv)+(len(nv)-1)*statistics.variance(nv))/(len(cv)+len(nv)-2))
-cohend=(mean(cv)-mean(nv))/sp if sp>0 else float("nan")
-frame_disp={"cultural":{"mean":cult_m,"ci":cult_ci},"nonsense":{"mean":nons_m,"ci":nons_ci},
-            "placebo":{"mean":plac_m,"ci":plac_ci},"nonsense_over_cultural":round(nons_m/cult_m,3),
-            "cohen_d_cultural_vs_nonsense":round(cohend,2),"per_frame":{fr:round(mean(pf[fr]),3) for fr in pf}}
+# pf[fr][i] is model models[i]'s displacement under framing fr. The intervals resample MODELS
+# (each model carrying all its framings), not the pooled model-by-framing values: a model's
+# framed displacements share its unframed baseline, so pooled resampling treats one model's
+# four numbers as four independent models. Own generator so the A3 draws above are unchanged.
+def grp_stats(idx):
+    c=mean(pf[fr][i] for i in idx for fr in CULT); n=mean(pf[fr][i] for i in idx for fr in NONS); p=mean(pf[fr][i] for i in idx for fr in PLAC)
+    return {"cultural":c,"nonsense":n,"placebo":p,"cultural_minus_nonsense":c-n,"nonsense_over_cultural":n/c}
+_rng=random.Random(20260910); CLB=20000
+_pt=grp_stats(range(len(models)))
+_bs=[grp_stats([_rng.randrange(len(models)) for _ in models]) for _ in range(CLB)]
+def _ci(k): v=sorted(b[k] for b in _bs); return [round(pctl(v,0.025),3),round(pctl(v,0.975),3)]
+frame_disp={k:{"mean":round(_pt[k],3),"ci":_ci(k)} for k in ("cultural","nonsense","placebo","cultural_minus_nonsense","nonsense_over_cultural")}
+frame_disp["interval"]={"unit":"models","draws":CLB,"seed":20260910,"n_models":len(models)}
+frame_disp["per_frame"]={fr:round(mean(pf[fr]),3) for fr in pf}
+frame_disp["per_model_nonsense_over_cultural"]={m:round(mean(pf[fr][i] for fr in NONS)/mean(pf[fr][i] for fr in CULT),3) for i,m in enumerate(models)}
 
 TARGET={"individualist":("moral_agent",+1),"collectivist":("moral_agent",-1),
         "egalitarian":("authority",+1),"hierarchical":("authority",-1)}
@@ -155,16 +172,26 @@ for label,(jw,rw) in {"judgment_only":(1.0,0.0),"reasoning_only":(0.0,1.0),"comb
 incl=models+[m for m in extra if (m,"neutral") in cells]
 sens_incl={"models_included":incl,"n":len(incl),
            "model_sd":{a:round(pstd([axis_scores(cells[(m,"neutral")]["responses"],BASE)[a] for m in incl]),4) for a in DIMS}}
-def rtok(r):
-    u=r.get("usage") or {}; v=u.get("reasoning"); return v if isinstance(v,(int,float)) else 0
-tokmean={m:mean([rtok(r) for r in cells[(m,"neutral")]["responses"]]) for m in models}
+# Reasoning tokens are whatever the provider's usage object reports. A cell whose responses
+# carry no numeric reasoning count is "not reported", never zero: the Anthropic, Cohere and
+# Mistral adapters record None, and Together returns null for Llama.
 cent={a:mean(pos_all[m][a] for m in models) for a in DIMS}
 distc={m:math.sqrt(sum((pos_all[m][a]-cent[a])**2 for a in DIMS)) for m in models}
-Tvec=[tokmean[m] for m in models]; nz=[t for t in Tvec if t>0]
-tokens={"per_model":{m:round(tokmean[m],1) for m in models},"min":round(min(Tvec),1),"max":round(max(Tvec),1),
-        "min_nonzero":round(min(nz),1) if nz else 0.0,"n":len(models),"distance_from_center":{m:round(distc[m],3) for m in models},
-        "r_tokens_distance":round(pearson(Tvec,[distc[m] for m in models]),3),
-        "r_tokens_axis":{a:round(pearson(Tvec,[pos_all[m][a] for m in models]),3) for a in DIMS}}
+tokens={"per_model":{},"distance_from_center":{m:round(distc[m],3) for m in models},"n":len(models)}
+for m in models:
+    rs=cells[(m,"neutral")]["responses"]
+    rv=[(r.get("usage") or {}).get("reasoning") for r in rs]; ov=[(r.get("usage") or {}).get("output") for r in rs]
+    num=[v for v in rv if isinstance(v,(int,float))]
+    # No share of output: providers differ on whether reasoning tokens sit inside the output
+    # count (xAI reports them outside it), so the ratio is not comparable across the panel.
+    if num:
+        tokens["per_model"][m]={"reported":True,"n_reported":len(num),"n_responses":len(rs),"reasoning_mean":round(mean(num),1)}
+    else:
+        tokens["per_model"][m]={"reported":False,"n_reported":0,"n_responses":len(rs),"reasoning_mean":None}
+tokens["reported_models"]=[m for m in models if tokens["per_model"][m]["reported"]]
+tokens["not_reported_models"]=[m for m in models if not tokens["per_model"][m]["reported"]]
+_rep=[tokens["per_model"][m]["reasoning_mean"] for m in tokens["reported_models"]]
+tokens["reported_min"]=round(min(_rep),1); tokens["reported_max"]=round(max(_rep),1)
 disp_between={}
 for fr in FR:
     bb=mean(pstd([axis_scores(cells[(m,fr)]["responses"],BASE)[a] for m in models]) for a in DIMS)
@@ -174,11 +201,49 @@ _nb=disp_between["neutral"]["b12"]; _na=disp_between["neutral"]["all48"]
 for fr in FR:
     disp_between[fr]["b12_x"]=round(disp_between[fr]["b12"]/_nb,1)
     disp_between[fr]["all48_x"]=round(disp_between[fr]["all48"]/_na,1)
+# Human item exposure: most respondents answered one baseline scenario per axis.
+from collections import Counter
+exposure={"respondents_by_items":{str(k):v for k,v in sorted(Counter(n for _,n,_ in hum_resp).items())},
+          "respondents_by_items_and_instrument":{f"{n} items, {inst}":c for (n,inst),c in sorted(Counter((n,i) for _,n,i in hum_resp).items())},
+          "twelve_item_humans":{a:{"n":len(hum12[a]),"human_sd":round(pstd(hum12[a]),4),"model_sd":comp[a]["model_sd"],
+                                   "ratio":round(pstd(hum12[a])/comp[a]["model_sd"],2)} for a in DIMS},
+          "per_item":[]}
+for s_ in BANK["scenarios"]:
+    sid=s_["id"]
+    if sid not in BASE: continue
+    a=s_["dimension_id"]; hv=hum_item[sid]
+    mv=[axis_scores(cells[(m,"neutral")]["responses"],{sid})[a] for m in models]
+    exposure["per_item"].append({"item":sid,"axis":NAME[a],"n_humans":len(hv),"human_sd":round(pstd(hv),4),
+                                 "model_sd":round(pstd(mv),4),"ratio":round(pstd(hv)/pstd(mv),2)})
+# Extraction exclusions: responses whose allocations could not be parsed are excluded from
+# every score; a file of 240 responses is not a cell of 240 scored answers.
+exclusions={"per_model":{},"total_excluded":0,"total_responses":0}
+for m in allmodels:
+    row={}
+    for fr in FR:
+        if (m,fr) in cells:
+            rs=cells[(m,fr)]["responses"]; ex=sum(1 for r in rs if r.get("extraction_failed")); cf=sum(1 for r in rs if r.get("call_failed"))
+            row[fr]={"excluded":ex,"call_failed":cf}
+            if m in models: exclusions["total_excluded"]+=ex; exclusions["total_responses"]+=len(rs)
+    exclusions["per_model"][m]={"frames":row,"excluded":sum(v["excluded"] for v in row.values()),"responses":240*len(row),"in_panel":m in models}
+# Range coverage on all 48: the span of the eleven unframed positions as a share of the fixed range 2.
+range_cov={a:{"min":round(min(pos_all[m][a] for m in models),4),"max":round(max(pos_all[m][a] for m in models),4),
+              "span":round(max(pos_all[m][a] for m in models)-min(pos_all[m][a] for m in models),4),
+              "pct_of_range":round(100*(max(pos_all[m][a] for m in models)-min(pos_all[m][a] for m in models))/2,2)} for a in DIMS}
+# Human/model ratio under each question weighting, both sides re-scored.
+sens_jr_ratio={}
+for label,(jw,rw) in {"judgment_only":(1.0,0.0),"reasoning_only":(0.0,1.0),"combined":(0.6,0.4)}.items():
+    pm={m:axis_scores(cells[(m,"neutral")]["responses"],BASE,jw,rw) for m in models}
+    sens_jr_ratio[label]={a:{"human_sd":round(pstd(hum_by_w[label][a]),4),"model_sd":round(pstd([pm[m][a] for m in models]),4),
+                             "ratio":round(pstd(hum_by_w[label][a])/pstd([pm[m][a] for m in models]),2)} for a in DIMS}
+MODELS_JSON=json.load(open(ROOT/"models.json"))["models"]
+model_ids={m:{"provider":MODELS_JSON[m]["provider"],"model_id":MODELS_JSON[m]["model_id"]} for m in allmodels if m in MODELS_JSON}
 out={"n_human":n_h,"n_models":len(models),"models":models,"labs":sorted(set(LAB[m] for m in models)),
+     "model_ids":model_ids,"human_exposure":exposure,"exclusions":exclusions,"range_coverage_all48":range_cov,
      "compression":comp,"frame_displacement":frame_disp,"direction":direction,"nonsense_direction":nons_dir,
      "clustering":{"axis_fingerprint":{"nearest_neighbors":nn_axis,"same_lab_nn_count":same_axis},
                    "scenario_fingerprint":{"n_scenarios":n_common,"nearest_neighbors":nn_scen,"same_lab_nn_count":same_scen}},
-     "reliability":reliab,"sensitivity":{"scope":sens_scope,"judgment_reasoning":sens_jr,"including_excluded":sens_incl},
+     "reliability":reliab,"sensitivity":{"scope":sens_scope,"judgment_reasoning":sens_jr,"judgment_reasoning_ratio":sens_jr_ratio,"including_excluded":sens_incl},
      "reasoning_tokens":tokens,"between_model_dispersion":disp_between}
 json.dump(out, open(ROOT/"results"/"appendix_stats.json","w"), indent=2)
 
@@ -187,7 +252,7 @@ for a in DIMS:
     c=comp[a]; print(f"{NAME[a]:16} hsd {c['human_sd']:.3f} msd {c['model_sd']:.3f} ratio {c['ratio']}x CI[{c['ratio_ci'][0]}-{c['ratio_ci'][1]}] p={c['p']:.5f}")
 print("=== FRAMING DISPLACEMENT ===")
 print("cultural", frame_disp["cultural"], "nonsense", frame_disp["nonsense"], "placebo", frame_disp["placebo"])
-print("nonsense/cultural", frame_disp["nonsense_over_cultural"], "cohen_d", frame_disp["cohen_d_cultural_vs_nonsense"])
+print("nonsense/cultural", frame_disp["nonsense_over_cultural"], "difference", frame_disp["cultural_minus_nonsense"])
 print("per_frame", frame_disp["per_frame"])
 print("=== DIRECTION (cultural, expected dir) ===")
 for fr,d in direction.items(): print(fr, d)
@@ -206,9 +271,8 @@ for k,v in sens_jr.items(): print(f"{k:14}", v)
 print(f"=== SENSITIVITY including excluded ({','.join(extra)}) ===")
 print(sens_incl)
 print("=== REASONING TOKENS (neutral) ===")
-for m in sorted(models,key=lambda m:-tokmean[m]): print(f"  {m:14} {tokmean[m]:7.0f}  dist {distc[m]:.3f}")
-print("span",tokens["min"],"to",tokens["max"],"min_nonzero",tokens["min_nonzero"],
-      "| r(tokens,dist)=",tokens["r_tokens_distance"],"r(tokens,axis)=",tokens["r_tokens_axis"])
+for m in models: print(f"  {m:14} {str(tokens['per_model'][m]['reasoning_mean']):>8}  dist {distc[m]:.3f}")
+print("=== REASONING TOKENS === reported:", tokens["reported_models"], "not reported:", tokens["not_reported_models"])
 print("=== BETWEEN-MODEL DISPERSION per framing ===")
 for fr in FR: print(f"  {fr:20} b12 {disp_between[fr]['b12']:.3f} (x{disp_between[fr]['b12_x']})   all48 {disp_between[fr]['all48']:.3f} (x{disp_between[fr]['all48_x']})")
 print("wrote appendix_stats.json")

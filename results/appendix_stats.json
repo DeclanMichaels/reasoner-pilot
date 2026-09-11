@@ -25,6 +25,685 @@
     "ThinkingMachines",
     "xAI"
   ],
+  "model_ids": {
+    "command_a": {
+      "provider": "cohere",
+      "model_id": "command-a-plus-05-2026"
+    },
+    "deepseek_v4": {
+      "provider": "together",
+      "model_id": "deepseek-ai/DeepSeek-V4-Pro"
+    },
+    "gemini3pro": {
+      "provider": "google",
+      "model_id": "gemini-3.1-pro-preview"
+    },
+    "gpt55": {
+      "provider": "openai",
+      "model_id": "gpt-5.5"
+    },
+    "grok45": {
+      "provider": "xai",
+      "model_id": "grok-4.5"
+    },
+    "inkling": {
+      "provider": "together",
+      "model_id": "thinkingmachines/Inkling"
+    },
+    "kimi": {
+      "provider": "together",
+      "model_id": "moonshotai/Kimi-K2.6"
+    },
+    "llama33": {
+      "provider": "together",
+      "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+    },
+    "minimax": {
+      "provider": "together",
+      "model_id": "MiniMaxAI/MiniMax-M3"
+    },
+    "mistral_large": {
+      "provider": "mistral",
+      "model_id": "mistral-large-2512"
+    },
+    "o3": {
+      "provider": "openai",
+      "model_id": "o3"
+    },
+    "opus": {
+      "provider": "anthropic",
+      "model_id": "claude-opus-4-8"
+    },
+    "sonnet": {
+      "provider": "anthropic",
+      "model_id": "claude-sonnet-5"
+    }
+  },
+  "human_exposure": {
+    "respondents_by_items": {
+      "4": 58,
+      "12": 10
+    },
+    "respondents_by_items_and_instrument": {
+      "4 items, CCAS Moral OS v1.1": 58,
+      "12 items, CCAS Moral OS v1.0": 10
+    },
+    "twelve_item_humans": {
+      "moral_agent": {
+        "n": 10,
+        "human_sd": 0.3484,
+        "model_sd": 0.0609,
+        "ratio": 5.72
+      },
+      "authority": {
+        "n": 10,
+        "human_sd": 0.1922,
+        "model_sd": 0.0521,
+        "ratio": 3.69
+      },
+      "domain_boundary": {
+        "n": 10,
+        "human_sd": 0.4064,
+        "model_sd": 0.0609,
+        "ratio": 6.67
+      },
+      "scope": {
+        "n": 10,
+        "human_sd": 0.309,
+        "model_sd": 0.0639,
+        "ratio": 4.84
+      }
+    },
+    "per_item": [
+      {
+        "item": "mac_1",
+        "axis": "Moral Agent",
+        "n_humans": 33,
+        "human_sd": 0.404,
+        "model_sd": 0.111,
+        "ratio": 3.64
+      },
+      {
+        "item": "mac_2",
+        "axis": "Moral Agent",
+        "n_humans": 27,
+        "human_sd": 0.3381,
+        "model_sd": 0.0475,
+        "ratio": 7.11
+      },
+      {
+        "item": "mac_3",
+        "axis": "Moral Agent",
+        "n_humans": 28,
+        "human_sd": 0.4566,
+        "model_sd": 0.1137,
+        "ratio": 4.02
+      },
+      {
+        "item": "auth_1",
+        "axis": "Authority",
+        "n_humans": 34,
+        "human_sd": 0.3185,
+        "model_sd": 0.0666,
+        "ratio": 4.78
+      },
+      {
+        "item": "auth_2",
+        "axis": "Authority",
+        "n_humans": 35,
+        "human_sd": 0.4637,
+        "model_sd": 0.0703,
+        "ratio": 6.6
+      },
+      {
+        "item": "auth_3",
+        "axis": "Authority",
+        "n_humans": 19,
+        "human_sd": 0.3398,
+        "model_sd": 0.0569,
+        "ratio": 5.97
+      },
+      {
+        "item": "domain_1",
+        "axis": "Moral Domain",
+        "n_humans": 34,
+        "human_sd": 0.3824,
+        "model_sd": 0.0902,
+        "ratio": 4.24
+      },
+      {
+        "item": "domain_2",
+        "axis": "Moral Domain",
+        "n_humans": 21,
+        "human_sd": 0.3509,
+        "model_sd": 0.0418,
+        "ratio": 8.4
+      },
+      {
+        "item": "domain_3",
+        "axis": "Moral Domain",
+        "n_humans": 33,
+        "human_sd": 0.3864,
+        "model_sd": 0.1172,
+        "ratio": 3.3
+      },
+      {
+        "item": "scope_1",
+        "axis": "Obligation Scope",
+        "n_humans": 34,
+        "human_sd": 0.2768,
+        "model_sd": 0.0479,
+        "ratio": 5.78
+      },
+      {
+        "item": "scope_2",
+        "axis": "Obligation Scope",
+        "n_humans": 29,
+        "human_sd": 0.4335,
+        "model_sd": 0.1262,
+        "ratio": 3.43
+      },
+      {
+        "item": "scope_3",
+        "axis": "Obligation Scope",
+        "n_humans": 25,
+        "human_sd": 0.3519,
+        "model_sd": 0.1071,
+        "ratio": 3.29
+      }
+    ]
+  },
+  "exclusions": {
+    "per_model": {
+      "command_a": {
+        "frames": {
+          "neutral": {
+            "excluded": 38,
+            "call_failed": 16
+          },
+          "individualist": {
+            "excluded": 79,
+            "call_failed": 51
+          },
+          "collectivist": {
+            "excluded": 59,
+            "call_failed": 34
+          }
+        },
+        "excluded": 176,
+        "responses": 720,
+        "in_panel": false
+      },
+      "deepseek_v4": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 0,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "gemini3pro": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 0,
+        "responses": 240,
+        "in_panel": false
+      },
+      "gpt55": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 0,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "grok45": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 3,
+            "call_failed": 0
+          }
+        },
+        "excluded": 4,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "inkling": {
+        "frames": {
+          "neutral": {
+            "excluded": 5,
+            "call_failed": 5
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 7,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "kimi": {
+        "frames": {
+          "neutral": {
+            "excluded": 3,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 14,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 9,
+            "call_failed": 1
+          },
+          "hierarchical": {
+            "excluded": 10,
+            "call_failed": 1
+          },
+          "egalitarian": {
+            "excluded": 13,
+            "call_failed": 1
+          },
+          "irrelevant": {
+            "excluded": 6,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 31,
+            "call_failed": 3
+          },
+          "nonsense_color": {
+            "excluded": 13,
+            "call_failed": 0
+          }
+        },
+        "excluded": 99,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "llama33": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 1,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "minimax": {
+        "frames": {
+          "neutral": {
+            "excluded": 5,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 6,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 5,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 3,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 8,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 13,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 9,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 4,
+            "call_failed": 0
+          }
+        },
+        "excluded": 53,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "mistral_large": {
+        "frames": {
+          "neutral": {
+            "excluded": 4,
+            "call_failed": 4
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 16,
+            "call_failed": 16
+          },
+          "hierarchical": {
+            "excluded": 4,
+            "call_failed": 1
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 24,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "o3": {
+        "frames": {
+          "neutral": {
+            "excluded": 2,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 2,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 1,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 4,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 5,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 1,
+            "call_failed": 0
+          }
+        },
+        "excluded": 17,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "opus": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 0,
+        "responses": 1920,
+        "in_panel": true
+      },
+      "sonnet": {
+        "frames": {
+          "neutral": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "individualist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "collectivist": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "hierarchical": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "egalitarian": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "irrelevant": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_geometry": {
+            "excluded": 0,
+            "call_failed": 0
+          },
+          "nonsense_color": {
+            "excluded": 0,
+            "call_failed": 0
+          }
+        },
+        "excluded": 0,
+        "responses": 1920,
+        "in_panel": true
+      }
+    },
+    "total_excluded": 205,
+    "total_responses": 21120
+  },
+  "range_coverage_all48": {
+    "moral_agent": {
+      "min": -0.0679,
+      "max": 0.0437,
+      "span": 0.1116,
+      "pct_of_range": 5.58
+    },
+    "authority": {
+      "min": 0.0461,
+      "max": 0.1258,
+      "span": 0.0797,
+      "pct_of_range": 3.98
+    },
+    "domain_boundary": {
+      "min": -0.052,
+      "max": 0.1057,
+      "span": 0.1577,
+      "pct_of_range": 7.89
+    },
+    "scope": {
+      "min": 0.1169,
+      "max": 0.2031,
+      "span": 0.0862,
+      "pct_of_range": 4.31
+    }
+  },
   "compression": {
     "moral_agent": {
       "human_sd": 0.4124,
@@ -83,26 +762,44 @@
     "cultural": {
       "mean": 0.363,
       "ci": [
-        0.307,
-        0.42
+        0.302,
+        0.429
       ]
     },
     "nonsense": {
       "mean": 0.203,
       "ci": [
-        0.165,
-        0.244
+        0.15,
+        0.259
       ]
     },
     "placebo": {
       "mean": 0.246,
       "ci": [
         0.197,
-        0.297
+        0.298
       ]
     },
-    "nonsense_over_cultural": 0.559,
-    "cohen_d_cultural_vs_nonsense": 0.95,
+    "cultural_minus_nonsense": {
+      "mean": 0.16,
+      "ci": [
+        0.129,
+        0.199
+      ]
+    },
+    "nonsense_over_cultural": {
+      "mean": 0.558,
+      "ci": [
+        0.464,
+        0.641
+      ]
+    },
+    "interval": {
+      "unit": "models",
+      "draws": 20000,
+      "seed": 20260910,
+      "n_models": 11
+    },
     "per_frame": {
       "individualist": 0.335,
       "collectivist": 0.442,
@@ -111,6 +808,19 @@
       "irrelevant": 0.246,
       "nonsense_geometry": 0.195,
       "nonsense_color": 0.211
+    },
+    "per_model_nonsense_over_cultural": {
+      "deepseek_v4": 0.721,
+      "gpt55": 0.722,
+      "grok45": 0.726,
+      "inkling": 0.619,
+      "kimi": 0.39,
+      "llama33": 0.473,
+      "minimax": 0.529,
+      "mistral_large": 0.544,
+      "o3": 0.525,
+      "opus": 0.462,
+      "sonnet": 0.265
     }
   },
   "direction": {
@@ -697,6 +1407,74 @@
         "scope": 0.0639
       }
     },
+    "judgment_reasoning_ratio": {
+      "judgment_only": {
+        "moral_agent": {
+          "human_sd": 0.4856,
+          "model_sd": 0.0701,
+          "ratio": 6.93
+        },
+        "authority": {
+          "human_sd": 0.4121,
+          "model_sd": 0.0449,
+          "ratio": 9.19
+        },
+        "domain_boundary": {
+          "human_sd": 0.375,
+          "model_sd": 0.0721,
+          "ratio": 5.2
+        },
+        "scope": {
+          "human_sd": 0.4342,
+          "model_sd": 0.0648,
+          "ratio": 6.7
+        }
+      },
+      "reasoning_only": {
+        "moral_agent": {
+          "human_sd": 0.4808,
+          "model_sd": 0.0594,
+          "ratio": 8.1
+        },
+        "authority": {
+          "human_sd": 0.5053,
+          "model_sd": 0.0687,
+          "ratio": 7.35
+        },
+        "domain_boundary": {
+          "human_sd": 0.4001,
+          "model_sd": 0.0503,
+          "ratio": 7.95
+        },
+        "scope": {
+          "human_sd": 0.3688,
+          "model_sd": 0.0746,
+          "ratio": 4.95
+        }
+      },
+      "combined": {
+        "moral_agent": {
+          "human_sd": 0.4124,
+          "model_sd": 0.0609,
+          "ratio": 6.78
+        },
+        "authority": {
+          "human_sd": 0.4012,
+          "model_sd": 0.0521,
+          "ratio": 7.69
+        },
+        "domain_boundary": {
+          "human_sd": 0.3271,
+          "model_sd": 0.0609,
+          "ratio": 5.37
+        },
+        "scope": {
+          "human_sd": 0.3611,
+          "model_sd": 0.0639,
+          "ratio": 5.65
+        }
+      }
+    },
     "including_excluded": {
       "models_included": [
         "deepseek_v4",
@@ -724,22 +1502,73 @@
   },
   "reasoning_tokens": {
     "per_model": {
-      "deepseek_v4": 1065.8,
-      "gpt55": 130.8,
-      "grok45": 494.3,
-      "inkling": 1117.0,
-      "kimi": 3627.6,
-      "llama33": 0,
-      "minimax": 1189.3,
-      "mistral_large": 0,
-      "o3": 247.2,
-      "opus": 0,
-      "sonnet": 0
+      "deepseek_v4": {
+        "reported": true,
+        "n_reported": 240,
+        "n_responses": 240,
+        "reasoning_mean": 1065.8
+      },
+      "gpt55": {
+        "reported": true,
+        "n_reported": 240,
+        "n_responses": 240,
+        "reasoning_mean": 130.8
+      },
+      "grok45": {
+        "reported": true,
+        "n_reported": 240,
+        "n_responses": 240,
+        "reasoning_mean": 494.3
+      },
+      "inkling": {
+        "reported": true,
+        "n_reported": 235,
+        "n_responses": 240,
+        "reasoning_mean": 1140.8
+      },
+      "kimi": {
+        "reported": true,
+        "n_reported": 240,
+        "n_responses": 240,
+        "reasoning_mean": 3627.6
+      },
+      "llama33": {
+        "reported": false,
+        "n_reported": 0,
+        "n_responses": 240,
+        "reasoning_mean": null
+      },
+      "minimax": {
+        "reported": true,
+        "n_reported": 240,
+        "n_responses": 240,
+        "reasoning_mean": 1189.3
+      },
+      "mistral_large": {
+        "reported": false,
+        "n_reported": 0,
+        "n_responses": 240,
+        "reasoning_mean": null
+      },
+      "o3": {
+        "reported": true,
+        "n_reported": 240,
+        "n_responses": 240,
+        "reasoning_mean": 247.2
+      },
+      "opus": {
+        "reported": false,
+        "n_reported": 0,
+        "n_responses": 240,
+        "reasoning_mean": null
+      },
+      "sonnet": {
+        "reported": false,
+        "n_reported": 0,
+        "n_responses": 240,
+        "reasoning_mean": null
+      }
     },
-    "min": 0,
-    "max": 3627.6,
-    "min_nonzero": 130.8,
-    "n": 11,
     "distance_from_center": {
       "deepseek_v4": 0.058,
       "gpt55": 0.06,
@@ -753,13 +1582,24 @@
       "opus": 0.042,
       "sonnet": 0.079
     },
-    "r_tokens_distance": -0.476,
-    "r_tokens_axis": {
-      "moral_agent": -0.08,
-      "authority": -0.13,
-      "domain_boundary": 0.039,
-      "scope": 0.117
-    }
+    "n": 11,
+    "reported_models": [
+      "deepseek_v4",
+      "gpt55",
+      "grok45",
+      "inkling",
+      "kimi",
+      "minimax",
+      "o3"
+    ],
+    "not_reported_models": [
+      "llama33",
+      "mistral_large",
+      "opus",
+      "sonnet"
+    ],
+    "reported_min": 130.8,
+    "reported_max": 3627.6
   },
   "between_model_dispersion": {
     "neutral": {
