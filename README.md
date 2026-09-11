@@ -1,5 +1,7 @@
 # The Reasoner — a Benchmark for the Structure of Moral Reasoning (Pilot)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712502.svg)](https://doi.org/10.5281/zenodo.22712502)
+
 The Reasoner is an instrument that measures the **structure** of moral reasoning —
 not which values a respondent endorses, but the shape of how they reason — and
 scores humans and language models in one common space. It scores four bipolar

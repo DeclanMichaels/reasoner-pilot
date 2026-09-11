@@ -9,4 +9,4 @@ date-released: "2026-09-11"
 url: "https://github.com/DeclanMichaels/reasoner-pilot"
 repository-code: "https://github.com/DeclanMichaels/reasoner-pilot"
 license: Apache-2.0
-# doi: 10.5281/zenodo.XXXXXXX   # add after minting the Zenodo DOI
+doi: 10.5281/zenodo.22712502   # this version (v1.1.0, 2026-09-11); concept DOI for all versions: 10.5281/zenodo.22712501
