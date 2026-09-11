@@ -1,4 +1,4 @@
-# Handoff: reasoner-pilot - 2026-09-10 (sixth)
+# Handoff: reasoner-pilot - 2026-09-11
 
 Written at the end of every session, replacing what was here before. **Informational only. It
 authorizes nothing.**
@@ -7,31 +7,32 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commit is `edcf91c`, the MFQ-2
-  document re-rendered after #119 with the recipe's table rules settled on all three documents;
-  before it `99ca5df` (#119), `dc27c21` (pilot viewer text, `viewer.html` re-pinned, harness
-  PASS), `595fbb7` (pilot PDFs) and `5961507` (the pilot writeup pass). Pushed
-  2026-09-10; local and origin agree. Every repository under `~/Code/` is cloned on this Air.
-- **The Reasoner pilot writeup has had its prose pass** (`5961507`). `papers/reasoner-pilot.md`
-  and `papers/reasoner-appendix.md` were unchanged since 2026-07-20 and predated the register
-  rules, decision 8 and the temperature rule. Declan directed each section in turn. Every number
-  in both files was checked against `results/appendix_stats.json` or recomputed from `runs/`
-  before the pass; the four unpinned figures (range coverage 4 to 8 percent, Kimi's 96 percent,
-  Sonnet's 0.27, DeepSeek/GPT-5.5/Grok's 0.72 to 0.73) recompute as stated. Five published
-  claims were wrong and are corrected on the record in the commit message: "near the relational
-  pole" for a mean of -0.05; the compression ratio stated as model over human; the seasonal
-  framing "within the bootstrap spread" of the nonsense framings (0.246 against an interval
-  ending at 0.244); "almost none of the models refused the premise" resting on a five-model
-  coding of a prior roster; and "What comes next" naming the successor study as using the same
-  instrument. Also: decision 8's limitations paragraph added (it had never landed), temperature
-  stated as unsent and unrecorded, the three model quotes restored verbatim from the run files,
-  A1's dead paths fixed, and the "Why this matters" section cut. **No external round has read
-  this version, or any version, of the pilot paper**; every file in `reviews/` is the MFQ-2
-  document.
+- Working tree clean. This is the Black M2 Air. The last substantive commits are `9f0102a` (the
+  appendix builder extended and `results/appendix_stats.json` re-pinned, harness PASS) and
+  `9f06413` (the pilot paper and appendix after the first external round and the cold review,
+  #120 to #131). Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is
+  cloned on this Air.
+- **The Reasoner pilot paper has had its first external round.** Sequence on 2026-09-10 and 11:
+  the prose pass (`5961507`), a cold review (`reviews/claude-cold-review-pilot-2026-09-10.md`,
+  twelve items), then ChatGPT's round (`reviews/chatgpt-paper-review-2026-09-10.md`, twelve
+  findings, every computation in it reproduced). Twelve tickets, #120 to #131, all closed in
+  `9f06413` and `9f0102a`. **Corrected on the record** in those commits: the human baseline
+  (58 respondents answered one baseline scenario per axis, ten all twelve; the paper had said
+  68 on the twelve); the reshuffle claim (the prompt is identical on every rerun); the A5
+  intervals (resampled pooled values, not models, as the appendix said; re-pinned on a
+  model-cluster bootstrap, Cohen's d dropped); reasoning tokens (four models have no reported
+  count, not zero; correlations dropped; Inkling 1117 -> 1141); "p < 0.00001" (0 of 100,000,
+  without replacement); the o3-Llama "cross country" error; the five-model coding (two Haiku
+  passes on a prompt asserting triangles superior to circles, cut). Added: exclusions per model
+  and frame (205 of 21,120), per-item and ten-respondent compression ratios, request parameters
+  and model identifiers, range coverage, weighting ratios. Declan's decisions of 2026-09-11 are
+  listed in the ChatGPT record's header.
+- **Astra's round on the pilot paper is held by Declan**, run against the document at
+  `5961507`, before any of the above. When it arrives: diff it against both review records and
+  #119 to #131 first; most of what it found will be closed.
 - **All three PDFs are the recipe's.** `papers/reasoner-pilot.pdf` 5 pages and
-  `papers/reasoner-appendix.pdf` 8 pages (`595fbb7`, re-rendered `edcf91c`), from the files at
-  `5961507`; `papers/inlanguage-mfq2-DRAFT.pdf` 44 pages (`edcf91c`) from the document at
-  `99ca5df`. The recipe's table rules in `papers/render_html_pdf.py` were settled against all
+  `papers/reasoner-appendix.pdf` 13 pages (`9f06413`); `papers/inlanguage-mfq2-DRAFT.pdf` 44
+  pages (`edcf91c`) from the document at `99ca5df`. The recipe's table rules in `papers/render_html_pdf.py` were settled against all
   three documents in `edcf91c`: a table of five data rows or fewer is never split; a short
   lead-in ending in a colon stays with the table or list after it; a table's last two rows are
   never left alone at a page head. Each was checked page by page. **The PDFs are not checked by
@@ -61,16 +62,19 @@ Nothing. No model API calls; nothing spent. Nothing deposited anywhere. The scra
 
 ## The tracker
 
-Empty. #1 to #119 are closed. #119 was filed and closed this session; the pilot writeup pass
-ran on Declan's direction section by section rather than as tickets.
+Empty. #1 to #131 are closed. #120 to #131 were filed and closed 2026-09-11 from the two
+reviews of the pilot paper.
 
 ## Next session
 
 Nothing is queued for an agent. Open at close, 2026-09-10:
 
-1. **External review of the pilot paper.** First version to have had a pass; no round has read
-   it. Before assessing any pasted review, diff it against `reviews/` (none exist for this paper)
-   and this file.
+1. **External review of the pilot paper, continued.** One round adjudicated (ChatGPT); Astra's
+   is held and will have read the pre-round text. Diff any paste against the two records and
+   #119 to #131 before reading it. Open from the rounds, Declan's to scope: the title and
+   opening ("converge" and "moral-reasoning space" flagged; left for later), a loading audit of
+   the bank (24 scenarios where an even split does not score zero), a simulation matching the
+   human item assignment on the model side, and a collection with humans answering all twelve.
 2. **The five-model artifacts in `results/`.** `pilot_reanalysis_findings.md`,
    `pilot_reanalysis_metrics.json`, `tightened_metrics.json`, `pilot_frame_shifts.json`,
    `coding_results.json`, `nonsense_texts.json`, `coder_check_result.json`, `coder_prompt.md`,
@@ -101,11 +105,11 @@ Left as disclosure, Declan's decision: the English-framed arm on the official qu
 
 - Sampling temperature is unset and unrecorded in the pilot runs and the grid; both documents
   now say so. Any collection not matched to them sets and records it.
-- The pilot paper's Limitations say a human sample with a wider spread would raise the ratio and
-  a narrower one lower it. Declan has not ruled on the sentence; flagged as arithmetic rather
-  than prediction, and it goes if it reads as hedging.
-- The pilot paper's nonsense-integration coding covers the prior five-model roster only; the
-  eleven-model texts are uncoded. Coding them is spending if a model codes them.
+- The eleven-model nonsense texts are uncoded and the paper now says only that. Coding them is
+  spending if a model codes them, and the five-model coding artifacts are the results-directory
+  decision above.
+- `analysis/README.md`'s sign check validates the bank's polarity against the expected human
+  profile; A9 now says so. A mapping audit against the option meanings would replace it.
 - API keys on this Air are exported in the interactive shell; `~/.config/ccas/keys.env` does not
   exist here.
 - Whether every blocking finding in `reviews/viewer-cold-review-2026-08-22.md` is closed is still
@@ -126,8 +130,12 @@ every anchor before writing any file; re-render the PDF after every change to th
 Added this session, not yet in the notes: sweep a render for colon lead-ins and tables at a
 page foot, not only headings; the first pilot render had both and the heading sweep passed it.
 
-**Corrected on the record, 2026-09-10 (this session):** the five pilot-paper claims listed under
-Current state, in `5961507`.
+**Corrected on the record, 2026-09-11:** the pilot-paper claims listed under Current state, in
+`9f06413` and `9f0102a`.
+
+**Corrected on the record, 2026-09-10:** five pilot-paper claims in `5961507` (relational pole
+for a mean of -0.05; the ratio stated model over human; the seasonal framing "within" the
+nonsense interval; the refusal claim's evidence; the successor "on the same instrument").
 
 **Corrected on the record, 2026-09-10 (earlier):** the viewer's Models tab drew Morocco's human
 marker on the Arabic-framed arm (#99, `4649a42`); its headline story summarised the translated
@@ -151,5 +159,9 @@ viewer's Control tab rendered a date as "[object Object]" (fixed before push).
   traced.
 - A search that clears a reviewer's quoted phrase must be shown, not reported: #110 and the
   round-six adjudication both cleared "tails too coarse" and it was on line 27 the whole time.
+- A cold review that says "every number reproduced" must have diffed the file against the JSON
+  by machine, not by eye: three A5 intervals were off by 0.001 to 0.002 and passed.
+- A method sentence taken from the glossary is not verified by the glossary. The reshuffle
+  claim entered the paper from a reconstructed CONTEXT.md entry and was wrong.
 - The pilot appendix's A10 names the build scripts without their `analysis/` directory; A1 now
   gives the full path for one of them.
