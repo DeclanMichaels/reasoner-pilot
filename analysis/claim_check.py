@@ -50,7 +50,7 @@ CONSTANTS = {
     },
 }
 NUM = re.compile(r"(?<![\w.\-+/])[+\-]?\d[\d,]*(?:\.\d+)?(?:e-?\d+)?(?![\w/])")
-SKIP_LINE = re.compile(r"^\s*(\||#|```|<!--)|doi:")      # tables, headings, code fences, citations
+SKIP_LINE = re.compile(r"^\s*(\||#|```|<!--)")           # tables, headings, code fences: artifacts or labels
 SKIP_TOKEN = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 
 def artifact_numbers(paths):
@@ -80,7 +80,7 @@ def prose_numbers(doc, skip_sections):
     for i, line in enumerate(text, 1):
         if line.startswith("## "):
             skipping = any(line.startswith(s) for s in skip_sections)
-        if skipping or SKIP_LINE.match(line): continue
+        if skipping or SKIP_LINE.match(line) or "doi:" in line: continue   # a citation line carries page numbers
         clean = re.sub(r"`[^`]*`", "", line)                       # code spans are paths and keys
         clean = re.sub(r"\b(?:v\d(?:\.\d+)?|[A-Z]+-?\d+[a-z]?|[a-z]+_\d+|#\d+|[a-f0-9]{7})\b", "", clean)  # v1.1, MFQ-2, B4a, mac_1, #119, hashes
         clean = re.sub(r"\b(?:GPT|Kimi|Llama|Claude|claude|gpt|o)-?[\d.]+\b|\b\d+B\b|Opus \d\.\d|Sonnet \d", "", clean)
