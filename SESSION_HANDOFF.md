@@ -215,5 +215,8 @@ viewer's Control tab rendered a date as "[object Object]" (fixed before push).
   depended on it.
 - A subset's size is not the cell's: 60 baseline responses against 240 in the cell, and "31 of
   60" went out three times.
+- A commit chain stops on the harness: `4df3982` was pushed with the harness reporting FAIL
+  because the chain joined the harness to the commit with a semicolon, and its message claimed a
+  pass. `067fa8d` records it. The harness is `&&`-joined to any commit that follows it.
 - The pilot appendix's A10 names the build scripts without their `analysis/` directory; A1 now
   gives the full path for one of them.
