@@ -92,8 +92,9 @@ everything below before either does. Nothing on this list is done until it is st
 - ~~MFQ-2: the two hand-written tables~~ Done (#132): emitted as P1 and P2 of `appendix_tables.md`
   and spliced; the document did not change.
 - MFQ-2: the PDF re-rendered from the final text; page 13's lone list item traced or accepted.
-- Both: a claim-check of every prose number against its artifact, by machine; the pilot's
-  cold review passed three intervals by eye.
+- ~~Both: a claim-check of every prose number against its artifact, by machine~~ Done:
+  `analysis/claim_check.py`, run by the harness; both papers check clean. It matches by value,
+  not meaning: a number attached to the wrong quantity still passes.
 - Both: the moral-os.com pages (`papers/reasoner-pilot.html` is the 2026-07-21 text; the
   in-language viewer is live and unlisted; the pilot viewer's site copy unchecked) rebuilt from
   the final files, in the website repository's own session.
