@@ -51,9 +51,10 @@ This repository is public, so this file is public. It is written knowing that.
   viewer, **unlisted** (noindex, no sitemap, unlinked) until Declan lists them with the DOI.
 - **The pilot viewer** (`viewer.html`, regenerated) was read against the final paper twice today
   and re-pinned each time; it says what the paper says about temperature, exposure and reruns.
-- `DECISIONS.md` holds 23 entries. 23 (2026-09-11) is the Zenodo deposit: the repository
-  snapshot, one DOI, both documents citing it. 17 still gates: published means the DOI and the
-  site. 12 is superseded by 18, 14 by 22 for the emitter outputs.
+- `DECISIONS.md` holds 23 entries. 23 (2026-09-11) is the Zenodo deposit, now minted. Decision
+  17's gate is passed: both documents have the DOI and are on the site. 12 is superseded by 18,
+  14 by 22 for the emitter outputs. **From here, a changed number in either document is a
+  correction to a published record**: recorded, never edited into agreement, and a new release.
 
 ## What changed outside the repository
 
@@ -73,9 +74,8 @@ pre-publication list.
 
 ## Next session
 
-Nothing is queued for an agent. **Declan's plan, 2026-09-11: the two papers publish together**, the
-Reasoner pilot (paper and appendix) and the MFQ-2 document, and a pre-publication pass checks
-everything below before either does. Nothing on this list is done until it is struck here.
+Nothing is queued for an agent. **The two papers published together on 2026-09-11** under one
+DOI; the pre-publication pass below is complete, every item struck with its commit.
 
 **Pre-publication pass, both papers:**
 
@@ -110,12 +110,17 @@ everything below before either does. Nothing on this list is done until it is st
   like the MFQ-2 viewer, which was refreshed from `validity/` with its data; the index card's
   finding sentence rewritten. Listing the MFQ-2 page and viewer is Declan's, with the DOI. Any
   later text change reopens this: copy the renders and viewers, redeploy.
-- Both: `LOCATIONS.md`'s three `TBD`s and `CITATION.cff`'s commented `doi:`, resolved together when
-  Declan mints the DOI. What the deposit is was decided 2026-09-11: the repository snapshot, one
-  DOI, both documents citing it (decision 23). Then: list the MFQ-2 page and viewer on the site
-  (remove the two noindex blocks, add to `sitemap.xml`, link from `index.html`), redeploy.
-- Both: the embarrassment nudge, once more, on the final state. Given at every push today; the
-  answer as of this handoff is six rounds on the pilot paper and fifteen on the MFQ-2 document.
+- ~~Both: the DOI~~ Done 2026-09-11: **10.5281/zenodo.22712502** (v1.1.0; concept DOI
+  10.5281/zenodo.22712501), minted by Zenodo's GitHub integration on release `v1.1.0` at Declan's
+  direction, with `.zenodo.json` supplying the metadata. `LOCATIONS.md`, `CITATION.cff` and the
+  README badge carry it (`ca1164b`). The MFQ-2 page and viewer are listed on the site (noindex
+  removed, sitemap, index links) and both paper pages carry the DOI; deployed. **Both documents
+  are published under decision 17.** A later text change means a new release for a new version
+  DOI under the same concept DOI, and the site pages redeployed.
+- ~~Both: the embarrassment nudge~~ Given at every push, last at the mint: six rounds on the pilot
+  paper, fifteen on the MFQ-2 document.
+
+**The pre-publication list is complete. Both papers are published.**
 
 Open at close, 2026-09-11, in detail:
 
