@@ -1,0 +1,17 @@
+{
+  "title": "The Reasoner pilot and the in-language MFQ-2 study: eleven language models on a moral-judgment instrument and on a moral-foundations questionnaire, with the runs, the scoring and analysis code, the human responses and the interactive viewers",
+  "upload_type": "publication",
+  "publication_type": "report",
+  "creators": [{"name": "Michaels, Declan", "affiliation": "Cross-Cultural Alignment Study (moral-os.com)"}],
+  "description": "<p>Repository snapshot for two exploratory documents, published together.</p><p><b>Eleven Language Models in a Narrow Band of a Moral-Judgment Instrument</b> (papers/reasoner-pilot.md, .pdf; statistical appendix papers/reasoner-appendix.md, .pdf): the Reasoner instrument scores humans and language models on the same four bipolar axes from constant-sum allocations over a judgment question and a reasoning question per scenario. Eleven models from nine labs under eight framings on 48 scenarios, against 68 human respondents on twelve baseline scenarios.</p><p><b>Eleven language models take the MFQ-2 in English and six translations, with and without a country to answer as</b> (papers/inlanguage-mfq2-DRAFT.md, .pdf): the same panel on the MFQ-2 in English and six official translations, framed as a typical person from each of twenty-three countries and unframed, against published human means for twenty countries.</p><p>The snapshot holds every collected run, the scoring function, the analysis scripts that regenerate every published number (python3 analysis/test_reproduce.py, no keys, no network), the anonymised human responses under CC BY 4.0, the two interactive viewers, the decision log and the adjudicated review records. Nothing here was preregistered; both documents say so. Software under Apache-2.0; data, figures and documents under CC BY 4.0 (DATA-LICENSE.md).</p>",
+  "license": "Apache-2.0",
+  "keywords": ["moral reasoning", "language models", "moral foundations questionnaire", "MFQ-2", "cross-cultural", "benchmark", "constant-sum allocation", "exploratory"],
+  "related_identifiers": [
+    {"identifier": "https://moral-os.com/papers/reasoner-pilot.html", "relation": "isSupplementTo", "resource_type": "publication-report"},
+    {"identifier": "https://moral-os.com/papers/inlanguage-mfq2.html", "relation": "isSupplementTo", "resource_type": "publication-report"},
+    {"identifier": "https://github.com/DeclanMichaels/reasoner-pilot", "relation": "isIdenticalTo", "resource_type": "software"}
+  ],
+  "version": "1.1.0",
+  "language": "eng",
+  "access_right": "open"
+}
