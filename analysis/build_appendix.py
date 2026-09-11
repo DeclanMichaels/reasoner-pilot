@@ -223,9 +223,10 @@ for m in allmodels:
     for fr in FR:
         if (m,fr) in cells:
             rs=cells[(m,fr)]["responses"]; ex=sum(1 for r in rs if r.get("extraction_failed")); cf=sum(1 for r in rs if r.get("call_failed"))
-            row[fr]={"excluded":ex,"call_failed":cf}
+            row[fr]={"excluded":ex,"call_failed":cf,"scored":len(rs)-ex}
             if m in models: exclusions["total_excluded"]+=ex; exclusions["total_responses"]+=len(rs)
-    exclusions["per_model"][m]={"frames":row,"excluded":sum(v["excluded"] for v in row.values()),"responses":240*len(row),"in_panel":m in models}
+    exclusions["per_model"][m]={"frames":row,"excluded":sum(v["excluded"] for v in row.values()),"call_failed":sum(v["call_failed"] for v in row.values()),
+                                "scored":sum(v["scored"] for v in row.values()),"responses":240*len(row),"in_panel":m in models}
 # Range coverage on all 48: the span of the eleven unframed positions as a share of the fixed range 2.
 range_cov={a:{"min":round(min(pos_all[m][a] for m in models),4),"max":round(max(pos_all[m][a] for m in models),4),
               "span":round(max(pos_all[m][a] for m in models)-min(pos_all[m][a] for m in models),4),
@@ -307,6 +308,7 @@ for a in DIMS:
         inc.append({s["dimension_id"]:s["combined"] for s in compute_dimensional_score(al,BANK)}[a])
     excl_sens[a]={"model_sd_excluding":comp[a]["model_sd"],"model_sd_including_fallback":round(pstd(inc),4),
                   "max_model_shift":round(max(abs(x-y) for x,y in zip([pos_b12[m][a] for m in models],inc)),3)}
+excl_sens["max_panel_sd_change"]=round(max(abs(excl_sens[a]["model_sd_including_fallback"]-excl_sens[a]["model_sd_excluding"]) for a in DIMS),4)
 _kg_ex=axis_scores(cells[("kimi","nonsense_geometry")]["responses"],None); _kg_in={s["dimension_id"]:s["combined"] for s in compute_dimensional_score(cells[("kimi","nonsense_geometry")]["responses"],BANK)}
 excl_sens["kimi_geometry_displacement"]={"excluding":round(mean(abs(_kg_ex[a]-pos_all["kimi"][a]) for a in DIMS),3),"including_fallback":round(mean(abs(_kg_in[a]-pos_all["kimi"][a]) for a in DIMS),3)}
 # Rerun selection (Astra round two, finding 5): one observed rerun per model, chosen at random,

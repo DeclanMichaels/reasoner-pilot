@@ -104,5 +104,8 @@ if __name__ == "__main__":
     print("checking the document's generated sections against the artifacts ...")
     r = subprocess.run([sys.executable, str(ROOT / "validity" / "splice_appendix.py"), "--check"], capture_output=True, text=True)
     print((r.stdout + r.stderr).rstrip()); ok = ok and r.returncode == 0
-    print("PASS: pilot outputs reproduce, validity outputs unchanged." if ok else "FAIL: outputs drifted.")
+    print("checking every number in the documents' prose against the artifacts ...")
+    r = subprocess.run([sys.executable, str(HERE / "claim_check.py")], capture_output=True, text=True)
+    print((r.stdout + r.stderr).rstrip()); ok = ok and r.returncode == 0
+    print("PASS: pilot outputs reproduce, validity outputs unchanged, prose numbers producible." if ok else "FAIL: outputs drifted or a prose number has no artifact.")
     sys.exit(0 if ok else 1)

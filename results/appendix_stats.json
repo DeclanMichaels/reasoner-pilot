@@ -219,18 +219,23 @@
         "frames": {
           "neutral": {
             "excluded": 38,
-            "call_failed": 16
+            "call_failed": 16,
+            "scored": 202
           },
           "individualist": {
             "excluded": 79,
-            "call_failed": 51
+            "call_failed": 51,
+            "scored": 161
           },
           "collectivist": {
             "excluded": 59,
-            "call_failed": 34
+            "call_failed": 34,
+            "scored": 181
           }
         },
         "excluded": 176,
+        "call_failed": 101,
+        "scored": 544,
         "responses": 720,
         "in_panel": false
       },
@@ -238,38 +243,48 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 0,
+        "call_failed": 0,
+        "scored": 1920,
         "responses": 1920,
         "in_panel": true
       },
@@ -277,10 +292,13 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 0,
+        "call_failed": 0,
+        "scored": 240,
         "responses": 240,
         "in_panel": false
       },
@@ -288,38 +306,48 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 0,
+        "call_failed": 0,
+        "scored": 1920,
         "responses": 1920,
         "in_panel": true
       },
@@ -327,38 +355,48 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 3,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 237
           }
         },
         "excluded": 4,
+        "call_failed": 0,
+        "scored": 1916,
         "responses": 1920,
         "in_panel": true
       },
@@ -366,38 +404,48 @@
         "frames": {
           "neutral": {
             "excluded": 5,
-            "call_failed": 5
+            "call_failed": 5,
+            "scored": 235
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "irrelevant": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 7,
+        "call_failed": 5,
+        "scored": 1913,
         "responses": 1920,
         "in_panel": true
       },
@@ -405,38 +453,48 @@
         "frames": {
           "neutral": {
             "excluded": 3,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 237
           },
           "individualist": {
             "excluded": 14,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 226
           },
           "collectivist": {
             "excluded": 9,
-            "call_failed": 1
+            "call_failed": 1,
+            "scored": 231
           },
           "hierarchical": {
             "excluded": 10,
-            "call_failed": 1
+            "call_failed": 1,
+            "scored": 230
           },
           "egalitarian": {
             "excluded": 13,
-            "call_failed": 1
+            "call_failed": 1,
+            "scored": 227
           },
           "irrelevant": {
             "excluded": 6,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 234
           },
           "nonsense_geometry": {
             "excluded": 31,
-            "call_failed": 3
+            "call_failed": 3,
+            "scored": 209
           },
           "nonsense_color": {
             "excluded": 13,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 227
           }
         },
         "excluded": 99,
+        "call_failed": 6,
+        "scored": 1821,
         "responses": 1920,
         "in_panel": true
       },
@@ -444,38 +502,48 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 1,
+        "call_failed": 0,
+        "scored": 1919,
         "responses": 1920,
         "in_panel": true
       },
@@ -483,38 +551,48 @@
         "frames": {
           "neutral": {
             "excluded": 5,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 235
           },
           "individualist": {
             "excluded": 6,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 234
           },
           "collectivist": {
             "excluded": 5,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 235
           },
           "hierarchical": {
             "excluded": 3,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 237
           },
           "egalitarian": {
             "excluded": 8,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 232
           },
           "irrelevant": {
             "excluded": 13,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 227
           },
           "nonsense_geometry": {
             "excluded": 9,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 231
           },
           "nonsense_color": {
             "excluded": 4,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 236
           }
         },
         "excluded": 53,
+        "call_failed": 0,
+        "scored": 1867,
         "responses": 1920,
         "in_panel": true
       },
@@ -522,38 +600,48 @@
         "frames": {
           "neutral": {
             "excluded": 4,
-            "call_failed": 4
+            "call_failed": 4,
+            "scored": 236
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 16,
-            "call_failed": 16
+            "call_failed": 16,
+            "scored": 224
           },
           "hierarchical": {
             "excluded": 4,
-            "call_failed": 1
+            "call_failed": 1,
+            "scored": 236
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 24,
+        "call_failed": 21,
+        "scored": 1896,
         "responses": 1920,
         "in_panel": true
       },
@@ -561,38 +649,48 @@
         "frames": {
           "neutral": {
             "excluded": 2,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 238
           },
           "individualist": {
             "excluded": 2,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 238
           },
           "collectivist": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "hierarchical": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "egalitarian": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           },
           "irrelevant": {
             "excluded": 4,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 236
           },
           "nonsense_geometry": {
             "excluded": 5,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 235
           },
           "nonsense_color": {
             "excluded": 1,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 239
           }
         },
         "excluded": 17,
+        "call_failed": 0,
+        "scored": 1903,
         "responses": 1920,
         "in_panel": true
       },
@@ -600,38 +698,48 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 0,
+        "call_failed": 0,
+        "scored": 1920,
         "responses": 1920,
         "in_panel": true
       },
@@ -639,38 +747,48 @@
         "frames": {
           "neutral": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "individualist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "collectivist": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "hierarchical": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "egalitarian": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "irrelevant": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_geometry": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           },
           "nonsense_color": {
             "excluded": 0,
-            "call_failed": 0
+            "call_failed": 0,
+            "scored": 240
           }
         },
         "excluded": 0,
+        "call_failed": 0,
+        "scored": 1920,
         "responses": 1920,
         "in_panel": true
       }
@@ -699,6 +817,7 @@
       "model_sd_including_fallback": 0.065,
       "max_model_shift": 0.027
     },
+    "max_panel_sd_change": 0.0011,
     "kimi_geometry_displacement": {
       "excluding": 0.223,
       "including_fallback": 0.196
