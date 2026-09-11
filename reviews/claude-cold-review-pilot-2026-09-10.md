@@ -6,8 +6,11 @@ one is adjudicated.
 **Reviewed:** `papers/reasoner-pilot.md` and `papers/reasoner-appendix.md` at `5961507`, with the
 run files, `results/appendix_stats.json`, the call layer (`refresh_runner.py`), the scoring
 function (`scenario_bank.py`), the scenario bank and `CONTEXT.md`.
-**Adjudicated:** pending. Nothing below is fixed; every item is Declan's to accept, reject or
-downgrade.
+**Adjudicated:** 2026-09-11, together with ChatGPT's round of 2026-09-10, which raised items 1 to 6
+with more precision (`reviews/chatgpt-paper-review-2026-09-10.md`). Tickets #120 to #131. Items 1
+to 4, 7, 8, 10 and 11 applied; 5 and 6 decided by Declan (clause dropped; scenario grain leads);
+9 added as one clause; 12 noted. **Correction:** "Every number reproduced" below was wrong on the
+three A5 intervals, which differed from the JSON by 0.001 to 0.002; ChatGPT caught it.
 
 ## What was checked
 

@@ -74,21 +74,25 @@ _Avoid_: the models, the sample. A panel is not a probability sample of anything
 One model crossed with one framing, holding all five reruns. The unit a run file stores.
 
 **Rerun**:
-One of the five repetitions of a cell. Statement order is reshuffled every rerun.
+One of the five repetitions of a cell. The prompt is identical on every rerun, options in bank
+order; only the request seed changes, where the provider accepts one. (An earlier entry said
+statement order was reshuffled; it is not, in this collection. Corrected 2026-09-11, #121.)
 _Avoid_: iteration, trial, replicate.
 
 **Framing**:
-One of nine prompt conditions in `framings.json`, sharing a matched scaffold so only the organizing
+One of the eight prompt conditions collected, sharing a matched scaffold so only the organizing
 principle varies: `neutral`, four cultural (`individualist`, `collectivist`, `hierarchical`,
-`egalitarian`), two nonsense (`nonsense_geometry`, `nonsense_color`), and two non-moral placebos
-(`irrelevant`, `weekday`).
+`egalitarian`), two nonsense (`nonsense_geometry`, `nonsense_color`), and one non-moral placebo
+(`irrelevant`, the seasonal calendar). `framings.json` also defines `weekday`, a second placebo
+that was never run.
 _Avoid_: condition, when the framing specifically is meant; a condition is a framing crossed with
 a language or an instrument.
 
 **Nonsense framing**:
 A framing naming an arbitrary principle as the basis of moral life without asserting any verdict.
-The placebos are a separate thing: their principle governs daily routines rather than moral
-obligation, and they set the noise floor.
+The placebo is a separate thing: its principle governs daily routines rather than moral
+obligation. It was designed as the noise floor and did not serve as one; the pilot has no
+framing under which the models hold still.
 
 ## Findings the papers name
 
