@@ -7,61 +7,63 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. Substantive commits of 2026-09-11, newest first:
-  Astra's second round (#135 to #141: ties shared, sensitivity wording, three corrections, the
-  rerun approximation, the figure template, sorted human order; two commits), `a3e1c9e` (Summary
-  leads with the collapsed ratio), Kimi's round (#133, #134: allocation style and the collapsed
-  ratios, two commits),
-  `edfe39a` (Grok's round, the exposure-matched columns in the Results table), `fc2dabd` (#132,
-  the MFQ-2 paper's two tables emitted and spliced), `d307c1b` (title, five-model archive,
-  decision 23), `e221888` (Gemini's round), `9f06413` and `9f0102a` (Astra's round and the cold
-  review, #120 to #131). Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is
-  cloned on this Air.
-- **The Reasoner pilot paper has had its first external round.** Sequence on 2026-09-10 and 11:
-  the prose pass (`5961507`), a cold review (`reviews/claude-cold-review-pilot-2026-09-10.md`,
-  twelve items), then Astra's round (`reviews/astra-paper-review-pilot-2026-09-10.md`, twelve
-  findings, every computation in it reproduced; Astra is the current ChatGPT model, one
-  reviewer, and the round was first recorded under the wrong name). Twelve tickets, #120 to #131, all closed in
-  `9f06413` and `9f0102a`. **Corrected on the record** in those commits: the human baseline
-  (58 respondents answered one baseline scenario per axis, ten all twelve; the paper had said
-  68 on the twelve); the reshuffle claim (the prompt is identical on every rerun); the A5
-  intervals (resampled pooled values, not models, as the appendix said; re-pinned on a
-  model-cluster bootstrap, Cohen's d dropped); reasoning tokens (four models have no reported
-  count, not zero; correlations dropped; Inkling 1117 -> 1141); "p < 0.00001" (0 of 100,000,
-  without replacement); the o3-Llama "cross country" error; the five-model coding (two Haiku
-  passes on a prompt asserting triangles superior to circles, cut). Added: exclusions per model
-  and frame (205 of 21,120), per-item and ten-respondent compression ratios, request parameters
-  and model identifiers, range coverage, weighting ratios. Declan's decisions of 2026-09-11 are
-  listed in the Astra record's header.
-- **All three PDFs are the recipe's.** `papers/reasoner-pilot.pdf` 5 pages and
-  `papers/reasoner-appendix.pdf` 13 pages (`9f06413`); `papers/inlanguage-mfq2-DRAFT.pdf` 44
-  pages (`edcf91c`) from the document at `99ca5df`. The recipe's table rules in `papers/render_html_pdf.py` were settled against all
-  three documents in `edcf91c`: a table of five data rows or fewer is never split; a short
-  lead-in ending in a colon stays with the table or list after it; a table's last two rows are
-  never left alone at a page head. Each was checked page by page. **The PDFs are not checked by
-  the harness**: after any change to a document, re-run the recipe and commit the render with it.
-- **The MFQ-2 document changed once this session, #119** (`99ca5df`): Declan's own read found
-  the Methods sentence "tails too coarse to read as a calibrated bound" still in the document
-  after #110 and the round-six adjudication had both recorded it as not there. The finding is
-  reinstated, the sentence replaced (few distinct resampling values at eleven; a selected
-  panel, not a probability sample), and both review files carry an appended correction. The
-  same read scoped "all eleven models move the same direction" to Arabic in the Summary and
-  the framing section, verified from the dataset (eleven of eleven up under Arabic; three up,
-  eight down under Japanese). PDF re-rendered, 44 pages. Otherwise as the previous handoff:
-  fifteen external rounds adjudicated, review finished by Declan's decision, 119 issues
-  closed, none open.
-- **The published record reproduces** as of 2026-09-10 (previous handoff); nothing under
-  `analysis/` or `validity/` changed this session and the harness was not re-run.
-- **The integer ratings dataset, the September wave, the MFQ-2 viewer** are as the previous
-  handoff describes; none was touched.
-- `DECISIONS.md` holds 23 entries; 23 (2026-09-11) is the Zenodo deposit. 12 is superseded by 18, 14 by 22 for the emitter outputs. 17
-  (published means a DOI and the site) still gates everything. No decision was made or
-  superseded this session.
+- Working tree clean. This is the Black M2 Air. Last commit `56889d4` (this handoff's previous
+  revision); the last substantive ones are the website pass (in `moral-os-website`, `06dcd2d`),
+  the pilot viewer read (`44619a7`), the claim-check (`4df3982`, corrected in `067fa8d`), and
+  Astra's second round (#135 to #141). Pushed 2026-09-11; local and origin agree. Every
+  repository under `~/Code/` is cloned on this Air.
+- **Both papers are at the state the pre-publication pass leaves them**, with the DOI and the
+  nudge the only items left (Next session). The Reasoner pilot paper (`papers/reasoner-pilot.md`,
+  6-page PDF) and appendix (`papers/reasoner-appendix.md`, 15 pages) have had, on 2026-09-10 and
+  11, a prose pass (`5961507`), a cold review, and six external rounds: Astra (twelve findings,
+  #120 to #131), Gemini and Grok (nothing new), Kimi (the allocation-format sensitivity, #133,
+  #134) and Astra again (#135 to #141: ties shared, three same-day corrections, the rerun
+  approximation, the figure template). Records in `reviews/`, one file per round, each with its
+  diff against the earlier ones. The title is "Eleven Language Models in a Narrow Band of a
+  Moral-Judgment Instrument"; the Summary leads with the collapsed compression ratio (2.3 to 4.9,
+  ties shared; 2.1 to 6.2 across three tie rules; 5.4 to 7.7 as scored), Declan's decision.
+- **Corrected on the record this session**, in commit messages that quote the old wording: the
+  human baseline's item exposure (58 respondents one scenario per axis, ten all twelve); the
+  reshuffle claim; the A5 intervals (resampled models now, Cohen's d dropped); reasoning tokens
+  (four models not reported, not zero); "p < 0.00001"; the o3-Llama country error; the five-model
+  coding (cut; artifacts archived under `results/archive-five-model-2026-07/`); Kimi's geometry
+  denominators; the exclusion statement; the recount at inflated SDs (0, 0, 0 and 1 of 100,000);
+  the A3 ratio intervals (second decimal, sorted human order); five earlier claims in `5961507`.
+- **The MFQ-2 document** (`papers/inlanguage-mfq2-DRAFT.md`, 44-page PDF) changed once, #119
+  (`99ca5df`, the "tails too coarse" sentence Declan found after two adjudications had cleared
+  it; the all-eleven clause scoped to Arabic). Its two hand-written tables are now emitted and
+  spliced (#132). Fifteen external rounds, review finished by Declan's decision of 2026-09-10.
+- **The published record reproduces and the prose is checked**: `python3 analysis/test_reproduce.py`
+  passed at the last run (2026-09-11) with 20 regenerated outputs, 14 committed-only, 47
+  condition means, every spliced section, and, new this session, `analysis/claim_check.py`,
+  which fails on any number in either paper's prose that no artifact can produce. It matches by
+  value, not meaning. `results/appendix_stats.json` was re-pinned six times today as the builder
+  grew (exposure, exclusions, cluster intervals, token reporting, allocation style, tie rules,
+  rerun selection, the recount); the A3 compression block never moved except its intervals.
+- **All three PDFs are the recipe's** (`papers/render.sh`), re-rendered from the current text
+  on 2026-09-11 and byte-identical to the committed files. Table rules in
+  `papers/render_html_pdf.py`: a table of five data rows or fewer is never split; a short colon
+  lead-in stays with its table or list; a table's last two rows are never orphaned. **The PDFs
+  are not checked by the harness**: after any change to a document, re-run the recipe and commit
+  the render with it.
+- **moral-os.com carries both papers** (deployed 2026-09-11): the pilot page retitled with the
+  current Summary, both pilot PDFs and the pilot viewer; the MFQ-2 page, PDF and refreshed
+  viewer, **unlisted** (noindex, no sitemap, unlinked) until Declan lists them with the DOI.
+- **The pilot viewer** (`viewer.html`, regenerated) was read against the final paper twice today
+  and re-pinned each time; it says what the paper says about temperature, exposure and reruns.
+- `DECISIONS.md` holds 23 entries. 23 (2026-09-11) is the Zenodo deposit: the repository
+  snapshot, one DOI, both documents citing it. 17 still gates: published means the DOI and the
+  site. 12 is superseded by 18, 14 by 22 for the emitter outputs.
 
 ## What changed outside the repository
 
-Nothing. No model API calls; nothing spent. Nothing deposited anywhere. The scratch `venv/`
-(pymupdf) and `papers/.render-venv/` (the recipe) are as before.
+- `moral-os-website`: one commit (`06dcd2d`), deployed; the two S3-canonical report files were
+  restored from S3 into the clone before the sync (README rule), no deletes.
+- `reasoner-study`: two design-input tickets filed from the pilot's rounds, #2 (balance the
+  option loadings) and #3 (match human and model item exposure), each stating that no pilot
+  data collection follows.
+- No model API calls; nothing spent. Nothing deposited anywhere. The scratch `venv/` (pymupdf)
+  and `papers/.render-venv/` (the recipe) are as before.
 
 ## The tracker
 
@@ -110,8 +112,10 @@ everything below before either does. Nothing on this list is done until it is st
   later text change reopens this: copy the renders and viewers, redeploy.
 - Both: `LOCATIONS.md`'s three `TBD`s and `CITATION.cff`'s commented `doi:`, resolved together when
   Declan mints the DOI. What the deposit is was decided 2026-09-11: the repository snapshot, one
-  DOI, both documents citing it (decision 23).
-- Both: the embarrassment nudge, once more, on the final state.
+  DOI, both documents citing it (decision 23). Then: list the MFQ-2 page and viewer on the site
+  (remove the two noindex blocks, add to `sitemap.xml`, link from `index.html`), redeploy.
+- Both: the embarrassment nudge, once more, on the final state. Given at every push today; the
+  answer as of this handoff is six rounds on the pilot paper and fifteen on the MFQ-2 document.
 
 Open at close, 2026-09-11, in detail:
 
