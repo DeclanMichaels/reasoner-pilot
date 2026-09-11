@@ -1,6 +1,6 @@
 # Statistical Appendix
 
-Companion to "Frontier Language Models Converge in a Narrow Region of a Moral-Reasoning Space." Every number here regenerates from the raw runs with one stdlib script, `analysis/build_appendix.py` (random seed 20260720; the A5 model-resampling draws use their own seed, 20260910), except the rerun-averaging figures in A3, which `validity/aggregation_artifact.py` computes from this appendix's output. Tables first; the report carries the prose.
+Companion to "Eleven Language Models in a Narrow Band of a Moral-Judgment Instrument." Every number here regenerates from the raw runs with one stdlib script, `analysis/build_appendix.py` (random seed 20260720; the A5 model-resampling draws use their own seed, 20260910), except the rerun-averaging figures in A3, which `validity/aggregation_artifact.py` computes from this appendix's output. Tables first; the report carries the prose.
 
 ## A1. Sample and data
 

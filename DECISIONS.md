@@ -55,3 +55,4 @@ not, it is a reconstruction error and the entry is wrong rather than the memory.
 | 20 | 2026-09-08 | active | [The in-language report and its statistical appendix are one document](docs/decisions/020-one-document.md) - the seam two files kept showing reviewers |
 | 21 | 2026-09-08 | active | [The September wave: the framing template without a country, matched to the August grid](docs/decisions/021-september-wave-neutral-template.md) - the framing shift's two components, and a window the grid did not have |
 | 22 | 2026-09-09 | active | [The in-language emitters' outputs are regenerated in the harness, not hashed as committed](docs/decisions/022-inlanguage-artifacts-regenerated-in-the-harness.md) - a reproducibility claim tested rather than described |
+| 23 | 2026-09-11 | active | [The Zenodo deposit is the repository snapshot, and both documents cite it](docs/decisions/023-zenodo-deposit-is-the-repository-snapshot.md) - what the reproduction claims point at |

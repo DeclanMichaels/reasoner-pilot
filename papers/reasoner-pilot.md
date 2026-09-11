@@ -1,4 +1,4 @@
-# Frontier Language Models Converge in a Narrow Region of a Moral-Reasoning Space
+# Eleven Language Models in a Narrow Band of a Moral-Judgment Instrument
 
 ## Summary
 
