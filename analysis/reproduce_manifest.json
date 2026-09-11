@@ -1,7 +1,7 @@
 {
  "regenerated": {
-  "results/appendix_stats.json": "f22f1fc5b91ebad9ccd6ea658c4056b210f3595dc00009240bd55c06cfdd16c3",
-  "results/compression_radar_v3.html": "a36a55fc300dbe38a47f415747dc9dc16024b950bff8fd9a6fd33ef49922d1ca",
+  "results/appendix_stats.json": "62a8586886134bf66aa50bca0607a3713124e35d69469e29047807a8d92c6f7d",
+  "results/compression_radar_v3.html": "1eaaa78a146271e7a58ea19de1964a20fa96ca67a34ce96f851066c87455b47f",
   "results/csv/human_allocations.csv": "f545433936c639914384cc8eaa341cbcc5e327f8586b671788e546ced86e5272",
   "results/csv/human_scores.csv": "b870e69e120d8722bbe095eb6d7c8c81d4b89cf9cee0b2a8712729944a2d2c9a",
   "results/csv/model_allocations.csv": "c80f10bac592b38bbec7a85cefc3ebb830c33652463bf0495585b0da4d410afd",

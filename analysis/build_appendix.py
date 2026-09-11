@@ -46,7 +46,7 @@ hum_item={}                            # per-item human scores: scenario_id -> [
 hum_resp=[]                            # (respondent, n_items, instrument) for the exposure table
 hum_by_w={}                            # human axis scores under each question weighting, for A8
 SCEN_DIM={s_["id"]:s_["dimension_id"] for s_ in BANK["scenarios"]}
-for f in glob.glob(str(HUMAN/"**"/"*.json"),recursive=True):  # unsorted, as pinned: the A3 draws depend on this order
+for f in sorted(glob.glob(str(HUMAN/"**"/"*.json"),recursive=True)):  # sorted (#140): the A3 draws depend on this order
     d=json.load(open(f))
     resp=[{"scenario_id":r["scenario_id"],"judgment_weights":r["judgment"]["weights"],"reasoning_weights":r["reasoning"]["weights"]} for r in d["responses"]]
     seen={r["dimension"] for r in d["responses"]}
@@ -249,27 +249,54 @@ def _style(sid, jw, rw):
     return out
 def _style_mean(rows):
     return {q:{k:round(mean(r[q][k] for r in rows),3) for k in ("neutral_share","full_pole_share","entropy","max_share")} for q in ("judgment","reasoning")}
-def _wta(w):
+def _wta(w, rule="shared"):
+    """Collapse an allocation onto its largest option. Ties at the maximum (within 1e-10) are common
+    (humans 43 and 40 of 352 allocations; models 70 and 95 of 655); the primary rule shares the
+    points equally among tied maxima, which does not privilege option order. "first" and "last"
+    take the first or last tied option in presentation order and are reported as sensitivities."""
     if not w or sum(w)==0: return w
-    i=max(range(len(w)),key=lambda k:w[k]); return [1.0 if k==i else 0.0 for k in range(len(w))]
-def _sharp(r): return {"scenario_id":r["scenario_id"],"judgment_weights":_wta(r["judgment_weights"]),"reasoning_weights":_wta(r["reasoning_weights"])}
-alloc={"per_model":{},"humans":None,"winner_take_all":{}}
-_hum_rows=[]; _humw={a:[] for a in DIMS}
-for f in glob.glob(str(HUMAN/"**"/"*.json"),recursive=True):  # unsorted, as above
+    mx=max(w); idx=[k for k,x in enumerate(w) if abs(x-mx)<1e-10]
+    if rule=="first": idx=idx[:1]
+    elif rule=="last": idx=idx[-1:]
+    return [1.0/len(idx) if k in idx else 0.0 for k in range(len(w))]
+def _sharp(r, rule="shared"): return {"scenario_id":r["scenario_id"],"judgment_weights":_wta(r["judgment_weights"],rule),"reasoning_weights":_wta(r["reasoning_weights"],rule)}
+def _tied(w): return bool(w) and sum(w)>0 and sum(1 for x in w if abs(x-max(w))<1e-10)>1
+alloc={"per_model":{},"humans":None,"winner_take_all":{},"tie_rules":{},"winner_take_all_per_item":[],"ties":{}}
+_hum_rows=[]; _humw={r:{a:[] for a in DIMS} for r in ("shared","first","last")}; _hum_person_entropy=[]; _hum_resp=[]
+for f in sorted(glob.glob(str(HUMAN/"**"/"*.json"),recursive=True)):
     d=json.load(open(f)); resp=[{"scenario_id":r["scenario_id"],"judgment_weights":r["judgment"]["weights"],"reasoning_weights":r["reasoning"]["weights"]} for r in d["responses"]]
-    _hum_rows+=[_style(r["scenario_id"],r["judgment_weights"],r["reasoning_weights"]) for r in resp]
-    seen={r["dimension"] for r in d["responses"]}; pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r) for r in resp],BANK)}
-    for a in DIMS:
-        if a in seen and pw.get(a) is not None: _humw[a].append(pw[a])
-alloc["humans"]={"n_responses":len(_hum_rows),**_style_mean(_hum_rows)}
-_mw={a:[] for a in DIMS}
+    _rows=[_style(r["scenario_id"],r["judgment_weights"],r["reasoning_weights"]) for r in resp]; _hum_rows+=_rows; _hum_resp+=resp
+    _hum_person_entropy.append(mean(r_["judgment"]["entropy"] for r_ in _rows))
+    seen={r["dimension"] for r in d["responses"]}
+    for rule in _humw:
+        pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r,rule) for r in resp],BANK)}
+        for a in DIMS:
+            if a in seen and pw.get(a) is not None: _humw[rule][a].append(pw[a])
+alloc["humans"]={"n_responses":len(_hum_rows),"unit":"per response; twelve-item respondents carry three times a four-item respondent's weight",
+                 "judgment_entropy_equal_person_mean":round(mean(_hum_person_entropy),3),**_style_mean(_hum_rows)}
+alloc["ties"]={"humans":{"judgment":sum(_tied(r["judgment_weights"]) for r in _hum_resp),"reasoning":sum(_tied(r["reasoning_weights"]) for r in _hum_resp),"n":len(_hum_resp)}}
+_mw={r:{a:[] for a in DIMS} for r in _humw}; _mgood={}
 for m in models:
-    good=[r for r in cells[(m,"neutral")]["responses"] if r["scenario_id"] in BASE and not r.get("extraction_failed")]
-    alloc["per_model"][m]={"n_responses":len(good),**_style_mean([_style(r["scenario_id"],r["judgment_weights"],r["reasoning_weights"]) for r in good])}
-    pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r) for r in good],BANK)}
-    for a in DIMS: _mw[a].append(pw[a])
+    good=[r for r in cells[(m,"neutral")]["responses"] if r["scenario_id"] in BASE and not r.get("extraction_failed")]; _mgood[m]=good
+    alloc["per_model"][m]={"n_responses":len(good),"ties_judgment":sum(_tied(r["judgment_weights"]) for r in good),"ties_reasoning":sum(_tied(r["reasoning_weights"]) for r in good),
+                           **_style_mean([_style(r["scenario_id"],r["judgment_weights"],r["reasoning_weights"]) for r in good])}
+    for rule in _mw:
+        pw={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r,rule) for r in good],BANK)}
+        for a in DIMS: _mw[rule][a].append(pw[a])
+alloc["ties"]["models"]={"judgment":sum(v["ties_judgment"] for v in alloc["per_model"].values()),"reasoning":sum(v["ties_reasoning"] for v in alloc["per_model"].values()),"n":sum(v["n_responses"] for v in alloc["per_model"].values())}
 for a in DIMS:
-    alloc["winner_take_all"][a]={"human_sd":round(pstd(_humw[a]),4),"model_sd":round(pstd(_mw[a]),4),"ratio":round(pstd(_humw[a])/pstd(_mw[a]),2),"ratio_as_published":comp[a]["ratio"]}
+    alloc["winner_take_all"][a]={"human_sd":round(pstd(_humw["shared"][a]),4),"model_sd":round(pstd(_mw["shared"][a]),4),"ratio":round(pstd(_humw["shared"][a])/pstd(_mw["shared"][a]),2),"ratio_as_published":comp[a]["ratio"],"rule":"shared among tied maxima"}
+    alloc["tie_rules"][a]={rule:round(pstd(_humw[rule][a])/pstd(_mw[rule][a]),2) for rule in ("shared","first","last")}
+# per item, shared rule: humans who answered the item against the eleven models on it
+_hum_item_w={}
+for r in _hum_resp:
+    one={s["dimension_id"]:s["combined"] for s in compute_dimensional_score([_sharp(r)],BANK)}; _hum_item_w.setdefault(r["scenario_id"],[]).append(one[SCEN_DIM[r["scenario_id"]]])
+for s_ in BANK["scenarios"]:
+    sid=s_["id"]
+    if sid not in BASE: continue
+    a=s_["dimension_id"]; hv=_hum_item_w[sid]
+    mv=[{x["dimension_id"]:x["combined"] for x in compute_dimensional_score([_sharp(r) for r in _mgood[m] if r["scenario_id"]==sid],BANK)}[a] for m in models]
+    alloc["winner_take_all_per_item"].append({"item":sid,"axis":NAME[a],"human_sd":round(pstd(hv),4),"model_sd":round(pstd(mv),4),"ratio":round(pstd(hv)/pstd(mv),2)})
 # Exclusion sensitivity (Kimi finding 4): score the excluded responses with the runner's stored
 # fallback allocation and compare the b12 model SD; and Kimi's geometry displacement both ways.
 excl_sens={}
@@ -282,10 +309,27 @@ for a in DIMS:
                   "max_model_shift":round(max(abs(x-y) for x,y in zip([pos_b12[m][a] for m in models],inc)),3)}
 _kg_ex=axis_scores(cells[("kimi","nonsense_geometry")]["responses"],None); _kg_in={s["dimension_id"]:s["combined"] for s in compute_dimensional_score(cells[("kimi","nonsense_geometry")]["responses"],BANK)}
 excl_sens["kimi_geometry_displacement"]={"excluding":round(mean(abs(_kg_ex[a]-pos_all["kimi"][a]) for a in DIMS),3),"including_fallback":round(mean(abs(_kg_in[a]-pos_all["kimi"][a]) for a in DIMS),3)}
+# Rerun selection (Astra round two, finding 5): one observed rerun per model, chosen at random,
+# each still pooling the baseline items; the human SD over the panel SD of those selections.
+_by_it={m:{} for m in models}
+for m in models:
+    for r in _mgood[m]: _by_it[m].setdefault(r.get("iteration",0),[]).append(r)
+_rng2=random.Random(20260911); SEL=20000
+_sel={a:[] for a in DIMS}
+for _ in range(SEL):
+    pick={m:_rng2.choice(sorted(_by_it[m])) for m in models}
+    pos={m:{s["dimension_id"]:s["combined"] for s in compute_dimensional_score(_by_it[m][pick[m]],BANK)} for m in models}
+    for a in DIMS: _sel[a].append(pstd(hum[a])/pstd([pos[m][a] for m in models]))
+rerun_sel={a:{"median_ratio":round(statistics.median(_sel[a]),2),"central_95":[round(pctl(_sel[a],0.025),2),round(pctl(_sel[a],0.975),2)],"draws":SEL,"seed":20260911} for a in DIMS}
+# The N-matched recount at the variance-inflated model SDs from validity/aggregation_artifact.py.
+_agg=json.load(open(ROOT/"validity"/"results"/"aggregation_artifact.json"))["per_axis"]
+_rng3=random.Random(20260911)
+rerun_sel["recount_at_inflated_sd"]={a:{"model_sd_as_single_draw":_agg[a]["model_sd_as_single_draw"],
+    "draws_as_tight":sum(1 for _ in range(BOOT) if pstd(_rng3.sample(hum[a],len(models)))<=_agg[a]["model_sd_as_single_draw"]),"of":BOOT} for a in DIMS}
 MODELS_JSON=json.load(open(ROOT/"models.json"))["models"]
 model_ids={m:{"provider":MODELS_JSON[m]["provider"],"model_id":MODELS_JSON[m]["model_id"]} for m in allmodels if m in MODELS_JSON}
 out={"n_human":n_h,"n_models":len(models),"models":models,"labs":sorted(set(LAB[m] for m in models)),
-     "model_ids":model_ids,"human_exposure":exposure,"exclusions":exclusions,"exclusion_sensitivity":excl_sens,"allocation_style":alloc,"range_coverage_all48":range_cov,
+     "model_ids":model_ids,"human_exposure":exposure,"exclusions":exclusions,"exclusion_sensitivity":excl_sens,"allocation_style":alloc,"rerun_selection":rerun_sel,"range_coverage_all48":range_cov,
      "compression":comp,"frame_displacement":frame_disp,"direction":direction,"nonsense_direction":nons_dir,
      "clustering":{"axis_fingerprint":{"nearest_neighbors":nn_axis,"same_lab_nn_count":same_axis},
                    "scenario_fingerprint":{"n_scenarios":n_common,"nearest_neighbors":nn_scen,"same_lab_nn_count":same_scen}},

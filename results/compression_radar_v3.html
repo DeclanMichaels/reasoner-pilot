@@ -95,19 +95,19 @@ const rlo=Math.min(...D.axes.map(a=>a.ratio)), rhi=Math.max(...D.axes.map(a=>a.r
 const ma=D.axes.find(a=>a.id==='moral_agent');
 const maMean=ma.models.reduce((s,o)=>s+o.v,0)/ma.models.length;
 document.getElementById("cap_r").innerHTML =
-  `Humans spray from center to rim on every spoke; the models sit in one tight arc. The human side is the `+
-  `classic WEIRD profile &mdash; autonomous, skeptical of authority, narrow moral domain, universalist. On three `+
-  `axes the models lean the same direction as the humans, only muted and bunched. On <b style="color:#d8d8e0">Moral `+
-  `Agent</b> they break the other way: the models sit <i>relational</i> (mean ${maMean>=0?'+':''}${maMean.toFixed(2)}) `+
-  `where the human median is <i>autonomous</i> (${ma.p50.toFixed(2)}).`;
+  `Humans spread from center to rim on every spoke; the models sit in one narrow arc. The human sample sits `+
+  `autonomous, skeptical of authority, narrow in moral domain and universalist. On three axes the models sit on the `+
+  `same side of the midpoint as the humans, closer to it. On <b style="color:#d8d8e0">Moral Agent</b> they sit on the `+
+  `<i>relational</i> side (mean ${maMean>=0?'+':''}${maMean.toFixed(2)}) where the human median is <i>autonomous</i> `+
+  `(${ma.p50.toFixed(2)}).`;
 document.getElementById("cap_s").innerHTML =
   `Each axis at its true linear scale. Model spread is <b style="color:#d8d8e0">${rlo} to ${rhi}&times; tighter</b> `+
-  `than humans in SD on every axis. On a size-matched bootstrap (100,000 draws of ${D.n_model} random humans) not one `+
-  `draw was as clustered as the model panel on any axis &mdash; p &lt; 0.00001. Dots colored by lab show the knot is `+
-  `lab-mixed: DeepSeek, MiniMax, and Kimi (Chinese labs) fall inside the same sliver as the Western models.`;
+  `than humans in SD on every axis, as scored; collapsed onto each response's largest option the ratio is smaller `+
+  `(appendix A8). In 100,000 draws of ${D.n_model} humans without replacement, none was as tight as the panel on any `+
+  `axis. Dots colored by lab: DeepSeek, MiniMax and Kimi (Chinese labs) fall inside the same band as the others.`;
 document.getElementById("labnote").textContent =
   "Population SD. Human baseline re-scored with the same function as the models, from raw allocation weights. "+
-  "Model points: neutral-frame allocation over 5 iterations x 12 baseline scenarios. Dots jittered for visibility only.";
+  "Model points: unframed allocation over 5 reruns x 12 baseline scenarios; most humans answered one scenario per axis. Dots jittered for visibility only.";
 
 }catch(e){document.body.style.margin='0';document.body.innerHTML='<div style="font-family:system-ui;color:#9a9aac;background:#0d0d14;min-height:100vh;padding:48px;font-size:14px;line-height:1.7">This is a <b style=\'color:#d8d8e0\'>template</b>, not the finished figure.<br>Run <b style=\'color:#d8d8e0\'>python3 analysis/build_figures.py</b> to generate the figure with data (written to <code>results/</code>).</div>';}
 </script></body></html>

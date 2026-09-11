@@ -107,7 +107,7 @@ def build_figure_payload():
 
 
 def build_bootstrap(fig):
-    """N-matched bootstrap: is the model panel tighter than a same-size human draw?"""
+    """N-matched draw without replacement: how often is a same-size human subset as tight as the panel?"""
     order = fig["order"]; lab = fig["lab"]; axes = []
     for a in fig["axes"]:
         h = a["humans"]; mv = [a["models"][m] for m in order]

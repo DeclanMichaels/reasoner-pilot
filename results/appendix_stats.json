@@ -708,6 +708,8 @@
     "per_model": {
       "deepseek_v4": {
         "n_responses": 60,
+        "ties_judgment": 7,
+        "ties_reasoning": 10,
         "judgment": {
           "neutral_share": 0.222,
           "full_pole_share": 0.498,
@@ -723,6 +725,8 @@
       },
       "gpt55": {
         "n_responses": 60,
+        "ties_judgment": 1,
+        "ties_reasoning": 8,
         "judgment": {
           "neutral_share": 0.211,
           "full_pole_share": 0.506,
@@ -738,6 +742,8 @@
       },
       "grok45": {
         "n_responses": 60,
+        "ties_judgment": 7,
+        "ties_reasoning": 12,
         "judgment": {
           "neutral_share": 0.195,
           "full_pole_share": 0.559,
@@ -753,6 +759,8 @@
       },
       "inkling": {
         "n_responses": 56,
+        "ties_judgment": 3,
+        "ties_reasoning": 2,
         "judgment": {
           "neutral_share": 0.232,
           "full_pole_share": 0.484,
@@ -768,6 +776,8 @@
       },
       "kimi": {
         "n_responses": 60,
+        "ties_judgment": 5,
+        "ties_reasoning": 9,
         "judgment": {
           "neutral_share": 0.21,
           "full_pole_share": 0.508,
@@ -783,6 +793,8 @@
       },
       "llama33": {
         "n_responses": 60,
+        "ties_judgment": 22,
+        "ties_reasoning": 22,
         "judgment": {
           "neutral_share": 0.185,
           "full_pole_share": 0.578,
@@ -798,6 +810,8 @@
       },
       "minimax": {
         "n_responses": 60,
+        "ties_judgment": 4,
+        "ties_reasoning": 3,
         "judgment": {
           "neutral_share": 0.215,
           "full_pole_share": 0.527,
@@ -813,6 +827,8 @@
       },
       "mistral_large": {
         "n_responses": 60,
+        "ties_judgment": 7,
+        "ties_reasoning": 12,
         "judgment": {
           "neutral_share": 0.168,
           "full_pole_share": 0.617,
@@ -828,6 +844,8 @@
       },
       "o3": {
         "n_responses": 59,
+        "ties_judgment": 4,
+        "ties_reasoning": 1,
         "judgment": {
           "neutral_share": 0.195,
           "full_pole_share": 0.54,
@@ -843,6 +861,8 @@
       },
       "opus": {
         "n_responses": 60,
+        "ties_judgment": 4,
+        "ties_reasoning": 11,
         "judgment": {
           "neutral_share": 0.235,
           "full_pole_share": 0.488,
@@ -858,6 +878,8 @@
       },
       "sonnet": {
         "n_responses": 60,
+        "ties_judgment": 6,
+        "ties_reasoning": 5,
         "judgment": {
           "neutral_share": 0.226,
           "full_pole_share": 0.521,
@@ -874,6 +896,8 @@
     },
     "humans": {
       "n_responses": 352,
+      "unit": "per response; twelve-item respondents carry three times a four-item respondent's weight",
+      "judgment_entropy_equal_person_mean": 0.479,
       "judgment": {
         "neutral_share": 0.151,
         "full_pole_share": 0.56,
@@ -889,28 +913,212 @@
     },
     "winner_take_all": {
       "moral_agent": {
-        "human_sd": 0.6278,
-        "model_sd": 0.2668,
-        "ratio": 2.35,
-        "ratio_as_published": 6.78
+        "human_sd": 0.6036,
+        "model_sd": 0.2654,
+        "ratio": 2.27,
+        "ratio_as_published": 6.78,
+        "rule": "shared among tied maxima"
       },
       "authority": {
-        "human_sd": 0.611,
-        "model_sd": 0.1593,
-        "ratio": 3.84,
-        "ratio_as_published": 7.69
+        "human_sd": 0.5815,
+        "model_sd": 0.1189,
+        "ratio": 4.89,
+        "ratio_as_published": 7.69,
+        "rule": "shared among tied maxima"
       },
       "domain_boundary": {
-        "human_sd": 0.5098,
-        "model_sd": 0.1596,
-        "ratio": 3.19,
-        "ratio_as_published": 5.37
+        "human_sd": 0.4905,
+        "model_sd": 0.1544,
+        "ratio": 3.18,
+        "ratio_as_published": 5.37,
+        "rule": "shared among tied maxima"
       },
       "scope": {
-        "human_sd": 0.4915,
-        "model_sd": 0.1219,
-        "ratio": 4.03,
-        "ratio_as_published": 5.65
+        "human_sd": 0.4671,
+        "model_sd": 0.111,
+        "ratio": 4.21,
+        "ratio_as_published": 5.65,
+        "rule": "shared among tied maxima"
+      }
+    },
+    "tie_rules": {
+      "moral_agent": {
+        "shared": 2.27,
+        "first": 2.35,
+        "last": 2.13
+      },
+      "authority": {
+        "shared": 4.89,
+        "first": 3.84,
+        "last": 6.2
+      },
+      "domain_boundary": {
+        "shared": 3.18,
+        "first": 3.19,
+        "last": 3.1
+      },
+      "scope": {
+        "shared": 4.21,
+        "first": 4.03,
+        "last": 4.37
+      }
+    },
+    "winner_take_all_per_item": [
+      {
+        "item": "mac_1",
+        "axis": "Moral Agent",
+        "human_sd": 0.6612,
+        "model_sd": 0.5365,
+        "ratio": 1.23
+      },
+      {
+        "item": "mac_2",
+        "axis": "Moral Agent",
+        "human_sd": 0.4398,
+        "model_sd": 0.1491,
+        "ratio": 2.95
+      },
+      {
+        "item": "mac_3",
+        "axis": "Moral Agent",
+        "human_sd": 0.5927,
+        "model_sd": 0.4981,
+        "ratio": 1.19
+      },
+      {
+        "item": "auth_1",
+        "axis": "Authority",
+        "human_sd": 0.495,
+        "model_sd": 0.1644,
+        "ratio": 3.01
+      },
+      {
+        "item": "auth_2",
+        "axis": "Authority",
+        "human_sd": 0.6104,
+        "model_sd": 0.2488,
+        "ratio": 2.45
+      },
+      {
+        "item": "auth_3",
+        "axis": "Authority",
+        "human_sd": 0.5904,
+        "model_sd": 0.2185,
+        "ratio": 2.7
+      },
+      {
+        "item": "domain_1",
+        "axis": "Moral Domain",
+        "human_sd": 0.4835,
+        "model_sd": 0.1028,
+        "ratio": 4.7
+      },
+      {
+        "item": "domain_2",
+        "axis": "Moral Domain",
+        "human_sd": 0.4756,
+        "model_sd": 0.1609,
+        "ratio": 2.95
+      },
+      {
+        "item": "domain_3",
+        "axis": "Moral Domain",
+        "human_sd": 0.5534,
+        "model_sd": 0.3935,
+        "ratio": 1.41
+      },
+      {
+        "item": "scope_1",
+        "axis": "Obligation Scope",
+        "human_sd": 0.3955,
+        "model_sd": 0.0647,
+        "ratio": 6.11
+      },
+      {
+        "item": "scope_2",
+        "axis": "Obligation Scope",
+        "human_sd": 0.4994,
+        "model_sd": 0.3211,
+        "ratio": 1.56
+      },
+      {
+        "item": "scope_3",
+        "axis": "Obligation Scope",
+        "human_sd": 0.4995,
+        "model_sd": 0.2189,
+        "ratio": 2.28
+      }
+    ],
+    "ties": {
+      "humans": {
+        "judgment": 43,
+        "reasoning": 40,
+        "n": 352
+      },
+      "models": {
+        "judgment": 70,
+        "reasoning": 95,
+        "n": 655
+      }
+    }
+  },
+  "rerun_selection": {
+    "moral_agent": {
+      "median_ratio": 6.17,
+      "central_95": [
+        4.92,
+        8.34
+      ],
+      "draws": 20000,
+      "seed": 20260911
+    },
+    "authority": {
+      "median_ratio": 6.97,
+      "central_95": [
+        5.16,
+        9.99
+      ],
+      "draws": 20000,
+      "seed": 20260911
+    },
+    "domain_boundary": {
+      "median_ratio": 5.02,
+      "central_95": [
+        4.45,
+        5.85
+      ],
+      "draws": 20000,
+      "seed": 20260911
+    },
+    "scope": {
+      "median_ratio": 4.99,
+      "central_95": [
+        3.85,
+        7.35
+      ],
+      "draws": 20000,
+      "seed": 20260911
+    },
+    "recount_at_inflated_sd": {
+      "moral_agent": {
+        "model_sd_as_single_draw": 0.06525,
+        "draws_as_tight": 0,
+        "of": 100000
+      },
+      "authority": {
+        "model_sd_as_single_draw": 0.05535,
+        "draws_as_tight": 0,
+        "of": 100000
+      },
+      "domain_boundary": {
+        "model_sd_as_single_draw": 0.06497,
+        "draws_as_tight": 0,
+        "of": 100000
+      },
+      "scope": {
+        "model_sd_as_single_draw": 0.07028,
+        "draws_as_tight": 1,
+        "of": 100000
       }
     }
   },
@@ -947,8 +1155,8 @@
       "ratio": 6.78,
       "p": 0.0,
       "ratio_ci": [
-        4.95,
-        13.2
+        4.94,
+        13.38
       ],
       "human_mean": 0.2925,
       "model_mean": -0.0521,
@@ -960,8 +1168,8 @@
       "ratio": 7.69,
       "p": 0.0,
       "ratio_ci": [
-        5.83,
-        12.53
+        5.82,
+        12.63
       ],
       "human_mean": 0.1748,
       "model_mean": 0.1178,
@@ -974,7 +1182,7 @@
       "p": 0.0,
       "ratio_ci": [
         3.66,
-        11.65
+        11.73
       ],
       "human_mean": 0.366,
       "model_mean": 0.2929,
@@ -986,8 +1194,8 @@
       "ratio": 5.65,
       "p": 0.0,
       "ratio_ci": [
-        4.57,
-        8.41
+        4.59,
+        8.49
       ],
       "human_mean": 0.3726,
       "model_mean": 0.2817,
