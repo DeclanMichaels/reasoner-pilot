@@ -26,7 +26,7 @@ Eleven models from nine labs (three Chinese: DeepSeek, MiniMax, Moonshot), calle
 
 **Scenarios.** Forty-eight, twelve per axis, each with a judgment question and a reasoning question; 93 of the 96 questions have three options and 3 have four. Twelve scenarios, three per axis, carry the human baseline (b12). Eight framings per scenario. Each (model, framing) cell is one file of 240 responses (48 scenarios times 5 reruns). No cell was run more than once. The build scripts read `runs/` non-recursively and raise if a duplicate complete cell appears; a superseded run would be moved to `runs/_superseded/`, which they do not read.
 
-**Exclusions.** A response whose point allocations could not be parsed from the model's reply is marked `extraction_failed` and excluded from every score; the runner's uniform fallback allocation is never scored. A file of 240 responses is therefore not a cell of 240 scored answers. Across the panel 205 of 21,120 responses are excluded, concentrated in Kimi (99) and MiniMax (53); the largest single loss is Kimi's geometry cell, 31 of 60. Command A's 176 of 720 include 101 failed calls.
+**Exclusions.** A response whose point allocations could not be parsed from the model's reply is marked `extraction_failed` and excluded from every score; the runner's uniform fallback allocation is never scored. A file of 240 responses is therefore not a cell of 240 scored answers. The run records carry no finish-reason field, so a truncated reply is not distinguishable from a malformed one after the fact. Across the panel 205 of 21,120 responses are excluded, concentrated in Kimi (99) and MiniMax (53); the largest single loss is Kimi's geometry cell, 31 of 60. Command A's 176 of 720 include 101 failed calls.
 
 Columns are the eight framings in the order above (neutral, individualist, collectivist, hierarchical, egalitarian, seasonal, geometry, color), then the total excluded over the responses in the file.
 
@@ -297,6 +297,36 @@ This is a min-to-max span of model positions, a different quantity from the SD r
 
 Panel composition. Adding back the two models outside the panel (13 models) leaves the panel SD small on every axis (Moral Agent 0.076, Authority 0.061, Moral Domain 0.061, Obligation Scope 0.077). Command A's unframed cell is scored on 202 of 240 responses (A1).
 
+Allocation style. The models and the humans place points differently. On the baseline twelve, unframed, the share of points on neutral options is similar, but every model spreads its points across options far more evenly than the humans: normalised allocation entropy 0.85 to 0.95 against 0.46 to 0.51, and a largest option holding about half the points against about two thirds. Per response, judgment / reasoning:
+
+| Respondent | Neutral-option share | Full-pole share | Normalised entropy | Largest option's share |
+|---|---:|---:|---:|---:|
+| humans (352 responses) | 0.15 / 0.20 | 0.56 / 0.53 | 0.46 / 0.51 | 0.66 / 0.61 |
+| deepseek_v4 | 0.22 / 0.19 | 0.50 / 0.53 | 0.85 / 0.88 | 0.55 / 0.49 |
+| gpt55 | 0.21 / 0.19 | 0.51 / 0.54 | 0.88 / 0.91 | 0.54 / 0.47 |
+| grok45 | 0.20 / 0.18 | 0.56 / 0.59 | 0.91 / 0.94 | 0.49 / 0.43 |
+| inkling | 0.23 / 0.24 | 0.48 / 0.49 | 0.87 / 0.89 | 0.54 / 0.50 |
+| kimi | 0.21 / 0.18 | 0.51 / 0.55 | 0.90 / 0.93 | 0.50 / 0.45 |
+| llama33 | 0.18 / 0.18 | 0.58 / 0.59 | 0.94 / 0.95 | 0.45 / 0.41 |
+| minimax | 0.21 / 0.21 | 0.53 / 0.54 | 0.93 / 0.95 | 0.49 / 0.43 |
+| mistral_large | 0.17 / 0.20 | 0.62 / 0.57 | 0.93 / 0.92 | 0.49 / 0.45 |
+| o3 | 0.20 / 0.20 | 0.54 / 0.55 | 0.93 / 0.94 | 0.48 / 0.43 |
+| opus | 0.23 / 0.17 | 0.49 / 0.58 | 0.89 / 0.93 | 0.52 / 0.44 |
+| sonnet | 0.23 / 0.21 | 0.52 / 0.53 | 0.92 / 0.95 | 0.49 / 0.44 |
+
+A flatter allocation scores nearer the mean of its options' loadings, so part of the model band's narrowness is how the models place points, not only where. Collapsing every allocation on both sides onto its largest option removes that component:
+
+| Axis | Human SD | Model SD | Ratio | Ratio as published |
+|---|---:|---:|---:|---:|
+| Moral Agent | 0.628 | 0.267 | 2.35x | 6.78x |
+| Authority | 0.611 | 0.159 | 3.84x | 7.69x |
+| Moral Domain | 0.510 | 0.160 | 3.19x | 5.37x |
+| Obligation Scope | 0.492 | 0.122 | 4.03x | 5.65x |
+
+The model spread stays the smaller on every axis, by 2.4 to 4.0 times; the rest of the published ratio is the models' flatter allocations. Model reruns are still pooled here.
+
+Exclusions. Scoring the excluded responses with the runner's stored fallback allocation instead of dropping them leaves every b12 model SD unchanged to three decimals (largest per-model shift 0.027, on Obligation Scope); Kimi's displacement under the geometry framing is 0.223 with its 31 excluded responses dropped and 0.196 with them scored.
+
 ## A9. Validity
 
 Three results bear on validity.
@@ -307,11 +337,11 @@ Response to manipulation. The models move under each cultural framing in the exp
 
 Reliability. Within-model run-to-run SD is roughly half the between-model SD on every axis (A4), under an identical prompt on every rerun (A1).
 
-Not established: convergent validity against an independent instrument, which can be assessed within one population; measurement invariance across cultural groups, which is required before any cross-cultural comparison and needs cross-cultural human samples on this instrument; and criterion validity against behavior, whether a position here relates to what a model does in open-ended use, which needs a behavioral study.
+Not established: the factor structure and inter-item consistency of the bank; convergent validity against an independent instrument, which can be assessed within one population; measurement invariance across cultural groups, which is required before any cross-cultural comparison and needs cross-cultural human samples on this instrument; and criterion validity against behavior, whether a position here relates to what a model does in open-ended use, which needs a behavioral study.
 
 ## A10. Reproducibility
 
-Three stdlib scripts regenerate everything: `build_figures.py` (compression, bootstrap, panel clustering, the three figures), `build_viewer_data.py` (the viewer payload, including per-cell run dispersion), and `build_appendix.py` (this appendix's `appendix_stats.json`, including the reasoning-token and between-model-dispersion tables). A fourth, `build_csv.py`, exports the tidy CSV tables. All bootstraps use fixed seeds (20260720; the A5 model-resampling draws 20260910). Each script raises on a duplicate complete cell so a re-run cannot silently change a number.
+Three stdlib scripts regenerate everything: `build_figures.py` (compression, bootstrap, panel clustering, the three figures), `build_viewer_data.py` (the viewer payload, including per-cell run dispersion), and `build_appendix.py` (this appendix's `appendix_stats.json`, including the reasoning-token and between-model-dispersion tables). A fourth, `build_csv.py`, exports the tidy CSV tables. The scenario bank with every option's loading (`scenarios.json`), every framing prompt (`framings.json`), the run files with every response and allocation (`runs/`), the anonymised human responses and their licence (`human-responses/`, `DATA-LICENSE.md`) and the decision log are in the public repository, github.com/DeclanMichaels/reasoner-pilot. All bootstraps use fixed seeds (20260720; the A5 model-resampling draws 20260910). Each script raises on a duplicate complete cell so a re-run cannot silently change a number.
 
 ---
 
