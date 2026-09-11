@@ -87,11 +87,18 @@ everything below before either does. Nothing on this list is done until it is st
   the five records first.
 - ~~Pilot: the five-model artifacts~~ Done (`d307c1b`): moved to `results/archive-five-model-2026-07/`
   with a README.
-- Pilot: the root `viewer.html` read against the final text once more, and the two PDFs
-  re-rendered from the final text.
+- ~~Pilot: the root `viewer.html` read against the final text once more, and the two PDFs
+  re-rendered~~ Done (`44619a7`): three viewer lines on item exposure; both PDFs re-rendered from
+  the final text and byte-identical to the committed ones.
 - ~~MFQ-2: the two hand-written tables~~ Done (#132): emitted as P1 and P2 of `appendix_tables.md`
   and spliced; the document did not change.
-- MFQ-2: the PDF re-rendered from the final text; page 13's lone list item traced or accepted.
+- ~~MFQ-2: the PDF re-rendered from the final text; page 13~~ Done: re-rendered 2026-09-11,
+  byte-identical to `edcf91c`. Page 13 traced and accepted: the six-column arm table under B1 is
+  eight rows that WeasyPrint will not split, so it starts a new page and leaves the page above it
+  mostly empty; relaxing the recipe's header rule changed nothing and the table is above the
+  keep-whole threshold, so the recipe's rules are not the cause. Re-rendering is a one-command
+  step once the text is final (`papers/render.sh <file>`), so the two render items are struck as
+  done for the current text, not for a text that changes later.
 - ~~Both: a claim-check of every prose number against its artifact, by machine~~ Done:
   `analysis/claim_check.py`, run by the harness; both papers check clean. It matches by value,
   not meaning: a number attached to the wrong quantity still passes.
@@ -201,8 +208,8 @@ viewer's Control tab rendered a date as "[object Object]" (fixed before push).
 - `validity/README.md` carries thirteen em-dashes in text that predates the register rules.
 - The Iran microdata and the `pyreadstat` builder are outside the reproduce path by design.
 - The viewer's per-model token table has no counterpart in the document.
-- MFQ-2 PDF page 13 carries one list item and nothing else, in every render so far; cause not
-  traced.
+- MFQ-2 PDF page 13 carries one list item and nothing else: WeasyPrint starts the eight-row arm
+  table on a fresh page rather than splitting it. Accepted 2026-09-11.
 - A search that clears a reviewer's quoted phrase must be shown, not reported: #110 and the
   round-six adjudication both cleared "tails too coarse" and it was on line 27 the whole time.
 - A cold review that says "every number reproduced" must have diffed the file against the JSON
