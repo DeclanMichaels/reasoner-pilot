@@ -7,10 +7,10 @@ This repository is public, so this file is public. It is written knowing that.
 
 ## Current state
 
-- Working tree clean. This is the Black M2 Air. The last substantive commits are `9f0102a` (the
-  appendix builder extended and `results/appendix_stats.json` re-pinned, harness PASS) and
-  `9f06413` (the pilot paper and appendix after the first external round and the cold review,
-  #120 to #131). Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is
+- Working tree clean. This is the Black M2 Air. Substantive commits of 2026-09-11, newest first:
+  #132 (the MFQ-2 paper's two tables emitted and spliced), `d307c1b` (title, five-model archive,
+  decision 23), `e221888` (Gemini's round, no sampling parameter of any kind), `9f06413` and
+  `9f0102a` (Astra's round and the cold review, #120 to #131). Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is
   cloned on this Air.
 - **The Reasoner pilot paper has had its first external round.** Sequence on 2026-09-10 and 11:
   the prose pass (`5961507`), a cold review (`reviews/claude-cold-review-pilot-2026-09-10.md`,
@@ -49,7 +49,7 @@ This repository is public, so this file is public. It is written knowing that.
   `analysis/` or `validity/` changed this session and the harness was not re-run.
 - **The integer ratings dataset, the September wave, the MFQ-2 viewer** are as the previous
   handoff describes; none was touched.
-- `DECISIONS.md` holds 22 entries. 12 is superseded by 18, 14 by 22 for the emitter outputs. 17
+- `DECISIONS.md` holds 23 entries; 23 (2026-09-11) is the Zenodo deposit. 12 is superseded by 18, 14 by 22 for the emitter outputs. 17
   (published means a DOI and the site) still gates everything. No decision was made or
   superseded this session.
 
@@ -71,33 +71,35 @@ everything below before either does. Nothing on this list is done until it is st
 
 **Pre-publication pass, both papers:**
 
-- Pilot: the title and the opening sentence, flagged in Astra's round ("converge",
-  "moral-reasoning space"), undecided.
-- Pilot: at least one more external round, on the text at `9f06413` or later; Astra's round
-  read `5961507`.
-- Pilot: the five-model artifacts in `results/` (list under item 2 below): stay, move or go.
+- ~~Pilot: the title~~ Done 2026-09-11 (`d307c1b`): "Eleven Language Models in a Narrow Band of a
+  Moral-Judgment Instrument". The opening sentence was narrowed under #127.
+- Pilot: one more external round, Declan's pick Kimi, on the text at `d307c1b` or later. Astra
+  read `5961507`; Gemini read `9f06413` and found nothing new
+  (`reviews/gemini-paper-review-pilot-2026-09-11.md`).
+- ~~Pilot: the five-model artifacts~~ Done (`d307c1b`): moved to `results/archive-five-model-2026-07/`
+  with a README.
 - Pilot: the root `viewer.html` read against the final text once more, and the two PDFs
   re-rendered from the final text.
-- MFQ-2: the two hand-written tables (d and Ordering) still have no pinned artifact; a
-  claim-check or an emitter.
+- ~~MFQ-2: the two hand-written tables~~ Done (#132): emitted as P1 and P2 of `appendix_tables.md`
+  and spliced; the document did not change.
 - MFQ-2: the PDF re-rendered from the final text; page 13's lone list item traced or accepted.
 - Both: a claim-check of every prose number against its artifact, by machine; the pilot's
   cold review passed three intervals by eye.
 - Both: the moral-os.com pages (`papers/reasoner-pilot.html` is the 2026-07-21 text; the
   in-language viewer is live and unlisted; the pilot viewer's site copy unchecked) rebuilt from
   the final files, in the website repository's own session.
-- Both: `LOCATIONS.md`'s three `TBD`s and `CITATION.cff`'s commented `doi:`; what the Zenodo
-  deposit is (snapshot or documents), then the DOI (decision 17 gates publication on it and the
-  site).
+- Both: `LOCATIONS.md`'s three `TBD`s and `CITATION.cff`'s commented `doi:`, resolved together when
+  Declan mints the DOI. What the deposit is was decided 2026-09-11: the repository snapshot, one
+  DOI, both documents citing it (decision 23).
 - Both: the embarrassment nudge, once more, on the final state.
 
 Open at close, 2026-09-11, in detail:
 
 1. **External review of the pilot paper, continued.** One external round adjudicated (Astra).
-   Any further paste is diffed against the two records and #119 to #131 before it is read. Open from the rounds, Declan's to scope: the title and
-   opening ("converge" and "moral-reasoning space" flagged; left for later), a loading audit of
-   the bank (24 scenarios where an even split does not score zero), a simulation matching the
-   human item assignment on the model side, and a collection with humans answering all twelve.
+   Any further paste is diffed against the two records and #119 to #131 before it is read. The new work Astra asked for went to the successor study's tracker as design inputs
+   (reasoner-study #2, loading balance; #3, exposure matching): no further data collection for
+   the pilot unless it makes a material difference (Declan, 2026-09-11). The eleven-model
+   nonsense texts stay uncoded.
 2. **The five-model artifacts in `results/`.** `pilot_reanalysis_findings.md`,
    `pilot_reanalysis_metrics.json`, `tightened_metrics.json`, `pilot_frame_shifts.json`,
    `coding_results.json`, `nonsense_texts.json`, `coder_check_result.json`, `coder_prompt.md`,
