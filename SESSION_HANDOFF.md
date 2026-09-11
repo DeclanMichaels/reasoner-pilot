@@ -65,7 +65,33 @@ reviews of the pilot paper.
 
 ## Next session
 
-Nothing is queued for an agent. Open at close, 2026-09-10:
+Nothing is queued for an agent. **Declan's plan, 2026-09-11: the two papers publish together**, the
+Reasoner pilot (paper and appendix) and the MFQ-2 document, and a pre-publication pass checks
+everything below before either does. Nothing on this list is done until it is struck here.
+
+**Pre-publication pass, both papers:**
+
+- Pilot: the title and the opening sentence, flagged in Astra's round ("converge",
+  "moral-reasoning space"), undecided.
+- Pilot: at least one more external round, on the text at `9f06413` or later; Astra's round
+  read `5961507`.
+- Pilot: the five-model artifacts in `results/` (list under item 2 below): stay, move or go.
+- Pilot: the root `viewer.html` read against the final text once more, and the two PDFs
+  re-rendered from the final text.
+- MFQ-2: the two hand-written tables (d and Ordering) still have no pinned artifact; a
+  claim-check or an emitter.
+- MFQ-2: the PDF re-rendered from the final text; page 13's lone list item traced or accepted.
+- Both: a claim-check of every prose number against its artifact, by machine; the pilot's
+  cold review passed three intervals by eye.
+- Both: the moral-os.com pages (`papers/reasoner-pilot.html` is the 2026-07-21 text; the
+  in-language viewer is live and unlisted; the pilot viewer's site copy unchecked) rebuilt from
+  the final files, in the website repository's own session.
+- Both: `LOCATIONS.md`'s three `TBD`s and `CITATION.cff`'s commented `doi:`; what the Zenodo
+  deposit is (snapshot or documents), then the DOI (decision 17 gates publication on it and the
+  site).
+- Both: the embarrassment nudge, once more, on the final state.
+
+Open at close, 2026-09-11, in detail:
 
 1. **External review of the pilot paper, continued.** One external round adjudicated (Astra).
    Any further paste is diffed against the two records and #119 to #131 before it is read. Open from the rounds, Declan's to scope: the title and
