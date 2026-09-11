@@ -78,6 +78,13 @@ This repository is public, so this file is public. It is written knowing that.
 - Zenodo: the repository enabled under the GitHub integration in Declan's account; release
   `v1.1.0` archived as record 22712502.
 - GitHub: release `v1.1.0` created on this repository.
+- After the mint, the other repositories were brought up to date with it: `moral-os-website`'s
+  README carries the deploy steps as run and a table of where each paper and viewer file here
+  comes from (`a19b599`); `claude-continuity` has the 2026-09-11 current-state block and failure
+  patterns 34 to 36 (typed numbers, a commit chain stopping on the harness, a shown search for a
+  cleared quote); `reasoner-study`'s handoff carries #2 and #3 with what each asks of the
+  preregistration; `research-kit` has its first real handoff and its adjudication skill carries
+  the two verification rules learned here. Every one is pushed and clean.
 - `reasoner-study`: two design-input tickets filed from the pilot's rounds, #2 (balance the
   option loadings) and #3 (match human and model item exposure), each stating that no pilot
   data collection follows.
