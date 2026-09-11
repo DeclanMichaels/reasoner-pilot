@@ -14,8 +14,9 @@ This repository is public, so this file is public. It is written knowing that.
   cloned on this Air.
 - **The Reasoner pilot paper has had its first external round.** Sequence on 2026-09-10 and 11:
   the prose pass (`5961507`), a cold review (`reviews/claude-cold-review-pilot-2026-09-10.md`,
-  twelve items), then ChatGPT's round (`reviews/chatgpt-paper-review-2026-09-10.md`, twelve
-  findings, every computation in it reproduced). Twelve tickets, #120 to #131, all closed in
+  twelve items), then Astra's round (`reviews/astra-paper-review-pilot-2026-09-10.md`, twelve
+  findings, every computation in it reproduced; Astra is the current ChatGPT model, one
+  reviewer, and the round was first recorded under the wrong name). Twelve tickets, #120 to #131, all closed in
   `9f06413` and `9f0102a`. **Corrected on the record** in those commits: the human baseline
   (58 respondents answered one baseline scenario per axis, ten all twelve; the paper had said
   68 on the twelve); the reshuffle claim (the prompt is identical on every rerun); the A5
@@ -26,10 +27,7 @@ This repository is public, so this file is public. It is written knowing that.
   passes on a prompt asserting triangles superior to circles, cut). Added: exclusions per model
   and frame (205 of 21,120), per-item and ten-respondent compression ratios, request parameters
   and model identifiers, range coverage, weighting ratios. Declan's decisions of 2026-09-11 are
-  listed in the ChatGPT record's header.
-- **Astra's round on the pilot paper is held by Declan**, run against the document at
-  `5961507`, before any of the above. When it arrives: diff it against both review records and
-  #119 to #131 first; most of what it found will be closed.
+  listed in the Astra record's header.
 - **All three PDFs are the recipe's.** `papers/reasoner-pilot.pdf` 5 pages and
   `papers/reasoner-appendix.pdf` 13 pages (`9f06413`); `papers/inlanguage-mfq2-DRAFT.pdf` 44
   pages (`edcf91c`) from the document at `99ca5df`. The recipe's table rules in `papers/render_html_pdf.py` were settled against all
@@ -69,9 +67,8 @@ reviews of the pilot paper.
 
 Nothing is queued for an agent. Open at close, 2026-09-10:
 
-1. **External review of the pilot paper, continued.** One round adjudicated (ChatGPT); Astra's
-   is held and will have read the pre-round text. Diff any paste against the two records and
-   #119 to #131 before reading it. Open from the rounds, Declan's to scope: the title and
+1. **External review of the pilot paper, continued.** One external round adjudicated (Astra).
+   Any further paste is diffed against the two records and #119 to #131 before it is read. Open from the rounds, Declan's to scope: the title and
    opening ("converge" and "moral-reasoning space" flagged; left for later), a loading audit of
    the bank (24 scenarios where an even split does not score zero), a simulation matching the
    human item assignment on the model side, and a collection with humans answering all twelve.

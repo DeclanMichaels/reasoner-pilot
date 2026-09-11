@@ -1,7 +1,8 @@
-# ChatGPT's review of the Reasoner pilot paper and appendix, 2026-09-10
+# Astra's review of the Reasoner pilot paper and appendix, 2026-09-10
 
-**Reviewer:** ChatGPT, one of the model families Declan runs adversarial review through; first
-round on this paper. It had the clone: it reran `analysis/build_appendix.py` and matched the
+**Reviewer:** Astra, the current ChatGPT model (5.6), the family that ran six rounds on the MFQ-2
+document; first round on this paper. Recorded on 2026-09-11 as "ChatGPT" from Declan's "here's
+what Chat says" and corrected the same day; the two are one reviewer. It had the clone: it reran `analysis/build_appendix.py` and matched the
 committed `results/appendix_stats.json`, read the runners, the scoring function, the human
 records and the coding artifacts, and recomputed four diagnostics of its own.
 **Reviewed:** the documents at `5961507`, before any change from the cold review.

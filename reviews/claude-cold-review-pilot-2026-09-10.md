@@ -1,16 +1,16 @@
 # Claude's cold review of the Reasoner pilot paper and appendix, 2026-09-10
 
 **Reviewer:** Claude (Fable 5.1), the workflow that rewrote both documents earlier today. Not an
-independent adversarial review; the external rounds are, and the first (Astra) is held until this
-one is adjudicated.
+independent adversarial review; the external rounds are. Astra's first round on this paper arrived
+the same day and was adjudicated with this one.
 **Reviewed:** `papers/reasoner-pilot.md` and `papers/reasoner-appendix.md` at `5961507`, with the
 run files, `results/appendix_stats.json`, the call layer (`refresh_runner.py`), the scoring
 function (`scenario_bank.py`), the scenario bank and `CONTEXT.md`.
-**Adjudicated:** 2026-09-11, together with ChatGPT's round of 2026-09-10, which raised items 1 to 6
-with more precision (`reviews/chatgpt-paper-review-2026-09-10.md`). Tickets #120 to #131. Items 1
+**Adjudicated:** 2026-09-11, together with Astra's round of 2026-09-10, which raised items 1 to 6
+with more precision (`reviews/astra-paper-review-pilot-2026-09-10.md`). Tickets #120 to #131. Items 1
 to 4, 7, 8, 10 and 11 applied; 5 and 6 decided by Declan (clause dropped; scenario grain leads);
 9 added as one clause; 12 noted. **Correction:** "Every number reproduced" below was wrong on the
-three A5 intervals, which differed from the JSON by 0.001 to 0.002; ChatGPT caught it.
+three A5 intervals, which differed from the JSON by 0.001 to 0.002; Astra caught it.
 
 ## What was checked
 
