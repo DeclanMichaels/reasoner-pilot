@@ -27,14 +27,14 @@ The 68 respondents sit autonomous on Moral Agent, skeptical on Authority, narrow
 
 Unframed, the models compress on every axis. In 100,000 draws of eleven humans without replacement, none was as tight as the panel on any axis:
 
-| Axis | Human SD | Model SD (neutral) | Model band vs human |
-|------|---------:|---------:|:-------------------:|
-| Moral Agent | 0.41 | 0.06 | 6.8x tighter |
-| Authority | 0.40 | 0.05 | 7.7x tighter |
-| Moral Domain | 0.33 | 0.06 | 5.4x tighter |
-| Obligation Scope | 0.36 | 0.06 | 5.7x tighter |
+| Axis | Human SD | Model SD (neutral) | Model band vs human | Item by item | Ten twelve-item humans |
+|------|---------:|---------:|:-------------------:|:---:|:---:|
+| Moral Agent | 0.41 | 0.06 | 6.8x tighter | 3.6x to 7.1x | 5.7x |
+| Authority | 0.40 | 0.05 | 7.7x tighter | 4.8x to 6.6x | 3.7x |
+| Moral Domain | 0.33 | 0.06 | 5.4x tighter | 3.3x to 8.4x | 6.7x |
+| Obligation Scope | 0.36 | 0.06 | 5.7x tighter | 3.3x to 5.8x | 4.8x |
 
-The two sides of that ratio are not equally exposed: most human axis scores are one response to one scenario, while each model position pools three scenarios and up to five reruns. Item by item, the humans who answered a scenario against the eleven models on it, the model spread is the smaller on all twelve, by 3.3 to 8.4 times; on the ten respondents who answered all twelve, the four ratios are 5.7, 3.7, 6.7 and 4.8 (appendix A3).
+The two sides of the first ratio are not equally exposed: most human axis scores are one response to one scenario, while each model position pools three scenarios and up to five reruns. The last two columns match the exposure: item by item, the humans who answered a scenario against the eleven models on it, the model spread is the smaller on all twelve; and on the ten respondents who answered all twelve, the ratio on each axis (appendix A3). Both still pool model reruns.
 
 Nearest neighbors do not sort by lab: at the scenario grain ten of eleven models' nearest neighbors are from another company, at the axis grain all eleven, and each of the three Chinese models has an American nearest neighbor at both grains. Seven of the eleven are their lab's only model, so under label exchange the expected number of same-lab links is 0.4 of eleven, and the pattern is weak evidence either way (appendix A6). On three axes the models sit on the same side of the midpoint as the humans, closer to it. On Moral Agent they sit on the relational side (mean -0.05) while the human median is autonomous (+0.36).
 
