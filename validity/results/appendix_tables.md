@@ -334,3 +334,22 @@ A floor would work the other way. Unframed English Purity sits at 1.97 on a scal
 
 13 of 36 items move by more than 0.25 and 3 by more than 0.5 (purity_2, purity_3, purity_5); 18 of the 18 binding items move up, and so do all six Equality items, by +0.18 to +0.47; the six Care items sit within 0.04 of their English values.
 
+
+## P1. Paper table: distance in human standard deviations, by language
+
+| language | mean d | range across countries |
+|---|--:|---|
+| Japanese | +1.22 | Japan only |
+| Farsi | +1.22 | Iran only |
+| French | -0.97 | -0.38 Switzerland to -1.40 France |
+| Arabic | +0.88 | +0.59 Egypt to +1.03 Saudi Arabia |
+| Russian | +0.64 | Russia only |
+| Spanish | +0.61 | +0.10 Argentina to +0.82 Morocco |
+
+## P2. Paper table: ordering within language groups
+
+| language | countries | rank correlation | human range | panel range |
+|---|--:|--:|--:|--:|
+| Arabic | 3 | not reported | 0.375 | 0.153 (41%) |
+| Spanish | 6 | +0.89 | 0.794 | 1.239 (156%) |
+| French | 3 | not reported | 0.261 | 0.279 (107%) |

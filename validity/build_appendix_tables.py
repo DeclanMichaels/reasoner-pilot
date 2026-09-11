@@ -32,6 +32,7 @@ REF_NAME = {"Columbia": "Colombia", "UAE": "United Arab Emirates"}
 
 ANCH_N = {}
 ANCH_SE = {}   # reference-sample standard error of the binding mean, SD / sqrt(n)
+ANCH_SD = {}   # reference-sample person-level SD of the binding composite, for distances in human SDs
 
 
 def anchors():
@@ -40,6 +41,7 @@ def anchors():
         for r in csv.DictReader(fh):
             c = REF_NAME.get(r["country"], r["country"])
             ANCH_SE[c] = float(r["binding_sd"]) / int(r["n"]) ** 0.5
+            ANCH_SD[c] = float(r["binding_sd"])
     with open(VDIR / "reference" / "mfq2_country_means.csv") as fh:
         for r in csv.DictReader(fh):
             c = REF_NAME.get(r["country"], r["country"])
@@ -50,6 +52,7 @@ def anchors():
     a["Iran"] = ir["binding_1to5"]["s2"]
     src["Iran"] = "Hazrati 2025 sample 2"
     ANCH_SE["Iran"] = ir["person_level_sd"]["binding"]["s2"] / ir["person_level_sd"]["n_binding"]["s2"] ** 0.5
+    ANCH_SD["Iran"] = ir["person_level_sd"]["binding"]["s2"]
     return a, src
 
 
@@ -561,3 +564,32 @@ _eq = [_shift[i] for i in _iids if i.startswith("equality_")]; _care = max(abs(_
 print("\n%d of 36 items move by more than 0.25 and %d by more than 0.5 (%s); %d of the 18 binding items "
       "move up, and so do all six Equality items, by %+.2f to %+.2f; the six Care items sit within %.2f "
       "of their English values.\n" % (_n25, len(_n50), ", ".join(_n50), _bind_up, min(_eq), max(_eq), _care))
+
+# ---- The paper's two hand-written tables, emitted here so the splice keeps them pinned (#132) ----
+# Both are on the in-language framed condition of each country's reporting arm (decision 18 puts
+# Morocco under Spanish). The splice copies each table from its header row to the next section.
+print("\n## P1. Paper table: distance in human standard deviations, by language\n")
+print("| language | mean d | range across countries |")
+print("|---|--:|---|")
+_grp = {}
+for c, lang, code in ROWS:
+    code = ANCHOR_ARM.get(c, code)
+    if code and c in ANCH and (code + "_framed_" + c) in C:
+        _grp.setdefault(code, {})[c] = (cell(code + "_framed_" + c) - ANCH[c]) / ANCH_SD[c]
+for code, d in sorted(_grp.items(), key=lambda kv: (-round(abs(mean(list(kv[1].values()))), 2), LANG_ORDER.index(kv[0]))):
+    if len(d) == 1:
+        rng = "%s only" % next(iter(d))
+    else:
+        near, far = min(d, key=lambda c: abs(d[c])), max(d, key=lambda c: abs(d[c]))
+        rng = "%+.2f %s to %+.2f %s" % (d[near], near, d[far], far)
+    print("| %s | %+.2f | %s |" % (LANG_NAME[code], mean(list(d.values())), rng))
+
+print("\n## P2. Paper table: ordering within language groups\n")
+print("| language | countries | rank correlation | human range | panel range |")
+print("|---|--:|--:|--:|--:|")
+for code in ("ar", "es", "fr"):
+    cs = [c for c, _, k in ROWS if ANCHOR_ARM.get(c, k) == code and c in ANCH]
+    pm = {c: cell(code + "_framed_" + c) for c in cs}; hm = {c: ANCH[c] for c in cs}
+    hr = max(hm.values()) - min(hm.values()); pr = max(pm.values()) - min(pm.values())
+    r = ("%+.2f" % _rho(pm, hm)) if len(cs) >= 4 else "not reported"
+    print("| %s | %d | %s | %.3f | %.3f (%.0f%%) |" % (LANG_NAME[code], len(cs), r, hr, pr, 100 * pr / hr))

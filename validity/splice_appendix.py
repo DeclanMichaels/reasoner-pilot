@@ -8,6 +8,8 @@ The document is papers/inlanguage-mfq2-DRAFT.md. Its generated sections come ver
 pinned artifacts: results/appendix_tables.md (B2a, B3 up to the hand-written Arabic subsection,
 B3a, B6 up to the hand-written Care sentence, B6a) and results/appendix_b4_b5.md (B1a, B4, B4a, B5, B7).
 B1, B2, B8, B9, the Arabic subsection and the Care sentence are hand-written and untouched.
+The paper body's two tables, distance by language and Ordering, come from results/appendix_tables.md
+sections P1 and P2, anchored on their header rows (#132).
 Every header and hand-written boundary is asserted before anything is written; a renamed header
 fails here rather than leaving stale text in place.
 """
@@ -29,8 +31,12 @@ PLAN = [
     (B4B5,   "## B4a. ", "## B5. ",                                 "## B5. "),
     (B4B5,   "## B5. ",  "## B6. ",                                 "## B7. "),
     (TABLES, "## B6. ",  "Care sits between",                       "## B6a. "),
-    (TABLES, "## B6a. ", "## B7. ",                                 None),
+    (TABLES, "## B6a. ", "## B7. ",                                 "## P1. "),
     (B4B5,   "## B7. ",  "## B8. ",                                 None),
+    # the paper body's two tables (#132): anchored on their header rows, copied to the next
+    # section of the artifact and to the paragraph that follows each table in the document
+    (TABLES, "| language | mean d | range across countries |", "Per country rather than pooled", "## P2. "),
+    (TABLES, "| language | countries | rank correlation | human range | panel range |", "In Arabic the panel's order", None),
 ]
 
 
