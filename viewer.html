@@ -414,7 +414,7 @@ select{font-family:var(--font-mono);font-size:var(--fs-chip);background:var(--su
   <section class="panel" id="panel-browse" role="tabpanel" aria-labelledby="tab-browse" aria-hidden="true">
     <div class="pintro">
       <h2>Read the prompts and the actual responses</h2>
-      <p>Pick a scenario and a framing. You get the exact prompt the models saw, the answer options, and each selected model's allocation and its own written reasoning (the fullest of five runs).</p>
+      <p>Pick a scenario and a framing. You get the exact prompt the models saw, the answer options, and each selected model's allocation and its own written reasoning (the longest of five reruns).</p>
     </div>
     <div class="cbox">
       <div class="controls">
@@ -432,7 +432,7 @@ select{font-family:var(--font-mono);font-size:var(--fs-chip);background:var(--su
   <!-- ABOUT -->
   <section class="panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" aria-hidden="true">
     <div class="pintro"><h2>What this is</h2>
-      <p>The Reasoner scores four bipolar axes of moral-reasoning structure from a constant-sum allocation: for each scenario a respondent assigns proportional weight across the options for a judgment question and, separately, a reasoning question, combined into a position from -1 to +1 per axis. The same scoring runs on people and models, so both land in one space. This viewer holds the full pilot: 11 models across 8 framings on 48 scenarios, and 68 human respondents on the 12 baseline scenarios. Each model position is an estimate from five reruns per cell; the Compare view can overlay each model's run-to-run spread (&plusmn;1 SD) to show how far a position moves on rerun. No sampling temperature was sent, so each model ran at its provider's default and that spread is not on a common footing across models.</p>
+      <p>The Reasoner scores four bipolar axes of moral-reasoning structure from a constant-sum allocation: for each scenario a respondent assigns proportional weight across the options for a judgment question and, separately, a reasoning question, combined into a position from -1 to +1 per axis. The same scoring runs on people and models, so both land in one space. This viewer holds the full pilot: 11 models across 8 framings on 48 scenarios, and 68 human respondents on the 12 baseline scenarios, 58 of them answering one scenario per axis and ten all twelve. Each model position is an estimate from five reruns per cell; the Compare view can overlay each model's run-to-run spread (&plusmn;1 SD) to show how far a position moves on rerun. No sampling temperature was sent, so each model ran at its provider's default and that spread is not on a common footing across models.</p>
       <div class="axhead">The four axes</div>
       <div id="aboutAxes" class="axdefs"></div>
       <p>Population SD. Human baseline re-scored with the same function as the models from raw allocation weights. Analysis is stdlib-reproducible from the raw runs. Methodology was AI-assisted and disclosed.</p>
@@ -598,7 +598,7 @@ function updateNote(){
   document.getElementById('selhint').textContent = `${nm.length} model${nm.length!==1?'s':''} x ${fr.length} framing${fr.length!==1?'s':''}`;
   let note='';
   if(nm.length && fr.includes('neutral')){
-    note = `The human box spans the middle 50 percent of 68 people; the whiskers reach the 10th and 90th percentiles. Unframed, the model markers sit in a narrow part of each axis next to that spread; the compression is measured unframed. Add cultural or nonsense framings and the spread between models rises two to five times. Model markers and the human spread both use the 12 baseline scenarios the humans answered, so they are on the same items.`;
+    note = `The human box spans the middle 50 percent of 68 people; the whiskers reach the 10th and 90th percentiles. Unframed, the model markers sit in a narrow part of each axis next to that spread; the compression is measured unframed. Add cultural or nonsense framings and the spread between models rises two to five times. Model markers pool the 12 baseline scenarios; most humans answered one of the three per axis, so the human spread is mostly single-item scores against pooled model positions.`;
   } else if(!nm.length){ note='Select at least one model to place markers on the axes.'; }
   else { note='Add the neutral framing to compare a model against its own unframed default and the human spread.'; }
   if(state.uncertainty && nm.length){ note += ` Each marker's bar spans ±1 SD of that score across the model's five reruns; most are small, which is the point: the positions are stable on repeat, not artifacts of noise.`; }
