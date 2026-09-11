@@ -8,9 +8,11 @@ This repository is public, so this file is public. It is written knowing that.
 ## Current state
 
 - Working tree clean. This is the Black M2 Air. Substantive commits of 2026-09-11, newest first:
-  #132 (the MFQ-2 paper's two tables emitted and spliced), `d307c1b` (title, five-model archive,
-  decision 23), `e221888` (Gemini's round, no sampling parameter of any kind), `9f06413` and
-  `9f0102a` (Astra's round and the cold review, #120 to #131). Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is
+  Kimi's round (#133, #134: allocation style and the winner-take-all ratios, two commits),
+  `edfe39a` (Grok's round, the exposure-matched columns in the Results table), `fc2dabd` (#132,
+  the MFQ-2 paper's two tables emitted and spliced), `d307c1b` (title, five-model archive,
+  decision 23), `e221888` (Gemini's round), `9f06413` and `9f0102a` (Astra's round and the cold
+  review, #120 to #131). Pushed 2026-09-11; local and origin agree. Every repository under `~/Code/` is
   cloned on this Air.
 - **The Reasoner pilot paper has had its first external round.** Sequence on 2026-09-10 and 11:
   the prose pass (`5961507`), a cold review (`reviews/claude-cold-review-pilot-2026-09-10.md`,
@@ -60,8 +62,9 @@ Nothing. No model API calls; nothing spent. Nothing deposited anywhere. The scra
 
 ## The tracker
 
-Empty. #1 to #131 are closed. #120 to #131 were filed and closed 2026-09-11 from the two
-reviews of the pilot paper.
+Empty. #1 to #134 are closed. #120 to #134 were filed and closed 2026-09-11 from the five
+reviews of the pilot paper (cold, Astra, Gemini, Grok, Kimi) and #132 from the pre-publication
+list.
 
 ## Next session
 
@@ -73,9 +76,10 @@ everything below before either does. Nothing on this list is done until it is st
 
 - ~~Pilot: the title~~ Done 2026-09-11 (`d307c1b`): "Eleven Language Models in a Narrow Band of a
   Moral-Judgment Instrument". The opening sentence was narrowed under #127.
-- Pilot: one more external round, Declan's pick Kimi, on the text at `d307c1b` or later. Astra
-  read `5961507`; Gemini read `9f06413` and found nothing new
-  (`reviews/gemini-paper-review-pilot-2026-09-11.md`).
+- ~~Pilot: one more external round~~ Done: four rounds. Astra read `5961507` (twelve findings,
+  #120 to #131); Gemini and Grok read the corrected text and returned nothing new; Kimi read it
+  without the repository and found the allocation-style component of the compression ratio
+  (#133, #134). Records in `reviews/`. Any further paste is diffed against the four records first.
 - ~~Pilot: the five-model artifacts~~ Done (`d307c1b`): moved to `results/archive-five-model-2026-07/`
   with a README.
 - Pilot: the root `viewer.html` read against the final text once more, and the two PDFs
@@ -154,6 +158,10 @@ of any dict a bootstrap draws from; never redirect a generator into its tracked 
 every anchor before writing any file; re-render the PDF after every change to the document.
 Added this session, not yet in the notes: sweep a render for colon lead-ins and tables at a
 page foot, not only headings; the first pilot render had both and the heading sweep passed it.
+
+**Added to the record, 2026-09-11, Kimi's round:** the published compression ratio of 5.4 to 7.7
+is partly the models' flatter point allocations; collapsed onto each response's largest option
+the ratio is 2.4 to 4.0, still the model spread smaller on every axis. The Summary now says both.
 
 **Corrected on the record, 2026-09-11:** the pilot-paper claims listed under Current state, in
 `9f06413` and `9f0102a`.
