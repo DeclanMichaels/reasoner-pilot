@@ -8,7 +8,10 @@ This repository is public, so this file is public. It is written knowing that.
 ## Current state
 
 - Working tree clean. This is the Black M2 Air. Substantive commits of 2026-09-11, newest first:
-  Kimi's round (#133, #134: allocation style and the winner-take-all ratios, two commits),
+  Astra's second round (#135 to #141: ties shared, sensitivity wording, three corrections, the
+  rerun approximation, the figure template, sorted human order; two commits), `a3e1c9e` (Summary
+  leads with the collapsed ratio), Kimi's round (#133, #134: allocation style and the collapsed
+  ratios, two commits),
   `edfe39a` (Grok's round, the exposure-matched columns in the Results table), `fc2dabd` (#132,
   the MFQ-2 paper's two tables emitted and spliced), `d307c1b` (title, five-model archive,
   decision 23), `e221888` (Gemini's round), `9f06413` and `9f0102a` (Astra's round and the cold
@@ -62,9 +65,9 @@ Nothing. No model API calls; nothing spent. Nothing deposited anywhere. The scra
 
 ## The tracker
 
-Empty. #1 to #134 are closed. #120 to #134 were filed and closed 2026-09-11 from the five
-reviews of the pilot paper (cold, Astra, Gemini, Grok, Kimi) and #132 from the pre-publication
-list.
+Empty. #1 to #141 are closed. #120 to #141 were filed and closed 2026-09-11 from the six
+reviews of the pilot paper (cold, Astra, Gemini, Grok, Kimi, Astra again) and #132 from the
+pre-publication list.
 
 ## Next session
 
@@ -76,10 +79,12 @@ everything below before either does. Nothing on this list is done until it is st
 
 - ~~Pilot: the title~~ Done 2026-09-11 (`d307c1b`): "Eleven Language Models in a Narrow Band of a
   Moral-Judgment Instrument". The opening sentence was narrowed under #127.
-- ~~Pilot: one more external round~~ Done: four rounds. Astra read `5961507` (twelve findings,
+- ~~Pilot: one more external round~~ Done: five rounds. Astra read `5961507` (twelve findings,
   #120 to #131); Gemini and Grok read the corrected text and returned nothing new; Kimi read it
-  without the repository and found the allocation-style component of the compression ratio
-  (#133, #134). Records in `reviews/`. Any further paste is diffed against the four records first.
+  without the repository and found the allocation-format sensitivity of the compression ratio
+  (#133, #134); Astra's second round read `a3e1c9e` and caught three same-day errors plus the
+  undisclosed tie rule (#135 to #141). Records in `reviews/`. Any further paste is diffed against
+  the five records first.
 - ~~Pilot: the five-model artifacts~~ Done (`d307c1b`): moved to `results/archive-five-model-2026-07/`
   with a README.
 - Pilot: the root `viewer.html` read against the final text once more, and the two PDFs
@@ -159,9 +164,16 @@ every anchor before writing any file; re-render the PDF after every change to th
 Added this session, not yet in the notes: sweep a render for colon lead-ins and tables at a
 page foot, not only headings; the first pilot render had both and the heading sweep passed it.
 
-**Added to the record, 2026-09-11, Kimi's round:** the published compression ratio of 5.4 to 7.7
-is partly the models' flatter point allocations; collapsed onto each response's largest option
-the ratio is 2.4 to 4.0, still the model spread smaller on every axis. The Summary now says both.
+**Added to the record, 2026-09-11, Kimi's round and Astra's second:** the as-scored compression
+ratio of 5.4 to 7.7 is sensitive to the allocation format; collapsed onto each response's largest
+option with ties shared it is 2.3 to 4.9 (2.1 to 6.2 across three tie rules), still the model
+spread smaller on every axis and every item. The Summary leads with the collapsed figure. Not a
+decomposition: the collapse changes the measurement on both sides.
+
+**Corrected on the record, 2026-09-11 (Astra's second round):** three errors introduced the same
+day: Kimi's geometry cell "29 of 60" (209 of 240); "unchanged to three decimals" (Obligation
+Scope 0.0639 to 0.0650); "still 0 of 100,000 on every axis" without code (0, 0, 0 and 1). And
+the A3 ratio intervals moved in the second decimal when the human files were sorted.
 
 **Corrected on the record, 2026-09-11:** the pilot-paper claims listed under Current state, in
 `9f06413` and `9f0102a`.
@@ -196,5 +208,11 @@ viewer's Control tab rendered a date as "[object Object]" (fixed before push).
   by machine, not by eye: three A5 intervals were off by 0.001 to 0.002 and passed.
 - A method sentence taken from the glossary is not verified by the glossary. The reshuffle
   claim entered the paper from a reconstructed CONTEXT.md entry and was wrong.
+- Every number in a table comes from the artifact by code, never typed: the A8 shared-rule SD
+  column was typed and wrong on 2026-09-11 and caught before commit only by a check. And a
+  collapse rule has to be stated: Python's max() picked the first tied option and the headline
+  depended on it.
+- A subset's size is not the cell's: 60 baseline responses against 240 in the cell, and "31 of
+  60" went out three times.
 - The pilot appendix's A10 names the build scripts without their `analysis/` directory; A1 now
   gives the full path for one of them.
