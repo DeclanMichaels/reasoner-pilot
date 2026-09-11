@@ -102,9 +102,12 @@ everything below before either does. Nothing on this list is done until it is st
 - ~~Both: a claim-check of every prose number against its artifact, by machine~~ Done:
   `analysis/claim_check.py`, run by the harness; both papers check clean. It matches by value,
   not meaning: a number attached to the wrong quantity still passes.
-- Both: the moral-os.com pages (`papers/reasoner-pilot.html` is the 2026-07-21 text; the
-  in-language viewer is live and unlisted; the pilot viewer's site copy unchecked) rebuilt from
-  the final files, in the website repository's own session.
+- ~~Both: the moral-os.com pages~~ Done and deployed 2026-09-11 (moral-os-website, one commit):
+  the pilot page retitled with the current Summary as abstract, both pilot PDFs and the pilot
+  viewer replaced; a new MFQ-2 page and its PDF, **unlisted** (noindex, no sitemap, unlinked)
+  like the MFQ-2 viewer, which was refreshed from `validity/` with its data; the index card's
+  finding sentence rewritten. Listing the MFQ-2 page and viewer is Declan's, with the DOI. Any
+  later text change reopens this: copy the renders and viewers, redeploy.
 - Both: `LOCATIONS.md`'s three `TBD`s and `CITATION.cff`'s commented `doi:`, resolved together when
   Declan mints the DOI. What the deposit is was decided 2026-09-11: the repository snapshot, one
   DOI, both documents citing it (decision 23).
