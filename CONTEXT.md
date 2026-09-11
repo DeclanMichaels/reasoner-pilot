@@ -98,8 +98,9 @@ framing under which the models hold still.
 
 **Compression**:
 The panel occupying a narrower band than a size-matched human sample on the same axis. The pilot's
-figure is 5.4 to 7.7 times narrower, on eleven models and 68 humans, every ratio interval's lower
-bound at or above 3.66.
+figure is 5.4 to 7.7 times narrower as scored, on eleven models and 68 humans, every ratio
+interval's lower bound at or above 3.66; 2.3 to 4.9 with every allocation collapsed onto its
+largest option, ties shared (2026-09-11, #133, #136). Both are quoted together.
 _Avoid_: "three to four times" and "five models", both of which appear in older drafts and are
 wrong; the first was a lower-bound reading presented as the estimate.
 

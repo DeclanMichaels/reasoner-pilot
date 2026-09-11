@@ -22,11 +22,11 @@ Eleven models from nine labs (three Chinese: DeepSeek, MiniMax, Moonshot), calle
 | command_a (outside panel) | Cohere | `command-a-plus-05-2026` |
 | gemini3pro (outside panel) | Google | `gemini-3.1-pro-preview` |
 
-**Request.** One user message carrying the scenario, both questions and their options in bank order, and the allocation instruction; the framing, where there is one, as the system prompt. The options are in the same order on every call. A request seed of 1000 plus the rerun index goes to OpenAI, xAI, Together (`seed`) and Mistral (`random_seed`); Anthropic, Google and Cohere accept none. Token ceilings are per provider: Anthropic 3072, OpenAI and xAI 4096, Together and Google 6144, Mistral and Cohere 2048. No sampling parameter of any kind is sent, no temperature, top-p, top-k or reasoning setting, so each model ran at its provider's defaults, which the run records do not capture.
+**Request.** One user message carrying the scenario, both questions and their options in bank order, and the allocation instruction; the framing, where there is one, as the system prompt. The options are in the same order on every call. A request seed of 1000 plus the rerun index goes to OpenAI, xAI, Together (`seed`) and Mistral (`random_seed`); no seed was sent to Anthropic, Google or Cohere. Token ceilings are per provider: Anthropic 3072, OpenAI and xAI 4096, Together and Google 6144, Mistral and Cohere 2048. We did not set temperature, top-p, top-k or reasoning effort; seeds and output ceilings were configured as listed, and each model ran at its provider's defaults for the rest, which the run records do not capture.
 
 **Scenarios.** Forty-eight, twelve per axis, each with a judgment question and a reasoning question; 93 of the 96 questions have three options and 3 have four. Twelve scenarios, three per axis, carry the human baseline (b12). Eight framings per scenario. Each (model, framing) cell is one file of 240 responses (48 scenarios times 5 reruns). No cell was run more than once. The build scripts read `runs/` non-recursively and raise if a duplicate complete cell appears; a superseded run would be moved to `runs/_superseded/`, which they do not read.
 
-**Exclusions.** A response whose point allocations could not be parsed from the model's reply is marked `extraction_failed` and excluded from every score; the runner's uniform fallback allocation is never scored. A file of 240 responses is therefore not a cell of 240 scored answers. The run records carry no finish-reason field, so a truncated reply is not distinguishable from a malformed one after the fact. Across the panel 205 of 21,120 responses are excluded, concentrated in Kimi (99) and MiniMax (53); the largest single loss is Kimi's geometry cell, 31 of 60. Command A's 176 of 720 include 101 failed calls.
+**Exclusions.** A response whose point allocations could not be parsed from the model's reply is marked `extraction_failed` and excluded from every score; the runner's uniform fallback allocation is never scored. A file of 240 responses is therefore not a cell of 240 scored answers. The run records carry no finish-reason field, so a truncated reply is not distinguishable from a malformed one after the fact. Across the panel 205 of 21,120 responses are excluded, concentrated in Kimi (99) and MiniMax (53); the largest single loss is Kimi's geometry cell, 31 of 240 (3 of the 60 on the baseline twelve). Command A's 176 of 720 include 101 failed calls.
 
 Columns are the eight framings in the order above (neutral, individualist, collectivist, hierarchical, egalitarian, seasonal, geometry, color), then the total excluded over the responses in the file.
 
@@ -56,7 +56,7 @@ A respondent distributes a fixed pool of points across the options for each ques
 
 j = sum over judgment options of (loading times points), divided by the sum of points placed
 
-The reasoning score r is the same over the reasoning options. Because points are non-negative and the loadings lie in the interval from -1 to +1, both j and r fall in that same interval: all points on full +1 options gives +1, all on full -1 options gives -1, points on neutral options pull toward 0. An even split across a question's options scores the mean of its loadings, which is zero only where the loadings are balanced; in 24 of the 48 scenarios an even split across both questions scores away from zero (between -0.15 and +0.17), or one question has no option at a full pole (mac_1's reasoning options load -1, 0 and -0.5, so its attainable maximum is +0.6). The same options are scored for humans and models, so this affects the meaning of a zero and the headroom under framing, not the comparison between the two populations. The axis score combines the two,
+The reasoning score r is the same over the reasoning options. Because points are non-negative and the loadings lie in the interval from -1 to +1, both j and r fall in that same interval: all points on full +1 options gives +1, all on full -1 options gives -1, points on neutral options pull toward 0. An even split across a question's options scores the mean of its loadings, which is zero only where the loadings are balanced; in 24 of the 48 scenarios an even split across both questions scores away from zero (between -0.15 and +0.17), or one question has no option at a full pole (mac_1's reasoning options load -1, 0 and -0.5, so its attainable maximum is +0.6). The same options are scored for humans and models, which standardises the scoring rule and does not establish measurement equivalence: the two differ in how they place points (A8) and in item exposure (A3), and either can interact with unbalanced loadings. The axis score combines the two,
 
 score = 0.6 times j, plus 0.4 times r,
 
@@ -68,10 +68,10 @@ Dispersion is population standard deviation; the model figures are each model's 
 
 | Axis | Human SD | Model SD (neutral) | Ratio (human/model) | 95% CI on ratio | draws as tight as the panel |
 |---|---:|---:|---:|:---:|---:|
-| Moral Agent | 0.412 | 0.061 | 6.78x | [4.95, 13.2] | 0 of 100,000 |
-| Authority | 0.401 | 0.052 | 7.69x | [5.83, 12.53] | 0 of 100,000 |
-| Moral Domain | 0.327 | 0.061 | 5.37x | [3.66, 11.65] | 0 of 100,000 |
-| Obligation Scope | 0.361 | 0.064 | 5.65x | [4.57, 8.41] | 0 of 100,000 |
+| Moral Agent | 0.412 | 0.061 | 6.78x | [4.94, 13.38] | 0 of 100,000 |
+| Authority | 0.401 | 0.052 | 7.69x | [5.82, 12.63] | 0 of 100,000 |
+| Moral Domain | 0.327 | 0.061 | 5.37x | [3.66, 11.73] | 0 of 100,000 |
+| Obligation Scope | 0.361 | 0.064 | 5.65x | [4.59, 8.49] | 0 of 100,000 |
 
 Zero of 100,000 draws bounds the tail at about three in 100,000 (one-sided 95 percent), not at one in 100,000. The lower bound of every ratio CI is at least 3.66. The human sample is a convenience sample concentrated among technology professionals (A1).
 
@@ -105,7 +105,16 @@ Item by item, the humans who answered that item against the eleven models' posit
 
 The model SD is the smaller on every item, by 3.3 to 8.4 times. The ten-respondent subset is small and on a different instrument version; the item rows still pool model reruns.
 
-**Rerun averaging.** Each model position pools up to five reruns where each human score is one response. `validity/aggregation_artifact.py` treats each model as one draw instead: the four ratios become 6.32, 7.25, 5.03 and 5.14, a reduction of 6 to 9 percent, and for any ratio to reach 3, within-person noise would have to be 64 to 83 percent of the observed human variance. With those single-draw model SDs the N-matched count is still 0 of 100,000 on every axis.
+**Rerun averaging.** Each model position pools up to five reruns where each human score is one response. Two approximations of what a single model draw would show. `validity/aggregation_artifact.py` inflates the observed panel variance by the square of the median within-model run SD times 0.8 (one minus one over five), an illustrative variance-inflation calculation that treats the pooled position as an equal-weight mean of five runs: the four ratios become 6.32, 7.25, 5.03 and 5.14, and for any ratio to reach 3 under the same additive-noise arithmetic, within-person noise would have to be 64 to 83 percent of the observed human variance, a hypothetical figure, not a measured human reliability. At those inflated model SDs the N-matched draw gives 0, 0, 0 and 1 of 100,000 (seed 20260911). The second approximation selects one observed rerun per model at random, each rerun still pooling the three baseline items, and takes the human SD over the panel SD of the selection, 20,000 selections, seed 20260911:
+
+| Axis | Median ratio across selections | Central 95 percent of selections |
+|---|---:|:---:|
+| Moral Agent | 6.17 | [4.92, 8.34] |
+| Authority | 6.97 | [5.16, 9.99] |
+| Moral Domain | 5.02 | [4.45, 5.85] |
+| Obligation Scope | 4.99 | [3.85, 7.35] |
+
+These describe how the ratio moves with which rerun is chosen, not a population interval. Neither approximation makes a model's three-item axis score equivalent to a one-item human score.
 
 Where the two populations sit, for context (the compression claim is about spread, not location):
 
@@ -182,7 +191,7 @@ Per model, displacement under the two nonsense framings as a share of displaceme
 | gpt55 | 0.72 |
 | grok45 | 0.73 |
 
-Kimi's geometry cell is scored on 29 of 60 responses (A1).
+Kimi's geometry cell is scored on 209 of 240 responses (A1).
 
 Between-model dispersion. The compression in A3 is measured at neutral. Under framing the panel does not stay equally tight: the standard deviation across the eleven models, averaged over the four axes, rises two to five times above its neutral value under every framing, cultural or nonsense alike.
 
@@ -255,7 +264,7 @@ Reasoning tokens are whatever the provider's usage object reports for the call; 
 | opus | not reported | 0 | 0.042 |
 | sonnet | not reported | 0 | 0.079 |
 
-Among the seven models with a count, spend runs from 131 to 3,628. Their distances from the panel center run from 0.031 to 0.093 and do not order with spend: Kimi, the heaviest, is the closest of all eleven, and GPT-5.5, the lightest of the seven, sits at 0.060. Seven models is too few for a correlation to carry weight and none is reported. The contrast in the report, Kimi at 3,628 against GPT-5.5 at 131, is two rows of this table. Reasoning-token spend, as reported, does not order position on this instrument; nothing here tests reasoning in any other setting, and the counts confound model, provider accounting, reasoning mode and token ceiling.
+Among the seven models with a count, spend runs from 131 to 3,628. Their distances from the panel center run from 0.031 to 0.093 and do not order with spend: Kimi, with the largest reported count, is the closest of all eleven, and GPT-5.5, with the smallest, sits at 0.060. Seven models with different providers, accounting and ceilings support exploratory description only; no correlation is reported. The contrast in the report, Kimi at 3,628 against GPT-5.5 at 131, is two rows of this table. Reasoning-token spend, as reported, does not order position on this instrument; nothing here tests reasoning in any other setting, and the counts confound model, provider accounting, reasoning mode and token ceiling.
 
 ## A8. Sensitivity analyses
 
@@ -297,7 +306,7 @@ This is a min-to-max span of model positions, a different quantity from the SD r
 
 Panel composition. Adding back the two models outside the panel (13 models) leaves the panel SD small on every axis (Moral Agent 0.076, Authority 0.061, Moral Domain 0.061, Obligation Scope 0.077). Command A's unframed cell is scored on 202 of 240 responses (A1).
 
-Allocation style. The models and the humans place points differently. On the baseline twelve, unframed, the share of points on neutral options is similar, but every model spreads its points across options far more evenly than the humans: normalised allocation entropy 0.85 to 0.95 against 0.46 to 0.51, and a largest option holding about half the points against about two thirds. Per response, judgment / reasoning:
+Allocation style. The models and the humans place points differently. On the baseline twelve, unframed, the share of points on neutral options is similar, but on average the models spread their points across options far more evenly than the humans: mean normalised allocation entropy 0.85 to 0.95 per model against 0.46 to 0.51 for the humans, and a largest option holding about half the points against about two thirds. The figures are means over responses; the human rows weight a twelve-item respondent three times a four-item one, and the equal-person mean of the humans' judgment entropy is 0.48. Judgment / reasoning:
 
 | Respondent | Neutral-option share | Full-pole share | Normalised entropy | Largest option's share |
 |---|---:|---:|---:|---:|
@@ -314,18 +323,32 @@ Allocation style. The models and the humans place points differently. On the bas
 | opus | 0.23 / 0.17 | 0.49 / 0.58 | 0.89 / 0.93 | 0.52 / 0.44 |
 | sonnet | 0.23 / 0.21 | 0.52 / 0.53 | 0.92 / 0.95 | 0.49 / 0.44 |
 
-A flatter allocation scores nearer the mean of its options' loadings, so part of the model band's narrowness is how the models place points, not only where. Collapsing every allocation on both sides onto its largest option removes that component:
+A flatter allocation scores nearer the mean of its options' loadings. As a sensitivity to the allocation format, every allocation on both sides is collapsed onto its largest option. Ties at the maximum are common, 43 and 40 of the 352 human allocations and 70 and 95 of the 655 model ones (judgment and reasoning; 22 of Llama's 60 for each), so the rule for them matters; the primary rule shares the points equally among tied maxima, which does not privilege option order, and the first-tied and last-tied rules are shown beside it.
 
-| Axis | Human SD | Model SD | Ratio | Ratio as published |
+| Axis | Human SD | Model SD | Ratio, ties shared | Ratio as scored |
 |---|---:|---:|---:|---:|
-| Moral Agent | 0.628 | 0.267 | 2.35x | 6.78x |
-| Authority | 0.611 | 0.159 | 3.84x | 7.69x |
-| Moral Domain | 0.510 | 0.160 | 3.19x | 5.37x |
-| Obligation Scope | 0.492 | 0.122 | 4.03x | 5.65x |
+| Moral Agent | 0.604 | 0.265 | 2.27x | 6.78x |
+| Authority | 0.582 | 0.119 | 4.89x | 7.69x |
+| Moral Domain | 0.490 | 0.154 | 3.18x | 5.37x |
+| Obligation Scope | 0.467 | 0.111 | 4.21x | 5.65x |
 
-The model spread stays the smaller on every axis, by 2.4 to 4.0 times; the rest of the published ratio is the models' flatter allocations. Model reruns are still pooled here.
+| Tie rule | Moral Agent | Authority | Moral Domain | Obligation Scope |
+|---|---:|---:|---:|---:|
+| shared among tied maxima | 2.27x | 4.89x | 3.18x | 4.21x |
+| first tied option | 2.35x | 3.84x | 3.19x | 4.03x |
+| last tied option | 2.13x | 6.20x | 3.10x | 4.37x |
 
-Exclusions. Scoring the excluded responses with the runner's stored fallback allocation instead of dropping them leaves every b12 model SD unchanged to three decimals (largest per-model shift 0.027, on Obligation Scope); Kimi's displacement under the geometry framing is 0.223 with its 31 excluded responses dropped and 0.196 with them scored.
+Item by item under the shared rule, the humans who answered the item against the eleven models on it:
+
+| item | ratio | item | ratio | item | ratio | item | ratio |
+|---|---:|---|---:|---|---:|---|---:|
+| mac_1 | 1.23x | auth_1 | 3.01x | domain_1 | 4.70x | scope_1 | 6.11x |
+| mac_2 | 2.95x | auth_2 | 2.45x | domain_2 | 2.95x | scope_2 | 1.56x |
+| mac_3 | 1.19x | auth_3 | 2.70x | domain_3 | 1.41x | scope_3 | 2.28x |
+
+The model spread stays the smaller on every axis under every rule and on every item, and the ratios change substantially with the scoring rule: 2.3 to 4.9 with ties shared, 2.1 to 6.2 across the three rules, 1.2 to 6.1 item by item. Collapsing is a change of measurement, not a decomposition: it discards secondary preferences, magnifies differences near ties and changes human as well as model scores, so it shows the ratio's sensitivity to allocation format and does not isolate how much of the as-scored ratio is response style. Model reruns are still pooled here.
+
+Exclusions. Scoring the excluded responses with whatever allocation the parser stored, a uniform one where no object parsed and a padded or truncated one where the option count was wrong, instead of dropping them, moves the b12 model SD by at most 0.0011 (Obligation Scope, 0.0639 to 0.0650; Moral Domain 0.0609 to 0.0605; Authority 0.0521 to 0.0522; Moral Agent unchanged), with a largest per-model shift of 0.027; Kimi's displacement under the geometry framing is 0.223 with its 31 excluded responses dropped and 0.196 with them scored. A stored allocation is not the answer the model failed to give, and a uniform one pulls toward the loading mean, so this bounds the arithmetic of the exclusion, not its cause.
 
 ## A9. Validity
 
@@ -341,7 +364,7 @@ Not established: the factor structure and inter-item consistency of the bank; co
 
 ## A10. Reproducibility
 
-Three stdlib scripts regenerate everything: `build_figures.py` (compression, bootstrap, panel clustering, the three figures), `build_viewer_data.py` (the viewer payload, including per-cell run dispersion), and `build_appendix.py` (this appendix's `appendix_stats.json`, including the reasoning-token and between-model-dispersion tables). A fourth, `build_csv.py`, exports the tidy CSV tables. The scenario bank with every option's loading (`scenarios.json`), every framing prompt (`framings.json`), the run files with every response and allocation (`runs/`), the anonymised human responses and their licence (`human-responses/`, `DATA-LICENSE.md`) and the decision log are in the public repository, github.com/DeclanMichaels/reasoner-pilot. All bootstraps use fixed seeds (20260720; the A5 model-resampling draws 20260910). Each script raises on a duplicate complete cell so a re-run cannot silently change a number.
+Three stdlib scripts regenerate everything: `build_figures.py` (compression, bootstrap, panel clustering, the three figures), `build_viewer_data.py` (the viewer payload, including per-cell run dispersion), and `build_appendix.py` (this appendix's `appendix_stats.json`, including the reasoning-token and between-model-dispersion tables). A fourth, `build_csv.py`, exports the tidy CSV tables. Seeds by script: `build_figures.py` 20260719; `build_appendix.py` 20260720 for the A3 draws, 20260910 for the A5 model resampling, 20260911 for the rerun selection and the recount. Human response files are read in sorted filename order. The scenario bank with every option's loading (`scenarios.json`), every framing prompt (`framings.json`), the run files with every response and allocation (`runs/`), the anonymised human responses and their licence (`human-responses/`, `DATA-LICENSE.md`) and the decision log are in the public repository, github.com/DeclanMichaels/reasoner-pilot. Every random draw is seeded as listed. Each script raises on a duplicate complete cell so a re-run cannot silently change a number.
 
 ---
 
